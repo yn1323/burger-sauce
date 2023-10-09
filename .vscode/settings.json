@@ -1,0 +1,17 @@
+{
+    "cSpell.words": [
+        "LTRB",
+        "unfocus"
+    ],
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true,
+        "source.fixAll": true,
+        "quickfix.insertSemicolon": true,
+        "source.addMissingImports": true,
+      },
+    "dart.previewFlutterUiGuides": true,
+    "dart.previewFlutterUiGuidesCustomTracking": true,
+    "dart.closingLabels": false,
+    "editor.guides.bracketPairs": true,
+    "dart.renameFilesWithClasses": "always",
+}  
