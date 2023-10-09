@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class SelfPage extends StatefulWidget {
-  const SelfPage({super.key});
+class SelfPage extends HookWidget {
+  const SelfPage({Key? key}) : super(key: key);
 
-  @override
-  State<SelfPage> createState() => _SelfPageState();
-}
-
-class _SelfPageState extends State<SelfPage> {
   @override
   Widget build(BuildContext context) {
-    return Text('SelfPage 1',
-        style: Theme.of(context).textTheme.headlineMedium);
+    return Row(children: [
+      Text('SelfPage', style: Theme.of(context).textTheme.headlineMedium),
+    ]);
   }
 }

@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class TrendPage extends StatefulWidget {
-  const TrendPage({super.key});
+class TrendPage extends HookWidget {
+  const TrendPage({Key? key}) : super(key: key);
 
-  @override
-  State<TrendPage> createState() => _TrendPageState();
-}
-
-class _TrendPageState extends State<TrendPage> {
   @override
   Widget build(BuildContext context) {
-    return Text('TrendPage 1',
-        style: Theme.of(context).textTheme.headlineMedium);
+    return Row(children: [
+      Text('TrendPage', style: Theme.of(context).textTheme.headlineMedium),
+    ]);
   }
 }

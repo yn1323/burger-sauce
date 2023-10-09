@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class BuildSupportPage extends StatefulWidget {
-  const BuildSupportPage({super.key});
+class BuildSupportPage extends HookWidget {
+  const BuildSupportPage({Key? key}) : super(key: key);
 
-  @override
-  State<BuildSupportPage> createState() => _BuildSupportPageState();
-}
-
-class _BuildSupportPageState extends State<BuildSupportPage> {
   @override
   Widget build(BuildContext context) {
-    return Text('BuildSupportPage 1',
-        style: Theme.of(context).textTheme.headlineMedium);
+    return Row(children: [
+      Text('BuildSupportPage',
+          style: Theme.of(context).textTheme.headlineMedium),
+    ]);
   }
 }

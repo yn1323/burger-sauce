@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class DamageCalculationPage extends StatefulWidget {
-  const DamageCalculationPage({super.key});
+class DamageCalculationPage extends HookWidget {
+  const DamageCalculationPage({Key? key}) : super(key: key);
 
-  @override
-  State<DamageCalculationPage> createState() => _DamageCalculationPageState();
-}
-
-class _DamageCalculationPageState extends State<DamageCalculationPage> {
   @override
   Widget build(BuildContext context) {
-    return Text('DamageCalculationPage 1',
-        style: Theme.of(context).textTheme.headlineMedium);
+    return Row(children: [
+      Text('DamageCalculationPage',
+          style: Theme.of(context).textTheme.headlineMedium),
+    ]);
   }
 }

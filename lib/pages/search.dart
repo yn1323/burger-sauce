@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+class SearchPage extends HookWidget {
+  const SearchPage({Key? key}) : super(key: key);
 
-  @override
-  State<SearchPage> createState() => _SearchPageState();
-}
-
-class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
-    return Text('SearchPage 1',
-        style: Theme.of(context).textTheme.headlineMedium);
+    return Row(children: [
+      Text('SearchPage', style: Theme.of(context).textTheme.headlineMedium),
+    ]);
   }
 }
