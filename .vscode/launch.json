@@ -11,6 +11,12 @@
             "type": "node-terminal"
         },
         {
+            "command": "flutter pub run build_runner build",
+            "name": "GraphQL Schema Genderator",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
             "name": "burger_sauce",
             "request": "launch",
             "type": "dart"

@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "command": "get-graphql-schema http://localhost:8911/graphql > lib/graphql/schema.graphql",
+      "label": "Get GraphQL Schema(to localhost) ",
+      "detail": "Get GraphQL Schema",
+    },
+  ],
+
+}
