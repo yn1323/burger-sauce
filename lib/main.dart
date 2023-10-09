@@ -6,9 +6,14 @@ import 'package:burger_sauce/pages/setting.dart';
 import 'package:burger_sauce/pages/trend.dart';
 import 'package:burger_sauce/templates/my_scaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() {
+void main() async {
+  // ENV
+  const envFile = String.fromEnvironment('env');
+  await dotenv.load(fileName: envFile);
+
   runApp(const ProviderScope(child: MyApp()));
 }
 

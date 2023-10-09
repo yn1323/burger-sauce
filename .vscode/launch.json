@@ -11,21 +11,24 @@
             "type": "node-terminal"
         },
         {
-            "command": "flutter pub run build_runner build",
-            "name": "GraphQL Schema Genderator",
-            "request": "launch",
-            "type": "node-terminal"
-        },
-        {
             "name": "burger_sauce",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--dart-define",
+                "env=.env.development"
+            ]
         },
         {
             "name": "burger_sauce (profile mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "profile",
+            "args": [
+                "--dart-define",
+                "env=.env.development"
+            ]
         },
         {
             "name": "burger_sauce (release mode)",
