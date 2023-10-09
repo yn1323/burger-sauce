@@ -1,0 +1,31 @@
+{
+    // IntelliSense を使用して利用可能な属性を学べます。
+    // 既存の属性の説明をホバーして表示します。
+    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "command": "flutter pub run build_runner watch --delete-conflicting-outputs",
+            "name": "Riverpod Genderator",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "name": "burger_sauce",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "burger_sauce (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "burger_sauce (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

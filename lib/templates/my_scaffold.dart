@@ -9,13 +9,13 @@ class MyScaffold extends StatefulWidget {
 }
 
 class _MyScaffoldState extends State<MyScaffold> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 5;
   PageController? _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = PageController();
+    _controller = PageController(initialPage: _selectedIndex);
   }
 
   @override
