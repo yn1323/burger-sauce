@@ -1,762 +1,168 @@
-"""
-Use to check whether or not a user is authenticated and is associated
-with an optional set of roles.
-"""
-directive @requireAuth(roles: [String]) on FIELD_DEFINITION
-
-"""Use to skip authentication checks and allow public access."""
-directive @skipAuth on FIELD_DEFINITION
-
-"""Exposes a URL that specifies the behavior of this scalar."""
-directive @specifiedBy(
-  """The URL that specifies the behavior of this scalar."""
-  url: String!
-) on SCALAR
+directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
 
 type Ability {
-  id: String!
-  name: String!
-  detail: String!
-  battleIndex: String!
-  pokemons: [Pokemon]!
-  battleDataAbilities: [BattleDataAbility]!
+  id: String
+  name: String
+  slot: Int
+  is_hidden: Boolean
+  is_main_series: Boolean
+  pokemons: [Int]
 }
 
-type AttackType {
-  id: String!
-  name: String!
-  moves: [Move]!
+type AbilityInfo {
+  name: String
+  slot: Int
 }
 
-type BattleData {
-  id: String!
-  battleIndex: BattleIndex!
-  battleIndexId: String!
-  pokemon: Pokemon!
-  pokemonId: String!
-  no: String!
-  rank: Int!
-  battleDataMove: [BattleDataMove]!
-  battleDataAbility: [BattleDataAbility]!
-  battleDataNature: [BattleDataNature]!
-  battleDataItem: [BattleDataItem]!
-  battleDataTerastal: [BattleDataTerastal]!
-  Form: Form
-  formId: String
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
 }
 
-type BattleDataAbility {
-  id: String!
-  ability: Ability!
-  abilityId: String!
-  rate: Float!
-  battleData: BattleData!
-  battleDataId: String!
+type Color {
+  light: String
+  dark: String
 }
-
-type BattleDataItem {
-  id: String!
-  Item: Item!
-  itemId: String!
-  rate: Float!
-  battleData: BattleData!
-  battleDataId: String!
-}
-
-type BattleDataMove {
-  id: String!
-  move: Move!
-  moveId: String!
-  rate: Float!
-  battleData: BattleData!
-  battleDataId: String!
-}
-
-type BattleDataNature {
-  id: String!
-  nature: Nature!
-  natureId: String!
-  rate: Float!
-  battleData: BattleData!
-  battleDataId: String!
-}
-
-type BattleDataTerastal {
-  id: String!
-  type: Type!
-  typeId: String!
-  rate: Float!
-  battleData: BattleData!
-  battleDataId: String!
-}
-
-type BattleIndex {
-  id: String!
-  capturedAt: DateTime!
-  startAt: DateTime!
-  endAt: DateTime!
-  name: String!
-  battleData: [BattleData]!
-}
-
-"""
-The `BigInt` scalar type represents non-fractional signed whole numeric values.
-"""
-scalar BigInt
-
-input CreateAbilityInput {
-  name: String!
-  detail: String!
-  battleIndex: String!
-}
-
-input CreateAttackTypeInput {
-  name: String!
-}
-
-input CreateBattleDataAbilityInput {
-  abilityId: String!
-  rate: Float!
-  battleDataId: String!
-}
-
-input CreateBattleDataInput {
-  battleIndexId: String!
-  pokemonId: String!
-  no: String!
-  rank: Int!
-  formId: String
-}
-
-input CreateBattleDataItemInput {
-  itemId: String!
-  rate: Float!
-  battleDataId: String!
-}
-
-input CreateBattleDataMoveInput {
-  moveId: String!
-  rate: Float!
-  battleDataId: String!
-}
-
-input CreateBattleDataNatureInput {
-  natureId: String!
-  rate: Float!
-  battleDataId: String!
-}
-
-input CreateBattleDataTerastalInput {
-  typeId: String!
-  rate: Float!
-  battleDataId: String!
-}
-
-input CreateBattleIndexInput {
-  capturedAt: DateTime!
-  startAt: DateTime!
-  endAt: DateTime!
-  name: String!
-}
-
-input CreateFormInput {
-  no: String!
-  formType: String!
-  formType2: String!
-  name: String!
-}
-
-input CreateItemInput {
-  name: String!
-  detail: String!
-  battleIndex: String!
-  base64Image: String!
-}
-
-input CreateMoveInput {
-  target: String!
-  detail: String!
-  name: String!
-  typeId: String
-  attackTypeId: String
-  power: Int!
-  accuracy: Int!
-  pp: Int!
-  isTouchable: Boolean!
-  enableProtect: Boolean!
-  battleIndex: String!
-}
-
-input CreateMyPartyInput {
-  name: String!
-  favorite: Boolean!
-  memo: String!
-  userId: String!
-}
-
-input CreateMyPartyTagInput {
-  name: String!
-  favorite: Boolean!
-  memo: String!
-  userId: String!
-}
-
-input CreateMyPokemonInput {
-  name: String!
-  favorite: Boolean!
-  evH: Int!
-  evA: Int!
-  evB: Int!
-  evC: Int!
-  evD: Int!
-  evS: Int!
-  memo: String!
-  pokemonId: String!
-  itemId: String
-  abilityId: String
-  natureId: String!
-  terastalId: String
-  userId: String!
-}
-
-input CreateMyPokemonTagInput {
-  name: String!
-  favorite: Boolean!
-  memo: String!
-  userId: String!
-}
-
-input CreateNatureInput {
-  name: String!
-  battleIndex: String!
-  increase: String!
-  decrease: String!
-}
-
-input CreatePokemonInput {
-  name: String!
-  form: String!
-  no: String!
-  height: Float!
-  weight: Float!
-  statusH: Int!
-  statusA: Int!
-  statusB: Int!
-  statusC: Int!
-  statusD: Int!
-  statusS: Int!
-  base64Image: String!
-  url: String!
-  battleIndex: String!
-  battleFormIndex: String!
-}
-
-input CreateTypeInput {
-  name: String!
-  battleIndex: String!
-}
-
-input CreateTypeRelationInput {
-  fromId: String!
-  toId: String!
-  rate: Float!
-}
-
-input CreateUserInput {
-  name: String!
-  createdUserAt: DateTime!
-  updatedUserAt: DateTime!
-  deletedUserAt: DateTime
-}
-
-"""
-A date string, such as 2007-12-03, compliant with the `full-date` format
-outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
-representation of dates and times using the Gregorian calendar.
-"""
-scalar Date
-
-"""
-A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
-`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
-8601 standard for representation of dates and times using the Gregorian calendar.
-"""
-scalar DateTime
 
 type Form {
-  id: String!
-  no: String!
-  formType: String!
-  formType2: String!
-  name: String!
-  battleData: [BattleData]!
+  id: Int
+  name: String
+  order: Int
+  form_order: Int
+  is_default: Boolean
+  is_battle_only: Boolean
+  is_mega: Boolean
+  form_name: String
+}
+
+type GameIndex {
+  value: Int
+}
+
+type Height {
+  value: Int
+  in_meter: String
+  in_feet: String
+}
+
+type HeldItem {
+  item: Item
 }
 
 type Item {
-  id: String!
-  name: String!
-  detail: String!
-  battleIndex: String!
-  base64Image: String!
-  battleDataItem: [BattleDataItem]!
+  id: Int
+  name: String
+  cost: Int
+  fling_power: Int
+  category: ItemCategory
+  attributes: [ItemAttribute]
 }
 
-"""
-The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-"""
-scalar JSON
+type ItemAttribute {
+  id: Int
+  name: String
+  items: [Item]
+  description: String
+}
 
-"""
-The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-"""
-scalar JSONObject
+type ItemCategory {
+  id: Int
+  name: String
+  items: [Item]
+}
 
 type Move {
-  id: String!
-  target: String!
-  detail: String!
-  name: String!
-  type: Type
-  typeId: String
-  attackType: AttackType
-  attackTypeId: String
-  power: Int!
-  accuracy: Int!
-  pp: Int!
-  isTouchable: Boolean!
-  enableProtect: Boolean!
-  pokemons: [Pokemon]!
-  battleIndex: String!
-  battleDataMoves: [BattleDataMove]!
+  id: Int
+  name: String
+  accuracy: Int
+  effect_chance: Int
+  pp: Int
+  priority: Int
+  power: Int
 }
 
 type Mutation {
-  createAbility(input: CreateAbilityInput!): Ability!
-  updateAbility(id: String!, input: UpdateAbilityInput!): Ability!
-  deleteAbility(id: String!): Ability!
-  createAttackType(input: CreateAttackTypeInput!): AttackType!
-  updateAttackType(id: String!, input: UpdateAttackTypeInput!): AttackType!
-  deleteAttackType(id: String!): AttackType!
-  createBattleDataAbility(input: CreateBattleDataAbilityInput!): BattleDataAbility!
-  updateBattleDataAbility(id: String!, input: UpdateBattleDataAbilityInput!): BattleDataAbility!
-  deleteBattleDataAbility(id: String!): BattleDataAbility!
-  createBattleDataItem(input: CreateBattleDataItemInput!): BattleDataItem!
-  updateBattleDataItem(id: String!, input: UpdateBattleDataItemInput!): BattleDataItem!
-  deleteBattleDataItem(id: String!): BattleDataItem!
-  createBattleDataMove(input: CreateBattleDataMoveInput!): BattleDataMove!
-  updateBattleDataMove(id: String!, input: UpdateBattleDataMoveInput!): BattleDataMove!
-  deleteBattleDataMove(id: String!): BattleDataMove!
-  createBattleDataNature(input: CreateBattleDataNatureInput!): BattleDataNature!
-  updateBattleDataNature(id: String!, input: UpdateBattleDataNatureInput!): BattleDataNature!
-  deleteBattleDataNature(id: String!): BattleDataNature!
-  createBattleDataTerastal(input: CreateBattleDataTerastalInput!): BattleDataTerastal!
-  updateBattleDataTerastal(id: String!, input: UpdateBattleDataTerastalInput!): BattleDataTerastal!
-  deleteBattleDataTerastal(id: String!): BattleDataTerastal!
-  createBattleData(input: CreateBattleDataInput!): BattleData!
-  updateBattleData(id: String!, input: UpdateBattleDataInput!): BattleData!
-  deleteBattleData(id: String!): BattleData!
-  createBattleIndex(input: CreateBattleIndexInput!): BattleIndex!
-  updateBattleIndex(id: String!, input: UpdateBattleIndexInput!): BattleIndex!
-  deleteBattleIndex(id: String!): BattleIndex!
-  createForm(input: CreateFormInput!): Form!
-  updateForm(id: String!, input: UpdateFormInput!): Form!
-  deleteForm(id: String!): Form!
-  createItem(input: CreateItemInput!): Item!
-  updateItem(id: String!, input: UpdateItemInput!): Item!
-  deleteItem(id: String!): Item!
-  createMove(input: CreateMoveInput!): Move!
-  updateMove(id: String!, input: UpdateMoveInput!): Move!
-  deleteMove(id: String!): Move!
-  createMyParty(input: CreateMyPartyInput!): MyParty!
-  updateMyParty(id: String!, input: UpdateMyPartyInput!): MyParty!
-  deleteMyParty(id: String!): MyParty!
-  createMyPartyTag(input: CreateMyPartyTagInput!): MyPartyTag!
-  updateMyPartyTag(id: String!, input: UpdateMyPartyTagInput!): MyPartyTag!
-  deleteMyPartyTag(id: String!): MyPartyTag!
-  createMyPokemonTag(input: CreateMyPokemonTagInput!): MyPokemonTag!
-  updateMyPokemonTag(id: String!, input: UpdateMyPokemonTagInput!): MyPokemonTag!
-  deleteMyPokemonTag(id: String!): MyPokemonTag!
-  createMyPokemon(input: CreateMyPokemonInput!): MyPokemon!
-  updateMyPokemon(id: String!, input: UpdateMyPokemonInput!): MyPokemon!
-  deleteMyPokemon(id: String!): MyPokemon!
-  createNature(input: CreateNatureInput!): Nature!
-  updateNature(id: String!, input: UpdateNatureInput!): Nature!
-  deleteNature(id: String!): Nature!
-  createPokemon(input: CreatePokemonInput!): Pokemon!
-  updatePokemon(id: String!, input: UpdatePokemonInput!): Pokemon!
-  deletePokemon(id: String!): Pokemon!
-  createTypeRelation(input: CreateTypeRelationInput!): TypeRelation!
-  updateTypeRelation(id: String!, input: UpdateTypeRelationInput!): TypeRelation!
-  deleteTypeRelation(id: String!): TypeRelation!
-  createType(input: CreateTypeInput!): Type!
-  updateType(id: String!, input: UpdateTypeInput!): Type!
-  deleteType(id: String!): Type!
-  createUser(input: CreateUserInput!): User!
-  updateUser(id: String!, input: UpdateUserInput!): User!
-  deleteUser(id: String!): User!
-}
-
-type MyParty {
-  id: String!
-  name: String!
-  favorite: Boolean!
-  memo: String!
-  tag: [MyPartyTag]!
-  user: User!
-  userId: String!
-  myPokemon: [MyPokemon]!
-}
-
-type MyPartyTag {
-  id: String!
-  name: String!
-  favorite: Boolean!
-  memo: String!
-  myParty: [MyParty]!
-  user: User!
-  userId: String!
-}
-
-type MyPokemon {
-  id: String!
-  name: String!
-  favorite: Boolean!
-  evH: Int!
-  evA: Int!
-  evB: Int!
-  evC: Int!
-  evD: Int!
-  evS: Int!
-  memo: String!
-  tag: [MyPokemonTag]!
-  pokemon: Pokemon!
-  pokemonId: String!
-  item: Item
-  itemId: String
-  ability: Ability
-  abilityId: String
-  nature: Nature!
-  natureId: String!
-  terastal: Type
-  terastalId: String
-  moves: [Move]!
-  myParty: [MyParty]!
-  user: User!
-  userId: String!
-}
-
-type MyPokemonTag {
-  id: String!
-  name: String!
-  favorite: Boolean!
-  memo: String!
-  myPokemon: [MyPokemon]!
-  user: User!
-  userId: String!
-}
-
-type Nature {
-  id: String!
-  name: String!
-  battleIndex: String!
-  increase: String!
-  decrease: String!
-  battleDataNature: [BattleDataNature]!
+  sayHello(name: String!): String!
 }
 
 type Pokemon {
-  id: String!
+  id: Int!
   name: String!
-  form: String!
-  no: String!
-  height: Float!
-  weight: Float!
-  types: [Type]!
-  statusH: Int!
-  statusA: Int!
-  statusB: Int!
-  statusC: Int!
-  statusD: Int!
-  statusS: Int!
-  abilities: [Ability]!
-  moves: [Move]!
-  base64Image: String!
-  url: String!
-  battleIndex: String!
-  battleFormIndex: String!
-  battleData: [BattleData]!
+  base_experience: Int
+  color: Color!
+  height: Height
+  is_default: Boolean
+  order: Int
+  weight: Weight
+  abilities: [AbilityInfo]
+  forms: [Form]
+  held_items: [HeldItem]
+  location_area_encounters: String
+  moves: [Move]
+  sprites: Sprite
+  species: SpeciesInfo
+  stats: [Stat]
+  types: [Type]
+  avatar: String!
 }
 
-"""About the Redwood queries."""
+type PokemonList {
+  count: Int
+  next: String
+  previous: String
+  results: [Pokemon]
+}
+
 type Query {
-  """Fetches the Redwood root schema."""
-  redwood: Redwood
-  filterMyPokemons(userId: String!): [MyPokemon!]!
-  filterMyParties(userId: String!): [MyParty!]!
-  filterMyPokemonTags(userId: String!): [MyPokemonTag!]!
-  filterMyPartyTags(userId: String!): [MyPartyTag!]!
-  battleDatasLatest: [BattleData!]!
-  abilities: [Ability!]!
-  ability(id: String!): Ability
-  attackTypes: [AttackType!]!
-  attackType(id: String!): AttackType
-  battleDataAbilities: [BattleDataAbility!]!
-  battleDataAbility(id: String!): BattleDataAbility
-  battleDataItems: [BattleDataItem!]!
-  battleDataItem(id: String!): BattleDataItem
-  battleDataMoves: [BattleDataMove!]!
-  battleDataMove(id: String!): BattleDataMove
-  battleDataNatures: [BattleDataNature!]!
-  battleDataNature(id: String!): BattleDataNature
-  battleDataTerastals: [BattleDataTerastal!]!
-  battleDataTerastal(id: String!): BattleDataTerastal
-  battleDatas: [BattleData!]!
-  battleData(id: String!): BattleData
-  battleIndices: [BattleIndex!]!
-  battleIndex(id: String!): BattleIndex
-  forms: [Form!]!
-  form(id: String!): Form
-  items: [Item!]!
-  item(id: String!): Item
-  moves: [Move!]!
-  move(id: String!): Move
-  myParties: [MyParty!]!
-  myParty(id: String!): MyParty
-  myPartyTags: [MyPartyTag!]!
-  myPartyTag(id: String!): MyPartyTag
-  myPokemonTags: [MyPokemonTag!]!
-  myPokemonTag(id: String!): MyPokemonTag
-  myPokemons: [MyPokemon!]!
-  myPokemon(id: String!): MyPokemon
-  natures: [Nature!]!
-  nature(id: String!): Nature
-  pokemons: [Pokemon!]!
-  pokemon(id: String): Pokemon
-  typeRelations: [TypeRelation!]!
-  typeRelation(id: String!): TypeRelation
-  types: [Type!]!
-  type(id: String!): Type
-  users: [User!]!
-  user(id: String!): User
+  pokemons(limit: Int!, offset: Int!): PokemonList
+  pokemon(id: ID!): Pokemon
 }
 
-"""
-The RedwoodJS Root Schema
-
-Defines details about RedwoodJS such as the current user and version information.
-"""
-type Redwood {
-  """The version of Redwood."""
-  version: String
-
-  """The current user."""
-  currentUser: JSON
-
-  """The version of Prisma."""
-  prismaVersion: String
+type Species {
+  id: Int
+  name: String
+  order: Int
+  gender_rate: Int
+  capture_rate: Int
+  base_happiness: Int
+  is_baby: Boolean
+  hatch_counter: Int
+  has_gender_differences: Boolean
+  forms_switchable: Boolean
 }
 
-"""
-A time string at UTC, such as 10:15:30Z, compliant with the `full-time` format
-outlined in section 5.6 of the RFC 3339profile of the ISO 8601 standard for
-representation of dates and times using the Gregorian calendar.
-"""
-scalar Time
+type SpeciesInfo {
+  name: String!
+  url: String!
+}
+
+type Sprite {
+  front_default: String
+  front_shiny: String
+  front_female: String
+  front_shiny_female: String
+  back_default: String
+  back_shiny: String
+  back_female: String
+  back_shiny_female: String
+}
+
+type Stat {
+  id: Int
+  name: String
+}
 
 type Type {
-  id: String!
-  name: String!
-  battleIndex: String!
-  fromTypes: [TypeRelation]!
-  toTypes: [TypeRelation]!
-  moves: [Move]!
-  pokemons: [Pokemon]!
-  battleDataTerastal: [BattleDataTerastal]!
-}
-
-type TypeRelation {
-  id: String!
-  from: Type!
-  fromId: String!
-  to: Type!
-  toId: String!
-  rate: Float!
-}
-
-input UpdateAbilityInput {
-  name: String
-  detail: String
-  battleIndex: String
-}
-
-input UpdateAttackTypeInput {
+  slot: Int
   name: String
 }
 
-input UpdateBattleDataAbilityInput {
-  abilityId: String
-  rate: Float
-  battleDataId: String
-}
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
 
-input UpdateBattleDataInput {
-  battleIndexId: String
-  pokemonId: String
-  no: String
-  rank: Int
-  formId: String
-}
-
-input UpdateBattleDataItemInput {
-  itemId: String
-  rate: Float
-  battleDataId: String
-}
-
-input UpdateBattleDataMoveInput {
-  moveId: String
-  rate: Float
-  battleDataId: String
-}
-
-input UpdateBattleDataNatureInput {
-  natureId: String
-  rate: Float
-  battleDataId: String
-}
-
-input UpdateBattleDataTerastalInput {
-  typeId: String
-  rate: Float
-  battleDataId: String
-}
-
-input UpdateBattleIndexInput {
-  capturedAt: DateTime
-  startAt: DateTime
-  endAt: DateTime
-  name: String
-}
-
-input UpdateFormInput {
-  no: String
-  formType: String
-  formType2: String
-  name: String
-}
-
-input UpdateItemInput {
-  name: String
-  detail: String
-  battleIndex: String
-  base64Image: String
-}
-
-input UpdateMoveInput {
-  target: String
-  detail: String
-  name: String
-  typeId: String
-  attackTypeId: String
-  power: Int
-  accuracy: Int
-  pp: Int
-  isTouchable: Boolean
-  enableProtect: Boolean
-  battleIndex: String
-}
-
-input UpdateMyPartyInput {
-  name: String
-  favorite: Boolean
-  memo: String
-  userId: String
-}
-
-input UpdateMyPartyTagInput {
-  name: String
-  favorite: Boolean
-  memo: String
-  userId: String
-}
-
-input UpdateMyPokemonInput {
-  name: String
-  favorite: Boolean
-  evH: Int
-  evA: Int
-  evB: Int
-  evC: Int
-  evD: Int
-  evS: Int
-  memo: String
-  pokemonId: String
-  itemId: String
-  abilityId: String
-  natureId: String
-  terastalId: String
-  userId: String
-}
-
-input UpdateMyPokemonTagInput {
-  name: String
-  favorite: Boolean
-  memo: String
-  userId: String
-}
-
-input UpdateNatureInput {
-  name: String
-  battleIndex: String
-  increase: String
-  decrease: String
-}
-
-input UpdatePokemonInput {
-  name: String
-  form: String
-  no: String
-  height: Float
-  weight: Float
-  statusH: Int
-  statusA: Int
-  statusB: Int
-  statusC: Int
-  statusD: Int
-  statusS: Int
-  base64Image: String
-  url: String
-  battleIndex: String
-  battleFormIndex: String
-}
-
-input UpdateTypeInput {
-  name: String
-  battleIndex: String
-}
-
-input UpdateTypeRelationInput {
-  fromId: String
-  toId: String
-  rate: Float
-}
-
-input UpdateUserInput {
-  name: String
-  createdUserAt: DateTime
-  updatedUserAt: DateTime
-  deletedUserAt: DateTime
-}
-
-type User {
-  id: String!
-  name: String!
-  createdUserAt: DateTime!
-  updatedUserAt: DateTime!
-  deletedUserAt: DateTime
-  myPokemon: [MyPokemon]!
-  myParty: [MyParty]!
-  myPartyTag: [MyPartyTag]!
-  myPokemonTag: [MyPokemonTag]!
+type Weight {
+  value: Int
+  in_kg: String
+  in_lbs: String
 }
 
