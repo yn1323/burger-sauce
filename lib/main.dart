@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:ferry/ferry.dart';
 
-void main() {
+import './src/client.dart';
+
+const apiUrl = "https://pokeapi.dev";
+
+void main() async {
+  final client = await initClient();
+  GetIt.I.registerLazySingleton<TypedLink>(() => client);
+
   runApp(const MyApp());
 }
 
