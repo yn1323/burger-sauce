@@ -1,6 +1,7 @@
 import 'package:burger_sauce/pages/__generated__/pokemons.data.gql.dart';
 import 'package:burger_sauce/pages/__generated__/pokemons.req.gql.dart';
 import 'package:burger_sauce/pages/__generated__/pokemons.var.gql.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ferry/ferry.dart';
 import 'package:ferry_flutter/ferry_flutter.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,17 @@ class SelfPage extends HookWidget {
                 .map((pokemon) => Row(
                       children: [
                         Text(pokemon.name),
-                        Image.network(pokemon.imageUrl)
+                        SizedBox(
+                          width: 256,
+                          height: 256,
+                          child: CachedNetworkImage(
+                            imageUrl: pokemon.imageUrl,
+                            placeholder: (context, url) => const SizedBox(
+                              width: 256,
+                              height: 256,
+                            ),
+                          ),
+                        )
                       ],
                     ))
                 .toList(),
