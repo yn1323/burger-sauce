@@ -10,7 +10,10 @@ class SearchPage extends HookWidget {
 
   void listen() async {
     final client = GetIt.I<TypedLink>();
-    final pokemonsReq = GPokemonsReq();
+    final pokemonsReq = GPokemonsReq(
+      // CacheAndNetworkが再レンダリングするのか要注意
+      (b) => b..fetchPolicy = FetchPolicy.CacheAndNetwork,
+    );
 
     final List<GPokemonsData> moge = [];
     final res = client.request(pokemonsReq).listen((r) {

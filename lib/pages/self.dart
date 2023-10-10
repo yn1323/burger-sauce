@@ -16,7 +16,8 @@ class SelfPage extends HookWidget {
     final client = GetIt.I<TypedLink>();
 
     return Operation<GPokemonsData, GPokemonsVars>(
-        operationRequest: GPokemonsReq(),
+        operationRequest:
+            GPokemonsReq((b) => b..fetchPolicy = FetchPolicy.CacheFirst),
         builder: (context, response, error) {
           if (response!.loading) {
             return const Center(child: CircularProgressIndicator());
