@@ -6,7 +6,7 @@
     "configurations": [
         {
             "command": "flutter pub run build_runner watch --delete-conflicting-outputs",
-            "name": "Riverpod Genderator",
+            "name": "Watch & Build(riverpod, ferry graphql generator)",
             "request": "launch",
             "type": "node-terminal"
         },

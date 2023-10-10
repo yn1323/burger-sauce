@@ -6,71 +6,3493 @@ part of 'schema.schema.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-const GCacheControlScope _$gCacheControlScopePUBLIC =
-    const GCacheControlScope._('PUBLIC');
-const GCacheControlScope _$gCacheControlScopePRIVATE =
-    const GCacheControlScope._('PRIVATE');
+Serializer<GCreateAbilityInput> _$gCreateAbilityInputSerializer =
+    new _$GCreateAbilityInputSerializer();
+Serializer<GCreateAttackTypeInput> _$gCreateAttackTypeInputSerializer =
+    new _$GCreateAttackTypeInputSerializer();
+Serializer<GCreateBattleDataAbilityInput>
+    _$gCreateBattleDataAbilityInputSerializer =
+    new _$GCreateBattleDataAbilityInputSerializer();
+Serializer<GCreateBattleDataInput> _$gCreateBattleDataInputSerializer =
+    new _$GCreateBattleDataInputSerializer();
+Serializer<GCreateBattleDataItemInput> _$gCreateBattleDataItemInputSerializer =
+    new _$GCreateBattleDataItemInputSerializer();
+Serializer<GCreateBattleDataMoveInput> _$gCreateBattleDataMoveInputSerializer =
+    new _$GCreateBattleDataMoveInputSerializer();
+Serializer<GCreateBattleDataNatureInput>
+    _$gCreateBattleDataNatureInputSerializer =
+    new _$GCreateBattleDataNatureInputSerializer();
+Serializer<GCreateBattleDataTerastalInput>
+    _$gCreateBattleDataTerastalInputSerializer =
+    new _$GCreateBattleDataTerastalInputSerializer();
+Serializer<GCreateBattleIndexInput> _$gCreateBattleIndexInputSerializer =
+    new _$GCreateBattleIndexInputSerializer();
+Serializer<GCreateFormInput> _$gCreateFormInputSerializer =
+    new _$GCreateFormInputSerializer();
+Serializer<GCreateItemInput> _$gCreateItemInputSerializer =
+    new _$GCreateItemInputSerializer();
+Serializer<GCreateMoveInput> _$gCreateMoveInputSerializer =
+    new _$GCreateMoveInputSerializer();
+Serializer<GCreateMyPartyInput> _$gCreateMyPartyInputSerializer =
+    new _$GCreateMyPartyInputSerializer();
+Serializer<GCreateMyPartyTagInput> _$gCreateMyPartyTagInputSerializer =
+    new _$GCreateMyPartyTagInputSerializer();
+Serializer<GCreateMyPokemonInput> _$gCreateMyPokemonInputSerializer =
+    new _$GCreateMyPokemonInputSerializer();
+Serializer<GCreateMyPokemonTagInput> _$gCreateMyPokemonTagInputSerializer =
+    new _$GCreateMyPokemonTagInputSerializer();
+Serializer<GCreateNatureInput> _$gCreateNatureInputSerializer =
+    new _$GCreateNatureInputSerializer();
+Serializer<GCreatePokemonInput> _$gCreatePokemonInputSerializer =
+    new _$GCreatePokemonInputSerializer();
+Serializer<GCreateTypeInput> _$gCreateTypeInputSerializer =
+    new _$GCreateTypeInputSerializer();
+Serializer<GCreateTypeRelationInput> _$gCreateTypeRelationInputSerializer =
+    new _$GCreateTypeRelationInputSerializer();
+Serializer<GCreateUserInput> _$gCreateUserInputSerializer =
+    new _$GCreateUserInputSerializer();
+Serializer<GUpdateAbilityInput> _$gUpdateAbilityInputSerializer =
+    new _$GUpdateAbilityInputSerializer();
+Serializer<GUpdateAttackTypeInput> _$gUpdateAttackTypeInputSerializer =
+    new _$GUpdateAttackTypeInputSerializer();
+Serializer<GUpdateBattleDataAbilityInput>
+    _$gUpdateBattleDataAbilityInputSerializer =
+    new _$GUpdateBattleDataAbilityInputSerializer();
+Serializer<GUpdateBattleDataInput> _$gUpdateBattleDataInputSerializer =
+    new _$GUpdateBattleDataInputSerializer();
+Serializer<GUpdateBattleDataItemInput> _$gUpdateBattleDataItemInputSerializer =
+    new _$GUpdateBattleDataItemInputSerializer();
+Serializer<GUpdateBattleDataMoveInput> _$gUpdateBattleDataMoveInputSerializer =
+    new _$GUpdateBattleDataMoveInputSerializer();
+Serializer<GUpdateBattleDataNatureInput>
+    _$gUpdateBattleDataNatureInputSerializer =
+    new _$GUpdateBattleDataNatureInputSerializer();
+Serializer<GUpdateBattleDataTerastalInput>
+    _$gUpdateBattleDataTerastalInputSerializer =
+    new _$GUpdateBattleDataTerastalInputSerializer();
+Serializer<GUpdateBattleIndexInput> _$gUpdateBattleIndexInputSerializer =
+    new _$GUpdateBattleIndexInputSerializer();
+Serializer<GUpdateFormInput> _$gUpdateFormInputSerializer =
+    new _$GUpdateFormInputSerializer();
+Serializer<GUpdateItemInput> _$gUpdateItemInputSerializer =
+    new _$GUpdateItemInputSerializer();
+Serializer<GUpdateMoveInput> _$gUpdateMoveInputSerializer =
+    new _$GUpdateMoveInputSerializer();
+Serializer<GUpdateMyPartyInput> _$gUpdateMyPartyInputSerializer =
+    new _$GUpdateMyPartyInputSerializer();
+Serializer<GUpdateMyPartyTagInput> _$gUpdateMyPartyTagInputSerializer =
+    new _$GUpdateMyPartyTagInputSerializer();
+Serializer<GUpdateMyPokemonInput> _$gUpdateMyPokemonInputSerializer =
+    new _$GUpdateMyPokemonInputSerializer();
+Serializer<GUpdateMyPokemonTagInput> _$gUpdateMyPokemonTagInputSerializer =
+    new _$GUpdateMyPokemonTagInputSerializer();
+Serializer<GUpdateNatureInput> _$gUpdateNatureInputSerializer =
+    new _$GUpdateNatureInputSerializer();
+Serializer<GUpdatePokemonInput> _$gUpdatePokemonInputSerializer =
+    new _$GUpdatePokemonInputSerializer();
+Serializer<GUpdateTypeInput> _$gUpdateTypeInputSerializer =
+    new _$GUpdateTypeInputSerializer();
+Serializer<GUpdateTypeRelationInput> _$gUpdateTypeRelationInputSerializer =
+    new _$GUpdateTypeRelationInputSerializer();
+Serializer<GUpdateUserInput> _$gUpdateUserInputSerializer =
+    new _$GUpdateUserInputSerializer();
 
-GCacheControlScope _$gCacheControlScopeValueOf(String name) {
-  switch (name) {
-    case 'PUBLIC':
-      return _$gCacheControlScopePUBLIC;
-    case 'PRIVATE':
-      return _$gCacheControlScopePRIVATE;
-    default:
-      throw new ArgumentError(name);
+class _$GCreateAbilityInputSerializer
+    implements StructuredSerializer<GCreateAbilityInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateAbilityInput,
+    _$GCreateAbilityInput
+  ];
+  @override
+  final String wireName = 'GCreateAbilityInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateAbilityInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'detail',
+      serializers.serialize(object.detail,
+          specifiedType: const FullType(String)),
+      'battleIndex',
+      serializers.serialize(object.battleIndex,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateAbilityInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateAbilityInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'detail':
+          result.detail = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
   }
 }
 
-final BuiltSet<GCacheControlScope> _$gCacheControlScopeValues =
-    new BuiltSet<GCacheControlScope>(const <GCacheControlScope>[
-  _$gCacheControlScopePUBLIC,
-  _$gCacheControlScopePRIVATE,
-]);
-
-Serializer<GCacheControlScope> _$gCacheControlScopeSerializer =
-    new _$GCacheControlScopeSerializer();
-
-class _$GCacheControlScopeSerializer
-    implements PrimitiveSerializer<GCacheControlScope> {
+class _$GCreateAttackTypeInputSerializer
+    implements StructuredSerializer<GCreateAttackTypeInput> {
   @override
-  final Iterable<Type> types = const <Type>[GCacheControlScope];
+  final Iterable<Type> types = const [
+    GCreateAttackTypeInput,
+    _$GCreateAttackTypeInput
+  ];
   @override
-  final String wireName = 'GCacheControlScope';
+  final String wireName = 'GCreateAttackTypeInput';
 
   @override
-  Object serialize(Serializers serializers, GCacheControlScope object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      object.name;
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateAttackTypeInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
 
   @override
-  GCacheControlScope deserialize(Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      GCacheControlScope.valueOf(serialized as String);
+  GCreateAttackTypeInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateAttackTypeInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
 }
 
-class _$GUpload extends GUpload {
+class _$GCreateBattleDataAbilityInputSerializer
+    implements StructuredSerializer<GCreateBattleDataAbilityInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateBattleDataAbilityInput,
+    _$GCreateBattleDataAbilityInput
+  ];
+  @override
+  final String wireName = 'GCreateBattleDataAbilityInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateBattleDataAbilityInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'abilityId',
+      serializers.serialize(object.abilityId,
+          specifiedType: const FullType(String)),
+      'rate',
+      serializers.serialize(object.rate, specifiedType: const FullType(double)),
+      'battleDataId',
+      serializers.serialize(object.battleDataId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateBattleDataAbilityInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateBattleDataAbilityInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'abilityId':
+          result.abilityId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
+          break;
+        case 'battleDataId':
+          result.battleDataId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateBattleDataInputSerializer
+    implements StructuredSerializer<GCreateBattleDataInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateBattleDataInput,
+    _$GCreateBattleDataInput
+  ];
+  @override
+  final String wireName = 'GCreateBattleDataInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateBattleDataInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'battleIndexId',
+      serializers.serialize(object.battleIndexId,
+          specifiedType: const FullType(String)),
+      'pokemonId',
+      serializers.serialize(object.pokemonId,
+          specifiedType: const FullType(String)),
+      'no',
+      serializers.serialize(object.no, specifiedType: const FullType(String)),
+      'rank',
+      serializers.serialize(object.rank, specifiedType: const FullType(int)),
+    ];
+    Object? value;
+    value = object.formId;
+    if (value != null) {
+      result
+        ..add('formId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GCreateBattleDataInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateBattleDataInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'battleIndexId':
+          result.battleIndexId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'pokemonId':
+          result.pokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'no':
+          result.no = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'rank':
+          result.rank = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'formId':
+          result.formId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateBattleDataItemInputSerializer
+    implements StructuredSerializer<GCreateBattleDataItemInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateBattleDataItemInput,
+    _$GCreateBattleDataItemInput
+  ];
+  @override
+  final String wireName = 'GCreateBattleDataItemInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateBattleDataItemInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'itemId',
+      serializers.serialize(object.itemId,
+          specifiedType: const FullType(String)),
+      'rate',
+      serializers.serialize(object.rate, specifiedType: const FullType(double)),
+      'battleDataId',
+      serializers.serialize(object.battleDataId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateBattleDataItemInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateBattleDataItemInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'itemId':
+          result.itemId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
+          break;
+        case 'battleDataId':
+          result.battleDataId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateBattleDataMoveInputSerializer
+    implements StructuredSerializer<GCreateBattleDataMoveInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateBattleDataMoveInput,
+    _$GCreateBattleDataMoveInput
+  ];
+  @override
+  final String wireName = 'GCreateBattleDataMoveInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateBattleDataMoveInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'moveId',
+      serializers.serialize(object.moveId,
+          specifiedType: const FullType(String)),
+      'rate',
+      serializers.serialize(object.rate, specifiedType: const FullType(double)),
+      'battleDataId',
+      serializers.serialize(object.battleDataId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateBattleDataMoveInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateBattleDataMoveInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'moveId':
+          result.moveId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
+          break;
+        case 'battleDataId':
+          result.battleDataId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateBattleDataNatureInputSerializer
+    implements StructuredSerializer<GCreateBattleDataNatureInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateBattleDataNatureInput,
+    _$GCreateBattleDataNatureInput
+  ];
+  @override
+  final String wireName = 'GCreateBattleDataNatureInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateBattleDataNatureInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'natureId',
+      serializers.serialize(object.natureId,
+          specifiedType: const FullType(String)),
+      'rate',
+      serializers.serialize(object.rate, specifiedType: const FullType(double)),
+      'battleDataId',
+      serializers.serialize(object.battleDataId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateBattleDataNatureInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateBattleDataNatureInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'natureId':
+          result.natureId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
+          break;
+        case 'battleDataId':
+          result.battleDataId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateBattleDataTerastalInputSerializer
+    implements StructuredSerializer<GCreateBattleDataTerastalInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateBattleDataTerastalInput,
+    _$GCreateBattleDataTerastalInput
+  ];
+  @override
+  final String wireName = 'GCreateBattleDataTerastalInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateBattleDataTerastalInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'typeId',
+      serializers.serialize(object.typeId,
+          specifiedType: const FullType(String)),
+      'rate',
+      serializers.serialize(object.rate, specifiedType: const FullType(double)),
+      'battleDataId',
+      serializers.serialize(object.battleDataId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateBattleDataTerastalInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateBattleDataTerastalInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'typeId':
+          result.typeId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
+          break;
+        case 'battleDataId':
+          result.battleDataId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateBattleIndexInputSerializer
+    implements StructuredSerializer<GCreateBattleIndexInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateBattleIndexInput,
+    _$GCreateBattleIndexInput
+  ];
+  @override
+  final String wireName = 'GCreateBattleIndexInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateBattleIndexInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'capturedAt',
+      serializers.serialize(object.capturedAt,
+          specifiedType: const FullType(GDateTime)),
+      'startAt',
+      serializers.serialize(object.startAt,
+          specifiedType: const FullType(GDateTime)),
+      'endAt',
+      serializers.serialize(object.endAt,
+          specifiedType: const FullType(GDateTime)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateBattleIndexInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateBattleIndexInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'capturedAt':
+          result.capturedAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(GDateTime))! as GDateTime);
+          break;
+        case 'startAt':
+          result.startAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(GDateTime))! as GDateTime);
+          break;
+        case 'endAt':
+          result.endAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(GDateTime))! as GDateTime);
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateFormInputSerializer
+    implements StructuredSerializer<GCreateFormInput> {
+  @override
+  final Iterable<Type> types = const [GCreateFormInput, _$GCreateFormInput];
+  @override
+  final String wireName = 'GCreateFormInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GCreateFormInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'no',
+      serializers.serialize(object.no, specifiedType: const FullType(String)),
+      'formType',
+      serializers.serialize(object.formType,
+          specifiedType: const FullType(String)),
+      'formType2',
+      serializers.serialize(object.formType2,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateFormInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateFormInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'no':
+          result.no = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'formType':
+          result.formType = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'formType2':
+          result.formType2 = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateItemInputSerializer
+    implements StructuredSerializer<GCreateItemInput> {
+  @override
+  final Iterable<Type> types = const [GCreateItemInput, _$GCreateItemInput];
+  @override
+  final String wireName = 'GCreateItemInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GCreateItemInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'detail',
+      serializers.serialize(object.detail,
+          specifiedType: const FullType(String)),
+      'battleIndex',
+      serializers.serialize(object.battleIndex,
+          specifiedType: const FullType(String)),
+      'base64Image',
+      serializers.serialize(object.base64Image,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateItemInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateItemInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'detail':
+          result.detail = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'base64Image':
+          result.base64Image = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateMoveInputSerializer
+    implements StructuredSerializer<GCreateMoveInput> {
+  @override
+  final Iterable<Type> types = const [GCreateMoveInput, _$GCreateMoveInput];
+  @override
+  final String wireName = 'GCreateMoveInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GCreateMoveInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'target',
+      serializers.serialize(object.target,
+          specifiedType: const FullType(String)),
+      'detail',
+      serializers.serialize(object.detail,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'power',
+      serializers.serialize(object.power, specifiedType: const FullType(int)),
+      'accuracy',
+      serializers.serialize(object.accuracy,
+          specifiedType: const FullType(int)),
+      'pp',
+      serializers.serialize(object.pp, specifiedType: const FullType(int)),
+      'isTouchable',
+      serializers.serialize(object.isTouchable,
+          specifiedType: const FullType(bool)),
+      'enableProtect',
+      serializers.serialize(object.enableProtect,
+          specifiedType: const FullType(bool)),
+      'battleIndex',
+      serializers.serialize(object.battleIndex,
+          specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.typeId;
+    if (value != null) {
+      result
+        ..add('typeId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.attackTypeId;
+    if (value != null) {
+      result
+        ..add('attackTypeId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GCreateMoveInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateMoveInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'target':
+          result.target = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'detail':
+          result.detail = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'typeId':
+          result.typeId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'attackTypeId':
+          result.attackTypeId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'power':
+          result.power = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'accuracy':
+          result.accuracy = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'pp':
+          result.pp = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'isTouchable':
+          result.isTouchable = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'enableProtect':
+          result.enableProtect = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateMyPartyInputSerializer
+    implements StructuredSerializer<GCreateMyPartyInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateMyPartyInput,
+    _$GCreateMyPartyInput
+  ];
+  @override
+  final String wireName = 'GCreateMyPartyInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateMyPartyInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'favorite',
+      serializers.serialize(object.favorite,
+          specifiedType: const FullType(bool)),
+      'memo',
+      serializers.serialize(object.memo, specifiedType: const FullType(String)),
+      'userId',
+      serializers.serialize(object.userId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateMyPartyInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateMyPartyInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'userId':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateMyPartyTagInputSerializer
+    implements StructuredSerializer<GCreateMyPartyTagInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateMyPartyTagInput,
+    _$GCreateMyPartyTagInput
+  ];
+  @override
+  final String wireName = 'GCreateMyPartyTagInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateMyPartyTagInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'favorite',
+      serializers.serialize(object.favorite,
+          specifiedType: const FullType(bool)),
+      'memo',
+      serializers.serialize(object.memo, specifiedType: const FullType(String)),
+      'userId',
+      serializers.serialize(object.userId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateMyPartyTagInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateMyPartyTagInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'userId':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateMyPokemonInputSerializer
+    implements StructuredSerializer<GCreateMyPokemonInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateMyPokemonInput,
+    _$GCreateMyPokemonInput
+  ];
+  @override
+  final String wireName = 'GCreateMyPokemonInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateMyPokemonInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'favorite',
+      serializers.serialize(object.favorite,
+          specifiedType: const FullType(bool)),
+      'evH',
+      serializers.serialize(object.evH, specifiedType: const FullType(int)),
+      'evA',
+      serializers.serialize(object.evA, specifiedType: const FullType(int)),
+      'evB',
+      serializers.serialize(object.evB, specifiedType: const FullType(int)),
+      'evC',
+      serializers.serialize(object.evC, specifiedType: const FullType(int)),
+      'evD',
+      serializers.serialize(object.evD, specifiedType: const FullType(int)),
+      'evS',
+      serializers.serialize(object.evS, specifiedType: const FullType(int)),
+      'memo',
+      serializers.serialize(object.memo, specifiedType: const FullType(String)),
+      'pokemonId',
+      serializers.serialize(object.pokemonId,
+          specifiedType: const FullType(String)),
+      'natureId',
+      serializers.serialize(object.natureId,
+          specifiedType: const FullType(String)),
+      'userId',
+      serializers.serialize(object.userId,
+          specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.itemId;
+    if (value != null) {
+      result
+        ..add('itemId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.abilityId;
+    if (value != null) {
+      result
+        ..add('abilityId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.terastalId;
+    if (value != null) {
+      result
+        ..add('terastalId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GCreateMyPokemonInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateMyPokemonInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'evH':
+          result.evH = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evA':
+          result.evA = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evB':
+          result.evB = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evC':
+          result.evC = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evD':
+          result.evD = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evS':
+          result.evS = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'pokemonId':
+          result.pokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'itemId':
+          result.itemId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'abilityId':
+          result.abilityId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'natureId':
+          result.natureId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'terastalId':
+          result.terastalId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'userId':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateMyPokemonTagInputSerializer
+    implements StructuredSerializer<GCreateMyPokemonTagInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateMyPokemonTagInput,
+    _$GCreateMyPokemonTagInput
+  ];
+  @override
+  final String wireName = 'GCreateMyPokemonTagInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateMyPokemonTagInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'favorite',
+      serializers.serialize(object.favorite,
+          specifiedType: const FullType(bool)),
+      'memo',
+      serializers.serialize(object.memo, specifiedType: const FullType(String)),
+      'userId',
+      serializers.serialize(object.userId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateMyPokemonTagInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateMyPokemonTagInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'userId':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateNatureInputSerializer
+    implements StructuredSerializer<GCreateNatureInput> {
+  @override
+  final Iterable<Type> types = const [GCreateNatureInput, _$GCreateNatureInput];
+  @override
+  final String wireName = 'GCreateNatureInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateNatureInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'battleIndex',
+      serializers.serialize(object.battleIndex,
+          specifiedType: const FullType(String)),
+      'increase',
+      serializers.serialize(object.increase,
+          specifiedType: const FullType(String)),
+      'decrease',
+      serializers.serialize(object.decrease,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateNatureInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateNatureInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'increase':
+          result.increase = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'decrease':
+          result.decrease = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreatePokemonInputSerializer
+    implements StructuredSerializer<GCreatePokemonInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreatePokemonInput,
+    _$GCreatePokemonInput
+  ];
+  @override
+  final String wireName = 'GCreatePokemonInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreatePokemonInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'form',
+      serializers.serialize(object.form, specifiedType: const FullType(String)),
+      'no',
+      serializers.serialize(object.no, specifiedType: const FullType(String)),
+      'height',
+      serializers.serialize(object.height,
+          specifiedType: const FullType(double)),
+      'weight',
+      serializers.serialize(object.weight,
+          specifiedType: const FullType(double)),
+      'statusH',
+      serializers.serialize(object.statusH, specifiedType: const FullType(int)),
+      'statusA',
+      serializers.serialize(object.statusA, specifiedType: const FullType(int)),
+      'statusB',
+      serializers.serialize(object.statusB, specifiedType: const FullType(int)),
+      'statusC',
+      serializers.serialize(object.statusC, specifiedType: const FullType(int)),
+      'statusD',
+      serializers.serialize(object.statusD, specifiedType: const FullType(int)),
+      'statusS',
+      serializers.serialize(object.statusS, specifiedType: const FullType(int)),
+      'base64Image',
+      serializers.serialize(object.base64Image,
+          specifiedType: const FullType(String)),
+      'url',
+      serializers.serialize(object.url, specifiedType: const FullType(String)),
+      'battleIndex',
+      serializers.serialize(object.battleIndex,
+          specifiedType: const FullType(String)),
+      'battleFormIndex',
+      serializers.serialize(object.battleFormIndex,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreatePokemonInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreatePokemonInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'form':
+          result.form = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'no':
+          result.no = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'height':
+          result.height = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
+          break;
+        case 'weight':
+          result.weight = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
+          break;
+        case 'statusH':
+          result.statusH = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'statusA':
+          result.statusA = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'statusB':
+          result.statusB = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'statusC':
+          result.statusC = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'statusD':
+          result.statusD = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'statusS':
+          result.statusS = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'base64Image':
+          result.base64Image = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'url':
+          result.url = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'battleFormIndex':
+          result.battleFormIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateTypeInputSerializer
+    implements StructuredSerializer<GCreateTypeInput> {
+  @override
+  final Iterable<Type> types = const [GCreateTypeInput, _$GCreateTypeInput];
+  @override
+  final String wireName = 'GCreateTypeInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GCreateTypeInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'battleIndex',
+      serializers.serialize(object.battleIndex,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateTypeInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateTypeInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateTypeRelationInputSerializer
+    implements StructuredSerializer<GCreateTypeRelationInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateTypeRelationInput,
+    _$GCreateTypeRelationInput
+  ];
+  @override
+  final String wireName = 'GCreateTypeRelationInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateTypeRelationInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'fromId',
+      serializers.serialize(object.fromId,
+          specifiedType: const FullType(String)),
+      'toId',
+      serializers.serialize(object.toId, specifiedType: const FullType(String)),
+      'rate',
+      serializers.serialize(object.rate, specifiedType: const FullType(double)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateTypeRelationInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateTypeRelationInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'fromId':
+          result.fromId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'toId':
+          result.toId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateUserInputSerializer
+    implements StructuredSerializer<GCreateUserInput> {
+  @override
+  final Iterable<Type> types = const [GCreateUserInput, _$GCreateUserInput];
+  @override
+  final String wireName = 'GCreateUserInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GCreateUserInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'createdUserAt',
+      serializers.serialize(object.createdUserAt,
+          specifiedType: const FullType(GDateTime)),
+      'updatedUserAt',
+      serializers.serialize(object.updatedUserAt,
+          specifiedType: const FullType(GDateTime)),
+    ];
+    Object? value;
+    value = object.deletedUserAt;
+    if (value != null) {
+      result
+        ..add('deletedUserAt')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GDateTime)));
+    }
+    return result;
+  }
+
+  @override
+  GCreateUserInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateUserInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'createdUserAt':
+          result.createdUserAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(GDateTime))! as GDateTime);
+          break;
+        case 'updatedUserAt':
+          result.updatedUserAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(GDateTime))! as GDateTime);
+          break;
+        case 'deletedUserAt':
+          result.deletedUserAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(GDateTime))! as GDateTime);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateAbilityInputSerializer
+    implements StructuredSerializer<GUpdateAbilityInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateAbilityInput,
+    _$GUpdateAbilityInput
+  ];
+  @override
+  final String wireName = 'GUpdateAbilityInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateAbilityInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.detail;
+    if (value != null) {
+      result
+        ..add('detail')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.battleIndex;
+    if (value != null) {
+      result
+        ..add('battleIndex')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateAbilityInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateAbilityInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'detail':
+          result.detail = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateAttackTypeInputSerializer
+    implements StructuredSerializer<GUpdateAttackTypeInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateAttackTypeInput,
+    _$GUpdateAttackTypeInput
+  ];
+  @override
+  final String wireName = 'GUpdateAttackTypeInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateAttackTypeInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateAttackTypeInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateAttackTypeInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateBattleDataAbilityInputSerializer
+    implements StructuredSerializer<GUpdateBattleDataAbilityInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateBattleDataAbilityInput,
+    _$GUpdateBattleDataAbilityInput
+  ];
+  @override
+  final String wireName = 'GUpdateBattleDataAbilityInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateBattleDataAbilityInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.abilityId;
+    if (value != null) {
+      result
+        ..add('abilityId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.rate;
+    if (value != null) {
+      result
+        ..add('rate')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(double)));
+    }
+    value = object.battleDataId;
+    if (value != null) {
+      result
+        ..add('battleDataId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateBattleDataAbilityInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateBattleDataAbilityInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'abilityId':
+          result.abilityId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double?;
+          break;
+        case 'battleDataId':
+          result.battleDataId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateBattleDataInputSerializer
+    implements StructuredSerializer<GUpdateBattleDataInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateBattleDataInput,
+    _$GUpdateBattleDataInput
+  ];
+  @override
+  final String wireName = 'GUpdateBattleDataInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateBattleDataInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.battleIndexId;
+    if (value != null) {
+      result
+        ..add('battleIndexId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.pokemonId;
+    if (value != null) {
+      result
+        ..add('pokemonId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.no;
+    if (value != null) {
+      result
+        ..add('no')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.rank;
+    if (value != null) {
+      result
+        ..add('rank')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.formId;
+    if (value != null) {
+      result
+        ..add('formId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateBattleDataInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateBattleDataInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'battleIndexId':
+          result.battleIndexId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'pokemonId':
+          result.pokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'no':
+          result.no = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'rank':
+          result.rank = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'formId':
+          result.formId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateBattleDataItemInputSerializer
+    implements StructuredSerializer<GUpdateBattleDataItemInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateBattleDataItemInput,
+    _$GUpdateBattleDataItemInput
+  ];
+  @override
+  final String wireName = 'GUpdateBattleDataItemInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateBattleDataItemInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.itemId;
+    if (value != null) {
+      result
+        ..add('itemId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.rate;
+    if (value != null) {
+      result
+        ..add('rate')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(double)));
+    }
+    value = object.battleDataId;
+    if (value != null) {
+      result
+        ..add('battleDataId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateBattleDataItemInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateBattleDataItemInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'itemId':
+          result.itemId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double?;
+          break;
+        case 'battleDataId':
+          result.battleDataId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateBattleDataMoveInputSerializer
+    implements StructuredSerializer<GUpdateBattleDataMoveInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateBattleDataMoveInput,
+    _$GUpdateBattleDataMoveInput
+  ];
+  @override
+  final String wireName = 'GUpdateBattleDataMoveInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateBattleDataMoveInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.moveId;
+    if (value != null) {
+      result
+        ..add('moveId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.rate;
+    if (value != null) {
+      result
+        ..add('rate')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(double)));
+    }
+    value = object.battleDataId;
+    if (value != null) {
+      result
+        ..add('battleDataId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateBattleDataMoveInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateBattleDataMoveInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'moveId':
+          result.moveId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double?;
+          break;
+        case 'battleDataId':
+          result.battleDataId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateBattleDataNatureInputSerializer
+    implements StructuredSerializer<GUpdateBattleDataNatureInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateBattleDataNatureInput,
+    _$GUpdateBattleDataNatureInput
+  ];
+  @override
+  final String wireName = 'GUpdateBattleDataNatureInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateBattleDataNatureInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.natureId;
+    if (value != null) {
+      result
+        ..add('natureId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.rate;
+    if (value != null) {
+      result
+        ..add('rate')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(double)));
+    }
+    value = object.battleDataId;
+    if (value != null) {
+      result
+        ..add('battleDataId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateBattleDataNatureInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateBattleDataNatureInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'natureId':
+          result.natureId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double?;
+          break;
+        case 'battleDataId':
+          result.battleDataId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateBattleDataTerastalInputSerializer
+    implements StructuredSerializer<GUpdateBattleDataTerastalInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateBattleDataTerastalInput,
+    _$GUpdateBattleDataTerastalInput
+  ];
+  @override
+  final String wireName = 'GUpdateBattleDataTerastalInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateBattleDataTerastalInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.typeId;
+    if (value != null) {
+      result
+        ..add('typeId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.rate;
+    if (value != null) {
+      result
+        ..add('rate')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(double)));
+    }
+    value = object.battleDataId;
+    if (value != null) {
+      result
+        ..add('battleDataId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateBattleDataTerastalInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateBattleDataTerastalInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'typeId':
+          result.typeId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double?;
+          break;
+        case 'battleDataId':
+          result.battleDataId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateBattleIndexInputSerializer
+    implements StructuredSerializer<GUpdateBattleIndexInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateBattleIndexInput,
+    _$GUpdateBattleIndexInput
+  ];
+  @override
+  final String wireName = 'GUpdateBattleIndexInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateBattleIndexInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.capturedAt;
+    if (value != null) {
+      result
+        ..add('capturedAt')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GDateTime)));
+    }
+    value = object.startAt;
+    if (value != null) {
+      result
+        ..add('startAt')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GDateTime)));
+    }
+    value = object.endAt;
+    if (value != null) {
+      result
+        ..add('endAt')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GDateTime)));
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateBattleIndexInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateBattleIndexInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'capturedAt':
+          result.capturedAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(GDateTime))! as GDateTime);
+          break;
+        case 'startAt':
+          result.startAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(GDateTime))! as GDateTime);
+          break;
+        case 'endAt':
+          result.endAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(GDateTime))! as GDateTime);
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateFormInputSerializer
+    implements StructuredSerializer<GUpdateFormInput> {
+  @override
+  final Iterable<Type> types = const [GUpdateFormInput, _$GUpdateFormInput];
+  @override
+  final String wireName = 'GUpdateFormInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GUpdateFormInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.no;
+    if (value != null) {
+      result
+        ..add('no')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.formType;
+    if (value != null) {
+      result
+        ..add('formType')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.formType2;
+    if (value != null) {
+      result
+        ..add('formType2')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateFormInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateFormInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'no':
+          result.no = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'formType':
+          result.formType = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'formType2':
+          result.formType2 = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateItemInputSerializer
+    implements StructuredSerializer<GUpdateItemInput> {
+  @override
+  final Iterable<Type> types = const [GUpdateItemInput, _$GUpdateItemInput];
+  @override
+  final String wireName = 'GUpdateItemInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GUpdateItemInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.detail;
+    if (value != null) {
+      result
+        ..add('detail')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.battleIndex;
+    if (value != null) {
+      result
+        ..add('battleIndex')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.base64Image;
+    if (value != null) {
+      result
+        ..add('base64Image')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateItemInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateItemInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'detail':
+          result.detail = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'base64Image':
+          result.base64Image = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateMoveInputSerializer
+    implements StructuredSerializer<GUpdateMoveInput> {
+  @override
+  final Iterable<Type> types = const [GUpdateMoveInput, _$GUpdateMoveInput];
+  @override
+  final String wireName = 'GUpdateMoveInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GUpdateMoveInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.target;
+    if (value != null) {
+      result
+        ..add('target')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.detail;
+    if (value != null) {
+      result
+        ..add('detail')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.typeId;
+    if (value != null) {
+      result
+        ..add('typeId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.attackTypeId;
+    if (value != null) {
+      result
+        ..add('attackTypeId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.power;
+    if (value != null) {
+      result
+        ..add('power')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.accuracy;
+    if (value != null) {
+      result
+        ..add('accuracy')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.pp;
+    if (value != null) {
+      result
+        ..add('pp')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.isTouchable;
+    if (value != null) {
+      result
+        ..add('isTouchable')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.enableProtect;
+    if (value != null) {
+      result
+        ..add('enableProtect')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.battleIndex;
+    if (value != null) {
+      result
+        ..add('battleIndex')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateMoveInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateMoveInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'target':
+          result.target = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'detail':
+          result.detail = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'typeId':
+          result.typeId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'attackTypeId':
+          result.attackTypeId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'power':
+          result.power = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'accuracy':
+          result.accuracy = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'pp':
+          result.pp = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'isTouchable':
+          result.isTouchable = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'enableProtect':
+          result.enableProtect = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateMyPartyInputSerializer
+    implements StructuredSerializer<GUpdateMyPartyInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateMyPartyInput,
+    _$GUpdateMyPartyInput
+  ];
+  @override
+  final String wireName = 'GUpdateMyPartyInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateMyPartyInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.favorite;
+    if (value != null) {
+      result
+        ..add('favorite')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.memo;
+    if (value != null) {
+      result
+        ..add('memo')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.userId;
+    if (value != null) {
+      result
+        ..add('userId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateMyPartyInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateMyPartyInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'userId':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateMyPartyTagInputSerializer
+    implements StructuredSerializer<GUpdateMyPartyTagInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateMyPartyTagInput,
+    _$GUpdateMyPartyTagInput
+  ];
+  @override
+  final String wireName = 'GUpdateMyPartyTagInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateMyPartyTagInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.favorite;
+    if (value != null) {
+      result
+        ..add('favorite')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.memo;
+    if (value != null) {
+      result
+        ..add('memo')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.userId;
+    if (value != null) {
+      result
+        ..add('userId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateMyPartyTagInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateMyPartyTagInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'userId':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateMyPokemonInputSerializer
+    implements StructuredSerializer<GUpdateMyPokemonInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateMyPokemonInput,
+    _$GUpdateMyPokemonInput
+  ];
+  @override
+  final String wireName = 'GUpdateMyPokemonInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateMyPokemonInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.favorite;
+    if (value != null) {
+      result
+        ..add('favorite')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.evH;
+    if (value != null) {
+      result
+        ..add('evH')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evA;
+    if (value != null) {
+      result
+        ..add('evA')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evB;
+    if (value != null) {
+      result
+        ..add('evB')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evC;
+    if (value != null) {
+      result
+        ..add('evC')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evD;
+    if (value != null) {
+      result
+        ..add('evD')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evS;
+    if (value != null) {
+      result
+        ..add('evS')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.memo;
+    if (value != null) {
+      result
+        ..add('memo')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.pokemonId;
+    if (value != null) {
+      result
+        ..add('pokemonId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.itemId;
+    if (value != null) {
+      result
+        ..add('itemId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.abilityId;
+    if (value != null) {
+      result
+        ..add('abilityId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.natureId;
+    if (value != null) {
+      result
+        ..add('natureId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.terastalId;
+    if (value != null) {
+      result
+        ..add('terastalId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.userId;
+    if (value != null) {
+      result
+        ..add('userId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateMyPokemonInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateMyPokemonInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'evH':
+          result.evH = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evA':
+          result.evA = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evB':
+          result.evB = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evC':
+          result.evC = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evD':
+          result.evD = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evS':
+          result.evS = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'pokemonId':
+          result.pokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'itemId':
+          result.itemId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'abilityId':
+          result.abilityId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'natureId':
+          result.natureId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'terastalId':
+          result.terastalId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'userId':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateMyPokemonTagInputSerializer
+    implements StructuredSerializer<GUpdateMyPokemonTagInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateMyPokemonTagInput,
+    _$GUpdateMyPokemonTagInput
+  ];
+  @override
+  final String wireName = 'GUpdateMyPokemonTagInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateMyPokemonTagInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.favorite;
+    if (value != null) {
+      result
+        ..add('favorite')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.memo;
+    if (value != null) {
+      result
+        ..add('memo')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.userId;
+    if (value != null) {
+      result
+        ..add('userId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateMyPokemonTagInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateMyPokemonTagInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'userId':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateNatureInputSerializer
+    implements StructuredSerializer<GUpdateNatureInput> {
+  @override
+  final Iterable<Type> types = const [GUpdateNatureInput, _$GUpdateNatureInput];
+  @override
+  final String wireName = 'GUpdateNatureInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateNatureInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.battleIndex;
+    if (value != null) {
+      result
+        ..add('battleIndex')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.increase;
+    if (value != null) {
+      result
+        ..add('increase')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.decrease;
+    if (value != null) {
+      result
+        ..add('decrease')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateNatureInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateNatureInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'increase':
+          result.increase = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'decrease':
+          result.decrease = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdatePokemonInputSerializer
+    implements StructuredSerializer<GUpdatePokemonInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdatePokemonInput,
+    _$GUpdatePokemonInput
+  ];
+  @override
+  final String wireName = 'GUpdatePokemonInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdatePokemonInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.form;
+    if (value != null) {
+      result
+        ..add('form')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.no;
+    if (value != null) {
+      result
+        ..add('no')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.height;
+    if (value != null) {
+      result
+        ..add('height')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(double)));
+    }
+    value = object.weight;
+    if (value != null) {
+      result
+        ..add('weight')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(double)));
+    }
+    value = object.statusH;
+    if (value != null) {
+      result
+        ..add('statusH')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.statusA;
+    if (value != null) {
+      result
+        ..add('statusA')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.statusB;
+    if (value != null) {
+      result
+        ..add('statusB')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.statusC;
+    if (value != null) {
+      result
+        ..add('statusC')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.statusD;
+    if (value != null) {
+      result
+        ..add('statusD')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.statusS;
+    if (value != null) {
+      result
+        ..add('statusS')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.base64Image;
+    if (value != null) {
+      result
+        ..add('base64Image')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.url;
+    if (value != null) {
+      result
+        ..add('url')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.battleIndex;
+    if (value != null) {
+      result
+        ..add('battleIndex')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.battleFormIndex;
+    if (value != null) {
+      result
+        ..add('battleFormIndex')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdatePokemonInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdatePokemonInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'form':
+          result.form = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'no':
+          result.no = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'height':
+          result.height = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double?;
+          break;
+        case 'weight':
+          result.weight = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double?;
+          break;
+        case 'statusH':
+          result.statusH = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'statusA':
+          result.statusA = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'statusB':
+          result.statusB = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'statusC':
+          result.statusC = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'statusD':
+          result.statusD = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'statusS':
+          result.statusS = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'base64Image':
+          result.base64Image = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'url':
+          result.url = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'battleFormIndex':
+          result.battleFormIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateTypeInputSerializer
+    implements StructuredSerializer<GUpdateTypeInput> {
+  @override
+  final Iterable<Type> types = const [GUpdateTypeInput, _$GUpdateTypeInput];
+  @override
+  final String wireName = 'GUpdateTypeInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GUpdateTypeInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.battleIndex;
+    if (value != null) {
+      result
+        ..add('battleIndex')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateTypeInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateTypeInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateTypeRelationInputSerializer
+    implements StructuredSerializer<GUpdateTypeRelationInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateTypeRelationInput,
+    _$GUpdateTypeRelationInput
+  ];
+  @override
+  final String wireName = 'GUpdateTypeRelationInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateTypeRelationInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.fromId;
+    if (value != null) {
+      result
+        ..add('fromId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.toId;
+    if (value != null) {
+      result
+        ..add('toId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.rate;
+    if (value != null) {
+      result
+        ..add('rate')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(double)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateTypeRelationInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateTypeRelationInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'fromId':
+          result.fromId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'toId':
+          result.toId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateUserInputSerializer
+    implements StructuredSerializer<GUpdateUserInput> {
+  @override
+  final Iterable<Type> types = const [GUpdateUserInput, _$GUpdateUserInput];
+  @override
+  final String wireName = 'GUpdateUserInput';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GUpdateUserInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.createdUserAt;
+    if (value != null) {
+      result
+        ..add('createdUserAt')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GDateTime)));
+    }
+    value = object.updatedUserAt;
+    if (value != null) {
+      result
+        ..add('updatedUserAt')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GDateTime)));
+    }
+    value = object.deletedUserAt;
+    if (value != null) {
+      result
+        ..add('deletedUserAt')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GDateTime)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateUserInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateUserInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'createdUserAt':
+          result.createdUserAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(GDateTime))! as GDateTime);
+          break;
+        case 'updatedUserAt':
+          result.updatedUserAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(GDateTime))! as GDateTime);
+          break;
+        case 'deletedUserAt':
+          result.deletedUserAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(GDateTime))! as GDateTime);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GBigInt extends GBigInt {
   @override
   final String value;
 
-  factory _$GUpload([void Function(GUploadBuilder)? updates]) =>
-      (new GUploadBuilder()..update(updates))._build();
+  factory _$GBigInt([void Function(GBigIntBuilder)? updates]) =>
+      (new GBigIntBuilder()..update(updates))._build();
 
-  _$GUpload._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, r'GUpload', 'value');
+  _$GBigInt._({required this.value}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(value, r'GBigInt', 'value');
   }
 
   @override
-  GUpload rebuild(void Function(GUploadBuilder) updates) =>
+  GBigInt rebuild(void Function(GBigIntBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GUploadBuilder toBuilder() => new GUploadBuilder()..replace(this);
+  GBigIntBuilder toBuilder() => new GBigIntBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GUpload && value == other.value;
+    return other is GBigInt && value == other.value;
   }
 
   @override
@@ -83,21 +3505,21 @@ class _$GUpload extends GUpload {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GUpload')..add('value', value))
+    return (newBuiltValueToStringHelper(r'GBigInt')..add('value', value))
         .toString();
   }
 }
 
-class GUploadBuilder implements Builder<GUpload, GUploadBuilder> {
-  _$GUpload? _$v;
+class GBigIntBuilder implements Builder<GBigInt, GBigIntBuilder> {
+  _$GBigInt? _$v;
 
   String? _value;
   String? get value => _$this._value;
   set value(String? value) => _$this._value = value;
 
-  GUploadBuilder();
+  GBigIntBuilder();
 
-  GUploadBuilder get _$this {
+  GBigIntBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _value = $v.value;
@@ -107,24 +3529,6252 @@ class GUploadBuilder implements Builder<GUpload, GUploadBuilder> {
   }
 
   @override
-  void replace(GUpload other) {
+  void replace(GBigInt other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GUpload;
+    _$v = other as _$GBigInt;
   }
 
   @override
-  void update(void Function(GUploadBuilder)? updates) {
+  void update(void Function(GBigIntBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GUpload build() => _build();
+  GBigInt build() => _build();
 
-  _$GUpload _build() {
+  _$GBigInt _build() {
     final _$result = _$v ??
-        new _$GUpload._(
+        new _$GBigInt._(
             value: BuiltValueNullFieldError.checkNotNull(
-                value, r'GUpload', 'value'));
+                value, r'GBigInt', 'value'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateAbilityInput extends GCreateAbilityInput {
+  @override
+  final String name;
+  @override
+  final String detail;
+  @override
+  final String battleIndex;
+
+  factory _$GCreateAbilityInput(
+          [void Function(GCreateAbilityInputBuilder)? updates]) =>
+      (new GCreateAbilityInputBuilder()..update(updates))._build();
+
+  _$GCreateAbilityInput._(
+      {required this.name, required this.detail, required this.battleIndex})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'GCreateAbilityInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        detail, r'GCreateAbilityInput', 'detail');
+    BuiltValueNullFieldError.checkNotNull(
+        battleIndex, r'GCreateAbilityInput', 'battleIndex');
+  }
+
+  @override
+  GCreateAbilityInput rebuild(
+          void Function(GCreateAbilityInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateAbilityInputBuilder toBuilder() =>
+      new GCreateAbilityInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateAbilityInput &&
+        name == other.name &&
+        detail == other.detail &&
+        battleIndex == other.battleIndex;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, detail.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateAbilityInput')
+          ..add('name', name)
+          ..add('detail', detail)
+          ..add('battleIndex', battleIndex))
+        .toString();
+  }
+}
+
+class GCreateAbilityInputBuilder
+    implements Builder<GCreateAbilityInput, GCreateAbilityInputBuilder> {
+  _$GCreateAbilityInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _detail;
+  String? get detail => _$this._detail;
+  set detail(String? detail) => _$this._detail = detail;
+
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  GCreateAbilityInputBuilder();
+
+  GCreateAbilityInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _detail = $v.detail;
+      _battleIndex = $v.battleIndex;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateAbilityInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateAbilityInput;
+  }
+
+  @override
+  void update(void Function(GCreateAbilityInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateAbilityInput build() => _build();
+
+  _$GCreateAbilityInput _build() {
+    final _$result = _$v ??
+        new _$GCreateAbilityInput._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateAbilityInput', 'name'),
+            detail: BuiltValueNullFieldError.checkNotNull(
+                detail, r'GCreateAbilityInput', 'detail'),
+            battleIndex: BuiltValueNullFieldError.checkNotNull(
+                battleIndex, r'GCreateAbilityInput', 'battleIndex'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateAttackTypeInput extends GCreateAttackTypeInput {
+  @override
+  final String name;
+
+  factory _$GCreateAttackTypeInput(
+          [void Function(GCreateAttackTypeInputBuilder)? updates]) =>
+      (new GCreateAttackTypeInputBuilder()..update(updates))._build();
+
+  _$GCreateAttackTypeInput._({required this.name}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GCreateAttackTypeInput', 'name');
+  }
+
+  @override
+  GCreateAttackTypeInput rebuild(
+          void Function(GCreateAttackTypeInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateAttackTypeInputBuilder toBuilder() =>
+      new GCreateAttackTypeInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateAttackTypeInput && name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateAttackTypeInput')
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GCreateAttackTypeInputBuilder
+    implements Builder<GCreateAttackTypeInput, GCreateAttackTypeInputBuilder> {
+  _$GCreateAttackTypeInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GCreateAttackTypeInputBuilder();
+
+  GCreateAttackTypeInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateAttackTypeInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateAttackTypeInput;
+  }
+
+  @override
+  void update(void Function(GCreateAttackTypeInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateAttackTypeInput build() => _build();
+
+  _$GCreateAttackTypeInput _build() {
+    final _$result = _$v ??
+        new _$GCreateAttackTypeInput._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateAttackTypeInput', 'name'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateBattleDataAbilityInput extends GCreateBattleDataAbilityInput {
+  @override
+  final String abilityId;
+  @override
+  final double rate;
+  @override
+  final String battleDataId;
+
+  factory _$GCreateBattleDataAbilityInput(
+          [void Function(GCreateBattleDataAbilityInputBuilder)? updates]) =>
+      (new GCreateBattleDataAbilityInputBuilder()..update(updates))._build();
+
+  _$GCreateBattleDataAbilityInput._(
+      {required this.abilityId, required this.rate, required this.battleDataId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        abilityId, r'GCreateBattleDataAbilityInput', 'abilityId');
+    BuiltValueNullFieldError.checkNotNull(
+        rate, r'GCreateBattleDataAbilityInput', 'rate');
+    BuiltValueNullFieldError.checkNotNull(
+        battleDataId, r'GCreateBattleDataAbilityInput', 'battleDataId');
+  }
+
+  @override
+  GCreateBattleDataAbilityInput rebuild(
+          void Function(GCreateBattleDataAbilityInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateBattleDataAbilityInputBuilder toBuilder() =>
+      new GCreateBattleDataAbilityInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateBattleDataAbilityInput &&
+        abilityId == other.abilityId &&
+        rate == other.rate &&
+        battleDataId == other.battleDataId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, abilityId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jc(_$hash, battleDataId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateBattleDataAbilityInput')
+          ..add('abilityId', abilityId)
+          ..add('rate', rate)
+          ..add('battleDataId', battleDataId))
+        .toString();
+  }
+}
+
+class GCreateBattleDataAbilityInputBuilder
+    implements
+        Builder<GCreateBattleDataAbilityInput,
+            GCreateBattleDataAbilityInputBuilder> {
+  _$GCreateBattleDataAbilityInput? _$v;
+
+  String? _abilityId;
+  String? get abilityId => _$this._abilityId;
+  set abilityId(String? abilityId) => _$this._abilityId = abilityId;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  String? _battleDataId;
+  String? get battleDataId => _$this._battleDataId;
+  set battleDataId(String? battleDataId) => _$this._battleDataId = battleDataId;
+
+  GCreateBattleDataAbilityInputBuilder();
+
+  GCreateBattleDataAbilityInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _abilityId = $v.abilityId;
+      _rate = $v.rate;
+      _battleDataId = $v.battleDataId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateBattleDataAbilityInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateBattleDataAbilityInput;
+  }
+
+  @override
+  void update(void Function(GCreateBattleDataAbilityInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateBattleDataAbilityInput build() => _build();
+
+  _$GCreateBattleDataAbilityInput _build() {
+    final _$result = _$v ??
+        new _$GCreateBattleDataAbilityInput._(
+            abilityId: BuiltValueNullFieldError.checkNotNull(
+                abilityId, r'GCreateBattleDataAbilityInput', 'abilityId'),
+            rate: BuiltValueNullFieldError.checkNotNull(
+                rate, r'GCreateBattleDataAbilityInput', 'rate'),
+            battleDataId: BuiltValueNullFieldError.checkNotNull(battleDataId,
+                r'GCreateBattleDataAbilityInput', 'battleDataId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateBattleDataInput extends GCreateBattleDataInput {
+  @override
+  final String battleIndexId;
+  @override
+  final String pokemonId;
+  @override
+  final String no;
+  @override
+  final int rank;
+  @override
+  final String? formId;
+
+  factory _$GCreateBattleDataInput(
+          [void Function(GCreateBattleDataInputBuilder)? updates]) =>
+      (new GCreateBattleDataInputBuilder()..update(updates))._build();
+
+  _$GCreateBattleDataInput._(
+      {required this.battleIndexId,
+      required this.pokemonId,
+      required this.no,
+      required this.rank,
+      this.formId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        battleIndexId, r'GCreateBattleDataInput', 'battleIndexId');
+    BuiltValueNullFieldError.checkNotNull(
+        pokemonId, r'GCreateBattleDataInput', 'pokemonId');
+    BuiltValueNullFieldError.checkNotNull(no, r'GCreateBattleDataInput', 'no');
+    BuiltValueNullFieldError.checkNotNull(
+        rank, r'GCreateBattleDataInput', 'rank');
+  }
+
+  @override
+  GCreateBattleDataInput rebuild(
+          void Function(GCreateBattleDataInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateBattleDataInputBuilder toBuilder() =>
+      new GCreateBattleDataInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateBattleDataInput &&
+        battleIndexId == other.battleIndexId &&
+        pokemonId == other.pokemonId &&
+        no == other.no &&
+        rank == other.rank &&
+        formId == other.formId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, battleIndexId.hashCode);
+    _$hash = $jc(_$hash, pokemonId.hashCode);
+    _$hash = $jc(_$hash, no.hashCode);
+    _$hash = $jc(_$hash, rank.hashCode);
+    _$hash = $jc(_$hash, formId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateBattleDataInput')
+          ..add('battleIndexId', battleIndexId)
+          ..add('pokemonId', pokemonId)
+          ..add('no', no)
+          ..add('rank', rank)
+          ..add('formId', formId))
+        .toString();
+  }
+}
+
+class GCreateBattleDataInputBuilder
+    implements Builder<GCreateBattleDataInput, GCreateBattleDataInputBuilder> {
+  _$GCreateBattleDataInput? _$v;
+
+  String? _battleIndexId;
+  String? get battleIndexId => _$this._battleIndexId;
+  set battleIndexId(String? battleIndexId) =>
+      _$this._battleIndexId = battleIndexId;
+
+  String? _pokemonId;
+  String? get pokemonId => _$this._pokemonId;
+  set pokemonId(String? pokemonId) => _$this._pokemonId = pokemonId;
+
+  String? _no;
+  String? get no => _$this._no;
+  set no(String? no) => _$this._no = no;
+
+  int? _rank;
+  int? get rank => _$this._rank;
+  set rank(int? rank) => _$this._rank = rank;
+
+  String? _formId;
+  String? get formId => _$this._formId;
+  set formId(String? formId) => _$this._formId = formId;
+
+  GCreateBattleDataInputBuilder();
+
+  GCreateBattleDataInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _battleIndexId = $v.battleIndexId;
+      _pokemonId = $v.pokemonId;
+      _no = $v.no;
+      _rank = $v.rank;
+      _formId = $v.formId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateBattleDataInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateBattleDataInput;
+  }
+
+  @override
+  void update(void Function(GCreateBattleDataInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateBattleDataInput build() => _build();
+
+  _$GCreateBattleDataInput _build() {
+    final _$result = _$v ??
+        new _$GCreateBattleDataInput._(
+            battleIndexId: BuiltValueNullFieldError.checkNotNull(
+                battleIndexId, r'GCreateBattleDataInput', 'battleIndexId'),
+            pokemonId: BuiltValueNullFieldError.checkNotNull(
+                pokemonId, r'GCreateBattleDataInput', 'pokemonId'),
+            no: BuiltValueNullFieldError.checkNotNull(
+                no, r'GCreateBattleDataInput', 'no'),
+            rank: BuiltValueNullFieldError.checkNotNull(
+                rank, r'GCreateBattleDataInput', 'rank'),
+            formId: formId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateBattleDataItemInput extends GCreateBattleDataItemInput {
+  @override
+  final String itemId;
+  @override
+  final double rate;
+  @override
+  final String battleDataId;
+
+  factory _$GCreateBattleDataItemInput(
+          [void Function(GCreateBattleDataItemInputBuilder)? updates]) =>
+      (new GCreateBattleDataItemInputBuilder()..update(updates))._build();
+
+  _$GCreateBattleDataItemInput._(
+      {required this.itemId, required this.rate, required this.battleDataId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        itemId, r'GCreateBattleDataItemInput', 'itemId');
+    BuiltValueNullFieldError.checkNotNull(
+        rate, r'GCreateBattleDataItemInput', 'rate');
+    BuiltValueNullFieldError.checkNotNull(
+        battleDataId, r'GCreateBattleDataItemInput', 'battleDataId');
+  }
+
+  @override
+  GCreateBattleDataItemInput rebuild(
+          void Function(GCreateBattleDataItemInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateBattleDataItemInputBuilder toBuilder() =>
+      new GCreateBattleDataItemInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateBattleDataItemInput &&
+        itemId == other.itemId &&
+        rate == other.rate &&
+        battleDataId == other.battleDataId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, itemId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jc(_$hash, battleDataId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateBattleDataItemInput')
+          ..add('itemId', itemId)
+          ..add('rate', rate)
+          ..add('battleDataId', battleDataId))
+        .toString();
+  }
+}
+
+class GCreateBattleDataItemInputBuilder
+    implements
+        Builder<GCreateBattleDataItemInput, GCreateBattleDataItemInputBuilder> {
+  _$GCreateBattleDataItemInput? _$v;
+
+  String? _itemId;
+  String? get itemId => _$this._itemId;
+  set itemId(String? itemId) => _$this._itemId = itemId;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  String? _battleDataId;
+  String? get battleDataId => _$this._battleDataId;
+  set battleDataId(String? battleDataId) => _$this._battleDataId = battleDataId;
+
+  GCreateBattleDataItemInputBuilder();
+
+  GCreateBattleDataItemInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _itemId = $v.itemId;
+      _rate = $v.rate;
+      _battleDataId = $v.battleDataId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateBattleDataItemInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateBattleDataItemInput;
+  }
+
+  @override
+  void update(void Function(GCreateBattleDataItemInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateBattleDataItemInput build() => _build();
+
+  _$GCreateBattleDataItemInput _build() {
+    final _$result = _$v ??
+        new _$GCreateBattleDataItemInput._(
+            itemId: BuiltValueNullFieldError.checkNotNull(
+                itemId, r'GCreateBattleDataItemInput', 'itemId'),
+            rate: BuiltValueNullFieldError.checkNotNull(
+                rate, r'GCreateBattleDataItemInput', 'rate'),
+            battleDataId: BuiltValueNullFieldError.checkNotNull(
+                battleDataId, r'GCreateBattleDataItemInput', 'battleDataId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateBattleDataMoveInput extends GCreateBattleDataMoveInput {
+  @override
+  final String moveId;
+  @override
+  final double rate;
+  @override
+  final String battleDataId;
+
+  factory _$GCreateBattleDataMoveInput(
+          [void Function(GCreateBattleDataMoveInputBuilder)? updates]) =>
+      (new GCreateBattleDataMoveInputBuilder()..update(updates))._build();
+
+  _$GCreateBattleDataMoveInput._(
+      {required this.moveId, required this.rate, required this.battleDataId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        moveId, r'GCreateBattleDataMoveInput', 'moveId');
+    BuiltValueNullFieldError.checkNotNull(
+        rate, r'GCreateBattleDataMoveInput', 'rate');
+    BuiltValueNullFieldError.checkNotNull(
+        battleDataId, r'GCreateBattleDataMoveInput', 'battleDataId');
+  }
+
+  @override
+  GCreateBattleDataMoveInput rebuild(
+          void Function(GCreateBattleDataMoveInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateBattleDataMoveInputBuilder toBuilder() =>
+      new GCreateBattleDataMoveInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateBattleDataMoveInput &&
+        moveId == other.moveId &&
+        rate == other.rate &&
+        battleDataId == other.battleDataId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, moveId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jc(_$hash, battleDataId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateBattleDataMoveInput')
+          ..add('moveId', moveId)
+          ..add('rate', rate)
+          ..add('battleDataId', battleDataId))
+        .toString();
+  }
+}
+
+class GCreateBattleDataMoveInputBuilder
+    implements
+        Builder<GCreateBattleDataMoveInput, GCreateBattleDataMoveInputBuilder> {
+  _$GCreateBattleDataMoveInput? _$v;
+
+  String? _moveId;
+  String? get moveId => _$this._moveId;
+  set moveId(String? moveId) => _$this._moveId = moveId;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  String? _battleDataId;
+  String? get battleDataId => _$this._battleDataId;
+  set battleDataId(String? battleDataId) => _$this._battleDataId = battleDataId;
+
+  GCreateBattleDataMoveInputBuilder();
+
+  GCreateBattleDataMoveInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _moveId = $v.moveId;
+      _rate = $v.rate;
+      _battleDataId = $v.battleDataId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateBattleDataMoveInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateBattleDataMoveInput;
+  }
+
+  @override
+  void update(void Function(GCreateBattleDataMoveInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateBattleDataMoveInput build() => _build();
+
+  _$GCreateBattleDataMoveInput _build() {
+    final _$result = _$v ??
+        new _$GCreateBattleDataMoveInput._(
+            moveId: BuiltValueNullFieldError.checkNotNull(
+                moveId, r'GCreateBattleDataMoveInput', 'moveId'),
+            rate: BuiltValueNullFieldError.checkNotNull(
+                rate, r'GCreateBattleDataMoveInput', 'rate'),
+            battleDataId: BuiltValueNullFieldError.checkNotNull(
+                battleDataId, r'GCreateBattleDataMoveInput', 'battleDataId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateBattleDataNatureInput extends GCreateBattleDataNatureInput {
+  @override
+  final String natureId;
+  @override
+  final double rate;
+  @override
+  final String battleDataId;
+
+  factory _$GCreateBattleDataNatureInput(
+          [void Function(GCreateBattleDataNatureInputBuilder)? updates]) =>
+      (new GCreateBattleDataNatureInputBuilder()..update(updates))._build();
+
+  _$GCreateBattleDataNatureInput._(
+      {required this.natureId, required this.rate, required this.battleDataId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        natureId, r'GCreateBattleDataNatureInput', 'natureId');
+    BuiltValueNullFieldError.checkNotNull(
+        rate, r'GCreateBattleDataNatureInput', 'rate');
+    BuiltValueNullFieldError.checkNotNull(
+        battleDataId, r'GCreateBattleDataNatureInput', 'battleDataId');
+  }
+
+  @override
+  GCreateBattleDataNatureInput rebuild(
+          void Function(GCreateBattleDataNatureInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateBattleDataNatureInputBuilder toBuilder() =>
+      new GCreateBattleDataNatureInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateBattleDataNatureInput &&
+        natureId == other.natureId &&
+        rate == other.rate &&
+        battleDataId == other.battleDataId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, natureId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jc(_$hash, battleDataId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateBattleDataNatureInput')
+          ..add('natureId', natureId)
+          ..add('rate', rate)
+          ..add('battleDataId', battleDataId))
+        .toString();
+  }
+}
+
+class GCreateBattleDataNatureInputBuilder
+    implements
+        Builder<GCreateBattleDataNatureInput,
+            GCreateBattleDataNatureInputBuilder> {
+  _$GCreateBattleDataNatureInput? _$v;
+
+  String? _natureId;
+  String? get natureId => _$this._natureId;
+  set natureId(String? natureId) => _$this._natureId = natureId;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  String? _battleDataId;
+  String? get battleDataId => _$this._battleDataId;
+  set battleDataId(String? battleDataId) => _$this._battleDataId = battleDataId;
+
+  GCreateBattleDataNatureInputBuilder();
+
+  GCreateBattleDataNatureInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _natureId = $v.natureId;
+      _rate = $v.rate;
+      _battleDataId = $v.battleDataId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateBattleDataNatureInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateBattleDataNatureInput;
+  }
+
+  @override
+  void update(void Function(GCreateBattleDataNatureInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateBattleDataNatureInput build() => _build();
+
+  _$GCreateBattleDataNatureInput _build() {
+    final _$result = _$v ??
+        new _$GCreateBattleDataNatureInput._(
+            natureId: BuiltValueNullFieldError.checkNotNull(
+                natureId, r'GCreateBattleDataNatureInput', 'natureId'),
+            rate: BuiltValueNullFieldError.checkNotNull(
+                rate, r'GCreateBattleDataNatureInput', 'rate'),
+            battleDataId: BuiltValueNullFieldError.checkNotNull(
+                battleDataId, r'GCreateBattleDataNatureInput', 'battleDataId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateBattleDataTerastalInput extends GCreateBattleDataTerastalInput {
+  @override
+  final String typeId;
+  @override
+  final double rate;
+  @override
+  final String battleDataId;
+
+  factory _$GCreateBattleDataTerastalInput(
+          [void Function(GCreateBattleDataTerastalInputBuilder)? updates]) =>
+      (new GCreateBattleDataTerastalInputBuilder()..update(updates))._build();
+
+  _$GCreateBattleDataTerastalInput._(
+      {required this.typeId, required this.rate, required this.battleDataId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        typeId, r'GCreateBattleDataTerastalInput', 'typeId');
+    BuiltValueNullFieldError.checkNotNull(
+        rate, r'GCreateBattleDataTerastalInput', 'rate');
+    BuiltValueNullFieldError.checkNotNull(
+        battleDataId, r'GCreateBattleDataTerastalInput', 'battleDataId');
+  }
+
+  @override
+  GCreateBattleDataTerastalInput rebuild(
+          void Function(GCreateBattleDataTerastalInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateBattleDataTerastalInputBuilder toBuilder() =>
+      new GCreateBattleDataTerastalInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateBattleDataTerastalInput &&
+        typeId == other.typeId &&
+        rate == other.rate &&
+        battleDataId == other.battleDataId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, typeId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jc(_$hash, battleDataId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateBattleDataTerastalInput')
+          ..add('typeId', typeId)
+          ..add('rate', rate)
+          ..add('battleDataId', battleDataId))
+        .toString();
+  }
+}
+
+class GCreateBattleDataTerastalInputBuilder
+    implements
+        Builder<GCreateBattleDataTerastalInput,
+            GCreateBattleDataTerastalInputBuilder> {
+  _$GCreateBattleDataTerastalInput? _$v;
+
+  String? _typeId;
+  String? get typeId => _$this._typeId;
+  set typeId(String? typeId) => _$this._typeId = typeId;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  String? _battleDataId;
+  String? get battleDataId => _$this._battleDataId;
+  set battleDataId(String? battleDataId) => _$this._battleDataId = battleDataId;
+
+  GCreateBattleDataTerastalInputBuilder();
+
+  GCreateBattleDataTerastalInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _typeId = $v.typeId;
+      _rate = $v.rate;
+      _battleDataId = $v.battleDataId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateBattleDataTerastalInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateBattleDataTerastalInput;
+  }
+
+  @override
+  void update(void Function(GCreateBattleDataTerastalInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateBattleDataTerastalInput build() => _build();
+
+  _$GCreateBattleDataTerastalInput _build() {
+    final _$result = _$v ??
+        new _$GCreateBattleDataTerastalInput._(
+            typeId: BuiltValueNullFieldError.checkNotNull(
+                typeId, r'GCreateBattleDataTerastalInput', 'typeId'),
+            rate: BuiltValueNullFieldError.checkNotNull(
+                rate, r'GCreateBattleDataTerastalInput', 'rate'),
+            battleDataId: BuiltValueNullFieldError.checkNotNull(battleDataId,
+                r'GCreateBattleDataTerastalInput', 'battleDataId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateBattleIndexInput extends GCreateBattleIndexInput {
+  @override
+  final GDateTime capturedAt;
+  @override
+  final GDateTime startAt;
+  @override
+  final GDateTime endAt;
+  @override
+  final String name;
+
+  factory _$GCreateBattleIndexInput(
+          [void Function(GCreateBattleIndexInputBuilder)? updates]) =>
+      (new GCreateBattleIndexInputBuilder()..update(updates))._build();
+
+  _$GCreateBattleIndexInput._(
+      {required this.capturedAt,
+      required this.startAt,
+      required this.endAt,
+      required this.name})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        capturedAt, r'GCreateBattleIndexInput', 'capturedAt');
+    BuiltValueNullFieldError.checkNotNull(
+        startAt, r'GCreateBattleIndexInput', 'startAt');
+    BuiltValueNullFieldError.checkNotNull(
+        endAt, r'GCreateBattleIndexInput', 'endAt');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GCreateBattleIndexInput', 'name');
+  }
+
+  @override
+  GCreateBattleIndexInput rebuild(
+          void Function(GCreateBattleIndexInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateBattleIndexInputBuilder toBuilder() =>
+      new GCreateBattleIndexInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateBattleIndexInput &&
+        capturedAt == other.capturedAt &&
+        startAt == other.startAt &&
+        endAt == other.endAt &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, capturedAt.hashCode);
+    _$hash = $jc(_$hash, startAt.hashCode);
+    _$hash = $jc(_$hash, endAt.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateBattleIndexInput')
+          ..add('capturedAt', capturedAt)
+          ..add('startAt', startAt)
+          ..add('endAt', endAt)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GCreateBattleIndexInputBuilder
+    implements
+        Builder<GCreateBattleIndexInput, GCreateBattleIndexInputBuilder> {
+  _$GCreateBattleIndexInput? _$v;
+
+  GDateTimeBuilder? _capturedAt;
+  GDateTimeBuilder get capturedAt =>
+      _$this._capturedAt ??= new GDateTimeBuilder();
+  set capturedAt(GDateTimeBuilder? capturedAt) =>
+      _$this._capturedAt = capturedAt;
+
+  GDateTimeBuilder? _startAt;
+  GDateTimeBuilder get startAt => _$this._startAt ??= new GDateTimeBuilder();
+  set startAt(GDateTimeBuilder? startAt) => _$this._startAt = startAt;
+
+  GDateTimeBuilder? _endAt;
+  GDateTimeBuilder get endAt => _$this._endAt ??= new GDateTimeBuilder();
+  set endAt(GDateTimeBuilder? endAt) => _$this._endAt = endAt;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GCreateBattleIndexInputBuilder();
+
+  GCreateBattleIndexInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _capturedAt = $v.capturedAt.toBuilder();
+      _startAt = $v.startAt.toBuilder();
+      _endAt = $v.endAt.toBuilder();
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateBattleIndexInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateBattleIndexInput;
+  }
+
+  @override
+  void update(void Function(GCreateBattleIndexInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateBattleIndexInput build() => _build();
+
+  _$GCreateBattleIndexInput _build() {
+    _$GCreateBattleIndexInput _$result;
+    try {
+      _$result = _$v ??
+          new _$GCreateBattleIndexInput._(
+              capturedAt: capturedAt.build(),
+              startAt: startAt.build(),
+              endAt: endAt.build(),
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, r'GCreateBattleIndexInput', 'name'));
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'capturedAt';
+        capturedAt.build();
+        _$failedField = 'startAt';
+        startAt.build();
+        _$failedField = 'endAt';
+        endAt.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GCreateBattleIndexInput', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateFormInput extends GCreateFormInput {
+  @override
+  final String no;
+  @override
+  final String formType;
+  @override
+  final String formType2;
+  @override
+  final String name;
+
+  factory _$GCreateFormInput(
+          [void Function(GCreateFormInputBuilder)? updates]) =>
+      (new GCreateFormInputBuilder()..update(updates))._build();
+
+  _$GCreateFormInput._(
+      {required this.no,
+      required this.formType,
+      required this.formType2,
+      required this.name})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(no, r'GCreateFormInput', 'no');
+    BuiltValueNullFieldError.checkNotNull(
+        formType, r'GCreateFormInput', 'formType');
+    BuiltValueNullFieldError.checkNotNull(
+        formType2, r'GCreateFormInput', 'formType2');
+    BuiltValueNullFieldError.checkNotNull(name, r'GCreateFormInput', 'name');
+  }
+
+  @override
+  GCreateFormInput rebuild(void Function(GCreateFormInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateFormInputBuilder toBuilder() =>
+      new GCreateFormInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateFormInput &&
+        no == other.no &&
+        formType == other.formType &&
+        formType2 == other.formType2 &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, no.hashCode);
+    _$hash = $jc(_$hash, formType.hashCode);
+    _$hash = $jc(_$hash, formType2.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateFormInput')
+          ..add('no', no)
+          ..add('formType', formType)
+          ..add('formType2', formType2)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GCreateFormInputBuilder
+    implements Builder<GCreateFormInput, GCreateFormInputBuilder> {
+  _$GCreateFormInput? _$v;
+
+  String? _no;
+  String? get no => _$this._no;
+  set no(String? no) => _$this._no = no;
+
+  String? _formType;
+  String? get formType => _$this._formType;
+  set formType(String? formType) => _$this._formType = formType;
+
+  String? _formType2;
+  String? get formType2 => _$this._formType2;
+  set formType2(String? formType2) => _$this._formType2 = formType2;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GCreateFormInputBuilder();
+
+  GCreateFormInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _no = $v.no;
+      _formType = $v.formType;
+      _formType2 = $v.formType2;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateFormInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateFormInput;
+  }
+
+  @override
+  void update(void Function(GCreateFormInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateFormInput build() => _build();
+
+  _$GCreateFormInput _build() {
+    final _$result = _$v ??
+        new _$GCreateFormInput._(
+            no: BuiltValueNullFieldError.checkNotNull(
+                no, r'GCreateFormInput', 'no'),
+            formType: BuiltValueNullFieldError.checkNotNull(
+                formType, r'GCreateFormInput', 'formType'),
+            formType2: BuiltValueNullFieldError.checkNotNull(
+                formType2, r'GCreateFormInput', 'formType2'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateFormInput', 'name'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateItemInput extends GCreateItemInput {
+  @override
+  final String name;
+  @override
+  final String detail;
+  @override
+  final String battleIndex;
+  @override
+  final String base64Image;
+
+  factory _$GCreateItemInput(
+          [void Function(GCreateItemInputBuilder)? updates]) =>
+      (new GCreateItemInputBuilder()..update(updates))._build();
+
+  _$GCreateItemInput._(
+      {required this.name,
+      required this.detail,
+      required this.battleIndex,
+      required this.base64Image})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'GCreateItemInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        detail, r'GCreateItemInput', 'detail');
+    BuiltValueNullFieldError.checkNotNull(
+        battleIndex, r'GCreateItemInput', 'battleIndex');
+    BuiltValueNullFieldError.checkNotNull(
+        base64Image, r'GCreateItemInput', 'base64Image');
+  }
+
+  @override
+  GCreateItemInput rebuild(void Function(GCreateItemInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateItemInputBuilder toBuilder() =>
+      new GCreateItemInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateItemInput &&
+        name == other.name &&
+        detail == other.detail &&
+        battleIndex == other.battleIndex &&
+        base64Image == other.base64Image;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, detail.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, base64Image.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateItemInput')
+          ..add('name', name)
+          ..add('detail', detail)
+          ..add('battleIndex', battleIndex)
+          ..add('base64Image', base64Image))
+        .toString();
+  }
+}
+
+class GCreateItemInputBuilder
+    implements Builder<GCreateItemInput, GCreateItemInputBuilder> {
+  _$GCreateItemInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _detail;
+  String? get detail => _$this._detail;
+  set detail(String? detail) => _$this._detail = detail;
+
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  String? _base64Image;
+  String? get base64Image => _$this._base64Image;
+  set base64Image(String? base64Image) => _$this._base64Image = base64Image;
+
+  GCreateItemInputBuilder();
+
+  GCreateItemInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _detail = $v.detail;
+      _battleIndex = $v.battleIndex;
+      _base64Image = $v.base64Image;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateItemInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateItemInput;
+  }
+
+  @override
+  void update(void Function(GCreateItemInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateItemInput build() => _build();
+
+  _$GCreateItemInput _build() {
+    final _$result = _$v ??
+        new _$GCreateItemInput._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateItemInput', 'name'),
+            detail: BuiltValueNullFieldError.checkNotNull(
+                detail, r'GCreateItemInput', 'detail'),
+            battleIndex: BuiltValueNullFieldError.checkNotNull(
+                battleIndex, r'GCreateItemInput', 'battleIndex'),
+            base64Image: BuiltValueNullFieldError.checkNotNull(
+                base64Image, r'GCreateItemInput', 'base64Image'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateMoveInput extends GCreateMoveInput {
+  @override
+  final String target;
+  @override
+  final String detail;
+  @override
+  final String name;
+  @override
+  final String? typeId;
+  @override
+  final String? attackTypeId;
+  @override
+  final int power;
+  @override
+  final int accuracy;
+  @override
+  final int pp;
+  @override
+  final bool isTouchable;
+  @override
+  final bool enableProtect;
+  @override
+  final String battleIndex;
+
+  factory _$GCreateMoveInput(
+          [void Function(GCreateMoveInputBuilder)? updates]) =>
+      (new GCreateMoveInputBuilder()..update(updates))._build();
+
+  _$GCreateMoveInput._(
+      {required this.target,
+      required this.detail,
+      required this.name,
+      this.typeId,
+      this.attackTypeId,
+      required this.power,
+      required this.accuracy,
+      required this.pp,
+      required this.isTouchable,
+      required this.enableProtect,
+      required this.battleIndex})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        target, r'GCreateMoveInput', 'target');
+    BuiltValueNullFieldError.checkNotNull(
+        detail, r'GCreateMoveInput', 'detail');
+    BuiltValueNullFieldError.checkNotNull(name, r'GCreateMoveInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(power, r'GCreateMoveInput', 'power');
+    BuiltValueNullFieldError.checkNotNull(
+        accuracy, r'GCreateMoveInput', 'accuracy');
+    BuiltValueNullFieldError.checkNotNull(pp, r'GCreateMoveInput', 'pp');
+    BuiltValueNullFieldError.checkNotNull(
+        isTouchable, r'GCreateMoveInput', 'isTouchable');
+    BuiltValueNullFieldError.checkNotNull(
+        enableProtect, r'GCreateMoveInput', 'enableProtect');
+    BuiltValueNullFieldError.checkNotNull(
+        battleIndex, r'GCreateMoveInput', 'battleIndex');
+  }
+
+  @override
+  GCreateMoveInput rebuild(void Function(GCreateMoveInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateMoveInputBuilder toBuilder() =>
+      new GCreateMoveInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateMoveInput &&
+        target == other.target &&
+        detail == other.detail &&
+        name == other.name &&
+        typeId == other.typeId &&
+        attackTypeId == other.attackTypeId &&
+        power == other.power &&
+        accuracy == other.accuracy &&
+        pp == other.pp &&
+        isTouchable == other.isTouchable &&
+        enableProtect == other.enableProtect &&
+        battleIndex == other.battleIndex;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, target.hashCode);
+    _$hash = $jc(_$hash, detail.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, typeId.hashCode);
+    _$hash = $jc(_$hash, attackTypeId.hashCode);
+    _$hash = $jc(_$hash, power.hashCode);
+    _$hash = $jc(_$hash, accuracy.hashCode);
+    _$hash = $jc(_$hash, pp.hashCode);
+    _$hash = $jc(_$hash, isTouchable.hashCode);
+    _$hash = $jc(_$hash, enableProtect.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateMoveInput')
+          ..add('target', target)
+          ..add('detail', detail)
+          ..add('name', name)
+          ..add('typeId', typeId)
+          ..add('attackTypeId', attackTypeId)
+          ..add('power', power)
+          ..add('accuracy', accuracy)
+          ..add('pp', pp)
+          ..add('isTouchable', isTouchable)
+          ..add('enableProtect', enableProtect)
+          ..add('battleIndex', battleIndex))
+        .toString();
+  }
+}
+
+class GCreateMoveInputBuilder
+    implements Builder<GCreateMoveInput, GCreateMoveInputBuilder> {
+  _$GCreateMoveInput? _$v;
+
+  String? _target;
+  String? get target => _$this._target;
+  set target(String? target) => _$this._target = target;
+
+  String? _detail;
+  String? get detail => _$this._detail;
+  set detail(String? detail) => _$this._detail = detail;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _typeId;
+  String? get typeId => _$this._typeId;
+  set typeId(String? typeId) => _$this._typeId = typeId;
+
+  String? _attackTypeId;
+  String? get attackTypeId => _$this._attackTypeId;
+  set attackTypeId(String? attackTypeId) => _$this._attackTypeId = attackTypeId;
+
+  int? _power;
+  int? get power => _$this._power;
+  set power(int? power) => _$this._power = power;
+
+  int? _accuracy;
+  int? get accuracy => _$this._accuracy;
+  set accuracy(int? accuracy) => _$this._accuracy = accuracy;
+
+  int? _pp;
+  int? get pp => _$this._pp;
+  set pp(int? pp) => _$this._pp = pp;
+
+  bool? _isTouchable;
+  bool? get isTouchable => _$this._isTouchable;
+  set isTouchable(bool? isTouchable) => _$this._isTouchable = isTouchable;
+
+  bool? _enableProtect;
+  bool? get enableProtect => _$this._enableProtect;
+  set enableProtect(bool? enableProtect) =>
+      _$this._enableProtect = enableProtect;
+
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  GCreateMoveInputBuilder();
+
+  GCreateMoveInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _target = $v.target;
+      _detail = $v.detail;
+      _name = $v.name;
+      _typeId = $v.typeId;
+      _attackTypeId = $v.attackTypeId;
+      _power = $v.power;
+      _accuracy = $v.accuracy;
+      _pp = $v.pp;
+      _isTouchable = $v.isTouchable;
+      _enableProtect = $v.enableProtect;
+      _battleIndex = $v.battleIndex;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateMoveInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateMoveInput;
+  }
+
+  @override
+  void update(void Function(GCreateMoveInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateMoveInput build() => _build();
+
+  _$GCreateMoveInput _build() {
+    final _$result = _$v ??
+        new _$GCreateMoveInput._(
+            target: BuiltValueNullFieldError.checkNotNull(
+                target, r'GCreateMoveInput', 'target'),
+            detail: BuiltValueNullFieldError.checkNotNull(
+                detail, r'GCreateMoveInput', 'detail'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateMoveInput', 'name'),
+            typeId: typeId,
+            attackTypeId: attackTypeId,
+            power: BuiltValueNullFieldError.checkNotNull(
+                power, r'GCreateMoveInput', 'power'),
+            accuracy: BuiltValueNullFieldError.checkNotNull(
+                accuracy, r'GCreateMoveInput', 'accuracy'),
+            pp: BuiltValueNullFieldError.checkNotNull(
+                pp, r'GCreateMoveInput', 'pp'),
+            isTouchable: BuiltValueNullFieldError.checkNotNull(
+                isTouchable, r'GCreateMoveInput', 'isTouchable'),
+            enableProtect: BuiltValueNullFieldError.checkNotNull(
+                enableProtect, r'GCreateMoveInput', 'enableProtect'),
+            battleIndex: BuiltValueNullFieldError.checkNotNull(
+                battleIndex, r'GCreateMoveInput', 'battleIndex'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateMyPartyInput extends GCreateMyPartyInput {
+  @override
+  final String name;
+  @override
+  final bool favorite;
+  @override
+  final String memo;
+  @override
+  final String userId;
+
+  factory _$GCreateMyPartyInput(
+          [void Function(GCreateMyPartyInputBuilder)? updates]) =>
+      (new GCreateMyPartyInputBuilder()..update(updates))._build();
+
+  _$GCreateMyPartyInput._(
+      {required this.name,
+      required this.favorite,
+      required this.memo,
+      required this.userId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'GCreateMyPartyInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        favorite, r'GCreateMyPartyInput', 'favorite');
+    BuiltValueNullFieldError.checkNotNull(memo, r'GCreateMyPartyInput', 'memo');
+    BuiltValueNullFieldError.checkNotNull(
+        userId, r'GCreateMyPartyInput', 'userId');
+  }
+
+  @override
+  GCreateMyPartyInput rebuild(
+          void Function(GCreateMyPartyInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateMyPartyInputBuilder toBuilder() =>
+      new GCreateMyPartyInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateMyPartyInput &&
+        name == other.name &&
+        favorite == other.favorite &&
+        memo == other.memo &&
+        userId == other.userId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateMyPartyInput')
+          ..add('name', name)
+          ..add('favorite', favorite)
+          ..add('memo', memo)
+          ..add('userId', userId))
+        .toString();
+  }
+}
+
+class GCreateMyPartyInputBuilder
+    implements Builder<GCreateMyPartyInput, GCreateMyPartyInputBuilder> {
+  _$GCreateMyPartyInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  GCreateMyPartyInputBuilder();
+
+  GCreateMyPartyInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _favorite = $v.favorite;
+      _memo = $v.memo;
+      _userId = $v.userId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateMyPartyInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateMyPartyInput;
+  }
+
+  @override
+  void update(void Function(GCreateMyPartyInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateMyPartyInput build() => _build();
+
+  _$GCreateMyPartyInput _build() {
+    final _$result = _$v ??
+        new _$GCreateMyPartyInput._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateMyPartyInput', 'name'),
+            favorite: BuiltValueNullFieldError.checkNotNull(
+                favorite, r'GCreateMyPartyInput', 'favorite'),
+            memo: BuiltValueNullFieldError.checkNotNull(
+                memo, r'GCreateMyPartyInput', 'memo'),
+            userId: BuiltValueNullFieldError.checkNotNull(
+                userId, r'GCreateMyPartyInput', 'userId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateMyPartyTagInput extends GCreateMyPartyTagInput {
+  @override
+  final String name;
+  @override
+  final bool favorite;
+  @override
+  final String memo;
+  @override
+  final String userId;
+
+  factory _$GCreateMyPartyTagInput(
+          [void Function(GCreateMyPartyTagInputBuilder)? updates]) =>
+      (new GCreateMyPartyTagInputBuilder()..update(updates))._build();
+
+  _$GCreateMyPartyTagInput._(
+      {required this.name,
+      required this.favorite,
+      required this.memo,
+      required this.userId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GCreateMyPartyTagInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        favorite, r'GCreateMyPartyTagInput', 'favorite');
+    BuiltValueNullFieldError.checkNotNull(
+        memo, r'GCreateMyPartyTagInput', 'memo');
+    BuiltValueNullFieldError.checkNotNull(
+        userId, r'GCreateMyPartyTagInput', 'userId');
+  }
+
+  @override
+  GCreateMyPartyTagInput rebuild(
+          void Function(GCreateMyPartyTagInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateMyPartyTagInputBuilder toBuilder() =>
+      new GCreateMyPartyTagInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateMyPartyTagInput &&
+        name == other.name &&
+        favorite == other.favorite &&
+        memo == other.memo &&
+        userId == other.userId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateMyPartyTagInput')
+          ..add('name', name)
+          ..add('favorite', favorite)
+          ..add('memo', memo)
+          ..add('userId', userId))
+        .toString();
+  }
+}
+
+class GCreateMyPartyTagInputBuilder
+    implements Builder<GCreateMyPartyTagInput, GCreateMyPartyTagInputBuilder> {
+  _$GCreateMyPartyTagInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  GCreateMyPartyTagInputBuilder();
+
+  GCreateMyPartyTagInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _favorite = $v.favorite;
+      _memo = $v.memo;
+      _userId = $v.userId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateMyPartyTagInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateMyPartyTagInput;
+  }
+
+  @override
+  void update(void Function(GCreateMyPartyTagInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateMyPartyTagInput build() => _build();
+
+  _$GCreateMyPartyTagInput _build() {
+    final _$result = _$v ??
+        new _$GCreateMyPartyTagInput._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateMyPartyTagInput', 'name'),
+            favorite: BuiltValueNullFieldError.checkNotNull(
+                favorite, r'GCreateMyPartyTagInput', 'favorite'),
+            memo: BuiltValueNullFieldError.checkNotNull(
+                memo, r'GCreateMyPartyTagInput', 'memo'),
+            userId: BuiltValueNullFieldError.checkNotNull(
+                userId, r'GCreateMyPartyTagInput', 'userId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateMyPokemonInput extends GCreateMyPokemonInput {
+  @override
+  final String name;
+  @override
+  final bool favorite;
+  @override
+  final int evH;
+  @override
+  final int evA;
+  @override
+  final int evB;
+  @override
+  final int evC;
+  @override
+  final int evD;
+  @override
+  final int evS;
+  @override
+  final String memo;
+  @override
+  final String pokemonId;
+  @override
+  final String? itemId;
+  @override
+  final String? abilityId;
+  @override
+  final String natureId;
+  @override
+  final String? terastalId;
+  @override
+  final String userId;
+
+  factory _$GCreateMyPokemonInput(
+          [void Function(GCreateMyPokemonInputBuilder)? updates]) =>
+      (new GCreateMyPokemonInputBuilder()..update(updates))._build();
+
+  _$GCreateMyPokemonInput._(
+      {required this.name,
+      required this.favorite,
+      required this.evH,
+      required this.evA,
+      required this.evB,
+      required this.evC,
+      required this.evD,
+      required this.evS,
+      required this.memo,
+      required this.pokemonId,
+      this.itemId,
+      this.abilityId,
+      required this.natureId,
+      this.terastalId,
+      required this.userId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GCreateMyPokemonInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        favorite, r'GCreateMyPokemonInput', 'favorite');
+    BuiltValueNullFieldError.checkNotNull(evH, r'GCreateMyPokemonInput', 'evH');
+    BuiltValueNullFieldError.checkNotNull(evA, r'GCreateMyPokemonInput', 'evA');
+    BuiltValueNullFieldError.checkNotNull(evB, r'GCreateMyPokemonInput', 'evB');
+    BuiltValueNullFieldError.checkNotNull(evC, r'GCreateMyPokemonInput', 'evC');
+    BuiltValueNullFieldError.checkNotNull(evD, r'GCreateMyPokemonInput', 'evD');
+    BuiltValueNullFieldError.checkNotNull(evS, r'GCreateMyPokemonInput', 'evS');
+    BuiltValueNullFieldError.checkNotNull(
+        memo, r'GCreateMyPokemonInput', 'memo');
+    BuiltValueNullFieldError.checkNotNull(
+        pokemonId, r'GCreateMyPokemonInput', 'pokemonId');
+    BuiltValueNullFieldError.checkNotNull(
+        natureId, r'GCreateMyPokemonInput', 'natureId');
+    BuiltValueNullFieldError.checkNotNull(
+        userId, r'GCreateMyPokemonInput', 'userId');
+  }
+
+  @override
+  GCreateMyPokemonInput rebuild(
+          void Function(GCreateMyPokemonInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateMyPokemonInputBuilder toBuilder() =>
+      new GCreateMyPokemonInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateMyPokemonInput &&
+        name == other.name &&
+        favorite == other.favorite &&
+        evH == other.evH &&
+        evA == other.evA &&
+        evB == other.evB &&
+        evC == other.evC &&
+        evD == other.evD &&
+        evS == other.evS &&
+        memo == other.memo &&
+        pokemonId == other.pokemonId &&
+        itemId == other.itemId &&
+        abilityId == other.abilityId &&
+        natureId == other.natureId &&
+        terastalId == other.terastalId &&
+        userId == other.userId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jc(_$hash, evH.hashCode);
+    _$hash = $jc(_$hash, evA.hashCode);
+    _$hash = $jc(_$hash, evB.hashCode);
+    _$hash = $jc(_$hash, evC.hashCode);
+    _$hash = $jc(_$hash, evD.hashCode);
+    _$hash = $jc(_$hash, evS.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, pokemonId.hashCode);
+    _$hash = $jc(_$hash, itemId.hashCode);
+    _$hash = $jc(_$hash, abilityId.hashCode);
+    _$hash = $jc(_$hash, natureId.hashCode);
+    _$hash = $jc(_$hash, terastalId.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateMyPokemonInput')
+          ..add('name', name)
+          ..add('favorite', favorite)
+          ..add('evH', evH)
+          ..add('evA', evA)
+          ..add('evB', evB)
+          ..add('evC', evC)
+          ..add('evD', evD)
+          ..add('evS', evS)
+          ..add('memo', memo)
+          ..add('pokemonId', pokemonId)
+          ..add('itemId', itemId)
+          ..add('abilityId', abilityId)
+          ..add('natureId', natureId)
+          ..add('terastalId', terastalId)
+          ..add('userId', userId))
+        .toString();
+  }
+}
+
+class GCreateMyPokemonInputBuilder
+    implements Builder<GCreateMyPokemonInput, GCreateMyPokemonInputBuilder> {
+  _$GCreateMyPokemonInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  int? _evH;
+  int? get evH => _$this._evH;
+  set evH(int? evH) => _$this._evH = evH;
+
+  int? _evA;
+  int? get evA => _$this._evA;
+  set evA(int? evA) => _$this._evA = evA;
+
+  int? _evB;
+  int? get evB => _$this._evB;
+  set evB(int? evB) => _$this._evB = evB;
+
+  int? _evC;
+  int? get evC => _$this._evC;
+  set evC(int? evC) => _$this._evC = evC;
+
+  int? _evD;
+  int? get evD => _$this._evD;
+  set evD(int? evD) => _$this._evD = evD;
+
+  int? _evS;
+  int? get evS => _$this._evS;
+  set evS(int? evS) => _$this._evS = evS;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  String? _pokemonId;
+  String? get pokemonId => _$this._pokemonId;
+  set pokemonId(String? pokemonId) => _$this._pokemonId = pokemonId;
+
+  String? _itemId;
+  String? get itemId => _$this._itemId;
+  set itemId(String? itemId) => _$this._itemId = itemId;
+
+  String? _abilityId;
+  String? get abilityId => _$this._abilityId;
+  set abilityId(String? abilityId) => _$this._abilityId = abilityId;
+
+  String? _natureId;
+  String? get natureId => _$this._natureId;
+  set natureId(String? natureId) => _$this._natureId = natureId;
+
+  String? _terastalId;
+  String? get terastalId => _$this._terastalId;
+  set terastalId(String? terastalId) => _$this._terastalId = terastalId;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  GCreateMyPokemonInputBuilder();
+
+  GCreateMyPokemonInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _favorite = $v.favorite;
+      _evH = $v.evH;
+      _evA = $v.evA;
+      _evB = $v.evB;
+      _evC = $v.evC;
+      _evD = $v.evD;
+      _evS = $v.evS;
+      _memo = $v.memo;
+      _pokemonId = $v.pokemonId;
+      _itemId = $v.itemId;
+      _abilityId = $v.abilityId;
+      _natureId = $v.natureId;
+      _terastalId = $v.terastalId;
+      _userId = $v.userId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateMyPokemonInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateMyPokemonInput;
+  }
+
+  @override
+  void update(void Function(GCreateMyPokemonInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateMyPokemonInput build() => _build();
+
+  _$GCreateMyPokemonInput _build() {
+    final _$result = _$v ??
+        new _$GCreateMyPokemonInput._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateMyPokemonInput', 'name'),
+            favorite: BuiltValueNullFieldError.checkNotNull(
+                favorite, r'GCreateMyPokemonInput', 'favorite'),
+            evH: BuiltValueNullFieldError.checkNotNull(
+                evH, r'GCreateMyPokemonInput', 'evH'),
+            evA: BuiltValueNullFieldError.checkNotNull(
+                evA, r'GCreateMyPokemonInput', 'evA'),
+            evB: BuiltValueNullFieldError.checkNotNull(
+                evB, r'GCreateMyPokemonInput', 'evB'),
+            evC: BuiltValueNullFieldError.checkNotNull(
+                evC, r'GCreateMyPokemonInput', 'evC'),
+            evD: BuiltValueNullFieldError.checkNotNull(
+                evD, r'GCreateMyPokemonInput', 'evD'),
+            evS: BuiltValueNullFieldError.checkNotNull(
+                evS, r'GCreateMyPokemonInput', 'evS'),
+            memo: BuiltValueNullFieldError.checkNotNull(
+                memo, r'GCreateMyPokemonInput', 'memo'),
+            pokemonId: BuiltValueNullFieldError.checkNotNull(pokemonId, r'GCreateMyPokemonInput', 'pokemonId'),
+            itemId: itemId,
+            abilityId: abilityId,
+            natureId: BuiltValueNullFieldError.checkNotNull(natureId, r'GCreateMyPokemonInput', 'natureId'),
+            terastalId: terastalId,
+            userId: BuiltValueNullFieldError.checkNotNull(userId, r'GCreateMyPokemonInput', 'userId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateMyPokemonTagInput extends GCreateMyPokemonTagInput {
+  @override
+  final String name;
+  @override
+  final bool favorite;
+  @override
+  final String memo;
+  @override
+  final String userId;
+
+  factory _$GCreateMyPokemonTagInput(
+          [void Function(GCreateMyPokemonTagInputBuilder)? updates]) =>
+      (new GCreateMyPokemonTagInputBuilder()..update(updates))._build();
+
+  _$GCreateMyPokemonTagInput._(
+      {required this.name,
+      required this.favorite,
+      required this.memo,
+      required this.userId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GCreateMyPokemonTagInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        favorite, r'GCreateMyPokemonTagInput', 'favorite');
+    BuiltValueNullFieldError.checkNotNull(
+        memo, r'GCreateMyPokemonTagInput', 'memo');
+    BuiltValueNullFieldError.checkNotNull(
+        userId, r'GCreateMyPokemonTagInput', 'userId');
+  }
+
+  @override
+  GCreateMyPokemonTagInput rebuild(
+          void Function(GCreateMyPokemonTagInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateMyPokemonTagInputBuilder toBuilder() =>
+      new GCreateMyPokemonTagInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateMyPokemonTagInput &&
+        name == other.name &&
+        favorite == other.favorite &&
+        memo == other.memo &&
+        userId == other.userId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateMyPokemonTagInput')
+          ..add('name', name)
+          ..add('favorite', favorite)
+          ..add('memo', memo)
+          ..add('userId', userId))
+        .toString();
+  }
+}
+
+class GCreateMyPokemonTagInputBuilder
+    implements
+        Builder<GCreateMyPokemonTagInput, GCreateMyPokemonTagInputBuilder> {
+  _$GCreateMyPokemonTagInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  GCreateMyPokemonTagInputBuilder();
+
+  GCreateMyPokemonTagInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _favorite = $v.favorite;
+      _memo = $v.memo;
+      _userId = $v.userId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateMyPokemonTagInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateMyPokemonTagInput;
+  }
+
+  @override
+  void update(void Function(GCreateMyPokemonTagInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateMyPokemonTagInput build() => _build();
+
+  _$GCreateMyPokemonTagInput _build() {
+    final _$result = _$v ??
+        new _$GCreateMyPokemonTagInput._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateMyPokemonTagInput', 'name'),
+            favorite: BuiltValueNullFieldError.checkNotNull(
+                favorite, r'GCreateMyPokemonTagInput', 'favorite'),
+            memo: BuiltValueNullFieldError.checkNotNull(
+                memo, r'GCreateMyPokemonTagInput', 'memo'),
+            userId: BuiltValueNullFieldError.checkNotNull(
+                userId, r'GCreateMyPokemonTagInput', 'userId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateNatureInput extends GCreateNatureInput {
+  @override
+  final String name;
+  @override
+  final String battleIndex;
+  @override
+  final String increase;
+  @override
+  final String decrease;
+
+  factory _$GCreateNatureInput(
+          [void Function(GCreateNatureInputBuilder)? updates]) =>
+      (new GCreateNatureInputBuilder()..update(updates))._build();
+
+  _$GCreateNatureInput._(
+      {required this.name,
+      required this.battleIndex,
+      required this.increase,
+      required this.decrease})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'GCreateNatureInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        battleIndex, r'GCreateNatureInput', 'battleIndex');
+    BuiltValueNullFieldError.checkNotNull(
+        increase, r'GCreateNatureInput', 'increase');
+    BuiltValueNullFieldError.checkNotNull(
+        decrease, r'GCreateNatureInput', 'decrease');
+  }
+
+  @override
+  GCreateNatureInput rebuild(
+          void Function(GCreateNatureInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateNatureInputBuilder toBuilder() =>
+      new GCreateNatureInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateNatureInput &&
+        name == other.name &&
+        battleIndex == other.battleIndex &&
+        increase == other.increase &&
+        decrease == other.decrease;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, increase.hashCode);
+    _$hash = $jc(_$hash, decrease.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateNatureInput')
+          ..add('name', name)
+          ..add('battleIndex', battleIndex)
+          ..add('increase', increase)
+          ..add('decrease', decrease))
+        .toString();
+  }
+}
+
+class GCreateNatureInputBuilder
+    implements Builder<GCreateNatureInput, GCreateNatureInputBuilder> {
+  _$GCreateNatureInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  String? _increase;
+  String? get increase => _$this._increase;
+  set increase(String? increase) => _$this._increase = increase;
+
+  String? _decrease;
+  String? get decrease => _$this._decrease;
+  set decrease(String? decrease) => _$this._decrease = decrease;
+
+  GCreateNatureInputBuilder();
+
+  GCreateNatureInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _battleIndex = $v.battleIndex;
+      _increase = $v.increase;
+      _decrease = $v.decrease;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateNatureInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateNatureInput;
+  }
+
+  @override
+  void update(void Function(GCreateNatureInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateNatureInput build() => _build();
+
+  _$GCreateNatureInput _build() {
+    final _$result = _$v ??
+        new _$GCreateNatureInput._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateNatureInput', 'name'),
+            battleIndex: BuiltValueNullFieldError.checkNotNull(
+                battleIndex, r'GCreateNatureInput', 'battleIndex'),
+            increase: BuiltValueNullFieldError.checkNotNull(
+                increase, r'GCreateNatureInput', 'increase'),
+            decrease: BuiltValueNullFieldError.checkNotNull(
+                decrease, r'GCreateNatureInput', 'decrease'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreatePokemonInput extends GCreatePokemonInput {
+  @override
+  final String name;
+  @override
+  final String form;
+  @override
+  final String no;
+  @override
+  final double height;
+  @override
+  final double weight;
+  @override
+  final int statusH;
+  @override
+  final int statusA;
+  @override
+  final int statusB;
+  @override
+  final int statusC;
+  @override
+  final int statusD;
+  @override
+  final int statusS;
+  @override
+  final String base64Image;
+  @override
+  final String url;
+  @override
+  final String battleIndex;
+  @override
+  final String battleFormIndex;
+
+  factory _$GCreatePokemonInput(
+          [void Function(GCreatePokemonInputBuilder)? updates]) =>
+      (new GCreatePokemonInputBuilder()..update(updates))._build();
+
+  _$GCreatePokemonInput._(
+      {required this.name,
+      required this.form,
+      required this.no,
+      required this.height,
+      required this.weight,
+      required this.statusH,
+      required this.statusA,
+      required this.statusB,
+      required this.statusC,
+      required this.statusD,
+      required this.statusS,
+      required this.base64Image,
+      required this.url,
+      required this.battleIndex,
+      required this.battleFormIndex})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'GCreatePokemonInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(form, r'GCreatePokemonInput', 'form');
+    BuiltValueNullFieldError.checkNotNull(no, r'GCreatePokemonInput', 'no');
+    BuiltValueNullFieldError.checkNotNull(
+        height, r'GCreatePokemonInput', 'height');
+    BuiltValueNullFieldError.checkNotNull(
+        weight, r'GCreatePokemonInput', 'weight');
+    BuiltValueNullFieldError.checkNotNull(
+        statusH, r'GCreatePokemonInput', 'statusH');
+    BuiltValueNullFieldError.checkNotNull(
+        statusA, r'GCreatePokemonInput', 'statusA');
+    BuiltValueNullFieldError.checkNotNull(
+        statusB, r'GCreatePokemonInput', 'statusB');
+    BuiltValueNullFieldError.checkNotNull(
+        statusC, r'GCreatePokemonInput', 'statusC');
+    BuiltValueNullFieldError.checkNotNull(
+        statusD, r'GCreatePokemonInput', 'statusD');
+    BuiltValueNullFieldError.checkNotNull(
+        statusS, r'GCreatePokemonInput', 'statusS');
+    BuiltValueNullFieldError.checkNotNull(
+        base64Image, r'GCreatePokemonInput', 'base64Image');
+    BuiltValueNullFieldError.checkNotNull(url, r'GCreatePokemonInput', 'url');
+    BuiltValueNullFieldError.checkNotNull(
+        battleIndex, r'GCreatePokemonInput', 'battleIndex');
+    BuiltValueNullFieldError.checkNotNull(
+        battleFormIndex, r'GCreatePokemonInput', 'battleFormIndex');
+  }
+
+  @override
+  GCreatePokemonInput rebuild(
+          void Function(GCreatePokemonInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreatePokemonInputBuilder toBuilder() =>
+      new GCreatePokemonInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreatePokemonInput &&
+        name == other.name &&
+        form == other.form &&
+        no == other.no &&
+        height == other.height &&
+        weight == other.weight &&
+        statusH == other.statusH &&
+        statusA == other.statusA &&
+        statusB == other.statusB &&
+        statusC == other.statusC &&
+        statusD == other.statusD &&
+        statusS == other.statusS &&
+        base64Image == other.base64Image &&
+        url == other.url &&
+        battleIndex == other.battleIndex &&
+        battleFormIndex == other.battleFormIndex;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, form.hashCode);
+    _$hash = $jc(_$hash, no.hashCode);
+    _$hash = $jc(_$hash, height.hashCode);
+    _$hash = $jc(_$hash, weight.hashCode);
+    _$hash = $jc(_$hash, statusH.hashCode);
+    _$hash = $jc(_$hash, statusA.hashCode);
+    _$hash = $jc(_$hash, statusB.hashCode);
+    _$hash = $jc(_$hash, statusC.hashCode);
+    _$hash = $jc(_$hash, statusD.hashCode);
+    _$hash = $jc(_$hash, statusS.hashCode);
+    _$hash = $jc(_$hash, base64Image.hashCode);
+    _$hash = $jc(_$hash, url.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, battleFormIndex.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreatePokemonInput')
+          ..add('name', name)
+          ..add('form', form)
+          ..add('no', no)
+          ..add('height', height)
+          ..add('weight', weight)
+          ..add('statusH', statusH)
+          ..add('statusA', statusA)
+          ..add('statusB', statusB)
+          ..add('statusC', statusC)
+          ..add('statusD', statusD)
+          ..add('statusS', statusS)
+          ..add('base64Image', base64Image)
+          ..add('url', url)
+          ..add('battleIndex', battleIndex)
+          ..add('battleFormIndex', battleFormIndex))
+        .toString();
+  }
+}
+
+class GCreatePokemonInputBuilder
+    implements Builder<GCreatePokemonInput, GCreatePokemonInputBuilder> {
+  _$GCreatePokemonInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _form;
+  String? get form => _$this._form;
+  set form(String? form) => _$this._form = form;
+
+  String? _no;
+  String? get no => _$this._no;
+  set no(String? no) => _$this._no = no;
+
+  double? _height;
+  double? get height => _$this._height;
+  set height(double? height) => _$this._height = height;
+
+  double? _weight;
+  double? get weight => _$this._weight;
+  set weight(double? weight) => _$this._weight = weight;
+
+  int? _statusH;
+  int? get statusH => _$this._statusH;
+  set statusH(int? statusH) => _$this._statusH = statusH;
+
+  int? _statusA;
+  int? get statusA => _$this._statusA;
+  set statusA(int? statusA) => _$this._statusA = statusA;
+
+  int? _statusB;
+  int? get statusB => _$this._statusB;
+  set statusB(int? statusB) => _$this._statusB = statusB;
+
+  int? _statusC;
+  int? get statusC => _$this._statusC;
+  set statusC(int? statusC) => _$this._statusC = statusC;
+
+  int? _statusD;
+  int? get statusD => _$this._statusD;
+  set statusD(int? statusD) => _$this._statusD = statusD;
+
+  int? _statusS;
+  int? get statusS => _$this._statusS;
+  set statusS(int? statusS) => _$this._statusS = statusS;
+
+  String? _base64Image;
+  String? get base64Image => _$this._base64Image;
+  set base64Image(String? base64Image) => _$this._base64Image = base64Image;
+
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
+
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  String? _battleFormIndex;
+  String? get battleFormIndex => _$this._battleFormIndex;
+  set battleFormIndex(String? battleFormIndex) =>
+      _$this._battleFormIndex = battleFormIndex;
+
+  GCreatePokemonInputBuilder();
+
+  GCreatePokemonInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _form = $v.form;
+      _no = $v.no;
+      _height = $v.height;
+      _weight = $v.weight;
+      _statusH = $v.statusH;
+      _statusA = $v.statusA;
+      _statusB = $v.statusB;
+      _statusC = $v.statusC;
+      _statusD = $v.statusD;
+      _statusS = $v.statusS;
+      _base64Image = $v.base64Image;
+      _url = $v.url;
+      _battleIndex = $v.battleIndex;
+      _battleFormIndex = $v.battleFormIndex;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreatePokemonInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreatePokemonInput;
+  }
+
+  @override
+  void update(void Function(GCreatePokemonInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreatePokemonInput build() => _build();
+
+  _$GCreatePokemonInput _build() {
+    final _$result = _$v ??
+        new _$GCreatePokemonInput._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreatePokemonInput', 'name'),
+            form: BuiltValueNullFieldError.checkNotNull(
+                form, r'GCreatePokemonInput', 'form'),
+            no: BuiltValueNullFieldError.checkNotNull(
+                no, r'GCreatePokemonInput', 'no'),
+            height: BuiltValueNullFieldError.checkNotNull(
+                height, r'GCreatePokemonInput', 'height'),
+            weight: BuiltValueNullFieldError.checkNotNull(
+                weight, r'GCreatePokemonInput', 'weight'),
+            statusH: BuiltValueNullFieldError.checkNotNull(
+                statusH, r'GCreatePokemonInput', 'statusH'),
+            statusA: BuiltValueNullFieldError.checkNotNull(
+                statusA, r'GCreatePokemonInput', 'statusA'),
+            statusB: BuiltValueNullFieldError.checkNotNull(
+                statusB, r'GCreatePokemonInput', 'statusB'),
+            statusC: BuiltValueNullFieldError.checkNotNull(
+                statusC, r'GCreatePokemonInput', 'statusC'),
+            statusD:
+                BuiltValueNullFieldError.checkNotNull(statusD, r'GCreatePokemonInput', 'statusD'),
+            statusS: BuiltValueNullFieldError.checkNotNull(statusS, r'GCreatePokemonInput', 'statusS'),
+            base64Image: BuiltValueNullFieldError.checkNotNull(base64Image, r'GCreatePokemonInput', 'base64Image'),
+            url: BuiltValueNullFieldError.checkNotNull(url, r'GCreatePokemonInput', 'url'),
+            battleIndex: BuiltValueNullFieldError.checkNotNull(battleIndex, r'GCreatePokemonInput', 'battleIndex'),
+            battleFormIndex: BuiltValueNullFieldError.checkNotNull(battleFormIndex, r'GCreatePokemonInput', 'battleFormIndex'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateTypeInput extends GCreateTypeInput {
+  @override
+  final String name;
+  @override
+  final String battleIndex;
+
+  factory _$GCreateTypeInput(
+          [void Function(GCreateTypeInputBuilder)? updates]) =>
+      (new GCreateTypeInputBuilder()..update(updates))._build();
+
+  _$GCreateTypeInput._({required this.name, required this.battleIndex})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'GCreateTypeInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        battleIndex, r'GCreateTypeInput', 'battleIndex');
+  }
+
+  @override
+  GCreateTypeInput rebuild(void Function(GCreateTypeInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateTypeInputBuilder toBuilder() =>
+      new GCreateTypeInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateTypeInput &&
+        name == other.name &&
+        battleIndex == other.battleIndex;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateTypeInput')
+          ..add('name', name)
+          ..add('battleIndex', battleIndex))
+        .toString();
+  }
+}
+
+class GCreateTypeInputBuilder
+    implements Builder<GCreateTypeInput, GCreateTypeInputBuilder> {
+  _$GCreateTypeInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  GCreateTypeInputBuilder();
+
+  GCreateTypeInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _battleIndex = $v.battleIndex;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateTypeInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateTypeInput;
+  }
+
+  @override
+  void update(void Function(GCreateTypeInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateTypeInput build() => _build();
+
+  _$GCreateTypeInput _build() {
+    final _$result = _$v ??
+        new _$GCreateTypeInput._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateTypeInput', 'name'),
+            battleIndex: BuiltValueNullFieldError.checkNotNull(
+                battleIndex, r'GCreateTypeInput', 'battleIndex'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateTypeRelationInput extends GCreateTypeRelationInput {
+  @override
+  final String fromId;
+  @override
+  final String toId;
+  @override
+  final double rate;
+
+  factory _$GCreateTypeRelationInput(
+          [void Function(GCreateTypeRelationInputBuilder)? updates]) =>
+      (new GCreateTypeRelationInputBuilder()..update(updates))._build();
+
+  _$GCreateTypeRelationInput._(
+      {required this.fromId, required this.toId, required this.rate})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        fromId, r'GCreateTypeRelationInput', 'fromId');
+    BuiltValueNullFieldError.checkNotNull(
+        toId, r'GCreateTypeRelationInput', 'toId');
+    BuiltValueNullFieldError.checkNotNull(
+        rate, r'GCreateTypeRelationInput', 'rate');
+  }
+
+  @override
+  GCreateTypeRelationInput rebuild(
+          void Function(GCreateTypeRelationInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateTypeRelationInputBuilder toBuilder() =>
+      new GCreateTypeRelationInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateTypeRelationInput &&
+        fromId == other.fromId &&
+        toId == other.toId &&
+        rate == other.rate;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, fromId.hashCode);
+    _$hash = $jc(_$hash, toId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateTypeRelationInput')
+          ..add('fromId', fromId)
+          ..add('toId', toId)
+          ..add('rate', rate))
+        .toString();
+  }
+}
+
+class GCreateTypeRelationInputBuilder
+    implements
+        Builder<GCreateTypeRelationInput, GCreateTypeRelationInputBuilder> {
+  _$GCreateTypeRelationInput? _$v;
+
+  String? _fromId;
+  String? get fromId => _$this._fromId;
+  set fromId(String? fromId) => _$this._fromId = fromId;
+
+  String? _toId;
+  String? get toId => _$this._toId;
+  set toId(String? toId) => _$this._toId = toId;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  GCreateTypeRelationInputBuilder();
+
+  GCreateTypeRelationInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _fromId = $v.fromId;
+      _toId = $v.toId;
+      _rate = $v.rate;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateTypeRelationInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateTypeRelationInput;
+  }
+
+  @override
+  void update(void Function(GCreateTypeRelationInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateTypeRelationInput build() => _build();
+
+  _$GCreateTypeRelationInput _build() {
+    final _$result = _$v ??
+        new _$GCreateTypeRelationInput._(
+            fromId: BuiltValueNullFieldError.checkNotNull(
+                fromId, r'GCreateTypeRelationInput', 'fromId'),
+            toId: BuiltValueNullFieldError.checkNotNull(
+                toId, r'GCreateTypeRelationInput', 'toId'),
+            rate: BuiltValueNullFieldError.checkNotNull(
+                rate, r'GCreateTypeRelationInput', 'rate'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateUserInput extends GCreateUserInput {
+  @override
+  final String name;
+  @override
+  final GDateTime createdUserAt;
+  @override
+  final GDateTime updatedUserAt;
+  @override
+  final GDateTime? deletedUserAt;
+
+  factory _$GCreateUserInput(
+          [void Function(GCreateUserInputBuilder)? updates]) =>
+      (new GCreateUserInputBuilder()..update(updates))._build();
+
+  _$GCreateUserInput._(
+      {required this.name,
+      required this.createdUserAt,
+      required this.updatedUserAt,
+      this.deletedUserAt})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'GCreateUserInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        createdUserAt, r'GCreateUserInput', 'createdUserAt');
+    BuiltValueNullFieldError.checkNotNull(
+        updatedUserAt, r'GCreateUserInput', 'updatedUserAt');
+  }
+
+  @override
+  GCreateUserInput rebuild(void Function(GCreateUserInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateUserInputBuilder toBuilder() =>
+      new GCreateUserInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateUserInput &&
+        name == other.name &&
+        createdUserAt == other.createdUserAt &&
+        updatedUserAt == other.updatedUserAt &&
+        deletedUserAt == other.deletedUserAt;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, createdUserAt.hashCode);
+    _$hash = $jc(_$hash, updatedUserAt.hashCode);
+    _$hash = $jc(_$hash, deletedUserAt.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateUserInput')
+          ..add('name', name)
+          ..add('createdUserAt', createdUserAt)
+          ..add('updatedUserAt', updatedUserAt)
+          ..add('deletedUserAt', deletedUserAt))
+        .toString();
+  }
+}
+
+class GCreateUserInputBuilder
+    implements Builder<GCreateUserInput, GCreateUserInputBuilder> {
+  _$GCreateUserInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GDateTimeBuilder? _createdUserAt;
+  GDateTimeBuilder get createdUserAt =>
+      _$this._createdUserAt ??= new GDateTimeBuilder();
+  set createdUserAt(GDateTimeBuilder? createdUserAt) =>
+      _$this._createdUserAt = createdUserAt;
+
+  GDateTimeBuilder? _updatedUserAt;
+  GDateTimeBuilder get updatedUserAt =>
+      _$this._updatedUserAt ??= new GDateTimeBuilder();
+  set updatedUserAt(GDateTimeBuilder? updatedUserAt) =>
+      _$this._updatedUserAt = updatedUserAt;
+
+  GDateTimeBuilder? _deletedUserAt;
+  GDateTimeBuilder get deletedUserAt =>
+      _$this._deletedUserAt ??= new GDateTimeBuilder();
+  set deletedUserAt(GDateTimeBuilder? deletedUserAt) =>
+      _$this._deletedUserAt = deletedUserAt;
+
+  GCreateUserInputBuilder();
+
+  GCreateUserInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _createdUserAt = $v.createdUserAt.toBuilder();
+      _updatedUserAt = $v.updatedUserAt.toBuilder();
+      _deletedUserAt = $v.deletedUserAt?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateUserInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateUserInput;
+  }
+
+  @override
+  void update(void Function(GCreateUserInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateUserInput build() => _build();
+
+  _$GCreateUserInput _build() {
+    _$GCreateUserInput _$result;
+    try {
+      _$result = _$v ??
+          new _$GCreateUserInput._(
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, r'GCreateUserInput', 'name'),
+              createdUserAt: createdUserAt.build(),
+              updatedUserAt: updatedUserAt.build(),
+              deletedUserAt: _deletedUserAt?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'createdUserAt';
+        createdUserAt.build();
+        _$failedField = 'updatedUserAt';
+        updatedUserAt.build();
+        _$failedField = 'deletedUserAt';
+        _deletedUserAt?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GCreateUserInput', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDate extends GDate {
+  @override
+  final String value;
+
+  factory _$GDate([void Function(GDateBuilder)? updates]) =>
+      (new GDateBuilder()..update(updates))._build();
+
+  _$GDate._({required this.value}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(value, r'GDate', 'value');
+  }
+
+  @override
+  GDate rebuild(void Function(GDateBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GDateBuilder toBuilder() => new GDateBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDate && value == other.value;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GDate')..add('value', value))
+        .toString();
+  }
+}
+
+class GDateBuilder implements Builder<GDate, GDateBuilder> {
+  _$GDate? _$v;
+
+  String? _value;
+  String? get value => _$this._value;
+  set value(String? value) => _$this._value = value;
+
+  GDateBuilder();
+
+  GDateBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _value = $v.value;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDate other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GDate;
+  }
+
+  @override
+  void update(void Function(GDateBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDate build() => _build();
+
+  _$GDate _build() {
+    final _$result = _$v ??
+        new _$GDate._(
+            value: BuiltValueNullFieldError.checkNotNull(
+                value, r'GDate', 'value'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDateTime extends GDateTime {
+  @override
+  final String value;
+
+  factory _$GDateTime([void Function(GDateTimeBuilder)? updates]) =>
+      (new GDateTimeBuilder()..update(updates))._build();
+
+  _$GDateTime._({required this.value}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(value, r'GDateTime', 'value');
+  }
+
+  @override
+  GDateTime rebuild(void Function(GDateTimeBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GDateTimeBuilder toBuilder() => new GDateTimeBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDateTime && value == other.value;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GDateTime')..add('value', value))
+        .toString();
+  }
+}
+
+class GDateTimeBuilder implements Builder<GDateTime, GDateTimeBuilder> {
+  _$GDateTime? _$v;
+
+  String? _value;
+  String? get value => _$this._value;
+  set value(String? value) => _$this._value = value;
+
+  GDateTimeBuilder();
+
+  GDateTimeBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _value = $v.value;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDateTime other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GDateTime;
+  }
+
+  @override
+  void update(void Function(GDateTimeBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDateTime build() => _build();
+
+  _$GDateTime _build() {
+    final _$result = _$v ??
+        new _$GDateTime._(
+            value: BuiltValueNullFieldError.checkNotNull(
+                value, r'GDateTime', 'value'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GJSON extends GJSON {
+  @override
+  final String value;
+
+  factory _$GJSON([void Function(GJSONBuilder)? updates]) =>
+      (new GJSONBuilder()..update(updates))._build();
+
+  _$GJSON._({required this.value}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(value, r'GJSON', 'value');
+  }
+
+  @override
+  GJSON rebuild(void Function(GJSONBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GJSONBuilder toBuilder() => new GJSONBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GJSON && value == other.value;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GJSON')..add('value', value))
+        .toString();
+  }
+}
+
+class GJSONBuilder implements Builder<GJSON, GJSONBuilder> {
+  _$GJSON? _$v;
+
+  String? _value;
+  String? get value => _$this._value;
+  set value(String? value) => _$this._value = value;
+
+  GJSONBuilder();
+
+  GJSONBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _value = $v.value;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GJSON other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GJSON;
+  }
+
+  @override
+  void update(void Function(GJSONBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GJSON build() => _build();
+
+  _$GJSON _build() {
+    final _$result = _$v ??
+        new _$GJSON._(
+            value: BuiltValueNullFieldError.checkNotNull(
+                value, r'GJSON', 'value'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GJSONObject extends GJSONObject {
+  @override
+  final String value;
+
+  factory _$GJSONObject([void Function(GJSONObjectBuilder)? updates]) =>
+      (new GJSONObjectBuilder()..update(updates))._build();
+
+  _$GJSONObject._({required this.value}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(value, r'GJSONObject', 'value');
+  }
+
+  @override
+  GJSONObject rebuild(void Function(GJSONObjectBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GJSONObjectBuilder toBuilder() => new GJSONObjectBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GJSONObject && value == other.value;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GJSONObject')..add('value', value))
+        .toString();
+  }
+}
+
+class GJSONObjectBuilder implements Builder<GJSONObject, GJSONObjectBuilder> {
+  _$GJSONObject? _$v;
+
+  String? _value;
+  String? get value => _$this._value;
+  set value(String? value) => _$this._value = value;
+
+  GJSONObjectBuilder();
+
+  GJSONObjectBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _value = $v.value;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GJSONObject other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GJSONObject;
+  }
+
+  @override
+  void update(void Function(GJSONObjectBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GJSONObject build() => _build();
+
+  _$GJSONObject _build() {
+    final _$result = _$v ??
+        new _$GJSONObject._(
+            value: BuiltValueNullFieldError.checkNotNull(
+                value, r'GJSONObject', 'value'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GTime extends GTime {
+  @override
+  final String value;
+
+  factory _$GTime([void Function(GTimeBuilder)? updates]) =>
+      (new GTimeBuilder()..update(updates))._build();
+
+  _$GTime._({required this.value}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(value, r'GTime', 'value');
+  }
+
+  @override
+  GTime rebuild(void Function(GTimeBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GTimeBuilder toBuilder() => new GTimeBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GTime && value == other.value;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GTime')..add('value', value))
+        .toString();
+  }
+}
+
+class GTimeBuilder implements Builder<GTime, GTimeBuilder> {
+  _$GTime? _$v;
+
+  String? _value;
+  String? get value => _$this._value;
+  set value(String? value) => _$this._value = value;
+
+  GTimeBuilder();
+
+  GTimeBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _value = $v.value;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GTime other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GTime;
+  }
+
+  @override
+  void update(void Function(GTimeBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GTime build() => _build();
+
+  _$GTime _build() {
+    final _$result = _$v ??
+        new _$GTime._(
+            value: BuiltValueNullFieldError.checkNotNull(
+                value, r'GTime', 'value'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateAbilityInput extends GUpdateAbilityInput {
+  @override
+  final String? name;
+  @override
+  final String? detail;
+  @override
+  final String? battleIndex;
+
+  factory _$GUpdateAbilityInput(
+          [void Function(GUpdateAbilityInputBuilder)? updates]) =>
+      (new GUpdateAbilityInputBuilder()..update(updates))._build();
+
+  _$GUpdateAbilityInput._({this.name, this.detail, this.battleIndex})
+      : super._();
+
+  @override
+  GUpdateAbilityInput rebuild(
+          void Function(GUpdateAbilityInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateAbilityInputBuilder toBuilder() =>
+      new GUpdateAbilityInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateAbilityInput &&
+        name == other.name &&
+        detail == other.detail &&
+        battleIndex == other.battleIndex;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, detail.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateAbilityInput')
+          ..add('name', name)
+          ..add('detail', detail)
+          ..add('battleIndex', battleIndex))
+        .toString();
+  }
+}
+
+class GUpdateAbilityInputBuilder
+    implements Builder<GUpdateAbilityInput, GUpdateAbilityInputBuilder> {
+  _$GUpdateAbilityInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _detail;
+  String? get detail => _$this._detail;
+  set detail(String? detail) => _$this._detail = detail;
+
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  GUpdateAbilityInputBuilder();
+
+  GUpdateAbilityInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _detail = $v.detail;
+      _battleIndex = $v.battleIndex;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateAbilityInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateAbilityInput;
+  }
+
+  @override
+  void update(void Function(GUpdateAbilityInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateAbilityInput build() => _build();
+
+  _$GUpdateAbilityInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateAbilityInput._(
+            name: name, detail: detail, battleIndex: battleIndex);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateAttackTypeInput extends GUpdateAttackTypeInput {
+  @override
+  final String? name;
+
+  factory _$GUpdateAttackTypeInput(
+          [void Function(GUpdateAttackTypeInputBuilder)? updates]) =>
+      (new GUpdateAttackTypeInputBuilder()..update(updates))._build();
+
+  _$GUpdateAttackTypeInput._({this.name}) : super._();
+
+  @override
+  GUpdateAttackTypeInput rebuild(
+          void Function(GUpdateAttackTypeInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateAttackTypeInputBuilder toBuilder() =>
+      new GUpdateAttackTypeInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateAttackTypeInput && name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateAttackTypeInput')
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GUpdateAttackTypeInputBuilder
+    implements Builder<GUpdateAttackTypeInput, GUpdateAttackTypeInputBuilder> {
+  _$GUpdateAttackTypeInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GUpdateAttackTypeInputBuilder();
+
+  GUpdateAttackTypeInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateAttackTypeInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateAttackTypeInput;
+  }
+
+  @override
+  void update(void Function(GUpdateAttackTypeInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateAttackTypeInput build() => _build();
+
+  _$GUpdateAttackTypeInput _build() {
+    final _$result = _$v ?? new _$GUpdateAttackTypeInput._(name: name);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateBattleDataAbilityInput extends GUpdateBattleDataAbilityInput {
+  @override
+  final String? abilityId;
+  @override
+  final double? rate;
+  @override
+  final String? battleDataId;
+
+  factory _$GUpdateBattleDataAbilityInput(
+          [void Function(GUpdateBattleDataAbilityInputBuilder)? updates]) =>
+      (new GUpdateBattleDataAbilityInputBuilder()..update(updates))._build();
+
+  _$GUpdateBattleDataAbilityInput._(
+      {this.abilityId, this.rate, this.battleDataId})
+      : super._();
+
+  @override
+  GUpdateBattleDataAbilityInput rebuild(
+          void Function(GUpdateBattleDataAbilityInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateBattleDataAbilityInputBuilder toBuilder() =>
+      new GUpdateBattleDataAbilityInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateBattleDataAbilityInput &&
+        abilityId == other.abilityId &&
+        rate == other.rate &&
+        battleDataId == other.battleDataId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, abilityId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jc(_$hash, battleDataId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateBattleDataAbilityInput')
+          ..add('abilityId', abilityId)
+          ..add('rate', rate)
+          ..add('battleDataId', battleDataId))
+        .toString();
+  }
+}
+
+class GUpdateBattleDataAbilityInputBuilder
+    implements
+        Builder<GUpdateBattleDataAbilityInput,
+            GUpdateBattleDataAbilityInputBuilder> {
+  _$GUpdateBattleDataAbilityInput? _$v;
+
+  String? _abilityId;
+  String? get abilityId => _$this._abilityId;
+  set abilityId(String? abilityId) => _$this._abilityId = abilityId;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  String? _battleDataId;
+  String? get battleDataId => _$this._battleDataId;
+  set battleDataId(String? battleDataId) => _$this._battleDataId = battleDataId;
+
+  GUpdateBattleDataAbilityInputBuilder();
+
+  GUpdateBattleDataAbilityInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _abilityId = $v.abilityId;
+      _rate = $v.rate;
+      _battleDataId = $v.battleDataId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateBattleDataAbilityInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateBattleDataAbilityInput;
+  }
+
+  @override
+  void update(void Function(GUpdateBattleDataAbilityInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateBattleDataAbilityInput build() => _build();
+
+  _$GUpdateBattleDataAbilityInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateBattleDataAbilityInput._(
+            abilityId: abilityId, rate: rate, battleDataId: battleDataId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateBattleDataInput extends GUpdateBattleDataInput {
+  @override
+  final String? battleIndexId;
+  @override
+  final String? pokemonId;
+  @override
+  final String? no;
+  @override
+  final int? rank;
+  @override
+  final String? formId;
+
+  factory _$GUpdateBattleDataInput(
+          [void Function(GUpdateBattleDataInputBuilder)? updates]) =>
+      (new GUpdateBattleDataInputBuilder()..update(updates))._build();
+
+  _$GUpdateBattleDataInput._(
+      {this.battleIndexId, this.pokemonId, this.no, this.rank, this.formId})
+      : super._();
+
+  @override
+  GUpdateBattleDataInput rebuild(
+          void Function(GUpdateBattleDataInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateBattleDataInputBuilder toBuilder() =>
+      new GUpdateBattleDataInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateBattleDataInput &&
+        battleIndexId == other.battleIndexId &&
+        pokemonId == other.pokemonId &&
+        no == other.no &&
+        rank == other.rank &&
+        formId == other.formId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, battleIndexId.hashCode);
+    _$hash = $jc(_$hash, pokemonId.hashCode);
+    _$hash = $jc(_$hash, no.hashCode);
+    _$hash = $jc(_$hash, rank.hashCode);
+    _$hash = $jc(_$hash, formId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateBattleDataInput')
+          ..add('battleIndexId', battleIndexId)
+          ..add('pokemonId', pokemonId)
+          ..add('no', no)
+          ..add('rank', rank)
+          ..add('formId', formId))
+        .toString();
+  }
+}
+
+class GUpdateBattleDataInputBuilder
+    implements Builder<GUpdateBattleDataInput, GUpdateBattleDataInputBuilder> {
+  _$GUpdateBattleDataInput? _$v;
+
+  String? _battleIndexId;
+  String? get battleIndexId => _$this._battleIndexId;
+  set battleIndexId(String? battleIndexId) =>
+      _$this._battleIndexId = battleIndexId;
+
+  String? _pokemonId;
+  String? get pokemonId => _$this._pokemonId;
+  set pokemonId(String? pokemonId) => _$this._pokemonId = pokemonId;
+
+  String? _no;
+  String? get no => _$this._no;
+  set no(String? no) => _$this._no = no;
+
+  int? _rank;
+  int? get rank => _$this._rank;
+  set rank(int? rank) => _$this._rank = rank;
+
+  String? _formId;
+  String? get formId => _$this._formId;
+  set formId(String? formId) => _$this._formId = formId;
+
+  GUpdateBattleDataInputBuilder();
+
+  GUpdateBattleDataInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _battleIndexId = $v.battleIndexId;
+      _pokemonId = $v.pokemonId;
+      _no = $v.no;
+      _rank = $v.rank;
+      _formId = $v.formId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateBattleDataInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateBattleDataInput;
+  }
+
+  @override
+  void update(void Function(GUpdateBattleDataInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateBattleDataInput build() => _build();
+
+  _$GUpdateBattleDataInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateBattleDataInput._(
+            battleIndexId: battleIndexId,
+            pokemonId: pokemonId,
+            no: no,
+            rank: rank,
+            formId: formId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateBattleDataItemInput extends GUpdateBattleDataItemInput {
+  @override
+  final String? itemId;
+  @override
+  final double? rate;
+  @override
+  final String? battleDataId;
+
+  factory _$GUpdateBattleDataItemInput(
+          [void Function(GUpdateBattleDataItemInputBuilder)? updates]) =>
+      (new GUpdateBattleDataItemInputBuilder()..update(updates))._build();
+
+  _$GUpdateBattleDataItemInput._({this.itemId, this.rate, this.battleDataId})
+      : super._();
+
+  @override
+  GUpdateBattleDataItemInput rebuild(
+          void Function(GUpdateBattleDataItemInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateBattleDataItemInputBuilder toBuilder() =>
+      new GUpdateBattleDataItemInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateBattleDataItemInput &&
+        itemId == other.itemId &&
+        rate == other.rate &&
+        battleDataId == other.battleDataId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, itemId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jc(_$hash, battleDataId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateBattleDataItemInput')
+          ..add('itemId', itemId)
+          ..add('rate', rate)
+          ..add('battleDataId', battleDataId))
+        .toString();
+  }
+}
+
+class GUpdateBattleDataItemInputBuilder
+    implements
+        Builder<GUpdateBattleDataItemInput, GUpdateBattleDataItemInputBuilder> {
+  _$GUpdateBattleDataItemInput? _$v;
+
+  String? _itemId;
+  String? get itemId => _$this._itemId;
+  set itemId(String? itemId) => _$this._itemId = itemId;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  String? _battleDataId;
+  String? get battleDataId => _$this._battleDataId;
+  set battleDataId(String? battleDataId) => _$this._battleDataId = battleDataId;
+
+  GUpdateBattleDataItemInputBuilder();
+
+  GUpdateBattleDataItemInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _itemId = $v.itemId;
+      _rate = $v.rate;
+      _battleDataId = $v.battleDataId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateBattleDataItemInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateBattleDataItemInput;
+  }
+
+  @override
+  void update(void Function(GUpdateBattleDataItemInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateBattleDataItemInput build() => _build();
+
+  _$GUpdateBattleDataItemInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateBattleDataItemInput._(
+            itemId: itemId, rate: rate, battleDataId: battleDataId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateBattleDataMoveInput extends GUpdateBattleDataMoveInput {
+  @override
+  final String? moveId;
+  @override
+  final double? rate;
+  @override
+  final String? battleDataId;
+
+  factory _$GUpdateBattleDataMoveInput(
+          [void Function(GUpdateBattleDataMoveInputBuilder)? updates]) =>
+      (new GUpdateBattleDataMoveInputBuilder()..update(updates))._build();
+
+  _$GUpdateBattleDataMoveInput._({this.moveId, this.rate, this.battleDataId})
+      : super._();
+
+  @override
+  GUpdateBattleDataMoveInput rebuild(
+          void Function(GUpdateBattleDataMoveInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateBattleDataMoveInputBuilder toBuilder() =>
+      new GUpdateBattleDataMoveInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateBattleDataMoveInput &&
+        moveId == other.moveId &&
+        rate == other.rate &&
+        battleDataId == other.battleDataId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, moveId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jc(_$hash, battleDataId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateBattleDataMoveInput')
+          ..add('moveId', moveId)
+          ..add('rate', rate)
+          ..add('battleDataId', battleDataId))
+        .toString();
+  }
+}
+
+class GUpdateBattleDataMoveInputBuilder
+    implements
+        Builder<GUpdateBattleDataMoveInput, GUpdateBattleDataMoveInputBuilder> {
+  _$GUpdateBattleDataMoveInput? _$v;
+
+  String? _moveId;
+  String? get moveId => _$this._moveId;
+  set moveId(String? moveId) => _$this._moveId = moveId;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  String? _battleDataId;
+  String? get battleDataId => _$this._battleDataId;
+  set battleDataId(String? battleDataId) => _$this._battleDataId = battleDataId;
+
+  GUpdateBattleDataMoveInputBuilder();
+
+  GUpdateBattleDataMoveInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _moveId = $v.moveId;
+      _rate = $v.rate;
+      _battleDataId = $v.battleDataId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateBattleDataMoveInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateBattleDataMoveInput;
+  }
+
+  @override
+  void update(void Function(GUpdateBattleDataMoveInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateBattleDataMoveInput build() => _build();
+
+  _$GUpdateBattleDataMoveInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateBattleDataMoveInput._(
+            moveId: moveId, rate: rate, battleDataId: battleDataId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateBattleDataNatureInput extends GUpdateBattleDataNatureInput {
+  @override
+  final String? natureId;
+  @override
+  final double? rate;
+  @override
+  final String? battleDataId;
+
+  factory _$GUpdateBattleDataNatureInput(
+          [void Function(GUpdateBattleDataNatureInputBuilder)? updates]) =>
+      (new GUpdateBattleDataNatureInputBuilder()..update(updates))._build();
+
+  _$GUpdateBattleDataNatureInput._(
+      {this.natureId, this.rate, this.battleDataId})
+      : super._();
+
+  @override
+  GUpdateBattleDataNatureInput rebuild(
+          void Function(GUpdateBattleDataNatureInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateBattleDataNatureInputBuilder toBuilder() =>
+      new GUpdateBattleDataNatureInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateBattleDataNatureInput &&
+        natureId == other.natureId &&
+        rate == other.rate &&
+        battleDataId == other.battleDataId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, natureId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jc(_$hash, battleDataId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateBattleDataNatureInput')
+          ..add('natureId', natureId)
+          ..add('rate', rate)
+          ..add('battleDataId', battleDataId))
+        .toString();
+  }
+}
+
+class GUpdateBattleDataNatureInputBuilder
+    implements
+        Builder<GUpdateBattleDataNatureInput,
+            GUpdateBattleDataNatureInputBuilder> {
+  _$GUpdateBattleDataNatureInput? _$v;
+
+  String? _natureId;
+  String? get natureId => _$this._natureId;
+  set natureId(String? natureId) => _$this._natureId = natureId;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  String? _battleDataId;
+  String? get battleDataId => _$this._battleDataId;
+  set battleDataId(String? battleDataId) => _$this._battleDataId = battleDataId;
+
+  GUpdateBattleDataNatureInputBuilder();
+
+  GUpdateBattleDataNatureInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _natureId = $v.natureId;
+      _rate = $v.rate;
+      _battleDataId = $v.battleDataId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateBattleDataNatureInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateBattleDataNatureInput;
+  }
+
+  @override
+  void update(void Function(GUpdateBattleDataNatureInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateBattleDataNatureInput build() => _build();
+
+  _$GUpdateBattleDataNatureInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateBattleDataNatureInput._(
+            natureId: natureId, rate: rate, battleDataId: battleDataId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateBattleDataTerastalInput extends GUpdateBattleDataTerastalInput {
+  @override
+  final String? typeId;
+  @override
+  final double? rate;
+  @override
+  final String? battleDataId;
+
+  factory _$GUpdateBattleDataTerastalInput(
+          [void Function(GUpdateBattleDataTerastalInputBuilder)? updates]) =>
+      (new GUpdateBattleDataTerastalInputBuilder()..update(updates))._build();
+
+  _$GUpdateBattleDataTerastalInput._(
+      {this.typeId, this.rate, this.battleDataId})
+      : super._();
+
+  @override
+  GUpdateBattleDataTerastalInput rebuild(
+          void Function(GUpdateBattleDataTerastalInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateBattleDataTerastalInputBuilder toBuilder() =>
+      new GUpdateBattleDataTerastalInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateBattleDataTerastalInput &&
+        typeId == other.typeId &&
+        rate == other.rate &&
+        battleDataId == other.battleDataId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, typeId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jc(_$hash, battleDataId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateBattleDataTerastalInput')
+          ..add('typeId', typeId)
+          ..add('rate', rate)
+          ..add('battleDataId', battleDataId))
+        .toString();
+  }
+}
+
+class GUpdateBattleDataTerastalInputBuilder
+    implements
+        Builder<GUpdateBattleDataTerastalInput,
+            GUpdateBattleDataTerastalInputBuilder> {
+  _$GUpdateBattleDataTerastalInput? _$v;
+
+  String? _typeId;
+  String? get typeId => _$this._typeId;
+  set typeId(String? typeId) => _$this._typeId = typeId;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  String? _battleDataId;
+  String? get battleDataId => _$this._battleDataId;
+  set battleDataId(String? battleDataId) => _$this._battleDataId = battleDataId;
+
+  GUpdateBattleDataTerastalInputBuilder();
+
+  GUpdateBattleDataTerastalInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _typeId = $v.typeId;
+      _rate = $v.rate;
+      _battleDataId = $v.battleDataId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateBattleDataTerastalInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateBattleDataTerastalInput;
+  }
+
+  @override
+  void update(void Function(GUpdateBattleDataTerastalInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateBattleDataTerastalInput build() => _build();
+
+  _$GUpdateBattleDataTerastalInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateBattleDataTerastalInput._(
+            typeId: typeId, rate: rate, battleDataId: battleDataId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateBattleIndexInput extends GUpdateBattleIndexInput {
+  @override
+  final GDateTime? capturedAt;
+  @override
+  final GDateTime? startAt;
+  @override
+  final GDateTime? endAt;
+  @override
+  final String? name;
+
+  factory _$GUpdateBattleIndexInput(
+          [void Function(GUpdateBattleIndexInputBuilder)? updates]) =>
+      (new GUpdateBattleIndexInputBuilder()..update(updates))._build();
+
+  _$GUpdateBattleIndexInput._(
+      {this.capturedAt, this.startAt, this.endAt, this.name})
+      : super._();
+
+  @override
+  GUpdateBattleIndexInput rebuild(
+          void Function(GUpdateBattleIndexInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateBattleIndexInputBuilder toBuilder() =>
+      new GUpdateBattleIndexInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateBattleIndexInput &&
+        capturedAt == other.capturedAt &&
+        startAt == other.startAt &&
+        endAt == other.endAt &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, capturedAt.hashCode);
+    _$hash = $jc(_$hash, startAt.hashCode);
+    _$hash = $jc(_$hash, endAt.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateBattleIndexInput')
+          ..add('capturedAt', capturedAt)
+          ..add('startAt', startAt)
+          ..add('endAt', endAt)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GUpdateBattleIndexInputBuilder
+    implements
+        Builder<GUpdateBattleIndexInput, GUpdateBattleIndexInputBuilder> {
+  _$GUpdateBattleIndexInput? _$v;
+
+  GDateTimeBuilder? _capturedAt;
+  GDateTimeBuilder get capturedAt =>
+      _$this._capturedAt ??= new GDateTimeBuilder();
+  set capturedAt(GDateTimeBuilder? capturedAt) =>
+      _$this._capturedAt = capturedAt;
+
+  GDateTimeBuilder? _startAt;
+  GDateTimeBuilder get startAt => _$this._startAt ??= new GDateTimeBuilder();
+  set startAt(GDateTimeBuilder? startAt) => _$this._startAt = startAt;
+
+  GDateTimeBuilder? _endAt;
+  GDateTimeBuilder get endAt => _$this._endAt ??= new GDateTimeBuilder();
+  set endAt(GDateTimeBuilder? endAt) => _$this._endAt = endAt;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GUpdateBattleIndexInputBuilder();
+
+  GUpdateBattleIndexInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _capturedAt = $v.capturedAt?.toBuilder();
+      _startAt = $v.startAt?.toBuilder();
+      _endAt = $v.endAt?.toBuilder();
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateBattleIndexInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateBattleIndexInput;
+  }
+
+  @override
+  void update(void Function(GUpdateBattleIndexInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateBattleIndexInput build() => _build();
+
+  _$GUpdateBattleIndexInput _build() {
+    _$GUpdateBattleIndexInput _$result;
+    try {
+      _$result = _$v ??
+          new _$GUpdateBattleIndexInput._(
+              capturedAt: _capturedAt?.build(),
+              startAt: _startAt?.build(),
+              endAt: _endAt?.build(),
+              name: name);
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'capturedAt';
+        _capturedAt?.build();
+        _$failedField = 'startAt';
+        _startAt?.build();
+        _$failedField = 'endAt';
+        _endAt?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GUpdateBattleIndexInput', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateFormInput extends GUpdateFormInput {
+  @override
+  final String? no;
+  @override
+  final String? formType;
+  @override
+  final String? formType2;
+  @override
+  final String? name;
+
+  factory _$GUpdateFormInput(
+          [void Function(GUpdateFormInputBuilder)? updates]) =>
+      (new GUpdateFormInputBuilder()..update(updates))._build();
+
+  _$GUpdateFormInput._({this.no, this.formType, this.formType2, this.name})
+      : super._();
+
+  @override
+  GUpdateFormInput rebuild(void Function(GUpdateFormInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateFormInputBuilder toBuilder() =>
+      new GUpdateFormInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateFormInput &&
+        no == other.no &&
+        formType == other.formType &&
+        formType2 == other.formType2 &&
+        name == other.name;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, no.hashCode);
+    _$hash = $jc(_$hash, formType.hashCode);
+    _$hash = $jc(_$hash, formType2.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateFormInput')
+          ..add('no', no)
+          ..add('formType', formType)
+          ..add('formType2', formType2)
+          ..add('name', name))
+        .toString();
+  }
+}
+
+class GUpdateFormInputBuilder
+    implements Builder<GUpdateFormInput, GUpdateFormInputBuilder> {
+  _$GUpdateFormInput? _$v;
+
+  String? _no;
+  String? get no => _$this._no;
+  set no(String? no) => _$this._no = no;
+
+  String? _formType;
+  String? get formType => _$this._formType;
+  set formType(String? formType) => _$this._formType = formType;
+
+  String? _formType2;
+  String? get formType2 => _$this._formType2;
+  set formType2(String? formType2) => _$this._formType2 = formType2;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GUpdateFormInputBuilder();
+
+  GUpdateFormInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _no = $v.no;
+      _formType = $v.formType;
+      _formType2 = $v.formType2;
+      _name = $v.name;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateFormInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateFormInput;
+  }
+
+  @override
+  void update(void Function(GUpdateFormInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateFormInput build() => _build();
+
+  _$GUpdateFormInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateFormInput._(
+            no: no, formType: formType, formType2: formType2, name: name);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateItemInput extends GUpdateItemInput {
+  @override
+  final String? name;
+  @override
+  final String? detail;
+  @override
+  final String? battleIndex;
+  @override
+  final String? base64Image;
+
+  factory _$GUpdateItemInput(
+          [void Function(GUpdateItemInputBuilder)? updates]) =>
+      (new GUpdateItemInputBuilder()..update(updates))._build();
+
+  _$GUpdateItemInput._(
+      {this.name, this.detail, this.battleIndex, this.base64Image})
+      : super._();
+
+  @override
+  GUpdateItemInput rebuild(void Function(GUpdateItemInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateItemInputBuilder toBuilder() =>
+      new GUpdateItemInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateItemInput &&
+        name == other.name &&
+        detail == other.detail &&
+        battleIndex == other.battleIndex &&
+        base64Image == other.base64Image;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, detail.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, base64Image.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateItemInput')
+          ..add('name', name)
+          ..add('detail', detail)
+          ..add('battleIndex', battleIndex)
+          ..add('base64Image', base64Image))
+        .toString();
+  }
+}
+
+class GUpdateItemInputBuilder
+    implements Builder<GUpdateItemInput, GUpdateItemInputBuilder> {
+  _$GUpdateItemInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _detail;
+  String? get detail => _$this._detail;
+  set detail(String? detail) => _$this._detail = detail;
+
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  String? _base64Image;
+  String? get base64Image => _$this._base64Image;
+  set base64Image(String? base64Image) => _$this._base64Image = base64Image;
+
+  GUpdateItemInputBuilder();
+
+  GUpdateItemInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _detail = $v.detail;
+      _battleIndex = $v.battleIndex;
+      _base64Image = $v.base64Image;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateItemInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateItemInput;
+  }
+
+  @override
+  void update(void Function(GUpdateItemInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateItemInput build() => _build();
+
+  _$GUpdateItemInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateItemInput._(
+            name: name,
+            detail: detail,
+            battleIndex: battleIndex,
+            base64Image: base64Image);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateMoveInput extends GUpdateMoveInput {
+  @override
+  final String? target;
+  @override
+  final String? detail;
+  @override
+  final String? name;
+  @override
+  final String? typeId;
+  @override
+  final String? attackTypeId;
+  @override
+  final int? power;
+  @override
+  final int? accuracy;
+  @override
+  final int? pp;
+  @override
+  final bool? isTouchable;
+  @override
+  final bool? enableProtect;
+  @override
+  final String? battleIndex;
+
+  factory _$GUpdateMoveInput(
+          [void Function(GUpdateMoveInputBuilder)? updates]) =>
+      (new GUpdateMoveInputBuilder()..update(updates))._build();
+
+  _$GUpdateMoveInput._(
+      {this.target,
+      this.detail,
+      this.name,
+      this.typeId,
+      this.attackTypeId,
+      this.power,
+      this.accuracy,
+      this.pp,
+      this.isTouchable,
+      this.enableProtect,
+      this.battleIndex})
+      : super._();
+
+  @override
+  GUpdateMoveInput rebuild(void Function(GUpdateMoveInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateMoveInputBuilder toBuilder() =>
+      new GUpdateMoveInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateMoveInput &&
+        target == other.target &&
+        detail == other.detail &&
+        name == other.name &&
+        typeId == other.typeId &&
+        attackTypeId == other.attackTypeId &&
+        power == other.power &&
+        accuracy == other.accuracy &&
+        pp == other.pp &&
+        isTouchable == other.isTouchable &&
+        enableProtect == other.enableProtect &&
+        battleIndex == other.battleIndex;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, target.hashCode);
+    _$hash = $jc(_$hash, detail.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, typeId.hashCode);
+    _$hash = $jc(_$hash, attackTypeId.hashCode);
+    _$hash = $jc(_$hash, power.hashCode);
+    _$hash = $jc(_$hash, accuracy.hashCode);
+    _$hash = $jc(_$hash, pp.hashCode);
+    _$hash = $jc(_$hash, isTouchable.hashCode);
+    _$hash = $jc(_$hash, enableProtect.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateMoveInput')
+          ..add('target', target)
+          ..add('detail', detail)
+          ..add('name', name)
+          ..add('typeId', typeId)
+          ..add('attackTypeId', attackTypeId)
+          ..add('power', power)
+          ..add('accuracy', accuracy)
+          ..add('pp', pp)
+          ..add('isTouchable', isTouchable)
+          ..add('enableProtect', enableProtect)
+          ..add('battleIndex', battleIndex))
+        .toString();
+  }
+}
+
+class GUpdateMoveInputBuilder
+    implements Builder<GUpdateMoveInput, GUpdateMoveInputBuilder> {
+  _$GUpdateMoveInput? _$v;
+
+  String? _target;
+  String? get target => _$this._target;
+  set target(String? target) => _$this._target = target;
+
+  String? _detail;
+  String? get detail => _$this._detail;
+  set detail(String? detail) => _$this._detail = detail;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _typeId;
+  String? get typeId => _$this._typeId;
+  set typeId(String? typeId) => _$this._typeId = typeId;
+
+  String? _attackTypeId;
+  String? get attackTypeId => _$this._attackTypeId;
+  set attackTypeId(String? attackTypeId) => _$this._attackTypeId = attackTypeId;
+
+  int? _power;
+  int? get power => _$this._power;
+  set power(int? power) => _$this._power = power;
+
+  int? _accuracy;
+  int? get accuracy => _$this._accuracy;
+  set accuracy(int? accuracy) => _$this._accuracy = accuracy;
+
+  int? _pp;
+  int? get pp => _$this._pp;
+  set pp(int? pp) => _$this._pp = pp;
+
+  bool? _isTouchable;
+  bool? get isTouchable => _$this._isTouchable;
+  set isTouchable(bool? isTouchable) => _$this._isTouchable = isTouchable;
+
+  bool? _enableProtect;
+  bool? get enableProtect => _$this._enableProtect;
+  set enableProtect(bool? enableProtect) =>
+      _$this._enableProtect = enableProtect;
+
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  GUpdateMoveInputBuilder();
+
+  GUpdateMoveInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _target = $v.target;
+      _detail = $v.detail;
+      _name = $v.name;
+      _typeId = $v.typeId;
+      _attackTypeId = $v.attackTypeId;
+      _power = $v.power;
+      _accuracy = $v.accuracy;
+      _pp = $v.pp;
+      _isTouchable = $v.isTouchable;
+      _enableProtect = $v.enableProtect;
+      _battleIndex = $v.battleIndex;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateMoveInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateMoveInput;
+  }
+
+  @override
+  void update(void Function(GUpdateMoveInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateMoveInput build() => _build();
+
+  _$GUpdateMoveInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateMoveInput._(
+            target: target,
+            detail: detail,
+            name: name,
+            typeId: typeId,
+            attackTypeId: attackTypeId,
+            power: power,
+            accuracy: accuracy,
+            pp: pp,
+            isTouchable: isTouchable,
+            enableProtect: enableProtect,
+            battleIndex: battleIndex);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateMyPartyInput extends GUpdateMyPartyInput {
+  @override
+  final String? name;
+  @override
+  final bool? favorite;
+  @override
+  final String? memo;
+  @override
+  final String? userId;
+
+  factory _$GUpdateMyPartyInput(
+          [void Function(GUpdateMyPartyInputBuilder)? updates]) =>
+      (new GUpdateMyPartyInputBuilder()..update(updates))._build();
+
+  _$GUpdateMyPartyInput._({this.name, this.favorite, this.memo, this.userId})
+      : super._();
+
+  @override
+  GUpdateMyPartyInput rebuild(
+          void Function(GUpdateMyPartyInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateMyPartyInputBuilder toBuilder() =>
+      new GUpdateMyPartyInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateMyPartyInput &&
+        name == other.name &&
+        favorite == other.favorite &&
+        memo == other.memo &&
+        userId == other.userId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateMyPartyInput')
+          ..add('name', name)
+          ..add('favorite', favorite)
+          ..add('memo', memo)
+          ..add('userId', userId))
+        .toString();
+  }
+}
+
+class GUpdateMyPartyInputBuilder
+    implements Builder<GUpdateMyPartyInput, GUpdateMyPartyInputBuilder> {
+  _$GUpdateMyPartyInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  GUpdateMyPartyInputBuilder();
+
+  GUpdateMyPartyInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _favorite = $v.favorite;
+      _memo = $v.memo;
+      _userId = $v.userId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateMyPartyInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateMyPartyInput;
+  }
+
+  @override
+  void update(void Function(GUpdateMyPartyInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateMyPartyInput build() => _build();
+
+  _$GUpdateMyPartyInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateMyPartyInput._(
+            name: name, favorite: favorite, memo: memo, userId: userId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateMyPartyTagInput extends GUpdateMyPartyTagInput {
+  @override
+  final String? name;
+  @override
+  final bool? favorite;
+  @override
+  final String? memo;
+  @override
+  final String? userId;
+
+  factory _$GUpdateMyPartyTagInput(
+          [void Function(GUpdateMyPartyTagInputBuilder)? updates]) =>
+      (new GUpdateMyPartyTagInputBuilder()..update(updates))._build();
+
+  _$GUpdateMyPartyTagInput._({this.name, this.favorite, this.memo, this.userId})
+      : super._();
+
+  @override
+  GUpdateMyPartyTagInput rebuild(
+          void Function(GUpdateMyPartyTagInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateMyPartyTagInputBuilder toBuilder() =>
+      new GUpdateMyPartyTagInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateMyPartyTagInput &&
+        name == other.name &&
+        favorite == other.favorite &&
+        memo == other.memo &&
+        userId == other.userId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateMyPartyTagInput')
+          ..add('name', name)
+          ..add('favorite', favorite)
+          ..add('memo', memo)
+          ..add('userId', userId))
+        .toString();
+  }
+}
+
+class GUpdateMyPartyTagInputBuilder
+    implements Builder<GUpdateMyPartyTagInput, GUpdateMyPartyTagInputBuilder> {
+  _$GUpdateMyPartyTagInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  GUpdateMyPartyTagInputBuilder();
+
+  GUpdateMyPartyTagInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _favorite = $v.favorite;
+      _memo = $v.memo;
+      _userId = $v.userId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateMyPartyTagInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateMyPartyTagInput;
+  }
+
+  @override
+  void update(void Function(GUpdateMyPartyTagInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateMyPartyTagInput build() => _build();
+
+  _$GUpdateMyPartyTagInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateMyPartyTagInput._(
+            name: name, favorite: favorite, memo: memo, userId: userId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateMyPokemonInput extends GUpdateMyPokemonInput {
+  @override
+  final String? name;
+  @override
+  final bool? favorite;
+  @override
+  final int? evH;
+  @override
+  final int? evA;
+  @override
+  final int? evB;
+  @override
+  final int? evC;
+  @override
+  final int? evD;
+  @override
+  final int? evS;
+  @override
+  final String? memo;
+  @override
+  final String? pokemonId;
+  @override
+  final String? itemId;
+  @override
+  final String? abilityId;
+  @override
+  final String? natureId;
+  @override
+  final String? terastalId;
+  @override
+  final String? userId;
+
+  factory _$GUpdateMyPokemonInput(
+          [void Function(GUpdateMyPokemonInputBuilder)? updates]) =>
+      (new GUpdateMyPokemonInputBuilder()..update(updates))._build();
+
+  _$GUpdateMyPokemonInput._(
+      {this.name,
+      this.favorite,
+      this.evH,
+      this.evA,
+      this.evB,
+      this.evC,
+      this.evD,
+      this.evS,
+      this.memo,
+      this.pokemonId,
+      this.itemId,
+      this.abilityId,
+      this.natureId,
+      this.terastalId,
+      this.userId})
+      : super._();
+
+  @override
+  GUpdateMyPokemonInput rebuild(
+          void Function(GUpdateMyPokemonInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateMyPokemonInputBuilder toBuilder() =>
+      new GUpdateMyPokemonInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateMyPokemonInput &&
+        name == other.name &&
+        favorite == other.favorite &&
+        evH == other.evH &&
+        evA == other.evA &&
+        evB == other.evB &&
+        evC == other.evC &&
+        evD == other.evD &&
+        evS == other.evS &&
+        memo == other.memo &&
+        pokemonId == other.pokemonId &&
+        itemId == other.itemId &&
+        abilityId == other.abilityId &&
+        natureId == other.natureId &&
+        terastalId == other.terastalId &&
+        userId == other.userId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jc(_$hash, evH.hashCode);
+    _$hash = $jc(_$hash, evA.hashCode);
+    _$hash = $jc(_$hash, evB.hashCode);
+    _$hash = $jc(_$hash, evC.hashCode);
+    _$hash = $jc(_$hash, evD.hashCode);
+    _$hash = $jc(_$hash, evS.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, pokemonId.hashCode);
+    _$hash = $jc(_$hash, itemId.hashCode);
+    _$hash = $jc(_$hash, abilityId.hashCode);
+    _$hash = $jc(_$hash, natureId.hashCode);
+    _$hash = $jc(_$hash, terastalId.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateMyPokemonInput')
+          ..add('name', name)
+          ..add('favorite', favorite)
+          ..add('evH', evH)
+          ..add('evA', evA)
+          ..add('evB', evB)
+          ..add('evC', evC)
+          ..add('evD', evD)
+          ..add('evS', evS)
+          ..add('memo', memo)
+          ..add('pokemonId', pokemonId)
+          ..add('itemId', itemId)
+          ..add('abilityId', abilityId)
+          ..add('natureId', natureId)
+          ..add('terastalId', terastalId)
+          ..add('userId', userId))
+        .toString();
+  }
+}
+
+class GUpdateMyPokemonInputBuilder
+    implements Builder<GUpdateMyPokemonInput, GUpdateMyPokemonInputBuilder> {
+  _$GUpdateMyPokemonInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  int? _evH;
+  int? get evH => _$this._evH;
+  set evH(int? evH) => _$this._evH = evH;
+
+  int? _evA;
+  int? get evA => _$this._evA;
+  set evA(int? evA) => _$this._evA = evA;
+
+  int? _evB;
+  int? get evB => _$this._evB;
+  set evB(int? evB) => _$this._evB = evB;
+
+  int? _evC;
+  int? get evC => _$this._evC;
+  set evC(int? evC) => _$this._evC = evC;
+
+  int? _evD;
+  int? get evD => _$this._evD;
+  set evD(int? evD) => _$this._evD = evD;
+
+  int? _evS;
+  int? get evS => _$this._evS;
+  set evS(int? evS) => _$this._evS = evS;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  String? _pokemonId;
+  String? get pokemonId => _$this._pokemonId;
+  set pokemonId(String? pokemonId) => _$this._pokemonId = pokemonId;
+
+  String? _itemId;
+  String? get itemId => _$this._itemId;
+  set itemId(String? itemId) => _$this._itemId = itemId;
+
+  String? _abilityId;
+  String? get abilityId => _$this._abilityId;
+  set abilityId(String? abilityId) => _$this._abilityId = abilityId;
+
+  String? _natureId;
+  String? get natureId => _$this._natureId;
+  set natureId(String? natureId) => _$this._natureId = natureId;
+
+  String? _terastalId;
+  String? get terastalId => _$this._terastalId;
+  set terastalId(String? terastalId) => _$this._terastalId = terastalId;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  GUpdateMyPokemonInputBuilder();
+
+  GUpdateMyPokemonInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _favorite = $v.favorite;
+      _evH = $v.evH;
+      _evA = $v.evA;
+      _evB = $v.evB;
+      _evC = $v.evC;
+      _evD = $v.evD;
+      _evS = $v.evS;
+      _memo = $v.memo;
+      _pokemonId = $v.pokemonId;
+      _itemId = $v.itemId;
+      _abilityId = $v.abilityId;
+      _natureId = $v.natureId;
+      _terastalId = $v.terastalId;
+      _userId = $v.userId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateMyPokemonInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateMyPokemonInput;
+  }
+
+  @override
+  void update(void Function(GUpdateMyPokemonInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateMyPokemonInput build() => _build();
+
+  _$GUpdateMyPokemonInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateMyPokemonInput._(
+            name: name,
+            favorite: favorite,
+            evH: evH,
+            evA: evA,
+            evB: evB,
+            evC: evC,
+            evD: evD,
+            evS: evS,
+            memo: memo,
+            pokemonId: pokemonId,
+            itemId: itemId,
+            abilityId: abilityId,
+            natureId: natureId,
+            terastalId: terastalId,
+            userId: userId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateMyPokemonTagInput extends GUpdateMyPokemonTagInput {
+  @override
+  final String? name;
+  @override
+  final bool? favorite;
+  @override
+  final String? memo;
+  @override
+  final String? userId;
+
+  factory _$GUpdateMyPokemonTagInput(
+          [void Function(GUpdateMyPokemonTagInputBuilder)? updates]) =>
+      (new GUpdateMyPokemonTagInputBuilder()..update(updates))._build();
+
+  _$GUpdateMyPokemonTagInput._(
+      {this.name, this.favorite, this.memo, this.userId})
+      : super._();
+
+  @override
+  GUpdateMyPokemonTagInput rebuild(
+          void Function(GUpdateMyPokemonTagInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateMyPokemonTagInputBuilder toBuilder() =>
+      new GUpdateMyPokemonTagInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateMyPokemonTagInput &&
+        name == other.name &&
+        favorite == other.favorite &&
+        memo == other.memo &&
+        userId == other.userId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateMyPokemonTagInput')
+          ..add('name', name)
+          ..add('favorite', favorite)
+          ..add('memo', memo)
+          ..add('userId', userId))
+        .toString();
+  }
+}
+
+class GUpdateMyPokemonTagInputBuilder
+    implements
+        Builder<GUpdateMyPokemonTagInput, GUpdateMyPokemonTagInputBuilder> {
+  _$GUpdateMyPokemonTagInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  GUpdateMyPokemonTagInputBuilder();
+
+  GUpdateMyPokemonTagInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _favorite = $v.favorite;
+      _memo = $v.memo;
+      _userId = $v.userId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateMyPokemonTagInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateMyPokemonTagInput;
+  }
+
+  @override
+  void update(void Function(GUpdateMyPokemonTagInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateMyPokemonTagInput build() => _build();
+
+  _$GUpdateMyPokemonTagInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateMyPokemonTagInput._(
+            name: name, favorite: favorite, memo: memo, userId: userId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateNatureInput extends GUpdateNatureInput {
+  @override
+  final String? name;
+  @override
+  final String? battleIndex;
+  @override
+  final String? increase;
+  @override
+  final String? decrease;
+
+  factory _$GUpdateNatureInput(
+          [void Function(GUpdateNatureInputBuilder)? updates]) =>
+      (new GUpdateNatureInputBuilder()..update(updates))._build();
+
+  _$GUpdateNatureInput._(
+      {this.name, this.battleIndex, this.increase, this.decrease})
+      : super._();
+
+  @override
+  GUpdateNatureInput rebuild(
+          void Function(GUpdateNatureInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateNatureInputBuilder toBuilder() =>
+      new GUpdateNatureInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateNatureInput &&
+        name == other.name &&
+        battleIndex == other.battleIndex &&
+        increase == other.increase &&
+        decrease == other.decrease;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, increase.hashCode);
+    _$hash = $jc(_$hash, decrease.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateNatureInput')
+          ..add('name', name)
+          ..add('battleIndex', battleIndex)
+          ..add('increase', increase)
+          ..add('decrease', decrease))
+        .toString();
+  }
+}
+
+class GUpdateNatureInputBuilder
+    implements Builder<GUpdateNatureInput, GUpdateNatureInputBuilder> {
+  _$GUpdateNatureInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  String? _increase;
+  String? get increase => _$this._increase;
+  set increase(String? increase) => _$this._increase = increase;
+
+  String? _decrease;
+  String? get decrease => _$this._decrease;
+  set decrease(String? decrease) => _$this._decrease = decrease;
+
+  GUpdateNatureInputBuilder();
+
+  GUpdateNatureInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _battleIndex = $v.battleIndex;
+      _increase = $v.increase;
+      _decrease = $v.decrease;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateNatureInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateNatureInput;
+  }
+
+  @override
+  void update(void Function(GUpdateNatureInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateNatureInput build() => _build();
+
+  _$GUpdateNatureInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateNatureInput._(
+            name: name,
+            battleIndex: battleIndex,
+            increase: increase,
+            decrease: decrease);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdatePokemonInput extends GUpdatePokemonInput {
+  @override
+  final String? name;
+  @override
+  final String? form;
+  @override
+  final String? no;
+  @override
+  final double? height;
+  @override
+  final double? weight;
+  @override
+  final int? statusH;
+  @override
+  final int? statusA;
+  @override
+  final int? statusB;
+  @override
+  final int? statusC;
+  @override
+  final int? statusD;
+  @override
+  final int? statusS;
+  @override
+  final String? base64Image;
+  @override
+  final String? url;
+  @override
+  final String? battleIndex;
+  @override
+  final String? battleFormIndex;
+
+  factory _$GUpdatePokemonInput(
+          [void Function(GUpdatePokemonInputBuilder)? updates]) =>
+      (new GUpdatePokemonInputBuilder()..update(updates))._build();
+
+  _$GUpdatePokemonInput._(
+      {this.name,
+      this.form,
+      this.no,
+      this.height,
+      this.weight,
+      this.statusH,
+      this.statusA,
+      this.statusB,
+      this.statusC,
+      this.statusD,
+      this.statusS,
+      this.base64Image,
+      this.url,
+      this.battleIndex,
+      this.battleFormIndex})
+      : super._();
+
+  @override
+  GUpdatePokemonInput rebuild(
+          void Function(GUpdatePokemonInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdatePokemonInputBuilder toBuilder() =>
+      new GUpdatePokemonInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdatePokemonInput &&
+        name == other.name &&
+        form == other.form &&
+        no == other.no &&
+        height == other.height &&
+        weight == other.weight &&
+        statusH == other.statusH &&
+        statusA == other.statusA &&
+        statusB == other.statusB &&
+        statusC == other.statusC &&
+        statusD == other.statusD &&
+        statusS == other.statusS &&
+        base64Image == other.base64Image &&
+        url == other.url &&
+        battleIndex == other.battleIndex &&
+        battleFormIndex == other.battleFormIndex;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, form.hashCode);
+    _$hash = $jc(_$hash, no.hashCode);
+    _$hash = $jc(_$hash, height.hashCode);
+    _$hash = $jc(_$hash, weight.hashCode);
+    _$hash = $jc(_$hash, statusH.hashCode);
+    _$hash = $jc(_$hash, statusA.hashCode);
+    _$hash = $jc(_$hash, statusB.hashCode);
+    _$hash = $jc(_$hash, statusC.hashCode);
+    _$hash = $jc(_$hash, statusD.hashCode);
+    _$hash = $jc(_$hash, statusS.hashCode);
+    _$hash = $jc(_$hash, base64Image.hashCode);
+    _$hash = $jc(_$hash, url.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, battleFormIndex.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdatePokemonInput')
+          ..add('name', name)
+          ..add('form', form)
+          ..add('no', no)
+          ..add('height', height)
+          ..add('weight', weight)
+          ..add('statusH', statusH)
+          ..add('statusA', statusA)
+          ..add('statusB', statusB)
+          ..add('statusC', statusC)
+          ..add('statusD', statusD)
+          ..add('statusS', statusS)
+          ..add('base64Image', base64Image)
+          ..add('url', url)
+          ..add('battleIndex', battleIndex)
+          ..add('battleFormIndex', battleFormIndex))
+        .toString();
+  }
+}
+
+class GUpdatePokemonInputBuilder
+    implements Builder<GUpdatePokemonInput, GUpdatePokemonInputBuilder> {
+  _$GUpdatePokemonInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _form;
+  String? get form => _$this._form;
+  set form(String? form) => _$this._form = form;
+
+  String? _no;
+  String? get no => _$this._no;
+  set no(String? no) => _$this._no = no;
+
+  double? _height;
+  double? get height => _$this._height;
+  set height(double? height) => _$this._height = height;
+
+  double? _weight;
+  double? get weight => _$this._weight;
+  set weight(double? weight) => _$this._weight = weight;
+
+  int? _statusH;
+  int? get statusH => _$this._statusH;
+  set statusH(int? statusH) => _$this._statusH = statusH;
+
+  int? _statusA;
+  int? get statusA => _$this._statusA;
+  set statusA(int? statusA) => _$this._statusA = statusA;
+
+  int? _statusB;
+  int? get statusB => _$this._statusB;
+  set statusB(int? statusB) => _$this._statusB = statusB;
+
+  int? _statusC;
+  int? get statusC => _$this._statusC;
+  set statusC(int? statusC) => _$this._statusC = statusC;
+
+  int? _statusD;
+  int? get statusD => _$this._statusD;
+  set statusD(int? statusD) => _$this._statusD = statusD;
+
+  int? _statusS;
+  int? get statusS => _$this._statusS;
+  set statusS(int? statusS) => _$this._statusS = statusS;
+
+  String? _base64Image;
+  String? get base64Image => _$this._base64Image;
+  set base64Image(String? base64Image) => _$this._base64Image = base64Image;
+
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
+
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  String? _battleFormIndex;
+  String? get battleFormIndex => _$this._battleFormIndex;
+  set battleFormIndex(String? battleFormIndex) =>
+      _$this._battleFormIndex = battleFormIndex;
+
+  GUpdatePokemonInputBuilder();
+
+  GUpdatePokemonInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _form = $v.form;
+      _no = $v.no;
+      _height = $v.height;
+      _weight = $v.weight;
+      _statusH = $v.statusH;
+      _statusA = $v.statusA;
+      _statusB = $v.statusB;
+      _statusC = $v.statusC;
+      _statusD = $v.statusD;
+      _statusS = $v.statusS;
+      _base64Image = $v.base64Image;
+      _url = $v.url;
+      _battleIndex = $v.battleIndex;
+      _battleFormIndex = $v.battleFormIndex;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdatePokemonInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdatePokemonInput;
+  }
+
+  @override
+  void update(void Function(GUpdatePokemonInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdatePokemonInput build() => _build();
+
+  _$GUpdatePokemonInput _build() {
+    final _$result = _$v ??
+        new _$GUpdatePokemonInput._(
+            name: name,
+            form: form,
+            no: no,
+            height: height,
+            weight: weight,
+            statusH: statusH,
+            statusA: statusA,
+            statusB: statusB,
+            statusC: statusC,
+            statusD: statusD,
+            statusS: statusS,
+            base64Image: base64Image,
+            url: url,
+            battleIndex: battleIndex,
+            battleFormIndex: battleFormIndex);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateTypeInput extends GUpdateTypeInput {
+  @override
+  final String? name;
+  @override
+  final String? battleIndex;
+
+  factory _$GUpdateTypeInput(
+          [void Function(GUpdateTypeInputBuilder)? updates]) =>
+      (new GUpdateTypeInputBuilder()..update(updates))._build();
+
+  _$GUpdateTypeInput._({this.name, this.battleIndex}) : super._();
+
+  @override
+  GUpdateTypeInput rebuild(void Function(GUpdateTypeInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateTypeInputBuilder toBuilder() =>
+      new GUpdateTypeInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateTypeInput &&
+        name == other.name &&
+        battleIndex == other.battleIndex;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateTypeInput')
+          ..add('name', name)
+          ..add('battleIndex', battleIndex))
+        .toString();
+  }
+}
+
+class GUpdateTypeInputBuilder
+    implements Builder<GUpdateTypeInput, GUpdateTypeInputBuilder> {
+  _$GUpdateTypeInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  GUpdateTypeInputBuilder();
+
+  GUpdateTypeInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _battleIndex = $v.battleIndex;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateTypeInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateTypeInput;
+  }
+
+  @override
+  void update(void Function(GUpdateTypeInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateTypeInput build() => _build();
+
+  _$GUpdateTypeInput _build() {
+    final _$result =
+        _$v ?? new _$GUpdateTypeInput._(name: name, battleIndex: battleIndex);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateTypeRelationInput extends GUpdateTypeRelationInput {
+  @override
+  final String? fromId;
+  @override
+  final String? toId;
+  @override
+  final double? rate;
+
+  factory _$GUpdateTypeRelationInput(
+          [void Function(GUpdateTypeRelationInputBuilder)? updates]) =>
+      (new GUpdateTypeRelationInputBuilder()..update(updates))._build();
+
+  _$GUpdateTypeRelationInput._({this.fromId, this.toId, this.rate}) : super._();
+
+  @override
+  GUpdateTypeRelationInput rebuild(
+          void Function(GUpdateTypeRelationInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateTypeRelationInputBuilder toBuilder() =>
+      new GUpdateTypeRelationInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateTypeRelationInput &&
+        fromId == other.fromId &&
+        toId == other.toId &&
+        rate == other.rate;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, fromId.hashCode);
+    _$hash = $jc(_$hash, toId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateTypeRelationInput')
+          ..add('fromId', fromId)
+          ..add('toId', toId)
+          ..add('rate', rate))
+        .toString();
+  }
+}
+
+class GUpdateTypeRelationInputBuilder
+    implements
+        Builder<GUpdateTypeRelationInput, GUpdateTypeRelationInputBuilder> {
+  _$GUpdateTypeRelationInput? _$v;
+
+  String? _fromId;
+  String? get fromId => _$this._fromId;
+  set fromId(String? fromId) => _$this._fromId = fromId;
+
+  String? _toId;
+  String? get toId => _$this._toId;
+  set toId(String? toId) => _$this._toId = toId;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  GUpdateTypeRelationInputBuilder();
+
+  GUpdateTypeRelationInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _fromId = $v.fromId;
+      _toId = $v.toId;
+      _rate = $v.rate;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateTypeRelationInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateTypeRelationInput;
+  }
+
+  @override
+  void update(void Function(GUpdateTypeRelationInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateTypeRelationInput build() => _build();
+
+  _$GUpdateTypeRelationInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateTypeRelationInput._(
+            fromId: fromId, toId: toId, rate: rate);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateUserInput extends GUpdateUserInput {
+  @override
+  final String? name;
+  @override
+  final GDateTime? createdUserAt;
+  @override
+  final GDateTime? updatedUserAt;
+  @override
+  final GDateTime? deletedUserAt;
+
+  factory _$GUpdateUserInput(
+          [void Function(GUpdateUserInputBuilder)? updates]) =>
+      (new GUpdateUserInputBuilder()..update(updates))._build();
+
+  _$GUpdateUserInput._(
+      {this.name, this.createdUserAt, this.updatedUserAt, this.deletedUserAt})
+      : super._();
+
+  @override
+  GUpdateUserInput rebuild(void Function(GUpdateUserInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateUserInputBuilder toBuilder() =>
+      new GUpdateUserInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateUserInput &&
+        name == other.name &&
+        createdUserAt == other.createdUserAt &&
+        updatedUserAt == other.updatedUserAt &&
+        deletedUserAt == other.deletedUserAt;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, createdUserAt.hashCode);
+    _$hash = $jc(_$hash, updatedUserAt.hashCode);
+    _$hash = $jc(_$hash, deletedUserAt.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateUserInput')
+          ..add('name', name)
+          ..add('createdUserAt', createdUserAt)
+          ..add('updatedUserAt', updatedUserAt)
+          ..add('deletedUserAt', deletedUserAt))
+        .toString();
+  }
+}
+
+class GUpdateUserInputBuilder
+    implements Builder<GUpdateUserInput, GUpdateUserInputBuilder> {
+  _$GUpdateUserInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  GDateTimeBuilder? _createdUserAt;
+  GDateTimeBuilder get createdUserAt =>
+      _$this._createdUserAt ??= new GDateTimeBuilder();
+  set createdUserAt(GDateTimeBuilder? createdUserAt) =>
+      _$this._createdUserAt = createdUserAt;
+
+  GDateTimeBuilder? _updatedUserAt;
+  GDateTimeBuilder get updatedUserAt =>
+      _$this._updatedUserAt ??= new GDateTimeBuilder();
+  set updatedUserAt(GDateTimeBuilder? updatedUserAt) =>
+      _$this._updatedUserAt = updatedUserAt;
+
+  GDateTimeBuilder? _deletedUserAt;
+  GDateTimeBuilder get deletedUserAt =>
+      _$this._deletedUserAt ??= new GDateTimeBuilder();
+  set deletedUserAt(GDateTimeBuilder? deletedUserAt) =>
+      _$this._deletedUserAt = deletedUserAt;
+
+  GUpdateUserInputBuilder();
+
+  GUpdateUserInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _createdUserAt = $v.createdUserAt?.toBuilder();
+      _updatedUserAt = $v.updatedUserAt?.toBuilder();
+      _deletedUserAt = $v.deletedUserAt?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateUserInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateUserInput;
+  }
+
+  @override
+  void update(void Function(GUpdateUserInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateUserInput build() => _build();
+
+  _$GUpdateUserInput _build() {
+    _$GUpdateUserInput _$result;
+    try {
+      _$result = _$v ??
+          new _$GUpdateUserInput._(
+              name: name,
+              createdUserAt: _createdUserAt?.build(),
+              updatedUserAt: _updatedUserAt?.build(),
+              deletedUserAt: _deletedUserAt?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'createdUserAt';
+        _createdUserAt?.build();
+        _$failedField = 'updatedUserAt';
+        _updatedUserAt?.build();
+        _$failedField = 'deletedUserAt';
+        _deletedUserAt?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GUpdateUserInput', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

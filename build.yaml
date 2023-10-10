@@ -5,9 +5,6 @@ targets:
         enabled: true
         options:
           schema: burger_sauce|lib/graphql/schema.graphql
-          when_extensions:
-            when: true
-            maybeWhen: true
       ferry_generator|serializer_builder:
         enabled: true
         options:
