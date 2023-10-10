@@ -721,6 +721,9 @@ class _$GCreateItemInputSerializer
       'base64Image',
       serializers.serialize(object.base64Image,
           specifiedType: const FullType(String)),
+      'imageUrl',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -752,6 +755,10 @@ class _$GCreateItemInputSerializer
           break;
         case 'base64Image':
           result.base64Image = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -1326,6 +1333,9 @@ class _$GCreatePokemonInputSerializer
       'base64Image',
       serializers.serialize(object.base64Image,
           specifiedType: const FullType(String)),
+      'imageUrl',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
       'battleIndex',
@@ -1397,6 +1407,10 @@ class _$GCreatePokemonInputSerializer
           break;
         case 'base64Image':
           result.base64Image = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'url':
@@ -2327,7 +2341,11 @@ class _$GUpdateItemInputSerializer
   @override
   Iterable<Object?> serialize(Serializers serializers, GUpdateItemInput object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
+    final result = <Object?>[
+      'imageUrl',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
+    ];
     Object? value;
     value = object.name;
     if (value != null) {
@@ -2387,6 +2405,10 @@ class _$GUpdateItemInputSerializer
         case 'base64Image':
           result.base64Image = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -3083,7 +3105,11 @@ class _$GUpdatePokemonInputSerializer
   Iterable<Object?> serialize(
       Serializers serializers, GUpdatePokemonInput object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
+    final result = <Object?>[
+      'imageUrl',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
+    ];
     Object? value;
     value = object.name;
     if (value != null) {
@@ -3246,6 +3272,10 @@ class _$GUpdatePokemonInputSerializer
         case 'base64Image':
           result.base64Image = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
@@ -4794,6 +4824,8 @@ class _$GCreateItemInput extends GCreateItemInput {
   final String battleIndex;
   @override
   final String base64Image;
+  @override
+  final String imageUrl;
 
   factory _$GCreateItemInput(
           [void Function(GCreateItemInputBuilder)? updates]) =>
@@ -4803,7 +4835,8 @@ class _$GCreateItemInput extends GCreateItemInput {
       {required this.name,
       required this.detail,
       required this.battleIndex,
-      required this.base64Image})
+      required this.base64Image,
+      required this.imageUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(name, r'GCreateItemInput', 'name');
     BuiltValueNullFieldError.checkNotNull(
@@ -4812,6 +4845,8 @@ class _$GCreateItemInput extends GCreateItemInput {
         battleIndex, r'GCreateItemInput', 'battleIndex');
     BuiltValueNullFieldError.checkNotNull(
         base64Image, r'GCreateItemInput', 'base64Image');
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl, r'GCreateItemInput', 'imageUrl');
   }
 
   @override
@@ -4829,7 +4864,8 @@ class _$GCreateItemInput extends GCreateItemInput {
         name == other.name &&
         detail == other.detail &&
         battleIndex == other.battleIndex &&
-        base64Image == other.base64Image;
+        base64Image == other.base64Image &&
+        imageUrl == other.imageUrl;
   }
 
   @override
@@ -4839,6 +4875,7 @@ class _$GCreateItemInput extends GCreateItemInput {
     _$hash = $jc(_$hash, detail.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
     _$hash = $jc(_$hash, base64Image.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -4849,7 +4886,8 @@ class _$GCreateItemInput extends GCreateItemInput {
           ..add('name', name)
           ..add('detail', detail)
           ..add('battleIndex', battleIndex)
-          ..add('base64Image', base64Image))
+          ..add('base64Image', base64Image)
+          ..add('imageUrl', imageUrl))
         .toString();
   }
 }
@@ -4874,6 +4912,10 @@ class GCreateItemInputBuilder
   String? get base64Image => _$this._base64Image;
   set base64Image(String? base64Image) => _$this._base64Image = base64Image;
 
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
   GCreateItemInputBuilder();
 
   GCreateItemInputBuilder get _$this {
@@ -4883,6 +4925,7 @@ class GCreateItemInputBuilder
       _detail = $v.detail;
       _battleIndex = $v.battleIndex;
       _base64Image = $v.base64Image;
+      _imageUrl = $v.imageUrl;
       _$v = null;
     }
     return this;
@@ -4912,7 +4955,9 @@ class GCreateItemInputBuilder
             battleIndex: BuiltValueNullFieldError.checkNotNull(
                 battleIndex, r'GCreateItemInput', 'battleIndex'),
             base64Image: BuiltValueNullFieldError.checkNotNull(
-                base64Image, r'GCreateItemInput', 'base64Image'));
+                base64Image, r'GCreateItemInput', 'base64Image'),
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, r'GCreateItemInput', 'imageUrl'));
     replace(_$result);
     return _$result;
   }
@@ -5995,6 +6040,8 @@ class _$GCreatePokemonInput extends GCreatePokemonInput {
   @override
   final String base64Image;
   @override
+  final String imageUrl;
+  @override
   final String url;
   @override
   final String battleIndex;
@@ -6018,6 +6065,7 @@ class _$GCreatePokemonInput extends GCreatePokemonInput {
       required this.statusD,
       required this.statusS,
       required this.base64Image,
+      required this.imageUrl,
       required this.url,
       required this.battleIndex,
       required this.battleFormIndex})
@@ -6043,6 +6091,8 @@ class _$GCreatePokemonInput extends GCreatePokemonInput {
         statusS, r'GCreatePokemonInput', 'statusS');
     BuiltValueNullFieldError.checkNotNull(
         base64Image, r'GCreatePokemonInput', 'base64Image');
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl, r'GCreatePokemonInput', 'imageUrl');
     BuiltValueNullFieldError.checkNotNull(url, r'GCreatePokemonInput', 'url');
     BuiltValueNullFieldError.checkNotNull(
         battleIndex, r'GCreatePokemonInput', 'battleIndex');
@@ -6075,6 +6125,7 @@ class _$GCreatePokemonInput extends GCreatePokemonInput {
         statusD == other.statusD &&
         statusS == other.statusS &&
         base64Image == other.base64Image &&
+        imageUrl == other.imageUrl &&
         url == other.url &&
         battleIndex == other.battleIndex &&
         battleFormIndex == other.battleFormIndex;
@@ -6095,6 +6146,7 @@ class _$GCreatePokemonInput extends GCreatePokemonInput {
     _$hash = $jc(_$hash, statusD.hashCode);
     _$hash = $jc(_$hash, statusS.hashCode);
     _$hash = $jc(_$hash, base64Image.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jc(_$hash, url.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
     _$hash = $jc(_$hash, battleFormIndex.hashCode);
@@ -6117,6 +6169,7 @@ class _$GCreatePokemonInput extends GCreatePokemonInput {
           ..add('statusD', statusD)
           ..add('statusS', statusS)
           ..add('base64Image', base64Image)
+          ..add('imageUrl', imageUrl)
           ..add('url', url)
           ..add('battleIndex', battleIndex)
           ..add('battleFormIndex', battleFormIndex))
@@ -6176,6 +6229,10 @@ class GCreatePokemonInputBuilder
   String? get base64Image => _$this._base64Image;
   set base64Image(String? base64Image) => _$this._base64Image = base64Image;
 
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
   String? _url;
   String? get url => _$this._url;
   set url(String? url) => _$this._url = url;
@@ -6206,6 +6263,7 @@ class GCreatePokemonInputBuilder
       _statusD = $v.statusD;
       _statusS = $v.statusS;
       _base64Image = $v.base64Image;
+      _imageUrl = $v.imageUrl;
       _url = $v.url;
       _battleIndex = $v.battleIndex;
       _battleFormIndex = $v.battleFormIndex;
@@ -6249,10 +6307,10 @@ class GCreatePokemonInputBuilder
                 statusB, r'GCreatePokemonInput', 'statusB'),
             statusC: BuiltValueNullFieldError.checkNotNull(
                 statusC, r'GCreatePokemonInput', 'statusC'),
-            statusD:
-                BuiltValueNullFieldError.checkNotNull(statusD, r'GCreatePokemonInput', 'statusD'),
+            statusD: BuiltValueNullFieldError.checkNotNull(statusD, r'GCreatePokemonInput', 'statusD'),
             statusS: BuiltValueNullFieldError.checkNotNull(statusS, r'GCreatePokemonInput', 'statusS'),
             base64Image: BuiltValueNullFieldError.checkNotNull(base64Image, r'GCreatePokemonInput', 'base64Image'),
+            imageUrl: BuiltValueNullFieldError.checkNotNull(imageUrl, r'GCreatePokemonInput', 'imageUrl'),
             url: BuiltValueNullFieldError.checkNotNull(url, r'GCreatePokemonInput', 'url'),
             battleIndex: BuiltValueNullFieldError.checkNotNull(battleIndex, r'GCreatePokemonInput', 'battleIndex'),
             battleFormIndex: BuiltValueNullFieldError.checkNotNull(battleFormIndex, r'GCreatePokemonInput', 'battleFormIndex'));
@@ -8152,14 +8210,23 @@ class _$GUpdateItemInput extends GUpdateItemInput {
   final String? battleIndex;
   @override
   final String? base64Image;
+  @override
+  final String imageUrl;
 
   factory _$GUpdateItemInput(
           [void Function(GUpdateItemInputBuilder)? updates]) =>
       (new GUpdateItemInputBuilder()..update(updates))._build();
 
   _$GUpdateItemInput._(
-      {this.name, this.detail, this.battleIndex, this.base64Image})
-      : super._();
+      {this.name,
+      this.detail,
+      this.battleIndex,
+      this.base64Image,
+      required this.imageUrl})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl, r'GUpdateItemInput', 'imageUrl');
+  }
 
   @override
   GUpdateItemInput rebuild(void Function(GUpdateItemInputBuilder) updates) =>
@@ -8176,7 +8243,8 @@ class _$GUpdateItemInput extends GUpdateItemInput {
         name == other.name &&
         detail == other.detail &&
         battleIndex == other.battleIndex &&
-        base64Image == other.base64Image;
+        base64Image == other.base64Image &&
+        imageUrl == other.imageUrl;
   }
 
   @override
@@ -8186,6 +8254,7 @@ class _$GUpdateItemInput extends GUpdateItemInput {
     _$hash = $jc(_$hash, detail.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
     _$hash = $jc(_$hash, base64Image.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -8196,7 +8265,8 @@ class _$GUpdateItemInput extends GUpdateItemInput {
           ..add('name', name)
           ..add('detail', detail)
           ..add('battleIndex', battleIndex)
-          ..add('base64Image', base64Image))
+          ..add('base64Image', base64Image)
+          ..add('imageUrl', imageUrl))
         .toString();
   }
 }
@@ -8221,6 +8291,10 @@ class GUpdateItemInputBuilder
   String? get base64Image => _$this._base64Image;
   set base64Image(String? base64Image) => _$this._base64Image = base64Image;
 
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
   GUpdateItemInputBuilder();
 
   GUpdateItemInputBuilder get _$this {
@@ -8230,6 +8304,7 @@ class GUpdateItemInputBuilder
       _detail = $v.detail;
       _battleIndex = $v.battleIndex;
       _base64Image = $v.base64Image;
+      _imageUrl = $v.imageUrl;
       _$v = null;
     }
     return this;
@@ -8255,7 +8330,9 @@ class GUpdateItemInputBuilder
             name: name,
             detail: detail,
             battleIndex: battleIndex,
-            base64Image: base64Image);
+            base64Image: base64Image,
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, r'GUpdateItemInput', 'imageUrl'));
     replace(_$result);
     return _$result;
   }
@@ -9213,6 +9290,8 @@ class _$GUpdatePokemonInput extends GUpdatePokemonInput {
   @override
   final String? base64Image;
   @override
+  final String imageUrl;
+  @override
   final String? url;
   @override
   final String? battleIndex;
@@ -9236,10 +9315,14 @@ class _$GUpdatePokemonInput extends GUpdatePokemonInput {
       this.statusD,
       this.statusS,
       this.base64Image,
+      required this.imageUrl,
       this.url,
       this.battleIndex,
       this.battleFormIndex})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl, r'GUpdatePokemonInput', 'imageUrl');
+  }
 
   @override
   GUpdatePokemonInput rebuild(
@@ -9266,6 +9349,7 @@ class _$GUpdatePokemonInput extends GUpdatePokemonInput {
         statusD == other.statusD &&
         statusS == other.statusS &&
         base64Image == other.base64Image &&
+        imageUrl == other.imageUrl &&
         url == other.url &&
         battleIndex == other.battleIndex &&
         battleFormIndex == other.battleFormIndex;
@@ -9286,6 +9370,7 @@ class _$GUpdatePokemonInput extends GUpdatePokemonInput {
     _$hash = $jc(_$hash, statusD.hashCode);
     _$hash = $jc(_$hash, statusS.hashCode);
     _$hash = $jc(_$hash, base64Image.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jc(_$hash, url.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
     _$hash = $jc(_$hash, battleFormIndex.hashCode);
@@ -9308,6 +9393,7 @@ class _$GUpdatePokemonInput extends GUpdatePokemonInput {
           ..add('statusD', statusD)
           ..add('statusS', statusS)
           ..add('base64Image', base64Image)
+          ..add('imageUrl', imageUrl)
           ..add('url', url)
           ..add('battleIndex', battleIndex)
           ..add('battleFormIndex', battleFormIndex))
@@ -9367,6 +9453,10 @@ class GUpdatePokemonInputBuilder
   String? get base64Image => _$this._base64Image;
   set base64Image(String? base64Image) => _$this._base64Image = base64Image;
 
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
   String? _url;
   String? get url => _$this._url;
   set url(String? url) => _$this._url = url;
@@ -9397,6 +9487,7 @@ class GUpdatePokemonInputBuilder
       _statusD = $v.statusD;
       _statusS = $v.statusS;
       _base64Image = $v.base64Image;
+      _imageUrl = $v.imageUrl;
       _url = $v.url;
       _battleIndex = $v.battleIndex;
       _battleFormIndex = $v.battleFormIndex;
@@ -9434,6 +9525,8 @@ class GUpdatePokemonInputBuilder
             statusD: statusD,
             statusS: statusS,
             base64Image: base64Image,
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, r'GUpdatePokemonInput', 'imageUrl'),
             url: url,
             battleIndex: battleIndex,
             battleFormIndex: battleFormIndex);

@@ -302,6 +302,7 @@ abstract class GCreateItemInput
   String get detail;
   String get battleIndex;
   String get base64Image;
+  String get imageUrl;
   static Serializer<GCreateItemInput> get serializer =>
       _$gCreateItemInputSerializer;
 
@@ -514,6 +515,7 @@ abstract class GCreatePokemonInput
   int get statusD;
   int get statusS;
   String get base64Image;
+  String get imageUrl;
   String get url;
   String get battleIndex;
   String get battleFormIndex;
@@ -950,6 +952,7 @@ abstract class GUpdateItemInput
   String? get detail;
   String? get battleIndex;
   String? get base64Image;
+  String get imageUrl;
   static Serializer<GUpdateItemInput> get serializer =>
       _$gUpdateItemInputSerializer;
 
@@ -1162,6 +1165,7 @@ abstract class GUpdatePokemonInput
   int? get statusD;
   int? get statusS;
   String? get base64Image;
+  String get imageUrl;
   String? get url;
   String? get battleIndex;
   String? get battleFormIndex;

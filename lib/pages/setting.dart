@@ -1,3 +1,4 @@
+import 'package:burger_sauce/pages/__generated__/pokemons.data.gql.dart';
 import 'package:burger_sauce/pages/__generated__/pokemons.req.gql.dart';
 import 'package:ferry/ferry.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ class SettingPage extends HookWidget {
     final client = GetIt.I<TypedLink>();
     final pokemonsReq = GPokemonsReq();
 
+    final List<GPokemonsData> moge = [];
     final res = client.request(pokemonsReq).listen((r) {
       final data = r.data;
       print(data);

@@ -9,7 +9,7 @@ class MyScaffold extends StatefulWidget {
 }
 
 class _MyScaffoldState extends State<MyScaffold> {
-  int _selectedIndex = 5;
+  int _selectedIndex = 4;
   PageController? _controller;
 
   @override

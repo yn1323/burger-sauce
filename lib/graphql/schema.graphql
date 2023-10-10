@@ -171,6 +171,7 @@ input CreateItemInput {
   detail: String!
   battleIndex: String!
   base64Image: String!
+  imageUrl: String!
 }
 
 input CreateMoveInput {
@@ -246,6 +247,7 @@ input CreatePokemonInput {
   statusD: Int!
   statusS: Int!
   base64Image: String!
+  imageUrl: String!
   url: String!
   battleIndex: String!
   battleFormIndex: String!
@@ -298,6 +300,7 @@ type Item {
   detail: String!
   battleIndex: String!
   base64Image: String!
+  imageUrl: String!
   battleDataItem: [BattleDataItem]!
 }
 
@@ -481,6 +484,7 @@ type Pokemon {
   abilities: [Ability]!
   moves: [Move]!
   base64Image: String!
+  imageUrl: String!
   url: String!
   battleIndex: String!
   battleFormIndex: String!
@@ -650,6 +654,7 @@ input UpdateItemInput {
   detail: String
   battleIndex: String
   base64Image: String
+  imageUrl: String!
 }
 
 input UpdateMoveInput {
@@ -725,6 +730,7 @@ input UpdatePokemonInput {
   statusD: Int
   statusS: Int
   base64Image: String
+  imageUrl: String!
   url: String
   battleIndex: String
   battleFormIndex: String

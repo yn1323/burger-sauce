@@ -50,6 +50,7 @@ abstract class GPokemonsData_pokemons
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;
+  String get imageUrl;
   static Serializer<GPokemonsData_pokemons> get serializer =>
       _$gPokemonsDataPokemonsSerializer;
 
