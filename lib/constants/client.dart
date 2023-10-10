@@ -22,6 +22,9 @@ Future<Client> initClient() async {
   final client = Client(
     link: link,
     cache: cache,
+    defaultFetchPolicies: {
+      OperationType.query: FetchPolicy.CacheFirst,
+    },
   );
 
   return client;

@@ -1,13 +1,5 @@
 query Pokemons {
   pokemons {
     name
-    base64Image
-    battleData {
-      battleIndex {
-        capturedAt
-        name
-        startAt
-      }
-    }
   }
 }

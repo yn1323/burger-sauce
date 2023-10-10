@@ -36,8 +36,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GJSONObject.serializer)
       ..add(GPokemonsData.serializer)
       ..add(GPokemonsData_pokemons.serializer)
-      ..add(GPokemonsData_pokemons_battleData.serializer)
-      ..add(GPokemonsData_pokemons_battleData_battleIndex.serializer)
       ..add(GPokemonsReq.serializer)
       ..add(GPokemonsVars.serializer)
       ..add(GTime.serializer)
@@ -65,12 +63,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GPokemonsData_pokemons)]),
-          () => new ListBuilder<GPokemonsData_pokemons>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType.nullable(GPokemonsData_pokemons_battleData)
-          ]),
-          () => new ListBuilder<GPokemonsData_pokemons_battleData?>()))
+          () => new ListBuilder<GPokemonsData_pokemons>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

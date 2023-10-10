@@ -55,11 +55,7 @@ import 'package:burger_sauce/graphql/__generated__/schema.schema.gql.dart'
         GUpdateTypeRelationInput,
         GUpdateUserInput;
 import 'package:burger_sauce/pages/__generated__/pokemons.data.gql.dart'
-    show
-        GPokemonsData,
-        GPokemonsData_pokemons,
-        GPokemonsData_pokemons_battleData,
-        GPokemonsData_pokemons_battleData_battleIndex;
+    show GPokemonsData, GPokemonsData_pokemons;
 import 'package:burger_sauce/pages/__generated__/pokemons.req.gql.dart'
     show GPokemonsReq;
 import 'package:burger_sauce/pages/__generated__/pokemons.var.gql.dart'
@@ -102,8 +98,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GJSONObject,
   GPokemonsData,
   GPokemonsData_pokemons,
-  GPokemonsData_pokemons_battleData,
-  GPokemonsData_pokemons_battleData_battleIndex,
   GPokemonsReq,
   GPokemonsVars,
   GTime,

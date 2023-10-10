@@ -22,51 +22,7 @@ const Pokemons = _i1.OperationDefinitionNode(
           arguments: [],
           directives: [],
           selectionSet: null,
-        ),
-        _i1.FieldNode(
-          name: _i1.NameNode(value: 'base64Image'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        _i1.FieldNode(
-          name: _i1.NameNode(value: 'battleData'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: _i1.SelectionSetNode(selections: [
-            _i1.FieldNode(
-              name: _i1.NameNode(value: 'battleIndex'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: _i1.SelectionSetNode(selections: [
-                _i1.FieldNode(
-                  name: _i1.NameNode(value: 'capturedAt'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                _i1.FieldNode(
-                  name: _i1.NameNode(value: 'name'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                _i1.FieldNode(
-                  name: _i1.NameNode(value: 'startAt'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ]),
-            )
-          ]),
-        ),
+        )
       ]),
     )
   ]),
