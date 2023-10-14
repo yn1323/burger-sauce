@@ -1,6 +1,6 @@
-import 'package:burger_sauce/pages/build_support.dart';
-import 'package:burger_sauce/pages/damage_calculation.dart';
-import 'package:burger_sauce/pages/search.dart';
+import 'package:burger_sauce/pages/build/build_page.dart';
+import 'package:burger_sauce/pages/calc/calc_page.dart';
+import 'package:burger_sauce/pages/search/search_page.dart';
 import 'package:burger_sauce/pages/self.dart';
 import 'package:burger_sauce/pages/setting.dart';
 import 'package:burger_sauce/pages/trend.dart';
@@ -26,7 +26,7 @@ List<RoutePage> routes = [
       label: 'ダメージ計算',
     ),
     url: '/',
-    page: const DamageCalculationPage(),
+    page: const CalcPage(),
   ),
   RoutePage(
     item: const BottomNavigationBarItem(
@@ -50,7 +50,7 @@ List<RoutePage> routes = [
       label: '構築支援',
     ),
     url: '/build_support',
-    page: const BuildSupportPage(),
+    page: const BuildPage(),
   ),
   RoutePage(
     item: const BottomNavigationBarItem(

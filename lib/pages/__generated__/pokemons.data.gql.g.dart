@@ -82,8 +82,14 @@ class _$GPokemonsData_pokemonsSerializer
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'imageSmallUrl',
+      serializers.serialize(object.imageSmallUrl,
+          specifiedType: const FullType(String)),
       'imageUrl',
       serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
+      'imageLargeUrl',
+      serializers.serialize(object.imageLargeUrl,
           specifiedType: const FullType(String)),
     ];
 
@@ -110,8 +116,16 @@ class _$GPokemonsData_pokemonsSerializer
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
+        case 'imageSmallUrl':
+          result.imageSmallUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
         case 'imageUrl':
           result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'imageLargeUrl':
+          result.imageLargeUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -243,21 +257,33 @@ class _$GPokemonsData_pokemons extends GPokemonsData_pokemons {
   @override
   final String name;
   @override
+  final String imageSmallUrl;
+  @override
   final String imageUrl;
+  @override
+  final String imageLargeUrl;
 
   factory _$GPokemonsData_pokemons(
           [void Function(GPokemonsData_pokemonsBuilder)? updates]) =>
       (new GPokemonsData_pokemonsBuilder()..update(updates))._build();
 
   _$GPokemonsData_pokemons._(
-      {required this.G__typename, required this.name, required this.imageUrl})
+      {required this.G__typename,
+      required this.name,
+      required this.imageSmallUrl,
+      required this.imageUrl,
+      required this.imageLargeUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GPokemonsData_pokemons', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GPokemonsData_pokemons', 'name');
     BuiltValueNullFieldError.checkNotNull(
+        imageSmallUrl, r'GPokemonsData_pokemons', 'imageSmallUrl');
+    BuiltValueNullFieldError.checkNotNull(
         imageUrl, r'GPokemonsData_pokemons', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        imageLargeUrl, r'GPokemonsData_pokemons', 'imageLargeUrl');
   }
 
   @override
@@ -275,7 +301,9 @@ class _$GPokemonsData_pokemons extends GPokemonsData_pokemons {
     return other is GPokemonsData_pokemons &&
         G__typename == other.G__typename &&
         name == other.name &&
-        imageUrl == other.imageUrl;
+        imageSmallUrl == other.imageSmallUrl &&
+        imageUrl == other.imageUrl &&
+        imageLargeUrl == other.imageLargeUrl;
   }
 
   @override
@@ -283,7 +311,9 @@ class _$GPokemonsData_pokemons extends GPokemonsData_pokemons {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, imageSmallUrl.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
+    _$hash = $jc(_$hash, imageLargeUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -293,7 +323,9 @@ class _$GPokemonsData_pokemons extends GPokemonsData_pokemons {
     return (newBuiltValueToStringHelper(r'GPokemonsData_pokemons')
           ..add('G__typename', G__typename)
           ..add('name', name)
-          ..add('imageUrl', imageUrl))
+          ..add('imageSmallUrl', imageSmallUrl)
+          ..add('imageUrl', imageUrl)
+          ..add('imageLargeUrl', imageLargeUrl))
         .toString();
   }
 }
@@ -310,9 +342,19 @@ class GPokemonsData_pokemonsBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
+  String? _imageSmallUrl;
+  String? get imageSmallUrl => _$this._imageSmallUrl;
+  set imageSmallUrl(String? imageSmallUrl) =>
+      _$this._imageSmallUrl = imageSmallUrl;
+
   String? _imageUrl;
   String? get imageUrl => _$this._imageUrl;
   set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
+  String? _imageLargeUrl;
+  String? get imageLargeUrl => _$this._imageLargeUrl;
+  set imageLargeUrl(String? imageLargeUrl) =>
+      _$this._imageLargeUrl = imageLargeUrl;
 
   GPokemonsData_pokemonsBuilder() {
     GPokemonsData_pokemons._initializeBuilder(this);
@@ -323,7 +365,9 @@ class GPokemonsData_pokemonsBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _name = $v.name;
+      _imageSmallUrl = $v.imageSmallUrl;
       _imageUrl = $v.imageUrl;
+      _imageLargeUrl = $v.imageLargeUrl;
       _$v = null;
     }
     return this;
@@ -350,8 +394,12 @@ class GPokemonsData_pokemonsBuilder
                 G__typename, r'GPokemonsData_pokemons', 'G__typename'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'GPokemonsData_pokemons', 'name'),
+            imageSmallUrl: BuiltValueNullFieldError.checkNotNull(
+                imageSmallUrl, r'GPokemonsData_pokemons', 'imageSmallUrl'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, r'GPokemonsData_pokemons', 'imageUrl'));
+                imageUrl, r'GPokemonsData_pokemons', 'imageUrl'),
+            imageLargeUrl: BuiltValueNullFieldError.checkNotNull(
+                imageLargeUrl, r'GPokemonsData_pokemons', 'imageLargeUrl'));
     replace(_$result);
     return _$result;
   }

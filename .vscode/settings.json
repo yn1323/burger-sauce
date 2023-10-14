@@ -8,7 +8,8 @@
         "riverpod",
         "Terastal",
         "Terastals",
-        "unfocus"
+        "unfocus",
+        "vsync"
     ],
     "editor.codeActionsOnSave": {
         "source.organizeImports": true,

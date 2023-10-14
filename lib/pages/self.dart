@@ -39,7 +39,7 @@ class SelfPage extends HookWidget {
                           width: 256,
                           height: 256,
                           child: CachedNetworkImage(
-                            imageUrl: pokemon.imageUrl,
+                            imageUrl: pokemon.imageSmallUrl,
                             placeholder: (context, url) => const SizedBox(
                               width: 256,
                               height: 256,

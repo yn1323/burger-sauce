@@ -57,6 +57,7 @@ abstract class GCreateAttackTypeInput
       _$GCreateAttackTypeInput;
 
   String get name;
+  String get imageUrl;
   static Serializer<GCreateAttackTypeInput> get serializer =>
       _$gCreateAttackTypeInputSerializer;
 
@@ -265,6 +266,30 @@ abstract class GCreateBattleIndexInput
       );
 }
 
+abstract class GCreateEvolutionInput
+    implements Built<GCreateEvolutionInput, GCreateEvolutionInputBuilder> {
+  GCreateEvolutionInput._();
+
+  factory GCreateEvolutionInput(
+          [Function(GCreateEvolutionInputBuilder b) updates]) =
+      _$GCreateEvolutionInput;
+
+  String get pokemonId;
+  static Serializer<GCreateEvolutionInput> get serializer =>
+      _$gCreateEvolutionInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GCreateEvolutionInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GCreateEvolutionInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GCreateEvolutionInput.serializer,
+        json,
+      );
+}
+
 abstract class GCreateFormInput
     implements Built<GCreateFormInput, GCreateFormInputBuilder> {
   GCreateFormInput._();
@@ -303,6 +328,8 @@ abstract class GCreateItemInput
   String get battleIndex;
   String get base64Image;
   String get imageUrl;
+  String get imageSmallUrl;
+  String get imageLargeUrl;
   static Serializer<GCreateItemInput> get serializer =>
       _$gCreateItemInputSerializer;
 
@@ -325,7 +352,6 @@ abstract class GCreateMoveInput
   factory GCreateMoveInput([Function(GCreateMoveInputBuilder b) updates]) =
       _$GCreateMoveInput;
 
-  String get target;
   String get detail;
   String get name;
   String? get typeId;
@@ -333,9 +359,22 @@ abstract class GCreateMoveInput
   int get power;
   int get accuracy;
   int get pp;
-  bool get isTouchable;
-  bool get enableProtect;
   String get battleIndex;
+  bool get isContact;
+  bool get isQuick;
+  bool get isDelay;
+  bool get isChangeable;
+  bool get isMultipleAttack;
+  bool get isMustCritical;
+  bool get isPunch;
+  bool get isSound;
+  bool get isPowder;
+  bool get isWave;
+  bool get isJaw;
+  bool get isBullet;
+  bool get isDance;
+  bool get isWind;
+  bool get isCut;
   static Serializer<GCreateMoveInput> get serializer =>
       _$gCreateMoveInputSerializer;
 
@@ -347,6 +386,70 @@ abstract class GCreateMoveInput
   static GCreateMoveInput? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GCreateMoveInput.serializer,
+        json,
+      );
+}
+
+abstract class GCreateMyEnemyInput
+    implements Built<GCreateMyEnemyInput, GCreateMyEnemyInputBuilder> {
+  GCreateMyEnemyInput._();
+
+  factory GCreateMyEnemyInput(
+      [Function(GCreateMyEnemyInputBuilder b) updates]) = _$GCreateMyEnemyInput;
+
+  String get name;
+  bool get favorite;
+  int get evH;
+  int get evA;
+  int get evB;
+  int get evC;
+  int get evD;
+  int get evS;
+  String get memo;
+  String get pokemonId;
+  String? get itemId;
+  String? get abilityId;
+  String get natureId;
+  String? get terastalId;
+  String get userId;
+  static Serializer<GCreateMyEnemyInput> get serializer =>
+      _$gCreateMyEnemyInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GCreateMyEnemyInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GCreateMyEnemyInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GCreateMyEnemyInput.serializer,
+        json,
+      );
+}
+
+abstract class GCreateMyEnemyTagInput
+    implements Built<GCreateMyEnemyTagInput, GCreateMyEnemyTagInputBuilder> {
+  GCreateMyEnemyTagInput._();
+
+  factory GCreateMyEnemyTagInput(
+          [Function(GCreateMyEnemyTagInputBuilder b) updates]) =
+      _$GCreateMyEnemyTagInput;
+
+  String get name;
+  bool get favorite;
+  String get memo;
+  String get userId;
+  static Serializer<GCreateMyEnemyTagInput> get serializer =>
+      _$gCreateMyEnemyTagInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GCreateMyEnemyTagInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GCreateMyEnemyTagInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GCreateMyEnemyTagInput.serializer,
         json,
       );
 }
@@ -404,6 +507,32 @@ abstract class GCreateMyPartyTagInput
       );
 }
 
+abstract class GCreateMyPokemonConsInput
+    implements
+        Built<GCreateMyPokemonConsInput, GCreateMyPokemonConsInputBuilder> {
+  GCreateMyPokemonConsInput._();
+
+  factory GCreateMyPokemonConsInput(
+          [Function(GCreateMyPokemonConsInputBuilder b) updates]) =
+      _$GCreateMyPokemonConsInput;
+
+  String get myPokemonId;
+  String get myEnemyId;
+  static Serializer<GCreateMyPokemonConsInput> get serializer =>
+      _$gCreateMyPokemonConsInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GCreateMyPokemonConsInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GCreateMyPokemonConsInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GCreateMyPokemonConsInput.serializer,
+        json,
+      );
+}
+
 abstract class GCreateMyPokemonInput
     implements Built<GCreateMyPokemonInput, GCreateMyPokemonInputBuilder> {
   GCreateMyPokemonInput._();
@@ -438,6 +567,32 @@ abstract class GCreateMyPokemonInput
   static GCreateMyPokemonInput? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GCreateMyPokemonInput.serializer,
+        json,
+      );
+}
+
+abstract class GCreateMyPokemonProsInput
+    implements
+        Built<GCreateMyPokemonProsInput, GCreateMyPokemonProsInputBuilder> {
+  GCreateMyPokemonProsInput._();
+
+  factory GCreateMyPokemonProsInput(
+          [Function(GCreateMyPokemonProsInputBuilder b) updates]) =
+      _$GCreateMyPokemonProsInput;
+
+  String get myPokemonId;
+  String get myEnemyId;
+  static Serializer<GCreateMyPokemonProsInput> get serializer =>
+      _$gCreateMyPokemonProsInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GCreateMyPokemonProsInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GCreateMyPokemonProsInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GCreateMyPokemonProsInput.serializer,
         json,
       );
 }
@@ -505,7 +660,7 @@ abstract class GCreatePokemonInput
 
   String get name;
   String get form;
-  String get no;
+  int get no;
   double get height;
   double get weight;
   int get statusH;
@@ -516,6 +671,8 @@ abstract class GCreatePokemonInput
   int get statusS;
   String get base64Image;
   String get imageUrl;
+  String get imageSmallUrl;
+  String get imageLargeUrl;
   String get url;
   String get battleIndex;
   String get battleFormIndex;
@@ -543,6 +700,9 @@ abstract class GCreateTypeInput
 
   String get name;
   String get battleIndex;
+  String get imageUrl;
+  String get textImageUrl;
+  String get terastalImageUrl;
   static Serializer<GCreateTypeInput> get serializer =>
       _$gCreateTypeInputSerializer;
 
@@ -707,6 +867,7 @@ abstract class GUpdateAttackTypeInput
       _$GUpdateAttackTypeInput;
 
   String? get name;
+  String get imageUrl;
   static Serializer<GUpdateAttackTypeInput> get serializer =>
       _$gUpdateAttackTypeInputSerializer;
 
@@ -915,6 +1076,30 @@ abstract class GUpdateBattleIndexInput
       );
 }
 
+abstract class GUpdateEvolutionInput
+    implements Built<GUpdateEvolutionInput, GUpdateEvolutionInputBuilder> {
+  GUpdateEvolutionInput._();
+
+  factory GUpdateEvolutionInput(
+          [Function(GUpdateEvolutionInputBuilder b) updates]) =
+      _$GUpdateEvolutionInput;
+
+  String? get pokemonId;
+  static Serializer<GUpdateEvolutionInput> get serializer =>
+      _$gUpdateEvolutionInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GUpdateEvolutionInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GUpdateEvolutionInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GUpdateEvolutionInput.serializer,
+        json,
+      );
+}
+
 abstract class GUpdateFormInput
     implements Built<GUpdateFormInput, GUpdateFormInputBuilder> {
   GUpdateFormInput._();
@@ -952,7 +1137,9 @@ abstract class GUpdateItemInput
   String? get detail;
   String? get battleIndex;
   String? get base64Image;
-  String get imageUrl;
+  String? get imageUrl;
+  String? get imageSmallUrl;
+  String? get imageLargeUrl;
   static Serializer<GUpdateItemInput> get serializer =>
       _$gUpdateItemInputSerializer;
 
@@ -975,7 +1162,6 @@ abstract class GUpdateMoveInput
   factory GUpdateMoveInput([Function(GUpdateMoveInputBuilder b) updates]) =
       _$GUpdateMoveInput;
 
-  String? get target;
   String? get detail;
   String? get name;
   String? get typeId;
@@ -983,9 +1169,22 @@ abstract class GUpdateMoveInput
   int? get power;
   int? get accuracy;
   int? get pp;
-  bool? get isTouchable;
-  bool? get enableProtect;
   String? get battleIndex;
+  bool? get isContact;
+  bool? get isQuick;
+  bool? get isDelay;
+  bool? get isChangeable;
+  bool? get isMultipleAttack;
+  bool? get isMustCritical;
+  bool? get isPunch;
+  bool? get isSound;
+  bool? get isPowder;
+  bool? get isWave;
+  bool? get isJaw;
+  bool? get isBullet;
+  bool? get isDance;
+  bool? get isWind;
+  bool? get isCut;
   static Serializer<GUpdateMoveInput> get serializer =>
       _$gUpdateMoveInputSerializer;
 
@@ -997,6 +1196,70 @@ abstract class GUpdateMoveInput
   static GUpdateMoveInput? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GUpdateMoveInput.serializer,
+        json,
+      );
+}
+
+abstract class GUpdateMyEnemyInput
+    implements Built<GUpdateMyEnemyInput, GUpdateMyEnemyInputBuilder> {
+  GUpdateMyEnemyInput._();
+
+  factory GUpdateMyEnemyInput(
+      [Function(GUpdateMyEnemyInputBuilder b) updates]) = _$GUpdateMyEnemyInput;
+
+  String? get name;
+  bool? get favorite;
+  int? get evH;
+  int? get evA;
+  int? get evB;
+  int? get evC;
+  int? get evD;
+  int? get evS;
+  String? get memo;
+  String? get pokemonId;
+  String? get itemId;
+  String? get abilityId;
+  String? get natureId;
+  String? get terastalId;
+  String? get userId;
+  static Serializer<GUpdateMyEnemyInput> get serializer =>
+      _$gUpdateMyEnemyInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GUpdateMyEnemyInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GUpdateMyEnemyInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GUpdateMyEnemyInput.serializer,
+        json,
+      );
+}
+
+abstract class GUpdateMyEnemyTagInput
+    implements Built<GUpdateMyEnemyTagInput, GUpdateMyEnemyTagInputBuilder> {
+  GUpdateMyEnemyTagInput._();
+
+  factory GUpdateMyEnemyTagInput(
+          [Function(GUpdateMyEnemyTagInputBuilder b) updates]) =
+      _$GUpdateMyEnemyTagInput;
+
+  String? get name;
+  bool? get favorite;
+  String? get memo;
+  String? get userId;
+  static Serializer<GUpdateMyEnemyTagInput> get serializer =>
+      _$gUpdateMyEnemyTagInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GUpdateMyEnemyTagInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GUpdateMyEnemyTagInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GUpdateMyEnemyTagInput.serializer,
         json,
       );
 }
@@ -1054,6 +1317,32 @@ abstract class GUpdateMyPartyTagInput
       );
 }
 
+abstract class GUpdateMyPokemonConsInput
+    implements
+        Built<GUpdateMyPokemonConsInput, GUpdateMyPokemonConsInputBuilder> {
+  GUpdateMyPokemonConsInput._();
+
+  factory GUpdateMyPokemonConsInput(
+          [Function(GUpdateMyPokemonConsInputBuilder b) updates]) =
+      _$GUpdateMyPokemonConsInput;
+
+  String? get myPokemonId;
+  String? get myEnemyId;
+  static Serializer<GUpdateMyPokemonConsInput> get serializer =>
+      _$gUpdateMyPokemonConsInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GUpdateMyPokemonConsInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GUpdateMyPokemonConsInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GUpdateMyPokemonConsInput.serializer,
+        json,
+      );
+}
+
 abstract class GUpdateMyPokemonInput
     implements Built<GUpdateMyPokemonInput, GUpdateMyPokemonInputBuilder> {
   GUpdateMyPokemonInput._();
@@ -1088,6 +1377,32 @@ abstract class GUpdateMyPokemonInput
   static GUpdateMyPokemonInput? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GUpdateMyPokemonInput.serializer,
+        json,
+      );
+}
+
+abstract class GUpdateMyPokemonProsInput
+    implements
+        Built<GUpdateMyPokemonProsInput, GUpdateMyPokemonProsInputBuilder> {
+  GUpdateMyPokemonProsInput._();
+
+  factory GUpdateMyPokemonProsInput(
+          [Function(GUpdateMyPokemonProsInputBuilder b) updates]) =
+      _$GUpdateMyPokemonProsInput;
+
+  String? get myPokemonId;
+  String? get myEnemyId;
+  static Serializer<GUpdateMyPokemonProsInput> get serializer =>
+      _$gUpdateMyPokemonProsInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GUpdateMyPokemonProsInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GUpdateMyPokemonProsInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GUpdateMyPokemonProsInput.serializer,
         json,
       );
 }
@@ -1155,7 +1470,7 @@ abstract class GUpdatePokemonInput
 
   String? get name;
   String? get form;
-  String? get no;
+  int? get no;
   double? get height;
   double? get weight;
   int? get statusH;
@@ -1165,7 +1480,9 @@ abstract class GUpdatePokemonInput
   int? get statusD;
   int? get statusS;
   String? get base64Image;
-  String get imageUrl;
+  String? get imageUrl;
+  String? get imageSmallUrl;
+  String? get imageLargeUrl;
   String? get url;
   String? get battleIndex;
   String? get battleFormIndex;
@@ -1193,6 +1510,9 @@ abstract class GUpdateTypeInput
 
   String? get name;
   String? get battleIndex;
+  String get imageUrl;
+  String get textImageUrl;
+  String get terastalImageUrl;
   static Serializer<GUpdateTypeInput> get serializer =>
       _$gUpdateTypeInputSerializer;
 

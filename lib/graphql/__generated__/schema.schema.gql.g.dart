@@ -27,18 +27,28 @@ Serializer<GCreateBattleDataTerastalInput>
     new _$GCreateBattleDataTerastalInputSerializer();
 Serializer<GCreateBattleIndexInput> _$gCreateBattleIndexInputSerializer =
     new _$GCreateBattleIndexInputSerializer();
+Serializer<GCreateEvolutionInput> _$gCreateEvolutionInputSerializer =
+    new _$GCreateEvolutionInputSerializer();
 Serializer<GCreateFormInput> _$gCreateFormInputSerializer =
     new _$GCreateFormInputSerializer();
 Serializer<GCreateItemInput> _$gCreateItemInputSerializer =
     new _$GCreateItemInputSerializer();
 Serializer<GCreateMoveInput> _$gCreateMoveInputSerializer =
     new _$GCreateMoveInputSerializer();
+Serializer<GCreateMyEnemyInput> _$gCreateMyEnemyInputSerializer =
+    new _$GCreateMyEnemyInputSerializer();
+Serializer<GCreateMyEnemyTagInput> _$gCreateMyEnemyTagInputSerializer =
+    new _$GCreateMyEnemyTagInputSerializer();
 Serializer<GCreateMyPartyInput> _$gCreateMyPartyInputSerializer =
     new _$GCreateMyPartyInputSerializer();
 Serializer<GCreateMyPartyTagInput> _$gCreateMyPartyTagInputSerializer =
     new _$GCreateMyPartyTagInputSerializer();
+Serializer<GCreateMyPokemonConsInput> _$gCreateMyPokemonConsInputSerializer =
+    new _$GCreateMyPokemonConsInputSerializer();
 Serializer<GCreateMyPokemonInput> _$gCreateMyPokemonInputSerializer =
     new _$GCreateMyPokemonInputSerializer();
+Serializer<GCreateMyPokemonProsInput> _$gCreateMyPokemonProsInputSerializer =
+    new _$GCreateMyPokemonProsInputSerializer();
 Serializer<GCreateMyPokemonTagInput> _$gCreateMyPokemonTagInputSerializer =
     new _$GCreateMyPokemonTagInputSerializer();
 Serializer<GCreateNatureInput> _$gCreateNatureInputSerializer =
@@ -72,18 +82,28 @@ Serializer<GUpdateBattleDataTerastalInput>
     new _$GUpdateBattleDataTerastalInputSerializer();
 Serializer<GUpdateBattleIndexInput> _$gUpdateBattleIndexInputSerializer =
     new _$GUpdateBattleIndexInputSerializer();
+Serializer<GUpdateEvolutionInput> _$gUpdateEvolutionInputSerializer =
+    new _$GUpdateEvolutionInputSerializer();
 Serializer<GUpdateFormInput> _$gUpdateFormInputSerializer =
     new _$GUpdateFormInputSerializer();
 Serializer<GUpdateItemInput> _$gUpdateItemInputSerializer =
     new _$GUpdateItemInputSerializer();
 Serializer<GUpdateMoveInput> _$gUpdateMoveInputSerializer =
     new _$GUpdateMoveInputSerializer();
+Serializer<GUpdateMyEnemyInput> _$gUpdateMyEnemyInputSerializer =
+    new _$GUpdateMyEnemyInputSerializer();
+Serializer<GUpdateMyEnemyTagInput> _$gUpdateMyEnemyTagInputSerializer =
+    new _$GUpdateMyEnemyTagInputSerializer();
 Serializer<GUpdateMyPartyInput> _$gUpdateMyPartyInputSerializer =
     new _$GUpdateMyPartyInputSerializer();
 Serializer<GUpdateMyPartyTagInput> _$gUpdateMyPartyTagInputSerializer =
     new _$GUpdateMyPartyTagInputSerializer();
+Serializer<GUpdateMyPokemonConsInput> _$gUpdateMyPokemonConsInputSerializer =
+    new _$GUpdateMyPokemonConsInputSerializer();
 Serializer<GUpdateMyPokemonInput> _$gUpdateMyPokemonInputSerializer =
     new _$GUpdateMyPokemonInputSerializer();
+Serializer<GUpdateMyPokemonProsInput> _$gUpdateMyPokemonProsInputSerializer =
+    new _$GUpdateMyPokemonProsInputSerializer();
 Serializer<GUpdateMyPokemonTagInput> _$gUpdateMyPokemonTagInputSerializer =
     new _$GUpdateMyPokemonTagInputSerializer();
 Serializer<GUpdateNatureInput> _$gUpdateNatureInputSerializer =
@@ -173,6 +193,9 @@ class _$GCreateAttackTypeInputSerializer
     final result = <Object?>[
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'imageUrl',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -192,6 +215,10 @@ class _$GCreateAttackTypeInputSerializer
       switch (key) {
         case 'name':
           result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -638,6 +665,52 @@ class _$GCreateBattleIndexInputSerializer
   }
 }
 
+class _$GCreateEvolutionInputSerializer
+    implements StructuredSerializer<GCreateEvolutionInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateEvolutionInput,
+    _$GCreateEvolutionInput
+  ];
+  @override
+  final String wireName = 'GCreateEvolutionInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateEvolutionInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'pokemonId',
+      serializers.serialize(object.pokemonId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateEvolutionInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateEvolutionInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'pokemonId':
+          result.pokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GCreateFormInputSerializer
     implements StructuredSerializer<GCreateFormInput> {
   @override
@@ -724,6 +797,12 @@ class _$GCreateItemInputSerializer
       'imageUrl',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
+      'imageSmallUrl',
+      serializers.serialize(object.imageSmallUrl,
+          specifiedType: const FullType(String)),
+      'imageLargeUrl',
+      serializers.serialize(object.imageLargeUrl,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -761,6 +840,14 @@ class _$GCreateItemInputSerializer
           result.imageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
+        case 'imageSmallUrl':
+          result.imageSmallUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'imageLargeUrl':
+          result.imageLargeUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
       }
     }
 
@@ -779,9 +866,6 @@ class _$GCreateMoveInputSerializer
   Iterable<Object?> serialize(Serializers serializers, GCreateMoveInput object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
-      'target',
-      serializers.serialize(object.target,
-          specifiedType: const FullType(String)),
       'detail',
       serializers.serialize(object.detail,
           specifiedType: const FullType(String)),
@@ -794,15 +878,50 @@ class _$GCreateMoveInputSerializer
           specifiedType: const FullType(int)),
       'pp',
       serializers.serialize(object.pp, specifiedType: const FullType(int)),
-      'isTouchable',
-      serializers.serialize(object.isTouchable,
-          specifiedType: const FullType(bool)),
-      'enableProtect',
-      serializers.serialize(object.enableProtect,
-          specifiedType: const FullType(bool)),
       'battleIndex',
       serializers.serialize(object.battleIndex,
           specifiedType: const FullType(String)),
+      'isContact',
+      serializers.serialize(object.isContact,
+          specifiedType: const FullType(bool)),
+      'isQuick',
+      serializers.serialize(object.isQuick,
+          specifiedType: const FullType(bool)),
+      'isDelay',
+      serializers.serialize(object.isDelay,
+          specifiedType: const FullType(bool)),
+      'isChangeable',
+      serializers.serialize(object.isChangeable,
+          specifiedType: const FullType(bool)),
+      'isMultipleAttack',
+      serializers.serialize(object.isMultipleAttack,
+          specifiedType: const FullType(bool)),
+      'isMustCritical',
+      serializers.serialize(object.isMustCritical,
+          specifiedType: const FullType(bool)),
+      'isPunch',
+      serializers.serialize(object.isPunch,
+          specifiedType: const FullType(bool)),
+      'isSound',
+      serializers.serialize(object.isSound,
+          specifiedType: const FullType(bool)),
+      'isPowder',
+      serializers.serialize(object.isPowder,
+          specifiedType: const FullType(bool)),
+      'isWave',
+      serializers.serialize(object.isWave, specifiedType: const FullType(bool)),
+      'isJaw',
+      serializers.serialize(object.isJaw, specifiedType: const FullType(bool)),
+      'isBullet',
+      serializers.serialize(object.isBullet,
+          specifiedType: const FullType(bool)),
+      'isDance',
+      serializers.serialize(object.isDance,
+          specifiedType: const FullType(bool)),
+      'isWind',
+      serializers.serialize(object.isWind, specifiedType: const FullType(bool)),
+      'isCut',
+      serializers.serialize(object.isCut, specifiedType: const FullType(bool)),
     ];
     Object? value;
     value = object.typeId;
@@ -834,10 +953,6 @@ class _$GCreateMoveInputSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'target':
-          result.target = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'detail':
           result.detail = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
@@ -866,16 +981,281 @@ class _$GCreateMoveInputSerializer
           result.pp = serializers.deserialize(value,
               specifiedType: const FullType(int))! as int;
           break;
-        case 'isTouchable':
-          result.isTouchable = serializers.deserialize(value,
-              specifiedType: const FullType(bool))! as bool;
-          break;
-        case 'enableProtect':
-          result.enableProtect = serializers.deserialize(value,
-              specifiedType: const FullType(bool))! as bool;
-          break;
         case 'battleIndex':
           result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'isContact':
+          result.isContact = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isQuick':
+          result.isQuick = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isDelay':
+          result.isDelay = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isChangeable':
+          result.isChangeable = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isMultipleAttack':
+          result.isMultipleAttack = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isMustCritical':
+          result.isMustCritical = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isPunch':
+          result.isPunch = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isSound':
+          result.isSound = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isPowder':
+          result.isPowder = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isWave':
+          result.isWave = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isJaw':
+          result.isJaw = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isBullet':
+          result.isBullet = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isDance':
+          result.isDance = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isWind':
+          result.isWind = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'isCut':
+          result.isCut = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateMyEnemyInputSerializer
+    implements StructuredSerializer<GCreateMyEnemyInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateMyEnemyInput,
+    _$GCreateMyEnemyInput
+  ];
+  @override
+  final String wireName = 'GCreateMyEnemyInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateMyEnemyInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'favorite',
+      serializers.serialize(object.favorite,
+          specifiedType: const FullType(bool)),
+      'evH',
+      serializers.serialize(object.evH, specifiedType: const FullType(int)),
+      'evA',
+      serializers.serialize(object.evA, specifiedType: const FullType(int)),
+      'evB',
+      serializers.serialize(object.evB, specifiedType: const FullType(int)),
+      'evC',
+      serializers.serialize(object.evC, specifiedType: const FullType(int)),
+      'evD',
+      serializers.serialize(object.evD, specifiedType: const FullType(int)),
+      'evS',
+      serializers.serialize(object.evS, specifiedType: const FullType(int)),
+      'memo',
+      serializers.serialize(object.memo, specifiedType: const FullType(String)),
+      'pokemonId',
+      serializers.serialize(object.pokemonId,
+          specifiedType: const FullType(String)),
+      'natureId',
+      serializers.serialize(object.natureId,
+          specifiedType: const FullType(String)),
+      'userId',
+      serializers.serialize(object.userId,
+          specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.itemId;
+    if (value != null) {
+      result
+        ..add('itemId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.abilityId;
+    if (value != null) {
+      result
+        ..add('abilityId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.terastalId;
+    if (value != null) {
+      result
+        ..add('terastalId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GCreateMyEnemyInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateMyEnemyInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'evH':
+          result.evH = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evA':
+          result.evA = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evB':
+          result.evB = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evC':
+          result.evC = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evD':
+          result.evD = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evS':
+          result.evS = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'pokemonId':
+          result.pokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'itemId':
+          result.itemId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'abilityId':
+          result.abilityId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'natureId':
+          result.natureId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'terastalId':
+          result.terastalId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'userId':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateMyEnemyTagInputSerializer
+    implements StructuredSerializer<GCreateMyEnemyTagInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateMyEnemyTagInput,
+    _$GCreateMyEnemyTagInput
+  ];
+  @override
+  final String wireName = 'GCreateMyEnemyTagInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateMyEnemyTagInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'favorite',
+      serializers.serialize(object.favorite,
+          specifiedType: const FullType(bool)),
+      'memo',
+      serializers.serialize(object.memo, specifiedType: const FullType(String)),
+      'userId',
+      serializers.serialize(object.userId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateMyEnemyTagInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateMyEnemyTagInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'userId':
+          result.userId = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -1006,6 +1386,59 @@ class _$GCreateMyPartyTagInputSerializer
           break;
         case 'userId':
           result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateMyPokemonConsInputSerializer
+    implements StructuredSerializer<GCreateMyPokemonConsInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateMyPokemonConsInput,
+    _$GCreateMyPokemonConsInput
+  ];
+  @override
+  final String wireName = 'GCreateMyPokemonConsInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateMyPokemonConsInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'myPokemonId',
+      serializers.serialize(object.myPokemonId,
+          specifiedType: const FullType(String)),
+      'myEnemyId',
+      serializers.serialize(object.myEnemyId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateMyPokemonConsInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateMyPokemonConsInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'myPokemonId':
+          result.myPokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'myEnemyId':
+          result.myEnemyId = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -1163,6 +1596,59 @@ class _$GCreateMyPokemonInputSerializer
   }
 }
 
+class _$GCreateMyPokemonProsInputSerializer
+    implements StructuredSerializer<GCreateMyPokemonProsInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateMyPokemonProsInput,
+    _$GCreateMyPokemonProsInput
+  ];
+  @override
+  final String wireName = 'GCreateMyPokemonProsInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateMyPokemonProsInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'myPokemonId',
+      serializers.serialize(object.myPokemonId,
+          specifiedType: const FullType(String)),
+      'myEnemyId',
+      serializers.serialize(object.myEnemyId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateMyPokemonProsInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateMyPokemonProsInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'myPokemonId':
+          result.myPokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'myEnemyId':
+          result.myEnemyId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GCreateMyPokemonTagInputSerializer
     implements StructuredSerializer<GCreateMyPokemonTagInput> {
   @override
@@ -1311,7 +1797,7 @@ class _$GCreatePokemonInputSerializer
       'form',
       serializers.serialize(object.form, specifiedType: const FullType(String)),
       'no',
-      serializers.serialize(object.no, specifiedType: const FullType(String)),
+      serializers.serialize(object.no, specifiedType: const FullType(int)),
       'height',
       serializers.serialize(object.height,
           specifiedType: const FullType(double)),
@@ -1335,6 +1821,12 @@ class _$GCreatePokemonInputSerializer
           specifiedType: const FullType(String)),
       'imageUrl',
       serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
+      'imageSmallUrl',
+      serializers.serialize(object.imageSmallUrl,
+          specifiedType: const FullType(String)),
+      'imageLargeUrl',
+      serializers.serialize(object.imageLargeUrl,
           specifiedType: const FullType(String)),
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
@@ -1371,7 +1863,7 @@ class _$GCreatePokemonInputSerializer
           break;
         case 'no':
           result.no = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'height':
           result.height = serializers.deserialize(value,
@@ -1413,6 +1905,14 @@ class _$GCreatePokemonInputSerializer
           result.imageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
+        case 'imageSmallUrl':
+          result.imageSmallUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'imageLargeUrl':
+          result.imageLargeUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
         case 'url':
           result.url = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
@@ -1448,6 +1948,15 @@ class _$GCreateTypeInputSerializer
       'battleIndex',
       serializers.serialize(object.battleIndex,
           specifiedType: const FullType(String)),
+      'imageUrl',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
+      'textImageUrl',
+      serializers.serialize(object.textImageUrl,
+          specifiedType: const FullType(String)),
+      'terastalImageUrl',
+      serializers.serialize(object.terastalImageUrl,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -1471,6 +1980,18 @@ class _$GCreateTypeInputSerializer
           break;
         case 'battleIndex':
           result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'textImageUrl':
+          result.textImageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'terastalImageUrl':
+          result.terastalImageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -1689,7 +2210,11 @@ class _$GUpdateAttackTypeInputSerializer
   Iterable<Object?> serialize(
       Serializers serializers, GUpdateAttackTypeInput object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
+    final result = <Object?>[
+      'imageUrl',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
+    ];
     Object? value;
     value = object.name;
     if (value != null) {
@@ -1716,6 +2241,10 @@ class _$GUpdateAttackTypeInputSerializer
         case 'name':
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -2253,6 +2782,55 @@ class _$GUpdateBattleIndexInputSerializer
   }
 }
 
+class _$GUpdateEvolutionInputSerializer
+    implements StructuredSerializer<GUpdateEvolutionInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateEvolutionInput,
+    _$GUpdateEvolutionInput
+  ];
+  @override
+  final String wireName = 'GUpdateEvolutionInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateEvolutionInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.pokemonId;
+    if (value != null) {
+      result
+        ..add('pokemonId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateEvolutionInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateEvolutionInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'pokemonId':
+          result.pokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GUpdateFormInputSerializer
     implements StructuredSerializer<GUpdateFormInput> {
   @override
@@ -2341,11 +2919,7 @@ class _$GUpdateItemInputSerializer
   @override
   Iterable<Object?> serialize(Serializers serializers, GUpdateItemInput object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      'imageUrl',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
-    ];
+    final result = <Object?>[];
     Object? value;
     value = object.name;
     if (value != null) {
@@ -2372,6 +2946,27 @@ class _$GUpdateItemInputSerializer
     if (value != null) {
       result
         ..add('base64Image')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.imageUrl;
+    if (value != null) {
+      result
+        ..add('imageUrl')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.imageSmallUrl;
+    if (value != null) {
+      result
+        ..add('imageSmallUrl')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.imageLargeUrl;
+    if (value != null) {
+      result
+        ..add('imageLargeUrl')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -2408,7 +3003,15 @@ class _$GUpdateItemInputSerializer
           break;
         case 'imageUrl':
           result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'imageSmallUrl':
+          result.imageSmallUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'imageLargeUrl':
+          result.imageLargeUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -2429,13 +3032,6 @@ class _$GUpdateMoveInputSerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.target;
-    if (value != null) {
-      result
-        ..add('target')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.detail;
     if (value != null) {
       result
@@ -2482,26 +3078,117 @@ class _$GUpdateMoveInputSerializer
         ..add('pp')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    value = object.isTouchable;
-    if (value != null) {
-      result
-        ..add('isTouchable')
-        ..add(
-            serializers.serialize(value, specifiedType: const FullType(bool)));
-    }
-    value = object.enableProtect;
-    if (value != null) {
-      result
-        ..add('enableProtect')
-        ..add(
-            serializers.serialize(value, specifiedType: const FullType(bool)));
-    }
     value = object.battleIndex;
     if (value != null) {
       result
         ..add('battleIndex')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
+    }
+    value = object.isContact;
+    if (value != null) {
+      result
+        ..add('isContact')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isQuick;
+    if (value != null) {
+      result
+        ..add('isQuick')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isDelay;
+    if (value != null) {
+      result
+        ..add('isDelay')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isChangeable;
+    if (value != null) {
+      result
+        ..add('isChangeable')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isMultipleAttack;
+    if (value != null) {
+      result
+        ..add('isMultipleAttack')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isMustCritical;
+    if (value != null) {
+      result
+        ..add('isMustCritical')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isPunch;
+    if (value != null) {
+      result
+        ..add('isPunch')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isSound;
+    if (value != null) {
+      result
+        ..add('isSound')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isPowder;
+    if (value != null) {
+      result
+        ..add('isPowder')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isWave;
+    if (value != null) {
+      result
+        ..add('isWave')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isJaw;
+    if (value != null) {
+      result
+        ..add('isJaw')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isBullet;
+    if (value != null) {
+      result
+        ..add('isBullet')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isDance;
+    if (value != null) {
+      result
+        ..add('isDance')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isWind;
+    if (value != null) {
+      result
+        ..add('isWind')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.isCut;
+    if (value != null) {
+      result
+        ..add('isCut')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
     return result;
   }
@@ -2518,10 +3205,6 @@ class _$GUpdateMoveInputSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'target':
-          result.target = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'detail':
           result.detail = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -2550,16 +3233,347 @@ class _$GUpdateMoveInputSerializer
           result.pp = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
-        case 'isTouchable':
-          result.isTouchable = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool?;
-          break;
-        case 'enableProtect':
-          result.enableProtect = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool?;
-          break;
         case 'battleIndex':
           result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'isContact':
+          result.isContact = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isQuick':
+          result.isQuick = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isDelay':
+          result.isDelay = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isChangeable':
+          result.isChangeable = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isMultipleAttack':
+          result.isMultipleAttack = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isMustCritical':
+          result.isMustCritical = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isPunch':
+          result.isPunch = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isSound':
+          result.isSound = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isPowder':
+          result.isPowder = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isWave':
+          result.isWave = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isJaw':
+          result.isJaw = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isBullet':
+          result.isBullet = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isDance':
+          result.isDance = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isWind':
+          result.isWind = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'isCut':
+          result.isCut = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateMyEnemyInputSerializer
+    implements StructuredSerializer<GUpdateMyEnemyInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateMyEnemyInput,
+    _$GUpdateMyEnemyInput
+  ];
+  @override
+  final String wireName = 'GUpdateMyEnemyInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateMyEnemyInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.favorite;
+    if (value != null) {
+      result
+        ..add('favorite')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.evH;
+    if (value != null) {
+      result
+        ..add('evH')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evA;
+    if (value != null) {
+      result
+        ..add('evA')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evB;
+    if (value != null) {
+      result
+        ..add('evB')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evC;
+    if (value != null) {
+      result
+        ..add('evC')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evD;
+    if (value != null) {
+      result
+        ..add('evD')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evS;
+    if (value != null) {
+      result
+        ..add('evS')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.memo;
+    if (value != null) {
+      result
+        ..add('memo')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.pokemonId;
+    if (value != null) {
+      result
+        ..add('pokemonId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.itemId;
+    if (value != null) {
+      result
+        ..add('itemId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.abilityId;
+    if (value != null) {
+      result
+        ..add('abilityId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.natureId;
+    if (value != null) {
+      result
+        ..add('natureId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.terastalId;
+    if (value != null) {
+      result
+        ..add('terastalId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.userId;
+    if (value != null) {
+      result
+        ..add('userId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateMyEnemyInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateMyEnemyInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'evH':
+          result.evH = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evA':
+          result.evA = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evB':
+          result.evB = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evC':
+          result.evC = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evD':
+          result.evD = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evS':
+          result.evS = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'pokemonId':
+          result.pokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'itemId':
+          result.itemId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'abilityId':
+          result.abilityId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'natureId':
+          result.natureId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'terastalId':
+          result.terastalId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'userId':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateMyEnemyTagInputSerializer
+    implements StructuredSerializer<GUpdateMyEnemyTagInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateMyEnemyTagInput,
+    _$GUpdateMyEnemyTagInput
+  ];
+  @override
+  final String wireName = 'GUpdateMyEnemyTagInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateMyEnemyTagInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.name;
+    if (value != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.favorite;
+    if (value != null) {
+      result
+        ..add('favorite')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.memo;
+    if (value != null) {
+      result
+        ..add('memo')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.userId;
+    if (value != null) {
+      result
+        ..add('userId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateMyEnemyTagInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateMyEnemyTagInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'userId':
+          result.userId = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
       }
@@ -2724,6 +3738,66 @@ class _$GUpdateMyPartyTagInputSerializer
           break;
         case 'userId':
           result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateMyPokemonConsInputSerializer
+    implements StructuredSerializer<GUpdateMyPokemonConsInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateMyPokemonConsInput,
+    _$GUpdateMyPokemonConsInput
+  ];
+  @override
+  final String wireName = 'GUpdateMyPokemonConsInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateMyPokemonConsInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.myPokemonId;
+    if (value != null) {
+      result
+        ..add('myPokemonId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.myEnemyId;
+    if (value != null) {
+      result
+        ..add('myEnemyId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateMyPokemonConsInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateMyPokemonConsInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'myPokemonId':
+          result.myPokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'myEnemyId':
+          result.myEnemyId = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
       }
@@ -2930,6 +4004,66 @@ class _$GUpdateMyPokemonInputSerializer
   }
 }
 
+class _$GUpdateMyPokemonProsInputSerializer
+    implements StructuredSerializer<GUpdateMyPokemonProsInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateMyPokemonProsInput,
+    _$GUpdateMyPokemonProsInput
+  ];
+  @override
+  final String wireName = 'GUpdateMyPokemonProsInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateMyPokemonProsInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.myPokemonId;
+    if (value != null) {
+      result
+        ..add('myPokemonId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.myEnemyId;
+    if (value != null) {
+      result
+        ..add('myEnemyId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateMyPokemonProsInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateMyPokemonProsInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'myPokemonId':
+          result.myPokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'myEnemyId':
+          result.myEnemyId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GUpdateMyPokemonTagInputSerializer
     implements StructuredSerializer<GUpdateMyPokemonTagInput> {
   @override
@@ -3105,11 +4239,7 @@ class _$GUpdatePokemonInputSerializer
   Iterable<Object?> serialize(
       Serializers serializers, GUpdatePokemonInput object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      'imageUrl',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
-    ];
+    final result = <Object?>[];
     Object? value;
     value = object.name;
     if (value != null) {
@@ -3129,8 +4259,7 @@ class _$GUpdatePokemonInputSerializer
     if (value != null) {
       result
         ..add('no')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.height;
     if (value != null) {
@@ -3189,6 +4318,27 @@ class _$GUpdatePokemonInputSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.imageUrl;
+    if (value != null) {
+      result
+        ..add('imageUrl')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.imageSmallUrl;
+    if (value != null) {
+      result
+        ..add('imageSmallUrl')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.imageLargeUrl;
+    if (value != null) {
+      result
+        ..add('imageLargeUrl')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.url;
     if (value != null) {
       result
@@ -3235,7 +4385,7 @@ class _$GUpdatePokemonInputSerializer
           break;
         case 'no':
           result.no = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'height':
           result.height = serializers.deserialize(value,
@@ -3275,7 +4425,15 @@ class _$GUpdatePokemonInputSerializer
           break;
         case 'imageUrl':
           result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'imageSmallUrl':
+          result.imageSmallUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'imageLargeUrl':
+          result.imageLargeUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
@@ -3306,7 +4464,17 @@ class _$GUpdateTypeInputSerializer
   @override
   Iterable<Object?> serialize(Serializers serializers, GUpdateTypeInput object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
+    final result = <Object?>[
+      'imageUrl',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
+      'textImageUrl',
+      serializers.serialize(object.textImageUrl,
+          specifiedType: const FullType(String)),
+      'terastalImageUrl',
+      serializers.serialize(object.terastalImageUrl,
+          specifiedType: const FullType(String)),
+    ];
     Object? value;
     value = object.name;
     if (value != null) {
@@ -3344,6 +4512,18 @@ class _$GUpdateTypeInputSerializer
         case 'battleIndex':
           result.battleIndex = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'textImageUrl':
+          result.textImageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'terastalImageUrl':
+          result.terastalImageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -3702,14 +4882,19 @@ class GCreateAbilityInputBuilder
 class _$GCreateAttackTypeInput extends GCreateAttackTypeInput {
   @override
   final String name;
+  @override
+  final String imageUrl;
 
   factory _$GCreateAttackTypeInput(
           [void Function(GCreateAttackTypeInputBuilder)? updates]) =>
       (new GCreateAttackTypeInputBuilder()..update(updates))._build();
 
-  _$GCreateAttackTypeInput._({required this.name}) : super._() {
+  _$GCreateAttackTypeInput._({required this.name, required this.imageUrl})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         name, r'GCreateAttackTypeInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl, r'GCreateAttackTypeInput', 'imageUrl');
   }
 
   @override
@@ -3724,13 +4909,16 @@ class _$GCreateAttackTypeInput extends GCreateAttackTypeInput {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GCreateAttackTypeInput && name == other.name;
+    return other is GCreateAttackTypeInput &&
+        name == other.name &&
+        imageUrl == other.imageUrl;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -3738,7 +4926,8 @@ class _$GCreateAttackTypeInput extends GCreateAttackTypeInput {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GCreateAttackTypeInput')
-          ..add('name', name))
+          ..add('name', name)
+          ..add('imageUrl', imageUrl))
         .toString();
   }
 }
@@ -3751,12 +4940,17 @@ class GCreateAttackTypeInputBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
   GCreateAttackTypeInputBuilder();
 
   GCreateAttackTypeInputBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _name = $v.name;
+      _imageUrl = $v.imageUrl;
       _$v = null;
     }
     return this;
@@ -3780,7 +4974,9 @@ class GCreateAttackTypeInputBuilder
     final _$result = _$v ??
         new _$GCreateAttackTypeInput._(
             name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GCreateAttackTypeInput', 'name'));
+                name, r'GCreateAttackTypeInput', 'name'),
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, r'GCreateAttackTypeInput', 'imageUrl'));
     replace(_$result);
     return _$result;
   }
@@ -4683,6 +5879,93 @@ class GCreateBattleIndexInputBuilder
   }
 }
 
+class _$GCreateEvolutionInput extends GCreateEvolutionInput {
+  @override
+  final String pokemonId;
+
+  factory _$GCreateEvolutionInput(
+          [void Function(GCreateEvolutionInputBuilder)? updates]) =>
+      (new GCreateEvolutionInputBuilder()..update(updates))._build();
+
+  _$GCreateEvolutionInput._({required this.pokemonId}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        pokemonId, r'GCreateEvolutionInput', 'pokemonId');
+  }
+
+  @override
+  GCreateEvolutionInput rebuild(
+          void Function(GCreateEvolutionInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateEvolutionInputBuilder toBuilder() =>
+      new GCreateEvolutionInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateEvolutionInput && pokemonId == other.pokemonId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, pokemonId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateEvolutionInput')
+          ..add('pokemonId', pokemonId))
+        .toString();
+  }
+}
+
+class GCreateEvolutionInputBuilder
+    implements Builder<GCreateEvolutionInput, GCreateEvolutionInputBuilder> {
+  _$GCreateEvolutionInput? _$v;
+
+  String? _pokemonId;
+  String? get pokemonId => _$this._pokemonId;
+  set pokemonId(String? pokemonId) => _$this._pokemonId = pokemonId;
+
+  GCreateEvolutionInputBuilder();
+
+  GCreateEvolutionInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _pokemonId = $v.pokemonId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateEvolutionInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateEvolutionInput;
+  }
+
+  @override
+  void update(void Function(GCreateEvolutionInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateEvolutionInput build() => _build();
+
+  _$GCreateEvolutionInput _build() {
+    final _$result = _$v ??
+        new _$GCreateEvolutionInput._(
+            pokemonId: BuiltValueNullFieldError.checkNotNull(
+                pokemonId, r'GCreateEvolutionInput', 'pokemonId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
 class _$GCreateFormInput extends GCreateFormInput {
   @override
   final String no;
@@ -4826,6 +6109,10 @@ class _$GCreateItemInput extends GCreateItemInput {
   final String base64Image;
   @override
   final String imageUrl;
+  @override
+  final String imageSmallUrl;
+  @override
+  final String imageLargeUrl;
 
   factory _$GCreateItemInput(
           [void Function(GCreateItemInputBuilder)? updates]) =>
@@ -4836,7 +6123,9 @@ class _$GCreateItemInput extends GCreateItemInput {
       required this.detail,
       required this.battleIndex,
       required this.base64Image,
-      required this.imageUrl})
+      required this.imageUrl,
+      required this.imageSmallUrl,
+      required this.imageLargeUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(name, r'GCreateItemInput', 'name');
     BuiltValueNullFieldError.checkNotNull(
@@ -4847,6 +6136,10 @@ class _$GCreateItemInput extends GCreateItemInput {
         base64Image, r'GCreateItemInput', 'base64Image');
     BuiltValueNullFieldError.checkNotNull(
         imageUrl, r'GCreateItemInput', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        imageSmallUrl, r'GCreateItemInput', 'imageSmallUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        imageLargeUrl, r'GCreateItemInput', 'imageLargeUrl');
   }
 
   @override
@@ -4865,7 +6158,9 @@ class _$GCreateItemInput extends GCreateItemInput {
         detail == other.detail &&
         battleIndex == other.battleIndex &&
         base64Image == other.base64Image &&
-        imageUrl == other.imageUrl;
+        imageUrl == other.imageUrl &&
+        imageSmallUrl == other.imageSmallUrl &&
+        imageLargeUrl == other.imageLargeUrl;
   }
 
   @override
@@ -4876,6 +6171,8 @@ class _$GCreateItemInput extends GCreateItemInput {
     _$hash = $jc(_$hash, battleIndex.hashCode);
     _$hash = $jc(_$hash, base64Image.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
+    _$hash = $jc(_$hash, imageSmallUrl.hashCode);
+    _$hash = $jc(_$hash, imageLargeUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -4887,7 +6184,9 @@ class _$GCreateItemInput extends GCreateItemInput {
           ..add('detail', detail)
           ..add('battleIndex', battleIndex)
           ..add('base64Image', base64Image)
-          ..add('imageUrl', imageUrl))
+          ..add('imageUrl', imageUrl)
+          ..add('imageSmallUrl', imageSmallUrl)
+          ..add('imageLargeUrl', imageLargeUrl))
         .toString();
   }
 }
@@ -4916,6 +6215,16 @@ class GCreateItemInputBuilder
   String? get imageUrl => _$this._imageUrl;
   set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
+  String? _imageSmallUrl;
+  String? get imageSmallUrl => _$this._imageSmallUrl;
+  set imageSmallUrl(String? imageSmallUrl) =>
+      _$this._imageSmallUrl = imageSmallUrl;
+
+  String? _imageLargeUrl;
+  String? get imageLargeUrl => _$this._imageLargeUrl;
+  set imageLargeUrl(String? imageLargeUrl) =>
+      _$this._imageLargeUrl = imageLargeUrl;
+
   GCreateItemInputBuilder();
 
   GCreateItemInputBuilder get _$this {
@@ -4926,6 +6235,8 @@ class GCreateItemInputBuilder
       _battleIndex = $v.battleIndex;
       _base64Image = $v.base64Image;
       _imageUrl = $v.imageUrl;
+      _imageSmallUrl = $v.imageSmallUrl;
+      _imageLargeUrl = $v.imageLargeUrl;
       _$v = null;
     }
     return this;
@@ -4957,15 +6268,17 @@ class GCreateItemInputBuilder
             base64Image: BuiltValueNullFieldError.checkNotNull(
                 base64Image, r'GCreateItemInput', 'base64Image'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, r'GCreateItemInput', 'imageUrl'));
+                imageUrl, r'GCreateItemInput', 'imageUrl'),
+            imageSmallUrl: BuiltValueNullFieldError.checkNotNull(
+                imageSmallUrl, r'GCreateItemInput', 'imageSmallUrl'),
+            imageLargeUrl: BuiltValueNullFieldError.checkNotNull(
+                imageLargeUrl, r'GCreateItemInput', 'imageLargeUrl'));
     replace(_$result);
     return _$result;
   }
 }
 
 class _$GCreateMoveInput extends GCreateMoveInput {
-  @override
-  final String target;
   @override
   final String detail;
   @override
@@ -4981,31 +6294,67 @@ class _$GCreateMoveInput extends GCreateMoveInput {
   @override
   final int pp;
   @override
-  final bool isTouchable;
-  @override
-  final bool enableProtect;
-  @override
   final String battleIndex;
+  @override
+  final bool isContact;
+  @override
+  final bool isQuick;
+  @override
+  final bool isDelay;
+  @override
+  final bool isChangeable;
+  @override
+  final bool isMultipleAttack;
+  @override
+  final bool isMustCritical;
+  @override
+  final bool isPunch;
+  @override
+  final bool isSound;
+  @override
+  final bool isPowder;
+  @override
+  final bool isWave;
+  @override
+  final bool isJaw;
+  @override
+  final bool isBullet;
+  @override
+  final bool isDance;
+  @override
+  final bool isWind;
+  @override
+  final bool isCut;
 
   factory _$GCreateMoveInput(
           [void Function(GCreateMoveInputBuilder)? updates]) =>
       (new GCreateMoveInputBuilder()..update(updates))._build();
 
   _$GCreateMoveInput._(
-      {required this.target,
-      required this.detail,
+      {required this.detail,
       required this.name,
       this.typeId,
       this.attackTypeId,
       required this.power,
       required this.accuracy,
       required this.pp,
-      required this.isTouchable,
-      required this.enableProtect,
-      required this.battleIndex})
+      required this.battleIndex,
+      required this.isContact,
+      required this.isQuick,
+      required this.isDelay,
+      required this.isChangeable,
+      required this.isMultipleAttack,
+      required this.isMustCritical,
+      required this.isPunch,
+      required this.isSound,
+      required this.isPowder,
+      required this.isWave,
+      required this.isJaw,
+      required this.isBullet,
+      required this.isDance,
+      required this.isWind,
+      required this.isCut})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        target, r'GCreateMoveInput', 'target');
     BuiltValueNullFieldError.checkNotNull(
         detail, r'GCreateMoveInput', 'detail');
     BuiltValueNullFieldError.checkNotNull(name, r'GCreateMoveInput', 'name');
@@ -5014,11 +6363,35 @@ class _$GCreateMoveInput extends GCreateMoveInput {
         accuracy, r'GCreateMoveInput', 'accuracy');
     BuiltValueNullFieldError.checkNotNull(pp, r'GCreateMoveInput', 'pp');
     BuiltValueNullFieldError.checkNotNull(
-        isTouchable, r'GCreateMoveInput', 'isTouchable');
-    BuiltValueNullFieldError.checkNotNull(
-        enableProtect, r'GCreateMoveInput', 'enableProtect');
-    BuiltValueNullFieldError.checkNotNull(
         battleIndex, r'GCreateMoveInput', 'battleIndex');
+    BuiltValueNullFieldError.checkNotNull(
+        isContact, r'GCreateMoveInput', 'isContact');
+    BuiltValueNullFieldError.checkNotNull(
+        isQuick, r'GCreateMoveInput', 'isQuick');
+    BuiltValueNullFieldError.checkNotNull(
+        isDelay, r'GCreateMoveInput', 'isDelay');
+    BuiltValueNullFieldError.checkNotNull(
+        isChangeable, r'GCreateMoveInput', 'isChangeable');
+    BuiltValueNullFieldError.checkNotNull(
+        isMultipleAttack, r'GCreateMoveInput', 'isMultipleAttack');
+    BuiltValueNullFieldError.checkNotNull(
+        isMustCritical, r'GCreateMoveInput', 'isMustCritical');
+    BuiltValueNullFieldError.checkNotNull(
+        isPunch, r'GCreateMoveInput', 'isPunch');
+    BuiltValueNullFieldError.checkNotNull(
+        isSound, r'GCreateMoveInput', 'isSound');
+    BuiltValueNullFieldError.checkNotNull(
+        isPowder, r'GCreateMoveInput', 'isPowder');
+    BuiltValueNullFieldError.checkNotNull(
+        isWave, r'GCreateMoveInput', 'isWave');
+    BuiltValueNullFieldError.checkNotNull(isJaw, r'GCreateMoveInput', 'isJaw');
+    BuiltValueNullFieldError.checkNotNull(
+        isBullet, r'GCreateMoveInput', 'isBullet');
+    BuiltValueNullFieldError.checkNotNull(
+        isDance, r'GCreateMoveInput', 'isDance');
+    BuiltValueNullFieldError.checkNotNull(
+        isWind, r'GCreateMoveInput', 'isWind');
+    BuiltValueNullFieldError.checkNotNull(isCut, r'GCreateMoveInput', 'isCut');
   }
 
   @override
@@ -5033,7 +6406,6 @@ class _$GCreateMoveInput extends GCreateMoveInput {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GCreateMoveInput &&
-        target == other.target &&
         detail == other.detail &&
         name == other.name &&
         typeId == other.typeId &&
@@ -5041,15 +6413,27 @@ class _$GCreateMoveInput extends GCreateMoveInput {
         power == other.power &&
         accuracy == other.accuracy &&
         pp == other.pp &&
-        isTouchable == other.isTouchable &&
-        enableProtect == other.enableProtect &&
-        battleIndex == other.battleIndex;
+        battleIndex == other.battleIndex &&
+        isContact == other.isContact &&
+        isQuick == other.isQuick &&
+        isDelay == other.isDelay &&
+        isChangeable == other.isChangeable &&
+        isMultipleAttack == other.isMultipleAttack &&
+        isMustCritical == other.isMustCritical &&
+        isPunch == other.isPunch &&
+        isSound == other.isSound &&
+        isPowder == other.isPowder &&
+        isWave == other.isWave &&
+        isJaw == other.isJaw &&
+        isBullet == other.isBullet &&
+        isDance == other.isDance &&
+        isWind == other.isWind &&
+        isCut == other.isCut;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, target.hashCode);
     _$hash = $jc(_$hash, detail.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, typeId.hashCode);
@@ -5057,9 +6441,22 @@ class _$GCreateMoveInput extends GCreateMoveInput {
     _$hash = $jc(_$hash, power.hashCode);
     _$hash = $jc(_$hash, accuracy.hashCode);
     _$hash = $jc(_$hash, pp.hashCode);
-    _$hash = $jc(_$hash, isTouchable.hashCode);
-    _$hash = $jc(_$hash, enableProtect.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, isContact.hashCode);
+    _$hash = $jc(_$hash, isQuick.hashCode);
+    _$hash = $jc(_$hash, isDelay.hashCode);
+    _$hash = $jc(_$hash, isChangeable.hashCode);
+    _$hash = $jc(_$hash, isMultipleAttack.hashCode);
+    _$hash = $jc(_$hash, isMustCritical.hashCode);
+    _$hash = $jc(_$hash, isPunch.hashCode);
+    _$hash = $jc(_$hash, isSound.hashCode);
+    _$hash = $jc(_$hash, isPowder.hashCode);
+    _$hash = $jc(_$hash, isWave.hashCode);
+    _$hash = $jc(_$hash, isJaw.hashCode);
+    _$hash = $jc(_$hash, isBullet.hashCode);
+    _$hash = $jc(_$hash, isDance.hashCode);
+    _$hash = $jc(_$hash, isWind.hashCode);
+    _$hash = $jc(_$hash, isCut.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -5067,7 +6464,6 @@ class _$GCreateMoveInput extends GCreateMoveInput {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GCreateMoveInput')
-          ..add('target', target)
           ..add('detail', detail)
           ..add('name', name)
           ..add('typeId', typeId)
@@ -5075,9 +6471,22 @@ class _$GCreateMoveInput extends GCreateMoveInput {
           ..add('power', power)
           ..add('accuracy', accuracy)
           ..add('pp', pp)
-          ..add('isTouchable', isTouchable)
-          ..add('enableProtect', enableProtect)
-          ..add('battleIndex', battleIndex))
+          ..add('battleIndex', battleIndex)
+          ..add('isContact', isContact)
+          ..add('isQuick', isQuick)
+          ..add('isDelay', isDelay)
+          ..add('isChangeable', isChangeable)
+          ..add('isMultipleAttack', isMultipleAttack)
+          ..add('isMustCritical', isMustCritical)
+          ..add('isPunch', isPunch)
+          ..add('isSound', isSound)
+          ..add('isPowder', isPowder)
+          ..add('isWave', isWave)
+          ..add('isJaw', isJaw)
+          ..add('isBullet', isBullet)
+          ..add('isDance', isDance)
+          ..add('isWind', isWind)
+          ..add('isCut', isCut))
         .toString();
   }
 }
@@ -5085,10 +6494,6 @@ class _$GCreateMoveInput extends GCreateMoveInput {
 class GCreateMoveInputBuilder
     implements Builder<GCreateMoveInput, GCreateMoveInputBuilder> {
   _$GCreateMoveInput? _$v;
-
-  String? _target;
-  String? get target => _$this._target;
-  set target(String? target) => _$this._target = target;
 
   String? _detail;
   String? get detail => _$this._detail;
@@ -5118,25 +6523,77 @@ class GCreateMoveInputBuilder
   int? get pp => _$this._pp;
   set pp(int? pp) => _$this._pp = pp;
 
-  bool? _isTouchable;
-  bool? get isTouchable => _$this._isTouchable;
-  set isTouchable(bool? isTouchable) => _$this._isTouchable = isTouchable;
-
-  bool? _enableProtect;
-  bool? get enableProtect => _$this._enableProtect;
-  set enableProtect(bool? enableProtect) =>
-      _$this._enableProtect = enableProtect;
-
   String? _battleIndex;
   String? get battleIndex => _$this._battleIndex;
   set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  bool? _isContact;
+  bool? get isContact => _$this._isContact;
+  set isContact(bool? isContact) => _$this._isContact = isContact;
+
+  bool? _isQuick;
+  bool? get isQuick => _$this._isQuick;
+  set isQuick(bool? isQuick) => _$this._isQuick = isQuick;
+
+  bool? _isDelay;
+  bool? get isDelay => _$this._isDelay;
+  set isDelay(bool? isDelay) => _$this._isDelay = isDelay;
+
+  bool? _isChangeable;
+  bool? get isChangeable => _$this._isChangeable;
+  set isChangeable(bool? isChangeable) => _$this._isChangeable = isChangeable;
+
+  bool? _isMultipleAttack;
+  bool? get isMultipleAttack => _$this._isMultipleAttack;
+  set isMultipleAttack(bool? isMultipleAttack) =>
+      _$this._isMultipleAttack = isMultipleAttack;
+
+  bool? _isMustCritical;
+  bool? get isMustCritical => _$this._isMustCritical;
+  set isMustCritical(bool? isMustCritical) =>
+      _$this._isMustCritical = isMustCritical;
+
+  bool? _isPunch;
+  bool? get isPunch => _$this._isPunch;
+  set isPunch(bool? isPunch) => _$this._isPunch = isPunch;
+
+  bool? _isSound;
+  bool? get isSound => _$this._isSound;
+  set isSound(bool? isSound) => _$this._isSound = isSound;
+
+  bool? _isPowder;
+  bool? get isPowder => _$this._isPowder;
+  set isPowder(bool? isPowder) => _$this._isPowder = isPowder;
+
+  bool? _isWave;
+  bool? get isWave => _$this._isWave;
+  set isWave(bool? isWave) => _$this._isWave = isWave;
+
+  bool? _isJaw;
+  bool? get isJaw => _$this._isJaw;
+  set isJaw(bool? isJaw) => _$this._isJaw = isJaw;
+
+  bool? _isBullet;
+  bool? get isBullet => _$this._isBullet;
+  set isBullet(bool? isBullet) => _$this._isBullet = isBullet;
+
+  bool? _isDance;
+  bool? get isDance => _$this._isDance;
+  set isDance(bool? isDance) => _$this._isDance = isDance;
+
+  bool? _isWind;
+  bool? get isWind => _$this._isWind;
+  set isWind(bool? isWind) => _$this._isWind = isWind;
+
+  bool? _isCut;
+  bool? get isCut => _$this._isCut;
+  set isCut(bool? isCut) => _$this._isCut = isCut;
 
   GCreateMoveInputBuilder();
 
   GCreateMoveInputBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _target = $v.target;
       _detail = $v.detail;
       _name = $v.name;
       _typeId = $v.typeId;
@@ -5144,9 +6601,22 @@ class GCreateMoveInputBuilder
       _power = $v.power;
       _accuracy = $v.accuracy;
       _pp = $v.pp;
-      _isTouchable = $v.isTouchable;
-      _enableProtect = $v.enableProtect;
       _battleIndex = $v.battleIndex;
+      _isContact = $v.isContact;
+      _isQuick = $v.isQuick;
+      _isDelay = $v.isDelay;
+      _isChangeable = $v.isChangeable;
+      _isMultipleAttack = $v.isMultipleAttack;
+      _isMustCritical = $v.isMustCritical;
+      _isPunch = $v.isPunch;
+      _isSound = $v.isSound;
+      _isPowder = $v.isPowder;
+      _isWave = $v.isWave;
+      _isJaw = $v.isJaw;
+      _isBullet = $v.isBullet;
+      _isDance = $v.isDance;
+      _isWind = $v.isWind;
+      _isCut = $v.isCut;
       _$v = null;
     }
     return this;
@@ -5169,8 +6639,6 @@ class GCreateMoveInputBuilder
   _$GCreateMoveInput _build() {
     final _$result = _$v ??
         new _$GCreateMoveInput._(
-            target: BuiltValueNullFieldError.checkNotNull(
-                target, r'GCreateMoveInput', 'target'),
             detail: BuiltValueNullFieldError.checkNotNull(
                 detail, r'GCreateMoveInput', 'detail'),
             name: BuiltValueNullFieldError.checkNotNull(
@@ -5183,12 +6651,442 @@ class GCreateMoveInputBuilder
                 accuracy, r'GCreateMoveInput', 'accuracy'),
             pp: BuiltValueNullFieldError.checkNotNull(
                 pp, r'GCreateMoveInput', 'pp'),
-            isTouchable: BuiltValueNullFieldError.checkNotNull(
-                isTouchable, r'GCreateMoveInput', 'isTouchable'),
-            enableProtect: BuiltValueNullFieldError.checkNotNull(
-                enableProtect, r'GCreateMoveInput', 'enableProtect'),
             battleIndex: BuiltValueNullFieldError.checkNotNull(
-                battleIndex, r'GCreateMoveInput', 'battleIndex'));
+                battleIndex, r'GCreateMoveInput', 'battleIndex'),
+            isContact: BuiltValueNullFieldError.checkNotNull(
+                isContact, r'GCreateMoveInput', 'isContact'),
+            isQuick: BuiltValueNullFieldError.checkNotNull(
+                isQuick, r'GCreateMoveInput', 'isQuick'),
+            isDelay: BuiltValueNullFieldError.checkNotNull(
+                isDelay, r'GCreateMoveInput', 'isDelay'),
+            isChangeable: BuiltValueNullFieldError.checkNotNull(isChangeable, r'GCreateMoveInput', 'isChangeable'),
+            isMultipleAttack: BuiltValueNullFieldError.checkNotNull(isMultipleAttack, r'GCreateMoveInput', 'isMultipleAttack'),
+            isMustCritical: BuiltValueNullFieldError.checkNotNull(isMustCritical, r'GCreateMoveInput', 'isMustCritical'),
+            isPunch: BuiltValueNullFieldError.checkNotNull(isPunch, r'GCreateMoveInput', 'isPunch'),
+            isSound: BuiltValueNullFieldError.checkNotNull(isSound, r'GCreateMoveInput', 'isSound'),
+            isPowder: BuiltValueNullFieldError.checkNotNull(isPowder, r'GCreateMoveInput', 'isPowder'),
+            isWave: BuiltValueNullFieldError.checkNotNull(isWave, r'GCreateMoveInput', 'isWave'),
+            isJaw: BuiltValueNullFieldError.checkNotNull(isJaw, r'GCreateMoveInput', 'isJaw'),
+            isBullet: BuiltValueNullFieldError.checkNotNull(isBullet, r'GCreateMoveInput', 'isBullet'),
+            isDance: BuiltValueNullFieldError.checkNotNull(isDance, r'GCreateMoveInput', 'isDance'),
+            isWind: BuiltValueNullFieldError.checkNotNull(isWind, r'GCreateMoveInput', 'isWind'),
+            isCut: BuiltValueNullFieldError.checkNotNull(isCut, r'GCreateMoveInput', 'isCut'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateMyEnemyInput extends GCreateMyEnemyInput {
+  @override
+  final String name;
+  @override
+  final bool favorite;
+  @override
+  final int evH;
+  @override
+  final int evA;
+  @override
+  final int evB;
+  @override
+  final int evC;
+  @override
+  final int evD;
+  @override
+  final int evS;
+  @override
+  final String memo;
+  @override
+  final String pokemonId;
+  @override
+  final String? itemId;
+  @override
+  final String? abilityId;
+  @override
+  final String natureId;
+  @override
+  final String? terastalId;
+  @override
+  final String userId;
+
+  factory _$GCreateMyEnemyInput(
+          [void Function(GCreateMyEnemyInputBuilder)? updates]) =>
+      (new GCreateMyEnemyInputBuilder()..update(updates))._build();
+
+  _$GCreateMyEnemyInput._(
+      {required this.name,
+      required this.favorite,
+      required this.evH,
+      required this.evA,
+      required this.evB,
+      required this.evC,
+      required this.evD,
+      required this.evS,
+      required this.memo,
+      required this.pokemonId,
+      this.itemId,
+      this.abilityId,
+      required this.natureId,
+      this.terastalId,
+      required this.userId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'GCreateMyEnemyInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        favorite, r'GCreateMyEnemyInput', 'favorite');
+    BuiltValueNullFieldError.checkNotNull(evH, r'GCreateMyEnemyInput', 'evH');
+    BuiltValueNullFieldError.checkNotNull(evA, r'GCreateMyEnemyInput', 'evA');
+    BuiltValueNullFieldError.checkNotNull(evB, r'GCreateMyEnemyInput', 'evB');
+    BuiltValueNullFieldError.checkNotNull(evC, r'GCreateMyEnemyInput', 'evC');
+    BuiltValueNullFieldError.checkNotNull(evD, r'GCreateMyEnemyInput', 'evD');
+    BuiltValueNullFieldError.checkNotNull(evS, r'GCreateMyEnemyInput', 'evS');
+    BuiltValueNullFieldError.checkNotNull(memo, r'GCreateMyEnemyInput', 'memo');
+    BuiltValueNullFieldError.checkNotNull(
+        pokemonId, r'GCreateMyEnemyInput', 'pokemonId');
+    BuiltValueNullFieldError.checkNotNull(
+        natureId, r'GCreateMyEnemyInput', 'natureId');
+    BuiltValueNullFieldError.checkNotNull(
+        userId, r'GCreateMyEnemyInput', 'userId');
+  }
+
+  @override
+  GCreateMyEnemyInput rebuild(
+          void Function(GCreateMyEnemyInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateMyEnemyInputBuilder toBuilder() =>
+      new GCreateMyEnemyInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateMyEnemyInput &&
+        name == other.name &&
+        favorite == other.favorite &&
+        evH == other.evH &&
+        evA == other.evA &&
+        evB == other.evB &&
+        evC == other.evC &&
+        evD == other.evD &&
+        evS == other.evS &&
+        memo == other.memo &&
+        pokemonId == other.pokemonId &&
+        itemId == other.itemId &&
+        abilityId == other.abilityId &&
+        natureId == other.natureId &&
+        terastalId == other.terastalId &&
+        userId == other.userId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jc(_$hash, evH.hashCode);
+    _$hash = $jc(_$hash, evA.hashCode);
+    _$hash = $jc(_$hash, evB.hashCode);
+    _$hash = $jc(_$hash, evC.hashCode);
+    _$hash = $jc(_$hash, evD.hashCode);
+    _$hash = $jc(_$hash, evS.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, pokemonId.hashCode);
+    _$hash = $jc(_$hash, itemId.hashCode);
+    _$hash = $jc(_$hash, abilityId.hashCode);
+    _$hash = $jc(_$hash, natureId.hashCode);
+    _$hash = $jc(_$hash, terastalId.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateMyEnemyInput')
+          ..add('name', name)
+          ..add('favorite', favorite)
+          ..add('evH', evH)
+          ..add('evA', evA)
+          ..add('evB', evB)
+          ..add('evC', evC)
+          ..add('evD', evD)
+          ..add('evS', evS)
+          ..add('memo', memo)
+          ..add('pokemonId', pokemonId)
+          ..add('itemId', itemId)
+          ..add('abilityId', abilityId)
+          ..add('natureId', natureId)
+          ..add('terastalId', terastalId)
+          ..add('userId', userId))
+        .toString();
+  }
+}
+
+class GCreateMyEnemyInputBuilder
+    implements Builder<GCreateMyEnemyInput, GCreateMyEnemyInputBuilder> {
+  _$GCreateMyEnemyInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  int? _evH;
+  int? get evH => _$this._evH;
+  set evH(int? evH) => _$this._evH = evH;
+
+  int? _evA;
+  int? get evA => _$this._evA;
+  set evA(int? evA) => _$this._evA = evA;
+
+  int? _evB;
+  int? get evB => _$this._evB;
+  set evB(int? evB) => _$this._evB = evB;
+
+  int? _evC;
+  int? get evC => _$this._evC;
+  set evC(int? evC) => _$this._evC = evC;
+
+  int? _evD;
+  int? get evD => _$this._evD;
+  set evD(int? evD) => _$this._evD = evD;
+
+  int? _evS;
+  int? get evS => _$this._evS;
+  set evS(int? evS) => _$this._evS = evS;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  String? _pokemonId;
+  String? get pokemonId => _$this._pokemonId;
+  set pokemonId(String? pokemonId) => _$this._pokemonId = pokemonId;
+
+  String? _itemId;
+  String? get itemId => _$this._itemId;
+  set itemId(String? itemId) => _$this._itemId = itemId;
+
+  String? _abilityId;
+  String? get abilityId => _$this._abilityId;
+  set abilityId(String? abilityId) => _$this._abilityId = abilityId;
+
+  String? _natureId;
+  String? get natureId => _$this._natureId;
+  set natureId(String? natureId) => _$this._natureId = natureId;
+
+  String? _terastalId;
+  String? get terastalId => _$this._terastalId;
+  set terastalId(String? terastalId) => _$this._terastalId = terastalId;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  GCreateMyEnemyInputBuilder();
+
+  GCreateMyEnemyInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _favorite = $v.favorite;
+      _evH = $v.evH;
+      _evA = $v.evA;
+      _evB = $v.evB;
+      _evC = $v.evC;
+      _evD = $v.evD;
+      _evS = $v.evS;
+      _memo = $v.memo;
+      _pokemonId = $v.pokemonId;
+      _itemId = $v.itemId;
+      _abilityId = $v.abilityId;
+      _natureId = $v.natureId;
+      _terastalId = $v.terastalId;
+      _userId = $v.userId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateMyEnemyInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateMyEnemyInput;
+  }
+
+  @override
+  void update(void Function(GCreateMyEnemyInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateMyEnemyInput build() => _build();
+
+  _$GCreateMyEnemyInput _build() {
+    final _$result = _$v ??
+        new _$GCreateMyEnemyInput._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateMyEnemyInput', 'name'),
+            favorite: BuiltValueNullFieldError.checkNotNull(
+                favorite, r'GCreateMyEnemyInput', 'favorite'),
+            evH: BuiltValueNullFieldError.checkNotNull(
+                evH, r'GCreateMyEnemyInput', 'evH'),
+            evA: BuiltValueNullFieldError.checkNotNull(
+                evA, r'GCreateMyEnemyInput', 'evA'),
+            evB: BuiltValueNullFieldError.checkNotNull(
+                evB, r'GCreateMyEnemyInput', 'evB'),
+            evC: BuiltValueNullFieldError.checkNotNull(
+                evC, r'GCreateMyEnemyInput', 'evC'),
+            evD: BuiltValueNullFieldError.checkNotNull(
+                evD, r'GCreateMyEnemyInput', 'evD'),
+            evS: BuiltValueNullFieldError.checkNotNull(
+                evS, r'GCreateMyEnemyInput', 'evS'),
+            memo: BuiltValueNullFieldError.checkNotNull(
+                memo, r'GCreateMyEnemyInput', 'memo'),
+            pokemonId:
+                BuiltValueNullFieldError.checkNotNull(pokemonId, r'GCreateMyEnemyInput', 'pokemonId'),
+            itemId: itemId,
+            abilityId: abilityId,
+            natureId: BuiltValueNullFieldError.checkNotNull(natureId, r'GCreateMyEnemyInput', 'natureId'),
+            terastalId: terastalId,
+            userId: BuiltValueNullFieldError.checkNotNull(userId, r'GCreateMyEnemyInput', 'userId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateMyEnemyTagInput extends GCreateMyEnemyTagInput {
+  @override
+  final String name;
+  @override
+  final bool favorite;
+  @override
+  final String memo;
+  @override
+  final String userId;
+
+  factory _$GCreateMyEnemyTagInput(
+          [void Function(GCreateMyEnemyTagInputBuilder)? updates]) =>
+      (new GCreateMyEnemyTagInputBuilder()..update(updates))._build();
+
+  _$GCreateMyEnemyTagInput._(
+      {required this.name,
+      required this.favorite,
+      required this.memo,
+      required this.userId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GCreateMyEnemyTagInput', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        favorite, r'GCreateMyEnemyTagInput', 'favorite');
+    BuiltValueNullFieldError.checkNotNull(
+        memo, r'GCreateMyEnemyTagInput', 'memo');
+    BuiltValueNullFieldError.checkNotNull(
+        userId, r'GCreateMyEnemyTagInput', 'userId');
+  }
+
+  @override
+  GCreateMyEnemyTagInput rebuild(
+          void Function(GCreateMyEnemyTagInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateMyEnemyTagInputBuilder toBuilder() =>
+      new GCreateMyEnemyTagInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateMyEnemyTagInput &&
+        name == other.name &&
+        favorite == other.favorite &&
+        memo == other.memo &&
+        userId == other.userId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateMyEnemyTagInput')
+          ..add('name', name)
+          ..add('favorite', favorite)
+          ..add('memo', memo)
+          ..add('userId', userId))
+        .toString();
+  }
+}
+
+class GCreateMyEnemyTagInputBuilder
+    implements Builder<GCreateMyEnemyTagInput, GCreateMyEnemyTagInputBuilder> {
+  _$GCreateMyEnemyTagInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  GCreateMyEnemyTagInputBuilder();
+
+  GCreateMyEnemyTagInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _favorite = $v.favorite;
+      _memo = $v.memo;
+      _userId = $v.userId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateMyEnemyTagInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateMyEnemyTagInput;
+  }
+
+  @override
+  void update(void Function(GCreateMyEnemyTagInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateMyEnemyTagInput build() => _build();
+
+  _$GCreateMyEnemyTagInput _build() {
+    final _$result = _$v ??
+        new _$GCreateMyEnemyTagInput._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GCreateMyEnemyTagInput', 'name'),
+            favorite: BuiltValueNullFieldError.checkNotNull(
+                favorite, r'GCreateMyEnemyTagInput', 'favorite'),
+            memo: BuiltValueNullFieldError.checkNotNull(
+                memo, r'GCreateMyEnemyTagInput', 'memo'),
+            userId: BuiltValueNullFieldError.checkNotNull(
+                userId, r'GCreateMyEnemyTagInput', 'userId'));
     replace(_$result);
     return _$result;
   }
@@ -5457,6 +7355,111 @@ class GCreateMyPartyTagInputBuilder
                 memo, r'GCreateMyPartyTagInput', 'memo'),
             userId: BuiltValueNullFieldError.checkNotNull(
                 userId, r'GCreateMyPartyTagInput', 'userId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateMyPokemonConsInput extends GCreateMyPokemonConsInput {
+  @override
+  final String myPokemonId;
+  @override
+  final String myEnemyId;
+
+  factory _$GCreateMyPokemonConsInput(
+          [void Function(GCreateMyPokemonConsInputBuilder)? updates]) =>
+      (new GCreateMyPokemonConsInputBuilder()..update(updates))._build();
+
+  _$GCreateMyPokemonConsInput._(
+      {required this.myPokemonId, required this.myEnemyId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        myPokemonId, r'GCreateMyPokemonConsInput', 'myPokemonId');
+    BuiltValueNullFieldError.checkNotNull(
+        myEnemyId, r'GCreateMyPokemonConsInput', 'myEnemyId');
+  }
+
+  @override
+  GCreateMyPokemonConsInput rebuild(
+          void Function(GCreateMyPokemonConsInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateMyPokemonConsInputBuilder toBuilder() =>
+      new GCreateMyPokemonConsInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateMyPokemonConsInput &&
+        myPokemonId == other.myPokemonId &&
+        myEnemyId == other.myEnemyId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, myPokemonId.hashCode);
+    _$hash = $jc(_$hash, myEnemyId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateMyPokemonConsInput')
+          ..add('myPokemonId', myPokemonId)
+          ..add('myEnemyId', myEnemyId))
+        .toString();
+  }
+}
+
+class GCreateMyPokemonConsInputBuilder
+    implements
+        Builder<GCreateMyPokemonConsInput, GCreateMyPokemonConsInputBuilder> {
+  _$GCreateMyPokemonConsInput? _$v;
+
+  String? _myPokemonId;
+  String? get myPokemonId => _$this._myPokemonId;
+  set myPokemonId(String? myPokemonId) => _$this._myPokemonId = myPokemonId;
+
+  String? _myEnemyId;
+  String? get myEnemyId => _$this._myEnemyId;
+  set myEnemyId(String? myEnemyId) => _$this._myEnemyId = myEnemyId;
+
+  GCreateMyPokemonConsInputBuilder();
+
+  GCreateMyPokemonConsInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _myPokemonId = $v.myPokemonId;
+      _myEnemyId = $v.myEnemyId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateMyPokemonConsInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateMyPokemonConsInput;
+  }
+
+  @override
+  void update(void Function(GCreateMyPokemonConsInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateMyPokemonConsInput build() => _build();
+
+  _$GCreateMyPokemonConsInput _build() {
+    final _$result = _$v ??
+        new _$GCreateMyPokemonConsInput._(
+            myPokemonId: BuiltValueNullFieldError.checkNotNull(
+                myPokemonId, r'GCreateMyPokemonConsInput', 'myPokemonId'),
+            myEnemyId: BuiltValueNullFieldError.checkNotNull(
+                myEnemyId, r'GCreateMyPokemonConsInput', 'myEnemyId'));
     replace(_$result);
     return _$result;
   }
@@ -5744,6 +7747,111 @@ class GCreateMyPokemonInputBuilder
   }
 }
 
+class _$GCreateMyPokemonProsInput extends GCreateMyPokemonProsInput {
+  @override
+  final String myPokemonId;
+  @override
+  final String myEnemyId;
+
+  factory _$GCreateMyPokemonProsInput(
+          [void Function(GCreateMyPokemonProsInputBuilder)? updates]) =>
+      (new GCreateMyPokemonProsInputBuilder()..update(updates))._build();
+
+  _$GCreateMyPokemonProsInput._(
+      {required this.myPokemonId, required this.myEnemyId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        myPokemonId, r'GCreateMyPokemonProsInput', 'myPokemonId');
+    BuiltValueNullFieldError.checkNotNull(
+        myEnemyId, r'GCreateMyPokemonProsInput', 'myEnemyId');
+  }
+
+  @override
+  GCreateMyPokemonProsInput rebuild(
+          void Function(GCreateMyPokemonProsInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateMyPokemonProsInputBuilder toBuilder() =>
+      new GCreateMyPokemonProsInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateMyPokemonProsInput &&
+        myPokemonId == other.myPokemonId &&
+        myEnemyId == other.myEnemyId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, myPokemonId.hashCode);
+    _$hash = $jc(_$hash, myEnemyId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateMyPokemonProsInput')
+          ..add('myPokemonId', myPokemonId)
+          ..add('myEnemyId', myEnemyId))
+        .toString();
+  }
+}
+
+class GCreateMyPokemonProsInputBuilder
+    implements
+        Builder<GCreateMyPokemonProsInput, GCreateMyPokemonProsInputBuilder> {
+  _$GCreateMyPokemonProsInput? _$v;
+
+  String? _myPokemonId;
+  String? get myPokemonId => _$this._myPokemonId;
+  set myPokemonId(String? myPokemonId) => _$this._myPokemonId = myPokemonId;
+
+  String? _myEnemyId;
+  String? get myEnemyId => _$this._myEnemyId;
+  set myEnemyId(String? myEnemyId) => _$this._myEnemyId = myEnemyId;
+
+  GCreateMyPokemonProsInputBuilder();
+
+  GCreateMyPokemonProsInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _myPokemonId = $v.myPokemonId;
+      _myEnemyId = $v.myEnemyId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateMyPokemonProsInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateMyPokemonProsInput;
+  }
+
+  @override
+  void update(void Function(GCreateMyPokemonProsInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateMyPokemonProsInput build() => _build();
+
+  _$GCreateMyPokemonProsInput _build() {
+    final _$result = _$v ??
+        new _$GCreateMyPokemonProsInput._(
+            myPokemonId: BuiltValueNullFieldError.checkNotNull(
+                myPokemonId, r'GCreateMyPokemonProsInput', 'myPokemonId'),
+            myEnemyId: BuiltValueNullFieldError.checkNotNull(
+                myEnemyId, r'GCreateMyPokemonProsInput', 'myEnemyId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
 class _$GCreateMyPokemonTagInput extends GCreateMyPokemonTagInput {
   @override
   final String name;
@@ -6020,7 +8128,7 @@ class _$GCreatePokemonInput extends GCreatePokemonInput {
   @override
   final String form;
   @override
-  final String no;
+  final int no;
   @override
   final double height;
   @override
@@ -6041,6 +8149,10 @@ class _$GCreatePokemonInput extends GCreatePokemonInput {
   final String base64Image;
   @override
   final String imageUrl;
+  @override
+  final String imageSmallUrl;
+  @override
+  final String imageLargeUrl;
   @override
   final String url;
   @override
@@ -6066,6 +8178,8 @@ class _$GCreatePokemonInput extends GCreatePokemonInput {
       required this.statusS,
       required this.base64Image,
       required this.imageUrl,
+      required this.imageSmallUrl,
+      required this.imageLargeUrl,
       required this.url,
       required this.battleIndex,
       required this.battleFormIndex})
@@ -6093,6 +8207,10 @@ class _$GCreatePokemonInput extends GCreatePokemonInput {
         base64Image, r'GCreatePokemonInput', 'base64Image');
     BuiltValueNullFieldError.checkNotNull(
         imageUrl, r'GCreatePokemonInput', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        imageSmallUrl, r'GCreatePokemonInput', 'imageSmallUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        imageLargeUrl, r'GCreatePokemonInput', 'imageLargeUrl');
     BuiltValueNullFieldError.checkNotNull(url, r'GCreatePokemonInput', 'url');
     BuiltValueNullFieldError.checkNotNull(
         battleIndex, r'GCreatePokemonInput', 'battleIndex');
@@ -6126,6 +8244,8 @@ class _$GCreatePokemonInput extends GCreatePokemonInput {
         statusS == other.statusS &&
         base64Image == other.base64Image &&
         imageUrl == other.imageUrl &&
+        imageSmallUrl == other.imageSmallUrl &&
+        imageLargeUrl == other.imageLargeUrl &&
         url == other.url &&
         battleIndex == other.battleIndex &&
         battleFormIndex == other.battleFormIndex;
@@ -6147,6 +8267,8 @@ class _$GCreatePokemonInput extends GCreatePokemonInput {
     _$hash = $jc(_$hash, statusS.hashCode);
     _$hash = $jc(_$hash, base64Image.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
+    _$hash = $jc(_$hash, imageSmallUrl.hashCode);
+    _$hash = $jc(_$hash, imageLargeUrl.hashCode);
     _$hash = $jc(_$hash, url.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
     _$hash = $jc(_$hash, battleFormIndex.hashCode);
@@ -6170,6 +8292,8 @@ class _$GCreatePokemonInput extends GCreatePokemonInput {
           ..add('statusS', statusS)
           ..add('base64Image', base64Image)
           ..add('imageUrl', imageUrl)
+          ..add('imageSmallUrl', imageSmallUrl)
+          ..add('imageLargeUrl', imageLargeUrl)
           ..add('url', url)
           ..add('battleIndex', battleIndex)
           ..add('battleFormIndex', battleFormIndex))
@@ -6189,9 +8313,9 @@ class GCreatePokemonInputBuilder
   String? get form => _$this._form;
   set form(String? form) => _$this._form = form;
 
-  String? _no;
-  String? get no => _$this._no;
-  set no(String? no) => _$this._no = no;
+  int? _no;
+  int? get no => _$this._no;
+  set no(int? no) => _$this._no = no;
 
   double? _height;
   double? get height => _$this._height;
@@ -6233,6 +8357,16 @@ class GCreatePokemonInputBuilder
   String? get imageUrl => _$this._imageUrl;
   set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
+  String? _imageSmallUrl;
+  String? get imageSmallUrl => _$this._imageSmallUrl;
+  set imageSmallUrl(String? imageSmallUrl) =>
+      _$this._imageSmallUrl = imageSmallUrl;
+
+  String? _imageLargeUrl;
+  String? get imageLargeUrl => _$this._imageLargeUrl;
+  set imageLargeUrl(String? imageLargeUrl) =>
+      _$this._imageLargeUrl = imageLargeUrl;
+
   String? _url;
   String? get url => _$this._url;
   set url(String? url) => _$this._url = url;
@@ -6264,6 +8398,8 @@ class GCreatePokemonInputBuilder
       _statusS = $v.statusS;
       _base64Image = $v.base64Image;
       _imageUrl = $v.imageUrl;
+      _imageSmallUrl = $v.imageSmallUrl;
+      _imageLargeUrl = $v.imageLargeUrl;
       _url = $v.url;
       _battleIndex = $v.battleIndex;
       _battleFormIndex = $v.battleFormIndex;
@@ -6311,6 +8447,8 @@ class GCreatePokemonInputBuilder
             statusS: BuiltValueNullFieldError.checkNotNull(statusS, r'GCreatePokemonInput', 'statusS'),
             base64Image: BuiltValueNullFieldError.checkNotNull(base64Image, r'GCreatePokemonInput', 'base64Image'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(imageUrl, r'GCreatePokemonInput', 'imageUrl'),
+            imageSmallUrl: BuiltValueNullFieldError.checkNotNull(imageSmallUrl, r'GCreatePokemonInput', 'imageSmallUrl'),
+            imageLargeUrl: BuiltValueNullFieldError.checkNotNull(imageLargeUrl, r'GCreatePokemonInput', 'imageLargeUrl'),
             url: BuiltValueNullFieldError.checkNotNull(url, r'GCreatePokemonInput', 'url'),
             battleIndex: BuiltValueNullFieldError.checkNotNull(battleIndex, r'GCreatePokemonInput', 'battleIndex'),
             battleFormIndex: BuiltValueNullFieldError.checkNotNull(battleFormIndex, r'GCreatePokemonInput', 'battleFormIndex'));
@@ -6324,16 +8462,33 @@ class _$GCreateTypeInput extends GCreateTypeInput {
   final String name;
   @override
   final String battleIndex;
+  @override
+  final String imageUrl;
+  @override
+  final String textImageUrl;
+  @override
+  final String terastalImageUrl;
 
   factory _$GCreateTypeInput(
           [void Function(GCreateTypeInputBuilder)? updates]) =>
       (new GCreateTypeInputBuilder()..update(updates))._build();
 
-  _$GCreateTypeInput._({required this.name, required this.battleIndex})
+  _$GCreateTypeInput._(
+      {required this.name,
+      required this.battleIndex,
+      required this.imageUrl,
+      required this.textImageUrl,
+      required this.terastalImageUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(name, r'GCreateTypeInput', 'name');
     BuiltValueNullFieldError.checkNotNull(
         battleIndex, r'GCreateTypeInput', 'battleIndex');
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl, r'GCreateTypeInput', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        textImageUrl, r'GCreateTypeInput', 'textImageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        terastalImageUrl, r'GCreateTypeInput', 'terastalImageUrl');
   }
 
   @override
@@ -6349,7 +8504,10 @@ class _$GCreateTypeInput extends GCreateTypeInput {
     if (identical(other, this)) return true;
     return other is GCreateTypeInput &&
         name == other.name &&
-        battleIndex == other.battleIndex;
+        battleIndex == other.battleIndex &&
+        imageUrl == other.imageUrl &&
+        textImageUrl == other.textImageUrl &&
+        terastalImageUrl == other.terastalImageUrl;
   }
 
   @override
@@ -6357,6 +8515,9 @@ class _$GCreateTypeInput extends GCreateTypeInput {
     var _$hash = 0;
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
+    _$hash = $jc(_$hash, textImageUrl.hashCode);
+    _$hash = $jc(_$hash, terastalImageUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -6365,7 +8526,10 @@ class _$GCreateTypeInput extends GCreateTypeInput {
   String toString() {
     return (newBuiltValueToStringHelper(r'GCreateTypeInput')
           ..add('name', name)
-          ..add('battleIndex', battleIndex))
+          ..add('battleIndex', battleIndex)
+          ..add('imageUrl', imageUrl)
+          ..add('textImageUrl', textImageUrl)
+          ..add('terastalImageUrl', terastalImageUrl))
         .toString();
   }
 }
@@ -6382,6 +8546,19 @@ class GCreateTypeInputBuilder
   String? get battleIndex => _$this._battleIndex;
   set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
 
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
+  String? _textImageUrl;
+  String? get textImageUrl => _$this._textImageUrl;
+  set textImageUrl(String? textImageUrl) => _$this._textImageUrl = textImageUrl;
+
+  String? _terastalImageUrl;
+  String? get terastalImageUrl => _$this._terastalImageUrl;
+  set terastalImageUrl(String? terastalImageUrl) =>
+      _$this._terastalImageUrl = terastalImageUrl;
+
   GCreateTypeInputBuilder();
 
   GCreateTypeInputBuilder get _$this {
@@ -6389,6 +8566,9 @@ class GCreateTypeInputBuilder
     if ($v != null) {
       _name = $v.name;
       _battleIndex = $v.battleIndex;
+      _imageUrl = $v.imageUrl;
+      _textImageUrl = $v.textImageUrl;
+      _terastalImageUrl = $v.terastalImageUrl;
       _$v = null;
     }
     return this;
@@ -6414,7 +8594,13 @@ class GCreateTypeInputBuilder
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'GCreateTypeInput', 'name'),
             battleIndex: BuiltValueNullFieldError.checkNotNull(
-                battleIndex, r'GCreateTypeInput', 'battleIndex'));
+                battleIndex, r'GCreateTypeInput', 'battleIndex'),
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, r'GCreateTypeInput', 'imageUrl'),
+            textImageUrl: BuiltValueNullFieldError.checkNotNull(
+                textImageUrl, r'GCreateTypeInput', 'textImageUrl'),
+            terastalImageUrl: BuiltValueNullFieldError.checkNotNull(
+                terastalImageUrl, r'GCreateTypeInput', 'terastalImageUrl'));
     replace(_$result);
     return _$result;
   }
@@ -7203,12 +9389,17 @@ class GUpdateAbilityInputBuilder
 class _$GUpdateAttackTypeInput extends GUpdateAttackTypeInput {
   @override
   final String? name;
+  @override
+  final String imageUrl;
 
   factory _$GUpdateAttackTypeInput(
           [void Function(GUpdateAttackTypeInputBuilder)? updates]) =>
       (new GUpdateAttackTypeInputBuilder()..update(updates))._build();
 
-  _$GUpdateAttackTypeInput._({this.name}) : super._();
+  _$GUpdateAttackTypeInput._({this.name, required this.imageUrl}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl, r'GUpdateAttackTypeInput', 'imageUrl');
+  }
 
   @override
   GUpdateAttackTypeInput rebuild(
@@ -7222,13 +9413,16 @@ class _$GUpdateAttackTypeInput extends GUpdateAttackTypeInput {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GUpdateAttackTypeInput && name == other.name;
+    return other is GUpdateAttackTypeInput &&
+        name == other.name &&
+        imageUrl == other.imageUrl;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -7236,7 +9430,8 @@ class _$GUpdateAttackTypeInput extends GUpdateAttackTypeInput {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GUpdateAttackTypeInput')
-          ..add('name', name))
+          ..add('name', name)
+          ..add('imageUrl', imageUrl))
         .toString();
   }
 }
@@ -7249,12 +9444,17 @@ class GUpdateAttackTypeInputBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
   GUpdateAttackTypeInputBuilder();
 
   GUpdateAttackTypeInputBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _name = $v.name;
+      _imageUrl = $v.imageUrl;
       _$v = null;
     }
     return this;
@@ -7275,7 +9475,11 @@ class GUpdateAttackTypeInputBuilder
   GUpdateAttackTypeInput build() => _build();
 
   _$GUpdateAttackTypeInput _build() {
-    final _$result = _$v ?? new _$GUpdateAttackTypeInput._(name: name);
+    final _$result = _$v ??
+        new _$GUpdateAttackTypeInput._(
+            name: name,
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, r'GUpdateAttackTypeInput', 'imageUrl'));
     replace(_$result);
     return _$result;
   }
@@ -8087,6 +10291,87 @@ class GUpdateBattleIndexInputBuilder
   }
 }
 
+class _$GUpdateEvolutionInput extends GUpdateEvolutionInput {
+  @override
+  final String? pokemonId;
+
+  factory _$GUpdateEvolutionInput(
+          [void Function(GUpdateEvolutionInputBuilder)? updates]) =>
+      (new GUpdateEvolutionInputBuilder()..update(updates))._build();
+
+  _$GUpdateEvolutionInput._({this.pokemonId}) : super._();
+
+  @override
+  GUpdateEvolutionInput rebuild(
+          void Function(GUpdateEvolutionInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateEvolutionInputBuilder toBuilder() =>
+      new GUpdateEvolutionInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateEvolutionInput && pokemonId == other.pokemonId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, pokemonId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateEvolutionInput')
+          ..add('pokemonId', pokemonId))
+        .toString();
+  }
+}
+
+class GUpdateEvolutionInputBuilder
+    implements Builder<GUpdateEvolutionInput, GUpdateEvolutionInputBuilder> {
+  _$GUpdateEvolutionInput? _$v;
+
+  String? _pokemonId;
+  String? get pokemonId => _$this._pokemonId;
+  set pokemonId(String? pokemonId) => _$this._pokemonId = pokemonId;
+
+  GUpdateEvolutionInputBuilder();
+
+  GUpdateEvolutionInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _pokemonId = $v.pokemonId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateEvolutionInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateEvolutionInput;
+  }
+
+  @override
+  void update(void Function(GUpdateEvolutionInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateEvolutionInput build() => _build();
+
+  _$GUpdateEvolutionInput _build() {
+    final _$result = _$v ?? new _$GUpdateEvolutionInput._(pokemonId: pokemonId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
 class _$GUpdateFormInput extends GUpdateFormInput {
   @override
   final String? no;
@@ -8211,7 +10496,11 @@ class _$GUpdateItemInput extends GUpdateItemInput {
   @override
   final String? base64Image;
   @override
-  final String imageUrl;
+  final String? imageUrl;
+  @override
+  final String? imageSmallUrl;
+  @override
+  final String? imageLargeUrl;
 
   factory _$GUpdateItemInput(
           [void Function(GUpdateItemInputBuilder)? updates]) =>
@@ -8222,11 +10511,10 @@ class _$GUpdateItemInput extends GUpdateItemInput {
       this.detail,
       this.battleIndex,
       this.base64Image,
-      required this.imageUrl})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        imageUrl, r'GUpdateItemInput', 'imageUrl');
-  }
+      this.imageUrl,
+      this.imageSmallUrl,
+      this.imageLargeUrl})
+      : super._();
 
   @override
   GUpdateItemInput rebuild(void Function(GUpdateItemInputBuilder) updates) =>
@@ -8244,7 +10532,9 @@ class _$GUpdateItemInput extends GUpdateItemInput {
         detail == other.detail &&
         battleIndex == other.battleIndex &&
         base64Image == other.base64Image &&
-        imageUrl == other.imageUrl;
+        imageUrl == other.imageUrl &&
+        imageSmallUrl == other.imageSmallUrl &&
+        imageLargeUrl == other.imageLargeUrl;
   }
 
   @override
@@ -8255,6 +10545,8 @@ class _$GUpdateItemInput extends GUpdateItemInput {
     _$hash = $jc(_$hash, battleIndex.hashCode);
     _$hash = $jc(_$hash, base64Image.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
+    _$hash = $jc(_$hash, imageSmallUrl.hashCode);
+    _$hash = $jc(_$hash, imageLargeUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -8266,7 +10558,9 @@ class _$GUpdateItemInput extends GUpdateItemInput {
           ..add('detail', detail)
           ..add('battleIndex', battleIndex)
           ..add('base64Image', base64Image)
-          ..add('imageUrl', imageUrl))
+          ..add('imageUrl', imageUrl)
+          ..add('imageSmallUrl', imageSmallUrl)
+          ..add('imageLargeUrl', imageLargeUrl))
         .toString();
   }
 }
@@ -8295,6 +10589,16 @@ class GUpdateItemInputBuilder
   String? get imageUrl => _$this._imageUrl;
   set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
+  String? _imageSmallUrl;
+  String? get imageSmallUrl => _$this._imageSmallUrl;
+  set imageSmallUrl(String? imageSmallUrl) =>
+      _$this._imageSmallUrl = imageSmallUrl;
+
+  String? _imageLargeUrl;
+  String? get imageLargeUrl => _$this._imageLargeUrl;
+  set imageLargeUrl(String? imageLargeUrl) =>
+      _$this._imageLargeUrl = imageLargeUrl;
+
   GUpdateItemInputBuilder();
 
   GUpdateItemInputBuilder get _$this {
@@ -8305,6 +10609,8 @@ class GUpdateItemInputBuilder
       _battleIndex = $v.battleIndex;
       _base64Image = $v.base64Image;
       _imageUrl = $v.imageUrl;
+      _imageSmallUrl = $v.imageSmallUrl;
+      _imageLargeUrl = $v.imageLargeUrl;
       _$v = null;
     }
     return this;
@@ -8331,16 +10637,15 @@ class GUpdateItemInputBuilder
             detail: detail,
             battleIndex: battleIndex,
             base64Image: base64Image,
-            imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, r'GUpdateItemInput', 'imageUrl'));
+            imageUrl: imageUrl,
+            imageSmallUrl: imageSmallUrl,
+            imageLargeUrl: imageLargeUrl);
     replace(_$result);
     return _$result;
   }
 }
 
 class _$GUpdateMoveInput extends GUpdateMoveInput {
-  @override
-  final String? target;
   @override
   final String? detail;
   @override
@@ -8356,28 +10661,66 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
   @override
   final int? pp;
   @override
-  final bool? isTouchable;
-  @override
-  final bool? enableProtect;
-  @override
   final String? battleIndex;
+  @override
+  final bool? isContact;
+  @override
+  final bool? isQuick;
+  @override
+  final bool? isDelay;
+  @override
+  final bool? isChangeable;
+  @override
+  final bool? isMultipleAttack;
+  @override
+  final bool? isMustCritical;
+  @override
+  final bool? isPunch;
+  @override
+  final bool? isSound;
+  @override
+  final bool? isPowder;
+  @override
+  final bool? isWave;
+  @override
+  final bool? isJaw;
+  @override
+  final bool? isBullet;
+  @override
+  final bool? isDance;
+  @override
+  final bool? isWind;
+  @override
+  final bool? isCut;
 
   factory _$GUpdateMoveInput(
           [void Function(GUpdateMoveInputBuilder)? updates]) =>
       (new GUpdateMoveInputBuilder()..update(updates))._build();
 
   _$GUpdateMoveInput._(
-      {this.target,
-      this.detail,
+      {this.detail,
       this.name,
       this.typeId,
       this.attackTypeId,
       this.power,
       this.accuracy,
       this.pp,
-      this.isTouchable,
-      this.enableProtect,
-      this.battleIndex})
+      this.battleIndex,
+      this.isContact,
+      this.isQuick,
+      this.isDelay,
+      this.isChangeable,
+      this.isMultipleAttack,
+      this.isMustCritical,
+      this.isPunch,
+      this.isSound,
+      this.isPowder,
+      this.isWave,
+      this.isJaw,
+      this.isBullet,
+      this.isDance,
+      this.isWind,
+      this.isCut})
       : super._();
 
   @override
@@ -8392,7 +10735,6 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GUpdateMoveInput &&
-        target == other.target &&
         detail == other.detail &&
         name == other.name &&
         typeId == other.typeId &&
@@ -8400,15 +10742,27 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
         power == other.power &&
         accuracy == other.accuracy &&
         pp == other.pp &&
-        isTouchable == other.isTouchable &&
-        enableProtect == other.enableProtect &&
-        battleIndex == other.battleIndex;
+        battleIndex == other.battleIndex &&
+        isContact == other.isContact &&
+        isQuick == other.isQuick &&
+        isDelay == other.isDelay &&
+        isChangeable == other.isChangeable &&
+        isMultipleAttack == other.isMultipleAttack &&
+        isMustCritical == other.isMustCritical &&
+        isPunch == other.isPunch &&
+        isSound == other.isSound &&
+        isPowder == other.isPowder &&
+        isWave == other.isWave &&
+        isJaw == other.isJaw &&
+        isBullet == other.isBullet &&
+        isDance == other.isDance &&
+        isWind == other.isWind &&
+        isCut == other.isCut;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, target.hashCode);
     _$hash = $jc(_$hash, detail.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, typeId.hashCode);
@@ -8416,9 +10770,22 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
     _$hash = $jc(_$hash, power.hashCode);
     _$hash = $jc(_$hash, accuracy.hashCode);
     _$hash = $jc(_$hash, pp.hashCode);
-    _$hash = $jc(_$hash, isTouchable.hashCode);
-    _$hash = $jc(_$hash, enableProtect.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, isContact.hashCode);
+    _$hash = $jc(_$hash, isQuick.hashCode);
+    _$hash = $jc(_$hash, isDelay.hashCode);
+    _$hash = $jc(_$hash, isChangeable.hashCode);
+    _$hash = $jc(_$hash, isMultipleAttack.hashCode);
+    _$hash = $jc(_$hash, isMustCritical.hashCode);
+    _$hash = $jc(_$hash, isPunch.hashCode);
+    _$hash = $jc(_$hash, isSound.hashCode);
+    _$hash = $jc(_$hash, isPowder.hashCode);
+    _$hash = $jc(_$hash, isWave.hashCode);
+    _$hash = $jc(_$hash, isJaw.hashCode);
+    _$hash = $jc(_$hash, isBullet.hashCode);
+    _$hash = $jc(_$hash, isDance.hashCode);
+    _$hash = $jc(_$hash, isWind.hashCode);
+    _$hash = $jc(_$hash, isCut.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -8426,7 +10793,6 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GUpdateMoveInput')
-          ..add('target', target)
           ..add('detail', detail)
           ..add('name', name)
           ..add('typeId', typeId)
@@ -8434,9 +10800,22 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
           ..add('power', power)
           ..add('accuracy', accuracy)
           ..add('pp', pp)
-          ..add('isTouchable', isTouchable)
-          ..add('enableProtect', enableProtect)
-          ..add('battleIndex', battleIndex))
+          ..add('battleIndex', battleIndex)
+          ..add('isContact', isContact)
+          ..add('isQuick', isQuick)
+          ..add('isDelay', isDelay)
+          ..add('isChangeable', isChangeable)
+          ..add('isMultipleAttack', isMultipleAttack)
+          ..add('isMustCritical', isMustCritical)
+          ..add('isPunch', isPunch)
+          ..add('isSound', isSound)
+          ..add('isPowder', isPowder)
+          ..add('isWave', isWave)
+          ..add('isJaw', isJaw)
+          ..add('isBullet', isBullet)
+          ..add('isDance', isDance)
+          ..add('isWind', isWind)
+          ..add('isCut', isCut))
         .toString();
   }
 }
@@ -8444,10 +10823,6 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
 class GUpdateMoveInputBuilder
     implements Builder<GUpdateMoveInput, GUpdateMoveInputBuilder> {
   _$GUpdateMoveInput? _$v;
-
-  String? _target;
-  String? get target => _$this._target;
-  set target(String? target) => _$this._target = target;
 
   String? _detail;
   String? get detail => _$this._detail;
@@ -8477,25 +10852,77 @@ class GUpdateMoveInputBuilder
   int? get pp => _$this._pp;
   set pp(int? pp) => _$this._pp = pp;
 
-  bool? _isTouchable;
-  bool? get isTouchable => _$this._isTouchable;
-  set isTouchable(bool? isTouchable) => _$this._isTouchable = isTouchable;
-
-  bool? _enableProtect;
-  bool? get enableProtect => _$this._enableProtect;
-  set enableProtect(bool? enableProtect) =>
-      _$this._enableProtect = enableProtect;
-
   String? _battleIndex;
   String? get battleIndex => _$this._battleIndex;
   set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  bool? _isContact;
+  bool? get isContact => _$this._isContact;
+  set isContact(bool? isContact) => _$this._isContact = isContact;
+
+  bool? _isQuick;
+  bool? get isQuick => _$this._isQuick;
+  set isQuick(bool? isQuick) => _$this._isQuick = isQuick;
+
+  bool? _isDelay;
+  bool? get isDelay => _$this._isDelay;
+  set isDelay(bool? isDelay) => _$this._isDelay = isDelay;
+
+  bool? _isChangeable;
+  bool? get isChangeable => _$this._isChangeable;
+  set isChangeable(bool? isChangeable) => _$this._isChangeable = isChangeable;
+
+  bool? _isMultipleAttack;
+  bool? get isMultipleAttack => _$this._isMultipleAttack;
+  set isMultipleAttack(bool? isMultipleAttack) =>
+      _$this._isMultipleAttack = isMultipleAttack;
+
+  bool? _isMustCritical;
+  bool? get isMustCritical => _$this._isMustCritical;
+  set isMustCritical(bool? isMustCritical) =>
+      _$this._isMustCritical = isMustCritical;
+
+  bool? _isPunch;
+  bool? get isPunch => _$this._isPunch;
+  set isPunch(bool? isPunch) => _$this._isPunch = isPunch;
+
+  bool? _isSound;
+  bool? get isSound => _$this._isSound;
+  set isSound(bool? isSound) => _$this._isSound = isSound;
+
+  bool? _isPowder;
+  bool? get isPowder => _$this._isPowder;
+  set isPowder(bool? isPowder) => _$this._isPowder = isPowder;
+
+  bool? _isWave;
+  bool? get isWave => _$this._isWave;
+  set isWave(bool? isWave) => _$this._isWave = isWave;
+
+  bool? _isJaw;
+  bool? get isJaw => _$this._isJaw;
+  set isJaw(bool? isJaw) => _$this._isJaw = isJaw;
+
+  bool? _isBullet;
+  bool? get isBullet => _$this._isBullet;
+  set isBullet(bool? isBullet) => _$this._isBullet = isBullet;
+
+  bool? _isDance;
+  bool? get isDance => _$this._isDance;
+  set isDance(bool? isDance) => _$this._isDance = isDance;
+
+  bool? _isWind;
+  bool? get isWind => _$this._isWind;
+  set isWind(bool? isWind) => _$this._isWind = isWind;
+
+  bool? _isCut;
+  bool? get isCut => _$this._isCut;
+  set isCut(bool? isCut) => _$this._isCut = isCut;
 
   GUpdateMoveInputBuilder();
 
   GUpdateMoveInputBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _target = $v.target;
       _detail = $v.detail;
       _name = $v.name;
       _typeId = $v.typeId;
@@ -8503,9 +10930,22 @@ class GUpdateMoveInputBuilder
       _power = $v.power;
       _accuracy = $v.accuracy;
       _pp = $v.pp;
-      _isTouchable = $v.isTouchable;
-      _enableProtect = $v.enableProtect;
       _battleIndex = $v.battleIndex;
+      _isContact = $v.isContact;
+      _isQuick = $v.isQuick;
+      _isDelay = $v.isDelay;
+      _isChangeable = $v.isChangeable;
+      _isMultipleAttack = $v.isMultipleAttack;
+      _isMustCritical = $v.isMustCritical;
+      _isPunch = $v.isPunch;
+      _isSound = $v.isSound;
+      _isPowder = $v.isPowder;
+      _isWave = $v.isWave;
+      _isJaw = $v.isJaw;
+      _isBullet = $v.isBullet;
+      _isDance = $v.isDance;
+      _isWind = $v.isWind;
+      _isCut = $v.isCut;
       _$v = null;
     }
     return this;
@@ -8528,7 +10968,6 @@ class GUpdateMoveInputBuilder
   _$GUpdateMoveInput _build() {
     final _$result = _$v ??
         new _$GUpdateMoveInput._(
-            target: target,
             detail: detail,
             name: name,
             typeId: typeId,
@@ -8536,9 +10975,391 @@ class GUpdateMoveInputBuilder
             power: power,
             accuracy: accuracy,
             pp: pp,
-            isTouchable: isTouchable,
-            enableProtect: enableProtect,
-            battleIndex: battleIndex);
+            battleIndex: battleIndex,
+            isContact: isContact,
+            isQuick: isQuick,
+            isDelay: isDelay,
+            isChangeable: isChangeable,
+            isMultipleAttack: isMultipleAttack,
+            isMustCritical: isMustCritical,
+            isPunch: isPunch,
+            isSound: isSound,
+            isPowder: isPowder,
+            isWave: isWave,
+            isJaw: isJaw,
+            isBullet: isBullet,
+            isDance: isDance,
+            isWind: isWind,
+            isCut: isCut);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateMyEnemyInput extends GUpdateMyEnemyInput {
+  @override
+  final String? name;
+  @override
+  final bool? favorite;
+  @override
+  final int? evH;
+  @override
+  final int? evA;
+  @override
+  final int? evB;
+  @override
+  final int? evC;
+  @override
+  final int? evD;
+  @override
+  final int? evS;
+  @override
+  final String? memo;
+  @override
+  final String? pokemonId;
+  @override
+  final String? itemId;
+  @override
+  final String? abilityId;
+  @override
+  final String? natureId;
+  @override
+  final String? terastalId;
+  @override
+  final String? userId;
+
+  factory _$GUpdateMyEnemyInput(
+          [void Function(GUpdateMyEnemyInputBuilder)? updates]) =>
+      (new GUpdateMyEnemyInputBuilder()..update(updates))._build();
+
+  _$GUpdateMyEnemyInput._(
+      {this.name,
+      this.favorite,
+      this.evH,
+      this.evA,
+      this.evB,
+      this.evC,
+      this.evD,
+      this.evS,
+      this.memo,
+      this.pokemonId,
+      this.itemId,
+      this.abilityId,
+      this.natureId,
+      this.terastalId,
+      this.userId})
+      : super._();
+
+  @override
+  GUpdateMyEnemyInput rebuild(
+          void Function(GUpdateMyEnemyInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateMyEnemyInputBuilder toBuilder() =>
+      new GUpdateMyEnemyInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateMyEnemyInput &&
+        name == other.name &&
+        favorite == other.favorite &&
+        evH == other.evH &&
+        evA == other.evA &&
+        evB == other.evB &&
+        evC == other.evC &&
+        evD == other.evD &&
+        evS == other.evS &&
+        memo == other.memo &&
+        pokemonId == other.pokemonId &&
+        itemId == other.itemId &&
+        abilityId == other.abilityId &&
+        natureId == other.natureId &&
+        terastalId == other.terastalId &&
+        userId == other.userId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jc(_$hash, evH.hashCode);
+    _$hash = $jc(_$hash, evA.hashCode);
+    _$hash = $jc(_$hash, evB.hashCode);
+    _$hash = $jc(_$hash, evC.hashCode);
+    _$hash = $jc(_$hash, evD.hashCode);
+    _$hash = $jc(_$hash, evS.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, pokemonId.hashCode);
+    _$hash = $jc(_$hash, itemId.hashCode);
+    _$hash = $jc(_$hash, abilityId.hashCode);
+    _$hash = $jc(_$hash, natureId.hashCode);
+    _$hash = $jc(_$hash, terastalId.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateMyEnemyInput')
+          ..add('name', name)
+          ..add('favorite', favorite)
+          ..add('evH', evH)
+          ..add('evA', evA)
+          ..add('evB', evB)
+          ..add('evC', evC)
+          ..add('evD', evD)
+          ..add('evS', evS)
+          ..add('memo', memo)
+          ..add('pokemonId', pokemonId)
+          ..add('itemId', itemId)
+          ..add('abilityId', abilityId)
+          ..add('natureId', natureId)
+          ..add('terastalId', terastalId)
+          ..add('userId', userId))
+        .toString();
+  }
+}
+
+class GUpdateMyEnemyInputBuilder
+    implements Builder<GUpdateMyEnemyInput, GUpdateMyEnemyInputBuilder> {
+  _$GUpdateMyEnemyInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  int? _evH;
+  int? get evH => _$this._evH;
+  set evH(int? evH) => _$this._evH = evH;
+
+  int? _evA;
+  int? get evA => _$this._evA;
+  set evA(int? evA) => _$this._evA = evA;
+
+  int? _evB;
+  int? get evB => _$this._evB;
+  set evB(int? evB) => _$this._evB = evB;
+
+  int? _evC;
+  int? get evC => _$this._evC;
+  set evC(int? evC) => _$this._evC = evC;
+
+  int? _evD;
+  int? get evD => _$this._evD;
+  set evD(int? evD) => _$this._evD = evD;
+
+  int? _evS;
+  int? get evS => _$this._evS;
+  set evS(int? evS) => _$this._evS = evS;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  String? _pokemonId;
+  String? get pokemonId => _$this._pokemonId;
+  set pokemonId(String? pokemonId) => _$this._pokemonId = pokemonId;
+
+  String? _itemId;
+  String? get itemId => _$this._itemId;
+  set itemId(String? itemId) => _$this._itemId = itemId;
+
+  String? _abilityId;
+  String? get abilityId => _$this._abilityId;
+  set abilityId(String? abilityId) => _$this._abilityId = abilityId;
+
+  String? _natureId;
+  String? get natureId => _$this._natureId;
+  set natureId(String? natureId) => _$this._natureId = natureId;
+
+  String? _terastalId;
+  String? get terastalId => _$this._terastalId;
+  set terastalId(String? terastalId) => _$this._terastalId = terastalId;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  GUpdateMyEnemyInputBuilder();
+
+  GUpdateMyEnemyInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _favorite = $v.favorite;
+      _evH = $v.evH;
+      _evA = $v.evA;
+      _evB = $v.evB;
+      _evC = $v.evC;
+      _evD = $v.evD;
+      _evS = $v.evS;
+      _memo = $v.memo;
+      _pokemonId = $v.pokemonId;
+      _itemId = $v.itemId;
+      _abilityId = $v.abilityId;
+      _natureId = $v.natureId;
+      _terastalId = $v.terastalId;
+      _userId = $v.userId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateMyEnemyInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateMyEnemyInput;
+  }
+
+  @override
+  void update(void Function(GUpdateMyEnemyInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateMyEnemyInput build() => _build();
+
+  _$GUpdateMyEnemyInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateMyEnemyInput._(
+            name: name,
+            favorite: favorite,
+            evH: evH,
+            evA: evA,
+            evB: evB,
+            evC: evC,
+            evD: evD,
+            evS: evS,
+            memo: memo,
+            pokemonId: pokemonId,
+            itemId: itemId,
+            abilityId: abilityId,
+            natureId: natureId,
+            terastalId: terastalId,
+            userId: userId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateMyEnemyTagInput extends GUpdateMyEnemyTagInput {
+  @override
+  final String? name;
+  @override
+  final bool? favorite;
+  @override
+  final String? memo;
+  @override
+  final String? userId;
+
+  factory _$GUpdateMyEnemyTagInput(
+          [void Function(GUpdateMyEnemyTagInputBuilder)? updates]) =>
+      (new GUpdateMyEnemyTagInputBuilder()..update(updates))._build();
+
+  _$GUpdateMyEnemyTagInput._({this.name, this.favorite, this.memo, this.userId})
+      : super._();
+
+  @override
+  GUpdateMyEnemyTagInput rebuild(
+          void Function(GUpdateMyEnemyTagInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateMyEnemyTagInputBuilder toBuilder() =>
+      new GUpdateMyEnemyTagInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateMyEnemyTagInput &&
+        name == other.name &&
+        favorite == other.favorite &&
+        memo == other.memo &&
+        userId == other.userId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateMyEnemyTagInput')
+          ..add('name', name)
+          ..add('favorite', favorite)
+          ..add('memo', memo)
+          ..add('userId', userId))
+        .toString();
+  }
+}
+
+class GUpdateMyEnemyTagInputBuilder
+    implements Builder<GUpdateMyEnemyTagInput, GUpdateMyEnemyTagInputBuilder> {
+  _$GUpdateMyEnemyTagInput? _$v;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  GUpdateMyEnemyTagInputBuilder();
+
+  GUpdateMyEnemyTagInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _name = $v.name;
+      _favorite = $v.favorite;
+      _memo = $v.memo;
+      _userId = $v.userId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateMyEnemyTagInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateMyEnemyTagInput;
+  }
+
+  @override
+  void update(void Function(GUpdateMyEnemyTagInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateMyEnemyTagInput build() => _build();
+
+  _$GUpdateMyEnemyTagInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateMyEnemyTagInput._(
+            name: name, favorite: favorite, memo: memo, userId: userId);
     replace(_$result);
     return _$result;
   }
@@ -8769,6 +11590,101 @@ class GUpdateMyPartyTagInputBuilder
     final _$result = _$v ??
         new _$GUpdateMyPartyTagInput._(
             name: name, favorite: favorite, memo: memo, userId: userId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateMyPokemonConsInput extends GUpdateMyPokemonConsInput {
+  @override
+  final String? myPokemonId;
+  @override
+  final String? myEnemyId;
+
+  factory _$GUpdateMyPokemonConsInput(
+          [void Function(GUpdateMyPokemonConsInputBuilder)? updates]) =>
+      (new GUpdateMyPokemonConsInputBuilder()..update(updates))._build();
+
+  _$GUpdateMyPokemonConsInput._({this.myPokemonId, this.myEnemyId}) : super._();
+
+  @override
+  GUpdateMyPokemonConsInput rebuild(
+          void Function(GUpdateMyPokemonConsInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateMyPokemonConsInputBuilder toBuilder() =>
+      new GUpdateMyPokemonConsInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateMyPokemonConsInput &&
+        myPokemonId == other.myPokemonId &&
+        myEnemyId == other.myEnemyId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, myPokemonId.hashCode);
+    _$hash = $jc(_$hash, myEnemyId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateMyPokemonConsInput')
+          ..add('myPokemonId', myPokemonId)
+          ..add('myEnemyId', myEnemyId))
+        .toString();
+  }
+}
+
+class GUpdateMyPokemonConsInputBuilder
+    implements
+        Builder<GUpdateMyPokemonConsInput, GUpdateMyPokemonConsInputBuilder> {
+  _$GUpdateMyPokemonConsInput? _$v;
+
+  String? _myPokemonId;
+  String? get myPokemonId => _$this._myPokemonId;
+  set myPokemonId(String? myPokemonId) => _$this._myPokemonId = myPokemonId;
+
+  String? _myEnemyId;
+  String? get myEnemyId => _$this._myEnemyId;
+  set myEnemyId(String? myEnemyId) => _$this._myEnemyId = myEnemyId;
+
+  GUpdateMyPokemonConsInputBuilder();
+
+  GUpdateMyPokemonConsInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _myPokemonId = $v.myPokemonId;
+      _myEnemyId = $v.myEnemyId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateMyPokemonConsInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateMyPokemonConsInput;
+  }
+
+  @override
+  void update(void Function(GUpdateMyPokemonConsInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateMyPokemonConsInput build() => _build();
+
+  _$GUpdateMyPokemonConsInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateMyPokemonConsInput._(
+            myPokemonId: myPokemonId, myEnemyId: myEnemyId);
     replace(_$result);
     return _$result;
   }
@@ -9028,6 +11944,101 @@ class GUpdateMyPokemonInputBuilder
   }
 }
 
+class _$GUpdateMyPokemonProsInput extends GUpdateMyPokemonProsInput {
+  @override
+  final String? myPokemonId;
+  @override
+  final String? myEnemyId;
+
+  factory _$GUpdateMyPokemonProsInput(
+          [void Function(GUpdateMyPokemonProsInputBuilder)? updates]) =>
+      (new GUpdateMyPokemonProsInputBuilder()..update(updates))._build();
+
+  _$GUpdateMyPokemonProsInput._({this.myPokemonId, this.myEnemyId}) : super._();
+
+  @override
+  GUpdateMyPokemonProsInput rebuild(
+          void Function(GUpdateMyPokemonProsInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateMyPokemonProsInputBuilder toBuilder() =>
+      new GUpdateMyPokemonProsInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateMyPokemonProsInput &&
+        myPokemonId == other.myPokemonId &&
+        myEnemyId == other.myEnemyId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, myPokemonId.hashCode);
+    _$hash = $jc(_$hash, myEnemyId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateMyPokemonProsInput')
+          ..add('myPokemonId', myPokemonId)
+          ..add('myEnemyId', myEnemyId))
+        .toString();
+  }
+}
+
+class GUpdateMyPokemonProsInputBuilder
+    implements
+        Builder<GUpdateMyPokemonProsInput, GUpdateMyPokemonProsInputBuilder> {
+  _$GUpdateMyPokemonProsInput? _$v;
+
+  String? _myPokemonId;
+  String? get myPokemonId => _$this._myPokemonId;
+  set myPokemonId(String? myPokemonId) => _$this._myPokemonId = myPokemonId;
+
+  String? _myEnemyId;
+  String? get myEnemyId => _$this._myEnemyId;
+  set myEnemyId(String? myEnemyId) => _$this._myEnemyId = myEnemyId;
+
+  GUpdateMyPokemonProsInputBuilder();
+
+  GUpdateMyPokemonProsInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _myPokemonId = $v.myPokemonId;
+      _myEnemyId = $v.myEnemyId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateMyPokemonProsInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateMyPokemonProsInput;
+  }
+
+  @override
+  void update(void Function(GUpdateMyPokemonProsInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateMyPokemonProsInput build() => _build();
+
+  _$GUpdateMyPokemonProsInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateMyPokemonProsInput._(
+            myPokemonId: myPokemonId, myEnemyId: myEnemyId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
 class _$GUpdateMyPokemonTagInput extends GUpdateMyPokemonTagInput {
   @override
   final String? name;
@@ -9270,7 +12281,7 @@ class _$GUpdatePokemonInput extends GUpdatePokemonInput {
   @override
   final String? form;
   @override
-  final String? no;
+  final int? no;
   @override
   final double? height;
   @override
@@ -9290,7 +12301,11 @@ class _$GUpdatePokemonInput extends GUpdatePokemonInput {
   @override
   final String? base64Image;
   @override
-  final String imageUrl;
+  final String? imageUrl;
+  @override
+  final String? imageSmallUrl;
+  @override
+  final String? imageLargeUrl;
   @override
   final String? url;
   @override
@@ -9315,14 +12330,13 @@ class _$GUpdatePokemonInput extends GUpdatePokemonInput {
       this.statusD,
       this.statusS,
       this.base64Image,
-      required this.imageUrl,
+      this.imageUrl,
+      this.imageSmallUrl,
+      this.imageLargeUrl,
       this.url,
       this.battleIndex,
       this.battleFormIndex})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        imageUrl, r'GUpdatePokemonInput', 'imageUrl');
-  }
+      : super._();
 
   @override
   GUpdatePokemonInput rebuild(
@@ -9350,6 +12364,8 @@ class _$GUpdatePokemonInput extends GUpdatePokemonInput {
         statusS == other.statusS &&
         base64Image == other.base64Image &&
         imageUrl == other.imageUrl &&
+        imageSmallUrl == other.imageSmallUrl &&
+        imageLargeUrl == other.imageLargeUrl &&
         url == other.url &&
         battleIndex == other.battleIndex &&
         battleFormIndex == other.battleFormIndex;
@@ -9371,6 +12387,8 @@ class _$GUpdatePokemonInput extends GUpdatePokemonInput {
     _$hash = $jc(_$hash, statusS.hashCode);
     _$hash = $jc(_$hash, base64Image.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
+    _$hash = $jc(_$hash, imageSmallUrl.hashCode);
+    _$hash = $jc(_$hash, imageLargeUrl.hashCode);
     _$hash = $jc(_$hash, url.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
     _$hash = $jc(_$hash, battleFormIndex.hashCode);
@@ -9394,6 +12412,8 @@ class _$GUpdatePokemonInput extends GUpdatePokemonInput {
           ..add('statusS', statusS)
           ..add('base64Image', base64Image)
           ..add('imageUrl', imageUrl)
+          ..add('imageSmallUrl', imageSmallUrl)
+          ..add('imageLargeUrl', imageLargeUrl)
           ..add('url', url)
           ..add('battleIndex', battleIndex)
           ..add('battleFormIndex', battleFormIndex))
@@ -9413,9 +12433,9 @@ class GUpdatePokemonInputBuilder
   String? get form => _$this._form;
   set form(String? form) => _$this._form = form;
 
-  String? _no;
-  String? get no => _$this._no;
-  set no(String? no) => _$this._no = no;
+  int? _no;
+  int? get no => _$this._no;
+  set no(int? no) => _$this._no = no;
 
   double? _height;
   double? get height => _$this._height;
@@ -9457,6 +12477,16 @@ class GUpdatePokemonInputBuilder
   String? get imageUrl => _$this._imageUrl;
   set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
+  String? _imageSmallUrl;
+  String? get imageSmallUrl => _$this._imageSmallUrl;
+  set imageSmallUrl(String? imageSmallUrl) =>
+      _$this._imageSmallUrl = imageSmallUrl;
+
+  String? _imageLargeUrl;
+  String? get imageLargeUrl => _$this._imageLargeUrl;
+  set imageLargeUrl(String? imageLargeUrl) =>
+      _$this._imageLargeUrl = imageLargeUrl;
+
   String? _url;
   String? get url => _$this._url;
   set url(String? url) => _$this._url = url;
@@ -9488,6 +12518,8 @@ class GUpdatePokemonInputBuilder
       _statusS = $v.statusS;
       _base64Image = $v.base64Image;
       _imageUrl = $v.imageUrl;
+      _imageSmallUrl = $v.imageSmallUrl;
+      _imageLargeUrl = $v.imageLargeUrl;
       _url = $v.url;
       _battleIndex = $v.battleIndex;
       _battleFormIndex = $v.battleFormIndex;
@@ -9525,8 +12557,9 @@ class GUpdatePokemonInputBuilder
             statusD: statusD,
             statusS: statusS,
             base64Image: base64Image,
-            imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, r'GUpdatePokemonInput', 'imageUrl'),
+            imageUrl: imageUrl,
+            imageSmallUrl: imageSmallUrl,
+            imageLargeUrl: imageLargeUrl,
             url: url,
             battleIndex: battleIndex,
             battleFormIndex: battleFormIndex);
@@ -9540,12 +12573,31 @@ class _$GUpdateTypeInput extends GUpdateTypeInput {
   final String? name;
   @override
   final String? battleIndex;
+  @override
+  final String imageUrl;
+  @override
+  final String textImageUrl;
+  @override
+  final String terastalImageUrl;
 
   factory _$GUpdateTypeInput(
           [void Function(GUpdateTypeInputBuilder)? updates]) =>
       (new GUpdateTypeInputBuilder()..update(updates))._build();
 
-  _$GUpdateTypeInput._({this.name, this.battleIndex}) : super._();
+  _$GUpdateTypeInput._(
+      {this.name,
+      this.battleIndex,
+      required this.imageUrl,
+      required this.textImageUrl,
+      required this.terastalImageUrl})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl, r'GUpdateTypeInput', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        textImageUrl, r'GUpdateTypeInput', 'textImageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        terastalImageUrl, r'GUpdateTypeInput', 'terastalImageUrl');
+  }
 
   @override
   GUpdateTypeInput rebuild(void Function(GUpdateTypeInputBuilder) updates) =>
@@ -9560,7 +12612,10 @@ class _$GUpdateTypeInput extends GUpdateTypeInput {
     if (identical(other, this)) return true;
     return other is GUpdateTypeInput &&
         name == other.name &&
-        battleIndex == other.battleIndex;
+        battleIndex == other.battleIndex &&
+        imageUrl == other.imageUrl &&
+        textImageUrl == other.textImageUrl &&
+        terastalImageUrl == other.terastalImageUrl;
   }
 
   @override
@@ -9568,6 +12623,9 @@ class _$GUpdateTypeInput extends GUpdateTypeInput {
     var _$hash = 0;
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
+    _$hash = $jc(_$hash, textImageUrl.hashCode);
+    _$hash = $jc(_$hash, terastalImageUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -9576,7 +12634,10 @@ class _$GUpdateTypeInput extends GUpdateTypeInput {
   String toString() {
     return (newBuiltValueToStringHelper(r'GUpdateTypeInput')
           ..add('name', name)
-          ..add('battleIndex', battleIndex))
+          ..add('battleIndex', battleIndex)
+          ..add('imageUrl', imageUrl)
+          ..add('textImageUrl', textImageUrl)
+          ..add('terastalImageUrl', terastalImageUrl))
         .toString();
   }
 }
@@ -9593,6 +12654,19 @@ class GUpdateTypeInputBuilder
   String? get battleIndex => _$this._battleIndex;
   set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
 
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
+  String? _textImageUrl;
+  String? get textImageUrl => _$this._textImageUrl;
+  set textImageUrl(String? textImageUrl) => _$this._textImageUrl = textImageUrl;
+
+  String? _terastalImageUrl;
+  String? get terastalImageUrl => _$this._terastalImageUrl;
+  set terastalImageUrl(String? terastalImageUrl) =>
+      _$this._terastalImageUrl = terastalImageUrl;
+
   GUpdateTypeInputBuilder();
 
   GUpdateTypeInputBuilder get _$this {
@@ -9600,6 +12674,9 @@ class GUpdateTypeInputBuilder
     if ($v != null) {
       _name = $v.name;
       _battleIndex = $v.battleIndex;
+      _imageUrl = $v.imageUrl;
+      _textImageUrl = $v.textImageUrl;
+      _terastalImageUrl = $v.terastalImageUrl;
       _$v = null;
     }
     return this;
@@ -9620,8 +12697,16 @@ class GUpdateTypeInputBuilder
   GUpdateTypeInput build() => _build();
 
   _$GUpdateTypeInput _build() {
-    final _$result =
-        _$v ?? new _$GUpdateTypeInput._(name: name, battleIndex: battleIndex);
+    final _$result = _$v ??
+        new _$GUpdateTypeInput._(
+            name: name,
+            battleIndex: battleIndex,
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, r'GUpdateTypeInput', 'imageUrl'),
+            textImageUrl: BuiltValueNullFieldError.checkNotNull(
+                textImageUrl, r'GUpdateTypeInput', 'textImageUrl'),
+            terastalImageUrl: BuiltValueNullFieldError.checkNotNull(
+                terastalImageUrl, r'GUpdateTypeInput', 'terastalImageUrl'));
     replace(_$result);
     return _$result;
   }

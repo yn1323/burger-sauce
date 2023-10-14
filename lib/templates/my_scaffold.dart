@@ -9,7 +9,7 @@ class MyScaffold extends StatefulWidget {
 }
 
 class _MyScaffoldState extends State<MyScaffold> {
-  int _selectedIndex = 4;
+  int _selectedIndex = 1;
   PageController? _controller;
 
   @override
@@ -24,8 +24,8 @@ class _MyScaffoldState extends State<MyScaffold> {
     super.dispose();
   }
 
-  void onTap(int index) {
-    changePageIndex(index);
+  void _onTap(int index) {
+    _changePageIndex(index);
 
     _controller?.animateToPage(
       _selectedIndex,
@@ -34,7 +34,7 @@ class _MyScaffoldState extends State<MyScaffold> {
     );
   }
 
-  void changePageIndex(int index) {
+  void _changePageIndex(int index) {
     setState(() => _selectedIndex = index);
   }
 
@@ -43,17 +43,20 @@ class _MyScaffoldState extends State<MyScaffold> {
     return Scaffold(
       body: PageView(
         controller: _controller,
-        onPageChanged: changePageIndex,
+        onPageChanged: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
         children: routes.map((e) => e.page).toList(),
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.amber[800],
         unselectedItemColor: Colors.grey[600],
         showSelectedLabels: true,
-        // showUnselectedLabels: true,
         items: routes.map((e) => e.item).toList(),
         currentIndex: _selectedIndex,
-        onTap: onTap,
+        onTap: _onTap,
       ),
     );
   }
