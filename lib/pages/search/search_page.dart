@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class SearchPage extends HookWidget {
@@ -6,6 +7,7 @@ class SearchPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final endpoint = dotenv.get('ENDPOINT');
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -22,11 +24,11 @@ class SearchPage extends HookWidget {
             ),
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            Center(child: Text('Tab 1')),
-            Center(child: Text('Tab 2')),
-            Center(child: Text('Tab 3')),
+            Center(child: Text(endpoint)),
+            const Center(child: Text('Tab 2')),
+            const Center(child: Text('Tab 3')),
           ],
         ),
       ),
