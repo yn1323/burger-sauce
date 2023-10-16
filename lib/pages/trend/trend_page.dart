@@ -40,6 +40,7 @@ class TrendPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    useAutomaticKeepAlive();
     final res = useRef<List<PokemonIndex>>([]);
 
     PokemonIndex findPokemon(String data) {

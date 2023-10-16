@@ -11,6 +11,8 @@ class MyScaffold extends StatefulWidget {
 class _MyScaffoldState extends State<MyScaffold> {
   int _selectedIndex = 2;
   PageController? _controller;
+  // ページ履歴を保持するリスト
+  final List<int> _pageHistory = [];
 
   @override
   void initState() {
@@ -25,13 +27,16 @@ class _MyScaffoldState extends State<MyScaffold> {
   }
 
   void _onTap(int index) {
-    _changePageIndex(index);
+    if (_selectedIndex != index) {
+      _pageHistory.add(_selectedIndex);
+      _changePageIndex(index);
 
-    _controller?.animateToPage(
-      _selectedIndex,
-      duration: const Duration(milliseconds: 100),
-      curve: Curves.ease,
-    );
+      _controller?.animateToPage(
+        _selectedIndex,
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.ease,
+      );
+    }
   }
 
   void _changePageIndex(int index) {
@@ -40,23 +45,34 @@ class _MyScaffoldState extends State<MyScaffold> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: _controller,
-        onPageChanged: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        children: routes.map((e) => e.page).toList(),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.amber[800],
-        unselectedItemColor: Colors.grey[600],
-        showSelectedLabels: true,
-        items: routes.map((e) => e.item).toList(),
-        currentIndex: _selectedIndex,
-        onTap: _onTap,
+    return WillPopScope(
+      onWillPop: () async {
+        if (_pageHistory.isNotEmpty) {
+          int previousPage = _pageHistory.removeLast();
+          _changePageIndex(previousPage);
+          _controller?.jumpToPage(previousPage);
+          return false; // Prevent the back button from closing the app
+        }
+        return true; // Allow the back button to close the app
+      },
+      child: Scaffold(
+        body: PageView(
+          controller: _controller,
+          onPageChanged: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          children: routes.map((e) => e.page).toList(),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.amber[800],
+          unselectedItemColor: Colors.grey[600],
+          showSelectedLabels: true,
+          items: routes.map((e) => e.item).toList(),
+          currentIndex: _selectedIndex,
+          onTap: _onTap,
+        ),
       ),
     );
   }
