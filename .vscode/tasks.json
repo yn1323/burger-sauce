@@ -7,6 +7,18 @@
       "label": "Get GraphQL Schema(to localhost) ",
       "detail": "Get GraphQL Schema",
     },
+    {
+      "type": "shell",
+      "command": "flutter pub run flutter_launcher_icons:main",
+      "label": "Icon画像の更新",
+      "detail": "Icon画像の更新",
+    },
+    {
+      "type": "shell",
+      "command": "flutter build apk",
+      "label": "Build",
+      "detail": "Build",
+    },
   ],
 
 }

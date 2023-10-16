@@ -52,7 +52,6 @@ abstract class GPokemonsData_pokemons
   String get name;
   String get imageSmallUrl;
   String get imageUrl;
-  String get imageLargeUrl;
   static Serializer<GPokemonsData_pokemons> get serializer =>
       _$gPokemonsDataPokemonsSerializer;
 

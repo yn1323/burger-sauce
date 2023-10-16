@@ -16,41 +16,41 @@ class SelfPage extends HookWidget {
     final client = GetIt.I<TypedLink>();
 
     return Operation<GPokemonsData, GPokemonsVars>(
-        operationRequest:
-            GPokemonsReq((b) => b..fetchPolicy = FetchPolicy.CacheFirst),
-        builder: (context, response, error) {
-          if (response!.loading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (response.hasErrors) {
-            return Center(child: Text(error.toString()));
-          }
+      operationRequest: GPokemonsReq(),
+      builder: (context, response, error) {
+        if (response!.loading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (response.hasErrors) {
+          return Center(child: Text(error.toString()));
+        }
 
-          final pokemons = response.data?.pokemons;
+        final pokemons = response.data?.pokemons;
 
-          if (pokemons == null) return const Text('null dayo');
+        if (pokemons == null) return const Text('null');
 
-          return ListView(
-            children: pokemons
-                .map((pokemon) => Row(
-                      children: [
-                        Text(pokemon.name),
-                        SizedBox(
-                          width: 256,
-                          height: 256,
-                          child: CachedNetworkImage(
-                            imageUrl: pokemon.imageLargeUrl,
-                            placeholder: (context, url) => const SizedBox(
-                              width: 256,
-                              height: 256,
-                            ),
+        return ListView(
+          children: pokemons
+              .map((pokemon) => Row(
+                    children: [
+                      Text(pokemon.name),
+                      SizedBox(
+                        width: 256,
+                        height: 256,
+                        child: CachedNetworkImage(
+                          imageUrl: pokemon.imageUrl,
+                          placeholder: (context, url) => const SizedBox(
+                            width: 256,
+                            height: 256,
                           ),
-                        )
-                      ],
-                    ))
-                .toList(),
-          );
-        },
-        client: client);
+                        ),
+                      )
+                    ],
+                  ))
+              .toList(),
+        );
+      },
+      client: client,
+    );
   }
 }

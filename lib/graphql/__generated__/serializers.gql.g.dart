@@ -39,6 +39,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GDateTime.serializer)
       ..add(GJSON.serializer)
       ..add(GJSONObject.serializer)
+      ..add(GLatestBattleDataIndexData.serializer)
+      ..add(GLatestBattleDataIndexData_battleDatasLatest.serializer)
+      ..add(GLatestBattleDataIndexData_battleDatasLatest_pokemon.serializer)
+      ..add(GLatestBattleDataIndexReq.serializer)
+      ..add(GLatestBattleDataIndexVars.serializer)
       ..add(GPokemonsData.serializer)
       ..add(GPokemonsData_pokemons.serializer)
       ..add(GPokemonsReq.serializer)
@@ -70,6 +75,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GUpdateTypeInput.serializer)
       ..add(GUpdateTypeRelationInput.serializer)
       ..add(GUpdateUserInput.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GLatestBattleDataIndexData_battleDatasLatest)
+          ]),
+          () => new ListBuilder<GLatestBattleDataIndexData_battleDatasLatest>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GPokemonsData_pokemons)]),

@@ -42,7 +42,7 @@ List<RoutePage> routes = [
       label: 'トレンド',
     ),
     url: '/trend',
-    page: const TrendPage(),
+    page: TrendPage(),
   ),
   RoutePage(
     item: const BottomNavigationBarItem(

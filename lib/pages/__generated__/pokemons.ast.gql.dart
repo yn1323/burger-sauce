@@ -37,13 +37,6 @@ const Pokemons = _i1.OperationDefinitionNode(
           directives: [],
           selectionSet: null,
         ),
-        _i1.FieldNode(
-          name: _i1.NameNode(value: 'imageLargeUrl'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
       ]),
     )
   ]),

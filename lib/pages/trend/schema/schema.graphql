@@ -1,0 +1,11 @@
+query LatestBattleDataIndex {
+  battleDatasLatest {
+    pokemon {
+      name
+      imageUrl
+      form
+    }
+    rank
+    id
+  }
+}

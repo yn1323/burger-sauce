@@ -11,13 +11,23 @@
             "type": "node-terminal"
         },
         {
-            "name": "burger_sauce",
+            "name": "burger_sauce(Browser Debug)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug",
             "args": [
                 "--dart-define",
-                "env=.env.development"
+                "env=mobileDebug"
+            ]
+        },
+        {
+            "name": "burger_sauce(Mobile Debug)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--dart-define",
+                "env=mobileDebug"
             ]
         },
         {
@@ -27,7 +37,7 @@
             "flutterMode": "profile",
             "args": [
                 "--dart-define",
-                "env=.env.development"
+                "env=mobileDebug"
             ]
         },
         {
