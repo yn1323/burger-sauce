@@ -1,6 +1,5 @@
 import 'package:burger_sauce/constants/client.dart';
-import 'package:burger_sauce/pages/search/battle_data/pokemon.dart';
-import 'package:burger_sauce/templates/my_scaffold.dart';
+import 'package:burger_sauce/route.dart';
 import 'package:ferry/ferry.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +33,7 @@ class MyApp extends HookWidget {
         // テキストエリア外タップでフォーカスを外す
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: MaterialApp(
-        initialRoute: '/',
+      child: MaterialApp.router(
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
@@ -47,25 +45,9 @@ class MyApp extends HookWidget {
         theme: ThemeData(
           fontFamily: "Noto Sans JP",
         ),
-        routes: {
-          '/': (context) => const MyScaffold(),
-          '/search/battle_data': (context) => const BattleDataPokemon(),
-
-          // '/damage_calculation': (ctx) => const DamageCalculationPage(),
-          // '/search': (context) => const SearchPage(),
-          // '/trend': (context) => const TrendPage(),
-          // '/build_support': (context) => const BuildSupportPage(),
-          // '/self': (context) => const SelfPage(),
-          // '/setting': (context) => const SettingPage(),
-        },
-        // onGenerateRoute: (settings) {
-        //   if (settings.name == '/search/battle_data') {
-        //     return MaterialPageRoute(
-        //         builder: (context) => BattleDataPokemon(
-        //             data: settings.arguments as BattleDataPokemonArgs));
-        //   }
-        //   return null;
-        // },
+        routerDelegate: router.routerDelegate,
+        routeInformationParser: router.routeInformationParser,
+        routeInformationProvider: router.routeInformationProvider,
       ),
     );
   }

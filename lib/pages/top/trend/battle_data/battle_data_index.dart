@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
 Widget _toggleLayout({Function? onPressed, bool isGrid = true}) {
   return Row(
@@ -51,11 +52,12 @@ class BattleDataIndex extends HookWidget {
             itemBuilder: (context, index) {
               final pokemon = pokemons[index];
               return InkWell(
-                onTap: () => Navigator.pushNamed(
-                  context,
-                  '/search/battle_data',
-                  arguments: {'id': "aaa"},
-                ),
+                onTap: () => {
+                  context.goNamed(
+                    'searchBattleData',
+                    pathParameters: {'id': pokemon.id},
+                  )
+                },
                 child: Container(
                   height: listHeight,
                   decoration: const BoxDecoration(
