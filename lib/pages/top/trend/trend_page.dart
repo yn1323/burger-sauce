@@ -1,7 +1,7 @@
-import 'package:burger_sauce/pages/trend/battle_data/battle_data_index.dart';
-import 'package:burger_sauce/pages/trend/schema/__generated__/schema.data.gql.dart';
-import 'package:burger_sauce/pages/trend/schema/__generated__/schema.req.gql.dart';
-import 'package:burger_sauce/pages/trend/schema/__generated__/schema.var.gql.dart';
+import 'package:burger_sauce/pages/top/trend/battle_data/battle_data_index.dart';
+import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.data.gql.dart';
+import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.req.gql.dart';
+import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.var.gql.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_search_bar/easy_search_bar.dart';
 import 'package:ferry/ferry.dart';

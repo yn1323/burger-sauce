@@ -70,14 +70,14 @@ import 'package:burger_sauce/pages/__generated__/pokemons.req.gql.dart'
     show GPokemonsReq;
 import 'package:burger_sauce/pages/__generated__/pokemons.var.gql.dart'
     show GPokemonsVars;
-import 'package:burger_sauce/pages/trend/schema/__generated__/schema.data.gql.dart'
+import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.data.gql.dart'
     show
         GLatestBattleDataIndexData,
         GLatestBattleDataIndexData_battleDatasLatest,
         GLatestBattleDataIndexData_battleDatasLatest_pokemon;
-import 'package:burger_sauce/pages/trend/schema/__generated__/schema.req.gql.dart'
+import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.req.gql.dart'
     show GLatestBattleDataIndexReq;
-import 'package:burger_sauce/pages/trend/schema/__generated__/schema.var.gql.dart'
+import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.var.gql.dart'
     show GLatestBattleDataIndexVars;
 import 'package:ferry_exec/ferry_exec.dart';
 import 'package:gql_code_builder/src/serializers/operation_serializer.dart'

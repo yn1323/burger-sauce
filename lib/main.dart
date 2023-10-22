@@ -1,4 +1,5 @@
 import 'package:burger_sauce/constants/client.dart';
+import 'package:burger_sauce/pages/search/battle_data/pokemon.dart';
 import 'package:burger_sauce/templates/my_scaffold.dart';
 import 'package:ferry/ferry.dart';
 import 'package:flutter/foundation.dart';
@@ -47,8 +48,9 @@ class MyApp extends HookWidget {
           fontFamily: "Noto Sans JP",
         ),
         routes: {
-          // '/test': (context) => const HomeScreen(),
           '/': (context) => const MyScaffold(),
+          '/search/battle_data': (context) => const BattleDataPokemon(),
+
           // '/damage_calculation': (ctx) => const DamageCalculationPage(),
           // '/search': (context) => const SearchPage(),
           // '/trend': (context) => const TrendPage(),
@@ -56,6 +58,14 @@ class MyApp extends HookWidget {
           // '/self': (context) => const SelfPage(),
           // '/setting': (context) => const SettingPage(),
         },
+        // onGenerateRoute: (settings) {
+        //   if (settings.name == '/search/battle_data') {
+        //     return MaterialPageRoute(
+        //         builder: (context) => BattleDataPokemon(
+        //             data: settings.arguments as BattleDataPokemonArgs));
+        //   }
+        //   return null;
+        // },
       ),
     );
   }

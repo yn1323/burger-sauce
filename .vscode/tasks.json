@@ -15,7 +15,7 @@
     },
     {
       "type": "shell",
-      "command": "flutter build apk",
+      "command": "flutter build apk && sh ./scripts/moveBuild.sh",
       "label": "Build",
       "detail": "Build",
     },

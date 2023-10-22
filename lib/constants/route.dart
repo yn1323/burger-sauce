@@ -1,9 +1,9 @@
-import 'package:burger_sauce/pages/build/build_page.dart';
-import 'package:burger_sauce/pages/calc/calc_page.dart';
-import 'package:burger_sauce/pages/search/search_page.dart';
 import 'package:burger_sauce/pages/self.dart';
-import 'package:burger_sauce/pages/setting/setting_page.dart';
-import 'package:burger_sauce/pages/trend/trend_page.dart';
+import 'package:burger_sauce/pages/top/build/build_page.dart';
+import 'package:burger_sauce/pages/top/calc/calc_page.dart';
+import 'package:burger_sauce/pages/top/search/search_page.dart';
+import 'package:burger_sauce/pages/top/setting/setting_page.dart';
+import 'package:burger_sauce/pages/top/trend/trend_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
