@@ -172,8 +172,8 @@ class _$GOneBattleDataData_battleData_pokemonSerializer
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'form',
       serializers.serialize(object.form, specifiedType: const FullType(String)),
-      'imageSmallUrl',
-      serializers.serialize(object.imageSmallUrl,
+      'imageLargeUrl',
+      serializers.serialize(object.imageLargeUrl,
           specifiedType: const FullType(String)),
       'statusA',
       serializers.serialize(object.statusA, specifiedType: const FullType(int)),
@@ -229,8 +229,8 @@ class _$GOneBattleDataData_battleData_pokemonSerializer
           result.form = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'imageSmallUrl':
-          result.imageSmallUrl = serializers.deserialize(value,
+        case 'imageLargeUrl':
+          result.imageLargeUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'statusA':
@@ -1067,7 +1067,7 @@ class _$GOneBattleDataData_battleData_pokemon
   @override
   final String form;
   @override
-  final String imageSmallUrl;
+  final String imageLargeUrl;
   @override
   final int statusA;
   @override
@@ -1097,7 +1097,7 @@ class _$GOneBattleDataData_battleData_pokemon
       {required this.G__typename,
       required this.name,
       required this.form,
-      required this.imageSmallUrl,
+      required this.imageLargeUrl,
       required this.statusA,
       required this.statusB,
       required this.statusC,
@@ -1114,8 +1114,8 @@ class _$GOneBattleDataData_battleData_pokemon
         name, r'GOneBattleDataData_battleData_pokemon', 'name');
     BuiltValueNullFieldError.checkNotNull(
         form, r'GOneBattleDataData_battleData_pokemon', 'form');
-    BuiltValueNullFieldError.checkNotNull(imageSmallUrl,
-        r'GOneBattleDataData_battleData_pokemon', 'imageSmallUrl');
+    BuiltValueNullFieldError.checkNotNull(imageLargeUrl,
+        r'GOneBattleDataData_battleData_pokemon', 'imageLargeUrl');
     BuiltValueNullFieldError.checkNotNull(
         statusA, r'GOneBattleDataData_battleData_pokemon', 'statusA');
     BuiltValueNullFieldError.checkNotNull(
@@ -1153,7 +1153,7 @@ class _$GOneBattleDataData_battleData_pokemon
         G__typename == other.G__typename &&
         name == other.name &&
         form == other.form &&
-        imageSmallUrl == other.imageSmallUrl &&
+        imageLargeUrl == other.imageLargeUrl &&
         statusA == other.statusA &&
         statusB == other.statusB &&
         statusC == other.statusC &&
@@ -1171,7 +1171,7 @@ class _$GOneBattleDataData_battleData_pokemon
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, form.hashCode);
-    _$hash = $jc(_$hash, imageSmallUrl.hashCode);
+    _$hash = $jc(_$hash, imageLargeUrl.hashCode);
     _$hash = $jc(_$hash, statusA.hashCode);
     _$hash = $jc(_$hash, statusB.hashCode);
     _$hash = $jc(_$hash, statusC.hashCode);
@@ -1192,7 +1192,7 @@ class _$GOneBattleDataData_battleData_pokemon
           ..add('G__typename', G__typename)
           ..add('name', name)
           ..add('form', form)
-          ..add('imageSmallUrl', imageSmallUrl)
+          ..add('imageLargeUrl', imageLargeUrl)
           ..add('statusA', statusA)
           ..add('statusB', statusB)
           ..add('statusC', statusC)
@@ -1224,10 +1224,10 @@ class GOneBattleDataData_battleData_pokemonBuilder
   String? get form => _$this._form;
   set form(String? form) => _$this._form = form;
 
-  String? _imageSmallUrl;
-  String? get imageSmallUrl => _$this._imageSmallUrl;
-  set imageSmallUrl(String? imageSmallUrl) =>
-      _$this._imageSmallUrl = imageSmallUrl;
+  String? _imageLargeUrl;
+  String? get imageLargeUrl => _$this._imageLargeUrl;
+  set imageLargeUrl(String? imageLargeUrl) =>
+      _$this._imageLargeUrl = imageLargeUrl;
 
   int? _statusA;
   int? get statusA => _$this._statusA;
@@ -1283,7 +1283,7 @@ class GOneBattleDataData_battleData_pokemonBuilder
       _G__typename = $v.G__typename;
       _name = $v.name;
       _form = $v.form;
-      _imageSmallUrl = $v.imageSmallUrl;
+      _imageLargeUrl = $v.imageLargeUrl;
       _statusA = $v.statusA;
       _statusB = $v.statusB;
       _statusC = $v.statusC;
@@ -1324,10 +1324,10 @@ class GOneBattleDataData_battleData_pokemonBuilder
                   name, r'GOneBattleDataData_battleData_pokemon', 'name'),
               form: BuiltValueNullFieldError.checkNotNull(
                   form, r'GOneBattleDataData_battleData_pokemon', 'form'),
-              imageSmallUrl: BuiltValueNullFieldError.checkNotNull(
-                  imageSmallUrl,
+              imageLargeUrl: BuiltValueNullFieldError.checkNotNull(
+                  imageLargeUrl,
                   r'GOneBattleDataData_battleData_pokemon',
-                  'imageSmallUrl'),
+                  'imageLargeUrl'),
               statusA: BuiltValueNullFieldError.checkNotNull(
                   statusA, r'GOneBattleDataData_battleData_pokemon', 'statusA'),
               statusB: BuiltValueNullFieldError.checkNotNull(

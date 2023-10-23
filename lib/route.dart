@@ -4,27 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
+  initialLocation: '/',
   routes: <RouteBase>[
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
         return const MyScaffold();
       },
-      // routes: <RouteBase>[
-      //   GoRoute(
-      //     path: 'details',
-      //     builder: (BuildContext context, GoRouterState state) {
-      //       return const DetailsScreen();
-      //     },
-      //   ),
-      // ],
-    ),
-    GoRoute(
-      name: 'searchBattleData',
-      path: '/search/battle_data/:id',
-      builder: (BuildContext context, GoRouterState state) {
-        return BattleDataPokemon(id: state.pathParameters['id']!);
-      },
+      routes: <RouteBase>[
+        GoRoute(
+          name: 'searchBattleData',
+          path: 'search/battle_data/:id',
+          builder: (BuildContext context, GoRouterState state) {
+            return BattleDataPokemon(id: state.pathParameters['id']!);
+          },
+        ),
+      ],
     ),
   ],
   errorPageBuilder: (context, state) => MaterialPage(

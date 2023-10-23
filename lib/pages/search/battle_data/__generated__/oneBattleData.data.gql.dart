@@ -86,7 +86,7 @@ abstract class GOneBattleDataData_battleData_pokemon
   String get G__typename;
   String get name;
   String get form;
-  String get imageSmallUrl;
+  String get imageLargeUrl;
   int get statusA;
   int get statusB;
   int get statusC;

@@ -3,7 +3,7 @@ query OneBattleData($id: String!) {
     pokemon {
       name
       form
-      imageSmallUrl
+      imageLargeUrl
       statusA
       statusB
       statusC
