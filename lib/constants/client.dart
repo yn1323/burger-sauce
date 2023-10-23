@@ -20,10 +20,14 @@ Future<Client> initClient() async {
     "x_api_key": dotenv.get('X_API_KEY'),
   });
 
-  final client = Client(link: link, cache: cache, defaultFetchPolicies: {
-    OperationType.query:
-        kReleaseMode ? FetchPolicy.CacheFirst : FetchPolicy.CacheAndNetwork,
-  });
+  final client = Client(
+    link: link,
+    cache: cache,
+    defaultFetchPolicies: {
+      OperationType.query:
+          kReleaseMode ? FetchPolicy.CacheFirst : FetchPolicy.NetworkOnly,
+    },
+  );
 
   return client;
 }

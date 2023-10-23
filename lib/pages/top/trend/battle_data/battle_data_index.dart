@@ -53,7 +53,7 @@ class BattleDataIndex extends HookWidget {
               final pokemon = pokemons[index];
               return InkWell(
                 onTap: () => {
-                  context.goNamed(
+                  context.pushNamed(
                     'searchBattleData',
                     pathParameters: {'id': pokemon.id},
                   )

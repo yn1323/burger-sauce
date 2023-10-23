@@ -70,6 +70,23 @@ import 'package:burger_sauce/pages/__generated__/pokemons.req.gql.dart'
     show GPokemonsReq;
 import 'package:burger_sauce/pages/__generated__/pokemons.var.gql.dart'
     show GPokemonsVars;
+import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.data.gql.dart'
+    show
+        GOneBattleDataData,
+        GOneBattleDataData_battleData,
+        GOneBattleDataData_battleData_pokemon,
+        GOneBattleDataData_battleData_pokemon_battleData,
+        GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility,
+        GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability,
+        GOneBattleDataData_battleData_pokemon_battleData_battleDataItem,
+        GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item,
+        GOneBattleDataData_battleData_pokemon_battleData_battleDataMove,
+        GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move,
+        GOneBattleDataData_battleData_pokemon_types;
+import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.req.gql.dart'
+    show GOneBattleDataReq;
+import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.var.gql.dart'
+    show GOneBattleDataVars;
 import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.data.gql.dart'
     show
         GLatestBattleDataIndexData,
@@ -125,6 +142,19 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GLatestBattleDataIndexData_battleDatasLatest_pokemon,
   GLatestBattleDataIndexReq,
   GLatestBattleDataIndexVars,
+  GOneBattleDataData,
+  GOneBattleDataData_battleData,
+  GOneBattleDataData_battleData_pokemon,
+  GOneBattleDataData_battleData_pokemon_battleData,
+  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility,
+  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability,
+  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem,
+  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item,
+  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove,
+  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move,
+  GOneBattleDataData_battleData_pokemon_types,
+  GOneBattleDataReq,
+  GOneBattleDataVars,
   GPokemonsData,
   GPokemonsData_pokemons,
   GPokemonsReq,
