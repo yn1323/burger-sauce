@@ -50,7 +50,9 @@ class TrendPage extends HookWidget {
     }
 
     return Operation<GLatestBattleDataIndexData, GLatestBattleDataIndexVars>(
-      operationRequest: GLatestBattleDataIndexReq(),
+      operationRequest: GLatestBattleDataIndexReq(
+        (b) => b..fetchPolicy = FetchPolicy.CacheAndNetwork,
+      ),
       builder: (context, response, error) {
         if (response!.loading) {
           return Scaffold(
@@ -76,7 +78,7 @@ class TrendPage extends HookWidget {
                   form: e.pokemon.form,
                   name: e.pokemon.name,
                   rank: e.rank,
-                  imageUrl: e.pokemon.imageUrl),
+                  imageUrl: e.pokemon.imageSmallUrl),
             )
             .toList();
 

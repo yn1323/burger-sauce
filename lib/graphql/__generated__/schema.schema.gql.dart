@@ -359,7 +359,6 @@ abstract class GCreateMoveInput
   int get power;
   int get accuracy;
   int get pp;
-  String get battleIndex;
   bool get isContact;
   bool get isQuick;
   bool get isDelay;
@@ -375,6 +374,7 @@ abstract class GCreateMoveInput
   bool get isDance;
   bool get isWind;
   bool get isCut;
+  String get battleIndex;
   static Serializer<GCreateMoveInput> get serializer =>
       _$gCreateMoveInputSerializer;
 
@@ -700,8 +700,8 @@ abstract class GCreateTypeInput
 
   String get name;
   String get battleIndex;
-  String get imageUrl;
   String get textImageUrl;
+  String get imageUrl;
   String get terastalImageUrl;
   static Serializer<GCreateTypeInput> get serializer =>
       _$gCreateTypeInputSerializer;
@@ -867,7 +867,7 @@ abstract class GUpdateAttackTypeInput
       _$GUpdateAttackTypeInput;
 
   String? get name;
-  String get imageUrl;
+  String? get imageUrl;
   static Serializer<GUpdateAttackTypeInput> get serializer =>
       _$gUpdateAttackTypeInputSerializer;
 
@@ -1169,7 +1169,6 @@ abstract class GUpdateMoveInput
   int? get power;
   int? get accuracy;
   int? get pp;
-  String? get battleIndex;
   bool? get isContact;
   bool? get isQuick;
   bool? get isDelay;
@@ -1185,6 +1184,7 @@ abstract class GUpdateMoveInput
   bool? get isDance;
   bool? get isWind;
   bool? get isCut;
+  String? get battleIndex;
   static Serializer<GUpdateMoveInput> get serializer =>
       _$gUpdateMoveInputSerializer;
 
@@ -1510,9 +1510,9 @@ abstract class GUpdateTypeInput
 
   String? get name;
   String? get battleIndex;
-  String get imageUrl;
-  String get textImageUrl;
-  String get terastalImageUrl;
+  String? get textImageUrl;
+  String? get imageUrl;
+  String? get terastalImageUrl;
   static Serializer<GUpdateTypeInput> get serializer =>
       _$gUpdateTypeInputSerializer;
 

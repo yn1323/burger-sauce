@@ -878,9 +878,6 @@ class _$GCreateMoveInputSerializer
           specifiedType: const FullType(int)),
       'pp',
       serializers.serialize(object.pp, specifiedType: const FullType(int)),
-      'battleIndex',
-      serializers.serialize(object.battleIndex,
-          specifiedType: const FullType(String)),
       'isContact',
       serializers.serialize(object.isContact,
           specifiedType: const FullType(bool)),
@@ -922,6 +919,9 @@ class _$GCreateMoveInputSerializer
       serializers.serialize(object.isWind, specifiedType: const FullType(bool)),
       'isCut',
       serializers.serialize(object.isCut, specifiedType: const FullType(bool)),
+      'battleIndex',
+      serializers.serialize(object.battleIndex,
+          specifiedType: const FullType(String)),
     ];
     Object? value;
     value = object.typeId;
@@ -980,10 +980,6 @@ class _$GCreateMoveInputSerializer
         case 'pp':
           result.pp = serializers.deserialize(value,
               specifiedType: const FullType(int))! as int;
-          break;
-        case 'battleIndex':
-          result.battleIndex = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
           break;
         case 'isContact':
           result.isContact = serializers.deserialize(value,
@@ -1044,6 +1040,10 @@ class _$GCreateMoveInputSerializer
         case 'isCut':
           result.isCut = serializers.deserialize(value,
               specifiedType: const FullType(bool))! as bool;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -1948,11 +1948,11 @@ class _$GCreateTypeInputSerializer
       'battleIndex',
       serializers.serialize(object.battleIndex,
           specifiedType: const FullType(String)),
-      'imageUrl',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
       'textImageUrl',
       serializers.serialize(object.textImageUrl,
+          specifiedType: const FullType(String)),
+      'imageUrl',
+      serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
       'terastalImageUrl',
       serializers.serialize(object.terastalImageUrl,
@@ -1982,12 +1982,12 @@ class _$GCreateTypeInputSerializer
           result.battleIndex = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'imageUrl':
-          result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'textImageUrl':
           result.textImageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'terastalImageUrl':
@@ -2210,16 +2210,19 @@ class _$GUpdateAttackTypeInputSerializer
   Iterable<Object?> serialize(
       Serializers serializers, GUpdateAttackTypeInput object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      'imageUrl',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
-    ];
+    final result = <Object?>[];
     Object? value;
     value = object.name;
     if (value != null) {
       result
         ..add('name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.imageUrl;
+    if (value != null) {
+      result
+        ..add('imageUrl')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -2244,7 +2247,7 @@ class _$GUpdateAttackTypeInputSerializer
           break;
         case 'imageUrl':
           result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -3078,13 +3081,6 @@ class _$GUpdateMoveInputSerializer
         ..add('pp')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    value = object.battleIndex;
-    if (value != null) {
-      result
-        ..add('battleIndex')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.isContact;
     if (value != null) {
       result
@@ -3190,6 +3186,13 @@ class _$GUpdateMoveInputSerializer
         ..add(
             serializers.serialize(value, specifiedType: const FullType(bool)));
     }
+    value = object.battleIndex;
+    if (value != null) {
+      result
+        ..add('battleIndex')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -3232,10 +3235,6 @@ class _$GUpdateMoveInputSerializer
         case 'pp':
           result.pp = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
-          break;
-        case 'battleIndex':
-          result.battleIndex = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
           break;
         case 'isContact':
           result.isContact = serializers.deserialize(value,
@@ -3296,6 +3295,10 @@ class _$GUpdateMoveInputSerializer
         case 'isCut':
           result.isCut = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'battleIndex':
+          result.battleIndex = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -4464,17 +4467,7 @@ class _$GUpdateTypeInputSerializer
   @override
   Iterable<Object?> serialize(Serializers serializers, GUpdateTypeInput object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      'imageUrl',
-      serializers.serialize(object.imageUrl,
-          specifiedType: const FullType(String)),
-      'textImageUrl',
-      serializers.serialize(object.textImageUrl,
-          specifiedType: const FullType(String)),
-      'terastalImageUrl',
-      serializers.serialize(object.terastalImageUrl,
-          specifiedType: const FullType(String)),
-    ];
+    final result = <Object?>[];
     Object? value;
     value = object.name;
     if (value != null) {
@@ -4487,6 +4480,27 @@ class _$GUpdateTypeInputSerializer
     if (value != null) {
       result
         ..add('battleIndex')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.textImageUrl;
+    if (value != null) {
+      result
+        ..add('textImageUrl')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.imageUrl;
+    if (value != null) {
+      result
+        ..add('imageUrl')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.terastalImageUrl;
+    if (value != null) {
+      result
+        ..add('terastalImageUrl')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -4513,17 +4527,17 @@ class _$GUpdateTypeInputSerializer
           result.battleIndex = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'imageUrl':
-          result.imageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'textImageUrl':
           result.textImageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'terastalImageUrl':
           result.terastalImageUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -6294,8 +6308,6 @@ class _$GCreateMoveInput extends GCreateMoveInput {
   @override
   final int pp;
   @override
-  final String battleIndex;
-  @override
   final bool isContact;
   @override
   final bool isQuick;
@@ -6325,6 +6337,8 @@ class _$GCreateMoveInput extends GCreateMoveInput {
   final bool isWind;
   @override
   final bool isCut;
+  @override
+  final String battleIndex;
 
   factory _$GCreateMoveInput(
           [void Function(GCreateMoveInputBuilder)? updates]) =>
@@ -6338,7 +6352,6 @@ class _$GCreateMoveInput extends GCreateMoveInput {
       required this.power,
       required this.accuracy,
       required this.pp,
-      required this.battleIndex,
       required this.isContact,
       required this.isQuick,
       required this.isDelay,
@@ -6353,7 +6366,8 @@ class _$GCreateMoveInput extends GCreateMoveInput {
       required this.isBullet,
       required this.isDance,
       required this.isWind,
-      required this.isCut})
+      required this.isCut,
+      required this.battleIndex})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         detail, r'GCreateMoveInput', 'detail');
@@ -6362,8 +6376,6 @@ class _$GCreateMoveInput extends GCreateMoveInput {
     BuiltValueNullFieldError.checkNotNull(
         accuracy, r'GCreateMoveInput', 'accuracy');
     BuiltValueNullFieldError.checkNotNull(pp, r'GCreateMoveInput', 'pp');
-    BuiltValueNullFieldError.checkNotNull(
-        battleIndex, r'GCreateMoveInput', 'battleIndex');
     BuiltValueNullFieldError.checkNotNull(
         isContact, r'GCreateMoveInput', 'isContact');
     BuiltValueNullFieldError.checkNotNull(
@@ -6392,6 +6404,8 @@ class _$GCreateMoveInput extends GCreateMoveInput {
     BuiltValueNullFieldError.checkNotNull(
         isWind, r'GCreateMoveInput', 'isWind');
     BuiltValueNullFieldError.checkNotNull(isCut, r'GCreateMoveInput', 'isCut');
+    BuiltValueNullFieldError.checkNotNull(
+        battleIndex, r'GCreateMoveInput', 'battleIndex');
   }
 
   @override
@@ -6413,7 +6427,6 @@ class _$GCreateMoveInput extends GCreateMoveInput {
         power == other.power &&
         accuracy == other.accuracy &&
         pp == other.pp &&
-        battleIndex == other.battleIndex &&
         isContact == other.isContact &&
         isQuick == other.isQuick &&
         isDelay == other.isDelay &&
@@ -6428,7 +6441,8 @@ class _$GCreateMoveInput extends GCreateMoveInput {
         isBullet == other.isBullet &&
         isDance == other.isDance &&
         isWind == other.isWind &&
-        isCut == other.isCut;
+        isCut == other.isCut &&
+        battleIndex == other.battleIndex;
   }
 
   @override
@@ -6441,7 +6455,6 @@ class _$GCreateMoveInput extends GCreateMoveInput {
     _$hash = $jc(_$hash, power.hashCode);
     _$hash = $jc(_$hash, accuracy.hashCode);
     _$hash = $jc(_$hash, pp.hashCode);
-    _$hash = $jc(_$hash, battleIndex.hashCode);
     _$hash = $jc(_$hash, isContact.hashCode);
     _$hash = $jc(_$hash, isQuick.hashCode);
     _$hash = $jc(_$hash, isDelay.hashCode);
@@ -6457,6 +6470,7 @@ class _$GCreateMoveInput extends GCreateMoveInput {
     _$hash = $jc(_$hash, isDance.hashCode);
     _$hash = $jc(_$hash, isWind.hashCode);
     _$hash = $jc(_$hash, isCut.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -6471,7 +6485,6 @@ class _$GCreateMoveInput extends GCreateMoveInput {
           ..add('power', power)
           ..add('accuracy', accuracy)
           ..add('pp', pp)
-          ..add('battleIndex', battleIndex)
           ..add('isContact', isContact)
           ..add('isQuick', isQuick)
           ..add('isDelay', isDelay)
@@ -6486,7 +6499,8 @@ class _$GCreateMoveInput extends GCreateMoveInput {
           ..add('isBullet', isBullet)
           ..add('isDance', isDance)
           ..add('isWind', isWind)
-          ..add('isCut', isCut))
+          ..add('isCut', isCut)
+          ..add('battleIndex', battleIndex))
         .toString();
   }
 }
@@ -6522,10 +6536,6 @@ class GCreateMoveInputBuilder
   int? _pp;
   int? get pp => _$this._pp;
   set pp(int? pp) => _$this._pp = pp;
-
-  String? _battleIndex;
-  String? get battleIndex => _$this._battleIndex;
-  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
 
   bool? _isContact;
   bool? get isContact => _$this._isContact;
@@ -6589,6 +6599,10 @@ class GCreateMoveInputBuilder
   bool? get isCut => _$this._isCut;
   set isCut(bool? isCut) => _$this._isCut = isCut;
 
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
   GCreateMoveInputBuilder();
 
   GCreateMoveInputBuilder get _$this {
@@ -6601,7 +6615,6 @@ class GCreateMoveInputBuilder
       _power = $v.power;
       _accuracy = $v.accuracy;
       _pp = $v.pp;
-      _battleIndex = $v.battleIndex;
       _isContact = $v.isContact;
       _isQuick = $v.isQuick;
       _isDelay = $v.isDelay;
@@ -6617,6 +6630,7 @@ class GCreateMoveInputBuilder
       _isDance = $v.isDance;
       _isWind = $v.isWind;
       _isCut = $v.isCut;
+      _battleIndex = $v.battleIndex;
       _$v = null;
     }
     return this;
@@ -6651,15 +6665,14 @@ class GCreateMoveInputBuilder
                 accuracy, r'GCreateMoveInput', 'accuracy'),
             pp: BuiltValueNullFieldError.checkNotNull(
                 pp, r'GCreateMoveInput', 'pp'),
-            battleIndex: BuiltValueNullFieldError.checkNotNull(
-                battleIndex, r'GCreateMoveInput', 'battleIndex'),
             isContact: BuiltValueNullFieldError.checkNotNull(
                 isContact, r'GCreateMoveInput', 'isContact'),
             isQuick: BuiltValueNullFieldError.checkNotNull(
                 isQuick, r'GCreateMoveInput', 'isQuick'),
             isDelay: BuiltValueNullFieldError.checkNotNull(
                 isDelay, r'GCreateMoveInput', 'isDelay'),
-            isChangeable: BuiltValueNullFieldError.checkNotNull(isChangeable, r'GCreateMoveInput', 'isChangeable'),
+            isChangeable: BuiltValueNullFieldError.checkNotNull(
+                isChangeable, r'GCreateMoveInput', 'isChangeable'),
             isMultipleAttack: BuiltValueNullFieldError.checkNotNull(isMultipleAttack, r'GCreateMoveInput', 'isMultipleAttack'),
             isMustCritical: BuiltValueNullFieldError.checkNotNull(isMustCritical, r'GCreateMoveInput', 'isMustCritical'),
             isPunch: BuiltValueNullFieldError.checkNotNull(isPunch, r'GCreateMoveInput', 'isPunch'),
@@ -6670,7 +6683,8 @@ class GCreateMoveInputBuilder
             isBullet: BuiltValueNullFieldError.checkNotNull(isBullet, r'GCreateMoveInput', 'isBullet'),
             isDance: BuiltValueNullFieldError.checkNotNull(isDance, r'GCreateMoveInput', 'isDance'),
             isWind: BuiltValueNullFieldError.checkNotNull(isWind, r'GCreateMoveInput', 'isWind'),
-            isCut: BuiltValueNullFieldError.checkNotNull(isCut, r'GCreateMoveInput', 'isCut'));
+            isCut: BuiltValueNullFieldError.checkNotNull(isCut, r'GCreateMoveInput', 'isCut'),
+            battleIndex: BuiltValueNullFieldError.checkNotNull(battleIndex, r'GCreateMoveInput', 'battleIndex'));
     replace(_$result);
     return _$result;
   }
@@ -8463,9 +8477,9 @@ class _$GCreateTypeInput extends GCreateTypeInput {
   @override
   final String battleIndex;
   @override
-  final String imageUrl;
-  @override
   final String textImageUrl;
+  @override
+  final String imageUrl;
   @override
   final String terastalImageUrl;
 
@@ -8476,17 +8490,17 @@ class _$GCreateTypeInput extends GCreateTypeInput {
   _$GCreateTypeInput._(
       {required this.name,
       required this.battleIndex,
-      required this.imageUrl,
       required this.textImageUrl,
+      required this.imageUrl,
       required this.terastalImageUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(name, r'GCreateTypeInput', 'name');
     BuiltValueNullFieldError.checkNotNull(
         battleIndex, r'GCreateTypeInput', 'battleIndex');
     BuiltValueNullFieldError.checkNotNull(
-        imageUrl, r'GCreateTypeInput', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(
         textImageUrl, r'GCreateTypeInput', 'textImageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl, r'GCreateTypeInput', 'imageUrl');
     BuiltValueNullFieldError.checkNotNull(
         terastalImageUrl, r'GCreateTypeInput', 'terastalImageUrl');
   }
@@ -8505,8 +8519,8 @@ class _$GCreateTypeInput extends GCreateTypeInput {
     return other is GCreateTypeInput &&
         name == other.name &&
         battleIndex == other.battleIndex &&
-        imageUrl == other.imageUrl &&
         textImageUrl == other.textImageUrl &&
+        imageUrl == other.imageUrl &&
         terastalImageUrl == other.terastalImageUrl;
   }
 
@@ -8515,8 +8529,8 @@ class _$GCreateTypeInput extends GCreateTypeInput {
     var _$hash = 0;
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
-    _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jc(_$hash, textImageUrl.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jc(_$hash, terastalImageUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -8527,8 +8541,8 @@ class _$GCreateTypeInput extends GCreateTypeInput {
     return (newBuiltValueToStringHelper(r'GCreateTypeInput')
           ..add('name', name)
           ..add('battleIndex', battleIndex)
-          ..add('imageUrl', imageUrl)
           ..add('textImageUrl', textImageUrl)
+          ..add('imageUrl', imageUrl)
           ..add('terastalImageUrl', terastalImageUrl))
         .toString();
   }
@@ -8546,13 +8560,13 @@ class GCreateTypeInputBuilder
   String? get battleIndex => _$this._battleIndex;
   set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
 
-  String? _imageUrl;
-  String? get imageUrl => _$this._imageUrl;
-  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
-
   String? _textImageUrl;
   String? get textImageUrl => _$this._textImageUrl;
   set textImageUrl(String? textImageUrl) => _$this._textImageUrl = textImageUrl;
+
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
   String? _terastalImageUrl;
   String? get terastalImageUrl => _$this._terastalImageUrl;
@@ -8566,8 +8580,8 @@ class GCreateTypeInputBuilder
     if ($v != null) {
       _name = $v.name;
       _battleIndex = $v.battleIndex;
-      _imageUrl = $v.imageUrl;
       _textImageUrl = $v.textImageUrl;
+      _imageUrl = $v.imageUrl;
       _terastalImageUrl = $v.terastalImageUrl;
       _$v = null;
     }
@@ -8595,10 +8609,10 @@ class GCreateTypeInputBuilder
                 name, r'GCreateTypeInput', 'name'),
             battleIndex: BuiltValueNullFieldError.checkNotNull(
                 battleIndex, r'GCreateTypeInput', 'battleIndex'),
-            imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, r'GCreateTypeInput', 'imageUrl'),
             textImageUrl: BuiltValueNullFieldError.checkNotNull(
                 textImageUrl, r'GCreateTypeInput', 'textImageUrl'),
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, r'GCreateTypeInput', 'imageUrl'),
             terastalImageUrl: BuiltValueNullFieldError.checkNotNull(
                 terastalImageUrl, r'GCreateTypeInput', 'terastalImageUrl'));
     replace(_$result);
@@ -9390,16 +9404,13 @@ class _$GUpdateAttackTypeInput extends GUpdateAttackTypeInput {
   @override
   final String? name;
   @override
-  final String imageUrl;
+  final String? imageUrl;
 
   factory _$GUpdateAttackTypeInput(
           [void Function(GUpdateAttackTypeInputBuilder)? updates]) =>
       (new GUpdateAttackTypeInputBuilder()..update(updates))._build();
 
-  _$GUpdateAttackTypeInput._({this.name, required this.imageUrl}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        imageUrl, r'GUpdateAttackTypeInput', 'imageUrl');
-  }
+  _$GUpdateAttackTypeInput._({this.name, this.imageUrl}) : super._();
 
   @override
   GUpdateAttackTypeInput rebuild(
@@ -9475,11 +9486,8 @@ class GUpdateAttackTypeInputBuilder
   GUpdateAttackTypeInput build() => _build();
 
   _$GUpdateAttackTypeInput _build() {
-    final _$result = _$v ??
-        new _$GUpdateAttackTypeInput._(
-            name: name,
-            imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, r'GUpdateAttackTypeInput', 'imageUrl'));
+    final _$result =
+        _$v ?? new _$GUpdateAttackTypeInput._(name: name, imageUrl: imageUrl);
     replace(_$result);
     return _$result;
   }
@@ -10661,8 +10669,6 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
   @override
   final int? pp;
   @override
-  final String? battleIndex;
-  @override
   final bool? isContact;
   @override
   final bool? isQuick;
@@ -10692,6 +10698,8 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
   final bool? isWind;
   @override
   final bool? isCut;
+  @override
+  final String? battleIndex;
 
   factory _$GUpdateMoveInput(
           [void Function(GUpdateMoveInputBuilder)? updates]) =>
@@ -10705,7 +10713,6 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
       this.power,
       this.accuracy,
       this.pp,
-      this.battleIndex,
       this.isContact,
       this.isQuick,
       this.isDelay,
@@ -10720,7 +10727,8 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
       this.isBullet,
       this.isDance,
       this.isWind,
-      this.isCut})
+      this.isCut,
+      this.battleIndex})
       : super._();
 
   @override
@@ -10742,7 +10750,6 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
         power == other.power &&
         accuracy == other.accuracy &&
         pp == other.pp &&
-        battleIndex == other.battleIndex &&
         isContact == other.isContact &&
         isQuick == other.isQuick &&
         isDelay == other.isDelay &&
@@ -10757,7 +10764,8 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
         isBullet == other.isBullet &&
         isDance == other.isDance &&
         isWind == other.isWind &&
-        isCut == other.isCut;
+        isCut == other.isCut &&
+        battleIndex == other.battleIndex;
   }
 
   @override
@@ -10770,7 +10778,6 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
     _$hash = $jc(_$hash, power.hashCode);
     _$hash = $jc(_$hash, accuracy.hashCode);
     _$hash = $jc(_$hash, pp.hashCode);
-    _$hash = $jc(_$hash, battleIndex.hashCode);
     _$hash = $jc(_$hash, isContact.hashCode);
     _$hash = $jc(_$hash, isQuick.hashCode);
     _$hash = $jc(_$hash, isDelay.hashCode);
@@ -10786,6 +10793,7 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
     _$hash = $jc(_$hash, isDance.hashCode);
     _$hash = $jc(_$hash, isWind.hashCode);
     _$hash = $jc(_$hash, isCut.hashCode);
+    _$hash = $jc(_$hash, battleIndex.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -10800,7 +10808,6 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
           ..add('power', power)
           ..add('accuracy', accuracy)
           ..add('pp', pp)
-          ..add('battleIndex', battleIndex)
           ..add('isContact', isContact)
           ..add('isQuick', isQuick)
           ..add('isDelay', isDelay)
@@ -10815,7 +10822,8 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
           ..add('isBullet', isBullet)
           ..add('isDance', isDance)
           ..add('isWind', isWind)
-          ..add('isCut', isCut))
+          ..add('isCut', isCut)
+          ..add('battleIndex', battleIndex))
         .toString();
   }
 }
@@ -10851,10 +10859,6 @@ class GUpdateMoveInputBuilder
   int? _pp;
   int? get pp => _$this._pp;
   set pp(int? pp) => _$this._pp = pp;
-
-  String? _battleIndex;
-  String? get battleIndex => _$this._battleIndex;
-  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
 
   bool? _isContact;
   bool? get isContact => _$this._isContact;
@@ -10918,6 +10922,10 @@ class GUpdateMoveInputBuilder
   bool? get isCut => _$this._isCut;
   set isCut(bool? isCut) => _$this._isCut = isCut;
 
+  String? _battleIndex;
+  String? get battleIndex => _$this._battleIndex;
+  set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
   GUpdateMoveInputBuilder();
 
   GUpdateMoveInputBuilder get _$this {
@@ -10930,7 +10938,6 @@ class GUpdateMoveInputBuilder
       _power = $v.power;
       _accuracy = $v.accuracy;
       _pp = $v.pp;
-      _battleIndex = $v.battleIndex;
       _isContact = $v.isContact;
       _isQuick = $v.isQuick;
       _isDelay = $v.isDelay;
@@ -10946,6 +10953,7 @@ class GUpdateMoveInputBuilder
       _isDance = $v.isDance;
       _isWind = $v.isWind;
       _isCut = $v.isCut;
+      _battleIndex = $v.battleIndex;
       _$v = null;
     }
     return this;
@@ -10975,7 +10983,6 @@ class GUpdateMoveInputBuilder
             power: power,
             accuracy: accuracy,
             pp: pp,
-            battleIndex: battleIndex,
             isContact: isContact,
             isQuick: isQuick,
             isDelay: isDelay,
@@ -10990,7 +10997,8 @@ class GUpdateMoveInputBuilder
             isBullet: isBullet,
             isDance: isDance,
             isWind: isWind,
-            isCut: isCut);
+            isCut: isCut,
+            battleIndex: battleIndex);
     replace(_$result);
     return _$result;
   }
@@ -12574,11 +12582,11 @@ class _$GUpdateTypeInput extends GUpdateTypeInput {
   @override
   final String? battleIndex;
   @override
-  final String imageUrl;
+  final String? textImageUrl;
   @override
-  final String textImageUrl;
+  final String? imageUrl;
   @override
-  final String terastalImageUrl;
+  final String? terastalImageUrl;
 
   factory _$GUpdateTypeInput(
           [void Function(GUpdateTypeInputBuilder)? updates]) =>
@@ -12587,17 +12595,10 @@ class _$GUpdateTypeInput extends GUpdateTypeInput {
   _$GUpdateTypeInput._(
       {this.name,
       this.battleIndex,
-      required this.imageUrl,
-      required this.textImageUrl,
-      required this.terastalImageUrl})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        imageUrl, r'GUpdateTypeInput', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(
-        textImageUrl, r'GUpdateTypeInput', 'textImageUrl');
-    BuiltValueNullFieldError.checkNotNull(
-        terastalImageUrl, r'GUpdateTypeInput', 'terastalImageUrl');
-  }
+      this.textImageUrl,
+      this.imageUrl,
+      this.terastalImageUrl})
+      : super._();
 
   @override
   GUpdateTypeInput rebuild(void Function(GUpdateTypeInputBuilder) updates) =>
@@ -12613,8 +12614,8 @@ class _$GUpdateTypeInput extends GUpdateTypeInput {
     return other is GUpdateTypeInput &&
         name == other.name &&
         battleIndex == other.battleIndex &&
-        imageUrl == other.imageUrl &&
         textImageUrl == other.textImageUrl &&
+        imageUrl == other.imageUrl &&
         terastalImageUrl == other.terastalImageUrl;
   }
 
@@ -12623,8 +12624,8 @@ class _$GUpdateTypeInput extends GUpdateTypeInput {
     var _$hash = 0;
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
-    _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jc(_$hash, textImageUrl.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jc(_$hash, terastalImageUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -12635,8 +12636,8 @@ class _$GUpdateTypeInput extends GUpdateTypeInput {
     return (newBuiltValueToStringHelper(r'GUpdateTypeInput')
           ..add('name', name)
           ..add('battleIndex', battleIndex)
-          ..add('imageUrl', imageUrl)
           ..add('textImageUrl', textImageUrl)
+          ..add('imageUrl', imageUrl)
           ..add('terastalImageUrl', terastalImageUrl))
         .toString();
   }
@@ -12654,13 +12655,13 @@ class GUpdateTypeInputBuilder
   String? get battleIndex => _$this._battleIndex;
   set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
 
-  String? _imageUrl;
-  String? get imageUrl => _$this._imageUrl;
-  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
-
   String? _textImageUrl;
   String? get textImageUrl => _$this._textImageUrl;
   set textImageUrl(String? textImageUrl) => _$this._textImageUrl = textImageUrl;
+
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
   String? _terastalImageUrl;
   String? get terastalImageUrl => _$this._terastalImageUrl;
@@ -12674,8 +12675,8 @@ class GUpdateTypeInputBuilder
     if ($v != null) {
       _name = $v.name;
       _battleIndex = $v.battleIndex;
-      _imageUrl = $v.imageUrl;
       _textImageUrl = $v.textImageUrl;
+      _imageUrl = $v.imageUrl;
       _terastalImageUrl = $v.terastalImageUrl;
       _$v = null;
     }
@@ -12701,12 +12702,9 @@ class GUpdateTypeInputBuilder
         new _$GUpdateTypeInput._(
             name: name,
             battleIndex: battleIndex,
-            imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, r'GUpdateTypeInput', 'imageUrl'),
-            textImageUrl: BuiltValueNullFieldError.checkNotNull(
-                textImageUrl, r'GUpdateTypeInput', 'textImageUrl'),
-            terastalImageUrl: BuiltValueNullFieldError.checkNotNull(
-                terastalImageUrl, r'GUpdateTypeInput', 'terastalImageUrl'));
+            textImageUrl: textImageUrl,
+            imageUrl: imageUrl,
+            terastalImageUrl: terastalImageUrl);
     replace(_$result);
     return _$result;
   }

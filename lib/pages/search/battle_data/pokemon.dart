@@ -42,6 +42,9 @@ class BattleDataPokemon extends HookWidget {
           }
 
           final pokemon = data.battleData?.pokemon;
+          final abilities = data.battleData?.battleDataAbility ?? [];
+          final moves = data.battleData?.battleDataMove ?? [];
+          final items = data.battleData?.battleDataItem ?? [];
 
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -55,90 +58,26 @@ class BattleDataPokemon extends HookWidget {
                     imageUrl: pokemon?.imageLargeUrl ?? '',
                     width: 180,
                     height: 180,
-                    placeholder: (context, url) => const Skeleton(),
+                    fadeOutDuration: const Duration(milliseconds: 300),
+                    placeholder: (context, url) =>
+                        const Skeleton(ballSkeleton: true),
                   ),
                   const Gap(10),
-                  Column(
+                  Row(
                     children: [
-                      const Text('種族値'),
-                      Table(
-                        border: TableBorder.all(),
-                        children: [
-                          TableRow(
-                            children: ['HP', 'A', 'B', 'C', 'D', 'S']
-                                .map(
-                                  (e) => Text(
-                                    e,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                            decoration: const BoxDecoration(color: Colors.blue),
-                          ),
-                          TableRow(
-                            children: [
-                              pokemon?.statusH.toString() ?? '0',
-                              pokemon?.statusA.toString() ?? '0',
-                              pokemon?.statusB.toString() ?? '0',
-                              pokemon?.statusC.toString() ?? '0',
-                              pokemon?.statusD.toString() ?? '0',
-                              pokemon?.statusS.toString() ?? '0'
-                            ]
-                                .map(
-                                  (e) => Text(e, textAlign: TextAlign.center),
-                                )
-                                .toList(),
-                          ),
-                        ],
+                      Expanded(
+                        child: ListView(
+                          shrinkWrap: true,
+                          children: const [
+                            Text(
+                              'タイプ',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
-                  ),
-                  ExpansionTile(
-                    onExpansionChanged: (bool changed) {},
-                    title: const Text('実数値'),
-                    children: [
-                      Table(
-                        border: TableBorder.all(),
-                        children: [
-                          TableRow(
-                            children: ['', '最高', '準', '無振', '下降', '最低']
-                                .map(
-                                  (e) => Text(
-                                    e,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                            decoration: const BoxDecoration(color: Colors.blue),
-                          ),
-                          TableRow(
-                            children: [
-                              Text(pokemon?.statusH.toString() ?? '0',
-                                  textAlign: TextAlign.center),
-                              Text(pokemon?.statusH.toString() ?? '0',
-                                  textAlign: TextAlign.center),
-                              Text(pokemon?.statusA.toString() ?? '0',
-                                  textAlign: TextAlign.center),
-                              Text(pokemon?.statusB.toString() ?? '0',
-                                  textAlign: TextAlign.center),
-                              Text(pokemon?.statusC.toString() ?? '0',
-                                  textAlign: TextAlign.center),
-                              Text(pokemon?.statusD.toString() ?? '0',
-                                  textAlign: TextAlign.center),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                  )
                 ],
               ),
             ),

@@ -46,22 +46,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GLatestBattleDataIndexVars.serializer)
       ..add(GOneBattleDataData.serializer)
       ..add(GOneBattleDataData_battleData.serializer)
+      ..add(GOneBattleDataData_battleData_battleDataAbility.serializer)
+      ..add(GOneBattleDataData_battleData_battleDataAbility_ability.serializer)
+      ..add(GOneBattleDataData_battleData_battleDataItem.serializer)
+      ..add(GOneBattleDataData_battleData_battleDataItem_item.serializer)
+      ..add(GOneBattleDataData_battleData_battleDataMove.serializer)
+      ..add(GOneBattleDataData_battleData_battleDataMove_move.serializer)
+      ..add(GOneBattleDataData_battleData_battleDataMove_move_attackType
+          .serializer)
+      ..add(GOneBattleDataData_battleData_battleDataMove_move_type.serializer)
       ..add(GOneBattleDataData_battleData_pokemon.serializer)
-      ..add(GOneBattleDataData_battleData_pokemon_battleData.serializer)
-      ..add(GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility
-          .serializer)
-      ..add(
-          GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
-              .serializer)
-      ..add(GOneBattleDataData_battleData_pokemon_battleData_battleDataItem
-          .serializer)
-      ..add(GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
-          .serializer)
-      ..add(GOneBattleDataData_battleData_pokemon_battleData_battleDataMove
-          .serializer)
-      ..add(GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move
-          .serializer)
-      ..add(GOneBattleDataData_battleData_pokemon_types.serializer)
       ..add(GOneBattleDataReq.serializer)
       ..add(GOneBattleDataVars.serializer)
       ..add(GPokemonsData.serializer)
@@ -107,36 +101,24 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
-                GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility)
+                GOneBattleDataData_battleData_battleDataAbility)
           ]),
           () => new ListBuilder<
-              GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility?>())
+              GOneBattleDataData_battleData_battleDataAbility?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
-                GOneBattleDataData_battleData_pokemon_battleData_battleDataItem)
+                GOneBattleDataData_battleData_battleDataItem)
           ]),
-          () => new ListBuilder<
-              GOneBattleDataData_battleData_pokemon_battleData_battleDataItem?>())
+          () =>
+              new ListBuilder<GOneBattleDataData_battleData_battleDataItem?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType.nullable(
-                GOneBattleDataData_battleData_pokemon_battleData_battleDataMove)
+                GOneBattleDataData_battleData_battleDataMove)
           ]),
-          () => new ListBuilder<
-              GOneBattleDataData_battleData_pokemon_battleData_battleDataMove?>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType.nullable(GOneBattleDataData_battleData_pokemon_types)
-          ]),
-          () => new ListBuilder<GOneBattleDataData_battleData_pokemon_types?>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType.nullable(
-                GOneBattleDataData_battleData_pokemon_battleData)
-          ]),
-          () => new ListBuilder<
-              GOneBattleDataData_battleData_pokemon_battleData?>()))
+          () =>
+              new ListBuilder<GOneBattleDataData_battleData_battleDataMove?>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

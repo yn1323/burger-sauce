@@ -164,8 +164,8 @@ class _$GLatestBattleDataIndexData_battleDatasLatest_pokemonSerializer
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'imageUrl',
-      serializers.serialize(object.imageUrl,
+      'imageSmallUrl',
+      serializers.serialize(object.imageSmallUrl,
           specifiedType: const FullType(String)),
       'form',
       serializers.serialize(object.form, specifiedType: const FullType(String)),
@@ -195,8 +195,8 @@ class _$GLatestBattleDataIndexData_battleDatasLatest_pokemonSerializer
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'imageUrl':
-          result.imageUrl = serializers.deserialize(value,
+        case 'imageSmallUrl':
+          result.imageSmallUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'form':
@@ -510,7 +510,7 @@ class _$GLatestBattleDataIndexData_battleDatasLatest_pokemon
   @override
   final String name;
   @override
-  final String imageUrl;
+  final String imageSmallUrl;
   @override
   final String form;
 
@@ -525,15 +525,17 @@ class _$GLatestBattleDataIndexData_battleDatasLatest_pokemon
   _$GLatestBattleDataIndexData_battleDatasLatest_pokemon._(
       {required this.G__typename,
       required this.name,
-      required this.imageUrl,
+      required this.imageSmallUrl,
       required this.form})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GLatestBattleDataIndexData_battleDatasLatest_pokemon', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GLatestBattleDataIndexData_battleDatasLatest_pokemon', 'name');
-    BuiltValueNullFieldError.checkNotNull(imageUrl,
-        r'GLatestBattleDataIndexData_battleDatasLatest_pokemon', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        imageSmallUrl,
+        r'GLatestBattleDataIndexData_battleDatasLatest_pokemon',
+        'imageSmallUrl');
     BuiltValueNullFieldError.checkNotNull(
         form, r'GLatestBattleDataIndexData_battleDatasLatest_pokemon', 'form');
   }
@@ -556,7 +558,7 @@ class _$GLatestBattleDataIndexData_battleDatasLatest_pokemon
     return other is GLatestBattleDataIndexData_battleDatasLatest_pokemon &&
         G__typename == other.G__typename &&
         name == other.name &&
-        imageUrl == other.imageUrl &&
+        imageSmallUrl == other.imageSmallUrl &&
         form == other.form;
   }
 
@@ -565,7 +567,7 @@ class _$GLatestBattleDataIndexData_battleDatasLatest_pokemon
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, imageUrl.hashCode);
+    _$hash = $jc(_$hash, imageSmallUrl.hashCode);
     _$hash = $jc(_$hash, form.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -577,7 +579,7 @@ class _$GLatestBattleDataIndexData_battleDatasLatest_pokemon
             r'GLatestBattleDataIndexData_battleDatasLatest_pokemon')
           ..add('G__typename', G__typename)
           ..add('name', name)
-          ..add('imageUrl', imageUrl)
+          ..add('imageSmallUrl', imageSmallUrl)
           ..add('form', form))
         .toString();
   }
@@ -597,9 +599,10 @@ class GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  String? _imageUrl;
-  String? get imageUrl => _$this._imageUrl;
-  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+  String? _imageSmallUrl;
+  String? get imageSmallUrl => _$this._imageSmallUrl;
+  set imageSmallUrl(String? imageSmallUrl) =>
+      _$this._imageSmallUrl = imageSmallUrl;
 
   String? _form;
   String? get form => _$this._form;
@@ -615,7 +618,7 @@ class GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _name = $v.name;
-      _imageUrl = $v.imageUrl;
+      _imageSmallUrl = $v.imageSmallUrl;
       _form = $v.form;
       _$v = null;
     }
@@ -650,10 +653,10 @@ class GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder
                 name,
                 r'GLatestBattleDataIndexData_battleDatasLatest_pokemon',
                 'name'),
-            imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl,
+            imageSmallUrl: BuiltValueNullFieldError.checkNotNull(
+                imageSmallUrl,
                 r'GLatestBattleDataIndexData_battleDatasLatest_pokemon',
-                'imageUrl'),
+                'imageSmallUrl'),
             form: BuiltValueNullFieldError.checkNotNull(
                 form,
                 r'GLatestBattleDataIndexData_battleDatasLatest_pokemon',

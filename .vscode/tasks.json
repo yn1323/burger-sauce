@@ -19,6 +19,12 @@
       "label": "Build",
       "detail": "Build",
     },
+    {
+      "type": "shell",
+      "command": "flutter pub run build_runner watch --delete-conflicting-outputs",
+      "label": "Watch & Build",
+      "detail": "Watch & Build",
+    },
   ],
 
 }

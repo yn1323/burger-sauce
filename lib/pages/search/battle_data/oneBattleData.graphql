@@ -1,41 +1,34 @@
 query OneBattleData($id: String!) {
   battleData(id: $id) {
+    rank
     pokemon {
-      name
-      form
       imageLargeUrl
-      statusA
-      statusB
-      statusC
-      statusD
-      statusH
-      statusS
-      types {
+      name
+    }
+    battleDataAbility {
+      rate
+      ability {
         name
+        id
       }
-      url
-      battleData {
-        battleDataAbility {
-          rate
-          ability {
-            name
-            id
-          }
+    }
+    battleDataItem {
+      rate
+      item {
+        name
+        imageSmallUrl
+      }
+    }
+    battleDataMove {
+      rate
+      move {
+        id
+        name
+        type {
+          textImageUrl
         }
-        battleDataItem {
-          rate
-          id
-          Item {
-            name
-            imageSmallUrl
-          }
-        }
-        battleDataMove {
-          rate
-          move {
-            name
-          }
-          id
+        attackType {
+          imageUrl
         }
       }
     }

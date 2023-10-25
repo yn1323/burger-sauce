@@ -30,7 +30,7 @@ const LatestBattleDataIndex = _i1.OperationDefinitionNode(
               selectionSet: null,
             ),
             _i1.FieldNode(
-              name: _i1.NameNode(value: 'imageUrl'),
+              name: _i1.NameNode(value: 'imageSmallUrl'),
               alias: null,
               arguments: [],
               directives: [],

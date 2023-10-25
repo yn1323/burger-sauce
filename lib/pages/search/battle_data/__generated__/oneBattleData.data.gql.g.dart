@@ -14,31 +14,30 @@ Serializer<GOneBattleDataData_battleData>
 Serializer<GOneBattleDataData_battleData_pokemon>
     _$gOneBattleDataDataBattleDataPokemonSerializer =
     new _$GOneBattleDataData_battleData_pokemonSerializer();
-Serializer<GOneBattleDataData_battleData_pokemon_types>
-    _$gOneBattleDataDataBattleDataPokemonTypesSerializer =
-    new _$GOneBattleDataData_battleData_pokemon_typesSerializer();
-Serializer<GOneBattleDataData_battleData_pokemon_battleData>
-    _$gOneBattleDataDataBattleDataPokemonBattleDataSerializer =
-    new _$GOneBattleDataData_battleData_pokemon_battleDataSerializer();
-Serializer<GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility>
-    _$gOneBattleDataDataBattleDataPokemonBattleDataBattleDataAbilitySerializer =
-    new _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilitySerializer();
-Serializer<
-        GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability>
-    _$gOneBattleDataDataBattleDataPokemonBattleDataBattleDataAbilityAbilitySerializer =
-    new _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilitySerializer();
-Serializer<GOneBattleDataData_battleData_pokemon_battleData_battleDataItem>
-    _$gOneBattleDataDataBattleDataPokemonBattleDataBattleDataItemSerializer =
-    new _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItemSerializer();
-Serializer<GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item>
-    _$gOneBattleDataDataBattleDataPokemonBattleDataBattleDataItemItemSerializer =
-    new _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemSerializer();
-Serializer<GOneBattleDataData_battleData_pokemon_battleData_battleDataMove>
-    _$gOneBattleDataDataBattleDataPokemonBattleDataBattleDataMoveSerializer =
-    new _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveSerializer();
-Serializer<GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move>
-    _$gOneBattleDataDataBattleDataPokemonBattleDataBattleDataMoveMoveSerializer =
-    new _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveSerializer();
+Serializer<GOneBattleDataData_battleData_battleDataAbility>
+    _$gOneBattleDataDataBattleDataBattleDataAbilitySerializer =
+    new _$GOneBattleDataData_battleData_battleDataAbilitySerializer();
+Serializer<GOneBattleDataData_battleData_battleDataAbility_ability>
+    _$gOneBattleDataDataBattleDataBattleDataAbilityAbilitySerializer =
+    new _$GOneBattleDataData_battleData_battleDataAbility_abilitySerializer();
+Serializer<GOneBattleDataData_battleData_battleDataItem>
+    _$gOneBattleDataDataBattleDataBattleDataItemSerializer =
+    new _$GOneBattleDataData_battleData_battleDataItemSerializer();
+Serializer<GOneBattleDataData_battleData_battleDataItem_item>
+    _$gOneBattleDataDataBattleDataBattleDataItemItemSerializer =
+    new _$GOneBattleDataData_battleData_battleDataItem_itemSerializer();
+Serializer<GOneBattleDataData_battleData_battleDataMove>
+    _$gOneBattleDataDataBattleDataBattleDataMoveSerializer =
+    new _$GOneBattleDataData_battleData_battleDataMoveSerializer();
+Serializer<GOneBattleDataData_battleData_battleDataMove_move>
+    _$gOneBattleDataDataBattleDataBattleDataMoveMoveSerializer =
+    new _$GOneBattleDataData_battleData_battleDataMove_moveSerializer();
+Serializer<GOneBattleDataData_battleData_battleDataMove_move_type>
+    _$gOneBattleDataDataBattleDataBattleDataMoveMoveTypeSerializer =
+    new _$GOneBattleDataData_battleData_battleDataMove_move_typeSerializer();
+Serializer<GOneBattleDataData_battleData_battleDataMove_move_attackType>
+    _$gOneBattleDataDataBattleDataBattleDataMoveMoveAttackTypeSerializer =
+    new _$GOneBattleDataData_battleData_battleDataMove_move_attackTypeSerializer();
 
 class _$GOneBattleDataDataSerializer
     implements StructuredSerializer<GOneBattleDataData> {
@@ -113,9 +112,29 @@ class _$GOneBattleDataData_battleDataSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
+      'rank',
+      serializers.serialize(object.rank, specifiedType: const FullType(int)),
       'pokemon',
       serializers.serialize(object.pokemon,
           specifiedType: const FullType(GOneBattleDataData_battleData_pokemon)),
+      'battleDataAbility',
+      serializers.serialize(object.battleDataAbility,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType.nullable(
+                GOneBattleDataData_battleData_battleDataAbility)
+          ])),
+      'battleDataItem',
+      serializers.serialize(object.battleDataItem,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType.nullable(
+                GOneBattleDataData_battleData_battleDataItem)
+          ])),
+      'battleDataMove',
+      serializers.serialize(object.battleDataMove,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType.nullable(
+                GOneBattleDataData_battleData_battleDataMove)
+          ])),
     ];
 
     return result;
@@ -137,11 +156,36 @@ class _$GOneBattleDataData_battleDataSerializer
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
+        case 'rank':
+          result.rank = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
         case 'pokemon':
           result.pokemon.replace(serializers.deserialize(value,
                   specifiedType:
                       const FullType(GOneBattleDataData_battleData_pokemon))!
               as GOneBattleDataData_battleData_pokemon);
+          break;
+        case 'battleDataAbility':
+          result.battleDataAbility.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType.nullable(
+                    GOneBattleDataData_battleData_battleDataAbility)
+              ]))! as BuiltList<Object?>);
+          break;
+        case 'battleDataItem':
+          result.battleDataItem.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType.nullable(
+                    GOneBattleDataData_battleData_battleDataItem)
+              ]))! as BuiltList<Object?>);
+          break;
+        case 'battleDataMove':
+          result.battleDataMove.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType.nullable(
+                    GOneBattleDataData_battleData_battleDataMove)
+              ]))! as BuiltList<Object?>);
           break;
       }
     }
@@ -168,38 +212,11 @@ class _$GOneBattleDataData_battleData_pokemonSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'form',
-      serializers.serialize(object.form, specifiedType: const FullType(String)),
       'imageLargeUrl',
       serializers.serialize(object.imageLargeUrl,
           specifiedType: const FullType(String)),
-      'statusA',
-      serializers.serialize(object.statusA, specifiedType: const FullType(int)),
-      'statusB',
-      serializers.serialize(object.statusB, specifiedType: const FullType(int)),
-      'statusC',
-      serializers.serialize(object.statusC, specifiedType: const FullType(int)),
-      'statusD',
-      serializers.serialize(object.statusD, specifiedType: const FullType(int)),
-      'statusH',
-      serializers.serialize(object.statusH, specifiedType: const FullType(int)),
-      'statusS',
-      serializers.serialize(object.statusS, specifiedType: const FullType(int)),
-      'types',
-      serializers.serialize(object.types,
-          specifiedType: const FullType(BuiltList, const [
-            const FullType.nullable(GOneBattleDataData_battleData_pokemon_types)
-          ])),
-      'url',
-      serializers.serialize(object.url, specifiedType: const FullType(String)),
-      'battleData',
-      serializers.serialize(object.battleData,
-          specifiedType: const FullType(BuiltList, const [
-            const FullType.nullable(
-                GOneBattleDataData_battleData_pokemon_battleData)
-          ])),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -221,109 +238,10 @@ class _$GOneBattleDataData_battleData_pokemonSerializer
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'form':
-          result.form = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'imageLargeUrl':
           result.imageLargeUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'statusA':
-          result.statusA = serializers.deserialize(value,
-              specifiedType: const FullType(int))! as int;
-          break;
-        case 'statusB':
-          result.statusB = serializers.deserialize(value,
-              specifiedType: const FullType(int))! as int;
-          break;
-        case 'statusC':
-          result.statusC = serializers.deserialize(value,
-              specifiedType: const FullType(int))! as int;
-          break;
-        case 'statusD':
-          result.statusD = serializers.deserialize(value,
-              specifiedType: const FullType(int))! as int;
-          break;
-        case 'statusH':
-          result.statusH = serializers.deserialize(value,
-              specifiedType: const FullType(int))! as int;
-          break;
-        case 'statusS':
-          result.statusS = serializers.deserialize(value,
-              specifiedType: const FullType(int))! as int;
-          break;
-        case 'types':
-          result.types.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltList, const [
-                const FullType.nullable(
-                    GOneBattleDataData_battleData_pokemon_types)
-              ]))! as BuiltList<Object?>);
-          break;
-        case 'url':
-          result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'battleData':
-          result.battleData.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltList, const [
-                const FullType.nullable(
-                    GOneBattleDataData_battleData_pokemon_battleData)
-              ]))! as BuiltList<Object?>);
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GOneBattleDataData_battleData_pokemon_typesSerializer
-    implements
-        StructuredSerializer<GOneBattleDataData_battleData_pokemon_types> {
-  @override
-  final Iterable<Type> types = const [
-    GOneBattleDataData_battleData_pokemon_types,
-    _$GOneBattleDataData_battleData_pokemon_types
-  ];
-  @override
-  final String wireName = 'GOneBattleDataData_battleData_pokemon_types';
-
-  @override
-  Iterable<Object?> serialize(Serializers serializers,
-      GOneBattleDataData_battleData_pokemon_types object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(object.G__typename,
-          specifiedType: const FullType(String)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
-    ];
-
-    return result;
-  }
-
-  @override
-  GOneBattleDataData_battleData_pokemon_types deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = new GOneBattleDataData_battleData_pokemon_typesBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'name':
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
@@ -335,109 +253,20 @@ class _$GOneBattleDataData_battleData_pokemon_typesSerializer
   }
 }
 
-class _$GOneBattleDataData_battleData_pokemon_battleDataSerializer
+class _$GOneBattleDataData_battleData_battleDataAbilitySerializer
     implements
-        StructuredSerializer<GOneBattleDataData_battleData_pokemon_battleData> {
+        StructuredSerializer<GOneBattleDataData_battleData_battleDataAbility> {
   @override
   final Iterable<Type> types = const [
-    GOneBattleDataData_battleData_pokemon_battleData,
-    _$GOneBattleDataData_battleData_pokemon_battleData
+    GOneBattleDataData_battleData_battleDataAbility,
+    _$GOneBattleDataData_battleData_battleDataAbility
   ];
   @override
-  final String wireName = 'GOneBattleDataData_battleData_pokemon_battleData';
+  final String wireName = 'GOneBattleDataData_battleData_battleDataAbility';
 
   @override
   Iterable<Object?> serialize(Serializers serializers,
-      GOneBattleDataData_battleData_pokemon_battleData object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(object.G__typename,
-          specifiedType: const FullType(String)),
-      'battleDataAbility',
-      serializers.serialize(object.battleDataAbility,
-          specifiedType: const FullType(BuiltList, const [
-            const FullType.nullable(
-                GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility)
-          ])),
-      'battleDataItem',
-      serializers.serialize(object.battleDataItem,
-          specifiedType: const FullType(BuiltList, const [
-            const FullType.nullable(
-                GOneBattleDataData_battleData_pokemon_battleData_battleDataItem)
-          ])),
-      'battleDataMove',
-      serializers.serialize(object.battleDataMove,
-          specifiedType: const FullType(BuiltList, const [
-            const FullType.nullable(
-                GOneBattleDataData_battleData_pokemon_battleData_battleDataMove)
-          ])),
-    ];
-
-    return result;
-  }
-
-  @override
-  GOneBattleDataData_battleData_pokemon_battleData deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result =
-        new GOneBattleDataData_battleData_pokemon_battleDataBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'battleDataAbility':
-          result.battleDataAbility.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltList, const [
-                const FullType.nullable(
-                    GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility)
-              ]))! as BuiltList<Object?>);
-          break;
-        case 'battleDataItem':
-          result.battleDataItem.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltList, const [
-                const FullType.nullable(
-                    GOneBattleDataData_battleData_pokemon_battleData_battleDataItem)
-              ]))! as BuiltList<Object?>);
-          break;
-        case 'battleDataMove':
-          result.battleDataMove.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltList, const [
-                const FullType.nullable(
-                    GOneBattleDataData_battleData_pokemon_battleData_battleDataMove)
-              ]))! as BuiltList<Object?>);
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilitySerializer
-    implements
-        StructuredSerializer<
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility> {
-  @override
-  final Iterable<Type> types = const [
-    GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility,
-    _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility
-  ];
-  @override
-  final String wireName =
-      'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility';
-
-  @override
-  Iterable<Object?> serialize(Serializers serializers,
-      GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility object,
+      GOneBattleDataData_battleData_battleDataAbility object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -448,18 +277,17 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilitySerial
       'ability',
       serializers.serialize(object.ability,
           specifiedType: const FullType(
-              GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability)),
+              GOneBattleDataData_battleData_battleDataAbility_ability)),
     ];
 
     return result;
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility
-      deserialize(Serializers serializers, Iterable<Object?> serialized,
-          {FullType specifiedType = FullType.unspecified}) {
-    final result =
-        new GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder();
+  GOneBattleDataData_battleData_battleDataAbility deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GOneBattleDataData_battleData_battleDataAbilityBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -478,8 +306,8 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilitySerial
         case 'ability':
           result.ability.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability))!
-              as GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability);
+                      GOneBattleDataData_battleData_battleDataAbility_ability))!
+              as GOneBattleDataData_battleData_battleDataAbility_ability);
           break;
       }
     }
@@ -488,24 +316,22 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilitySerial
   }
 }
 
-class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilitySerializer
+class _$GOneBattleDataData_battleData_battleDataAbility_abilitySerializer
     implements
         StructuredSerializer<
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability> {
+            GOneBattleDataData_battleData_battleDataAbility_ability> {
   @override
   final Iterable<Type> types = const [
-    GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability,
-    _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
+    GOneBattleDataData_battleData_battleDataAbility_ability,
+    _$GOneBattleDataData_battleData_battleDataAbility_ability
   ];
   @override
   final String wireName =
-      'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability';
+      'GOneBattleDataData_battleData_battleDataAbility_ability';
 
   @override
-  Iterable<Object?> serialize(
-      Serializers serializers,
-      GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
-          object,
+  Iterable<Object?> serialize(Serializers serializers,
+      GOneBattleDataData_battleData_battleDataAbility_ability object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -521,11 +347,11 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abili
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
-      deserialize(Serializers serializers, Iterable<Object?> serialized,
-          {FullType specifiedType = FullType.unspecified}) {
+  GOneBattleDataData_battleData_battleDataAbility_ability deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder();
+        new GOneBattleDataData_battleData_battleDataAbility_abilityBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -552,22 +378,20 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abili
   }
 }
 
-class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItemSerializer
+class _$GOneBattleDataData_battleData_battleDataItemSerializer
     implements
-        StructuredSerializer<
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataItem> {
+        StructuredSerializer<GOneBattleDataData_battleData_battleDataItem> {
   @override
   final Iterable<Type> types = const [
-    GOneBattleDataData_battleData_pokemon_battleData_battleDataItem,
-    _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem
+    GOneBattleDataData_battleData_battleDataItem,
+    _$GOneBattleDataData_battleData_battleDataItem
   ];
   @override
-  final String wireName =
-      'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem';
+  final String wireName = 'GOneBattleDataData_battleData_battleDataItem';
 
   @override
   Iterable<Object?> serialize(Serializers serializers,
-      GOneBattleDataData_battleData_pokemon_battleData_battleDataItem object,
+      GOneBattleDataData_battleData_battleDataItem object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -575,23 +399,20 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItemSerialize
           specifiedType: const FullType(String)),
       'rate',
       serializers.serialize(object.rate, specifiedType: const FullType(double)),
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'Item',
-      serializers.serialize(object.Item,
+      'item',
+      serializers.serialize(object.item,
           specifiedType: const FullType(
-              GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item)),
+              GOneBattleDataData_battleData_battleDataItem_item)),
     ];
 
     return result;
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem deserialize(
+  GOneBattleDataData_battleData_battleDataItem deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result =
-        new GOneBattleDataData_battleData_pokemon_battleData_battleDataItemBuilder();
+    final result = new GOneBattleDataData_battleData_battleDataItemBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -607,15 +428,11 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItemSerialize
           result.rate = serializers.deserialize(value,
               specifiedType: const FullType(double))! as double;
           break;
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'Item':
-          result.Item.replace(serializers.deserialize(value,
+        case 'item':
+          result.item.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item))!
-              as GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item);
+                      GOneBattleDataData_battleData_battleDataItem_item))!
+              as GOneBattleDataData_battleData_battleDataItem_item);
           break;
       }
     }
@@ -624,24 +441,21 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItemSerialize
   }
 }
 
-class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemSerializer
+class _$GOneBattleDataData_battleData_battleDataItem_itemSerializer
     implements
         StructuredSerializer<
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item> {
+            GOneBattleDataData_battleData_battleDataItem_item> {
   @override
   final Iterable<Type> types = const [
-    GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item,
-    _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
+    GOneBattleDataData_battleData_battleDataItem_item,
+    _$GOneBattleDataData_battleData_battleDataItem_item
   ];
   @override
-  final String wireName =
-      'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item';
+  final String wireName = 'GOneBattleDataData_battleData_battleDataItem_item';
 
   @override
-  Iterable<Object?> serialize(
-      Serializers serializers,
-      GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
-          object,
+  Iterable<Object?> serialize(Serializers serializers,
+      GOneBattleDataData_battleData_battleDataItem_item object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -658,11 +472,11 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemSeri
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
-      deserialize(Serializers serializers, Iterable<Object?> serialized,
-          {FullType specifiedType = FullType.unspecified}) {
+  GOneBattleDataData_battleData_battleDataItem_item deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder();
+        new GOneBattleDataData_battleData_battleDataItem_itemBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -689,22 +503,20 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemSeri
   }
 }
 
-class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveSerializer
+class _$GOneBattleDataData_battleData_battleDataMoveSerializer
     implements
-        StructuredSerializer<
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataMove> {
+        StructuredSerializer<GOneBattleDataData_battleData_battleDataMove> {
   @override
   final Iterable<Type> types = const [
-    GOneBattleDataData_battleData_pokemon_battleData_battleDataMove,
-    _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove
+    GOneBattleDataData_battleData_battleDataMove,
+    _$GOneBattleDataData_battleData_battleDataMove
   ];
   @override
-  final String wireName =
-      'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove';
+  final String wireName = 'GOneBattleDataData_battleData_battleDataMove';
 
   @override
   Iterable<Object?> serialize(Serializers serializers,
-      GOneBattleDataData_battleData_pokemon_battleData_battleDataMove object,
+      GOneBattleDataData_battleData_battleDataMove object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -715,20 +527,17 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveSerialize
       'move',
       serializers.serialize(object.move,
           specifiedType: const FullType(
-              GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move)),
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
+              GOneBattleDataData_battleData_battleDataMove_move)),
     ];
 
     return result;
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove deserialize(
+  GOneBattleDataData_battleData_battleDataMove deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result =
-        new GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder();
+    final result = new GOneBattleDataData_battleData_battleDataMoveBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -747,12 +556,8 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveSerialize
         case 'move':
           result.move.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move))!
-              as GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move);
-          break;
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
+                      GOneBattleDataData_battleData_battleDataMove_move))!
+              as GOneBattleDataData_battleData_battleDataMove_move);
           break;
       }
     }
@@ -761,42 +566,57 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveSerialize
   }
 }
 
-class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveSerializer
+class _$GOneBattleDataData_battleData_battleDataMove_moveSerializer
     implements
         StructuredSerializer<
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move> {
+            GOneBattleDataData_battleData_battleDataMove_move> {
   @override
   final Iterable<Type> types = const [
-    GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move,
-    _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move
+    GOneBattleDataData_battleData_battleDataMove_move,
+    _$GOneBattleDataData_battleData_battleDataMove_move
   ];
   @override
-  final String wireName =
-      'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move';
+  final String wireName = 'GOneBattleDataData_battleData_battleDataMove_move';
 
   @override
-  Iterable<Object?> serialize(
-      Serializers serializers,
-      GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move
-          object,
+  Iterable<Object?> serialize(Serializers serializers,
+      GOneBattleDataData_battleData_battleDataMove_move object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
     ];
-
+    Object? value;
+    value = object.type;
+    if (value != null) {
+      result
+        ..add('type')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                GOneBattleDataData_battleData_battleDataMove_move_type)));
+    }
+    value = object.attackType;
+    if (value != null) {
+      result
+        ..add('attackType')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                GOneBattleDataData_battleData_battleDataMove_move_attackType)));
+    }
     return result;
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move
-      deserialize(Serializers serializers, Iterable<Object?> serialized,
-          {FullType specifiedType = FullType.unspecified}) {
+  GOneBattleDataData_battleData_battleDataMove_move deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder();
+        new GOneBattleDataData_battleData_battleDataMove_moveBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -808,8 +628,138 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveSeri
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
         case 'name':
           result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'type':
+          result.type.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      GOneBattleDataData_battleData_battleDataMove_move_type))!
+              as GOneBattleDataData_battleData_battleDataMove_move_type);
+          break;
+        case 'attackType':
+          result.attackType.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      GOneBattleDataData_battleData_battleDataMove_move_attackType))!
+              as GOneBattleDataData_battleData_battleDataMove_move_attackType);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GOneBattleDataData_battleData_battleDataMove_move_typeSerializer
+    implements
+        StructuredSerializer<
+            GOneBattleDataData_battleData_battleDataMove_move_type> {
+  @override
+  final Iterable<Type> types = const [
+    GOneBattleDataData_battleData_battleDataMove_move_type,
+    _$GOneBattleDataData_battleData_battleDataMove_move_type
+  ];
+  @override
+  final String wireName =
+      'GOneBattleDataData_battleData_battleDataMove_move_type';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GOneBattleDataData_battleData_battleDataMove_move_type object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'textImageUrl',
+      serializers.serialize(object.textImageUrl,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataMove_move_type deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        new GOneBattleDataData_battleData_battleDataMove_move_typeBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'textImageUrl':
+          result.textImageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GOneBattleDataData_battleData_battleDataMove_move_attackTypeSerializer
+    implements
+        StructuredSerializer<
+            GOneBattleDataData_battleData_battleDataMove_move_attackType> {
+  @override
+  final Iterable<Type> types = const [
+    GOneBattleDataData_battleData_battleDataMove_move_attackType,
+    _$GOneBattleDataData_battleData_battleDataMove_move_attackType
+  ];
+  @override
+  final String wireName =
+      'GOneBattleDataData_battleData_battleDataMove_move_attackType';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GOneBattleDataData_battleData_battleDataMove_move_attackType object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'imageUrl',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataMove_move_attackType deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        new GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -940,19 +890,41 @@ class _$GOneBattleDataData_battleData extends GOneBattleDataData_battleData {
   @override
   final String G__typename;
   @override
+  final int rank;
+  @override
   final GOneBattleDataData_battleData_pokemon pokemon;
+  @override
+  final BuiltList<GOneBattleDataData_battleData_battleDataAbility?>
+      battleDataAbility;
+  @override
+  final BuiltList<GOneBattleDataData_battleData_battleDataItem?> battleDataItem;
+  @override
+  final BuiltList<GOneBattleDataData_battleData_battleDataMove?> battleDataMove;
 
   factory _$GOneBattleDataData_battleData(
           [void Function(GOneBattleDataData_battleDataBuilder)? updates]) =>
       (new GOneBattleDataData_battleDataBuilder()..update(updates))._build();
 
   _$GOneBattleDataData_battleData._(
-      {required this.G__typename, required this.pokemon})
+      {required this.G__typename,
+      required this.rank,
+      required this.pokemon,
+      required this.battleDataAbility,
+      required this.battleDataItem,
+      required this.battleDataMove})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GOneBattleDataData_battleData', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
+        rank, r'GOneBattleDataData_battleData', 'rank');
+    BuiltValueNullFieldError.checkNotNull(
         pokemon, r'GOneBattleDataData_battleData', 'pokemon');
+    BuiltValueNullFieldError.checkNotNull(battleDataAbility,
+        r'GOneBattleDataData_battleData', 'battleDataAbility');
+    BuiltValueNullFieldError.checkNotNull(
+        battleDataItem, r'GOneBattleDataData_battleData', 'battleDataItem');
+    BuiltValueNullFieldError.checkNotNull(
+        battleDataMove, r'GOneBattleDataData_battleData', 'battleDataMove');
   }
 
   @override
@@ -969,14 +941,22 @@ class _$GOneBattleDataData_battleData extends GOneBattleDataData_battleData {
     if (identical(other, this)) return true;
     return other is GOneBattleDataData_battleData &&
         G__typename == other.G__typename &&
-        pokemon == other.pokemon;
+        rank == other.rank &&
+        pokemon == other.pokemon &&
+        battleDataAbility == other.battleDataAbility &&
+        battleDataItem == other.battleDataItem &&
+        battleDataMove == other.battleDataMove;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, rank.hashCode);
     _$hash = $jc(_$hash, pokemon.hashCode);
+    _$hash = $jc(_$hash, battleDataAbility.hashCode);
+    _$hash = $jc(_$hash, battleDataItem.hashCode);
+    _$hash = $jc(_$hash, battleDataMove.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -985,7 +965,11 @@ class _$GOneBattleDataData_battleData extends GOneBattleDataData_battleData {
   String toString() {
     return (newBuiltValueToStringHelper(r'GOneBattleDataData_battleData')
           ..add('G__typename', G__typename)
-          ..add('pokemon', pokemon))
+          ..add('rank', rank)
+          ..add('pokemon', pokemon)
+          ..add('battleDataAbility', battleDataAbility)
+          ..add('battleDataItem', battleDataItem)
+          ..add('battleDataMove', battleDataMove))
         .toString();
   }
 }
@@ -1000,11 +984,43 @@ class GOneBattleDataData_battleDataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
+  int? _rank;
+  int? get rank => _$this._rank;
+  set rank(int? rank) => _$this._rank = rank;
+
   GOneBattleDataData_battleData_pokemonBuilder? _pokemon;
   GOneBattleDataData_battleData_pokemonBuilder get pokemon =>
       _$this._pokemon ??= new GOneBattleDataData_battleData_pokemonBuilder();
   set pokemon(GOneBattleDataData_battleData_pokemonBuilder? pokemon) =>
       _$this._pokemon = pokemon;
+
+  ListBuilder<GOneBattleDataData_battleData_battleDataAbility?>?
+      _battleDataAbility;
+  ListBuilder<GOneBattleDataData_battleData_battleDataAbility?>
+      get battleDataAbility => _$this._battleDataAbility ??=
+          new ListBuilder<GOneBattleDataData_battleData_battleDataAbility?>();
+  set battleDataAbility(
+          ListBuilder<GOneBattleDataData_battleData_battleDataAbility?>?
+              battleDataAbility) =>
+      _$this._battleDataAbility = battleDataAbility;
+
+  ListBuilder<GOneBattleDataData_battleData_battleDataItem?>? _battleDataItem;
+  ListBuilder<GOneBattleDataData_battleData_battleDataItem?>
+      get battleDataItem => _$this._battleDataItem ??=
+          new ListBuilder<GOneBattleDataData_battleData_battleDataItem?>();
+  set battleDataItem(
+          ListBuilder<GOneBattleDataData_battleData_battleDataItem?>?
+              battleDataItem) =>
+      _$this._battleDataItem = battleDataItem;
+
+  ListBuilder<GOneBattleDataData_battleData_battleDataMove?>? _battleDataMove;
+  ListBuilder<GOneBattleDataData_battleData_battleDataMove?>
+      get battleDataMove => _$this._battleDataMove ??=
+          new ListBuilder<GOneBattleDataData_battleData_battleDataMove?>();
+  set battleDataMove(
+          ListBuilder<GOneBattleDataData_battleData_battleDataMove?>?
+              battleDataMove) =>
+      _$this._battleDataMove = battleDataMove;
 
   GOneBattleDataData_battleDataBuilder() {
     GOneBattleDataData_battleData._initializeBuilder(this);
@@ -1014,7 +1030,11 @@ class GOneBattleDataData_battleDataBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
+      _rank = $v.rank;
       _pokemon = $v.pokemon.toBuilder();
+      _battleDataAbility = $v.battleDataAbility.toBuilder();
+      _battleDataItem = $v.battleDataItem.toBuilder();
+      _battleDataMove = $v.battleDataMove.toBuilder();
       _$v = null;
     }
     return this;
@@ -1041,12 +1061,23 @@ class GOneBattleDataData_battleDataBuilder
           new _$GOneBattleDataData_battleData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, r'GOneBattleDataData_battleData', 'G__typename'),
-              pokemon: pokemon.build());
+              rank: BuiltValueNullFieldError.checkNotNull(
+                  rank, r'GOneBattleDataData_battleData', 'rank'),
+              pokemon: pokemon.build(),
+              battleDataAbility: battleDataAbility.build(),
+              battleDataItem: battleDataItem.build(),
+              battleDataMove: battleDataMove.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'pokemon';
         pokemon.build();
+        _$failedField = 'battleDataAbility';
+        battleDataAbility.build();
+        _$failedField = 'battleDataItem';
+        battleDataItem.build();
+        _$failedField = 'battleDataMove';
+        battleDataMove.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GOneBattleDataData_battleData', _$failedField, e.toString());
@@ -1063,29 +1094,9 @@ class _$GOneBattleDataData_battleData_pokemon
   @override
   final String G__typename;
   @override
-  final String name;
-  @override
-  final String form;
-  @override
   final String imageLargeUrl;
   @override
-  final int statusA;
-  @override
-  final int statusB;
-  @override
-  final int statusC;
-  @override
-  final int statusD;
-  @override
-  final int statusH;
-  @override
-  final int statusS;
-  @override
-  final BuiltList<GOneBattleDataData_battleData_pokemon_types?> types;
-  @override
-  final String url;
-  @override
-  final BuiltList<GOneBattleDataData_battleData_pokemon_battleData?> battleData;
+  final String name;
 
   factory _$GOneBattleDataData_battleData_pokemon(
           [void Function(GOneBattleDataData_battleData_pokemonBuilder)?
@@ -1095,45 +1106,15 @@ class _$GOneBattleDataData_battleData_pokemon
 
   _$GOneBattleDataData_battleData_pokemon._(
       {required this.G__typename,
-      required this.name,
-      required this.form,
       required this.imageLargeUrl,
-      required this.statusA,
-      required this.statusB,
-      required this.statusC,
-      required this.statusD,
-      required this.statusH,
-      required this.statusS,
-      required this.types,
-      required this.url,
-      required this.battleData})
+      required this.name})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GOneBattleDataData_battleData_pokemon', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GOneBattleDataData_battleData_pokemon', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        form, r'GOneBattleDataData_battleData_pokemon', 'form');
     BuiltValueNullFieldError.checkNotNull(imageLargeUrl,
         r'GOneBattleDataData_battleData_pokemon', 'imageLargeUrl');
     BuiltValueNullFieldError.checkNotNull(
-        statusA, r'GOneBattleDataData_battleData_pokemon', 'statusA');
-    BuiltValueNullFieldError.checkNotNull(
-        statusB, r'GOneBattleDataData_battleData_pokemon', 'statusB');
-    BuiltValueNullFieldError.checkNotNull(
-        statusC, r'GOneBattleDataData_battleData_pokemon', 'statusC');
-    BuiltValueNullFieldError.checkNotNull(
-        statusD, r'GOneBattleDataData_battleData_pokemon', 'statusD');
-    BuiltValueNullFieldError.checkNotNull(
-        statusH, r'GOneBattleDataData_battleData_pokemon', 'statusH');
-    BuiltValueNullFieldError.checkNotNull(
-        statusS, r'GOneBattleDataData_battleData_pokemon', 'statusS');
-    BuiltValueNullFieldError.checkNotNull(
-        types, r'GOneBattleDataData_battleData_pokemon', 'types');
-    BuiltValueNullFieldError.checkNotNull(
-        url, r'GOneBattleDataData_battleData_pokemon', 'url');
-    BuiltValueNullFieldError.checkNotNull(
-        battleData, r'GOneBattleDataData_battleData_pokemon', 'battleData');
+        name, r'GOneBattleDataData_battleData_pokemon', 'name');
   }
 
   @override
@@ -1151,36 +1132,16 @@ class _$GOneBattleDataData_battleData_pokemon
     if (identical(other, this)) return true;
     return other is GOneBattleDataData_battleData_pokemon &&
         G__typename == other.G__typename &&
-        name == other.name &&
-        form == other.form &&
         imageLargeUrl == other.imageLargeUrl &&
-        statusA == other.statusA &&
-        statusB == other.statusB &&
-        statusC == other.statusC &&
-        statusD == other.statusD &&
-        statusH == other.statusH &&
-        statusS == other.statusS &&
-        types == other.types &&
-        url == other.url &&
-        battleData == other.battleData;
+        name == other.name;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, form.hashCode);
     _$hash = $jc(_$hash, imageLargeUrl.hashCode);
-    _$hash = $jc(_$hash, statusA.hashCode);
-    _$hash = $jc(_$hash, statusB.hashCode);
-    _$hash = $jc(_$hash, statusC.hashCode);
-    _$hash = $jc(_$hash, statusD.hashCode);
-    _$hash = $jc(_$hash, statusH.hashCode);
-    _$hash = $jc(_$hash, statusS.hashCode);
-    _$hash = $jc(_$hash, types.hashCode);
-    _$hash = $jc(_$hash, url.hashCode);
-    _$hash = $jc(_$hash, battleData.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1190,18 +1151,8 @@ class _$GOneBattleDataData_battleData_pokemon
     return (newBuiltValueToStringHelper(
             r'GOneBattleDataData_battleData_pokemon')
           ..add('G__typename', G__typename)
-          ..add('name', name)
-          ..add('form', form)
           ..add('imageLargeUrl', imageLargeUrl)
-          ..add('statusA', statusA)
-          ..add('statusB', statusB)
-          ..add('statusC', statusC)
-          ..add('statusD', statusD)
-          ..add('statusH', statusH)
-          ..add('statusS', statusS)
-          ..add('types', types)
-          ..add('url', url)
-          ..add('battleData', battleData))
+          ..add('name', name))
         .toString();
   }
 }
@@ -1216,62 +1167,14 @@ class GOneBattleDataData_battleData_pokemonBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
-  String? _form;
-  String? get form => _$this._form;
-  set form(String? form) => _$this._form = form;
-
   String? _imageLargeUrl;
   String? get imageLargeUrl => _$this._imageLargeUrl;
   set imageLargeUrl(String? imageLargeUrl) =>
       _$this._imageLargeUrl = imageLargeUrl;
 
-  int? _statusA;
-  int? get statusA => _$this._statusA;
-  set statusA(int? statusA) => _$this._statusA = statusA;
-
-  int? _statusB;
-  int? get statusB => _$this._statusB;
-  set statusB(int? statusB) => _$this._statusB = statusB;
-
-  int? _statusC;
-  int? get statusC => _$this._statusC;
-  set statusC(int? statusC) => _$this._statusC = statusC;
-
-  int? _statusD;
-  int? get statusD => _$this._statusD;
-  set statusD(int? statusD) => _$this._statusD = statusD;
-
-  int? _statusH;
-  int? get statusH => _$this._statusH;
-  set statusH(int? statusH) => _$this._statusH = statusH;
-
-  int? _statusS;
-  int? get statusS => _$this._statusS;
-  set statusS(int? statusS) => _$this._statusS = statusS;
-
-  ListBuilder<GOneBattleDataData_battleData_pokemon_types?>? _types;
-  ListBuilder<GOneBattleDataData_battleData_pokemon_types?> get types =>
-      _$this._types ??=
-          new ListBuilder<GOneBattleDataData_battleData_pokemon_types?>();
-  set types(ListBuilder<GOneBattleDataData_battleData_pokemon_types?>? types) =>
-      _$this._types = types;
-
-  String? _url;
-  String? get url => _$this._url;
-  set url(String? url) => _$this._url = url;
-
-  ListBuilder<GOneBattleDataData_battleData_pokemon_battleData?>? _battleData;
-  ListBuilder<GOneBattleDataData_battleData_pokemon_battleData?>
-      get battleData => _$this._battleData ??=
-          new ListBuilder<GOneBattleDataData_battleData_pokemon_battleData?>();
-  set battleData(
-          ListBuilder<GOneBattleDataData_battleData_pokemon_battleData?>?
-              battleData) =>
-      _$this._battleData = battleData;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   GOneBattleDataData_battleData_pokemonBuilder() {
     GOneBattleDataData_battleData_pokemon._initializeBuilder(this);
@@ -1281,18 +1184,8 @@ class GOneBattleDataData_battleData_pokemonBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _name = $v.name;
-      _form = $v.form;
       _imageLargeUrl = $v.imageLargeUrl;
-      _statusA = $v.statusA;
-      _statusB = $v.statusB;
-      _statusC = $v.statusC;
-      _statusD = $v.statusD;
-      _statusH = $v.statusH;
-      _statusS = $v.statusS;
-      _types = $v.types.toBuilder();
-      _url = $v.url;
-      _battleData = $v.battleData.toBuilder();
+      _name = $v.name;
       _$v = null;
     }
     return this;
@@ -1314,420 +1207,62 @@ class GOneBattleDataData_battleData_pokemonBuilder
   GOneBattleDataData_battleData_pokemon build() => _build();
 
   _$GOneBattleDataData_battleData_pokemon _build() {
-    _$GOneBattleDataData_battleData_pokemon _$result;
-    try {
-      _$result = _$v ??
-          new _$GOneBattleDataData_battleData_pokemon._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename, r'GOneBattleDataData_battleData_pokemon', 'G__typename'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GOneBattleDataData_battleData_pokemon', 'name'),
-              form: BuiltValueNullFieldError.checkNotNull(
-                  form, r'GOneBattleDataData_battleData_pokemon', 'form'),
-              imageLargeUrl: BuiltValueNullFieldError.checkNotNull(
-                  imageLargeUrl,
-                  r'GOneBattleDataData_battleData_pokemon',
-                  'imageLargeUrl'),
-              statusA: BuiltValueNullFieldError.checkNotNull(
-                  statusA, r'GOneBattleDataData_battleData_pokemon', 'statusA'),
-              statusB: BuiltValueNullFieldError.checkNotNull(
-                  statusB, r'GOneBattleDataData_battleData_pokemon', 'statusB'),
-              statusC: BuiltValueNullFieldError.checkNotNull(
-                  statusC, r'GOneBattleDataData_battleData_pokemon', 'statusC'),
-              statusD: BuiltValueNullFieldError.checkNotNull(statusD, r'GOneBattleDataData_battleData_pokemon', 'statusD'),
-              statusH: BuiltValueNullFieldError.checkNotNull(statusH, r'GOneBattleDataData_battleData_pokemon', 'statusH'),
-              statusS: BuiltValueNullFieldError.checkNotNull(statusS, r'GOneBattleDataData_battleData_pokemon', 'statusS'),
-              types: types.build(),
-              url: BuiltValueNullFieldError.checkNotNull(url, r'GOneBattleDataData_battleData_pokemon', 'url'),
-              battleData: battleData.build());
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'types';
-        types.build();
-
-        _$failedField = 'battleData';
-        battleData.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'GOneBattleDataData_battleData_pokemon',
-            _$failedField,
-            e.toString());
-      }
-      rethrow;
-    }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GOneBattleDataData_battleData_pokemon_types
-    extends GOneBattleDataData_battleData_pokemon_types {
-  @override
-  final String G__typename;
-  @override
-  final String name;
-
-  factory _$GOneBattleDataData_battleData_pokemon_types(
-          [void Function(GOneBattleDataData_battleData_pokemon_typesBuilder)?
-              updates]) =>
-      (new GOneBattleDataData_battleData_pokemon_typesBuilder()
-            ..update(updates))
-          ._build();
-
-  _$GOneBattleDataData_battleData_pokemon_types._(
-      {required this.G__typename, required this.name})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(G__typename,
-        r'GOneBattleDataData_battleData_pokemon_types', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GOneBattleDataData_battleData_pokemon_types', 'name');
-  }
-
-  @override
-  GOneBattleDataData_battleData_pokemon_types rebuild(
-          void Function(GOneBattleDataData_battleData_pokemon_typesBuilder)
-              updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  GOneBattleDataData_battleData_pokemon_typesBuilder toBuilder() =>
-      new GOneBattleDataData_battleData_pokemon_typesBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GOneBattleDataData_battleData_pokemon_types &&
-        G__typename == other.G__typename &&
-        name == other.name;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(
-            r'GOneBattleDataData_battleData_pokemon_types')
-          ..add('G__typename', G__typename)
-          ..add('name', name))
-        .toString();
-  }
-}
-
-class GOneBattleDataData_battleData_pokemon_typesBuilder
-    implements
-        Builder<GOneBattleDataData_battleData_pokemon_types,
-            GOneBattleDataData_battleData_pokemon_typesBuilder> {
-  _$GOneBattleDataData_battleData_pokemon_types? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
-  GOneBattleDataData_battleData_pokemon_typesBuilder() {
-    GOneBattleDataData_battleData_pokemon_types._initializeBuilder(this);
-  }
-
-  GOneBattleDataData_battleData_pokemon_typesBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _name = $v.name;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GOneBattleDataData_battleData_pokemon_types other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GOneBattleDataData_battleData_pokemon_types;
-  }
-
-  @override
-  void update(
-      void Function(GOneBattleDataData_battleData_pokemon_typesBuilder)?
-          updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GOneBattleDataData_battleData_pokemon_types build() => _build();
-
-  _$GOneBattleDataData_battleData_pokemon_types _build() {
     final _$result = _$v ??
-        new _$GOneBattleDataData_battleData_pokemon_types._(
+        new _$GOneBattleDataData_battleData_pokemon._(
             G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GOneBattleDataData_battleData_pokemon_types', 'G__typename'),
+                r'GOneBattleDataData_battleData_pokemon', 'G__typename'),
+            imageLargeUrl: BuiltValueNullFieldError.checkNotNull(imageLargeUrl,
+                r'GOneBattleDataData_battleData_pokemon', 'imageLargeUrl'),
             name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GOneBattleDataData_battleData_pokemon_types', 'name'));
+                name, r'GOneBattleDataData_battleData_pokemon', 'name'));
     replace(_$result);
     return _$result;
   }
 }
 
-class _$GOneBattleDataData_battleData_pokemon_battleData
-    extends GOneBattleDataData_battleData_pokemon_battleData {
-  @override
-  final String G__typename;
-  @override
-  final BuiltList<
-          GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility?>
-      battleDataAbility;
-  @override
-  final BuiltList<
-          GOneBattleDataData_battleData_pokemon_battleData_battleDataItem?>
-      battleDataItem;
-  @override
-  final BuiltList<
-          GOneBattleDataData_battleData_pokemon_battleData_battleDataMove?>
-      battleDataMove;
-
-  factory _$GOneBattleDataData_battleData_pokemon_battleData(
-          [void Function(
-                  GOneBattleDataData_battleData_pokemon_battleDataBuilder)?
-              updates]) =>
-      (new GOneBattleDataData_battleData_pokemon_battleDataBuilder()
-            ..update(updates))
-          ._build();
-
-  _$GOneBattleDataData_battleData_pokemon_battleData._(
-      {required this.G__typename,
-      required this.battleDataAbility,
-      required this.battleDataItem,
-      required this.battleDataMove})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(G__typename,
-        r'GOneBattleDataData_battleData_pokemon_battleData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        battleDataAbility,
-        r'GOneBattleDataData_battleData_pokemon_battleData',
-        'battleDataAbility');
-    BuiltValueNullFieldError.checkNotNull(battleDataItem,
-        r'GOneBattleDataData_battleData_pokemon_battleData', 'battleDataItem');
-    BuiltValueNullFieldError.checkNotNull(battleDataMove,
-        r'GOneBattleDataData_battleData_pokemon_battleData', 'battleDataMove');
-  }
-
-  @override
-  GOneBattleDataData_battleData_pokemon_battleData rebuild(
-          void Function(GOneBattleDataData_battleData_pokemon_battleDataBuilder)
-              updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  GOneBattleDataData_battleData_pokemon_battleDataBuilder toBuilder() =>
-      new GOneBattleDataData_battleData_pokemon_battleDataBuilder()
-        ..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GOneBattleDataData_battleData_pokemon_battleData &&
-        G__typename == other.G__typename &&
-        battleDataAbility == other.battleDataAbility &&
-        battleDataItem == other.battleDataItem &&
-        battleDataMove == other.battleDataMove;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, battleDataAbility.hashCode);
-    _$hash = $jc(_$hash, battleDataItem.hashCode);
-    _$hash = $jc(_$hash, battleDataMove.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(
-            r'GOneBattleDataData_battleData_pokemon_battleData')
-          ..add('G__typename', G__typename)
-          ..add('battleDataAbility', battleDataAbility)
-          ..add('battleDataItem', battleDataItem)
-          ..add('battleDataMove', battleDataMove))
-        .toString();
-  }
-}
-
-class GOneBattleDataData_battleData_pokemon_battleDataBuilder
-    implements
-        Builder<GOneBattleDataData_battleData_pokemon_battleData,
-            GOneBattleDataData_battleData_pokemon_battleDataBuilder> {
-  _$GOneBattleDataData_battleData_pokemon_battleData? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  ListBuilder<
-          GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility?>?
-      _battleDataAbility;
-  ListBuilder<
-          GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility?>
-      get battleDataAbility => _$this._battleDataAbility ??= new ListBuilder<
-          GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility?>();
-  set battleDataAbility(
-          ListBuilder<
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility?>?
-              battleDataAbility) =>
-      _$this._battleDataAbility = battleDataAbility;
-
-  ListBuilder<GOneBattleDataData_battleData_pokemon_battleData_battleDataItem?>?
-      _battleDataItem;
-  ListBuilder<GOneBattleDataData_battleData_pokemon_battleData_battleDataItem?>
-      get battleDataItem => _$this._battleDataItem ??= new ListBuilder<
-          GOneBattleDataData_battleData_pokemon_battleData_battleDataItem?>();
-  set battleDataItem(
-          ListBuilder<
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem?>?
-              battleDataItem) =>
-      _$this._battleDataItem = battleDataItem;
-
-  ListBuilder<GOneBattleDataData_battleData_pokemon_battleData_battleDataMove?>?
-      _battleDataMove;
-  ListBuilder<GOneBattleDataData_battleData_pokemon_battleData_battleDataMove?>
-      get battleDataMove => _$this._battleDataMove ??= new ListBuilder<
-          GOneBattleDataData_battleData_pokemon_battleData_battleDataMove?>();
-  set battleDataMove(
-          ListBuilder<
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove?>?
-              battleDataMove) =>
-      _$this._battleDataMove = battleDataMove;
-
-  GOneBattleDataData_battleData_pokemon_battleDataBuilder() {
-    GOneBattleDataData_battleData_pokemon_battleData._initializeBuilder(this);
-  }
-
-  GOneBattleDataData_battleData_pokemon_battleDataBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _battleDataAbility = $v.battleDataAbility.toBuilder();
-      _battleDataItem = $v.battleDataItem.toBuilder();
-      _battleDataMove = $v.battleDataMove.toBuilder();
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GOneBattleDataData_battleData_pokemon_battleData other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GOneBattleDataData_battleData_pokemon_battleData;
-  }
-
-  @override
-  void update(
-      void Function(GOneBattleDataData_battleData_pokemon_battleDataBuilder)?
-          updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GOneBattleDataData_battleData_pokemon_battleData build() => _build();
-
-  _$GOneBattleDataData_battleData_pokemon_battleData _build() {
-    _$GOneBattleDataData_battleData_pokemon_battleData _$result;
-    try {
-      _$result = _$v ??
-          new _$GOneBattleDataData_battleData_pokemon_battleData._(
-              G__typename: BuiltValueNullFieldError.checkNotNull(
-                  G__typename,
-                  r'GOneBattleDataData_battleData_pokemon_battleData',
-                  'G__typename'),
-              battleDataAbility: battleDataAbility.build(),
-              battleDataItem: battleDataItem.build(),
-              battleDataMove: battleDataMove.build());
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'battleDataAbility';
-        battleDataAbility.build();
-        _$failedField = 'battleDataItem';
-        battleDataItem.build();
-        _$failedField = 'battleDataMove';
-        battleDataMove.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'GOneBattleDataData_battleData_pokemon_battleData',
-            _$failedField,
-            e.toString());
-      }
-      rethrow;
-    }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility
-    extends GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility {
+class _$GOneBattleDataData_battleData_battleDataAbility
+    extends GOneBattleDataData_battleData_battleDataAbility {
   @override
   final String G__typename;
   @override
   final double rate;
   @override
-  final GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
-      ability;
+  final GOneBattleDataData_battleData_battleDataAbility_ability ability;
 
-  factory _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility(
+  factory _$GOneBattleDataData_battleData_battleDataAbility(
           [void Function(
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder)?
+                  GOneBattleDataData_battleData_battleDataAbilityBuilder)?
               updates]) =>
-      (new GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder()
+      (new GOneBattleDataData_battleData_battleDataAbilityBuilder()
             ..update(updates))
           ._build();
 
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility._(
+  _$GOneBattleDataData_battleData_battleDataAbility._(
       {required this.G__typename, required this.rate, required this.ability})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GOneBattleDataData_battleData_battleDataAbility', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        G__typename,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility',
-        'G__typename');
+        rate, r'GOneBattleDataData_battleData_battleDataAbility', 'rate');
     BuiltValueNullFieldError.checkNotNull(
-        rate,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility',
-        'rate');
-    BuiltValueNullFieldError.checkNotNull(
-        ability,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility',
-        'ability');
+        ability, r'GOneBattleDataData_battleData_battleDataAbility', 'ability');
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility rebuild(
-          void Function(
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder)
+  GOneBattleDataData_battleData_battleDataAbility rebuild(
+          void Function(GOneBattleDataData_battleData_battleDataAbilityBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder
-      toBuilder() =>
-          new GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder()
-            ..replace(this);
+  GOneBattleDataData_battleData_battleDataAbilityBuilder toBuilder() =>
+      new GOneBattleDataData_battleData_battleDataAbilityBuilder()
+        ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other
-            is GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility &&
+    return other is GOneBattleDataData_battleData_battleDataAbility &&
         G__typename == other.G__typename &&
         rate == other.rate &&
         ability == other.ability;
@@ -1746,7 +1281,7 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility')
+            r'GOneBattleDataData_battleData_battleDataAbility')
           ..add('G__typename', G__typename)
           ..add('rate', rate)
           ..add('ability', ability))
@@ -1754,12 +1289,11 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility
   }
 }
 
-class GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder
+class GOneBattleDataData_battleData_battleDataAbilityBuilder
     implements
-        Builder<
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility,
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder> {
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility? _$v;
+        Builder<GOneBattleDataData_battleData_battleDataAbility,
+            GOneBattleDataData_battleData_battleDataAbilityBuilder> {
+  _$GOneBattleDataData_battleData_battleDataAbility? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -1769,23 +1303,20 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder
   double? get rate => _$this._rate;
   set rate(double? rate) => _$this._rate = rate;
 
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder?
-      _ability;
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder
-      get ability => _$this._ability ??=
-          new GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder();
+  GOneBattleDataData_battleData_battleDataAbility_abilityBuilder? _ability;
+  GOneBattleDataData_battleData_battleDataAbility_abilityBuilder get ability =>
+      _$this._ability ??=
+          new GOneBattleDataData_battleData_battleDataAbility_abilityBuilder();
   set ability(
-          GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder?
+          GOneBattleDataData_battleData_battleDataAbility_abilityBuilder?
               ability) =>
       _$this._ability = ability;
 
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder() {
-    GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility
-        ._initializeBuilder(this);
+  GOneBattleDataData_battleData_battleDataAbilityBuilder() {
+    GOneBattleDataData_battleData_battleDataAbility._initializeBuilder(this);
   }
 
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder
-      get _$this {
+  GOneBattleDataData_battleData_battleDataAbilityBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -1797,42 +1328,32 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder
   }
 
   @override
-  void replace(
-      GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility
-          other) {
+  void replace(GOneBattleDataData_battleData_battleDataAbility other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other
-        as _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility;
+    _$v = other as _$GOneBattleDataData_battleData_battleDataAbility;
   }
 
   @override
   void update(
-      void Function(
-              GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder)?
+      void Function(GOneBattleDataData_battleData_battleDataAbilityBuilder)?
           updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility build() =>
-      _build();
+  GOneBattleDataData_battleData_battleDataAbility build() => _build();
 
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility
-      _build() {
-    _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility
-        _$result;
+  _$GOneBattleDataData_battleData_battleDataAbility _build() {
+    _$GOneBattleDataData_battleData_battleDataAbility _$result;
     try {
       _$result = _$v ??
-          new _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility
-              ._(
+          new _$GOneBattleDataData_battleData_battleDataAbility._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename,
-                  r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility',
+                  r'GOneBattleDataData_battleData_battleDataAbility',
                   'G__typename'),
-              rate: BuiltValueNullFieldError.checkNotNull(
-                  rate,
-                  r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility',
-                  'rate'),
+              rate: BuiltValueNullFieldError.checkNotNull(rate,
+                  r'GOneBattleDataData_battleData_battleDataAbility', 'rate'),
               ability: ability.build());
     } catch (_) {
       late String _$failedField;
@@ -1841,7 +1362,7 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder
         ability.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility',
+            r'GOneBattleDataData_battleData_battleDataAbility',
             _$failedField,
             e.toString());
       }
@@ -1852,8 +1373,8 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataAbilityBuilder
   }
 }
 
-class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
-    extends GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability {
+class _$GOneBattleDataData_battleData_battleDataAbility_ability
+    extends GOneBattleDataData_battleData_battleDataAbility_ability {
   @override
   final String G__typename;
   @override
@@ -1861,50 +1382,43 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abili
   @override
   final String id;
 
-  factory _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability(
+  factory _$GOneBattleDataData_battleData_battleDataAbility_ability(
           [void Function(
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder)?
+                  GOneBattleDataData_battleData_battleDataAbility_abilityBuilder)?
               updates]) =>
-      (new GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder()
+      (new GOneBattleDataData_battleData_battleDataAbility_abilityBuilder()
             ..update(updates))
           ._build();
 
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability._(
+  _$GOneBattleDataData_battleData_battleDataAbility_ability._(
       {required this.G__typename, required this.name, required this.id})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability',
+        r'GOneBattleDataData_battleData_battleDataAbility_ability',
         'G__typename');
+    BuiltValueNullFieldError.checkNotNull(name,
+        r'GOneBattleDataData_battleData_battleDataAbility_ability', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        name,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability',
-        'name');
-    BuiltValueNullFieldError.checkNotNull(
-        id,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability',
-        'id');
+        id, r'GOneBattleDataData_battleData_battleDataAbility_ability', 'id');
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
-      rebuild(
-              void Function(
-                      GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder)
-                  updates) =>
-          (toBuilder()..update(updates)).build();
+  GOneBattleDataData_battleData_battleDataAbility_ability rebuild(
+          void Function(
+                  GOneBattleDataData_battleData_battleDataAbility_abilityBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder
-      toBuilder() =>
-          new GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder()
-            ..replace(this);
+  GOneBattleDataData_battleData_battleDataAbility_abilityBuilder toBuilder() =>
+      new GOneBattleDataData_battleData_battleDataAbility_abilityBuilder()
+        ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other
-            is GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability &&
+    return other is GOneBattleDataData_battleData_battleDataAbility_ability &&
         G__typename == other.G__typename &&
         name == other.name &&
         id == other.id;
@@ -1923,7 +1437,7 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abili
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability')
+            r'GOneBattleDataData_battleData_battleDataAbility_ability')
           ..add('G__typename', G__typename)
           ..add('name', name)
           ..add('id', id))
@@ -1931,13 +1445,11 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abili
   }
 }
 
-class GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder
+class GOneBattleDataData_battleData_battleDataAbility_abilityBuilder
     implements
-        Builder<
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability,
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder> {
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability?
-      _$v;
+        Builder<GOneBattleDataData_battleData_battleDataAbility_ability,
+            GOneBattleDataData_battleData_battleDataAbility_abilityBuilder> {
+  _$GOneBattleDataData_battleData_battleDataAbility_ability? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -1951,13 +1463,12 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder() {
-    GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
-        ._initializeBuilder(this);
+  GOneBattleDataData_battleData_battleDataAbility_abilityBuilder() {
+    GOneBattleDataData_battleData_battleDataAbility_ability._initializeBuilder(
+        this);
   }
 
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder
-      get _$this {
+  GOneBattleDataData_battleData_battleDataAbility_abilityBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -1969,114 +1480,86 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
   }
 
   @override
-  void replace(
-      GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
-          other) {
+  void replace(GOneBattleDataData_battleData_battleDataAbility_ability other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other
-        as _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability;
+    _$v = other as _$GOneBattleDataData_battleData_battleDataAbility_ability;
   }
 
   @override
   void update(
       void Function(
-              GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_abilityBuilder)?
+              GOneBattleDataData_battleData_battleDataAbility_abilityBuilder)?
           updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
-      build() => _build();
+  GOneBattleDataData_battleData_battleDataAbility_ability build() => _build();
 
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
-      _build() {
+  _$GOneBattleDataData_battleData_battleDataAbility_ability _build() {
     final _$result = _$v ??
-        new _$GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability
-            ._(
+        new _$GOneBattleDataData_battleData_battleDataAbility_ability._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
-                r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability',
+                r'GOneBattleDataData_battleData_battleDataAbility_ability',
                 'G__typename'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name,
-                r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability',
+                r'GOneBattleDataData_battleData_battleDataAbility_ability',
                 'name'),
             id: BuiltValueNullFieldError.checkNotNull(
                 id,
-                r'GOneBattleDataData_battleData_pokemon_battleData_battleDataAbility_ability',
+                r'GOneBattleDataData_battleData_battleDataAbility_ability',
                 'id'));
     replace(_$result);
     return _$result;
   }
 }
 
-class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem
-    extends GOneBattleDataData_battleData_pokemon_battleData_battleDataItem {
+class _$GOneBattleDataData_battleData_battleDataItem
+    extends GOneBattleDataData_battleData_battleDataItem {
   @override
   final String G__typename;
   @override
   final double rate;
   @override
-  final String id;
-  @override
-  final GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
-      Item;
+  final GOneBattleDataData_battleData_battleDataItem_item item;
 
-  factory _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem(
-          [void Function(
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataItemBuilder)?
+  factory _$GOneBattleDataData_battleData_battleDataItem(
+          [void Function(GOneBattleDataData_battleData_battleDataItemBuilder)?
               updates]) =>
-      (new GOneBattleDataData_battleData_pokemon_battleData_battleDataItemBuilder()
+      (new GOneBattleDataData_battleData_battleDataItemBuilder()
             ..update(updates))
           ._build();
 
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem._(
-      {required this.G__typename,
-      required this.rate,
-      required this.id,
-      required this.Item})
+  _$GOneBattleDataData_battleData_battleDataItem._(
+      {required this.G__typename, required this.rate, required this.item})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GOneBattleDataData_battleData_battleDataItem', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        G__typename,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem',
-        'G__typename');
+        rate, r'GOneBattleDataData_battleData_battleDataItem', 'rate');
     BuiltValueNullFieldError.checkNotNull(
-        rate,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem',
-        'rate');
-    BuiltValueNullFieldError.checkNotNull(
-        id,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem',
-        'id');
-    BuiltValueNullFieldError.checkNotNull(
-        Item,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem',
-        'Item');
+        item, r'GOneBattleDataData_battleData_battleDataItem', 'item');
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem rebuild(
-          void Function(
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataItemBuilder)
+  GOneBattleDataData_battleData_battleDataItem rebuild(
+          void Function(GOneBattleDataData_battleData_battleDataItemBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItemBuilder
-      toBuilder() =>
-          new GOneBattleDataData_battleData_pokemon_battleData_battleDataItemBuilder()
-            ..replace(this);
+  GOneBattleDataData_battleData_battleDataItemBuilder toBuilder() =>
+      new GOneBattleDataData_battleData_battleDataItemBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other
-            is GOneBattleDataData_battleData_pokemon_battleData_battleDataItem &&
+    return other is GOneBattleDataData_battleData_battleDataItem &&
         G__typename == other.G__typename &&
         rate == other.rate &&
-        id == other.id &&
-        Item == other.Item;
+        item == other.item;
   }
 
   @override
@@ -2084,8 +1567,7 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, rate.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, Item.hashCode);
+    _$hash = $jc(_$hash, item.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -2093,20 +1575,19 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem')
+            r'GOneBattleDataData_battleData_battleDataItem')
           ..add('G__typename', G__typename)
           ..add('rate', rate)
-          ..add('id', id)
-          ..add('Item', Item))
+          ..add('item', item))
         .toString();
   }
 }
 
-class GOneBattleDataData_battleData_pokemon_battleData_battleDataItemBuilder
+class GOneBattleDataData_battleData_battleDataItemBuilder
     implements
-        Builder<GOneBattleDataData_battleData_pokemon_battleData_battleDataItem,
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataItemBuilder> {
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem? _$v;
+        Builder<GOneBattleDataData_battleData_battleDataItem,
+            GOneBattleDataData_battleData_battleDataItemBuilder> {
+  _$GOneBattleDataData_battleData_battleDataItem? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -2116,85 +1597,64 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataItemBuilder
   double? get rate => _$this._rate;
   set rate(double? rate) => _$this._rate = rate;
 
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
+  GOneBattleDataData_battleData_battleDataItem_itemBuilder? _item;
+  GOneBattleDataData_battleData_battleDataItem_itemBuilder get item =>
+      _$this._item ??=
+          new GOneBattleDataData_battleData_battleDataItem_itemBuilder();
+  set item(GOneBattleDataData_battleData_battleDataItem_itemBuilder? item) =>
+      _$this._item = item;
 
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder?
-      _Item;
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder
-      get Item => _$this._Item ??=
-          new GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder();
-  set Item(
-          GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder?
-              Item) =>
-      _$this._Item = Item;
-
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItemBuilder() {
-    GOneBattleDataData_battleData_pokemon_battleData_battleDataItem
-        ._initializeBuilder(this);
+  GOneBattleDataData_battleData_battleDataItemBuilder() {
+    GOneBattleDataData_battleData_battleDataItem._initializeBuilder(this);
   }
 
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItemBuilder
-      get _$this {
+  GOneBattleDataData_battleData_battleDataItemBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
       _rate = $v.rate;
-      _id = $v.id;
-      _Item = $v.Item.toBuilder();
+      _item = $v.item.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(
-      GOneBattleDataData_battleData_pokemon_battleData_battleDataItem other) {
+  void replace(GOneBattleDataData_battleData_battleDataItem other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other
-        as _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem;
+    _$v = other as _$GOneBattleDataData_battleData_battleDataItem;
   }
 
   @override
   void update(
-      void Function(
-              GOneBattleDataData_battleData_pokemon_battleData_battleDataItemBuilder)?
+      void Function(GOneBattleDataData_battleData_battleDataItemBuilder)?
           updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem build() =>
-      _build();
+  GOneBattleDataData_battleData_battleDataItem build() => _build();
 
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem _build() {
-    _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem _$result;
+  _$GOneBattleDataData_battleData_battleDataItem _build() {
+    _$GOneBattleDataData_battleData_battleDataItem _$result;
     try {
       _$result = _$v ??
-          new _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem
-              ._(
+          new _$GOneBattleDataData_battleData_battleDataItem._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename,
-                  r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem',
+                  r'GOneBattleDataData_battleData_battleDataItem',
                   'G__typename'),
-              rate: BuiltValueNullFieldError.checkNotNull(
-                  rate,
-                  r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem',
-                  'rate'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id,
-                  r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem',
-                  'id'),
-              Item: Item.build());
+              rate: BuiltValueNullFieldError.checkNotNull(rate,
+                  r'GOneBattleDataData_battleData_battleDataItem', 'rate'),
+              item: item.build());
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'Item';
-        Item.build();
+        _$failedField = 'item';
+        item.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem',
+            r'GOneBattleDataData_battleData_battleDataItem',
             _$failedField,
             e.toString());
       }
@@ -2205,8 +1665,8 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataItemBuilder
   }
 }
 
-class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
-    extends GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item {
+class _$GOneBattleDataData_battleData_battleDataItem_item
+    extends GOneBattleDataData_battleData_battleDataItem_item {
   @override
   final String G__typename;
   @override
@@ -2214,51 +1674,43 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
   @override
   final String imageSmallUrl;
 
-  factory _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item(
+  factory _$GOneBattleDataData_battleData_battleDataItem_item(
           [void Function(
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder)?
+                  GOneBattleDataData_battleData_battleDataItem_itemBuilder)?
               updates]) =>
-      (new GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder()
+      (new GOneBattleDataData_battleData_battleDataItem_itemBuilder()
             ..update(updates))
           ._build();
 
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item._(
+  _$GOneBattleDataData_battleData_battleDataItem_item._(
       {required this.G__typename,
       required this.name,
       required this.imageSmallUrl})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GOneBattleDataData_battleData_battleDataItem_item', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        G__typename,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item',
-        'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        name,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item',
-        'name');
-    BuiltValueNullFieldError.checkNotNull(
-        imageSmallUrl,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item',
-        'imageSmallUrl');
+        name, r'GOneBattleDataData_battleData_battleDataItem_item', 'name');
+    BuiltValueNullFieldError.checkNotNull(imageSmallUrl,
+        r'GOneBattleDataData_battleData_battleDataItem_item', 'imageSmallUrl');
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item rebuild(
+  GOneBattleDataData_battleData_battleDataItem_item rebuild(
           void Function(
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder)
+                  GOneBattleDataData_battleData_battleDataItem_itemBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder
-      toBuilder() =>
-          new GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder()
-            ..replace(this);
+  GOneBattleDataData_battleData_battleDataItem_itemBuilder toBuilder() =>
+      new GOneBattleDataData_battleData_battleDataItem_itemBuilder()
+        ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other
-            is GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item &&
+    return other is GOneBattleDataData_battleData_battleDataItem_item &&
         G__typename == other.G__typename &&
         name == other.name &&
         imageSmallUrl == other.imageSmallUrl;
@@ -2277,7 +1729,7 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item')
+            r'GOneBattleDataData_battleData_battleDataItem_item')
           ..add('G__typename', G__typename)
           ..add('name', name)
           ..add('imageSmallUrl', imageSmallUrl))
@@ -2285,12 +1737,11 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
   }
 }
 
-class GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder
+class GOneBattleDataData_battleData_battleDataItem_itemBuilder
     implements
-        Builder<
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item,
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder> {
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item? _$v;
+        Builder<GOneBattleDataData_battleData_battleDataItem_item,
+            GOneBattleDataData_battleData_battleDataItem_itemBuilder> {
+  _$GOneBattleDataData_battleData_battleDataItem_item? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -2305,13 +1756,11 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilde
   set imageSmallUrl(String? imageSmallUrl) =>
       _$this._imageSmallUrl = imageSmallUrl;
 
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder() {
-    GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
-        ._initializeBuilder(this);
+  GOneBattleDataData_battleData_battleDataItem_itemBuilder() {
+    GOneBattleDataData_battleData_battleDataItem_item._initializeBuilder(this);
   }
 
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder
-      get _$this {
+  GOneBattleDataData_battleData_battleDataItem_itemBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -2323,114 +1772,83 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilde
   }
 
   @override
-  void replace(
-      GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
-          other) {
+  void replace(GOneBattleDataData_battleData_battleDataItem_item other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other
-        as _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item;
+    _$v = other as _$GOneBattleDataData_battleData_battleDataItem_item;
   }
 
   @override
   void update(
-      void Function(
-              GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_ItemBuilder)?
+      void Function(GOneBattleDataData_battleData_battleDataItem_itemBuilder)?
           updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
-      build() => _build();
+  GOneBattleDataData_battleData_battleDataItem_item build() => _build();
 
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
-      _build() {
+  _$GOneBattleDataData_battleData_battleDataItem_item _build() {
     final _$result = _$v ??
-        new _$GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item
-            ._(
+        new _$GOneBattleDataData_battleData_battleDataItem_item._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
-                r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item',
+                r'GOneBattleDataData_battleData_battleDataItem_item',
                 'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name,
-                r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item',
-                'name'),
+            name: BuiltValueNullFieldError.checkNotNull(name,
+                r'GOneBattleDataData_battleData_battleDataItem_item', 'name'),
             imageSmallUrl: BuiltValueNullFieldError.checkNotNull(
                 imageSmallUrl,
-                r'GOneBattleDataData_battleData_pokemon_battleData_battleDataItem_Item',
+                r'GOneBattleDataData_battleData_battleDataItem_item',
                 'imageSmallUrl'));
     replace(_$result);
     return _$result;
   }
 }
 
-class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove
-    extends GOneBattleDataData_battleData_pokemon_battleData_battleDataMove {
+class _$GOneBattleDataData_battleData_battleDataMove
+    extends GOneBattleDataData_battleData_battleDataMove {
   @override
   final String G__typename;
   @override
   final double rate;
   @override
-  final GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move
-      move;
-  @override
-  final String id;
+  final GOneBattleDataData_battleData_battleDataMove_move move;
 
-  factory _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove(
-          [void Function(
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder)?
+  factory _$GOneBattleDataData_battleData_battleDataMove(
+          [void Function(GOneBattleDataData_battleData_battleDataMoveBuilder)?
               updates]) =>
-      (new GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder()
+      (new GOneBattleDataData_battleData_battleDataMoveBuilder()
             ..update(updates))
           ._build();
 
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove._(
-      {required this.G__typename,
-      required this.rate,
-      required this.move,
-      required this.id})
+  _$GOneBattleDataData_battleData_battleDataMove._(
+      {required this.G__typename, required this.rate, required this.move})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GOneBattleDataData_battleData_battleDataMove', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        G__typename,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove',
-        'G__typename');
+        rate, r'GOneBattleDataData_battleData_battleDataMove', 'rate');
     BuiltValueNullFieldError.checkNotNull(
-        rate,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove',
-        'rate');
-    BuiltValueNullFieldError.checkNotNull(
-        move,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove',
-        'move');
-    BuiltValueNullFieldError.checkNotNull(
-        id,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove',
-        'id');
+        move, r'GOneBattleDataData_battleData_battleDataMove', 'move');
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove rebuild(
-          void Function(
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder)
+  GOneBattleDataData_battleData_battleDataMove rebuild(
+          void Function(GOneBattleDataData_battleData_battleDataMoveBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder
-      toBuilder() =>
-          new GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder()
-            ..replace(this);
+  GOneBattleDataData_battleData_battleDataMoveBuilder toBuilder() =>
+      new GOneBattleDataData_battleData_battleDataMoveBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other
-            is GOneBattleDataData_battleData_pokemon_battleData_battleDataMove &&
+    return other is GOneBattleDataData_battleData_battleDataMove &&
         G__typename == other.G__typename &&
         rate == other.rate &&
-        move == other.move &&
-        id == other.id;
+        move == other.move;
   }
 
   @override
@@ -2439,7 +1857,6 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, rate.hashCode);
     _$hash = $jc(_$hash, move.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -2447,20 +1864,19 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove')
+            r'GOneBattleDataData_battleData_battleDataMove')
           ..add('G__typename', G__typename)
           ..add('rate', rate)
-          ..add('move', move)
-          ..add('id', id))
+          ..add('move', move))
         .toString();
   }
 }
 
-class GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder
+class GOneBattleDataData_battleData_battleDataMoveBuilder
     implements
-        Builder<GOneBattleDataData_battleData_pokemon_battleData_battleDataMove,
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder> {
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove? _$v;
+        Builder<GOneBattleDataData_battleData_battleDataMove,
+            GOneBattleDataData_battleData_battleDataMoveBuilder> {
+  _$GOneBattleDataData_battleData_battleDataMove? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -2470,77 +1886,56 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder
   double? get rate => _$this._rate;
   set rate(double? rate) => _$this._rate = rate;
 
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder?
-      _move;
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder
-      get move => _$this._move ??=
-          new GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder();
-  set move(
-          GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder?
-              move) =>
+  GOneBattleDataData_battleData_battleDataMove_moveBuilder? _move;
+  GOneBattleDataData_battleData_battleDataMove_moveBuilder get move =>
+      _$this._move ??=
+          new GOneBattleDataData_battleData_battleDataMove_moveBuilder();
+  set move(GOneBattleDataData_battleData_battleDataMove_moveBuilder? move) =>
       _$this._move = move;
 
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
-
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder() {
-    GOneBattleDataData_battleData_pokemon_battleData_battleDataMove
-        ._initializeBuilder(this);
+  GOneBattleDataData_battleData_battleDataMoveBuilder() {
+    GOneBattleDataData_battleData_battleDataMove._initializeBuilder(this);
   }
 
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder
-      get _$this {
+  GOneBattleDataData_battleData_battleDataMoveBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
       _rate = $v.rate;
       _move = $v.move.toBuilder();
-      _id = $v.id;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(
-      GOneBattleDataData_battleData_pokemon_battleData_battleDataMove other) {
+  void replace(GOneBattleDataData_battleData_battleDataMove other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other
-        as _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove;
+    _$v = other as _$GOneBattleDataData_battleData_battleDataMove;
   }
 
   @override
   void update(
-      void Function(
-              GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder)?
+      void Function(GOneBattleDataData_battleData_battleDataMoveBuilder)?
           updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove build() =>
-      _build();
+  GOneBattleDataData_battleData_battleDataMove build() => _build();
 
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove _build() {
-    _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove _$result;
+  _$GOneBattleDataData_battleData_battleDataMove _build() {
+    _$GOneBattleDataData_battleData_battleDataMove _$result;
     try {
       _$result = _$v ??
-          new _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove
-              ._(
+          new _$GOneBattleDataData_battleData_battleDataMove._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename,
-                  r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove',
+                  r'GOneBattleDataData_battleData_battleDataMove',
                   'G__typename'),
-              rate: BuiltValueNullFieldError.checkNotNull(
-                  rate,
-                  r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove',
-                  'rate'),
-              move: move.build(),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id,
-                  r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove',
-                  'id'));
+              rate: BuiltValueNullFieldError.checkNotNull(rate,
+                  r'GOneBattleDataData_battleData_battleDataMove', 'rate'),
+              move: move.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -2548,7 +1943,7 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder
         move.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove',
+            r'GOneBattleDataData_battleData_battleDataMove',
             _$failedField,
             e.toString());
       }
@@ -2559,61 +1954,74 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataMoveBuilder
   }
 }
 
-class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move
-    extends GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move {
+class _$GOneBattleDataData_battleData_battleDataMove_move
+    extends GOneBattleDataData_battleData_battleDataMove_move {
   @override
   final String G__typename;
   @override
+  final String id;
+  @override
   final String name;
+  @override
+  final GOneBattleDataData_battleData_battleDataMove_move_type? type;
+  @override
+  final GOneBattleDataData_battleData_battleDataMove_move_attackType?
+      attackType;
 
-  factory _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move(
+  factory _$GOneBattleDataData_battleData_battleDataMove_move(
           [void Function(
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder)?
+                  GOneBattleDataData_battleData_battleDataMove_moveBuilder)?
               updates]) =>
-      (new GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder()
+      (new GOneBattleDataData_battleData_battleDataMove_moveBuilder()
             ..update(updates))
           ._build();
 
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move._(
-      {required this.G__typename, required this.name})
+  _$GOneBattleDataData_battleData_battleDataMove_move._(
+      {required this.G__typename,
+      required this.id,
+      required this.name,
+      this.type,
+      this.attackType})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GOneBattleDataData_battleData_battleDataMove_move', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        G__typename,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move',
-        'G__typename');
+        id, r'GOneBattleDataData_battleData_battleDataMove_move', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        name,
-        r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move',
-        'name');
+        name, r'GOneBattleDataData_battleData_battleDataMove_move', 'name');
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move rebuild(
+  GOneBattleDataData_battleData_battleDataMove_move rebuild(
           void Function(
-                  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder)
+                  GOneBattleDataData_battleData_battleDataMove_moveBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder
-      toBuilder() =>
-          new GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder()
-            ..replace(this);
+  GOneBattleDataData_battleData_battleDataMove_moveBuilder toBuilder() =>
+      new GOneBattleDataData_battleData_battleDataMove_moveBuilder()
+        ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other
-            is GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move &&
+    return other is GOneBattleDataData_battleData_battleDataMove_move &&
         G__typename == other.G__typename &&
-        name == other.name;
+        id == other.id &&
+        name == other.name &&
+        type == other.type &&
+        attackType == other.attackType;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, attackType.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -2621,39 +2029,344 @@ class _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move')
+            r'GOneBattleDataData_battleData_battleDataMove_move')
           ..add('G__typename', G__typename)
-          ..add('name', name))
+          ..add('id', id)
+          ..add('name', name)
+          ..add('type', type)
+          ..add('attackType', attackType))
         .toString();
   }
 }
 
-class GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder
+class GOneBattleDataData_battleData_battleDataMove_moveBuilder
     implements
-        Builder<
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move,
-            GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder> {
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move? _$v;
+        Builder<GOneBattleDataData_battleData_battleDataMove_move,
+            GOneBattleDataData_battleData_battleDataMove_moveBuilder> {
+  _$GOneBattleDataData_battleData_battleDataMove_move? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
   String? _name;
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder() {
-    GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move
+  GOneBattleDataData_battleData_battleDataMove_move_typeBuilder? _type;
+  GOneBattleDataData_battleData_battleDataMove_move_typeBuilder get type =>
+      _$this._type ??=
+          new GOneBattleDataData_battleData_battleDataMove_move_typeBuilder();
+  set type(
+          GOneBattleDataData_battleData_battleDataMove_move_typeBuilder?
+              type) =>
+      _$this._type = type;
+
+  GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder?
+      _attackType;
+  GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder
+      get attackType => _$this._attackType ??=
+          new GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder();
+  set attackType(
+          GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder?
+              attackType) =>
+      _$this._attackType = attackType;
+
+  GOneBattleDataData_battleData_battleDataMove_moveBuilder() {
+    GOneBattleDataData_battleData_battleDataMove_move._initializeBuilder(this);
+  }
+
+  GOneBattleDataData_battleData_battleDataMove_moveBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _name = $v.name;
+      _type = $v.type?.toBuilder();
+      _attackType = $v.attackType?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GOneBattleDataData_battleData_battleDataMove_move other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GOneBattleDataData_battleData_battleDataMove_move;
+  }
+
+  @override
+  void update(
+      void Function(GOneBattleDataData_battleData_battleDataMove_moveBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataMove_move build() => _build();
+
+  _$GOneBattleDataData_battleData_battleDataMove_move _build() {
+    _$GOneBattleDataData_battleData_battleDataMove_move _$result;
+    try {
+      _$result = _$v ??
+          new _$GOneBattleDataData_battleData_battleDataMove_move._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename,
+                  r'GOneBattleDataData_battleData_battleDataMove_move',
+                  'G__typename'),
+              id: BuiltValueNullFieldError.checkNotNull(id,
+                  r'GOneBattleDataData_battleData_battleDataMove_move', 'id'),
+              name: BuiltValueNullFieldError.checkNotNull(name,
+                  r'GOneBattleDataData_battleData_battleDataMove_move', 'name'),
+              type: _type?.build(),
+              attackType: _attackType?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'type';
+        _type?.build();
+        _$failedField = 'attackType';
+        _attackType?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GOneBattleDataData_battleData_battleDataMove_move',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GOneBattleDataData_battleData_battleDataMove_move_type
+    extends GOneBattleDataData_battleData_battleDataMove_move_type {
+  @override
+  final String G__typename;
+  @override
+  final String textImageUrl;
+
+  factory _$GOneBattleDataData_battleData_battleDataMove_move_type(
+          [void Function(
+                  GOneBattleDataData_battleData_battleDataMove_move_typeBuilder)?
+              updates]) =>
+      (new GOneBattleDataData_battleData_battleDataMove_move_typeBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GOneBattleDataData_battleData_battleDataMove_move_type._(
+      {required this.G__typename, required this.textImageUrl})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename,
+        r'GOneBattleDataData_battleData_battleDataMove_move_type',
+        'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        textImageUrl,
+        r'GOneBattleDataData_battleData_battleDataMove_move_type',
+        'textImageUrl');
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataMove_move_type rebuild(
+          void Function(
+                  GOneBattleDataData_battleData_battleDataMove_move_typeBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GOneBattleDataData_battleData_battleDataMove_move_typeBuilder toBuilder() =>
+      new GOneBattleDataData_battleData_battleDataMove_move_typeBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GOneBattleDataData_battleData_battleDataMove_move_type &&
+        G__typename == other.G__typename &&
+        textImageUrl == other.textImageUrl;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, textImageUrl.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GOneBattleDataData_battleData_battleDataMove_move_type')
+          ..add('G__typename', G__typename)
+          ..add('textImageUrl', textImageUrl))
+        .toString();
+  }
+}
+
+class GOneBattleDataData_battleData_battleDataMove_move_typeBuilder
+    implements
+        Builder<GOneBattleDataData_battleData_battleDataMove_move_type,
+            GOneBattleDataData_battleData_battleDataMove_move_typeBuilder> {
+  _$GOneBattleDataData_battleData_battleDataMove_move_type? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _textImageUrl;
+  String? get textImageUrl => _$this._textImageUrl;
+  set textImageUrl(String? textImageUrl) => _$this._textImageUrl = textImageUrl;
+
+  GOneBattleDataData_battleData_battleDataMove_move_typeBuilder() {
+    GOneBattleDataData_battleData_battleDataMove_move_type._initializeBuilder(
+        this);
+  }
+
+  GOneBattleDataData_battleData_battleDataMove_move_typeBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _textImageUrl = $v.textImageUrl;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GOneBattleDataData_battleData_battleDataMove_move_type other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GOneBattleDataData_battleData_battleDataMove_move_type;
+  }
+
+  @override
+  void update(
+      void Function(
+              GOneBattleDataData_battleData_battleDataMove_move_typeBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataMove_move_type build() => _build();
+
+  _$GOneBattleDataData_battleData_battleDataMove_move_type _build() {
+    final _$result = _$v ??
+        new _$GOneBattleDataData_battleData_battleDataMove_move_type._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GOneBattleDataData_battleData_battleDataMove_move_type',
+                'G__typename'),
+            textImageUrl: BuiltValueNullFieldError.checkNotNull(
+                textImageUrl,
+                r'GOneBattleDataData_battleData_battleDataMove_move_type',
+                'textImageUrl'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GOneBattleDataData_battleData_battleDataMove_move_attackType
+    extends GOneBattleDataData_battleData_battleDataMove_move_attackType {
+  @override
+  final String G__typename;
+  @override
+  final String imageUrl;
+
+  factory _$GOneBattleDataData_battleData_battleDataMove_move_attackType(
+          [void Function(
+                  GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder)?
+              updates]) =>
+      (new GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GOneBattleDataData_battleData_battleDataMove_move_attackType._(
+      {required this.G__typename, required this.imageUrl})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename,
+        r'GOneBattleDataData_battleData_battleDataMove_move_attackType',
+        'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl,
+        r'GOneBattleDataData_battleData_battleDataMove_move_attackType',
+        'imageUrl');
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataMove_move_attackType rebuild(
+          void Function(
+                  GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder
+      toBuilder() =>
+          new GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GOneBattleDataData_battleData_battleDataMove_move_attackType &&
+        G__typename == other.G__typename &&
+        imageUrl == other.imageUrl;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GOneBattleDataData_battleData_battleDataMove_move_attackType')
+          ..add('G__typename', G__typename)
+          ..add('imageUrl', imageUrl))
+        .toString();
+  }
+}
+
+class GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder
+    implements
+        Builder<GOneBattleDataData_battleData_battleDataMove_move_attackType,
+            GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder> {
+  _$GOneBattleDataData_battleData_battleDataMove_move_attackType? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
+  GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder() {
+    GOneBattleDataData_battleData_battleDataMove_move_attackType
         ._initializeBuilder(this);
   }
 
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder
+  GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder
       get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _name = $v.name;
+      _imageUrl = $v.imageUrl;
       _$v = null;
     }
     return this;
@@ -2661,38 +2374,35 @@ class GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilde
 
   @override
   void replace(
-      GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move
-          other) {
+      GOneBattleDataData_battleData_battleDataMove_move_attackType other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other
-        as _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move;
+    _$v =
+        other as _$GOneBattleDataData_battleData_battleDataMove_move_attackType;
   }
 
   @override
   void update(
       void Function(
-              GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_moveBuilder)?
+              GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder)?
           updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move
-      build() => _build();
+  GOneBattleDataData_battleData_battleDataMove_move_attackType build() =>
+      _build();
 
-  _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move
-      _build() {
+  _$GOneBattleDataData_battleData_battleDataMove_move_attackType _build() {
     final _$result = _$v ??
-        new _$GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move
-            ._(
+        new _$GOneBattleDataData_battleData_battleDataMove_move_attackType._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
-                r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move',
+                r'GOneBattleDataData_battleData_battleDataMove_move_attackType',
                 'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name,
-                r'GOneBattleDataData_battleData_pokemon_battleData_battleDataMove_move',
-                'name'));
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl,
+                r'GOneBattleDataData_battleData_battleDataMove_move_attackType',
+                'imageUrl'));
     replace(_$result);
     return _$result;
   }

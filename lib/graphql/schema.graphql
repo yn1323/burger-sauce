@@ -20,6 +20,8 @@ type Ability {
   battleIndex: String!
   pokemons: [Pokemon]!
   battleDataAbilities: [BattleDataAbility]!
+  myPokemon: [MyPokemon]!
+  myEnemy: [MyEnemy]!
 }
 
 type AttackType {
@@ -42,7 +44,7 @@ type BattleData {
   battleDataNature: [BattleDataNature]!
   battleDataItem: [BattleDataItem]!
   battleDataTerastal: [BattleDataTerastal]!
-  Form: Form
+  form: Form
   formId: String
 }
 
@@ -57,7 +59,7 @@ type BattleDataAbility {
 
 type BattleDataItem {
   id: String!
-  Item: Item!
+  item: Item!
   itemId: String!
   rate: Float!
   battleData: BattleData!
@@ -190,7 +192,6 @@ input CreateMoveInput {
   power: Int!
   accuracy: Int!
   pp: Int!
-  battleIndex: String!
   isContact: Boolean!
   isQuick: Boolean!
   isDelay: Boolean!
@@ -206,6 +207,7 @@ input CreateMoveInput {
   isDance: Boolean!
   isWind: Boolean!
   isCut: Boolean!
+  battleIndex: String!
 }
 
 input CreateMyEnemyInput {
@@ -313,8 +315,8 @@ input CreatePokemonInput {
 input CreateTypeInput {
   name: String!
   battleIndex: String!
-  imageUrl: String!
   textImageUrl: String!
+  imageUrl: String!
   terastalImageUrl: String!
 }
 
@@ -397,9 +399,6 @@ type Move {
   power: Int!
   accuracy: Int!
   pp: Int!
-  pokemons: [Pokemon]!
-  battleIndex: String!
-  battleDataMoves: [BattleDataMove]!
   isContact: Boolean!
   isQuick: Boolean!
   isDelay: Boolean!
@@ -415,6 +414,11 @@ type Move {
   isDance: Boolean!
   isWind: Boolean!
   isCut: Boolean!
+  pokemons: [Pokemon]!
+  battleIndex: String!
+  battleDataMoves: [BattleDataMove]!
+  myPokemon: [MyPokemon]!
+  myEnemy: [MyEnemy]!
 }
 
 type Mutation {
@@ -523,8 +527,8 @@ type MyEnemy {
   moves: [Move]!
   user: User!
   userId: String!
-  MyPokemonPros: [MyPokemonPros]!
-  MyPokemonCons: [MyPokemonCons]!
+  myPokemonPros: [MyPokemonPros]!
+  myPokemonCons: [MyPokemonCons]!
 }
 
 type MyEnemyTag {
@@ -532,7 +536,7 @@ type MyEnemyTag {
   name: String!
   favorite: Boolean!
   memo: String!
-  MyEnemy: [MyEnemy]!
+  myEnemy: [MyEnemy]!
   user: User!
   userId: String!
 }
@@ -584,6 +588,8 @@ type MyPokemon {
   myParty: [MyParty]!
   user: User!
   userId: String!
+  myPokemonPros: [MyPokemonPros]!
+  myPokemonCons: [MyPokemonCons]!
 }
 
 type MyPokemonCons {
@@ -619,6 +625,8 @@ type Nature {
   increase: String!
   decrease: String!
   battleDataNature: [BattleDataNature]!
+  myPokemon: [MyPokemon]!
+  myEnemy: [MyEnemy]!
 }
 
 type Pokemon {
@@ -645,7 +653,7 @@ type Pokemon {
   battleIndex: String!
   battleFormIndex: String!
   battleData: [BattleData]!
-  MyPokemon: [MyPokemon]!
+  myPokemon: [MyPokemon]!
   myEnemy: [MyEnemy]!
   evolutionFrom: [Evolution]!
   evolutionTo: [Evolution]!
@@ -747,9 +755,11 @@ type Type {
   moves: [Move]!
   pokemons: [Pokemon]!
   battleDataTerastal: [BattleDataTerastal]!
-  imageUrl: String!
+  MyPokemon: [MyPokemon]!
   textImageUrl: String!
+  imageUrl: String!
   terastalImageUrl: String!
+  myEnemy: [MyEnemy]!
 }
 
 type TypeRelation {
@@ -769,7 +779,7 @@ input UpdateAbilityInput {
 
 input UpdateAttackTypeInput {
   name: String
-  imageUrl: String!
+  imageUrl: String
 }
 
 input UpdateBattleDataAbilityInput {
@@ -846,7 +856,6 @@ input UpdateMoveInput {
   power: Int
   accuracy: Int
   pp: Int
-  battleIndex: String
   isContact: Boolean
   isQuick: Boolean
   isDelay: Boolean
@@ -862,6 +871,7 @@ input UpdateMoveInput {
   isDance: Boolean
   isWind: Boolean
   isCut: Boolean
+  battleIndex: String
 }
 
 input UpdateMyEnemyInput {
@@ -969,9 +979,9 @@ input UpdatePokemonInput {
 input UpdateTypeInput {
   name: String
   battleIndex: String
-  imageUrl: String!
-  textImageUrl: String!
-  terastalImageUrl: String!
+  textImageUrl: String
+  imageUrl: String
+  terastalImageUrl: String
 }
 
 input UpdateTypeRelationInput {
@@ -997,5 +1007,7 @@ type User {
   myParty: [MyParty]!
   myPartyTag: [MyPartyTag]!
   myPokemonTag: [MyPokemonTag]!
+  myEnemy: [MyEnemy]!
+  myEnemyTag: [MyEnemyTag]!
 }
 
