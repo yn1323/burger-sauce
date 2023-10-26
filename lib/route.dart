@@ -1,4 +1,4 @@
-import 'package:burger_sauce/pages/search/battle_data/pokemon.dart';
+import 'package:burger_sauce/pages/search/battle_data/page.dart';
 import 'package:burger_sauce/templates/my_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

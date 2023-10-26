@@ -4,6 +4,7 @@ query OneBattleData($id: String!) {
     pokemon {
       imageLargeUrl
       name
+      form
     }
     battleDataAbility {
       rate

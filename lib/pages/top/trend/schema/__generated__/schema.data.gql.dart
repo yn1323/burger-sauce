@@ -91,7 +91,7 @@ abstract class GLatestBattleDataIndexData_battleDatasLatest_pokemon
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;
-  String get imageSmallUrl;
+  String get imageUrl;
   String get form;
   static Serializer<GLatestBattleDataIndexData_battleDatasLatest_pokemon>
       get serializer =>

@@ -1,3 +1,4 @@
+import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/pages/top/trend/battle_data/battle_data_index.dart';
 import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.data.gql.dart';
 import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.req.gql.dart';
@@ -51,7 +52,7 @@ class TrendPage extends HookWidget {
 
     return Operation<GLatestBattleDataIndexData, GLatestBattleDataIndexVars>(
       operationRequest: GLatestBattleDataIndexReq(
-        (b) => b..fetchPolicy = FetchPolicy.CacheAndNetwork,
+        (b) => b..fetchPolicy = fetchCacheAndNetwork,
       ),
       builder: (context, response, error) {
         if (response!.loading) {
@@ -74,11 +75,12 @@ class TrendPage extends HookWidget {
         res.value = pokemons
             .map(
               (e) => PokemonIndex(
-                  id: e.id,
-                  form: e.pokemon.form,
-                  name: e.pokemon.name,
-                  rank: e.rank,
-                  imageUrl: e.pokemon.imageSmallUrl),
+                id: e.id,
+                form: e.pokemon.form,
+                name: e.pokemon.name,
+                rank: e.rank,
+                imageUrl: e.pokemon.imageUrl,
+              ),
             )
             .toList();
 

@@ -25,9 +25,16 @@ Future<Client> initClient() async {
     cache: cache,
     defaultFetchPolicies: {
       OperationType.query:
-          kReleaseMode ? FetchPolicy.CacheFirst : FetchPolicy.NetworkOnly,
+          kReleaseMode ? FetchPolicy.CacheAndNetwork : FetchPolicy.NetworkOnly,
     },
   );
 
   return client;
 }
+
+const fetchNetworkOnly = FetchPolicy.NetworkOnly;
+const fetchCacheFirst =
+    kReleaseMode ? FetchPolicy.CacheFirst : FetchPolicy.NetworkOnly;
+const fetchCacheAndNetwork =
+    kReleaseMode ? FetchPolicy.CacheAndNetwork : FetchPolicy.NetworkOnly;
+const fetchNoCache = FetchPolicy.NoCache;

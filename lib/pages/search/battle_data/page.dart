@@ -1,7 +1,9 @@
-import 'package:burger_sauce/components/fragments/skeleton.dart';
+import 'package:burger_sauce/components/features/images/skeleton.dart';
+import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.data.gql.dart';
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.req.gql.dart';
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.var.gql.dart';
+import 'package:burger_sauce/pages/search/battle_data/battle_rank_tab.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ferry/ferry.dart';
 import 'package:ferry_flutter/ferry_flutter.dart';
@@ -19,6 +21,15 @@ class BattleDataPokemon extends HookWidget {
     required this.id,
   }) : super(key: key);
 
+  String getPokemonName(GOneBattleDataData_battleData_pokemon? pokemon) {
+    if (pokemon == null) return '';
+    if (pokemon.form.isEmpty) {
+      return pokemon.name;
+    } else {
+      return '${pokemon.name}(${pokemon.form})';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +37,9 @@ class BattleDataPokemon extends HookWidget {
         title: const Text('バトル詳細情報'),
       ),
       body: Operation<GOneBattleDataData, GOneBattleDataVars>(
-        operationRequest: GOneBattleDataReq((b) => b..vars.id = id),
+        operationRequest: GOneBattleDataReq((b) => b
+          ..vars.id = id
+          ..fetchPolicy = fetchCacheFirst),
         builder: (context, response, error) {
           if (response!.loading) {
             return const Center(child: CircularProgressIndicator());
@@ -42,16 +55,16 @@ class BattleDataPokemon extends HookWidget {
           }
 
           final pokemon = data.battleData?.pokemon;
-          final abilities = data.battleData?.battleDataAbility ?? [];
-          final moves = data.battleData?.battleDataMove ?? [];
-          final items = data.battleData?.battleDataItem ?? [];
+          final battleAbilities = data.battleData?.battleDataAbility;
+          final battleMoves = data.battleData?.battleDataMove;
+          final battleItems = data.battleData?.battleDataItem;
 
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(
               child: Column(
                 children: [
-                  Text(pokemon?.name ?? '',
+                  Text(getPokemonName(pokemon),
                       style: const TextStyle(fontSize: 20)),
                   const Gap(10),
                   CachedNetworkImage(
@@ -63,21 +76,12 @@ class BattleDataPokemon extends HookWidget {
                         const Skeleton(ballSkeleton: true),
                   ),
                   const Gap(10),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ListView(
-                          shrinkWrap: true,
-                          children: const [
-                            Text(
-                              'タイプ',
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  )
+                  Expanded(
+                      child: BattleRankTab(
+                    battleAbilities: battleAbilities,
+                    battleMoves: battleMoves,
+                    battleItems: battleItems,
+                  ))
                 ],
               ),
             ),

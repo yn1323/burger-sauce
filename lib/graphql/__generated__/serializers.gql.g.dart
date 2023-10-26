@@ -95,30 +95,25 @@ Serializers _$serializers = (new Serializers().toBuilder()
           ]),
           () => new ListBuilder<GLatestBattleDataIndexData_battleDatasLatest>())
       ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(GPokemonsData_pokemons)]),
-          () => new ListBuilder<GPokemonsData_pokemons>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [
-            const FullType.nullable(
-                GOneBattleDataData_battleData_battleDataAbility)
+            const FullType(GOneBattleDataData_battleData_battleDataAbility)
           ]),
           () => new ListBuilder<
-              GOneBattleDataData_battleData_battleDataAbility?>())
+              GOneBattleDataData_battleData_battleDataAbility>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
-            const FullType.nullable(
-                GOneBattleDataData_battleData_battleDataItem)
+            const FullType(GOneBattleDataData_battleData_battleDataItem)
           ]),
-          () =>
-              new ListBuilder<GOneBattleDataData_battleData_battleDataItem?>())
+          () => new ListBuilder<GOneBattleDataData_battleData_battleDataItem>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
-            const FullType.nullable(
-                GOneBattleDataData_battleData_battleDataMove)
+            const FullType(GOneBattleDataData_battleData_battleDataMove)
           ]),
-          () =>
-              new ListBuilder<GOneBattleDataData_battleData_battleDataMove?>()))
+          () => new ListBuilder<GOneBattleDataData_battleData_battleDataMove>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GPokemonsData_pokemons)]),
+          () => new ListBuilder<GPokemonsData_pokemons>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -2,7 +2,7 @@ query LatestBattleDataIndex {
   battleDatasLatest {
     pokemon {
       name
-      imageSmallUrl
+      imageUrl
       form
     }
     rank

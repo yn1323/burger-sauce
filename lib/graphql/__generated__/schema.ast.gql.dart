@@ -93,7 +93,7 @@ const Ability = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Pokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -105,7 +105,7 @@ const Ability = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'BattleDataAbility'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -117,7 +117,7 @@ const Ability = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -129,7 +129,7 @@ const Ability = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyEnemy'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -166,7 +166,7 @@ const AttackType = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Move'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -257,7 +257,7 @@ const BattleData = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'BattleDataMove'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -269,7 +269,7 @@ const BattleData = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'BattleDataAbility'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -281,7 +281,7 @@ const BattleData = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'BattleDataNature'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -293,7 +293,7 @@ const BattleData = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'BattleDataItem'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -305,7 +305,7 @@ const BattleData = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'BattleDataTerastal'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -692,7 +692,7 @@ const BattleIndex = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'BattleData'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -2238,7 +2238,7 @@ const Evolution = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Pokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -2250,7 +2250,7 @@ const Evolution = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Pokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -2314,7 +2314,7 @@ const Form = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'BattleData'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -2405,7 +2405,7 @@ const Item = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'BattleDataItem'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -2417,7 +2417,7 @@ const Item = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -2429,7 +2429,7 @@ const Item = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyEnemy'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -2681,7 +2681,7 @@ const Move = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Pokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -2702,7 +2702,7 @@ const Move = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'BattleDataMove'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -2714,7 +2714,7 @@ const Move = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -2726,7 +2726,7 @@ const Move = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyEnemy'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -4558,7 +4558,7 @@ const MyEnemy = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyEnemyTag'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -4660,7 +4660,7 @@ const MyEnemy = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Move'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -4690,7 +4690,7 @@ const MyEnemy = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemonPros'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -4702,7 +4702,7 @@ const MyEnemy = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemonCons'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -4757,7 +4757,7 @@ const MyEnemyTag = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyEnemy'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -4830,7 +4830,7 @@ const MyParty = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPartyTag'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -4860,7 +4860,7 @@ const MyParty = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -4915,7 +4915,7 @@ const MyPartyTag = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyParty'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5042,7 +5042,7 @@ const MyPokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemonTag'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5144,7 +5144,7 @@ const MyPokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Move'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5156,7 +5156,7 @@ const MyPokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyParty'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5186,7 +5186,7 @@ const MyPokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemonPros'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5198,7 +5198,7 @@ const MyPokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemonCons'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5357,7 +5357,7 @@ const MyPokemonTag = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5439,7 +5439,7 @@ const Nature = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'BattleDataNature'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5451,7 +5451,7 @@ const Nature = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5463,7 +5463,7 @@ const Nature = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyEnemy'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5536,7 +5536,7 @@ const Pokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Type'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5602,7 +5602,7 @@ const Pokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Ability'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5614,7 +5614,7 @@ const Pokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Move'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5689,7 +5689,7 @@ const Pokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'BattleData'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5701,7 +5701,7 @@ const Pokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5713,7 +5713,7 @@ const Pokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyEnemy'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5725,7 +5725,7 @@ const Pokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Evolution'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5737,7 +5737,7 @@ const Pokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Evolution'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -5749,7 +5749,7 @@ const Pokemon = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Evolution'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -6755,7 +6755,7 @@ const Type = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'TypeRelation'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -6767,7 +6767,7 @@ const Type = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'TypeRelation'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -6779,7 +6779,7 @@ const Type = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Move'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -6791,7 +6791,7 @@ const Type = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Pokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -6803,7 +6803,7 @@ const Type = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'BattleDataTerastal'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -6815,7 +6815,7 @@ const Type = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -6854,7 +6854,7 @@ const Type = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyEnemy'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -8467,7 +8467,7 @@ const User = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemon'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -8479,7 +8479,7 @@ const User = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyParty'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -8491,7 +8491,7 @@ const User = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPartyTag'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -8503,7 +8503,7 @@ const User = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyPokemonTag'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -8515,7 +8515,7 @@ const User = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyEnemy'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),
@@ -8527,7 +8527,7 @@ const User = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'MyEnemyTag'),
-          isNonNull: false,
+          isNonNull: true,
         ),
         isNonNull: true,
       ),

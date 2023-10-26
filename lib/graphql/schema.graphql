@@ -18,16 +18,16 @@ type Ability {
   name: String!
   detail: String!
   battleIndex: String!
-  pokemons: [Pokemon]!
-  battleDataAbilities: [BattleDataAbility]!
-  myPokemon: [MyPokemon]!
-  myEnemy: [MyEnemy]!
+  pokemons: [Pokemon!]!
+  battleDataAbilities: [BattleDataAbility!]!
+  myPokemon: [MyPokemon!]!
+  myEnemy: [MyEnemy!]!
 }
 
 type AttackType {
   id: String!
   name: String!
-  moves: [Move]!
+  moves: [Move!]!
   imageUrl: String!
 }
 
@@ -39,11 +39,11 @@ type BattleData {
   pokemonId: String!
   no: String!
   rank: Int!
-  battleDataMove: [BattleDataMove]!
-  battleDataAbility: [BattleDataAbility]!
-  battleDataNature: [BattleDataNature]!
-  battleDataItem: [BattleDataItem]!
-  battleDataTerastal: [BattleDataTerastal]!
+  battleDataMove: [BattleDataMove!]!
+  battleDataAbility: [BattleDataAbility!]!
+  battleDataNature: [BattleDataNature!]!
+  battleDataItem: [BattleDataItem!]!
+  battleDataTerastal: [BattleDataTerastal!]!
   form: Form
   formId: String
 }
@@ -99,7 +99,7 @@ type BattleIndex {
   startAt: DateTime!
   endAt: DateTime!
   name: String!
-  battleData: [BattleData]!
+  battleData: [BattleData!]!
 }
 
 """
@@ -351,8 +351,8 @@ type Evolution {
   id: String!
   pokemon: Pokemon!
   pokemonId: String!
-  from: [Pokemon]!
-  to: [Pokemon]!
+  from: [Pokemon!]!
+  to: [Pokemon!]!
 }
 
 type Form {
@@ -361,7 +361,7 @@ type Form {
   formType: String!
   formType2: String!
   name: String!
-  battleData: [BattleData]!
+  battleData: [BattleData!]!
 }
 
 type Item {
@@ -373,9 +373,9 @@ type Item {
   imageUrl: String!
   imageSmallUrl: String!
   imageLargeUrl: String!
-  battleDataItem: [BattleDataItem]!
-  myPokemon: [MyPokemon]!
-  myEnemy: [MyEnemy]!
+  battleDataItem: [BattleDataItem!]!
+  myPokemon: [MyPokemon!]!
+  myEnemy: [MyEnemy!]!
 }
 
 """
@@ -414,11 +414,11 @@ type Move {
   isDance: Boolean!
   isWind: Boolean!
   isCut: Boolean!
-  pokemons: [Pokemon]!
+  pokemons: [Pokemon!]!
   battleIndex: String!
-  battleDataMoves: [BattleDataMove]!
-  myPokemon: [MyPokemon]!
-  myEnemy: [MyEnemy]!
+  battleDataMoves: [BattleDataMove!]!
+  myPokemon: [MyPokemon!]!
+  myEnemy: [MyEnemy!]!
 }
 
 type Mutation {
@@ -513,7 +513,7 @@ type MyEnemy {
   evD: Int!
   evS: Int!
   memo: String!
-  tag: [MyEnemyTag]!
+  tag: [MyEnemyTag!]!
   pokemon: Pokemon!
   pokemonId: String!
   item: Item
@@ -524,11 +524,11 @@ type MyEnemy {
   natureId: String!
   terastal: Type
   terastalId: String
-  moves: [Move]!
+  moves: [Move!]!
   user: User!
   userId: String!
-  myPokemonPros: [MyPokemonPros]!
-  myPokemonCons: [MyPokemonCons]!
+  myPokemonPros: [MyPokemonPros!]!
+  myPokemonCons: [MyPokemonCons!]!
 }
 
 type MyEnemyTag {
@@ -536,7 +536,7 @@ type MyEnemyTag {
   name: String!
   favorite: Boolean!
   memo: String!
-  myEnemy: [MyEnemy]!
+  myEnemy: [MyEnemy!]!
   user: User!
   userId: String!
 }
@@ -546,10 +546,10 @@ type MyParty {
   name: String!
   favorite: Boolean!
   memo: String!
-  tag: [MyPartyTag]!
+  tag: [MyPartyTag!]!
   user: User!
   userId: String!
-  myPokemon: [MyPokemon]!
+  myPokemon: [MyPokemon!]!
 }
 
 type MyPartyTag {
@@ -557,7 +557,7 @@ type MyPartyTag {
   name: String!
   favorite: Boolean!
   memo: String!
-  myParty: [MyParty]!
+  myParty: [MyParty!]!
   user: User!
   userId: String!
 }
@@ -573,7 +573,7 @@ type MyPokemon {
   evD: Int!
   evS: Int!
   memo: String!
-  tag: [MyPokemonTag]!
+  tag: [MyPokemonTag!]!
   pokemon: Pokemon!
   pokemonId: String!
   item: Item
@@ -584,12 +584,12 @@ type MyPokemon {
   natureId: String!
   terastal: Type
   terastalId: String
-  moves: [Move]!
-  myParty: [MyParty]!
+  moves: [Move!]!
+  myParty: [MyParty!]!
   user: User!
   userId: String!
-  myPokemonPros: [MyPokemonPros]!
-  myPokemonCons: [MyPokemonCons]!
+  myPokemonPros: [MyPokemonPros!]!
+  myPokemonCons: [MyPokemonCons!]!
 }
 
 type MyPokemonCons {
@@ -613,7 +613,7 @@ type MyPokemonTag {
   name: String!
   favorite: Boolean!
   memo: String!
-  myPokemon: [MyPokemon]!
+  myPokemon: [MyPokemon!]!
   user: User!
   userId: String!
 }
@@ -624,9 +624,9 @@ type Nature {
   battleIndex: String!
   increase: String!
   decrease: String!
-  battleDataNature: [BattleDataNature]!
-  myPokemon: [MyPokemon]!
-  myEnemy: [MyEnemy]!
+  battleDataNature: [BattleDataNature!]!
+  myPokemon: [MyPokemon!]!
+  myEnemy: [MyEnemy!]!
 }
 
 type Pokemon {
@@ -636,15 +636,15 @@ type Pokemon {
   no: Int!
   height: Float!
   weight: Float!
-  types: [Type]!
+  types: [Type!]!
   statusH: Int!
   statusA: Int!
   statusB: Int!
   statusC: Int!
   statusD: Int!
   statusS: Int!
-  abilities: [Ability]!
-  moves: [Move]!
+  abilities: [Ability!]!
+  moves: [Move!]!
   base64Image: String!
   imageUrl: String!
   imageSmallUrl: String!
@@ -652,12 +652,12 @@ type Pokemon {
   url: String!
   battleIndex: String!
   battleFormIndex: String!
-  battleData: [BattleData]!
-  myPokemon: [MyPokemon]!
-  myEnemy: [MyEnemy]!
-  evolutionFrom: [Evolution]!
-  evolutionTo: [Evolution]!
-  evolutions: [Evolution]!
+  battleData: [BattleData!]!
+  myPokemon: [MyPokemon!]!
+  myEnemy: [MyEnemy!]!
+  evolutionFrom: [Evolution!]!
+  evolutionTo: [Evolution!]!
+  evolutions: [Evolution!]!
 }
 
 """About the Redwood queries."""
@@ -750,16 +750,16 @@ type Type {
   id: String!
   name: String!
   battleIndex: String!
-  fromTypes: [TypeRelation]!
-  toTypes: [TypeRelation]!
-  moves: [Move]!
-  pokemons: [Pokemon]!
-  battleDataTerastal: [BattleDataTerastal]!
-  MyPokemon: [MyPokemon]!
+  fromTypes: [TypeRelation!]!
+  toTypes: [TypeRelation!]!
+  moves: [Move!]!
+  pokemons: [Pokemon!]!
+  battleDataTerastal: [BattleDataTerastal!]!
+  MyPokemon: [MyPokemon!]!
   textImageUrl: String!
   imageUrl: String!
   terastalImageUrl: String!
-  myEnemy: [MyEnemy]!
+  myEnemy: [MyEnemy!]!
 }
 
 type TypeRelation {
@@ -1003,11 +1003,11 @@ type User {
   createdUserAt: DateTime!
   updatedUserAt: DateTime!
   deletedUserAt: DateTime
-  myPokemon: [MyPokemon]!
-  myParty: [MyParty]!
-  myPartyTag: [MyPartyTag]!
-  myPokemonTag: [MyPokemonTag]!
-  myEnemy: [MyEnemy]!
-  myEnemyTag: [MyEnemyTag]!
+  myPokemon: [MyPokemon!]!
+  myParty: [MyParty!]!
+  myPartyTag: [MyPartyTag!]!
+  myPokemonTag: [MyPokemonTag!]!
+  myEnemy: [MyEnemy!]!
+  myEnemyTag: [MyEnemyTag!]!
 }
 

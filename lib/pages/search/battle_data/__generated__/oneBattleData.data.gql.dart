@@ -54,10 +54,10 @@ abstract class GOneBattleDataData_battleData
   String get G__typename;
   int get rank;
   GOneBattleDataData_battleData_pokemon get pokemon;
-  BuiltList<GOneBattleDataData_battleData_battleDataAbility?>
+  BuiltList<GOneBattleDataData_battleData_battleDataAbility>
       get battleDataAbility;
-  BuiltList<GOneBattleDataData_battleData_battleDataItem?> get battleDataItem;
-  BuiltList<GOneBattleDataData_battleData_battleDataMove?> get battleDataMove;
+  BuiltList<GOneBattleDataData_battleData_battleDataItem> get battleDataItem;
+  BuiltList<GOneBattleDataData_battleData_battleDataMove> get battleDataMove;
   static Serializer<GOneBattleDataData_battleData> get serializer =>
       _$gOneBattleDataDataBattleDataSerializer;
 
@@ -91,6 +91,7 @@ abstract class GOneBattleDataData_battleData_pokemon
   String get G__typename;
   String get imageLargeUrl;
   String get name;
+  String get form;
   static Serializer<GOneBattleDataData_battleData_pokemon> get serializer =>
       _$gOneBattleDataDataBattleDataPokemonSerializer;
 

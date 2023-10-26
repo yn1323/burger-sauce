@@ -5,25 +5,21 @@
       "type": "shell",
       "command": "get-graphql-schema http://localhost:8911/graphql > lib/graphql/schema.graphql",
       "label": "Get GraphQL Schema(to localhost) ",
-      "detail": "Get GraphQL Schema",
     },
     {
       "type": "shell",
       "command": "flutter pub run flutter_launcher_icons:main",
       "label": "Icon画像の更新",
-      "detail": "Icon画像の更新",
     },
     {
       "type": "shell",
       "command": "flutter build apk && sh ./scripts/moveBuild.sh",
-      "label": "Build",
-      "detail": "Build",
+      "label": "Apk Build & mv",
     },
     {
       "type": "shell",
       "command": "flutter pub run build_runner watch --delete-conflicting-outputs",
-      "label": "Watch & Build",
-      "detail": "Watch & Build",
+      "label": "Flutter Command Watch & Build",
     },
   ],
 
