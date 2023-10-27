@@ -17,7 +17,7 @@ class BattleRankTab extends HookWidget {
   final BuiltList<GOneBattleDataData_battleData_battleDataTerastal>?
       battleTerastals;
 
-  const BattleRankTab({
+  BattleRankTab({
     Key? key,
     required this.battleAbilities,
     required this.battleMoves,
@@ -47,6 +47,18 @@ class BattleRankTab extends HookWidget {
     ]);
   }
 
+  final tabs = ["とくせい", "わざ", "もちもの", "せいかく", "テラスタル"]
+      .map(
+        (e) => Tab(
+            child: Text(
+          e,
+          style: const TextStyle(
+            fontSize: 13,
+          ),
+        )),
+      )
+      .toList();
+
   @override
   Widget build(BuildContext context) {
     final tabController = useTabController(initialLength: 5);
@@ -57,13 +69,8 @@ class BattleRankTab extends HookWidget {
           labelColor: Colors.blue,
           unselectedLabelColor: Colors.black,
           controller: tabController,
-          tabs: const [
-            Tab(text: 'とくせい'),
-            Tab(text: 'わざ'),
-            Tab(text: 'もちもの'),
-            Tab(text: 'せいかく'),
-            Tab(text: 'テラスタル'),
-          ],
+          isScrollable: true,
+          tabs: tabs,
         ),
         Expanded(
           child: TabBarView(
