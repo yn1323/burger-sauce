@@ -15,6 +15,18 @@ class VerticalMoveTypeImage extends StatelessWidget {
   final double width = 80;
   final double height = 18;
 
+  Color getAttackTypeBackground() {
+    if (attackTypeImageUrl == null) return Colors.black;
+
+    if (attackTypeImageUrl!.contains('physic')) {
+      return Colors.red.withOpacity(0.8);
+    } else if (attackTypeImageUrl!.contains('special')) {
+      return Colors.blue.withOpacity(0.8);
+    } else {
+      return Colors.purple.withOpacity(0.7);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -31,7 +43,7 @@ class VerticalMoveTypeImage extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          color: Colors.black45,
+          color: getAttackTypeBackground(),
           borderRadius: BorderRadius.circular(2),
         ),
         child: CachedNetworkImage(
