@@ -33,5 +33,20 @@ query OneBattleData($id: String!) {
         }
       }
     }
+    battleDataNature {
+      rate
+      nature {
+        name
+        increase
+        decrease
+      }
+    }
+    battleDataTerastal {
+      rate
+      type {
+        name
+        terastalImageUrl
+      }
+    }
   }
 }

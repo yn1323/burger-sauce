@@ -55,6 +55,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GOneBattleDataData_battleData_battleDataMove_move_attackType
           .serializer)
       ..add(GOneBattleDataData_battleData_battleDataMove_move_type.serializer)
+      ..add(GOneBattleDataData_battleData_battleDataNature.serializer)
+      ..add(GOneBattleDataData_battleData_battleDataNature_nature.serializer)
+      ..add(GOneBattleDataData_battleData_battleDataTerastal.serializer)
+      ..add(GOneBattleDataData_battleData_battleDataTerastal_type.serializer)
       ..add(GOneBattleDataData_battleData_pokemon.serializer)
       ..add(GOneBattleDataReq.serializer)
       ..add(GOneBattleDataVars.serializer)
@@ -110,6 +114,18 @@ Serializers _$serializers = (new Serializers().toBuilder()
             const FullType(GOneBattleDataData_battleData_battleDataMove)
           ]),
           () => new ListBuilder<GOneBattleDataData_battleData_battleDataMove>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GOneBattleDataData_battleData_battleDataNature)
+          ]),
+          () =>
+              new ListBuilder<GOneBattleDataData_battleData_battleDataNature>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GOneBattleDataData_battleData_battleDataTerastal)
+          ]),
+          () => new ListBuilder<
+              GOneBattleDataData_battleData_battleDataTerastal>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GPokemonsData_pokemons)]),

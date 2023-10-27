@@ -38,6 +38,18 @@ Serializer<GOneBattleDataData_battleData_battleDataMove_move_type>
 Serializer<GOneBattleDataData_battleData_battleDataMove_move_attackType>
     _$gOneBattleDataDataBattleDataBattleDataMoveMoveAttackTypeSerializer =
     new _$GOneBattleDataData_battleData_battleDataMove_move_attackTypeSerializer();
+Serializer<GOneBattleDataData_battleData_battleDataNature>
+    _$gOneBattleDataDataBattleDataBattleDataNatureSerializer =
+    new _$GOneBattleDataData_battleData_battleDataNatureSerializer();
+Serializer<GOneBattleDataData_battleData_battleDataNature_nature>
+    _$gOneBattleDataDataBattleDataBattleDataNatureNatureSerializer =
+    new _$GOneBattleDataData_battleData_battleDataNature_natureSerializer();
+Serializer<GOneBattleDataData_battleData_battleDataTerastal>
+    _$gOneBattleDataDataBattleDataBattleDataTerastalSerializer =
+    new _$GOneBattleDataData_battleData_battleDataTerastalSerializer();
+Serializer<GOneBattleDataData_battleData_battleDataTerastal_type>
+    _$gOneBattleDataDataBattleDataBattleDataTerastalTypeSerializer =
+    new _$GOneBattleDataData_battleData_battleDataTerastal_typeSerializer();
 
 class _$GOneBattleDataDataSerializer
     implements StructuredSerializer<GOneBattleDataData> {
@@ -132,6 +144,16 @@ class _$GOneBattleDataData_battleDataSerializer
           specifiedType: const FullType(BuiltList, const [
             const FullType(GOneBattleDataData_battleData_battleDataMove)
           ])),
+      'battleDataNature',
+      serializers.serialize(object.battleDataNature,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(GOneBattleDataData_battleData_battleDataNature)
+          ])),
+      'battleDataTerastal',
+      serializers.serialize(object.battleDataTerastal,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(GOneBattleDataData_battleData_battleDataTerastal)
+          ])),
     ];
 
     return result;
@@ -179,6 +201,18 @@ class _$GOneBattleDataData_battleDataSerializer
           result.battleDataMove.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(GOneBattleDataData_battleData_battleDataMove)
+              ]))! as BuiltList<Object?>);
+          break;
+        case 'battleDataNature':
+          result.battleDataNature.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(GOneBattleDataData_battleData_battleDataNature)
+              ]))! as BuiltList<Object?>);
+          break;
+        case 'battleDataTerastal':
+          result.battleDataTerastal.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(GOneBattleDataData_battleData_battleDataTerastal)
               ]))! as BuiltList<Object?>);
           break;
       }
@@ -769,6 +803,266 @@ class _$GOneBattleDataData_battleData_battleDataMove_move_attackTypeSerializer
   }
 }
 
+class _$GOneBattleDataData_battleData_battleDataNatureSerializer
+    implements
+        StructuredSerializer<GOneBattleDataData_battleData_battleDataNature> {
+  @override
+  final Iterable<Type> types = const [
+    GOneBattleDataData_battleData_battleDataNature,
+    _$GOneBattleDataData_battleData_battleDataNature
+  ];
+  @override
+  final String wireName = 'GOneBattleDataData_battleData_battleDataNature';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GOneBattleDataData_battleData_battleDataNature object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'rate',
+      serializers.serialize(object.rate, specifiedType: const FullType(double)),
+      'nature',
+      serializers.serialize(object.nature,
+          specifiedType: const FullType(
+              GOneBattleDataData_battleData_battleDataNature_nature)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataNature deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GOneBattleDataData_battleData_battleDataNatureBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
+          break;
+        case 'nature':
+          result.nature.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      GOneBattleDataData_battleData_battleDataNature_nature))!
+              as GOneBattleDataData_battleData_battleDataNature_nature);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GOneBattleDataData_battleData_battleDataNature_natureSerializer
+    implements
+        StructuredSerializer<
+            GOneBattleDataData_battleData_battleDataNature_nature> {
+  @override
+  final Iterable<Type> types = const [
+    GOneBattleDataData_battleData_battleDataNature_nature,
+    _$GOneBattleDataData_battleData_battleDataNature_nature
+  ];
+  @override
+  final String wireName =
+      'GOneBattleDataData_battleData_battleDataNature_nature';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GOneBattleDataData_battleData_battleDataNature_nature object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'increase',
+      serializers.serialize(object.increase,
+          specifiedType: const FullType(String)),
+      'decrease',
+      serializers.serialize(object.decrease,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataNature_nature deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        new GOneBattleDataData_battleData_battleDataNature_natureBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'increase':
+          result.increase = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'decrease':
+          result.decrease = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GOneBattleDataData_battleData_battleDataTerastalSerializer
+    implements
+        StructuredSerializer<GOneBattleDataData_battleData_battleDataTerastal> {
+  @override
+  final Iterable<Type> types = const [
+    GOneBattleDataData_battleData_battleDataTerastal,
+    _$GOneBattleDataData_battleData_battleDataTerastal
+  ];
+  @override
+  final String wireName = 'GOneBattleDataData_battleData_battleDataTerastal';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GOneBattleDataData_battleData_battleDataTerastal object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'rate',
+      serializers.serialize(object.rate, specifiedType: const FullType(double)),
+      'type',
+      serializers.serialize(object.type,
+          specifiedType: const FullType(
+              GOneBattleDataData_battleData_battleDataTerastal_type)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataTerastal deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        new GOneBattleDataData_battleData_battleDataTerastalBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
+          break;
+        case 'type':
+          result.type.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      GOneBattleDataData_battleData_battleDataTerastal_type))!
+              as GOneBattleDataData_battleData_battleDataTerastal_type);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GOneBattleDataData_battleData_battleDataTerastal_typeSerializer
+    implements
+        StructuredSerializer<
+            GOneBattleDataData_battleData_battleDataTerastal_type> {
+  @override
+  final Iterable<Type> types = const [
+    GOneBattleDataData_battleData_battleDataTerastal_type,
+    _$GOneBattleDataData_battleData_battleDataTerastal_type
+  ];
+  @override
+  final String wireName =
+      'GOneBattleDataData_battleData_battleDataTerastal_type';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GOneBattleDataData_battleData_battleDataTerastal_type object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'terastalImageUrl',
+      serializers.serialize(object.terastalImageUrl,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataTerastal_type deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        new GOneBattleDataData_battleData_battleDataTerastal_typeBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'terastalImageUrl':
+          result.terastalImageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GOneBattleDataData extends GOneBattleDataData {
   @override
   final String G__typename;
@@ -900,6 +1194,12 @@ class _$GOneBattleDataData_battleData extends GOneBattleDataData_battleData {
   final BuiltList<GOneBattleDataData_battleData_battleDataItem> battleDataItem;
   @override
   final BuiltList<GOneBattleDataData_battleData_battleDataMove> battleDataMove;
+  @override
+  final BuiltList<GOneBattleDataData_battleData_battleDataNature>
+      battleDataNature;
+  @override
+  final BuiltList<GOneBattleDataData_battleData_battleDataTerastal>
+      battleDataTerastal;
 
   factory _$GOneBattleDataData_battleData(
           [void Function(GOneBattleDataData_battleDataBuilder)? updates]) =>
@@ -911,7 +1211,9 @@ class _$GOneBattleDataData_battleData extends GOneBattleDataData_battleData {
       required this.pokemon,
       required this.battleDataAbility,
       required this.battleDataItem,
-      required this.battleDataMove})
+      required this.battleDataMove,
+      required this.battleDataNature,
+      required this.battleDataTerastal})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GOneBattleDataData_battleData', 'G__typename');
@@ -925,6 +1227,10 @@ class _$GOneBattleDataData_battleData extends GOneBattleDataData_battleData {
         battleDataItem, r'GOneBattleDataData_battleData', 'battleDataItem');
     BuiltValueNullFieldError.checkNotNull(
         battleDataMove, r'GOneBattleDataData_battleData', 'battleDataMove');
+    BuiltValueNullFieldError.checkNotNull(
+        battleDataNature, r'GOneBattleDataData_battleData', 'battleDataNature');
+    BuiltValueNullFieldError.checkNotNull(battleDataTerastal,
+        r'GOneBattleDataData_battleData', 'battleDataTerastal');
   }
 
   @override
@@ -945,7 +1251,9 @@ class _$GOneBattleDataData_battleData extends GOneBattleDataData_battleData {
         pokemon == other.pokemon &&
         battleDataAbility == other.battleDataAbility &&
         battleDataItem == other.battleDataItem &&
-        battleDataMove == other.battleDataMove;
+        battleDataMove == other.battleDataMove &&
+        battleDataNature == other.battleDataNature &&
+        battleDataTerastal == other.battleDataTerastal;
   }
 
   @override
@@ -957,6 +1265,8 @@ class _$GOneBattleDataData_battleData extends GOneBattleDataData_battleData {
     _$hash = $jc(_$hash, battleDataAbility.hashCode);
     _$hash = $jc(_$hash, battleDataItem.hashCode);
     _$hash = $jc(_$hash, battleDataMove.hashCode);
+    _$hash = $jc(_$hash, battleDataNature.hashCode);
+    _$hash = $jc(_$hash, battleDataTerastal.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -969,7 +1279,9 @@ class _$GOneBattleDataData_battleData extends GOneBattleDataData_battleData {
           ..add('pokemon', pokemon)
           ..add('battleDataAbility', battleDataAbility)
           ..add('battleDataItem', battleDataItem)
-          ..add('battleDataMove', battleDataMove))
+          ..add('battleDataMove', battleDataMove)
+          ..add('battleDataNature', battleDataNature)
+          ..add('battleDataTerastal', battleDataTerastal))
         .toString();
   }
 }
@@ -1022,6 +1334,26 @@ class GOneBattleDataData_battleDataBuilder
               battleDataMove) =>
       _$this._battleDataMove = battleDataMove;
 
+  ListBuilder<GOneBattleDataData_battleData_battleDataNature>?
+      _battleDataNature;
+  ListBuilder<GOneBattleDataData_battleData_battleDataNature>
+      get battleDataNature => _$this._battleDataNature ??=
+          new ListBuilder<GOneBattleDataData_battleData_battleDataNature>();
+  set battleDataNature(
+          ListBuilder<GOneBattleDataData_battleData_battleDataNature>?
+              battleDataNature) =>
+      _$this._battleDataNature = battleDataNature;
+
+  ListBuilder<GOneBattleDataData_battleData_battleDataTerastal>?
+      _battleDataTerastal;
+  ListBuilder<GOneBattleDataData_battleData_battleDataTerastal>
+      get battleDataTerastal => _$this._battleDataTerastal ??=
+          new ListBuilder<GOneBattleDataData_battleData_battleDataTerastal>();
+  set battleDataTerastal(
+          ListBuilder<GOneBattleDataData_battleData_battleDataTerastal>?
+              battleDataTerastal) =>
+      _$this._battleDataTerastal = battleDataTerastal;
+
   GOneBattleDataData_battleDataBuilder() {
     GOneBattleDataData_battleData._initializeBuilder(this);
   }
@@ -1035,6 +1367,8 @@ class GOneBattleDataData_battleDataBuilder
       _battleDataAbility = $v.battleDataAbility.toBuilder();
       _battleDataItem = $v.battleDataItem.toBuilder();
       _battleDataMove = $v.battleDataMove.toBuilder();
+      _battleDataNature = $v.battleDataNature.toBuilder();
+      _battleDataTerastal = $v.battleDataTerastal.toBuilder();
       _$v = null;
     }
     return this;
@@ -1066,7 +1400,9 @@ class GOneBattleDataData_battleDataBuilder
               pokemon: pokemon.build(),
               battleDataAbility: battleDataAbility.build(),
               battleDataItem: battleDataItem.build(),
-              battleDataMove: battleDataMove.build());
+              battleDataMove: battleDataMove.build(),
+              battleDataNature: battleDataNature.build(),
+              battleDataTerastal: battleDataTerastal.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -1078,6 +1414,10 @@ class GOneBattleDataData_battleDataBuilder
         battleDataItem.build();
         _$failedField = 'battleDataMove';
         battleDataMove.build();
+        _$failedField = 'battleDataNature';
+        battleDataNature.build();
+        _$failedField = 'battleDataTerastal';
+        battleDataTerastal.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GOneBattleDataData_battleData', _$failedField, e.toString());
@@ -2418,6 +2758,620 @@ class GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder
                 imageUrl,
                 r'GOneBattleDataData_battleData_battleDataMove_move_attackType',
                 'imageUrl'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GOneBattleDataData_battleData_battleDataNature
+    extends GOneBattleDataData_battleData_battleDataNature {
+  @override
+  final String G__typename;
+  @override
+  final double rate;
+  @override
+  final GOneBattleDataData_battleData_battleDataNature_nature nature;
+
+  factory _$GOneBattleDataData_battleData_battleDataNature(
+          [void Function(GOneBattleDataData_battleData_battleDataNatureBuilder)?
+              updates]) =>
+      (new GOneBattleDataData_battleData_battleDataNatureBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GOneBattleDataData_battleData_battleDataNature._(
+      {required this.G__typename, required this.rate, required this.nature})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GOneBattleDataData_battleData_battleDataNature', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        rate, r'GOneBattleDataData_battleData_battleDataNature', 'rate');
+    BuiltValueNullFieldError.checkNotNull(
+        nature, r'GOneBattleDataData_battleData_battleDataNature', 'nature');
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataNature rebuild(
+          void Function(GOneBattleDataData_battleData_battleDataNatureBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GOneBattleDataData_battleData_battleDataNatureBuilder toBuilder() =>
+      new GOneBattleDataData_battleData_battleDataNatureBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GOneBattleDataData_battleData_battleDataNature &&
+        G__typename == other.G__typename &&
+        rate == other.rate &&
+        nature == other.nature;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jc(_$hash, nature.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GOneBattleDataData_battleData_battleDataNature')
+          ..add('G__typename', G__typename)
+          ..add('rate', rate)
+          ..add('nature', nature))
+        .toString();
+  }
+}
+
+class GOneBattleDataData_battleData_battleDataNatureBuilder
+    implements
+        Builder<GOneBattleDataData_battleData_battleDataNature,
+            GOneBattleDataData_battleData_battleDataNatureBuilder> {
+  _$GOneBattleDataData_battleData_battleDataNature? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  GOneBattleDataData_battleData_battleDataNature_natureBuilder? _nature;
+  GOneBattleDataData_battleData_battleDataNature_natureBuilder get nature =>
+      _$this._nature ??=
+          new GOneBattleDataData_battleData_battleDataNature_natureBuilder();
+  set nature(
+          GOneBattleDataData_battleData_battleDataNature_natureBuilder?
+              nature) =>
+      _$this._nature = nature;
+
+  GOneBattleDataData_battleData_battleDataNatureBuilder() {
+    GOneBattleDataData_battleData_battleDataNature._initializeBuilder(this);
+  }
+
+  GOneBattleDataData_battleData_battleDataNatureBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _rate = $v.rate;
+      _nature = $v.nature.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GOneBattleDataData_battleData_battleDataNature other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GOneBattleDataData_battleData_battleDataNature;
+  }
+
+  @override
+  void update(
+      void Function(GOneBattleDataData_battleData_battleDataNatureBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataNature build() => _build();
+
+  _$GOneBattleDataData_battleData_battleDataNature _build() {
+    _$GOneBattleDataData_battleData_battleDataNature _$result;
+    try {
+      _$result = _$v ??
+          new _$GOneBattleDataData_battleData_battleDataNature._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename,
+                  r'GOneBattleDataData_battleData_battleDataNature',
+                  'G__typename'),
+              rate: BuiltValueNullFieldError.checkNotNull(rate,
+                  r'GOneBattleDataData_battleData_battleDataNature', 'rate'),
+              nature: nature.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'nature';
+        nature.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GOneBattleDataData_battleData_battleDataNature',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GOneBattleDataData_battleData_battleDataNature_nature
+    extends GOneBattleDataData_battleData_battleDataNature_nature {
+  @override
+  final String G__typename;
+  @override
+  final String name;
+  @override
+  final String increase;
+  @override
+  final String decrease;
+
+  factory _$GOneBattleDataData_battleData_battleDataNature_nature(
+          [void Function(
+                  GOneBattleDataData_battleData_battleDataNature_natureBuilder)?
+              updates]) =>
+      (new GOneBattleDataData_battleData_battleDataNature_natureBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GOneBattleDataData_battleData_battleDataNature_nature._(
+      {required this.G__typename,
+      required this.name,
+      required this.increase,
+      required this.decrease})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename,
+        r'GOneBattleDataData_battleData_battleDataNature_nature',
+        'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GOneBattleDataData_battleData_battleDataNature_nature', 'name');
+    BuiltValueNullFieldError.checkNotNull(increase,
+        r'GOneBattleDataData_battleData_battleDataNature_nature', 'increase');
+    BuiltValueNullFieldError.checkNotNull(decrease,
+        r'GOneBattleDataData_battleData_battleDataNature_nature', 'decrease');
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataNature_nature rebuild(
+          void Function(
+                  GOneBattleDataData_battleData_battleDataNature_natureBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GOneBattleDataData_battleData_battleDataNature_natureBuilder toBuilder() =>
+      new GOneBattleDataData_battleData_battleDataNature_natureBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GOneBattleDataData_battleData_battleDataNature_nature &&
+        G__typename == other.G__typename &&
+        name == other.name &&
+        increase == other.increase &&
+        decrease == other.decrease;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, increase.hashCode);
+    _$hash = $jc(_$hash, decrease.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GOneBattleDataData_battleData_battleDataNature_nature')
+          ..add('G__typename', G__typename)
+          ..add('name', name)
+          ..add('increase', increase)
+          ..add('decrease', decrease))
+        .toString();
+  }
+}
+
+class GOneBattleDataData_battleData_battleDataNature_natureBuilder
+    implements
+        Builder<GOneBattleDataData_battleData_battleDataNature_nature,
+            GOneBattleDataData_battleData_battleDataNature_natureBuilder> {
+  _$GOneBattleDataData_battleData_battleDataNature_nature? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _increase;
+  String? get increase => _$this._increase;
+  set increase(String? increase) => _$this._increase = increase;
+
+  String? _decrease;
+  String? get decrease => _$this._decrease;
+  set decrease(String? decrease) => _$this._decrease = decrease;
+
+  GOneBattleDataData_battleData_battleDataNature_natureBuilder() {
+    GOneBattleDataData_battleData_battleDataNature_nature._initializeBuilder(
+        this);
+  }
+
+  GOneBattleDataData_battleData_battleDataNature_natureBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _name = $v.name;
+      _increase = $v.increase;
+      _decrease = $v.decrease;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GOneBattleDataData_battleData_battleDataNature_nature other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GOneBattleDataData_battleData_battleDataNature_nature;
+  }
+
+  @override
+  void update(
+      void Function(
+              GOneBattleDataData_battleData_battleDataNature_natureBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataNature_nature build() => _build();
+
+  _$GOneBattleDataData_battleData_battleDataNature_nature _build() {
+    final _$result = _$v ??
+        new _$GOneBattleDataData_battleData_battleDataNature_nature._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GOneBattleDataData_battleData_battleDataNature_nature',
+                'G__typename'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name,
+                r'GOneBattleDataData_battleData_battleDataNature_nature',
+                'name'),
+            increase: BuiltValueNullFieldError.checkNotNull(
+                increase,
+                r'GOneBattleDataData_battleData_battleDataNature_nature',
+                'increase'),
+            decrease: BuiltValueNullFieldError.checkNotNull(
+                decrease,
+                r'GOneBattleDataData_battleData_battleDataNature_nature',
+                'decrease'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GOneBattleDataData_battleData_battleDataTerastal
+    extends GOneBattleDataData_battleData_battleDataTerastal {
+  @override
+  final String G__typename;
+  @override
+  final double rate;
+  @override
+  final GOneBattleDataData_battleData_battleDataTerastal_type type;
+
+  factory _$GOneBattleDataData_battleData_battleDataTerastal(
+          [void Function(
+                  GOneBattleDataData_battleData_battleDataTerastalBuilder)?
+              updates]) =>
+      (new GOneBattleDataData_battleData_battleDataTerastalBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GOneBattleDataData_battleData_battleDataTerastal._(
+      {required this.G__typename, required this.rate, required this.type})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GOneBattleDataData_battleData_battleDataTerastal', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        rate, r'GOneBattleDataData_battleData_battleDataTerastal', 'rate');
+    BuiltValueNullFieldError.checkNotNull(
+        type, r'GOneBattleDataData_battleData_battleDataTerastal', 'type');
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataTerastal rebuild(
+          void Function(GOneBattleDataData_battleData_battleDataTerastalBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GOneBattleDataData_battleData_battleDataTerastalBuilder toBuilder() =>
+      new GOneBattleDataData_battleData_battleDataTerastalBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GOneBattleDataData_battleData_battleDataTerastal &&
+        G__typename == other.G__typename &&
+        rate == other.rate &&
+        type == other.type;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GOneBattleDataData_battleData_battleDataTerastal')
+          ..add('G__typename', G__typename)
+          ..add('rate', rate)
+          ..add('type', type))
+        .toString();
+  }
+}
+
+class GOneBattleDataData_battleData_battleDataTerastalBuilder
+    implements
+        Builder<GOneBattleDataData_battleData_battleDataTerastal,
+            GOneBattleDataData_battleData_battleDataTerastalBuilder> {
+  _$GOneBattleDataData_battleData_battleDataTerastal? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
+  GOneBattleDataData_battleData_battleDataTerastal_typeBuilder? _type;
+  GOneBattleDataData_battleData_battleDataTerastal_typeBuilder get type =>
+      _$this._type ??=
+          new GOneBattleDataData_battleData_battleDataTerastal_typeBuilder();
+  set type(
+          GOneBattleDataData_battleData_battleDataTerastal_typeBuilder? type) =>
+      _$this._type = type;
+
+  GOneBattleDataData_battleData_battleDataTerastalBuilder() {
+    GOneBattleDataData_battleData_battleDataTerastal._initializeBuilder(this);
+  }
+
+  GOneBattleDataData_battleData_battleDataTerastalBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _rate = $v.rate;
+      _type = $v.type.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GOneBattleDataData_battleData_battleDataTerastal other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GOneBattleDataData_battleData_battleDataTerastal;
+  }
+
+  @override
+  void update(
+      void Function(GOneBattleDataData_battleData_battleDataTerastalBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataTerastal build() => _build();
+
+  _$GOneBattleDataData_battleData_battleDataTerastal _build() {
+    _$GOneBattleDataData_battleData_battleDataTerastal _$result;
+    try {
+      _$result = _$v ??
+          new _$GOneBattleDataData_battleData_battleDataTerastal._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename,
+                  r'GOneBattleDataData_battleData_battleDataTerastal',
+                  'G__typename'),
+              rate: BuiltValueNullFieldError.checkNotNull(rate,
+                  r'GOneBattleDataData_battleData_battleDataTerastal', 'rate'),
+              type: type.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'type';
+        type.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GOneBattleDataData_battleData_battleDataTerastal',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GOneBattleDataData_battleData_battleDataTerastal_type
+    extends GOneBattleDataData_battleData_battleDataTerastal_type {
+  @override
+  final String G__typename;
+  @override
+  final String name;
+  @override
+  final String terastalImageUrl;
+
+  factory _$GOneBattleDataData_battleData_battleDataTerastal_type(
+          [void Function(
+                  GOneBattleDataData_battleData_battleDataTerastal_typeBuilder)?
+              updates]) =>
+      (new GOneBattleDataData_battleData_battleDataTerastal_typeBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GOneBattleDataData_battleData_battleDataTerastal_type._(
+      {required this.G__typename,
+      required this.name,
+      required this.terastalImageUrl})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename,
+        r'GOneBattleDataData_battleData_battleDataTerastal_type',
+        'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GOneBattleDataData_battleData_battleDataTerastal_type', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        terastalImageUrl,
+        r'GOneBattleDataData_battleData_battleDataTerastal_type',
+        'terastalImageUrl');
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataTerastal_type rebuild(
+          void Function(
+                  GOneBattleDataData_battleData_battleDataTerastal_typeBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GOneBattleDataData_battleData_battleDataTerastal_typeBuilder toBuilder() =>
+      new GOneBattleDataData_battleData_battleDataTerastal_typeBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GOneBattleDataData_battleData_battleDataTerastal_type &&
+        G__typename == other.G__typename &&
+        name == other.name &&
+        terastalImageUrl == other.terastalImageUrl;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, terastalImageUrl.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GOneBattleDataData_battleData_battleDataTerastal_type')
+          ..add('G__typename', G__typename)
+          ..add('name', name)
+          ..add('terastalImageUrl', terastalImageUrl))
+        .toString();
+  }
+}
+
+class GOneBattleDataData_battleData_battleDataTerastal_typeBuilder
+    implements
+        Builder<GOneBattleDataData_battleData_battleDataTerastal_type,
+            GOneBattleDataData_battleData_battleDataTerastal_typeBuilder> {
+  _$GOneBattleDataData_battleData_battleDataTerastal_type? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _terastalImageUrl;
+  String? get terastalImageUrl => _$this._terastalImageUrl;
+  set terastalImageUrl(String? terastalImageUrl) =>
+      _$this._terastalImageUrl = terastalImageUrl;
+
+  GOneBattleDataData_battleData_battleDataTerastal_typeBuilder() {
+    GOneBattleDataData_battleData_battleDataTerastal_type._initializeBuilder(
+        this);
+  }
+
+  GOneBattleDataData_battleData_battleDataTerastal_typeBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _name = $v.name;
+      _terastalImageUrl = $v.terastalImageUrl;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GOneBattleDataData_battleData_battleDataTerastal_type other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GOneBattleDataData_battleData_battleDataTerastal_type;
+  }
+
+  @override
+  void update(
+      void Function(
+              GOneBattleDataData_battleData_battleDataTerastal_typeBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GOneBattleDataData_battleData_battleDataTerastal_type build() => _build();
+
+  _$GOneBattleDataData_battleData_battleDataTerastal_type _build() {
+    final _$result = _$v ??
+        new _$GOneBattleDataData_battleData_battleDataTerastal_type._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GOneBattleDataData_battleData_battleDataTerastal_type',
+                'G__typename'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name,
+                r'GOneBattleDataData_battleData_battleDataTerastal_type',
+                'name'),
+            terastalImageUrl: BuiltValueNullFieldError.checkNotNull(
+                terastalImageUrl,
+                r'GOneBattleDataData_battleData_battleDataTerastal_type',
+                'terastalImageUrl'));
     replace(_$result);
     return _$result;
   }

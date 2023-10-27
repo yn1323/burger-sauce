@@ -58,6 +58,10 @@ abstract class GOneBattleDataData_battleData
       get battleDataAbility;
   BuiltList<GOneBattleDataData_battleData_battleDataItem> get battleDataItem;
   BuiltList<GOneBattleDataData_battleData_battleDataMove> get battleDataMove;
+  BuiltList<GOneBattleDataData_battleData_battleDataNature>
+      get battleDataNature;
+  BuiltList<GOneBattleDataData_battleData_battleDataTerastal>
+      get battleDataTerastal;
   static Serializer<GOneBattleDataData_battleData> get serializer =>
       _$gOneBattleDataDataBattleDataSerializer;
 
@@ -388,6 +392,147 @@ abstract class GOneBattleDataData_battleData_battleDataMove_move_attackType
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GOneBattleDataData_battleData_battleDataMove_move_attackType.serializer,
+        json,
+      );
+}
+
+abstract class GOneBattleDataData_battleData_battleDataNature
+    implements
+        Built<GOneBattleDataData_battleData_battleDataNature,
+            GOneBattleDataData_battleData_battleDataNatureBuilder> {
+  GOneBattleDataData_battleData_battleDataNature._();
+
+  factory GOneBattleDataData_battleData_battleDataNature(
+      [Function(GOneBattleDataData_battleData_battleDataNatureBuilder b)
+          updates]) = _$GOneBattleDataData_battleData_battleDataNature;
+
+  static void _initializeBuilder(
+          GOneBattleDataData_battleData_battleDataNatureBuilder b) =>
+      b..G__typename = 'BattleDataNature';
+
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  double get rate;
+  GOneBattleDataData_battleData_battleDataNature_nature get nature;
+  static Serializer<GOneBattleDataData_battleData_battleDataNature>
+      get serializer =>
+          _$gOneBattleDataDataBattleDataBattleDataNatureSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GOneBattleDataData_battleData_battleDataNature.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GOneBattleDataData_battleData_battleDataNature? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GOneBattleDataData_battleData_battleDataNature.serializer,
+        json,
+      );
+}
+
+abstract class GOneBattleDataData_battleData_battleDataNature_nature
+    implements
+        Built<GOneBattleDataData_battleData_battleDataNature_nature,
+            GOneBattleDataData_battleData_battleDataNature_natureBuilder> {
+  GOneBattleDataData_battleData_battleDataNature_nature._();
+
+  factory GOneBattleDataData_battleData_battleDataNature_nature(
+      [Function(GOneBattleDataData_battleData_battleDataNature_natureBuilder b)
+          updates]) = _$GOneBattleDataData_battleData_battleDataNature_nature;
+
+  static void _initializeBuilder(
+          GOneBattleDataData_battleData_battleDataNature_natureBuilder b) =>
+      b..G__typename = 'Nature';
+
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String get name;
+  String get increase;
+  String get decrease;
+  static Serializer<GOneBattleDataData_battleData_battleDataNature_nature>
+      get serializer =>
+          _$gOneBattleDataDataBattleDataBattleDataNatureNatureSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GOneBattleDataData_battleData_battleDataNature_nature.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GOneBattleDataData_battleData_battleDataNature_nature? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GOneBattleDataData_battleData_battleDataNature_nature.serializer,
+        json,
+      );
+}
+
+abstract class GOneBattleDataData_battleData_battleDataTerastal
+    implements
+        Built<GOneBattleDataData_battleData_battleDataTerastal,
+            GOneBattleDataData_battleData_battleDataTerastalBuilder> {
+  GOneBattleDataData_battleData_battleDataTerastal._();
+
+  factory GOneBattleDataData_battleData_battleDataTerastal(
+      [Function(GOneBattleDataData_battleData_battleDataTerastalBuilder b)
+          updates]) = _$GOneBattleDataData_battleData_battleDataTerastal;
+
+  static void _initializeBuilder(
+          GOneBattleDataData_battleData_battleDataTerastalBuilder b) =>
+      b..G__typename = 'BattleDataTerastal';
+
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  double get rate;
+  GOneBattleDataData_battleData_battleDataTerastal_type get type;
+  static Serializer<GOneBattleDataData_battleData_battleDataTerastal>
+      get serializer =>
+          _$gOneBattleDataDataBattleDataBattleDataTerastalSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GOneBattleDataData_battleData_battleDataTerastal.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GOneBattleDataData_battleData_battleDataTerastal? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GOneBattleDataData_battleData_battleDataTerastal.serializer,
+        json,
+      );
+}
+
+abstract class GOneBattleDataData_battleData_battleDataTerastal_type
+    implements
+        Built<GOneBattleDataData_battleData_battleDataTerastal_type,
+            GOneBattleDataData_battleData_battleDataTerastal_typeBuilder> {
+  GOneBattleDataData_battleData_battleDataTerastal_type._();
+
+  factory GOneBattleDataData_battleData_battleDataTerastal_type(
+      [Function(GOneBattleDataData_battleData_battleDataTerastal_typeBuilder b)
+          updates]) = _$GOneBattleDataData_battleData_battleDataTerastal_type;
+
+  static void _initializeBuilder(
+          GOneBattleDataData_battleData_battleDataTerastal_typeBuilder b) =>
+      b..G__typename = 'Type';
+
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String get name;
+  String get terastalImageUrl;
+  static Serializer<GOneBattleDataData_battleData_battleDataTerastal_type>
+      get serializer =>
+          _$gOneBattleDataDataBattleDataBattleDataTerastalTypeSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GOneBattleDataData_battleData_battleDataTerastal_type.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GOneBattleDataData_battleData_battleDataTerastal_type? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GOneBattleDataData_battleData_battleDataTerastal_type.serializer,
         json,
       );
 }

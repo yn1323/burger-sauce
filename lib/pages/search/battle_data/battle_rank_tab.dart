@@ -12,17 +12,44 @@ class BattleRankTab extends HookWidget {
       battleAbilities;
   final BuiltList<GOneBattleDataData_battleData_battleDataMove>? battleMoves;
   final BuiltList<GOneBattleDataData_battleData_battleDataItem>? battleItems;
+  final BuiltList<GOneBattleDataData_battleData_battleDataNature>?
+      battleNatures;
+  final BuiltList<GOneBattleDataData_battleData_battleDataTerastal>?
+      battleTerastals;
 
   const BattleRankTab({
     Key? key,
     required this.battleAbilities,
     required this.battleMoves,
     required this.battleItems,
+    required this.battleNatures,
+    required this.battleTerastals,
   }) : super(key: key);
+
+  Row getStatusText(String status, bool isIncrease) {
+    final arrow = isIncrease ? '↑' : '↓';
+    final text = status.replaceFirst("status", "");
+
+    return Row(children: [
+      Text(
+        arrow,
+        style: TextStyle(
+          color: isIncrease ? Colors.red : Colors.blue,
+          fontSize: 14,
+        ),
+      ),
+      Text(
+        text,
+        style: const TextStyle(
+          fontSize: 14,
+        ),
+      ),
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final tabController = useTabController(initialLength: 3);
+    final tabController = useTabController(initialLength: 5);
 
     return Column(
       children: [
@@ -34,6 +61,8 @@ class BattleRankTab extends HookWidget {
             Tab(text: 'とくせい'),
             Tab(text: 'わざ'),
             Tab(text: 'もちもの'),
+            Tab(text: 'せいかく'),
+            Tab(text: 'テラスタル'),
           ],
         ),
         Expanded(
@@ -96,6 +125,50 @@ class BattleRankTab extends HookWidget {
                         Text(battleItem.item.name),
                         const Spacer(),
                         Text('${battleItem.rate}%'),
+                      ],
+                    ),
+                  );
+                },
+              ),
+              ListView.builder(
+                itemCount: battleNatures?.length ?? 0,
+                itemBuilder: (context, index) {
+                  final battleNature = battleNatures![index];
+                  return TabTemplate(
+                    row: Row(
+                      children: [
+                        getStatusText(battleNature.nature.increase, true),
+                        const Gap(4),
+                        getStatusText(battleNature.nature.decrease, false),
+                        const Gap(20),
+                        Text(battleNature.nature.name),
+                        const Spacer(),
+                        Text('${battleNature.rate}%'),
+                      ],
+                    ),
+                  );
+                },
+              ),
+              ListView.builder(
+                itemCount: battleTerastals?.length ?? 0,
+                itemBuilder: (context, index) {
+                  final battleTerastal = battleTerastals![index];
+                  return TabTemplate(
+                    row: Row(
+                      children: [
+                        CachedNetworkImage(
+                          width: 36,
+                          height: 36,
+                          imageUrl: battleTerastal.type.terastalImageUrl,
+                          placeholder: (context, url) => const Skeleton(
+                            width: 36,
+                            height: 36,
+                          ),
+                        ),
+                        const Gap(24),
+                        Text(battleTerastal.type.name),
+                        const Spacer(),
+                        Text('${battleTerastal.rate}%'),
                       ],
                     ),
                   );

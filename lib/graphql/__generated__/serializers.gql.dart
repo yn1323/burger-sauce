@@ -82,6 +82,10 @@ import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleDat
         GOneBattleDataData_battleData_battleDataMove_move,
         GOneBattleDataData_battleData_battleDataMove_move_attackType,
         GOneBattleDataData_battleData_battleDataMove_move_type,
+        GOneBattleDataData_battleData_battleDataNature,
+        GOneBattleDataData_battleData_battleDataNature_nature,
+        GOneBattleDataData_battleData_battleDataTerastal,
+        GOneBattleDataData_battleData_battleDataTerastal_type,
         GOneBattleDataData_battleData_pokemon;
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.req.gql.dart'
     show GOneBattleDataReq;
@@ -152,6 +156,10 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GOneBattleDataData_battleData_battleDataMove_move,
   GOneBattleDataData_battleData_battleDataMove_move_attackType,
   GOneBattleDataData_battleData_battleDataMove_move_type,
+  GOneBattleDataData_battleData_battleDataNature,
+  GOneBattleDataData_battleData_battleDataNature_nature,
+  GOneBattleDataData_battleData_battleDataTerastal,
+  GOneBattleDataData_battleData_battleDataTerastal_type,
   GOneBattleDataData_battleData_pokemon,
   GOneBattleDataReq,
   GOneBattleDataVars,

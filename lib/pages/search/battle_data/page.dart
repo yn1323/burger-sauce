@@ -58,6 +58,8 @@ class BattleDataPokemon extends HookWidget {
           final battleAbilities = data.battleData?.battleDataAbility;
           final battleMoves = data.battleData?.battleDataMove;
           final battleItems = data.battleData?.battleDataItem;
+          final battleNatures = data.battleData?.battleDataNature;
+          final battleTerastals = data.battleData?.battleDataTerastal;
 
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -81,6 +83,8 @@ class BattleDataPokemon extends HookWidget {
                     battleAbilities: battleAbilities,
                     battleMoves: battleMoves,
                     battleItems: battleItems,
+                    battleNatures: battleNatures,
+                    battleTerastals: battleTerastals,
                   ))
                 ],
               ),
