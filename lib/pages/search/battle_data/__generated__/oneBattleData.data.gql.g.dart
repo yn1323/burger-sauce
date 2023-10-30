@@ -240,6 +240,8 @@ class _$GOneBattleDataData_battleData_pokemonSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
       'imageLargeUrl',
       serializers.serialize(object.imageLargeUrl,
           specifiedType: const FullType(String)),
@@ -266,6 +268,10 @@ class _$GOneBattleDataData_battleData_pokemonSerializer
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'imageLargeUrl':
@@ -1434,6 +1440,8 @@ class _$GOneBattleDataData_battleData_pokemon
   @override
   final String G__typename;
   @override
+  final String id;
+  @override
   final String imageLargeUrl;
   @override
   final String name;
@@ -1448,12 +1456,15 @@ class _$GOneBattleDataData_battleData_pokemon
 
   _$GOneBattleDataData_battleData_pokemon._(
       {required this.G__typename,
+      required this.id,
       required this.imageLargeUrl,
       required this.name,
       required this.form})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GOneBattleDataData_battleData_pokemon', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GOneBattleDataData_battleData_pokemon', 'id');
     BuiltValueNullFieldError.checkNotNull(imageLargeUrl,
         r'GOneBattleDataData_battleData_pokemon', 'imageLargeUrl');
     BuiltValueNullFieldError.checkNotNull(
@@ -1477,6 +1488,7 @@ class _$GOneBattleDataData_battleData_pokemon
     if (identical(other, this)) return true;
     return other is GOneBattleDataData_battleData_pokemon &&
         G__typename == other.G__typename &&
+        id == other.id &&
         imageLargeUrl == other.imageLargeUrl &&
         name == other.name &&
         form == other.form;
@@ -1486,6 +1498,7 @@ class _$GOneBattleDataData_battleData_pokemon
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, imageLargeUrl.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, form.hashCode);
@@ -1498,6 +1511,7 @@ class _$GOneBattleDataData_battleData_pokemon
     return (newBuiltValueToStringHelper(
             r'GOneBattleDataData_battleData_pokemon')
           ..add('G__typename', G__typename)
+          ..add('id', id)
           ..add('imageLargeUrl', imageLargeUrl)
           ..add('name', name)
           ..add('form', form))
@@ -1514,6 +1528,10 @@ class GOneBattleDataData_battleData_pokemonBuilder
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
   String? _imageLargeUrl;
   String? get imageLargeUrl => _$this._imageLargeUrl;
@@ -1536,6 +1554,7 @@ class GOneBattleDataData_battleData_pokemonBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
+      _id = $v.id;
       _imageLargeUrl = $v.imageLargeUrl;
       _name = $v.name;
       _form = $v.form;
@@ -1564,6 +1583,8 @@ class GOneBattleDataData_battleData_pokemonBuilder
         new _$GOneBattleDataData_battleData_pokemon._(
             G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
                 r'GOneBattleDataData_battleData_pokemon', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GOneBattleDataData_battleData_pokemon', 'id'),
             imageLargeUrl: BuiltValueNullFieldError.checkNotNull(imageLargeUrl,
                 r'GOneBattleDataData_battleData_pokemon', 'imageLargeUrl'),
             name: BuiltValueNullFieldError.checkNotNull(

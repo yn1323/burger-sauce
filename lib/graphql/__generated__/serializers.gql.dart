@@ -91,6 +91,23 @@ import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleDat
     show GOneBattleDataReq;
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.var.gql.dart'
     show GOneBattleDataVars;
+import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.data.gql.dart'
+    show
+        GOnePokemonDataData,
+        GOnePokemonDataData_pokemon,
+        GOnePokemonDataData_pokemon_abilities,
+        GOnePokemonDataData_pokemon_evolutions,
+        GOnePokemonDataData_pokemon_evolutions_from,
+        GOnePokemonDataData_pokemon_evolutions_to,
+        GOnePokemonDataData_pokemon_evolutions_to_types,
+        GOnePokemonDataData_pokemon_moves,
+        GOnePokemonDataData_pokemon_moves_attackType,
+        GOnePokemonDataData_pokemon_moves_type,
+        GOnePokemonDataData_pokemon_types;
+import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.req.gql.dart'
+    show GOnePokemonDataReq;
+import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.var.gql.dart'
+    show GOnePokemonDataVars;
 import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.data.gql.dart'
     show
         GLatestBattleDataIndexData,
@@ -163,6 +180,19 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GOneBattleDataData_battleData_pokemon,
   GOneBattleDataReq,
   GOneBattleDataVars,
+  GOnePokemonDataData,
+  GOnePokemonDataData_pokemon,
+  GOnePokemonDataData_pokemon_abilities,
+  GOnePokemonDataData_pokemon_evolutions,
+  GOnePokemonDataData_pokemon_evolutions_from,
+  GOnePokemonDataData_pokemon_evolutions_to,
+  GOnePokemonDataData_pokemon_evolutions_to_types,
+  GOnePokemonDataData_pokemon_moves,
+  GOnePokemonDataData_pokemon_moves_attackType,
+  GOnePokemonDataData_pokemon_moves_type,
+  GOnePokemonDataData_pokemon_types,
+  GOnePokemonDataReq,
+  GOnePokemonDataVars,
   GPokemonsData,
   GPokemonsData_pokemons,
   GPokemonsReq,

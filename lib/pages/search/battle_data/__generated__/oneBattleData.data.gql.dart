@@ -93,6 +93,7 @@ abstract class GOneBattleDataData_battleData_pokemon
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  String get id;
   String get imageLargeUrl;
   String get name;
   String get form;

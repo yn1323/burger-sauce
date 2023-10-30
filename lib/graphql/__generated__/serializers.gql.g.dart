@@ -62,6 +62,19 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GOneBattleDataData_battleData_pokemon.serializer)
       ..add(GOneBattleDataReq.serializer)
       ..add(GOneBattleDataVars.serializer)
+      ..add(GOnePokemonDataData.serializer)
+      ..add(GOnePokemonDataData_pokemon.serializer)
+      ..add(GOnePokemonDataData_pokemon_abilities.serializer)
+      ..add(GOnePokemonDataData_pokemon_evolutions.serializer)
+      ..add(GOnePokemonDataData_pokemon_evolutions_from.serializer)
+      ..add(GOnePokemonDataData_pokemon_evolutions_to.serializer)
+      ..add(GOnePokemonDataData_pokemon_evolutions_to_types.serializer)
+      ..add(GOnePokemonDataData_pokemon_moves.serializer)
+      ..add(GOnePokemonDataData_pokemon_moves_attackType.serializer)
+      ..add(GOnePokemonDataData_pokemon_moves_type.serializer)
+      ..add(GOnePokemonDataData_pokemon_types.serializer)
+      ..add(GOnePokemonDataReq.serializer)
+      ..add(GOnePokemonDataVars.serializer)
       ..add(GPokemonsData.serializer)
       ..add(GPokemonsData_pokemons.serializer)
       ..add(GPokemonsReq.serializer)
@@ -126,6 +139,38 @@ Serializers _$serializers = (new Serializers().toBuilder()
           ]),
           () => new ListBuilder<
               GOneBattleDataData_battleData_battleDataTerastal>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GOnePokemonDataData_pokemon_evolutions)]),
+          () => new ListBuilder<GOnePokemonDataData_pokemon_evolutions>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GOnePokemonDataData_pokemon_abilities)]),
+          () => new ListBuilder<GOnePokemonDataData_pokemon_abilities>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GOnePokemonDataData_pokemon_moves)]),
+          () => new ListBuilder<GOnePokemonDataData_pokemon_moves>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GOnePokemonDataData_pokemon_types)]),
+          () => new ListBuilder<GOnePokemonDataData_pokemon_types>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GOnePokemonDataData_pokemon_evolutions_from)
+          ]),
+          () => new ListBuilder<GOnePokemonDataData_pokemon_evolutions_from>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GOnePokemonDataData_pokemon_evolutions_to)
+          ]),
+          () => new ListBuilder<GOnePokemonDataData_pokemon_evolutions_to>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GOnePokemonDataData_pokemon_evolutions_to_types)
+          ]),
+          () => new ListBuilder<
+              GOnePokemonDataData_pokemon_evolutions_to_types>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GPokemonsData_pokemons)]),

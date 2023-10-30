@@ -2,6 +2,7 @@ query OneBattleData($id: String!) {
   battleData(id: $id) {
     rank
     pokemon {
+      id
       imageLargeUrl
       name
       form

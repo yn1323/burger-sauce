@@ -1,9 +1,11 @@
 import 'package:burger_sauce/components/features/images/skeleton.dart';
 import 'package:burger_sauce/constants/client.dart';
+import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.data.gql.dart';
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.req.gql.dart';
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.var.gql.dart';
 import 'package:burger_sauce/pages/search/battle_data/battle_rank_tab.dart';
+import 'package:burger_sauce/route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ferry/ferry.dart';
 import 'package:ferry_flutter/ferry_flutter.dart';
@@ -54,28 +56,46 @@ class BattleDataPokemon extends HookWidget {
             return const Text('null');
           }
 
-          final pokemon = data.battleData?.pokemon;
-          final battleAbilities = data.battleData?.battleDataAbility;
-          final battleMoves = data.battleData?.battleDataMove;
-          final battleItems = data.battleData?.battleDataItem;
-          final battleNatures = data.battleData?.battleDataNature;
-          final battleTerastals = data.battleData?.battleDataTerastal;
+          final pokemon = data.battleData!.pokemon;
+          final battleAbilities = data.battleData!.battleDataAbility;
+          final battleMoves = data.battleData!.battleDataMove;
+          final battleItems = data.battleData!.battleDataItem;
+          final battleNatures = data.battleData!.battleDataNature;
+          final battleTerastals = data.battleData!.battleDataTerastal;
 
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(
               child: Column(
                 children: [
-                  Text(getPokemonName(pokemon),
+                  Text(
+                      combineNameWithForm(
+                          name: pokemon.name, form: pokemon.form),
                       style: const TextStyle(fontSize: 20)),
                   const Gap(10),
                   CachedNetworkImage(
-                    imageUrl: pokemon?.imageLargeUrl ?? '',
+                    imageUrl: pokemon.imageLargeUrl,
                     width: 180,
                     height: 180,
                     fadeOutDuration: const Duration(milliseconds: 300),
                     placeholder: (context, url) =>
                         const Skeleton(ballSkeleton: true),
+                  ),
+                  const Gap(10),
+                  ButtonBar(
+                    alignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          router.goNamed('searchBattleDataPokemon',
+                              pathParameters: {
+                                'id': id,
+                                'pokemonId': pokemon.id
+                              });
+                        },
+                        child: const Text('詳細情報'),
+                      ),
+                    ],
                   ),
                   const Gap(10),
                   Expanded(

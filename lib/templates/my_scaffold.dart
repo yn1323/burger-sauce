@@ -1,4 +1,5 @@
 import 'package:burger_sauce/constants/route.dart';
+import 'package:burger_sauce/constants/widgets/properties.dart';
 import 'package:flutter/material.dart';
 
 class MyScaffold extends StatefulWidget {
@@ -56,6 +57,7 @@ class _MyScaffoldState extends State<MyScaffold> {
         return true; // Allow the back button to close the app
       },
       child: Scaffold(
+        extendBody: true,
         body: PageView(
           controller: _controller,
           onPageChanged: (index) {
@@ -66,9 +68,13 @@ class _MyScaffoldState extends State<MyScaffold> {
           children: routes.map((e) => e.page).toList(),
         ),
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: templateOpacity,
+          elevation: 0,
+          type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.amber[800],
           unselectedItemColor: Colors.grey[600],
-          showSelectedLabels: true,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
           items: routes.map((e) => e.item).toList(),
           currentIndex: _selectedIndex,
           onTap: _onTap,

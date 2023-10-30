@@ -8,13 +8,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 
 class BattleRankTab extends HookWidget {
-  final BuiltList<GOneBattleDataData_battleData_battleDataAbility>?
+  final BuiltList<GOneBattleDataData_battleData_battleDataAbility>
       battleAbilities;
-  final BuiltList<GOneBattleDataData_battleData_battleDataMove>? battleMoves;
-  final BuiltList<GOneBattleDataData_battleData_battleDataItem>? battleItems;
-  final BuiltList<GOneBattleDataData_battleData_battleDataNature>?
-      battleNatures;
-  final BuiltList<GOneBattleDataData_battleData_battleDataTerastal>?
+  final BuiltList<GOneBattleDataData_battleData_battleDataMove> battleMoves;
+  final BuiltList<GOneBattleDataData_battleData_battleDataItem> battleItems;
+  final BuiltList<GOneBattleDataData_battleData_battleDataNature> battleNatures;
+  final BuiltList<GOneBattleDataData_battleData_battleDataTerastal>
       battleTerastals;
 
   BattleRankTab({
@@ -77,9 +76,9 @@ class BattleRankTab extends HookWidget {
             controller: tabController,
             children: [
               ListView.builder(
-                itemCount: battleAbilities?.length ?? 0,
+                itemCount: battleAbilities.length,
                 itemBuilder: (context, index) {
-                  final battleAbility = battleAbilities![index];
+                  final battleAbility = battleAbilities[index];
                   return TabTemplate(
                       row: Row(
                     children: [
@@ -91,9 +90,9 @@ class BattleRankTab extends HookWidget {
                 },
               ),
               ListView.builder(
-                itemCount: battleMoves?.length ?? 0,
+                itemCount: battleMoves.length,
                 itemBuilder: (context, index) {
-                  final battleMove = battleMoves![index];
+                  final battleMove = battleMoves[index];
                   return TabTemplate(
                       row: Row(
                     children: [
@@ -113,9 +112,9 @@ class BattleRankTab extends HookWidget {
                 },
               ),
               ListView.builder(
-                itemCount: battleItems?.length ?? 0,
+                itemCount: battleItems.length,
                 itemBuilder: (context, index) {
-                  final battleItem = battleItems![index];
+                  final battleItem = battleItems[index];
                   return TabTemplate(
                     row: Row(
                       children: [
@@ -138,9 +137,9 @@ class BattleRankTab extends HookWidget {
                 },
               ),
               ListView.builder(
-                itemCount: battleNatures?.length ?? 0,
+                itemCount: battleNatures.length,
                 itemBuilder: (context, index) {
-                  final battleNature = battleNatures![index];
+                  final battleNature = battleNatures[index];
                   return TabTemplate(
                     row: Row(
                       children: [
@@ -157,9 +156,9 @@ class BattleRankTab extends HookWidget {
                 },
               ),
               ListView.builder(
-                itemCount: battleTerastals?.length ?? 0,
+                itemCount: battleTerastals.length,
                 itemBuilder: (context, index) {
-                  final battleTerastal = battleTerastals![index];
+                  final battleTerastal = battleTerastals[index];
                   return TabTemplate(
                     row: Row(
                       children: [

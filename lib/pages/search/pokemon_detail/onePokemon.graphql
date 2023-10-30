@@ -1,0 +1,46 @@
+query OnePokemonData($id: String!) {
+  pokemon(id: $id) {
+    evolutions {
+      from {
+        id
+        name
+        imageLargeUrl
+      }
+      to {
+        id
+        name
+        imageUrl
+        types {
+          textImageUrl
+        }
+      }
+    }
+    abilities {
+      name
+      detail
+    }
+    moves {
+      power
+      name
+      type {
+        textImageUrl
+      }
+      attackType {
+        imageUrl
+      }
+    }
+    types {
+      imageUrl
+      name
+    }
+    statusA
+    statusB
+    statusC
+    statusD
+    statusH
+    statusS
+    imageLargeUrl
+    name
+    form
+  }
+}

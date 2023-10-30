@@ -1,4 +1,5 @@
 import 'package:burger_sauce/constants/client.dart';
+import 'package:burger_sauce/constants/widgets/properties.dart';
 import 'package:burger_sauce/pages/top/trend/battle_data/battle_data_index.dart';
 import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.data.gql.dart';
 import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.req.gql.dart';
@@ -58,7 +59,9 @@ class TrendPage extends HookWidget {
         if (response!.loading) {
           return Scaffold(
             appBar: AppBar(
-              title: const Text('Example'),
+              title: const Text('レートバトルデータ'),
+              backgroundColor: templateOpacity,
+              elevation: 0,
             ),
             body: const Text('loading...'),
           );
@@ -85,12 +88,15 @@ class TrendPage extends HookWidget {
             .toList();
 
         return Scaffold(
+          extendBodyBehindAppBar: true,
           appBar: EasySearchBar(
-            title: const Text('Example'),
+            title: const Text('レートバトルデータ'),
             onSearch: (value) {},
             onSuggestionTap: (value) {
               print(value);
             },
+            backgroundColor: templateOpacity,
+            elevation: 0,
             suggestionTextStyle:
                 const TextStyle(color: Colors.black, fontSize: 20),
             suggestions: pokemons
