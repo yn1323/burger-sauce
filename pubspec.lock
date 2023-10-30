@@ -518,7 +518,7 @@ packages:
     source: hosted
     version: "0.7.2"
   gql_exec:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: gql_exec
       sha256: "50bcdb389e25411dce84cca8af50d9277492fc55d6358fa2ec2039e58b8fe22d"

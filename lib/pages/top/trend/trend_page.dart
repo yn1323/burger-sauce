@@ -1,16 +1,12 @@
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/constants/widgets/properties.dart';
+import 'package:burger_sauce/helpers/query.dart';
 import 'package:burger_sauce/pages/top/trend/battle_data/battle_data_index.dart';
 import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.data.gql.dart';
 import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.req.gql.dart';
 import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.var.gql.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_search_bar/easy_search_bar.dart';
-import 'package:ferry/ferry.dart';
-import 'package:ferry_flutter/ferry_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get_it/get_it.dart';
 
 class PokemonIndex {
   PokemonIndex({
@@ -29,100 +25,55 @@ class PokemonIndex {
 }
 
 class TrendPage extends HookWidget {
-  TrendPage({super.key});
-
-  final client = GetIt.I<TypedLink>();
-
-  String _nameWithForm(String name, String form) {
-    if (form.isEmpty) {
-      return name;
-    }
-    return '$name($form)';
-  }
+  const TrendPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     useAutomaticKeepAlive();
     final res = useRef<List<PokemonIndex>>([]);
 
-    PokemonIndex findPokemon(String data) {
-      final pokemon = res.value
-          .firstWhere((e) => data.contains(e.name) && data.contains(e.form));
-      return pokemon;
-    }
-
-    return Operation<GLatestBattleDataIndexData, GLatestBattleDataIndexVars>(
-      operationRequest: GLatestBattleDataIndexReq(
+    final result =
+        useQuery<GLatestBattleDataIndexData, GLatestBattleDataIndexVars>(
+      GLatestBattleDataIndexReq(
         (b) => b..fetchPolicy = fetchCacheAndNetwork,
       ),
-      builder: (context, response, error) {
-        if (response!.loading) {
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text('レートバトルデータ'),
-              backgroundColor: templateOpacity,
-              elevation: 0,
-            ),
-            body: const Text('loading...'),
-          );
-        }
+    );
 
-        if (response.hasErrors) {
-          return const Text('error');
-        }
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: const Text(
+          'レートバトルデータ',
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: templateOpacity,
+        elevation: 0,
+      ),
+      body: Builder(
+        builder: (context) {
+          if (result.isLoadingOrError()) {
+            return result.suspensePart();
+          }
 
-        final pokemons = response.data?.battleDatasLatest;
+          final pokemons = result.data!.battleDatasLatest;
 
-        if (pokemons == null) return const Text('null');
+          res.value = pokemons
+              .map(
+                (e) => PokemonIndex(
+                  id: e.id,
+                  form: e.pokemon.form,
+                  name: e.pokemon.name,
+                  rank: e.rank,
+                  imageUrl: e.pokemon.imageUrl,
+                ),
+              )
+              .toList();
 
-        res.value = pokemons
-            .map(
-              (e) => PokemonIndex(
-                id: e.id,
-                form: e.pokemon.form,
-                name: e.pokemon.name,
-                rank: e.rank,
-                imageUrl: e.pokemon.imageUrl,
-              ),
-            )
-            .toList();
-
-        return Scaffold(
-          extendBodyBehindAppBar: true,
-          appBar: EasySearchBar(
-            title: const Text('レートバトルデータ'),
-            onSearch: (value) {},
-            onSuggestionTap: (value) {
-              print(value);
-            },
-            backgroundColor: templateOpacity,
-            elevation: 0,
-            suggestionTextStyle:
-                const TextStyle(color: Colors.black, fontSize: 20),
-            suggestions: pokemons
-                .map((e) => _nameWithForm(e.pokemon.name, e.pokemon.form))
-                .toList(),
-            suggestionBuilder: (data) => SizedBox(
-              height: 40,
-              child: Row(
-                children: [
-                  const SizedBox(width: 20),
-                  CachedNetworkImage(
-                    imageUrl: findPokemon(data).imageUrl,
-                    placeholder: (context, url) => const SizedBox(
-                      width: 40,
-                      height: 40,
-                    ),
-                  ),
-                  Text(data)
-                ],
-              ),
-            ),
-          ),
-          body: BattleDataIndex(pokemons: res.value),
-        );
-      },
-      client: client,
+          return BattleDataIndex(pokemons: res.value);
+        },
+      ),
     );
   }
 }

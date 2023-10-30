@@ -1,5 +1,6 @@
 import 'package:burger_sauce/components/features/images/skeleton.dart';
 import 'package:burger_sauce/constants/client.dart';
+import 'package:burger_sauce/helpers/query.dart';
 import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.data.gql.dart';
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.req.gql.dart';
@@ -7,55 +8,47 @@ import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleDat
 import 'package:burger_sauce/pages/search/battle_data/battle_rank_tab.dart';
 import 'package:burger_sauce/route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ferry/ferry.dart';
-import 'package:ferry_flutter/ferry_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
-import 'package:get_it/get_it.dart';
 
 class BattleDataPokemon extends HookWidget {
   final String id;
-  final client = GetIt.I<TypedLink>();
 
-  BattleDataPokemon({
+  const BattleDataPokemon({
     Key? key,
     required this.id,
   }) : super(key: key);
 
-  String getPokemonName(GOneBattleDataData_battleData_pokemon? pokemon) {
-    if (pokemon == null) return '';
-    if (pokemon.form.isEmpty) {
-      return pokemon.name;
-    } else {
-      return '${pokemon.name}(${pokemon.form})';
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    final result = useQuery<GOneBattleDataData, GOneBattleDataVars>(
+      GOneBattleDataReq(
+        (b) => b
+          ..vars.id = id
+          ..fetchPolicy = fetchCacheAndNetwork,
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('バトル詳細情報'),
+        title: Text(
+          combineNameWithForm(
+            name: result.data?.battleData?.pokemon.name ?? '',
+            form: result.data?.battleData?.pokemon.form ?? '',
+          ),
+        ),
       ),
-      body: Operation<GOneBattleDataData, GOneBattleDataVars>(
-        operationRequest: GOneBattleDataReq((b) => b
-          ..vars.id = id
-          ..fetchPolicy = fetchCacheFirst),
-        builder: (context, response, error) {
-          if (response!.loading) {
-            return const Center(child: CircularProgressIndicator());
+      body: Builder(
+        builder: (context) {
+          if (result.isLoadingOrError()) {
+            return result.suspensePart();
           }
-          if (response.hasErrors) {
-            return Center(child: Text(error.toString()));
+          if (result.data!.battleData == null) {
+            return const Text('データが見つかりませんでした。');
           }
 
-          final data = response.data;
-
-          if (data == null || data.battleData == null) {
-            return const Text('null');
-          }
-
+          final data = result.data!;
           final pokemon = data.battleData!.pokemon;
           final battleAbilities = data.battleData!.battleDataAbility;
           final battleMoves = data.battleData!.battleDataMove;
@@ -68,11 +61,6 @@ class BattleDataPokemon extends HookWidget {
             child: Center(
               child: Column(
                 children: [
-                  Text(
-                      combineNameWithForm(
-                          name: pokemon.name, form: pokemon.form),
-                      style: const TextStyle(fontSize: 20)),
-                  const Gap(10),
                   CachedNetworkImage(
                     imageUrl: pokemon.imageLargeUrl,
                     width: 180,
@@ -111,8 +99,55 @@ class BattleDataPokemon extends HookWidget {
             ),
           );
         },
-        client: client,
       ),
     );
   }
 }
+
+// class BattleDataPokemon extends HookWidget {
+//   final String id;
+//   final client = GetIt.I<TypedLink>();
+
+//   BattleDataPokemon({
+//     Key? key,
+//     required this.id,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('バトル詳細情報'),
+//       ),
+//       body: Operation<GOneBattleDataData, GOneBattleDataVars>(
+//         operationRequest: GOneBattleDataReq((b) => b
+//           ..vars.id = id
+//           ..fetchPolicy = fetchCacheFirst),
+//         builder: (context, response, error) {
+//           if (response!.loading) {
+//             return const Center(child: CircularProgressIndicator());
+//           }
+//           if (response.hasErrors) {
+//             return Center(child: Text(error.toString()));
+//           }
+
+//           final data = response.data;
+
+//           if (data == null || data.battleData == null) {
+//             return const Text('null');
+//           }
+
+//           final pokemon = data.battleData!.pokemon;
+//           final battleAbilities = data.battleData!.battleDataAbility;
+//           final battleMoves = data.battleData!.battleDataMove;
+//           final battleItems = data.battleData!.battleDataItem;
+//           final battleNatures = data.battleData!.battleDataNature;
+//           final battleTerastals = data.battleData!.battleDataTerastal;
+
+//           return;
+//         },
+//         client: client,
+//       ),
+//     );
+//   }
+// }
