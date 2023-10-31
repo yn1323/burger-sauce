@@ -10,18 +10,18 @@ Serializer<GOnePokemonDataData> _$gOnePokemonDataDataSerializer =
     new _$GOnePokemonDataDataSerializer();
 Serializer<GOnePokemonDataData_pokemon> _$gOnePokemonDataDataPokemonSerializer =
     new _$GOnePokemonDataData_pokemonSerializer();
-Serializer<GOnePokemonDataData_pokemon_evolutions>
-    _$gOnePokemonDataDataPokemonEvolutionsSerializer =
-    new _$GOnePokemonDataData_pokemon_evolutionsSerializer();
-Serializer<GOnePokemonDataData_pokemon_evolutions_from>
-    _$gOnePokemonDataDataPokemonEvolutionsFromSerializer =
-    new _$GOnePokemonDataData_pokemon_evolutions_fromSerializer();
-Serializer<GOnePokemonDataData_pokemon_evolutions_to>
-    _$gOnePokemonDataDataPokemonEvolutionsToSerializer =
-    new _$GOnePokemonDataData_pokemon_evolutions_toSerializer();
-Serializer<GOnePokemonDataData_pokemon_evolutions_to_types>
-    _$gOnePokemonDataDataPokemonEvolutionsToTypesSerializer =
-    new _$GOnePokemonDataData_pokemon_evolutions_to_typesSerializer();
+Serializer<GOnePokemonDataData_pokemon_evolutionTo>
+    _$gOnePokemonDataDataPokemonEvolutionToSerializer =
+    new _$GOnePokemonDataData_pokemon_evolutionToSerializer();
+Serializer<GOnePokemonDataData_pokemon_evolutionTo_pokemon>
+    _$gOnePokemonDataDataPokemonEvolutionToPokemonSerializer =
+    new _$GOnePokemonDataData_pokemon_evolutionTo_pokemonSerializer();
+Serializer<GOnePokemonDataData_pokemon_evolutionFrom>
+    _$gOnePokemonDataDataPokemonEvolutionFromSerializer =
+    new _$GOnePokemonDataData_pokemon_evolutionFromSerializer();
+Serializer<GOnePokemonDataData_pokemon_evolutionFrom_pokemon>
+    _$gOnePokemonDataDataPokemonEvolutionFromPokemonSerializer =
+    new _$GOnePokemonDataData_pokemon_evolutionFrom_pokemonSerializer();
 Serializer<GOnePokemonDataData_pokemon_abilities>
     _$gOnePokemonDataDataPokemonAbilitiesSerializer =
     new _$GOnePokemonDataData_pokemon_abilitiesSerializer();
@@ -114,10 +114,15 @@ class _$GOnePokemonDataData_pokemonSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'evolutions',
-      serializers.serialize(object.evolutions,
+      'evolutionTo',
+      serializers.serialize(object.evolutionTo,
           specifiedType: const FullType(BuiltList,
-              const [const FullType(GOnePokemonDataData_pokemon_evolutions)])),
+              const [const FullType(GOnePokemonDataData_pokemon_evolutionTo)])),
+      'evolutionFrom',
+      serializers.serialize(object.evolutionFrom,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(GOnePokemonDataData_pokemon_evolutionFrom)
+          ])),
       'abilities',
       serializers.serialize(object.abilities,
           specifiedType: const FullType(BuiltList,
@@ -170,10 +175,16 @@ class _$GOnePokemonDataData_pokemonSerializer
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'evolutions':
-          result.evolutions.replace(serializers.deserialize(value,
+        case 'evolutionTo':
+          result.evolutionTo.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
-                const FullType(GOnePokemonDataData_pokemon_evolutions)
+                const FullType(GOnePokemonDataData_pokemon_evolutionTo)
+              ]))! as BuiltList<Object?>);
+          break;
+        case 'evolutionFrom':
+          result.evolutionFrom.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(GOnePokemonDataData_pokemon_evolutionFrom)
               ]))! as BuiltList<Object?>);
           break;
         case 'abilities':
@@ -237,44 +248,38 @@ class _$GOnePokemonDataData_pokemonSerializer
   }
 }
 
-class _$GOnePokemonDataData_pokemon_evolutionsSerializer
-    implements StructuredSerializer<GOnePokemonDataData_pokemon_evolutions> {
+class _$GOnePokemonDataData_pokemon_evolutionToSerializer
+    implements StructuredSerializer<GOnePokemonDataData_pokemon_evolutionTo> {
   @override
   final Iterable<Type> types = const [
-    GOnePokemonDataData_pokemon_evolutions,
-    _$GOnePokemonDataData_pokemon_evolutions
+    GOnePokemonDataData_pokemon_evolutionTo,
+    _$GOnePokemonDataData_pokemon_evolutionTo
   ];
   @override
-  final String wireName = 'GOnePokemonDataData_pokemon_evolutions';
+  final String wireName = 'GOnePokemonDataData_pokemon_evolutionTo';
 
   @override
   Iterable<Object?> serialize(
-      Serializers serializers, GOnePokemonDataData_pokemon_evolutions object,
+      Serializers serializers, GOnePokemonDataData_pokemon_evolutionTo object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'from',
-      serializers.serialize(object.from,
-          specifiedType: const FullType(BuiltList, const [
-            const FullType(GOnePokemonDataData_pokemon_evolutions_from)
-          ])),
-      'to',
-      serializers.serialize(object.to,
-          specifiedType: const FullType(BuiltList, const [
-            const FullType(GOnePokemonDataData_pokemon_evolutions_to)
-          ])),
+      'pokemon',
+      serializers.serialize(object.pokemon,
+          specifiedType:
+              const FullType(GOnePokemonDataData_pokemon_evolutionTo_pokemon)),
     ];
 
     return result;
   }
 
   @override
-  GOnePokemonDataData_pokemon_evolutions deserialize(
+  GOnePokemonDataData_pokemon_evolutionTo deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GOnePokemonDataData_pokemon_evolutionsBuilder();
+    final result = new GOnePokemonDataData_pokemon_evolutionToBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -286,17 +291,11 @@ class _$GOnePokemonDataData_pokemon_evolutionsSerializer
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'from':
-          result.from.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltList, const [
-                const FullType(GOnePokemonDataData_pokemon_evolutions_from)
-              ]))! as BuiltList<Object?>);
-          break;
-        case 'to':
-          result.to.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltList, const [
-                const FullType(GOnePokemonDataData_pokemon_evolutions_to)
-              ]))! as BuiltList<Object?>);
+        case 'pokemon':
+          result.pokemon.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      GOnePokemonDataData_pokemon_evolutionTo_pokemon))!
+              as GOnePokemonDataData_pokemon_evolutionTo_pokemon);
           break;
       }
     }
@@ -305,85 +304,20 @@ class _$GOnePokemonDataData_pokemon_evolutionsSerializer
   }
 }
 
-class _$GOnePokemonDataData_pokemon_evolutions_fromSerializer
+class _$GOnePokemonDataData_pokemon_evolutionTo_pokemonSerializer
     implements
-        StructuredSerializer<GOnePokemonDataData_pokemon_evolutions_from> {
+        StructuredSerializer<GOnePokemonDataData_pokemon_evolutionTo_pokemon> {
   @override
   final Iterable<Type> types = const [
-    GOnePokemonDataData_pokemon_evolutions_from,
-    _$GOnePokemonDataData_pokemon_evolutions_from
+    GOnePokemonDataData_pokemon_evolutionTo_pokemon,
+    _$GOnePokemonDataData_pokemon_evolutionTo_pokemon
   ];
   @override
-  final String wireName = 'GOnePokemonDataData_pokemon_evolutions_from';
+  final String wireName = 'GOnePokemonDataData_pokemon_evolutionTo_pokemon';
 
   @override
   Iterable<Object?> serialize(Serializers serializers,
-      GOnePokemonDataData_pokemon_evolutions_from object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(object.G__typename,
-          specifiedType: const FullType(String)),
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'imageLargeUrl',
-      serializers.serialize(object.imageLargeUrl,
-          specifiedType: const FullType(String)),
-    ];
-
-    return result;
-  }
-
-  @override
-  GOnePokemonDataData_pokemon_evolutions_from deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = new GOnePokemonDataData_pokemon_evolutions_fromBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'imageLargeUrl':
-          result.imageLargeUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GOnePokemonDataData_pokemon_evolutions_toSerializer
-    implements StructuredSerializer<GOnePokemonDataData_pokemon_evolutions_to> {
-  @override
-  final Iterable<Type> types = const [
-    GOnePokemonDataData_pokemon_evolutions_to,
-    _$GOnePokemonDataData_pokemon_evolutions_to
-  ];
-  @override
-  final String wireName = 'GOnePokemonDataData_pokemon_evolutions_to';
-
-  @override
-  Iterable<Object?> serialize(
-      Serializers serializers, GOnePokemonDataData_pokemon_evolutions_to object,
+      GOnePokemonDataData_pokemon_evolutionTo_pokemon object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -396,21 +330,16 @@ class _$GOnePokemonDataData_pokemon_evolutions_toSerializer
       'imageUrl',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
-      'types',
-      serializers.serialize(object.types,
-          specifiedType: const FullType(BuiltList, const [
-            const FullType(GOnePokemonDataData_pokemon_evolutions_to_types)
-          ])),
     ];
 
     return result;
   }
 
   @override
-  GOnePokemonDataData_pokemon_evolutions_to deserialize(
+  GOnePokemonDataData_pokemon_evolutionTo_pokemon deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GOnePokemonDataData_pokemon_evolutions_toBuilder();
+    final result = new GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -434,12 +363,6 @@ class _$GOnePokemonDataData_pokemon_evolutions_toSerializer
           result.imageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'types':
-          result.types.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltList, const [
-                const FullType(GOnePokemonDataData_pokemon_evolutions_to_types)
-              ]))! as BuiltList<Object?>);
-          break;
       }
     }
 
@@ -447,38 +370,38 @@ class _$GOnePokemonDataData_pokemon_evolutions_toSerializer
   }
 }
 
-class _$GOnePokemonDataData_pokemon_evolutions_to_typesSerializer
-    implements
-        StructuredSerializer<GOnePokemonDataData_pokemon_evolutions_to_types> {
+class _$GOnePokemonDataData_pokemon_evolutionFromSerializer
+    implements StructuredSerializer<GOnePokemonDataData_pokemon_evolutionFrom> {
   @override
   final Iterable<Type> types = const [
-    GOnePokemonDataData_pokemon_evolutions_to_types,
-    _$GOnePokemonDataData_pokemon_evolutions_to_types
+    GOnePokemonDataData_pokemon_evolutionFrom,
+    _$GOnePokemonDataData_pokemon_evolutionFrom
   ];
   @override
-  final String wireName = 'GOnePokemonDataData_pokemon_evolutions_to_types';
+  final String wireName = 'GOnePokemonDataData_pokemon_evolutionFrom';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers,
-      GOnePokemonDataData_pokemon_evolutions_to_types object,
+  Iterable<Object?> serialize(
+      Serializers serializers, GOnePokemonDataData_pokemon_evolutionFrom object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'textImageUrl',
-      serializers.serialize(object.textImageUrl,
-          specifiedType: const FullType(String)),
+      'pokemon',
+      serializers.serialize(object.pokemon,
+          specifiedType: const FullType(
+              GOnePokemonDataData_pokemon_evolutionFrom_pokemon)),
     ];
 
     return result;
   }
 
   @override
-  GOnePokemonDataData_pokemon_evolutions_to_types deserialize(
+  GOnePokemonDataData_pokemon_evolutionFrom deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GOnePokemonDataData_pokemon_evolutions_to_typesBuilder();
+    final result = new GOnePokemonDataData_pokemon_evolutionFromBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -490,8 +413,78 @@ class _$GOnePokemonDataData_pokemon_evolutions_to_typesSerializer
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'textImageUrl':
-          result.textImageUrl = serializers.deserialize(value,
+        case 'pokemon':
+          result.pokemon.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      GOnePokemonDataData_pokemon_evolutionFrom_pokemon))!
+              as GOnePokemonDataData_pokemon_evolutionFrom_pokemon);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GOnePokemonDataData_pokemon_evolutionFrom_pokemonSerializer
+    implements
+        StructuredSerializer<
+            GOnePokemonDataData_pokemon_evolutionFrom_pokemon> {
+  @override
+  final Iterable<Type> types = const [
+    GOnePokemonDataData_pokemon_evolutionFrom_pokemon,
+    _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon
+  ];
+  @override
+  final String wireName = 'GOnePokemonDataData_pokemon_evolutionFrom_pokemon';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GOnePokemonDataData_pokemon_evolutionFrom_pokemon object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'imageUrl',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GOnePokemonDataData_pokemon_evolutionFrom_pokemon deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        new GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -771,8 +764,8 @@ class _$GOnePokemonDataData_pokemon_typesSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'imageUrl',
-      serializers.serialize(object.imageUrl,
+      'textImageUrl',
+      serializers.serialize(object.textImageUrl,
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
@@ -797,8 +790,8 @@ class _$GOnePokemonDataData_pokemon_typesSerializer
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'imageUrl':
-          result.imageUrl = serializers.deserialize(value,
+        case 'textImageUrl':
+          result.textImageUrl = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'name':
@@ -933,7 +926,9 @@ class _$GOnePokemonDataData_pokemon extends GOnePokemonDataData_pokemon {
   @override
   final String G__typename;
   @override
-  final BuiltList<GOnePokemonDataData_pokemon_evolutions> evolutions;
+  final BuiltList<GOnePokemonDataData_pokemon_evolutionTo> evolutionTo;
+  @override
+  final BuiltList<GOnePokemonDataData_pokemon_evolutionFrom> evolutionFrom;
   @override
   final BuiltList<GOnePokemonDataData_pokemon_abilities> abilities;
   @override
@@ -965,7 +960,8 @@ class _$GOnePokemonDataData_pokemon extends GOnePokemonDataData_pokemon {
 
   _$GOnePokemonDataData_pokemon._(
       {required this.G__typename,
-      required this.evolutions,
+      required this.evolutionTo,
+      required this.evolutionFrom,
       required this.abilities,
       required this.moves,
       required this.types,
@@ -982,7 +978,9 @@ class _$GOnePokemonDataData_pokemon extends GOnePokemonDataData_pokemon {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GOnePokemonDataData_pokemon', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        evolutions, r'GOnePokemonDataData_pokemon', 'evolutions');
+        evolutionTo, r'GOnePokemonDataData_pokemon', 'evolutionTo');
+    BuiltValueNullFieldError.checkNotNull(
+        evolutionFrom, r'GOnePokemonDataData_pokemon', 'evolutionFrom');
     BuiltValueNullFieldError.checkNotNull(
         abilities, r'GOnePokemonDataData_pokemon', 'abilities');
     BuiltValueNullFieldError.checkNotNull(
@@ -1023,7 +1021,8 @@ class _$GOnePokemonDataData_pokemon extends GOnePokemonDataData_pokemon {
     if (identical(other, this)) return true;
     return other is GOnePokemonDataData_pokemon &&
         G__typename == other.G__typename &&
-        evolutions == other.evolutions &&
+        evolutionTo == other.evolutionTo &&
+        evolutionFrom == other.evolutionFrom &&
         abilities == other.abilities &&
         moves == other.moves &&
         types == other.types &&
@@ -1042,7 +1041,8 @@ class _$GOnePokemonDataData_pokemon extends GOnePokemonDataData_pokemon {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, evolutions.hashCode);
+    _$hash = $jc(_$hash, evolutionTo.hashCode);
+    _$hash = $jc(_$hash, evolutionFrom.hashCode);
     _$hash = $jc(_$hash, abilities.hashCode);
     _$hash = $jc(_$hash, moves.hashCode);
     _$hash = $jc(_$hash, types.hashCode);
@@ -1063,7 +1063,8 @@ class _$GOnePokemonDataData_pokemon extends GOnePokemonDataData_pokemon {
   String toString() {
     return (newBuiltValueToStringHelper(r'GOnePokemonDataData_pokemon')
           ..add('G__typename', G__typename)
-          ..add('evolutions', evolutions)
+          ..add('evolutionTo', evolutionTo)
+          ..add('evolutionFrom', evolutionFrom)
           ..add('abilities', abilities)
           ..add('moves', moves)
           ..add('types', types)
@@ -1090,13 +1091,22 @@ class GOnePokemonDataData_pokemonBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  ListBuilder<GOnePokemonDataData_pokemon_evolutions>? _evolutions;
-  ListBuilder<GOnePokemonDataData_pokemon_evolutions> get evolutions =>
-      _$this._evolutions ??=
-          new ListBuilder<GOnePokemonDataData_pokemon_evolutions>();
-  set evolutions(
-          ListBuilder<GOnePokemonDataData_pokemon_evolutions>? evolutions) =>
-      _$this._evolutions = evolutions;
+  ListBuilder<GOnePokemonDataData_pokemon_evolutionTo>? _evolutionTo;
+  ListBuilder<GOnePokemonDataData_pokemon_evolutionTo> get evolutionTo =>
+      _$this._evolutionTo ??=
+          new ListBuilder<GOnePokemonDataData_pokemon_evolutionTo>();
+  set evolutionTo(
+          ListBuilder<GOnePokemonDataData_pokemon_evolutionTo>? evolutionTo) =>
+      _$this._evolutionTo = evolutionTo;
+
+  ListBuilder<GOnePokemonDataData_pokemon_evolutionFrom>? _evolutionFrom;
+  ListBuilder<GOnePokemonDataData_pokemon_evolutionFrom> get evolutionFrom =>
+      _$this._evolutionFrom ??=
+          new ListBuilder<GOnePokemonDataData_pokemon_evolutionFrom>();
+  set evolutionFrom(
+          ListBuilder<GOnePokemonDataData_pokemon_evolutionFrom>?
+              evolutionFrom) =>
+      _$this._evolutionFrom = evolutionFrom;
 
   ListBuilder<GOnePokemonDataData_pokemon_abilities>? _abilities;
   ListBuilder<GOnePokemonDataData_pokemon_abilities> get abilities =>
@@ -1163,7 +1173,8 @@ class GOnePokemonDataData_pokemonBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _evolutions = $v.evolutions.toBuilder();
+      _evolutionTo = $v.evolutionTo.toBuilder();
+      _evolutionFrom = $v.evolutionFrom.toBuilder();
       _abilities = $v.abilities.toBuilder();
       _moves = $v.moves.toBuilder();
       _types = $v.types.toBuilder();
@@ -1202,7 +1213,8 @@ class GOnePokemonDataData_pokemonBuilder
           new _$GOnePokemonDataData_pokemon._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, r'GOnePokemonDataData_pokemon', 'G__typename'),
-              evolutions: evolutions.build(),
+              evolutionTo: evolutionTo.build(),
+              evolutionFrom: evolutionFrom.build(),
               abilities: abilities.build(),
               moves: moves.build(),
               types: types.build(),
@@ -1225,8 +1237,10 @@ class GOnePokemonDataData_pokemonBuilder
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'evolutions';
-        evolutions.build();
+        _$failedField = 'evolutionTo';
+        evolutionTo.build();
+        _$failedField = 'evolutionFrom';
+        evolutionFrom.build();
         _$failedField = 'abilities';
         abilities.build();
         _$failedField = 'moves';
@@ -1244,57 +1258,51 @@ class GOnePokemonDataData_pokemonBuilder
   }
 }
 
-class _$GOnePokemonDataData_pokemon_evolutions
-    extends GOnePokemonDataData_pokemon_evolutions {
+class _$GOnePokemonDataData_pokemon_evolutionTo
+    extends GOnePokemonDataData_pokemon_evolutionTo {
   @override
   final String G__typename;
   @override
-  final BuiltList<GOnePokemonDataData_pokemon_evolutions_from> from;
-  @override
-  final BuiltList<GOnePokemonDataData_pokemon_evolutions_to> to;
+  final GOnePokemonDataData_pokemon_evolutionTo_pokemon pokemon;
 
-  factory _$GOnePokemonDataData_pokemon_evolutions(
-          [void Function(GOnePokemonDataData_pokemon_evolutionsBuilder)?
+  factory _$GOnePokemonDataData_pokemon_evolutionTo(
+          [void Function(GOnePokemonDataData_pokemon_evolutionToBuilder)?
               updates]) =>
-      (new GOnePokemonDataData_pokemon_evolutionsBuilder()..update(updates))
+      (new GOnePokemonDataData_pokemon_evolutionToBuilder()..update(updates))
           ._build();
 
-  _$GOnePokemonDataData_pokemon_evolutions._(
-      {required this.G__typename, required this.from, required this.to})
+  _$GOnePokemonDataData_pokemon_evolutionTo._(
+      {required this.G__typename, required this.pokemon})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GOnePokemonDataData_pokemon_evolutions', 'G__typename');
+        G__typename, r'GOnePokemonDataData_pokemon_evolutionTo', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        from, r'GOnePokemonDataData_pokemon_evolutions', 'from');
-    BuiltValueNullFieldError.checkNotNull(
-        to, r'GOnePokemonDataData_pokemon_evolutions', 'to');
+        pokemon, r'GOnePokemonDataData_pokemon_evolutionTo', 'pokemon');
   }
 
   @override
-  GOnePokemonDataData_pokemon_evolutions rebuild(
-          void Function(GOnePokemonDataData_pokemon_evolutionsBuilder)
+  GOnePokemonDataData_pokemon_evolutionTo rebuild(
+          void Function(GOnePokemonDataData_pokemon_evolutionToBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GOnePokemonDataData_pokemon_evolutionsBuilder toBuilder() =>
-      new GOnePokemonDataData_pokemon_evolutionsBuilder()..replace(this);
+  GOnePokemonDataData_pokemon_evolutionToBuilder toBuilder() =>
+      new GOnePokemonDataData_pokemon_evolutionToBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GOnePokemonDataData_pokemon_evolutions &&
+    return other is GOnePokemonDataData_pokemon_evolutionTo &&
         G__typename == other.G__typename &&
-        from == other.from &&
-        to == other.to;
+        pokemon == other.pokemon;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, from.hashCode);
-    _$hash = $jc(_$hash, to.hashCode);
+    _$hash = $jc(_$hash, pokemon.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1302,87 +1310,76 @@ class _$GOnePokemonDataData_pokemon_evolutions
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GOnePokemonDataData_pokemon_evolutions')
+            r'GOnePokemonDataData_pokemon_evolutionTo')
           ..add('G__typename', G__typename)
-          ..add('from', from)
-          ..add('to', to))
+          ..add('pokemon', pokemon))
         .toString();
   }
 }
 
-class GOnePokemonDataData_pokemon_evolutionsBuilder
+class GOnePokemonDataData_pokemon_evolutionToBuilder
     implements
-        Builder<GOnePokemonDataData_pokemon_evolutions,
-            GOnePokemonDataData_pokemon_evolutionsBuilder> {
-  _$GOnePokemonDataData_pokemon_evolutions? _$v;
+        Builder<GOnePokemonDataData_pokemon_evolutionTo,
+            GOnePokemonDataData_pokemon_evolutionToBuilder> {
+  _$GOnePokemonDataData_pokemon_evolutionTo? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  ListBuilder<GOnePokemonDataData_pokemon_evolutions_from>? _from;
-  ListBuilder<GOnePokemonDataData_pokemon_evolutions_from> get from =>
-      _$this._from ??=
-          new ListBuilder<GOnePokemonDataData_pokemon_evolutions_from>();
-  set from(ListBuilder<GOnePokemonDataData_pokemon_evolutions_from>? from) =>
-      _$this._from = from;
+  GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder? _pokemon;
+  GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder get pokemon =>
+      _$this._pokemon ??=
+          new GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder();
+  set pokemon(
+          GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder? pokemon) =>
+      _$this._pokemon = pokemon;
 
-  ListBuilder<GOnePokemonDataData_pokemon_evolutions_to>? _to;
-  ListBuilder<GOnePokemonDataData_pokemon_evolutions_to> get to =>
-      _$this._to ??=
-          new ListBuilder<GOnePokemonDataData_pokemon_evolutions_to>();
-  set to(ListBuilder<GOnePokemonDataData_pokemon_evolutions_to>? to) =>
-      _$this._to = to;
-
-  GOnePokemonDataData_pokemon_evolutionsBuilder() {
-    GOnePokemonDataData_pokemon_evolutions._initializeBuilder(this);
+  GOnePokemonDataData_pokemon_evolutionToBuilder() {
+    GOnePokemonDataData_pokemon_evolutionTo._initializeBuilder(this);
   }
 
-  GOnePokemonDataData_pokemon_evolutionsBuilder get _$this {
+  GOnePokemonDataData_pokemon_evolutionToBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _from = $v.from.toBuilder();
-      _to = $v.to.toBuilder();
+      _pokemon = $v.pokemon.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(GOnePokemonDataData_pokemon_evolutions other) {
+  void replace(GOnePokemonDataData_pokemon_evolutionTo other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GOnePokemonDataData_pokemon_evolutions;
+    _$v = other as _$GOnePokemonDataData_pokemon_evolutionTo;
   }
 
   @override
   void update(
-      void Function(GOnePokemonDataData_pokemon_evolutionsBuilder)? updates) {
+      void Function(GOnePokemonDataData_pokemon_evolutionToBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GOnePokemonDataData_pokemon_evolutions build() => _build();
+  GOnePokemonDataData_pokemon_evolutionTo build() => _build();
 
-  _$GOnePokemonDataData_pokemon_evolutions _build() {
-    _$GOnePokemonDataData_pokemon_evolutions _$result;
+  _$GOnePokemonDataData_pokemon_evolutionTo _build() {
+    _$GOnePokemonDataData_pokemon_evolutionTo _$result;
     try {
       _$result = _$v ??
-          new _$GOnePokemonDataData_pokemon_evolutions._(
+          new _$GOnePokemonDataData_pokemon_evolutionTo._(
               G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GOnePokemonDataData_pokemon_evolutions', 'G__typename'),
-              from: from.build(),
-              to: to.build());
+                  r'GOnePokemonDataData_pokemon_evolutionTo', 'G__typename'),
+              pokemon: pokemon.build());
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'from';
-        from.build();
-        _$failedField = 'to';
-        to.build();
+        _$failedField = 'pokemon';
+        pokemon.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GOnePokemonDataData_pokemon_evolutions',
+            r'GOnePokemonDataData_pokemon_evolutionTo',
             _$failedField,
             e.toString());
       }
@@ -1393,158 +1390,8 @@ class GOnePokemonDataData_pokemon_evolutionsBuilder
   }
 }
 
-class _$GOnePokemonDataData_pokemon_evolutions_from
-    extends GOnePokemonDataData_pokemon_evolutions_from {
-  @override
-  final String G__typename;
-  @override
-  final String id;
-  @override
-  final String name;
-  @override
-  final String imageLargeUrl;
-
-  factory _$GOnePokemonDataData_pokemon_evolutions_from(
-          [void Function(GOnePokemonDataData_pokemon_evolutions_fromBuilder)?
-              updates]) =>
-      (new GOnePokemonDataData_pokemon_evolutions_fromBuilder()
-            ..update(updates))
-          ._build();
-
-  _$GOnePokemonDataData_pokemon_evolutions_from._(
-      {required this.G__typename,
-      required this.id,
-      required this.name,
-      required this.imageLargeUrl})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(G__typename,
-        r'GOnePokemonDataData_pokemon_evolutions_from', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GOnePokemonDataData_pokemon_evolutions_from', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GOnePokemonDataData_pokemon_evolutions_from', 'name');
-    BuiltValueNullFieldError.checkNotNull(imageLargeUrl,
-        r'GOnePokemonDataData_pokemon_evolutions_from', 'imageLargeUrl');
-  }
-
-  @override
-  GOnePokemonDataData_pokemon_evolutions_from rebuild(
-          void Function(GOnePokemonDataData_pokemon_evolutions_fromBuilder)
-              updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  GOnePokemonDataData_pokemon_evolutions_fromBuilder toBuilder() =>
-      new GOnePokemonDataData_pokemon_evolutions_fromBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GOnePokemonDataData_pokemon_evolutions_from &&
-        G__typename == other.G__typename &&
-        id == other.id &&
-        name == other.name &&
-        imageLargeUrl == other.imageLargeUrl;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, imageLargeUrl.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(
-            r'GOnePokemonDataData_pokemon_evolutions_from')
-          ..add('G__typename', G__typename)
-          ..add('id', id)
-          ..add('name', name)
-          ..add('imageLargeUrl', imageLargeUrl))
-        .toString();
-  }
-}
-
-class GOnePokemonDataData_pokemon_evolutions_fromBuilder
-    implements
-        Builder<GOnePokemonDataData_pokemon_evolutions_from,
-            GOnePokemonDataData_pokemon_evolutions_fromBuilder> {
-  _$GOnePokemonDataData_pokemon_evolutions_from? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
-
-  String? _imageLargeUrl;
-  String? get imageLargeUrl => _$this._imageLargeUrl;
-  set imageLargeUrl(String? imageLargeUrl) =>
-      _$this._imageLargeUrl = imageLargeUrl;
-
-  GOnePokemonDataData_pokemon_evolutions_fromBuilder() {
-    GOnePokemonDataData_pokemon_evolutions_from._initializeBuilder(this);
-  }
-
-  GOnePokemonDataData_pokemon_evolutions_fromBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _id = $v.id;
-      _name = $v.name;
-      _imageLargeUrl = $v.imageLargeUrl;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GOnePokemonDataData_pokemon_evolutions_from other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GOnePokemonDataData_pokemon_evolutions_from;
-  }
-
-  @override
-  void update(
-      void Function(GOnePokemonDataData_pokemon_evolutions_fromBuilder)?
-          updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GOnePokemonDataData_pokemon_evolutions_from build() => _build();
-
-  _$GOnePokemonDataData_pokemon_evolutions_from _build() {
-    final _$result = _$v ??
-        new _$GOnePokemonDataData_pokemon_evolutions_from._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GOnePokemonDataData_pokemon_evolutions_from', 'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GOnePokemonDataData_pokemon_evolutions_from', 'id'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'GOnePokemonDataData_pokemon_evolutions_from', 'name'),
-            imageLargeUrl: BuiltValueNullFieldError.checkNotNull(
-                imageLargeUrl,
-                r'GOnePokemonDataData_pokemon_evolutions_from',
-                'imageLargeUrl'));
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GOnePokemonDataData_pokemon_evolutions_to
-    extends GOnePokemonDataData_pokemon_evolutions_to {
+class _$GOnePokemonDataData_pokemon_evolutionTo_pokemon
+    extends GOnePokemonDataData_pokemon_evolutionTo_pokemon {
   @override
   final String G__typename;
   @override
@@ -1553,53 +1400,50 @@ class _$GOnePokemonDataData_pokemon_evolutions_to
   final String name;
   @override
   final String imageUrl;
-  @override
-  final BuiltList<GOnePokemonDataData_pokemon_evolutions_to_types> types;
 
-  factory _$GOnePokemonDataData_pokemon_evolutions_to(
-          [void Function(GOnePokemonDataData_pokemon_evolutions_toBuilder)?
+  factory _$GOnePokemonDataData_pokemon_evolutionTo_pokemon(
+          [void Function(
+                  GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder)?
               updates]) =>
-      (new GOnePokemonDataData_pokemon_evolutions_toBuilder()..update(updates))
+      (new GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder()
+            ..update(updates))
           ._build();
 
-  _$GOnePokemonDataData_pokemon_evolutions_to._(
+  _$GOnePokemonDataData_pokemon_evolutionTo_pokemon._(
       {required this.G__typename,
       required this.id,
       required this.name,
-      required this.imageUrl,
-      required this.types})
+      required this.imageUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
-        r'GOnePokemonDataData_pokemon_evolutions_to', 'G__typename');
+        r'GOnePokemonDataData_pokemon_evolutionTo_pokemon', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        id, r'GOnePokemonDataData_pokemon_evolutions_to', 'id');
+        id, r'GOnePokemonDataData_pokemon_evolutionTo_pokemon', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        name, r'GOnePokemonDataData_pokemon_evolutions_to', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        imageUrl, r'GOnePokemonDataData_pokemon_evolutions_to', 'imageUrl');
-    BuiltValueNullFieldError.checkNotNull(
-        types, r'GOnePokemonDataData_pokemon_evolutions_to', 'types');
+        name, r'GOnePokemonDataData_pokemon_evolutionTo_pokemon', 'name');
+    BuiltValueNullFieldError.checkNotNull(imageUrl,
+        r'GOnePokemonDataData_pokemon_evolutionTo_pokemon', 'imageUrl');
   }
 
   @override
-  GOnePokemonDataData_pokemon_evolutions_to rebuild(
-          void Function(GOnePokemonDataData_pokemon_evolutions_toBuilder)
+  GOnePokemonDataData_pokemon_evolutionTo_pokemon rebuild(
+          void Function(GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GOnePokemonDataData_pokemon_evolutions_toBuilder toBuilder() =>
-      new GOnePokemonDataData_pokemon_evolutions_toBuilder()..replace(this);
+  GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder toBuilder() =>
+      new GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder()
+        ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GOnePokemonDataData_pokemon_evolutions_to &&
+    return other is GOnePokemonDataData_pokemon_evolutionTo_pokemon &&
         G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
-        imageUrl == other.imageUrl &&
-        types == other.types;
+        imageUrl == other.imageUrl;
   }
 
   @override
@@ -1609,7 +1453,6 @@ class _$GOnePokemonDataData_pokemon_evolutions_to
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
-    _$hash = $jc(_$hash, types.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1617,21 +1460,20 @@ class _$GOnePokemonDataData_pokemon_evolutions_to
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GOnePokemonDataData_pokemon_evolutions_to')
+            r'GOnePokemonDataData_pokemon_evolutionTo_pokemon')
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
-          ..add('imageUrl', imageUrl)
-          ..add('types', types))
+          ..add('imageUrl', imageUrl))
         .toString();
   }
 }
 
-class GOnePokemonDataData_pokemon_evolutions_toBuilder
+class GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder
     implements
-        Builder<GOnePokemonDataData_pokemon_evolutions_to,
-            GOnePokemonDataData_pokemon_evolutions_toBuilder> {
-  _$GOnePokemonDataData_pokemon_evolutions_to? _$v;
+        Builder<GOnePokemonDataData_pokemon_evolutionTo_pokemon,
+            GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder> {
+  _$GOnePokemonDataData_pokemon_evolutionTo_pokemon? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -1649,70 +1491,181 @@ class GOnePokemonDataData_pokemon_evolutions_toBuilder
   String? get imageUrl => _$this._imageUrl;
   set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
 
-  ListBuilder<GOnePokemonDataData_pokemon_evolutions_to_types>? _types;
-  ListBuilder<GOnePokemonDataData_pokemon_evolutions_to_types> get types =>
-      _$this._types ??=
-          new ListBuilder<GOnePokemonDataData_pokemon_evolutions_to_types>();
-  set types(
-          ListBuilder<GOnePokemonDataData_pokemon_evolutions_to_types>?
-              types) =>
-      _$this._types = types;
-
-  GOnePokemonDataData_pokemon_evolutions_toBuilder() {
-    GOnePokemonDataData_pokemon_evolutions_to._initializeBuilder(this);
+  GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder() {
+    GOnePokemonDataData_pokemon_evolutionTo_pokemon._initializeBuilder(this);
   }
 
-  GOnePokemonDataData_pokemon_evolutions_toBuilder get _$this {
+  GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
       _id = $v.id;
       _name = $v.name;
       _imageUrl = $v.imageUrl;
-      _types = $v.types.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(GOnePokemonDataData_pokemon_evolutions_to other) {
+  void replace(GOnePokemonDataData_pokemon_evolutionTo_pokemon other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GOnePokemonDataData_pokemon_evolutions_to;
+    _$v = other as _$GOnePokemonDataData_pokemon_evolutionTo_pokemon;
   }
 
   @override
   void update(
-      void Function(GOnePokemonDataData_pokemon_evolutions_toBuilder)?
+      void Function(GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder)?
           updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GOnePokemonDataData_pokemon_evolutions_to build() => _build();
+  GOnePokemonDataData_pokemon_evolutionTo_pokemon build() => _build();
 
-  _$GOnePokemonDataData_pokemon_evolutions_to _build() {
-    _$GOnePokemonDataData_pokemon_evolutions_to _$result;
+  _$GOnePokemonDataData_pokemon_evolutionTo_pokemon _build() {
+    final _$result = _$v ??
+        new _$GOnePokemonDataData_pokemon_evolutionTo_pokemon._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GOnePokemonDataData_pokemon_evolutionTo_pokemon',
+                'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GOnePokemonDataData_pokemon_evolutionTo_pokemon', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(name,
+                r'GOnePokemonDataData_pokemon_evolutionTo_pokemon', 'name'),
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl,
+                r'GOnePokemonDataData_pokemon_evolutionTo_pokemon',
+                'imageUrl'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GOnePokemonDataData_pokemon_evolutionFrom
+    extends GOnePokemonDataData_pokemon_evolutionFrom {
+  @override
+  final String G__typename;
+  @override
+  final GOnePokemonDataData_pokemon_evolutionFrom_pokemon pokemon;
+
+  factory _$GOnePokemonDataData_pokemon_evolutionFrom(
+          [void Function(GOnePokemonDataData_pokemon_evolutionFromBuilder)?
+              updates]) =>
+      (new GOnePokemonDataData_pokemon_evolutionFromBuilder()..update(updates))
+          ._build();
+
+  _$GOnePokemonDataData_pokemon_evolutionFrom._(
+      {required this.G__typename, required this.pokemon})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GOnePokemonDataData_pokemon_evolutionFrom', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        pokemon, r'GOnePokemonDataData_pokemon_evolutionFrom', 'pokemon');
+  }
+
+  @override
+  GOnePokemonDataData_pokemon_evolutionFrom rebuild(
+          void Function(GOnePokemonDataData_pokemon_evolutionFromBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GOnePokemonDataData_pokemon_evolutionFromBuilder toBuilder() =>
+      new GOnePokemonDataData_pokemon_evolutionFromBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GOnePokemonDataData_pokemon_evolutionFrom &&
+        G__typename == other.G__typename &&
+        pokemon == other.pokemon;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, pokemon.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GOnePokemonDataData_pokemon_evolutionFrom')
+          ..add('G__typename', G__typename)
+          ..add('pokemon', pokemon))
+        .toString();
+  }
+}
+
+class GOnePokemonDataData_pokemon_evolutionFromBuilder
+    implements
+        Builder<GOnePokemonDataData_pokemon_evolutionFrom,
+            GOnePokemonDataData_pokemon_evolutionFromBuilder> {
+  _$GOnePokemonDataData_pokemon_evolutionFrom? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder? _pokemon;
+  GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder get pokemon =>
+      _$this._pokemon ??=
+          new GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder();
+  set pokemon(
+          GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder? pokemon) =>
+      _$this._pokemon = pokemon;
+
+  GOnePokemonDataData_pokemon_evolutionFromBuilder() {
+    GOnePokemonDataData_pokemon_evolutionFrom._initializeBuilder(this);
+  }
+
+  GOnePokemonDataData_pokemon_evolutionFromBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _pokemon = $v.pokemon.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GOnePokemonDataData_pokemon_evolutionFrom other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GOnePokemonDataData_pokemon_evolutionFrom;
+  }
+
+  @override
+  void update(
+      void Function(GOnePokemonDataData_pokemon_evolutionFromBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GOnePokemonDataData_pokemon_evolutionFrom build() => _build();
+
+  _$GOnePokemonDataData_pokemon_evolutionFrom _build() {
+    _$GOnePokemonDataData_pokemon_evolutionFrom _$result;
     try {
       _$result = _$v ??
-          new _$GOnePokemonDataData_pokemon_evolutions_to._(
+          new _$GOnePokemonDataData_pokemon_evolutionFrom._(
               G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                  r'GOnePokemonDataData_pokemon_evolutions_to', 'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GOnePokemonDataData_pokemon_evolutions_to', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'GOnePokemonDataData_pokemon_evolutions_to', 'name'),
-              imageUrl: BuiltValueNullFieldError.checkNotNull(imageUrl,
-                  r'GOnePokemonDataData_pokemon_evolutions_to', 'imageUrl'),
-              types: types.build());
+                  r'GOnePokemonDataData_pokemon_evolutionFrom', 'G__typename'),
+              pokemon: pokemon.build());
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'types';
-        types.build();
+        _$failedField = 'pokemon';
+        pokemon.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GOnePokemonDataData_pokemon_evolutions_to',
+            r'GOnePokemonDataData_pokemon_evolutionFrom',
             _$failedField,
             e.toString());
       }
@@ -1723,54 +1676,70 @@ class GOnePokemonDataData_pokemon_evolutions_toBuilder
   }
 }
 
-class _$GOnePokemonDataData_pokemon_evolutions_to_types
-    extends GOnePokemonDataData_pokemon_evolutions_to_types {
+class _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon
+    extends GOnePokemonDataData_pokemon_evolutionFrom_pokemon {
   @override
   final String G__typename;
   @override
-  final String textImageUrl;
+  final String id;
+  @override
+  final String name;
+  @override
+  final String imageUrl;
 
-  factory _$GOnePokemonDataData_pokemon_evolutions_to_types(
+  factory _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon(
           [void Function(
-                  GOnePokemonDataData_pokemon_evolutions_to_typesBuilder)?
+                  GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder)?
               updates]) =>
-      (new GOnePokemonDataData_pokemon_evolutions_to_typesBuilder()
+      (new GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder()
             ..update(updates))
           ._build();
 
-  _$GOnePokemonDataData_pokemon_evolutions_to_types._(
-      {required this.G__typename, required this.textImageUrl})
+  _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon._(
+      {required this.G__typename,
+      required this.id,
+      required this.name,
+      required this.imageUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
-        r'GOnePokemonDataData_pokemon_evolutions_to_types', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(textImageUrl,
-        r'GOnePokemonDataData_pokemon_evolutions_to_types', 'textImageUrl');
+        r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon', 'name');
+    BuiltValueNullFieldError.checkNotNull(imageUrl,
+        r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon', 'imageUrl');
   }
 
   @override
-  GOnePokemonDataData_pokemon_evolutions_to_types rebuild(
-          void Function(GOnePokemonDataData_pokemon_evolutions_to_typesBuilder)
+  GOnePokemonDataData_pokemon_evolutionFrom_pokemon rebuild(
+          void Function(
+                  GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GOnePokemonDataData_pokemon_evolutions_to_typesBuilder toBuilder() =>
-      new GOnePokemonDataData_pokemon_evolutions_to_typesBuilder()
+  GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder toBuilder() =>
+      new GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder()
         ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GOnePokemonDataData_pokemon_evolutions_to_types &&
+    return other is GOnePokemonDataData_pokemon_evolutionFrom_pokemon &&
         G__typename == other.G__typename &&
-        textImageUrl == other.textImageUrl;
+        id == other.id &&
+        name == other.name &&
+        imageUrl == other.imageUrl;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, textImageUrl.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1778,68 +1747,84 @@ class _$GOnePokemonDataData_pokemon_evolutions_to_types
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GOnePokemonDataData_pokemon_evolutions_to_types')
+            r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon')
           ..add('G__typename', G__typename)
-          ..add('textImageUrl', textImageUrl))
+          ..add('id', id)
+          ..add('name', name)
+          ..add('imageUrl', imageUrl))
         .toString();
   }
 }
 
-class GOnePokemonDataData_pokemon_evolutions_to_typesBuilder
+class GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder
     implements
-        Builder<GOnePokemonDataData_pokemon_evolutions_to_types,
-            GOnePokemonDataData_pokemon_evolutions_to_typesBuilder> {
-  _$GOnePokemonDataData_pokemon_evolutions_to_types? _$v;
+        Builder<GOnePokemonDataData_pokemon_evolutionFrom_pokemon,
+            GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder> {
+  _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String? _textImageUrl;
-  String? get textImageUrl => _$this._textImageUrl;
-  set textImageUrl(String? textImageUrl) => _$this._textImageUrl = textImageUrl;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  GOnePokemonDataData_pokemon_evolutions_to_typesBuilder() {
-    GOnePokemonDataData_pokemon_evolutions_to_types._initializeBuilder(this);
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
+  GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder() {
+    GOnePokemonDataData_pokemon_evolutionFrom_pokemon._initializeBuilder(this);
   }
 
-  GOnePokemonDataData_pokemon_evolutions_to_typesBuilder get _$this {
+  GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _textImageUrl = $v.textImageUrl;
+      _id = $v.id;
+      _name = $v.name;
+      _imageUrl = $v.imageUrl;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(GOnePokemonDataData_pokemon_evolutions_to_types other) {
+  void replace(GOnePokemonDataData_pokemon_evolutionFrom_pokemon other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GOnePokemonDataData_pokemon_evolutions_to_types;
+    _$v = other as _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon;
   }
 
   @override
   void update(
-      void Function(GOnePokemonDataData_pokemon_evolutions_to_typesBuilder)?
+      void Function(GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder)?
           updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GOnePokemonDataData_pokemon_evolutions_to_types build() => _build();
+  GOnePokemonDataData_pokemon_evolutionFrom_pokemon build() => _build();
 
-  _$GOnePokemonDataData_pokemon_evolutions_to_types _build() {
+  _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon _build() {
     final _$result = _$v ??
-        new _$GOnePokemonDataData_pokemon_evolutions_to_types._(
+        new _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
-                r'GOnePokemonDataData_pokemon_evolutions_to_types',
+                r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon',
                 'G__typename'),
-            textImageUrl: BuiltValueNullFieldError.checkNotNull(
-                textImageUrl,
-                r'GOnePokemonDataData_pokemon_evolutions_to_types',
-                'textImageUrl'));
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(name,
+                r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon', 'name'),
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl,
+                r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon',
+                'imageUrl'));
     replace(_$result);
     return _$result;
   }
@@ -2380,7 +2365,7 @@ class _$GOnePokemonDataData_pokemon_types
   @override
   final String G__typename;
   @override
-  final String imageUrl;
+  final String textImageUrl;
   @override
   final String name;
 
@@ -2390,12 +2375,14 @@ class _$GOnePokemonDataData_pokemon_types
           ._build();
 
   _$GOnePokemonDataData_pokemon_types._(
-      {required this.G__typename, required this.imageUrl, required this.name})
+      {required this.G__typename,
+      required this.textImageUrl,
+      required this.name})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GOnePokemonDataData_pokemon_types', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        imageUrl, r'GOnePokemonDataData_pokemon_types', 'imageUrl');
+        textImageUrl, r'GOnePokemonDataData_pokemon_types', 'textImageUrl');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GOnePokemonDataData_pokemon_types', 'name');
   }
@@ -2414,7 +2401,7 @@ class _$GOnePokemonDataData_pokemon_types
     if (identical(other, this)) return true;
     return other is GOnePokemonDataData_pokemon_types &&
         G__typename == other.G__typename &&
-        imageUrl == other.imageUrl &&
+        textImageUrl == other.textImageUrl &&
         name == other.name;
   }
 
@@ -2422,7 +2409,7 @@ class _$GOnePokemonDataData_pokemon_types
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, imageUrl.hashCode);
+    _$hash = $jc(_$hash, textImageUrl.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -2432,7 +2419,7 @@ class _$GOnePokemonDataData_pokemon_types
   String toString() {
     return (newBuiltValueToStringHelper(r'GOnePokemonDataData_pokemon_types')
           ..add('G__typename', G__typename)
-          ..add('imageUrl', imageUrl)
+          ..add('textImageUrl', textImageUrl)
           ..add('name', name))
         .toString();
   }
@@ -2448,9 +2435,9 @@ class GOnePokemonDataData_pokemon_typesBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  String? _imageUrl;
-  String? get imageUrl => _$this._imageUrl;
-  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+  String? _textImageUrl;
+  String? get textImageUrl => _$this._textImageUrl;
+  set textImageUrl(String? textImageUrl) => _$this._textImageUrl = textImageUrl;
 
   String? _name;
   String? get name => _$this._name;
@@ -2464,7 +2451,7 @@ class GOnePokemonDataData_pokemon_typesBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _imageUrl = $v.imageUrl;
+      _textImageUrl = $v.textImageUrl;
       _name = $v.name;
       _$v = null;
     }
@@ -2491,8 +2478,8 @@ class GOnePokemonDataData_pokemon_typesBuilder
         new _$GOnePokemonDataData_pokemon_types._(
             G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
                 r'GOnePokemonDataData_pokemon_types', 'G__typename'),
-            imageUrl: BuiltValueNullFieldError.checkNotNull(
-                imageUrl, r'GOnePokemonDataData_pokemon_types', 'imageUrl'),
+            textImageUrl: BuiltValueNullFieldError.checkNotNull(textImageUrl,
+                r'GOnePokemonDataData_pokemon_types', 'textImageUrl'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'GOnePokemonDataData_pokemon_types', 'name'));
     replace(_$result);

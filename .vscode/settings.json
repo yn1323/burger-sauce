@@ -23,4 +23,7 @@
     "dart.closingLabels": false,
     "editor.guides.bracketPairs": true,
     "dart.renameFilesWithClasses": "always",
+    "search.exclude": {
+        "**/__generated__/": true
+    },
 }  

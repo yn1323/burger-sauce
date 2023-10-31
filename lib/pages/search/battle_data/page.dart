@@ -1,4 +1,4 @@
-import 'package:burger_sauce/components/features/images/skeleton.dart';
+import 'package:burger_sauce/components/fragments/pokemon_image.dart';
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/helpers/query.dart';
 import 'package:burger_sauce/helpers/string.dart';
@@ -7,17 +7,16 @@ import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleDat
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.var.gql.dart';
 import 'package:burger_sauce/pages/search/battle_data/battle_rank_tab.dart';
 import 'package:burger_sauce/route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 
 class BattleDataPokemon extends HookWidget {
-  final String id;
+  final String battleId;
 
   const BattleDataPokemon({
     Key? key,
-    required this.id,
+    required this.battleId,
   }) : super(key: key);
 
   @override
@@ -25,7 +24,7 @@ class BattleDataPokemon extends HookWidget {
     final result = useQuery<GOneBattleDataData, GOneBattleDataVars>(
       GOneBattleDataReq(
         (b) => b
-          ..vars.id = id
+          ..vars.id = battleId
           ..fetchPolicy = fetchCacheAndNetwork,
       ),
     );
@@ -61,25 +60,15 @@ class BattleDataPokemon extends HookWidget {
             child: Center(
               child: Column(
                 children: [
-                  CachedNetworkImage(
-                    imageUrl: pokemon.imageLargeUrl,
-                    width: 180,
-                    height: 180,
-                    fadeOutDuration: const Duration(milliseconds: 300),
-                    placeholder: (context, url) =>
-                        const Skeleton(ballSkeleton: true),
-                  ),
+                  PokemonImage(imageUrl: pokemon.imageLargeUrl),
                   const Gap(10),
                   ButtonBar(
                     alignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          router.goNamed('searchBattleDataPokemon',
-                              pathParameters: {
-                                'id': id,
-                                'pokemonId': pokemon.id
-                              });
+                          router.pushNamed('searchPokemon',
+                              pathParameters: {'pokemonId': pokemon.id});
                         },
                         child: const Text('詳細情報'),
                       ),
@@ -103,51 +92,3 @@ class BattleDataPokemon extends HookWidget {
     );
   }
 }
-
-// class BattleDataPokemon extends HookWidget {
-//   final String id;
-//   final client = GetIt.I<TypedLink>();
-
-//   BattleDataPokemon({
-//     Key? key,
-//     required this.id,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('バトル詳細情報'),
-//       ),
-//       body: Operation<GOneBattleDataData, GOneBattleDataVars>(
-//         operationRequest: GOneBattleDataReq((b) => b
-//           ..vars.id = id
-//           ..fetchPolicy = fetchCacheFirst),
-//         builder: (context, response, error) {
-//           if (response!.loading) {
-//             return const Center(child: CircularProgressIndicator());
-//           }
-//           if (response.hasErrors) {
-//             return Center(child: Text(error.toString()));
-//           }
-
-//           final data = response.data;
-
-//           if (data == null || data.battleData == null) {
-//             return const Text('null');
-//           }
-
-//           final pokemon = data.battleData!.pokemon;
-//           final battleAbilities = data.battleData!.battleDataAbility;
-//           final battleMoves = data.battleData!.battleDataMove;
-//           final battleItems = data.battleData!.battleDataItem;
-//           final battleNatures = data.battleData!.battleDataNature;
-//           final battleTerastals = data.battleData!.battleDataTerastal;
-
-//           return;
-//         },
-//         client: client,
-//       ),
-//     );
-//   }
-// }

@@ -18,7 +18,7 @@ class StatusBox extends StatelessWidget {
             border: Border.all(color: Colors.black54, width: 1.0)),
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(6, 2, 6, 6),
+            padding: const EdgeInsets.fromLTRB(6, 4, 6, 6),
             child: Column(
               children: [
                 Text(label),

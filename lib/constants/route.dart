@@ -1,7 +1,7 @@
-import 'package:burger_sauce/pages/self.dart';
 import 'package:burger_sauce/pages/top/build/build_page.dart';
 import 'package:burger_sauce/pages/top/calc/calc_page.dart';
 import 'package:burger_sauce/pages/top/search/search_page.dart';
+import 'package:burger_sauce/pages/top/self/self_page.dart';
 import 'package:burger_sauce/pages/top/setting/setting_page.dart';
 import 'package:burger_sauce/pages/top/trend/trend_page.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +42,7 @@ List<RoutePage> routes = [
       label: 'トレンド',
     ),
     url: '/trend',
-    page: TrendPage(),
+    page: const TrendPage(),
   ),
   RoutePage(
     item: const BottomNavigationBarItem(

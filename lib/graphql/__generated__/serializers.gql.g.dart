@@ -65,20 +65,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GOnePokemonDataData.serializer)
       ..add(GOnePokemonDataData_pokemon.serializer)
       ..add(GOnePokemonDataData_pokemon_abilities.serializer)
-      ..add(GOnePokemonDataData_pokemon_evolutions.serializer)
-      ..add(GOnePokemonDataData_pokemon_evolutions_from.serializer)
-      ..add(GOnePokemonDataData_pokemon_evolutions_to.serializer)
-      ..add(GOnePokemonDataData_pokemon_evolutions_to_types.serializer)
+      ..add(GOnePokemonDataData_pokemon_evolutionFrom.serializer)
+      ..add(GOnePokemonDataData_pokemon_evolutionFrom_pokemon.serializer)
+      ..add(GOnePokemonDataData_pokemon_evolutionTo.serializer)
+      ..add(GOnePokemonDataData_pokemon_evolutionTo_pokemon.serializer)
       ..add(GOnePokemonDataData_pokemon_moves.serializer)
       ..add(GOnePokemonDataData_pokemon_moves_attackType.serializer)
       ..add(GOnePokemonDataData_pokemon_moves_type.serializer)
       ..add(GOnePokemonDataData_pokemon_types.serializer)
       ..add(GOnePokemonDataReq.serializer)
       ..add(GOnePokemonDataVars.serializer)
-      ..add(GPokemonsData.serializer)
-      ..add(GPokemonsData_pokemons.serializer)
-      ..add(GPokemonsReq.serializer)
-      ..add(GPokemonsVars.serializer)
       ..add(GTime.serializer)
       ..add(GUpdateAbilityInput.serializer)
       ..add(GUpdateAttackTypeInput.serializer)
@@ -141,8 +137,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
               GOneBattleDataData_battleData_battleDataTerastal>())
       ..addBuilderFactory(
           const FullType(BuiltList,
-              const [const FullType(GOnePokemonDataData_pokemon_evolutions)]),
-          () => new ListBuilder<GOnePokemonDataData_pokemon_evolutions>())
+              const [const FullType(GOnePokemonDataData_pokemon_evolutionTo)]),
+          () => new ListBuilder<GOnePokemonDataData_pokemon_evolutionTo>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GOnePokemonDataData_pokemon_evolutionFrom)
+          ]),
+          () => new ListBuilder<GOnePokemonDataData_pokemon_evolutionFrom>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(GOnePokemonDataData_pokemon_abilities)]),
@@ -154,27 +155,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(GOnePokemonDataData_pokemon_types)]),
-          () => new ListBuilder<GOnePokemonDataData_pokemon_types>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType(GOnePokemonDataData_pokemon_evolutions_from)
-          ]),
-          () => new ListBuilder<GOnePokemonDataData_pokemon_evolutions_from>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType(GOnePokemonDataData_pokemon_evolutions_to)
-          ]),
-          () => new ListBuilder<GOnePokemonDataData_pokemon_evolutions_to>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType(GOnePokemonDataData_pokemon_evolutions_to_types)
-          ]),
-          () => new ListBuilder<
-              GOnePokemonDataData_pokemon_evolutions_to_types>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(GPokemonsData_pokemons)]),
-          () => new ListBuilder<GPokemonsData_pokemons>()))
+          () => new ListBuilder<GOnePokemonDataData_pokemon_types>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

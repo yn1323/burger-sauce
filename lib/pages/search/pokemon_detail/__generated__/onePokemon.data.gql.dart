@@ -51,7 +51,8 @@ abstract class GOnePokemonDataData_pokemon
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  BuiltList<GOnePokemonDataData_pokemon_evolutions> get evolutions;
+  BuiltList<GOnePokemonDataData_pokemon_evolutionTo> get evolutionTo;
+  BuiltList<GOnePokemonDataData_pokemon_evolutionFrom> get evolutionFrom;
   BuiltList<GOnePokemonDataData_pokemon_abilities> get abilities;
   BuiltList<GOnePokemonDataData_pokemon_moves> get moves;
   BuiltList<GOnePokemonDataData_pokemon_types> get types;
@@ -79,87 +80,51 @@ abstract class GOnePokemonDataData_pokemon
       );
 }
 
-abstract class GOnePokemonDataData_pokemon_evolutions
+abstract class GOnePokemonDataData_pokemon_evolutionTo
     implements
-        Built<GOnePokemonDataData_pokemon_evolutions,
-            GOnePokemonDataData_pokemon_evolutionsBuilder> {
-  GOnePokemonDataData_pokemon_evolutions._();
+        Built<GOnePokemonDataData_pokemon_evolutionTo,
+            GOnePokemonDataData_pokemon_evolutionToBuilder> {
+  GOnePokemonDataData_pokemon_evolutionTo._();
 
-  factory GOnePokemonDataData_pokemon_evolutions(
-          [Function(GOnePokemonDataData_pokemon_evolutionsBuilder b) updates]) =
-      _$GOnePokemonDataData_pokemon_evolutions;
+  factory GOnePokemonDataData_pokemon_evolutionTo(
+      [Function(GOnePokemonDataData_pokemon_evolutionToBuilder b)
+          updates]) = _$GOnePokemonDataData_pokemon_evolutionTo;
 
   static void _initializeBuilder(
-          GOnePokemonDataData_pokemon_evolutionsBuilder b) =>
+          GOnePokemonDataData_pokemon_evolutionToBuilder b) =>
       b..G__typename = 'Evolution';
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  BuiltList<GOnePokemonDataData_pokemon_evolutions_from> get from;
-  BuiltList<GOnePokemonDataData_pokemon_evolutions_to> get to;
-  static Serializer<GOnePokemonDataData_pokemon_evolutions> get serializer =>
-      _$gOnePokemonDataDataPokemonEvolutionsSerializer;
+  GOnePokemonDataData_pokemon_evolutionTo_pokemon get pokemon;
+  static Serializer<GOnePokemonDataData_pokemon_evolutionTo> get serializer =>
+      _$gOnePokemonDataDataPokemonEvolutionToSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GOnePokemonDataData_pokemon_evolutions.serializer,
+        GOnePokemonDataData_pokemon_evolutionTo.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GOnePokemonDataData_pokemon_evolutions? fromJson(
+  static GOnePokemonDataData_pokemon_evolutionTo? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
-        GOnePokemonDataData_pokemon_evolutions.serializer,
+        GOnePokemonDataData_pokemon_evolutionTo.serializer,
         json,
       );
 }
 
-abstract class GOnePokemonDataData_pokemon_evolutions_from
+abstract class GOnePokemonDataData_pokemon_evolutionTo_pokemon
     implements
-        Built<GOnePokemonDataData_pokemon_evolutions_from,
-            GOnePokemonDataData_pokemon_evolutions_fromBuilder> {
-  GOnePokemonDataData_pokemon_evolutions_from._();
+        Built<GOnePokemonDataData_pokemon_evolutionTo_pokemon,
+            GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder> {
+  GOnePokemonDataData_pokemon_evolutionTo_pokemon._();
 
-  factory GOnePokemonDataData_pokemon_evolutions_from(
-      [Function(GOnePokemonDataData_pokemon_evolutions_fromBuilder b)
-          updates]) = _$GOnePokemonDataData_pokemon_evolutions_from;
+  factory GOnePokemonDataData_pokemon_evolutionTo_pokemon(
+      [Function(GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder b)
+          updates]) = _$GOnePokemonDataData_pokemon_evolutionTo_pokemon;
 
   static void _initializeBuilder(
-          GOnePokemonDataData_pokemon_evolutions_fromBuilder b) =>
-      b..G__typename = 'Pokemon';
-
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  String get id;
-  String get name;
-  String get imageLargeUrl;
-  static Serializer<GOnePokemonDataData_pokemon_evolutions_from>
-      get serializer => _$gOnePokemonDataDataPokemonEvolutionsFromSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GOnePokemonDataData_pokemon_evolutions_from.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GOnePokemonDataData_pokemon_evolutions_from? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GOnePokemonDataData_pokemon_evolutions_from.serializer,
-        json,
-      );
-}
-
-abstract class GOnePokemonDataData_pokemon_evolutions_to
-    implements
-        Built<GOnePokemonDataData_pokemon_evolutions_to,
-            GOnePokemonDataData_pokemon_evolutions_toBuilder> {
-  GOnePokemonDataData_pokemon_evolutions_to._();
-
-  factory GOnePokemonDataData_pokemon_evolutions_to(
-      [Function(GOnePokemonDataData_pokemon_evolutions_toBuilder b)
-          updates]) = _$GOnePokemonDataData_pokemon_evolutions_to;
-
-  static void _initializeBuilder(
-          GOnePokemonDataData_pokemon_evolutions_toBuilder b) =>
+          GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder b) =>
       b..G__typename = 'Pokemon';
 
   @BuiltValueField(wireName: '__typename')
@@ -167,52 +132,88 @@ abstract class GOnePokemonDataData_pokemon_evolutions_to
   String get id;
   String get name;
   String get imageUrl;
-  BuiltList<GOnePokemonDataData_pokemon_evolutions_to_types> get types;
-  static Serializer<GOnePokemonDataData_pokemon_evolutions_to> get serializer =>
-      _$gOnePokemonDataDataPokemonEvolutionsToSerializer;
+  static Serializer<GOnePokemonDataData_pokemon_evolutionTo_pokemon>
+      get serializer =>
+          _$gOnePokemonDataDataPokemonEvolutionToPokemonSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GOnePokemonDataData_pokemon_evolutions_to.serializer,
+        GOnePokemonDataData_pokemon_evolutionTo_pokemon.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GOnePokemonDataData_pokemon_evolutions_to? fromJson(
+  static GOnePokemonDataData_pokemon_evolutionTo_pokemon? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
-        GOnePokemonDataData_pokemon_evolutions_to.serializer,
+        GOnePokemonDataData_pokemon_evolutionTo_pokemon.serializer,
         json,
       );
 }
 
-abstract class GOnePokemonDataData_pokemon_evolutions_to_types
+abstract class GOnePokemonDataData_pokemon_evolutionFrom
     implements
-        Built<GOnePokemonDataData_pokemon_evolutions_to_types,
-            GOnePokemonDataData_pokemon_evolutions_to_typesBuilder> {
-  GOnePokemonDataData_pokemon_evolutions_to_types._();
+        Built<GOnePokemonDataData_pokemon_evolutionFrom,
+            GOnePokemonDataData_pokemon_evolutionFromBuilder> {
+  GOnePokemonDataData_pokemon_evolutionFrom._();
 
-  factory GOnePokemonDataData_pokemon_evolutions_to_types(
-      [Function(GOnePokemonDataData_pokemon_evolutions_to_typesBuilder b)
-          updates]) = _$GOnePokemonDataData_pokemon_evolutions_to_types;
+  factory GOnePokemonDataData_pokemon_evolutionFrom(
+      [Function(GOnePokemonDataData_pokemon_evolutionFromBuilder b)
+          updates]) = _$GOnePokemonDataData_pokemon_evolutionFrom;
 
   static void _initializeBuilder(
-          GOnePokemonDataData_pokemon_evolutions_to_typesBuilder b) =>
-      b..G__typename = 'Type';
+          GOnePokemonDataData_pokemon_evolutionFromBuilder b) =>
+      b..G__typename = 'Evolution';
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  String get textImageUrl;
-  static Serializer<GOnePokemonDataData_pokemon_evolutions_to_types>
-      get serializer => _$gOnePokemonDataDataPokemonEvolutionsToTypesSerializer;
+  GOnePokemonDataData_pokemon_evolutionFrom_pokemon get pokemon;
+  static Serializer<GOnePokemonDataData_pokemon_evolutionFrom> get serializer =>
+      _$gOnePokemonDataDataPokemonEvolutionFromSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GOnePokemonDataData_pokemon_evolutions_to_types.serializer,
+        GOnePokemonDataData_pokemon_evolutionFrom.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GOnePokemonDataData_pokemon_evolutions_to_types? fromJson(
+  static GOnePokemonDataData_pokemon_evolutionFrom? fromJson(
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
-        GOnePokemonDataData_pokemon_evolutions_to_types.serializer,
+        GOnePokemonDataData_pokemon_evolutionFrom.serializer,
+        json,
+      );
+}
+
+abstract class GOnePokemonDataData_pokemon_evolutionFrom_pokemon
+    implements
+        Built<GOnePokemonDataData_pokemon_evolutionFrom_pokemon,
+            GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder> {
+  GOnePokemonDataData_pokemon_evolutionFrom_pokemon._();
+
+  factory GOnePokemonDataData_pokemon_evolutionFrom_pokemon(
+      [Function(GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder b)
+          updates]) = _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon;
+
+  static void _initializeBuilder(
+          GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder b) =>
+      b..G__typename = 'Pokemon';
+
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String get id;
+  String get name;
+  String get imageUrl;
+  static Serializer<GOnePokemonDataData_pokemon_evolutionFrom_pokemon>
+      get serializer =>
+          _$gOnePokemonDataDataPokemonEvolutionFromPokemonSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GOnePokemonDataData_pokemon_evolutionFrom_pokemon.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GOnePokemonDataData_pokemon_evolutionFrom_pokemon? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GOnePokemonDataData_pokemon_evolutionFrom_pokemon.serializer,
         json,
       );
 }
@@ -367,7 +368,7 @@ abstract class GOnePokemonDataData_pokemon_types
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  String get imageUrl;
+  String get textImageUrl;
   String get name;
   static Serializer<GOnePokemonDataData_pokemon_types> get serializer =>
       _$gOnePokemonDataDataPokemonTypesSerializer;

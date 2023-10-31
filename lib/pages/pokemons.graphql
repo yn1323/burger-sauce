@@ -1,7 +1,0 @@
-query Pokemons {
-  pokemons {
-    name
-    imageSmallUrl
-    imageUrl
-  }
-}

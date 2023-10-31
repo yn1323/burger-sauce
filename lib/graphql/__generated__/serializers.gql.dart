@@ -64,12 +64,6 @@ import 'package:burger_sauce/graphql/__generated__/schema.schema.gql.dart'
         GUpdateTypeInput,
         GUpdateTypeRelationInput,
         GUpdateUserInput;
-import 'package:burger_sauce/pages/__generated__/pokemons.data.gql.dart'
-    show GPokemonsData, GPokemonsData_pokemons;
-import 'package:burger_sauce/pages/__generated__/pokemons.req.gql.dart'
-    show GPokemonsReq;
-import 'package:burger_sauce/pages/__generated__/pokemons.var.gql.dart'
-    show GPokemonsVars;
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.data.gql.dart'
     show
         GOneBattleDataData,
@@ -96,10 +90,10 @@ import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemo
         GOnePokemonDataData,
         GOnePokemonDataData_pokemon,
         GOnePokemonDataData_pokemon_abilities,
-        GOnePokemonDataData_pokemon_evolutions,
-        GOnePokemonDataData_pokemon_evolutions_from,
-        GOnePokemonDataData_pokemon_evolutions_to,
-        GOnePokemonDataData_pokemon_evolutions_to_types,
+        GOnePokemonDataData_pokemon_evolutionFrom,
+        GOnePokemonDataData_pokemon_evolutionFrom_pokemon,
+        GOnePokemonDataData_pokemon_evolutionTo,
+        GOnePokemonDataData_pokemon_evolutionTo_pokemon,
         GOnePokemonDataData_pokemon_moves,
         GOnePokemonDataData_pokemon_moves_attackType,
         GOnePokemonDataData_pokemon_moves_type,
@@ -108,14 +102,14 @@ import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemo
     show GOnePokemonDataReq;
 import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.var.gql.dart'
     show GOnePokemonDataVars;
-import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.data.gql.dart'
+import 'package:burger_sauce/pages/top/trend/__generated__/schema.data.gql.dart'
     show
         GLatestBattleDataIndexData,
         GLatestBattleDataIndexData_battleDatasLatest,
         GLatestBattleDataIndexData_battleDatasLatest_pokemon;
-import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.req.gql.dart'
+import 'package:burger_sauce/pages/top/trend/__generated__/schema.req.gql.dart'
     show GLatestBattleDataIndexReq;
-import 'package:burger_sauce/pages/top/trend/schema/__generated__/schema.var.gql.dart'
+import 'package:burger_sauce/pages/top/trend/__generated__/schema.var.gql.dart'
     show GLatestBattleDataIndexVars;
 import 'package:ferry_exec/ferry_exec.dart';
 import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
@@ -183,20 +177,16 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GOnePokemonDataData,
   GOnePokemonDataData_pokemon,
   GOnePokemonDataData_pokemon_abilities,
-  GOnePokemonDataData_pokemon_evolutions,
-  GOnePokemonDataData_pokemon_evolutions_from,
-  GOnePokemonDataData_pokemon_evolutions_to,
-  GOnePokemonDataData_pokemon_evolutions_to_types,
+  GOnePokemonDataData_pokemon_evolutionFrom,
+  GOnePokemonDataData_pokemon_evolutionFrom_pokemon,
+  GOnePokemonDataData_pokemon_evolutionTo,
+  GOnePokemonDataData_pokemon_evolutionTo_pokemon,
   GOnePokemonDataData_pokemon_moves,
   GOnePokemonDataData_pokemon_moves_attackType,
   GOnePokemonDataData_pokemon_moves_type,
   GOnePokemonDataData_pokemon_types,
   GOnePokemonDataReq,
   GOnePokemonDataVars,
-  GPokemonsData,
-  GPokemonsData_pokemons,
-  GPokemonsReq,
-  GPokemonsVars,
   GTime,
   GUpdateAbilityInput,
   GUpdateAttackTypeInput,

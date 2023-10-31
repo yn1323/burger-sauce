@@ -1,18 +1,17 @@
 query OnePokemonData($id: String!) {
   pokemon(id: $id) {
-    evolutions {
-      from {
-        id
-        name
-        imageLargeUrl
-      }
-      to {
+ evolutionTo {
+      pokemon{
         id
         name
         imageUrl
-        types {
-          textImageUrl
-        }
+      }
+    }
+  	evolutionFrom {
+      pokemon{
+        id
+        name
+        imageUrl
       }
     }
     abilities {
@@ -30,7 +29,7 @@ query OnePokemonData($id: String!) {
       }
     }
     types {
-      imageUrl
+      textImageUrl
       name
     }
     statusA

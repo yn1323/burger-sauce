@@ -1,35 +1,13 @@
+import 'package:burger_sauce/components/fragments/pokemon_image.dart';
 import 'package:burger_sauce/constants/ui.dart';
 import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/top/trend/trend_page.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ferry/ferry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-
-Widget _toggleLayout({Function? onPressed, bool isGrid = true}) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.end,
-    children: [
-      IconButton(
-        onPressed: () {
-          onPressed!();
-        },
-        iconSize: 36,
-        icon: Icon(Icons.grid_view, color: isGrid ? Colors.blue : Colors.grey),
-      ),
-      IconButton(
-        onPressed: () {
-          onPressed!();
-        },
-        iconSize: 36,
-        icon: Icon(Icons.list, color: !isGrid ? Colors.blue : Colors.grey),
-      ),
-    ],
-  );
-}
 
 class BattleDataIndex extends HookWidget {
   BattleDataIndex({Key? key, required this.pokemons}) : super(key: key);
@@ -38,14 +16,8 @@ class BattleDataIndex extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final isGrid = useState(false);
-
     return Column(
       children: [
-        // _toggleLayout(
-        //   onPressed: () => isGrid.value = !isGrid.value,
-        //   isGrid: isGrid.value,
-        // ),
         Expanded(
           child: ListView.builder(
             itemCount: pokemons.length,
@@ -54,8 +26,8 @@ class BattleDataIndex extends HookWidget {
               return InkWell(
                 onTap: () => {
                   context.goNamed(
-                    'searchBattleData',
-                    pathParameters: {'id': pokemon.id},
+                    'searchBattlePokemon',
+                    pathParameters: {'battleId': pokemon.id},
                   )
                 },
                 child: Container(
@@ -79,16 +51,12 @@ class BattleDataIndex extends HookWidget {
                           ),
                         ),
                         const Gap(10),
-                        CachedNetworkImage(
+                        PokemonImage(
                           imageUrl: pokemon.imageUrl,
                           width: 100,
-                          height: listHeight,
-                          fadeInDuration: const Duration(milliseconds: 200),
-                          placeholder: (context, url) => const SizedBox(
-                            width: 100,
-                          ),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
+                          height: 100,
+                          ballSkeleton: false,
+                          showSkeleton: false,
                         ),
                         const Gap(10),
                         Center(

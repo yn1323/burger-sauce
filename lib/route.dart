@@ -14,20 +14,20 @@ final GoRouter router = GoRouter(
       },
       routes: <RouteBase>[
         GoRoute(
-            name: 'searchBattleData',
-            path: 'search/battle_data/:id',
-            builder: (BuildContext context, GoRouterState state) {
-              return BattleDataPokemon(id: state.pathParameters['id']!);
-            },
-            routes: [
-              GoRoute(
-                name: 'searchBattleDataPokemon',
-                path: ':pokemonId',
-                builder: (BuildContext context, GoRouterState state) {
-                  return PokemonDetail(id: state.pathParameters['pokemonId']!);
-                },
-              ),
-            ]),
+          name: 'searchPokemon',
+          path: 'search/pokemon/:pokemonId',
+          builder: (BuildContext context, GoRouterState state) {
+            return PokemonDetail(pokemonId: state.pathParameters['pokemonId']!);
+          },
+        ),
+        GoRoute(
+          name: 'searchBattlePokemon',
+          path: 'search/battle/:battleId',
+          builder: (BuildContext context, GoRouterState state) {
+            return BattleDataPokemon(
+                battleId: state.pathParameters['battleId']!);
+          },
+        ),
       ],
     ),
   ],
