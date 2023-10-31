@@ -1,3 +1,4 @@
+import 'package:accordion/accordion.dart';
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/helpers/query.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.data.gql.dart';
@@ -63,7 +64,8 @@ class PokemonDetail extends HookWidget {
                 children: [
                   PokeMainView(types: types, pokemon: pokemon),
                   const Gap(10),
-                  StatusList(status: status)
+                  StatusList(status: status),
+                  Accordion(children: const [])
                 ],
               ),
             ),

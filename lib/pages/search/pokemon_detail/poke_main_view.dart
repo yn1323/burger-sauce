@@ -67,41 +67,53 @@ class PokeMainView extends StatelessWidget {
           Expanded(
             flex: 1,
             child: pokemon.evolutionTo.isNotEmpty
-                ? SingleChildScrollView(
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          if (pokemon.evolutionTo.length == 1) const Spacer(),
-                          ...pokemon.evolutionTo
-                              .map((e) => GestureDetector(
-                                    onTap: () {
-                                      router.pushNamed(
-                                        'searchPokemon',
-                                        pathParameters: {
-                                          'pokemonId': e.pokemon.id
-                                        },
-                                      );
-                                    },
-                                    child: PokemonImage(
-                                      height: 64,
-                                      width: 64,
-                                      ballSkeleton: false,
-                                      label: combineNameWithForm(
-                                        name: e.pokemon.name,
-                                        form: e.pokemon.form,
-                                      ),
-                                      labelSize: 12,
-                                      imageUrl: e.pokemon.imageUrl,
-                                      showSkeleton: false,
-                                    ),
-                                  ))
-                              .toList()
-                        ]),
-                  )
+                ? pokemon.evolutionTo.length >= 2
+                    ? SingleChildScrollView(
+                        child: EvolutionToPokemons(pokemon: pokemon),
+                      )
+                    : EvolutionToPokemons(pokemon: pokemon)
                 : const Text(""), // Spacerだとエラーになるため
           ),
         ],
       ),
     );
+  }
+}
+
+class EvolutionToPokemons extends StatelessWidget {
+  const EvolutionToPokemons({
+    super.key,
+    required this.pokemon,
+  });
+
+  final GOnePokemonDataData_pokemon pokemon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+      if (pokemon.evolutionTo.length == 1) const Spacer(),
+      ...pokemon.evolutionTo
+          .map((e) => GestureDetector(
+                onTap: () {
+                  router.pushNamed(
+                    'searchPokemon',
+                    pathParameters: {'pokemonId': e.pokemon.id},
+                  );
+                },
+                child: PokemonImage(
+                  height: 64,
+                  width: 64,
+                  ballSkeleton: false,
+                  label: combineNameWithForm(
+                    name: e.pokemon.name,
+                    form: e.pokemon.form,
+                  ),
+                  labelSize: 12,
+                  imageUrl: e.pokemon.imageUrl,
+                  showSkeleton: false,
+                ),
+              ))
+          .toList()
+    ]);
   }
 }
