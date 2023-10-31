@@ -379,6 +379,9 @@ class _$GOneBattleDataData_battleData_battleDataAbility_abilitySerializer
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'detail',
+      serializers.serialize(object.detail,
+          specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
@@ -405,6 +408,10 @@ class _$GOneBattleDataData_battleData_battleDataAbility_abilitySerializer
           break;
         case 'name':
           result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'detail':
+          result.detail = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'id':
@@ -503,6 +510,9 @@ class _$GOneBattleDataData_battleData_battleDataItem_itemSerializer
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'detail',
+      serializers.serialize(object.detail,
+          specifiedType: const FullType(String)),
       'imageSmallUrl',
       serializers.serialize(object.imageSmallUrl,
           specifiedType: const FullType(String)),
@@ -530,6 +540,10 @@ class _$GOneBattleDataData_battleData_battleDataItem_itemSerializer
           break;
         case 'name':
           result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'detail':
+          result.detail = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'imageSmallUrl':
@@ -630,6 +644,11 @@ class _$GOneBattleDataData_battleData_battleDataMove_moveSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'detail',
+      serializers.serialize(object.detail,
+          specifiedType: const FullType(String)),
+      'power',
+      serializers.serialize(object.power, specifiedType: const FullType(int)),
     ];
     Object? value;
     value = object.type;
@@ -675,6 +694,14 @@ class _$GOneBattleDataData_battleData_battleDataMove_moveSerializer
         case 'name':
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
+          break;
+        case 'detail':
+          result.detail = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'power':
+          result.power = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
           break;
         case 'type':
           result.type.replace(serializers.deserialize(value,
@@ -773,6 +800,8 @@ class _$GOneBattleDataData_battleData_battleDataMove_move_attackTypeSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
       'imageUrl',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
@@ -796,6 +825,10 @@ class _$GOneBattleDataData_battleData_battleDataMove_move_attackTypeSerializer
       switch (key) {
         case '__typename':
           result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'imageUrl':
@@ -1756,6 +1789,8 @@ class _$GOneBattleDataData_battleData_battleDataAbility_ability
   @override
   final String name;
   @override
+  final String detail;
+  @override
   final String id;
 
   factory _$GOneBattleDataData_battleData_battleDataAbility_ability(
@@ -1767,7 +1802,10 @@ class _$GOneBattleDataData_battleData_battleDataAbility_ability
           ._build();
 
   _$GOneBattleDataData_battleData_battleDataAbility_ability._(
-      {required this.G__typename, required this.name, required this.id})
+      {required this.G__typename,
+      required this.name,
+      required this.detail,
+      required this.id})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename,
@@ -1775,6 +1813,8 @@ class _$GOneBattleDataData_battleData_battleDataAbility_ability
         'G__typename');
     BuiltValueNullFieldError.checkNotNull(name,
         r'GOneBattleDataData_battleData_battleDataAbility_ability', 'name');
+    BuiltValueNullFieldError.checkNotNull(detail,
+        r'GOneBattleDataData_battleData_battleDataAbility_ability', 'detail');
     BuiltValueNullFieldError.checkNotNull(
         id, r'GOneBattleDataData_battleData_battleDataAbility_ability', 'id');
   }
@@ -1797,6 +1837,7 @@ class _$GOneBattleDataData_battleData_battleDataAbility_ability
     return other is GOneBattleDataData_battleData_battleDataAbility_ability &&
         G__typename == other.G__typename &&
         name == other.name &&
+        detail == other.detail &&
         id == other.id;
   }
 
@@ -1805,6 +1846,7 @@ class _$GOneBattleDataData_battleData_battleDataAbility_ability
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, detail.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -1816,6 +1858,7 @@ class _$GOneBattleDataData_battleData_battleDataAbility_ability
             r'GOneBattleDataData_battleData_battleDataAbility_ability')
           ..add('G__typename', G__typename)
           ..add('name', name)
+          ..add('detail', detail)
           ..add('id', id))
         .toString();
   }
@@ -1835,6 +1878,10 @@ class GOneBattleDataData_battleData_battleDataAbility_abilityBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
+  String? _detail;
+  String? get detail => _$this._detail;
+  set detail(String? detail) => _$this._detail = detail;
+
   String? _id;
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
@@ -1849,6 +1896,7 @@ class GOneBattleDataData_battleData_battleDataAbility_abilityBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _name = $v.name;
+      _detail = $v.detail;
       _id = $v.id;
       _$v = null;
     }
@@ -1883,6 +1931,10 @@ class GOneBattleDataData_battleData_battleDataAbility_abilityBuilder
                 name,
                 r'GOneBattleDataData_battleData_battleDataAbility_ability',
                 'name'),
+            detail: BuiltValueNullFieldError.checkNotNull(
+                detail,
+                r'GOneBattleDataData_battleData_battleDataAbility_ability',
+                'detail'),
             id: BuiltValueNullFieldError.checkNotNull(
                 id,
                 r'GOneBattleDataData_battleData_battleDataAbility_ability',
@@ -2048,6 +2100,8 @@ class _$GOneBattleDataData_battleData_battleDataItem_item
   @override
   final String name;
   @override
+  final String detail;
+  @override
   final String imageSmallUrl;
 
   factory _$GOneBattleDataData_battleData_battleDataItem_item(
@@ -2061,12 +2115,15 @@ class _$GOneBattleDataData_battleData_battleDataItem_item
   _$GOneBattleDataData_battleData_battleDataItem_item._(
       {required this.G__typename,
       required this.name,
+      required this.detail,
       required this.imageSmallUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GOneBattleDataData_battleData_battleDataItem_item', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GOneBattleDataData_battleData_battleDataItem_item', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        detail, r'GOneBattleDataData_battleData_battleDataItem_item', 'detail');
     BuiltValueNullFieldError.checkNotNull(imageSmallUrl,
         r'GOneBattleDataData_battleData_battleDataItem_item', 'imageSmallUrl');
   }
@@ -2089,6 +2146,7 @@ class _$GOneBattleDataData_battleData_battleDataItem_item
     return other is GOneBattleDataData_battleData_battleDataItem_item &&
         G__typename == other.G__typename &&
         name == other.name &&
+        detail == other.detail &&
         imageSmallUrl == other.imageSmallUrl;
   }
 
@@ -2097,6 +2155,7 @@ class _$GOneBattleDataData_battleData_battleDataItem_item
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, detail.hashCode);
     _$hash = $jc(_$hash, imageSmallUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -2108,6 +2167,7 @@ class _$GOneBattleDataData_battleData_battleDataItem_item
             r'GOneBattleDataData_battleData_battleDataItem_item')
           ..add('G__typename', G__typename)
           ..add('name', name)
+          ..add('detail', detail)
           ..add('imageSmallUrl', imageSmallUrl))
         .toString();
   }
@@ -2127,6 +2187,10 @@ class GOneBattleDataData_battleData_battleDataItem_itemBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
+  String? _detail;
+  String? get detail => _$this._detail;
+  set detail(String? detail) => _$this._detail = detail;
+
   String? _imageSmallUrl;
   String? get imageSmallUrl => _$this._imageSmallUrl;
   set imageSmallUrl(String? imageSmallUrl) =>
@@ -2141,6 +2205,7 @@ class GOneBattleDataData_battleData_battleDataItem_itemBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _name = $v.name;
+      _detail = $v.detail;
       _imageSmallUrl = $v.imageSmallUrl;
       _$v = null;
     }
@@ -2172,6 +2237,8 @@ class GOneBattleDataData_battleData_battleDataItem_itemBuilder
                 'G__typename'),
             name: BuiltValueNullFieldError.checkNotNull(name,
                 r'GOneBattleDataData_battleData_battleDataItem_item', 'name'),
+            detail: BuiltValueNullFieldError.checkNotNull(detail,
+                r'GOneBattleDataData_battleData_battleDataItem_item', 'detail'),
             imageSmallUrl: BuiltValueNullFieldError.checkNotNull(
                 imageSmallUrl,
                 r'GOneBattleDataData_battleData_battleDataItem_item',
@@ -2339,6 +2406,10 @@ class _$GOneBattleDataData_battleData_battleDataMove_move
   @override
   final String name;
   @override
+  final String detail;
+  @override
+  final int power;
+  @override
   final GOneBattleDataData_battleData_battleDataMove_move_type? type;
   @override
   final GOneBattleDataData_battleData_battleDataMove_move_attackType?
@@ -2356,6 +2427,8 @@ class _$GOneBattleDataData_battleData_battleDataMove_move
       {required this.G__typename,
       required this.id,
       required this.name,
+      required this.detail,
+      required this.power,
       this.type,
       this.attackType})
       : super._() {
@@ -2365,6 +2438,10 @@ class _$GOneBattleDataData_battleData_battleDataMove_move
         id, r'GOneBattleDataData_battleData_battleDataMove_move', 'id');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GOneBattleDataData_battleData_battleDataMove_move', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        detail, r'GOneBattleDataData_battleData_battleDataMove_move', 'detail');
+    BuiltValueNullFieldError.checkNotNull(
+        power, r'GOneBattleDataData_battleData_battleDataMove_move', 'power');
   }
 
   @override
@@ -2386,6 +2463,8 @@ class _$GOneBattleDataData_battleData_battleDataMove_move
         G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
+        detail == other.detail &&
+        power == other.power &&
         type == other.type &&
         attackType == other.attackType;
   }
@@ -2396,6 +2475,8 @@ class _$GOneBattleDataData_battleData_battleDataMove_move
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, detail.hashCode);
+    _$hash = $jc(_$hash, power.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jc(_$hash, attackType.hashCode);
     _$hash = $jf(_$hash);
@@ -2409,6 +2490,8 @@ class _$GOneBattleDataData_battleData_battleDataMove_move
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
+          ..add('detail', detail)
+          ..add('power', power)
           ..add('type', type)
           ..add('attackType', attackType))
         .toString();
@@ -2432,6 +2515,14 @@ class GOneBattleDataData_battleData_battleDataMove_moveBuilder
   String? _name;
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
+
+  String? _detail;
+  String? get detail => _$this._detail;
+  set detail(String? detail) => _$this._detail = detail;
+
+  int? _power;
+  int? get power => _$this._power;
+  set power(int? power) => _$this._power = power;
 
   GOneBattleDataData_battleData_battleDataMove_move_typeBuilder? _type;
   GOneBattleDataData_battleData_battleDataMove_move_typeBuilder get type =>
@@ -2462,6 +2553,8 @@ class GOneBattleDataData_battleData_battleDataMove_moveBuilder
       _G__typename = $v.G__typename;
       _id = $v.id;
       _name = $v.name;
+      _detail = $v.detail;
+      _power = $v.power;
       _type = $v.type?.toBuilder();
       _attackType = $v.attackType?.toBuilder();
       _$v = null;
@@ -2494,10 +2587,18 @@ class GOneBattleDataData_battleData_battleDataMove_moveBuilder
                   G__typename,
                   r'GOneBattleDataData_battleData_battleDataMove_move',
                   'G__typename'),
-              id: BuiltValueNullFieldError.checkNotNull(id,
-                  r'GOneBattleDataData_battleData_battleDataMove_move', 'id'),
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, r'GOneBattleDataData_battleData_battleDataMove_move', 'id'),
               name: BuiltValueNullFieldError.checkNotNull(name,
                   r'GOneBattleDataData_battleData_battleDataMove_move', 'name'),
+              detail: BuiltValueNullFieldError.checkNotNull(
+                  detail,
+                  r'GOneBattleDataData_battleData_battleDataMove_move',
+                  'detail'),
+              power: BuiltValueNullFieldError.checkNotNull(
+                  power,
+                  r'GOneBattleDataData_battleData_battleDataMove_move',
+                  'power'),
               type: _type?.build(),
               attackType: _attackType?.build());
     } catch (_) {
@@ -2654,6 +2755,8 @@ class _$GOneBattleDataData_battleData_battleDataMove_move_attackType
   @override
   final String G__typename;
   @override
+  final String name;
+  @override
   final String imageUrl;
 
   factory _$GOneBattleDataData_battleData_battleDataMove_move_attackType(
@@ -2665,12 +2768,16 @@ class _$GOneBattleDataData_battleData_battleDataMove_move_attackType
           ._build();
 
   _$GOneBattleDataData_battleData_battleDataMove_move_attackType._(
-      {required this.G__typename, required this.imageUrl})
+      {required this.G__typename, required this.name, required this.imageUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename,
         r'GOneBattleDataData_battleData_battleDataMove_move_attackType',
         'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        name,
+        r'GOneBattleDataData_battleData_battleDataMove_move_attackType',
+        'name');
     BuiltValueNullFieldError.checkNotNull(
         imageUrl,
         r'GOneBattleDataData_battleData_battleDataMove_move_attackType',
@@ -2696,6 +2803,7 @@ class _$GOneBattleDataData_battleData_battleDataMove_move_attackType
     return other
             is GOneBattleDataData_battleData_battleDataMove_move_attackType &&
         G__typename == other.G__typename &&
+        name == other.name &&
         imageUrl == other.imageUrl;
   }
 
@@ -2703,6 +2811,7 @@ class _$GOneBattleDataData_battleData_battleDataMove_move_attackType
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -2713,6 +2822,7 @@ class _$GOneBattleDataData_battleData_battleDataMove_move_attackType
     return (newBuiltValueToStringHelper(
             r'GOneBattleDataData_battleData_battleDataMove_move_attackType')
           ..add('G__typename', G__typename)
+          ..add('name', name)
           ..add('imageUrl', imageUrl))
         .toString();
   }
@@ -2728,6 +2838,10 @@ class GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
   String? _imageUrl;
   String? get imageUrl => _$this._imageUrl;
   set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
@@ -2742,6 +2856,7 @@ class GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
+      _name = $v.name;
       _imageUrl = $v.imageUrl;
       _$v = null;
     }
@@ -2775,6 +2890,10 @@ class GOneBattleDataData_battleData_battleDataMove_move_attackTypeBuilder
                 G__typename,
                 r'GOneBattleDataData_battleData_battleDataMove_move_attackType',
                 'G__typename'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name,
+                r'GOneBattleDataData_battleData_battleDataMove_move_attackType',
+                'name'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
                 imageUrl,
                 r'GOneBattleDataData_battleData_battleDataMove_move_attackType',

@@ -166,6 +166,7 @@ abstract class GOneBattleDataData_battleData_battleDataAbility_ability
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;
+  String get detail;
   String get id;
   static Serializer<GOneBattleDataData_battleData_battleDataAbility_ability>
       get serializer =>
@@ -235,6 +236,7 @@ abstract class GOneBattleDataData_battleData_battleDataItem_item
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;
+  String get detail;
   String get imageSmallUrl;
   static Serializer<GOneBattleDataData_battleData_battleDataItem_item>
       get serializer =>
@@ -305,6 +307,8 @@ abstract class GOneBattleDataData_battleData_battleDataMove_move
   String get G__typename;
   String get id;
   String get name;
+  String get detail;
+  int get power;
   GOneBattleDataData_battleData_battleDataMove_move_type? get type;
   GOneBattleDataData_battleData_battleDataMove_move_attackType? get attackType;
   static Serializer<GOneBattleDataData_battleData_battleDataMove_move>
@@ -378,6 +382,7 @@ abstract class GOneBattleDataData_battleData_battleDataMove_move_attackType
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
+  String get name;
   String get imageUrl;
   static Serializer<
           GOneBattleDataData_battleData_battleDataMove_move_attackType>

@@ -101,6 +101,13 @@ const OneBattleData = _i1.OperationDefinitionNode(
                   selectionSet: null,
                 ),
                 _i1.FieldNode(
+                  name: _i1.NameNode(value: 'detail'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+                _i1.FieldNode(
                   name: _i1.NameNode(value: 'id'),
                   alias: null,
                   arguments: [],
@@ -132,6 +139,13 @@ const OneBattleData = _i1.OperationDefinitionNode(
               selectionSet: _i1.SelectionSetNode(selections: [
                 _i1.FieldNode(
                   name: _i1.NameNode(value: 'name'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+                _i1.FieldNode(
+                  name: _i1.NameNode(value: 'detail'),
                   alias: null,
                   arguments: [],
                   directives: [],
@@ -182,6 +196,20 @@ const OneBattleData = _i1.OperationDefinitionNode(
                   selectionSet: null,
                 ),
                 _i1.FieldNode(
+                  name: _i1.NameNode(value: 'detail'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+                _i1.FieldNode(
+                  name: _i1.NameNode(value: 'power'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+                _i1.FieldNode(
                   name: _i1.NameNode(value: 'type'),
                   alias: null,
                   arguments: [],
@@ -203,12 +231,19 @@ const OneBattleData = _i1.OperationDefinitionNode(
                   directives: [],
                   selectionSet: _i1.SelectionSetNode(selections: [
                     _i1.FieldNode(
+                      name: _i1.NameNode(value: 'name'),
+                      alias: null,
+                      arguments: [],
+                      directives: [],
+                      selectionSet: null,
+                    ),
+                    _i1.FieldNode(
                       name: _i1.NameNode(value: 'imageUrl'),
                       alias: null,
                       arguments: [],
                       directives: [],
                       selectionSet: null,
-                    )
+                    ),
                   ]),
                 ),
               ]),

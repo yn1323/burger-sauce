@@ -79,59 +79,71 @@ class BattleRankTab extends HookWidget {
                 itemCount: battleAbilities.length,
                 itemBuilder: (context, index) {
                   final battleAbility = battleAbilities[index];
-                  return TabTemplate(
-                      row: Row(
-                    children: [
-                      Text(battleAbility.ability.name),
-                      const Spacer(),
-                      Text('${battleAbility.rate}%'),
-                    ],
-                  ));
+                  return Tooltip(
+                    message: battleAbility.ability.detail,
+                    child: TabTemplate(
+                        row: Row(
+                      children: [
+                        Text(battleAbility.ability.name),
+                        const Spacer(),
+                        Text('${battleAbility.rate}%'),
+                      ],
+                    )),
+                  );
                 },
               ),
               ListView.builder(
                 itemCount: battleMoves.length,
                 itemBuilder: (context, index) {
                   final battleMove = battleMoves[index];
-                  return TabTemplate(
+                  return Tooltip(
+                    message: battleMove.move.power != 0
+                        ? '${battleMove.move.detail}(威力 ${battleMove.move.power})'
+                        : battleMove.move.detail,
+                    child: TabTemplate(
                       row: Row(
-                    children: [
-                      VerticalMoveTypeImage(
-                        typeImageUrl: battleMove.move.type?.textImageUrl,
-                        attackTypeImageUrl:
-                            battleMove.move.attackType?.imageUrl,
+                        children: [
+                          VerticalMoveTypeImage(
+                            typeImageUrl: battleMove.move.type?.textImageUrl,
+                            attackTypeImageUrl:
+                                battleMove.move.attackType?.imageUrl,
+                          ),
+                          const Gap(24),
+                          Text(
+                            battleMove.move.name,
+                          ),
+                          const Spacer(),
+                          Text('${battleMove.rate}%'),
+                        ],
                       ),
-                      const Gap(24),
-                      Text(
-                        battleMove.move.name,
-                      ),
-                      const Spacer(),
-                      Text('${battleMove.rate}%'),
-                    ],
-                  ));
+                    ),
+                  );
                 },
               ),
               ListView.builder(
                 itemCount: battleItems.length,
                 itemBuilder: (context, index) {
                   final battleItem = battleItems[index];
-                  return TabTemplate(
-                    row: Row(
-                      children: [
-                        CachedNetworkImage(
-                          width: 36,
-                          height: 36,
-                          imageUrl: battleItem.item.imageSmallUrl,
-                          placeholder: (context, url) => const Skeleton(
+                  return Tooltip(
+                    message: battleItem.item.detail,
+                    child: TabTemplate(
+                      row: Row(
+                        children: [
+                          CachedNetworkImage(
                             width: 36,
                             height: 36,
+                            imageUrl: battleItem.item.imageSmallUrl,
+                            placeholder: (context, url) => const Skeleton(
+                              width: 36,
+                              height: 36,
+                            ),
                           ),
-                        ),
-                        const Gap(24),
-                        Text(battleItem.item.name),
-                        const Spacer(),
-                        Text('${battleItem.rate}%'),
-                      ],
+                          const Gap(24),
+                          Text(battleItem.item.name),
+                          const Spacer(),
+                          Text('${battleItem.rate}%'),
+                        ],
+                      ),
                     ),
                   );
                 },
@@ -194,7 +206,6 @@ class TabTemplate extends StatelessWidget {
     required this.row,
   });
 
-  // receive Row widget
   final Row row;
 
   @override
