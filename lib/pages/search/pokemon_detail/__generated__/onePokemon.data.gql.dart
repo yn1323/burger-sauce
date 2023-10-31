@@ -131,6 +131,7 @@ abstract class GOnePokemonDataData_pokemon_evolutionTo_pokemon
   String get G__typename;
   String get id;
   String get name;
+  String get form;
   String get imageUrl;
   static Serializer<GOnePokemonDataData_pokemon_evolutionTo_pokemon>
       get serializer =>
@@ -200,6 +201,7 @@ abstract class GOnePokemonDataData_pokemon_evolutionFrom_pokemon
   String get G__typename;
   String get id;
   String get name;
+  String get form;
   String get imageUrl;
   static Serializer<GOnePokemonDataData_pokemon_evolutionFrom_pokemon>
       get serializer =>

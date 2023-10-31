@@ -4,6 +4,7 @@ query OnePokemonData($id: String!) {
       pokemon{
         id
         name
+        form
         imageUrl
       }
     }
@@ -11,6 +12,7 @@ query OnePokemonData($id: String!) {
       pokemon{
         id
         name
+        form
         imageUrl
       }
     }

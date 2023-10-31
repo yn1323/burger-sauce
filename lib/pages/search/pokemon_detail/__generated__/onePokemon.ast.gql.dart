@@ -58,6 +58,13 @@ const OnePokemonData = _i1.OperationDefinitionNode(
                   selectionSet: null,
                 ),
                 _i1.FieldNode(
+                  name: _i1.NameNode(value: 'form'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+                _i1.FieldNode(
                   name: _i1.NameNode(value: 'imageUrl'),
                   alias: null,
                   arguments: [],
@@ -89,6 +96,13 @@ const OnePokemonData = _i1.OperationDefinitionNode(
                 ),
                 _i1.FieldNode(
                   name: _i1.NameNode(value: 'name'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+                _i1.FieldNode(
+                  name: _i1.NameNode(value: 'form'),
                   alias: null,
                   arguments: [],
                   directives: [],

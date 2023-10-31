@@ -327,6 +327,8 @@ class _$GOnePokemonDataData_pokemon_evolutionTo_pokemonSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'form',
+      serializers.serialize(object.form, specifiedType: const FullType(String)),
       'imageUrl',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
@@ -357,6 +359,10 @@ class _$GOnePokemonDataData_pokemon_evolutionTo_pokemonSerializer
           break;
         case 'name':
           result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'form':
+          result.form = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'imageUrl':
@@ -450,6 +456,8 @@ class _$GOnePokemonDataData_pokemon_evolutionFrom_pokemonSerializer
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'form',
+      serializers.serialize(object.form, specifiedType: const FullType(String)),
       'imageUrl',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
@@ -481,6 +489,10 @@ class _$GOnePokemonDataData_pokemon_evolutionFrom_pokemonSerializer
           break;
         case 'name':
           result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'form':
+          result.form = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'imageUrl':
@@ -1399,6 +1411,8 @@ class _$GOnePokemonDataData_pokemon_evolutionTo_pokemon
   @override
   final String name;
   @override
+  final String form;
+  @override
   final String imageUrl;
 
   factory _$GOnePokemonDataData_pokemon_evolutionTo_pokemon(
@@ -1413,6 +1427,7 @@ class _$GOnePokemonDataData_pokemon_evolutionTo_pokemon
       {required this.G__typename,
       required this.id,
       required this.name,
+      required this.form,
       required this.imageUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
@@ -1421,6 +1436,8 @@ class _$GOnePokemonDataData_pokemon_evolutionTo_pokemon
         id, r'GOnePokemonDataData_pokemon_evolutionTo_pokemon', 'id');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GOnePokemonDataData_pokemon_evolutionTo_pokemon', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        form, r'GOnePokemonDataData_pokemon_evolutionTo_pokemon', 'form');
     BuiltValueNullFieldError.checkNotNull(imageUrl,
         r'GOnePokemonDataData_pokemon_evolutionTo_pokemon', 'imageUrl');
   }
@@ -1443,6 +1460,7 @@ class _$GOnePokemonDataData_pokemon_evolutionTo_pokemon
         G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
+        form == other.form &&
         imageUrl == other.imageUrl;
   }
 
@@ -1452,6 +1470,7 @@ class _$GOnePokemonDataData_pokemon_evolutionTo_pokemon
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, form.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -1464,6 +1483,7 @@ class _$GOnePokemonDataData_pokemon_evolutionTo_pokemon
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
+          ..add('form', form)
           ..add('imageUrl', imageUrl))
         .toString();
   }
@@ -1487,6 +1507,10 @@ class GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
+  String? _form;
+  String? get form => _$this._form;
+  set form(String? form) => _$this._form = form;
+
   String? _imageUrl;
   String? get imageUrl => _$this._imageUrl;
   set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
@@ -1501,6 +1525,7 @@ class GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder
       _G__typename = $v.G__typename;
       _id = $v.id;
       _name = $v.name;
+      _form = $v.form;
       _imageUrl = $v.imageUrl;
       _$v = null;
     }
@@ -1534,6 +1559,8 @@ class GOnePokemonDataData_pokemon_evolutionTo_pokemonBuilder
                 id, r'GOnePokemonDataData_pokemon_evolutionTo_pokemon', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(name,
                 r'GOnePokemonDataData_pokemon_evolutionTo_pokemon', 'name'),
+            form: BuiltValueNullFieldError.checkNotNull(form,
+                r'GOnePokemonDataData_pokemon_evolutionTo_pokemon', 'form'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
                 imageUrl,
                 r'GOnePokemonDataData_pokemon_evolutionTo_pokemon',
@@ -1685,6 +1712,8 @@ class _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon
   @override
   final String name;
   @override
+  final String form;
+  @override
   final String imageUrl;
 
   factory _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon(
@@ -1699,6 +1728,7 @@ class _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon
       {required this.G__typename,
       required this.id,
       required this.name,
+      required this.form,
       required this.imageUrl})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
@@ -1707,6 +1737,8 @@ class _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon
         id, r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon', 'id');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        form, r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon', 'form');
     BuiltValueNullFieldError.checkNotNull(imageUrl,
         r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon', 'imageUrl');
   }
@@ -1730,6 +1762,7 @@ class _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon
         G__typename == other.G__typename &&
         id == other.id &&
         name == other.name &&
+        form == other.form &&
         imageUrl == other.imageUrl;
   }
 
@@ -1739,6 +1772,7 @@ class _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, form.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -1751,6 +1785,7 @@ class _$GOnePokemonDataData_pokemon_evolutionFrom_pokemon
           ..add('G__typename', G__typename)
           ..add('id', id)
           ..add('name', name)
+          ..add('form', form)
           ..add('imageUrl', imageUrl))
         .toString();
   }
@@ -1774,6 +1809,10 @@ class GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
+  String? _form;
+  String? get form => _$this._form;
+  set form(String? form) => _$this._form = form;
+
   String? _imageUrl;
   String? get imageUrl => _$this._imageUrl;
   set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
@@ -1788,6 +1827,7 @@ class GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder
       _G__typename = $v.G__typename;
       _id = $v.id;
       _name = $v.name;
+      _form = $v.form;
       _imageUrl = $v.imageUrl;
       _$v = null;
     }
@@ -1821,6 +1861,8 @@ class GOnePokemonDataData_pokemon_evolutionFrom_pokemonBuilder
                 id, r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(name,
                 r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon', 'name'),
+            form: BuiltValueNullFieldError.checkNotNull(form,
+                r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon', 'form'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
                 imageUrl,
                 r'GOnePokemonDataData_pokemon_evolutionFrom_pokemon',
