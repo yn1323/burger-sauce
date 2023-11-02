@@ -1,3 +1,4 @@
+import 'package:burger_sauce/models/status.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -38,42 +39,6 @@ class StatusBox extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class Status {
-  Status({
-    required this.statusH,
-    required this.statusA,
-    required this.statusB,
-    required this.statusC,
-    required this.statusD,
-    required this.statusS,
-  });
-
-  final int statusH;
-  final int statusA;
-  final int statusB;
-  final int statusC;
-  final int statusD;
-  final int statusS;
-
-  int getStatus(String label) {
-    if (label == "H") {
-      return statusH;
-    } else if (label == "A") {
-      return statusA;
-    } else if (label == "B") {
-      return statusB;
-    } else if (label == "C") {
-      return statusC;
-    } else if (label == "D") {
-      return statusD;
-    } else if (label == "S") {
-      return statusS;
-    } else {
-      return 0;
-    }
   }
 }
 
