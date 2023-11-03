@@ -57,10 +57,13 @@ class PokemonDetailTab extends HookWidget {
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold)),
                           const Gap(5),
-                          Text(
-                            ability.detail,
-                            style: const TextStyle(fontSize: 12),
-                            softWrap: true,
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 60,
+                            child: Text(
+                              ability.detail,
+                              style: const TextStyle(fontSize: 12),
+                              softWrap: true,
+                            ),
                           ),
                         ],
                       ),
