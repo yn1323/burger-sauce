@@ -23,6 +23,7 @@ query OnePokemonData($id: String!) {
     moves {
       power
       name
+      detail
       type {
         textImageUrl
       }

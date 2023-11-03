@@ -162,6 +162,13 @@ const OnePokemonData = _i1.OperationDefinitionNode(
               selectionSet: null,
             ),
             _i1.FieldNode(
+              name: _i1.NameNode(value: 'detail'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            _i1.FieldNode(
               name: _i1.NameNode(value: 'type'),
               alias: null,
               arguments: [],

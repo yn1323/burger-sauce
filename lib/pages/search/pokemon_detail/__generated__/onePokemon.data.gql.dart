@@ -271,6 +271,7 @@ abstract class GOnePokemonDataData_pokemon_moves
   String get G__typename;
   int get power;
   String get name;
+  String get detail;
   GOnePokemonDataData_pokemon_moves_type? get type;
   GOnePokemonDataData_pokemon_moves_attackType? get attackType;
   static Serializer<GOnePokemonDataData_pokemon_moves> get serializer =>

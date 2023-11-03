@@ -5,6 +5,7 @@ import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemo
 import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.req.gql.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.var.gql.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/poke_main_view.dart';
+import 'package:burger_sauce/pages/search/pokemon_detail/pokemon_detail_tab.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/real_status_table.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/status_list.dart';
 import 'package:flutter/material.dart';
@@ -46,8 +47,6 @@ class PokemonDetail extends HookWidget {
           final abilities = pokemon.abilities;
           final moves = pokemon.moves;
           final types = pokemon.types;
-          final evolutionFrom = pokemon.evolutionFrom;
-          final evolutionTo = pokemon.evolutionTo;
 
           final status = Status(
             statusH: pokemon.statusH,
@@ -70,6 +69,9 @@ class PokemonDetail extends HookWidget {
                   RealStatusTable(
                     status: status,
                   ),
+                  Expanded(
+                    child: PokemonDetailTab(moves: moves, abilities: abilities),
+                  )
                 ],
               ),
             ),

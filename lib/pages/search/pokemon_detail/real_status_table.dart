@@ -62,7 +62,6 @@ class RealStatusTable extends HookWidget {
     ];
 
     return ExpansionTile(
-      initiallyExpanded: true,
       title: const Text('実数値'),
       children: <Widget>[
         Padding(

@@ -587,6 +587,9 @@ class _$GOnePokemonDataData_pokemon_movesSerializer
       serializers.serialize(object.power, specifiedType: const FullType(int)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'detail',
+      serializers.serialize(object.detail,
+          specifiedType: const FullType(String)),
     ];
     Object? value;
     value = object.type;
@@ -630,6 +633,10 @@ class _$GOnePokemonDataData_pokemon_movesSerializer
           break;
         case 'name':
           result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'detail':
+          result.detail = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'type':
@@ -2009,6 +2016,8 @@ class _$GOnePokemonDataData_pokemon_moves
   @override
   final String name;
   @override
+  final String detail;
+  @override
   final GOnePokemonDataData_pokemon_moves_type? type;
   @override
   final GOnePokemonDataData_pokemon_moves_attackType? attackType;
@@ -2022,6 +2031,7 @@ class _$GOnePokemonDataData_pokemon_moves
       {required this.G__typename,
       required this.power,
       required this.name,
+      required this.detail,
       this.type,
       this.attackType})
       : super._() {
@@ -2031,6 +2041,8 @@ class _$GOnePokemonDataData_pokemon_moves
         power, r'GOnePokemonDataData_pokemon_moves', 'power');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GOnePokemonDataData_pokemon_moves', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        detail, r'GOnePokemonDataData_pokemon_moves', 'detail');
   }
 
   @override
@@ -2049,6 +2061,7 @@ class _$GOnePokemonDataData_pokemon_moves
         G__typename == other.G__typename &&
         power == other.power &&
         name == other.name &&
+        detail == other.detail &&
         type == other.type &&
         attackType == other.attackType;
   }
@@ -2059,6 +2072,7 @@ class _$GOnePokemonDataData_pokemon_moves
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, power.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, detail.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jc(_$hash, attackType.hashCode);
     _$hash = $jf(_$hash);
@@ -2071,6 +2085,7 @@ class _$GOnePokemonDataData_pokemon_moves
           ..add('G__typename', G__typename)
           ..add('power', power)
           ..add('name', name)
+          ..add('detail', detail)
           ..add('type', type)
           ..add('attackType', attackType))
         .toString();
@@ -2094,6 +2109,10 @@ class GOnePokemonDataData_pokemon_movesBuilder
   String? _name;
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
+
+  String? _detail;
+  String? get detail => _$this._detail;
+  set detail(String? detail) => _$this._detail = detail;
 
   GOnePokemonDataData_pokemon_moves_typeBuilder? _type;
   GOnePokemonDataData_pokemon_moves_typeBuilder get type =>
@@ -2119,6 +2138,7 @@ class GOnePokemonDataData_pokemon_movesBuilder
       _G__typename = $v.G__typename;
       _power = $v.power;
       _name = $v.name;
+      _detail = $v.detail;
       _type = $v.type?.toBuilder();
       _attackType = $v.attackType?.toBuilder();
       _$v = null;
@@ -2152,6 +2172,8 @@ class GOnePokemonDataData_pokemon_movesBuilder
                   power, r'GOnePokemonDataData_pokemon_moves', 'power'),
               name: BuiltValueNullFieldError.checkNotNull(
                   name, r'GOnePokemonDataData_pokemon_moves', 'name'),
+              detail: BuiltValueNullFieldError.checkNotNull(
+                  detail, r'GOnePokemonDataData_pokemon_moves', 'detail'),
               type: _type?.build(),
               attackType: _attackType?.build());
     } catch (_) {
