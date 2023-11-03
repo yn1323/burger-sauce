@@ -8,6 +8,7 @@ import 'package:burger_sauce/pages/search/pokemon_detail/poke_main_view.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/pokemon_detail_tab.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/real_status_table.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/status_list.dart';
+import 'package:burger_sauce/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
@@ -33,6 +34,14 @@ class PokemonDetail extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(result.data?.pokemon?.name ?? ''),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () {
+              router.pop('/');
+            },
+          ),
+        ],
       ),
       body: Builder(
         builder: (context) {
