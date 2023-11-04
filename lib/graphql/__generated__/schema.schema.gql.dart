@@ -821,6 +821,31 @@ abstract class GJSONObject implements Built<GJSONObject, GJSONObjectBuilder> {
           (Object serialized) => GJSONObject((serialized as String?)));
 }
 
+abstract class GPokemonSearchOption
+    implements Built<GPokemonSearchOption, GPokemonSearchOptionBuilder> {
+  GPokemonSearchOption._();
+
+  factory GPokemonSearchOption(
+          [Function(GPokemonSearchOptionBuilder b) updates]) =
+      _$GPokemonSearchOption;
+
+  String? get condition;
+  bool? get evolvedOnly;
+  static Serializer<GPokemonSearchOption> get serializer =>
+      _$gPokemonSearchOptionSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GPokemonSearchOption.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GPokemonSearchOption? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GPokemonSearchOption.serializer,
+        json,
+      );
+}
+
 abstract class GTime implements Built<GTime, GTimeBuilder> {
   GTime._();
 

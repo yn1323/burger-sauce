@@ -660,6 +660,11 @@ type Pokemon {
   evolutions: [Evolution!]!
 }
 
+input PokemonSearchOption {
+  condition: String
+  evolvedOnly: Boolean
+}
+
 """About the Redwood queries."""
 type Query {
   """Fetches the Redwood root schema."""
@@ -669,6 +674,7 @@ type Query {
   filterMyPokemonTags(userId: String!): [MyPokemonTag!]!
   filterMyPartyTags(userId: String!): [MyPartyTag!]!
   battleDatasLatest: [BattleData!]!
+  pokemonSearch(name: String, types: [String!], moves: [String!], abilities: [String!], options: PokemonSearchOption): [Pokemon!]!
   abilities: [Ability!]!
   ability(id: String!): Ability
   attackTypes: [AttackType!]!

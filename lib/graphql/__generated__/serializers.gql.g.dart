@@ -75,6 +75,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GOnePokemonDataData_pokemon_types.serializer)
       ..add(GOnePokemonDataReq.serializer)
       ..add(GOnePokemonDataVars.serializer)
+      ..add(GPokemonSearchOption.serializer)
+      ..add(GSearchPokemonData.serializer)
+      ..add(GSearchPokemonData_pokemonSearch.serializer)
+      ..add(GSearchPokemonReq.serializer)
+      ..add(GSearchPokemonVars.serializer)
       ..add(GTime.serializer)
       ..add(GUpdateAbilityInput.serializer)
       ..add(GUpdateAttackTypeInput.serializer)
@@ -155,7 +160,20 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(GOnePokemonDataData_pokemon_types)]),
-          () => new ListBuilder<GOnePokemonDataData_pokemon_types>()))
+          () => new ListBuilder<GOnePokemonDataData_pokemon_types>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GSearchPokemonData_pokemonSearch)]),
+          () => new ListBuilder<GSearchPokemonData_pokemonSearch>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

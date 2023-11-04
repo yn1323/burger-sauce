@@ -37,6 +37,7 @@ import 'package:burger_sauce/graphql/__generated__/schema.schema.gql.dart'
         GDateTime,
         GJSON,
         GJSONObject,
+        GPokemonSearchOption,
         GTime,
         GUpdateAbilityInput,
         GUpdateAttackTypeInput,
@@ -102,6 +103,12 @@ import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemo
     show GOnePokemonDataReq;
 import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.var.gql.dart'
     show GOnePokemonDataVars;
+import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.data.gql.dart'
+    show GSearchPokemonData, GSearchPokemonData_pokemonSearch;
+import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.req.gql.dart'
+    show GSearchPokemonReq;
+import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.var.gql.dart'
+    show GSearchPokemonVars;
 import 'package:burger_sauce/pages/top/trend/__generated__/schema.data.gql.dart'
     show
         GLatestBattleDataIndexData,
@@ -187,6 +194,11 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GOnePokemonDataData_pokemon_types,
   GOnePokemonDataReq,
   GOnePokemonDataVars,
+  GPokemonSearchOption,
+  GSearchPokemonData,
+  GSearchPokemonData_pokemonSearch,
+  GSearchPokemonReq,
+  GSearchPokemonVars,
   GTime,
   GUpdateAbilityInput,
   GUpdateAttackTypeInput,

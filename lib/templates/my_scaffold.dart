@@ -10,7 +10,7 @@ class MyScaffold extends StatefulWidget {
 }
 
 class _MyScaffoldState extends State<MyScaffold> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 1;
   PageController? _controller;
   // ページ履歴を保持するリスト
   final List<int> _pageHistory = [];

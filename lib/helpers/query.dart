@@ -13,6 +13,7 @@ class QueryResult<T> {
   final bool loading;
   final bool hasErrors;
   final List<GraphQLError>? errors;
+  final Function refetch;
 
   bool isLoadingOrError() => loading || hasErrors;
   Center suspensePart() {
@@ -30,6 +31,7 @@ class QueryResult<T> {
     required this.loading,
     required this.hasErrors,
     this.errors,
+    required this.refetch,
   });
 }
 
@@ -38,20 +40,30 @@ QueryResult<T> useQuery<T, V>(
 ) {
   final client = GetIt.I<TypedLink>();
   final response = useState<OperationResponse<T, V>?>(null);
+  final refetchTrigger = useState(0);
+
+  void refetch() {
+    refetchTrigger.value++;
+  }
 
   useEffect(() {
+    // クエリをリスニングする
     final stream = client.request(operationRequest);
-    final listener = stream.listen((result) {
+    final subscription = stream.listen((result) {
       response.value = result;
     });
 
-    return listener.cancel;
-  }, [operationRequest]);
+    // useEffectがクリーンアップされたときにサブスクリプションをキャンセル
+    return () {
+      subscription.cancel();
+    };
+  }, [operationRequest, refetchTrigger.value]);
 
   return QueryResult<T>(
     data: response.value?.data,
     loading: response.value?.loading ?? true,
     hasErrors: response.value?.hasErrors ?? false,
     errors: response.value?.graphqlErrors,
+    refetch: refetch,
   );
 }

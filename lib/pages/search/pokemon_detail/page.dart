@@ -38,7 +38,7 @@ class PokemonDetail extends HookWidget {
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
-              router.pop('/');
+              router.pop();
             },
           ),
         ],

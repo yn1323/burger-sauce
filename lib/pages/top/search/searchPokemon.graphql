@@ -1,0 +1,14 @@
+query SearchPokemon($name: String, $types: [String!], $moves: [String!], $abilities: [String!], $options: PokemonSearchOption) {
+  pokemonSearch(
+    name: $name
+    types: $types
+    moves: $moves
+    abilities: $abilities
+    options: $options
+  ) {
+    name
+    id
+    imageUrl
+  }
+}
+

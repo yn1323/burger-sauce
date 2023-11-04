@@ -61,6 +61,8 @@ Serializer<GCreateTypeRelationInput> _$gCreateTypeRelationInputSerializer =
     new _$GCreateTypeRelationInputSerializer();
 Serializer<GCreateUserInput> _$gCreateUserInputSerializer =
     new _$GCreateUserInputSerializer();
+Serializer<GPokemonSearchOption> _$gPokemonSearchOptionSerializer =
+    new _$GPokemonSearchOptionSerializer();
 Serializer<GUpdateAbilityInput> _$gUpdateAbilityInputSerializer =
     new _$GUpdateAbilityInputSerializer();
 Serializer<GUpdateAttackTypeInput> _$gUpdateAttackTypeInputSerializer =
@@ -2117,6 +2119,66 @@ class _$GCreateUserInputSerializer
         case 'deletedUserAt':
           result.deletedUserAt.replace(serializers.deserialize(value,
               specifiedType: const FullType(GDateTime))! as GDateTime);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GPokemonSearchOptionSerializer
+    implements StructuredSerializer<GPokemonSearchOption> {
+  @override
+  final Iterable<Type> types = const [
+    GPokemonSearchOption,
+    _$GPokemonSearchOption
+  ];
+  @override
+  final String wireName = 'GPokemonSearchOption';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GPokemonSearchOption object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.condition;
+    if (value != null) {
+      result
+        ..add('condition')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.evolvedOnly;
+    if (value != null) {
+      result
+        ..add('evolvedOnly')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    return result;
+  }
+
+  @override
+  GPokemonSearchOption deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GPokemonSearchOptionBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'condition':
+          result.condition = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'evolvedOnly':
+          result.evolvedOnly = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
           break;
       }
     }
@@ -9209,6 +9271,100 @@ class GJSONObjectBuilder implements Builder<GJSONObject, GJSONObjectBuilder> {
         new _$GJSONObject._(
             value: BuiltValueNullFieldError.checkNotNull(
                 value, r'GJSONObject', 'value'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GPokemonSearchOption extends GPokemonSearchOption {
+  @override
+  final String? condition;
+  @override
+  final bool? evolvedOnly;
+
+  factory _$GPokemonSearchOption(
+          [void Function(GPokemonSearchOptionBuilder)? updates]) =>
+      (new GPokemonSearchOptionBuilder()..update(updates))._build();
+
+  _$GPokemonSearchOption._({this.condition, this.evolvedOnly}) : super._();
+
+  @override
+  GPokemonSearchOption rebuild(
+          void Function(GPokemonSearchOptionBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GPokemonSearchOptionBuilder toBuilder() =>
+      new GPokemonSearchOptionBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GPokemonSearchOption &&
+        condition == other.condition &&
+        evolvedOnly == other.evolvedOnly;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, condition.hashCode);
+    _$hash = $jc(_$hash, evolvedOnly.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GPokemonSearchOption')
+          ..add('condition', condition)
+          ..add('evolvedOnly', evolvedOnly))
+        .toString();
+  }
+}
+
+class GPokemonSearchOptionBuilder
+    implements Builder<GPokemonSearchOption, GPokemonSearchOptionBuilder> {
+  _$GPokemonSearchOption? _$v;
+
+  String? _condition;
+  String? get condition => _$this._condition;
+  set condition(String? condition) => _$this._condition = condition;
+
+  bool? _evolvedOnly;
+  bool? get evolvedOnly => _$this._evolvedOnly;
+  set evolvedOnly(bool? evolvedOnly) => _$this._evolvedOnly = evolvedOnly;
+
+  GPokemonSearchOptionBuilder();
+
+  GPokemonSearchOptionBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _condition = $v.condition;
+      _evolvedOnly = $v.evolvedOnly;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GPokemonSearchOption other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GPokemonSearchOption;
+  }
+
+  @override
+  void update(void Function(GPokemonSearchOptionBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GPokemonSearchOption build() => _build();
+
+  _$GPokemonSearchOption _build() {
+    final _$result = _$v ??
+        new _$GPokemonSearchOption._(
+            condition: condition, evolvedOnly: evolvedOnly);
     replace(_$result);
     return _$result;
   }
