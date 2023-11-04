@@ -104,7 +104,13 @@ import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemo
 import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.var.gql.dart'
     show GOnePokemonDataVars;
 import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.data.gql.dart'
-    show GSearchPokemonData, GSearchPokemonData_pokemonSearch;
+    show
+        GSearchPokemonData,
+        GSearchPokemonData_abilities,
+        GSearchPokemonData_moves,
+        GSearchPokemonData_pokemonList,
+        GSearchPokemonData_pokemonSearch,
+        GSearchPokemonData_types;
 import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.req.gql.dart'
     show GSearchPokemonReq;
 import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.var.gql.dart'
@@ -196,7 +202,11 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GOnePokemonDataVars,
   GPokemonSearchOption,
   GSearchPokemonData,
+  GSearchPokemonData_abilities,
+  GSearchPokemonData_moves,
+  GSearchPokemonData_pokemonList,
   GSearchPokemonData_pokemonSearch,
+  GSearchPokemonData_types,
   GSearchPokemonReq,
   GSearchPokemonVars,
   GTime,

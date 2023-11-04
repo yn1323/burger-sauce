@@ -48,7 +48,7 @@ class PokeMainView extends StatelessWidget {
                           width: 64,
                           showSkeleton: false,
                           ballSkeleton: false,
-                          label: combineNameWithForm(
+                          label: nameWithForm(
                             name: pokemon.evolutionFrom[0].pokemon.name,
                             form: pokemon.evolutionFrom[0].pokemon.form,
                           ),
@@ -104,7 +104,7 @@ class EvolutionToPokemons extends StatelessWidget {
                   height: 64,
                   width: 64,
                   ballSkeleton: false,
-                  label: combineNameWithForm(
+                  label: nameWithForm(
                     name: e.pokemon.name,
                     form: e.pokemon.form,
                   ),

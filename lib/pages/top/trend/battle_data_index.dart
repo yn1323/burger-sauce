@@ -61,7 +61,7 @@ class BattleDataIndex extends HookWidget {
                         const Gap(10),
                         Center(
                           child: Text(
-                            combineNameWithForm(
+                            nameWithForm(
                                 name: pokemon.name, form: pokemon.form),
                           ),
                         ),

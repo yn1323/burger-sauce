@@ -77,7 +77,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GOnePokemonDataVars.serializer)
       ..add(GPokemonSearchOption.serializer)
       ..add(GSearchPokemonData.serializer)
+      ..add(GSearchPokemonData_abilities.serializer)
+      ..add(GSearchPokemonData_moves.serializer)
+      ..add(GSearchPokemonData_pokemonList.serializer)
       ..add(GSearchPokemonData_pokemonSearch.serializer)
+      ..add(GSearchPokemonData_types.serializer)
       ..add(GSearchPokemonReq.serializer)
       ..add(GSearchPokemonVars.serializer)
       ..add(GTime.serializer)
@@ -165,6 +169,22 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList,
               const [const FullType(GSearchPokemonData_pokemonSearch)]),
           () => new ListBuilder<GSearchPokemonData_pokemonSearch>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GSearchPokemonData_types)]),
+          () => new ListBuilder<GSearchPokemonData_types>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GSearchPokemonData_abilities)]),
+          () => new ListBuilder<GSearchPokemonData_abilities>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GSearchPokemonData_moves)]),
+          () => new ListBuilder<GSearchPokemonData_moves>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GSearchPokemonData_pokemonList)]),
+          () => new ListBuilder<GSearchPokemonData_pokemonList>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

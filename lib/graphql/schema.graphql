@@ -674,6 +674,7 @@ type Query {
   filterMyPokemonTags(userId: String!): [MyPokemonTag!]!
   filterMyPartyTags(userId: String!): [MyPartyTag!]!
   battleDatasLatest: [BattleData!]!
+  pokemonList(options: PokemonSearchOption): [Pokemon!]!
   pokemonSearch(name: String, types: [String!], moves: [String!], abilities: [String!], options: PokemonSearchOption): [Pokemon!]!
   abilities: [Ability!]!
   ability(id: String!): Ability

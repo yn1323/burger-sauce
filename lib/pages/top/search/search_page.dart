@@ -1,6 +1,8 @@
+import 'package:burger_sauce/components/widgets/auto_complete_text_field.dart';
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/graphql/__generated__/schema.schema.gql.dart';
 import 'package:burger_sauce/helpers/query.dart';
+import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.data.gql.dart';
 import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.req.gql.dart';
 import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.var.gql.dart';
@@ -38,6 +40,7 @@ class SearchPage extends HookWidget {
   Widget build(BuildContext context) {
     useAutomaticKeepAlive();
     final searchCondition = useState(SearchCondition());
+    final nextCondition = useState(SearchCondition());
 
     final result = useQuery<GSearchPokemonData, GSearchPokemonVars>(
       GSearchPokemonReq(
@@ -68,9 +71,10 @@ class SearchPage extends HookWidget {
                 context: context,
                 builder: (BuildContext context) {
                   return SizedBox(
-                    height: MediaQuery.of(context).size.height - 100,
-                    child: const Center(child: Text('moge')),
-                  );
+                      height: MediaQuery.of(context).size.height - 100,
+                      child: ListView(
+                        children: const [Text('aaa')],
+                      ));
                 },
               );
             },
@@ -84,9 +88,48 @@ class SearchPage extends HookWidget {
             return result.suspensePart();
           }
 
-          final pokemon = result.data!.pokemonSearch;
+          final pokemonResult = result.data!.pokemonSearch;
+          final pokemonList = result.data!.pokemonList;
 
-          return Text(pokemon[0].name);
+          return SizedBox(
+              // height: MediaQuery.of(context).size.height - 100,
+              child: ListView(
+            children: [
+              Text('検索結果: ${pokemonResult.length}'),
+              Container(
+                padding: const EdgeInsets.all(8.0),
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(width: 1.0, color: Colors.grey),
+                  ),
+                ),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width - 80,
+                  child: AutoCompleteTextField(
+                      onSelected: (String hoge) {
+                        print('onSelected: $hoge');
+                        searchCondition.value = SearchCondition(
+                          name: hoge,
+                          moves: searchCondition.value.moves,
+                          types: searchCondition.value.types,
+                          abilities: searchCondition.value.abilities,
+                          options: searchCondition.value.options,
+                        );
+                        result.refetch();
+                      },
+                      baseOptions: pokemonList
+                          .map(
+                            (pokemon) => AutoCompleteOption(
+                              label: nameWithForm(
+                                  name: pokemon.name, form: pokemon.form),
+                              imageUrl: pokemon.imageUrl,
+                            ),
+                          )
+                          .toList()),
+                ),
+              ),
+            ],
+          ));
         },
       ),
     );

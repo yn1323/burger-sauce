@@ -33,7 +33,7 @@ class BattleDataPokemon extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          combineNameWithForm(
+          nameWithForm(
             name: result.data?.battleData?.pokemon.name ?? '',
             form: result.data?.battleData?.pokemon.form ?? '',
           ),
