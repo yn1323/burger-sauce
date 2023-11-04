@@ -63,20 +63,16 @@ class SearchPage extends HookWidget {
               );
               result.refetch();
 
-              // showModalBottomSheet(
-              //   context: context,
-              //   builder: (BuildContext context) {
-              //     return const Column(
-              //       mainAxisSize: MainAxisSize.min,
-              //       children: <Widget>[
-              //         SizedBox(
-              //           height: 200,
-              //           child: Text('moge'),
-              //         )
-              //       ],
-              //     );
-              //   },
-              // );
+              showModalBottomSheet(
+                isScrollControlled: true,
+                context: context,
+                builder: (BuildContext context) {
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height - 100,
+                    child: const Center(child: Text('moge')),
+                  );
+                },
+              );
             },
             icon: const Icon(Icons.search),
           ),
