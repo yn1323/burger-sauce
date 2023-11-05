@@ -1,5 +1,5 @@
 import 'package:burger_sauce/components/fragments/pokemon_image.dart';
-import 'package:burger_sauce/constants/ui.dart';
+import 'package:burger_sauce/components/widgets/view_list_row.dart';
 import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/top/trend/trend_page.dart';
 import 'package:ferry/ferry.dart';
@@ -30,16 +30,7 @@ class BattleDataIndex extends HookWidget {
                     pathParameters: {'battleId': pokemon.id},
                   )
                 },
-                child: Container(
-                  height: listHeight,
-                  decoration: const BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Colors.grey,
-                        width: 0.5,
-                      ),
-                    ),
-                  ),
+                child: ViewListRow(
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20, 4, 20, 4),
                     child: Row(

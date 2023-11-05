@@ -57,6 +57,7 @@ abstract class GSearchPokemonData_pokemonSearch
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get name;
+  String get form;
   String get id;
   String get imageUrl;
   static Serializer<GSearchPokemonData_pokemonSearch> get serializer =>

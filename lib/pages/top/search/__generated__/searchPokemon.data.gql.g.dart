@@ -135,6 +135,8 @@ class _$GSearchPokemonData_pokemonSearchSerializer
           specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'form',
+      serializers.serialize(object.form, specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'imageUrl',
@@ -163,6 +165,10 @@ class _$GSearchPokemonData_pokemonSearchSerializer
           break;
         case 'name':
           result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'form':
+          result.form = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'id':
@@ -610,6 +616,8 @@ class _$GSearchPokemonData_pokemonSearch
   @override
   final String name;
   @override
+  final String form;
+  @override
   final String id;
   @override
   final String imageUrl;
@@ -621,6 +629,7 @@ class _$GSearchPokemonData_pokemonSearch
   _$GSearchPokemonData_pokemonSearch._(
       {required this.G__typename,
       required this.name,
+      required this.form,
       required this.id,
       required this.imageUrl})
       : super._() {
@@ -628,6 +637,8 @@ class _$GSearchPokemonData_pokemonSearch
         G__typename, r'GSearchPokemonData_pokemonSearch', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GSearchPokemonData_pokemonSearch', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        form, r'GSearchPokemonData_pokemonSearch', 'form');
     BuiltValueNullFieldError.checkNotNull(
         id, r'GSearchPokemonData_pokemonSearch', 'id');
     BuiltValueNullFieldError.checkNotNull(
@@ -649,6 +660,7 @@ class _$GSearchPokemonData_pokemonSearch
     return other is GSearchPokemonData_pokemonSearch &&
         G__typename == other.G__typename &&
         name == other.name &&
+        form == other.form &&
         id == other.id &&
         imageUrl == other.imageUrl;
   }
@@ -658,6 +670,7 @@ class _$GSearchPokemonData_pokemonSearch
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, form.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jf(_$hash);
@@ -669,6 +682,7 @@ class _$GSearchPokemonData_pokemonSearch
     return (newBuiltValueToStringHelper(r'GSearchPokemonData_pokemonSearch')
           ..add('G__typename', G__typename)
           ..add('name', name)
+          ..add('form', form)
           ..add('id', id)
           ..add('imageUrl', imageUrl))
         .toString();
@@ -689,6 +703,10 @@ class GSearchPokemonData_pokemonSearchBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
+  String? _form;
+  String? get form => _$this._form;
+  set form(String? form) => _$this._form = form;
+
   String? _id;
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
@@ -706,6 +724,7 @@ class GSearchPokemonData_pokemonSearchBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _name = $v.name;
+      _form = $v.form;
       _id = $v.id;
       _imageUrl = $v.imageUrl;
       _$v = null;
@@ -734,6 +753,8 @@ class GSearchPokemonData_pokemonSearchBuilder
                 r'GSearchPokemonData_pokemonSearch', 'G__typename'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'GSearchPokemonData_pokemonSearch', 'name'),
+            form: BuiltValueNullFieldError.checkNotNull(
+                form, r'GSearchPokemonData_pokemonSearch', 'form'),
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'GSearchPokemonData_pokemonSearch', 'id'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(

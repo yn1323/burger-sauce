@@ -1,5 +1,9 @@
 import 'package:burger_sauce/components/widgets/auto_complete_text_field.dart';
+import 'package:burger_sauce/components/widgets/br.dart';
+import 'package:burger_sauce/components/widgets/expansion_panel_styled.dart';
+import 'package:burger_sauce/components/widgets/view_list_row.dart';
 import 'package:burger_sauce/constants/client.dart';
+import 'package:burger_sauce/constants/ui.dart';
 import 'package:burger_sauce/graphql/__generated__/schema.schema.gql.dart';
 import 'package:burger_sauce/helpers/query.dart';
 import 'package:burger_sauce/helpers/string.dart';
@@ -18,9 +22,9 @@ class SearchCondition {
 
   SearchCondition({
     this.name = '',
-    this.types = const [],
-    this.moves = const [],
-    this.abilities = const [],
+    this.types = const ['', ''],
+    this.moves = const ['', '', '', ''],
+    this.abilities = const [''],
     this.options = const {"evolvedOnly": true, "condition": "ASC"},
   });
 
@@ -40,7 +44,22 @@ class SearchPage extends HookWidget {
   Widget build(BuildContext context) {
     useAutomaticKeepAlive();
     final searchCondition = useState(SearchCondition());
-    final nextCondition = useState(SearchCondition());
+
+    void setCondition({
+      String? name,
+      List<String>? types,
+      List<String>? moves,
+      List<String>? abilities,
+      Map<String, dynamic>? options,
+    }) {
+      searchCondition.value = SearchCondition(
+        name: name ?? searchCondition.value.name,
+        types: types ?? searchCondition.value.types,
+        moves: moves ?? searchCondition.value.moves,
+        abilities: abilities ?? searchCondition.value.abilities,
+        options: options ?? searchCondition.value.options,
+      );
+    }
 
     final result = useQuery<GSearchPokemonData, GSearchPokemonVars>(
       GSearchPokemonReq(
@@ -90,31 +109,23 @@ class SearchPage extends HookWidget {
 
           final pokemonResult = result.data!.pokemonSearch;
           final pokemonList = result.data!.pokemonList;
+          final moves = result.data!.moves;
+          final abilities = result.data!.abilities;
+          final types = result.data!.types;
 
           return SizedBox(
-              // height: MediaQuery.of(context).size.height - 100,
-              child: ListView(
-            children: [
-              Text('検索結果: ${pokemonResult.length}'),
-              Container(
-                padding: const EdgeInsets.all(8.0),
-                decoration: const BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(width: 1.0, color: Colors.grey),
-                  ),
-                ),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width - 80,
-                  child: AutoCompleteTextField(
-                      onSelected: (String hoge) {
-                        print('onSelected: $hoge');
-                        searchCondition.value = SearchCondition(
-                          name: hoge,
-                          moves: searchCondition.value.moves,
-                          types: searchCondition.value.types,
-                          abilities: searchCondition.value.abilities,
-                          options: searchCondition.value.options,
-                        );
+            // height: MediaQuery.of(context).size.height - 100,
+            child: ListView(
+              children: [
+                Text('検索結果: ${pokemonResult.length}'),
+                ViewListRow(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width - 80,
+                    child: AutoCompleteTextField(
+                      labelText: 'ポケモン名',
+                      onSelected: (String name) {
+                        setCondition(name: name);
                         result.refetch();
                       },
                       baseOptions: pokemonList
@@ -125,11 +136,94 @@ class SearchPage extends HookWidget {
                               imageUrl: pokemon.imageUrl,
                             ),
                           )
-                          .toList()),
+                          .toList(),
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          ));
+                ViewListRow(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width - 80,
+                    child: AutoCompleteTextField(
+                      labelText: 'とくせい',
+                      onSelected: (String name) {
+                        setCondition(abilities: [name]);
+                        result.refetch();
+                      },
+                      baseOptions: abilities
+                          .map(
+                            (ability) =>
+                                AutoCompleteOption(label: ability.name),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                ),
+                ExpansionPanelStyled(
+                  height: listHeight,
+                  title: const Text('わざ'),
+                  children: [
+                    for (int i = 0; i < searchCondition.value.moves.length; i++)
+                      Container(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width - 80,
+                          child: AutoCompleteTextField(
+                            labelText: 'わざ${i + 1}',
+                            onSelected: (String move) {
+                              final List<String> newCondition =
+                                  List.from(searchCondition.value.moves);
+                              newCondition[i] = move;
+                              setCondition(moves: newCondition);
+
+                              result.refetch();
+                            },
+                            baseOptions: moves
+                                .map(
+                                  (e) => AutoCompleteOption(label: e.name),
+                                )
+                                .toList(),
+                          ),
+                        ),
+                      )
+                  ],
+                ),
+                const Br(),
+                ExpansionPanelStyled(
+                  height: listHeight,
+                  title: const Text('タイプ'),
+                  children: [
+                    for (int i = 0; i < searchCondition.value.types.length; i++)
+                      Container(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width - 80,
+                          child: AutoCompleteTextField(
+                            labelText: 'タイプ${i + 1}',
+                            onSelected: (String type) {
+                              final List<String> newCondition =
+                                  List.from(searchCondition.value.types);
+                              newCondition[i] = type;
+                              setCondition(types: newCondition);
+                              result.refetch();
+                            },
+                            baseOptions: types
+                                .map(
+                                  (e) => AutoCompleteOption(
+                                    label: e.name,
+                                    imageUrl: e.textImageUrl,
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        ),
+                      )
+                  ],
+                ),
+                const Br(),
+              ],
+            ),
+          );
         },
       ),
     );

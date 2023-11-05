@@ -1,1 +1,1 @@
-double listHeight = 70;
+const double listHeight = 70;

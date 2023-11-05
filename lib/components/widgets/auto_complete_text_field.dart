@@ -14,16 +14,20 @@ class AutoCompleteOption {
 }
 
 class AutoCompleteTextField extends HookWidget {
-  const AutoCompleteTextField(
-      {Key? key,
-      required this.baseOptions,
-      required this.onSelected,
-      this.placeholder = ''})
-      : super(key: key);
+  const AutoCompleteTextField({
+    Key? key,
+    required this.baseOptions,
+    required this.onSelected,
+    this.placeholder = '',
+    this.labelText = '',
+    this.showAllByDefault = true,
+  }) : super(key: key);
 
   final List<AutoCompleteOption> baseOptions;
   final void Function(String) onSelected;
   final String placeholder;
+  final String labelText;
+  final bool showAllByDefault;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +67,7 @@ class AutoCompleteTextField extends HookWidget {
       optionsBuilder: (TextEditingValue textEditingValue) {
         currentText.value = textEditingValue.text;
         if (textEditingValue.text == '') {
-          return const Iterable<String>.empty();
+          return showAllByDefault ? options : const Iterable<String>.empty();
         }
 
         return options.where((String option) {
@@ -73,10 +77,11 @@ class AutoCompleteTextField extends HookWidget {
       },
       fieldViewBuilder:
           (context, textEditingController, focusNode, onFieldSubmitted) {
-        return TextField(
+        return TextFormField(
           controller: textEditingController,
           focusNode: focusNode,
           decoration: InputDecoration(
+            labelText: labelText,
             hintText: placeholder,
             prefixIcon: const Icon(Icons.search),
             suffixIcon: IconButton(
@@ -89,7 +94,8 @@ class AutoCompleteTextField extends HookWidget {
             ),
           ),
           onChanged: onTextChanged,
-          onSubmitted: (String value) {
+          onFieldSubmitted: (String value) {
+            debounceTimer.value?.cancel();
             onSelected(value);
           },
         );
@@ -145,14 +151,20 @@ class AutoCompleteTextField extends HookWidget {
                                   ),
                                 ),
                               const Gap(10),
-                              Center(
+                              Container(
+                                padding: imageUrl.isEmpty
+                                    ? const EdgeInsets.all(16)
+                                    : null,
                                 child: Text(
                                   option,
                                 ),
                               ),
                             ],
                           ),
-                          onTap: () => onSelected(option),
+                          onTap: () {
+                            debounceTimer.value?.cancel();
+                            onSelected(option);
+                          },
                         );
                       },
                     );
