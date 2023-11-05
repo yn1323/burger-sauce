@@ -8,6 +8,7 @@ import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.data.g
 import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.req.gql.dart';
 import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.var.gql.dart';
 import 'package:burger_sauce/pages/top/search/search_modal_sheet.dart';
+import 'package:burger_sauce/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
@@ -118,25 +119,34 @@ class SearchPage extends HookWidget {
             itemCount: pokemonResult.length,
             itemBuilder: (context, index) {
               final pokemon = pokemonResult[index];
-              return ViewListRow(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 4, 20, 4),
-                  child: Row(
-                    children: [
-                      PokemonImage(
-                        imageUrl: pokemon.imageUrl,
-                        width: 100,
-                        height: 100,
-                        ballSkeleton: false,
-                        showSkeleton: false,
-                      ),
-                      const Gap(10),
-                      Center(
-                        child: Text(
-                          nameWithForm(name: pokemon.name, form: pokemon.form),
+              return InkWell(
+                onTap: () {
+                  router.goNamed(
+                    'searchPokemon',
+                    pathParameters: {'pokemonId': pokemon.id},
+                  );
+                },
+                child: ViewListRow(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 4, 20, 4),
+                    child: Row(
+                      children: [
+                        PokemonImage(
+                          imageUrl: pokemon.imageUrl,
+                          width: 100,
+                          height: 100,
+                          ballSkeleton: false,
+                          showSkeleton: false,
                         ),
-                      ),
-                    ],
+                        const Gap(10),
+                        Center(
+                          child: Text(
+                            nameWithForm(
+                                name: pokemon.name, form: pokemon.form),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );
