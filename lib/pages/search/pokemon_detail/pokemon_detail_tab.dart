@@ -1,6 +1,7 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:burger_sauce/components/fragments/vertical_move_type_image.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.data.gql.dart';
+import 'package:burger_sauce/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
@@ -45,71 +46,88 @@ class PokemonDetailTab extends HookWidget {
               itemCount: abilities.length,
               itemBuilder: (context, index) {
                 final ability = abilities[index];
-                return TabTemplate(
-                    row: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(ability.name,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold)),
-                          const Gap(5),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width - 60,
-                            child: Text(
-                              ability.detail,
-                              style: const TextStyle(fontSize: 12),
-                              softWrap: true,
+                return InkWell(
+                  onTap: () {
+                    router.push('/search?move=${ability.name}');
+                  },
+                  child: TabTemplate(
+                      row: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(ability.name,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold)),
+                            const Gap(5),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width - 60,
+                              child: Text(
+                                ability.detail,
+                                style: const TextStyle(fontSize: 12),
+                                softWrap: true,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ));
+                    ],
+                  )),
+                );
               },
             ),
             ListView.builder(
               itemCount: moves.length,
               itemBuilder: (context, index) {
                 final move = moves[index];
-                return TabTemplate(
-                    row: Row(
-                  children: [
-                    VerticalMoveTypeImage(
-                      attackTypeImageUrl: move.attackType?.imageUrl,
-                      typeImageUrl: move.type?.textImageUrl,
-                    ),
-                    const Gap(20),
-                    Container(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(move.name,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold))
-                            ],
-                          ),
-                          const Gap(5),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width - 160,
-                            child: Text(
-                              move.detail,
-                              style: const TextStyle(fontSize: 12),
-                              softWrap: true,
-                            ),
-                          ),
-                        ],
+                return InkWell(
+                  onTap: () {
+                    router.push('/search?move=${move.name}');
+                  },
+                  child: TabTemplate(
+                      row: Row(
+                    children: [
+                      VerticalMoveTypeImage(
+                        attackTypeImageUrl: move.attackType?.imageUrl,
+                        typeImageUrl: move.type?.textImageUrl,
                       ),
-                    ),
-                  ],
-                ));
+                      const Gap(20),
+                      Container(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  move.name,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                    move.power > 0
+                                        ? '（いりょく：${move.power.toString()}）'
+                                        : '',
+                                    style: const TextStyle(fontSize: 12))
+                              ],
+                            ),
+                            const Gap(5),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width - 160,
+                              child: Text(
+                                move.detail,
+                                style: const TextStyle(fontSize: 12),
+                                softWrap: true,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )),
+                );
               },
             ),
           ]),

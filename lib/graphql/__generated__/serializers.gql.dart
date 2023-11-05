@@ -103,7 +103,7 @@ import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemo
     show GOnePokemonDataReq;
 import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.var.gql.dart'
     show GOnePokemonDataVars;
-import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.data.gql.dart'
+import 'package:burger_sauce/pages/search/search_list/__generated__/searchPokemon.data.gql.dart'
     show
         GSearchPokemonData,
         GSearchPokemonData_abilities,
@@ -111,9 +111,9 @@ import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.data.g
         GSearchPokemonData_pokemonList,
         GSearchPokemonData_pokemonSearch,
         GSearchPokemonData_types;
-import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.req.gql.dart'
+import 'package:burger_sauce/pages/search/search_list/__generated__/searchPokemon.req.gql.dart'
     show GSearchPokemonReq;
-import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.var.gql.dart'
+import 'package:burger_sauce/pages/search/search_list/__generated__/searchPokemon.var.gql.dart'
     show GSearchPokemonVars;
 import 'package:burger_sauce/pages/top/trend/__generated__/schema.data.gql.dart'
     show

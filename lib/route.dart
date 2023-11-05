@@ -1,5 +1,6 @@
 import 'package:burger_sauce/pages/search/battle_data/page.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/page.dart';
+import 'package:burger_sauce/pages/search/search_list/search_list.dart';
 import 'package:burger_sauce/templates/my_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,19 +15,31 @@ final GoRouter router = GoRouter(
       },
       routes: <RouteBase>[
         GoRoute(
-          name: 'searchPokemon',
-          path: 'search/pokemon/:pokemonId',
+          name: 'searchPokemonList',
+          path: 'search',
           builder: (BuildContext context, GoRouterState state) {
-            return PokemonDetail(pokemonId: state.pathParameters['pokemonId']!);
+            final move = state.uri.queryParameters['move'];
+            final ability = state.uri.queryParameters['ability'];
+            return SearchList(move: move, ability: ability);
           },
-        ),
-        GoRoute(
-          name: 'searchBattlePokemon',
-          path: 'search/battle/:battleId',
-          builder: (BuildContext context, GoRouterState state) {
-            return BattleDataPokemon(
-                battleId: state.pathParameters['battleId']!);
-          },
+          routes: <RouteBase>[
+            GoRoute(
+              name: 'searchPokemon',
+              path: 'pokemon/:pokemonId',
+              builder: (BuildContext context, GoRouterState state) {
+                return PokemonDetail(
+                    pokemonId: state.pathParameters['pokemonId']!);
+              },
+            ),
+            GoRoute(
+              name: 'searchBattlePokemon',
+              path: 'battle/:battleId',
+              builder: (BuildContext context, GoRouterState state) {
+                return BattleDataPokemon(
+                    battleId: state.pathParameters['battleId']!);
+              },
+            ),
+          ],
         ),
       ],
     ),

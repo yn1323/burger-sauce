@@ -34,7 +34,7 @@ class PokemonDetail extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(result.data?.pokemon?.name ?? ''),
-        actions: <Widget>[
+        actions: [
           IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
