@@ -53,6 +53,7 @@ class SearchModalSheet extends HookWidget {
             child: SizedBox(
               width: MediaQuery.of(context).size.width - 80,
               child: AutoCompleteTextField(
+                initialValue: searchCondition.value.name,
                 labelText: 'ポケモン名',
                 onSelected: (String name) {
                   setCondition(name: name);
@@ -74,6 +75,7 @@ class SearchModalSheet extends HookWidget {
             child: SizedBox(
               width: MediaQuery.of(context).size.width - 80,
               child: AutoCompleteTextField(
+                initialValue: searchCondition.value.abilities[0],
                 labelText: 'とくせい',
                 onSelected: (String name) {
                   setCondition(abilities: [name]);
@@ -96,6 +98,7 @@ class SearchModalSheet extends HookWidget {
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width - 80,
                     child: AutoCompleteTextField(
+                      initialValue: searchCondition.value.moves[i],
                       labelText: 'わざ${i + 1}',
                       onSelected: (String move) {
                         final List<String> newCondition =
@@ -158,6 +161,7 @@ class SearchModalSheet extends HookWidget {
                       "evolvedOnly": index == 0,
                       "condition": "ASC"
                     }),
+                    Navigator.pop(context)
                   },
                   isSelected: [
                     searchCondition.value.options["evolvedOnly"],

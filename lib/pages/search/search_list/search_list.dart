@@ -120,6 +120,10 @@ class SearchList extends HookWidget {
 
           final pokemonResult = result.data!.pokemonSearch;
 
+          if (pokemonResult.isEmpty) {
+            return const Center(child: Text("該当するポケモンが見つかりませんでした。"));
+          }
+
           return ListView.builder(
             itemCount: pokemonResult.length,
             itemBuilder: (context, index) {

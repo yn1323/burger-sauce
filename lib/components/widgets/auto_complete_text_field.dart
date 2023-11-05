@@ -21,6 +21,7 @@ class AutoCompleteTextField extends HookWidget {
     this.placeholder = '',
     this.labelText = '',
     this.showAllByDefault = true,
+    this.initialValue = '',
   }) : super(key: key);
 
   final List<AutoCompleteOption> baseOptions;
@@ -28,6 +29,7 @@ class AutoCompleteTextField extends HookWidget {
   final String placeholder;
   final String labelText;
   final bool showAllByDefault;
+  final String initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +66,7 @@ class AutoCompleteTextField extends HookWidget {
     }
 
     return Autocomplete(
+      initialValue: TextEditingValue(text: initialValue),
       optionsBuilder: (TextEditingValue textEditingValue) {
         currentText.value = textEditingValue.text;
         if (textEditingValue.text == '') {

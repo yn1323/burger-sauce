@@ -48,7 +48,7 @@ class PokemonDetailTab extends HookWidget {
                 final ability = abilities[index];
                 return InkWell(
                   onTap: () {
-                    router.push('/search?move=${ability.name}');
+                    router.push('/search?ability=${ability.name}');
                   },
                   child: TabTemplate(
                       row: Row(
