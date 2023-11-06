@@ -1,57 +1,60 @@
+import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/constants/route.dart';
 import 'package:burger_sauce/constants/widgets/properties.dart';
+import 'package:burger_sauce/helpers/query.dart';
+import 'package:burger_sauce/templates/__generated__/wakeup.data.gql.dart';
+import 'package:burger_sauce/templates/__generated__/wakeup.req.gql.dart';
+import 'package:burger_sauce/templates/__generated__/wakeup.var.gql.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class MyScaffold extends StatefulWidget {
+const defaultIndex = 1;
+
+class MyScaffold extends HookWidget {
   const MyScaffold({Key? key}) : super(key: key);
 
   @override
-  State<MyScaffold> createState() => _MyScaffoldState();
-}
-
-class _MyScaffoldState extends State<MyScaffold> {
-  int _selectedIndex = 1;
-  PageController? _controller;
-  // ページ履歴を保持するリスト
-  final List<int> _pageHistory = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = PageController(initialPage: _selectedIndex);
-  }
-
-  @override
-  void dispose() {
-    _controller?.dispose();
-    super.dispose();
-  }
-
-  void _onTap(int index) {
-    if (_selectedIndex != index) {
-      _pageHistory.add(_selectedIndex);
-      _changePageIndex(index);
-
-      _controller?.animateToPage(
-        _selectedIndex,
-        duration: const Duration(milliseconds: 100),
-        curve: Curves.ease,
-      );
-    }
-  }
-
-  void _changePageIndex(int index) {
-    setState(() => _selectedIndex = index);
-  }
-
-  @override
   Widget build(BuildContext context) {
+    // Use useState to manage the selected index and page history
+    final selectedIndex = useState(defaultIndex);
+    final pageHistory = useState<List<int>>([]);
+
+    final result = useQuery<GWakeUpData, GWakeUpVars>(
+      GWakeUpReq(
+        (b) => b..fetchPolicy = fetchNetworkOnly,
+      ),
+    );
+
+    // Use the usePageController hook to create the page controller
+    final controller = usePageController(initialPage: selectedIndex.value);
+    void changePageIndex(int index) {
+      selectedIndex.value = index;
+    }
+
+    void onTap(int index) {
+      if (selectedIndex.value != index) {
+        pageHistory.value.add(selectedIndex.value);
+        changePageIndex(index);
+
+        controller.animateToPage(
+          selectedIndex.value,
+          duration: const Duration(milliseconds: 100),
+          curve: Curves.ease,
+        );
+      }
+    }
+
+    // Use useEffect to dispose of the controller when the widget is disposed
+    useEffect(() {
+      return controller.dispose;
+    }, const []);
+
     return WillPopScope(
       onWillPop: () async {
-        if (_pageHistory.isNotEmpty) {
-          int previousPage = _pageHistory.removeLast();
-          _changePageIndex(previousPage);
-          _controller?.jumpToPage(previousPage);
+        if (pageHistory.value.isNotEmpty) {
+          int previousPage = pageHistory.value.removeLast();
+          changePageIndex(previousPage);
+          controller.jumpToPage(previousPage);
           return false; // Prevent the back button from closing the app
         }
         return true; // Allow the back button to close the app
@@ -59,11 +62,9 @@ class _MyScaffoldState extends State<MyScaffold> {
       child: Scaffold(
         extendBody: true,
         body: PageView(
-          controller: _controller,
+          controller: controller,
           onPageChanged: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
+            selectedIndex.value = index;
           },
           children: routes.map((e) => e.page).toList(),
         ),
@@ -76,8 +77,8 @@ class _MyScaffoldState extends State<MyScaffold> {
           showSelectedLabels: false,
           showUnselectedLabels: false,
           items: routes.map((e) => e.item).toList(),
-          currentIndex: _selectedIndex,
-          onTap: _onTap,
+          currentIndex: selectedIndex.value,
+          onTap: onTap,
         ),
       ),
     );

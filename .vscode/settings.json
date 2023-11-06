@@ -12,7 +12,8 @@
         "Terastal",
         "Terastals",
         "unfocus",
-        "vsync"
+        "vsync",
+        "wakeup"
     ],
     "editor.codeActionsOnSave": {
         "source.organizeImports": true,

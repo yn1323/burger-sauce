@@ -124,6 +124,12 @@ import 'package:burger_sauce/pages/top/trend/__generated__/schema.req.gql.dart'
     show GLatestBattleDataIndexReq;
 import 'package:burger_sauce/pages/top/trend/__generated__/schema.var.gql.dart'
     show GLatestBattleDataIndexVars;
+import 'package:burger_sauce/templates/__generated__/wakeup.data.gql.dart'
+    show GWakeUpData, GWakeUpData_natures;
+import 'package:burger_sauce/templates/__generated__/wakeup.req.gql.dart'
+    show GWakeUpReq;
+import 'package:burger_sauce/templates/__generated__/wakeup.var.gql.dart'
+    show GWakeUpVars;
 import 'package:ferry_exec/ferry_exec.dart';
 import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
     show OperationSerializer;
@@ -236,5 +242,9 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GUpdateTypeInput,
   GUpdateTypeRelationInput,
   GUpdateUserInput,
+  GWakeUpData,
+  GWakeUpData_natures,
+  GWakeUpReq,
+  GWakeUpVars,
 ])
 final Serializers serializers = _serializersBuilder.build();

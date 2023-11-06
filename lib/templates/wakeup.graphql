@@ -1,0 +1,5 @@
+query WakeUp {
+  natures {
+    id
+  }
+}
