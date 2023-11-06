@@ -1,12 +1,5 @@
-import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/constants/widgets/properties.dart';
-import 'package:burger_sauce/helpers/query.dart';
-import 'package:burger_sauce/templates/__generated__/wakeup.data.gql.dart';
-import 'package:burger_sauce/templates/__generated__/wakeup.req.gql.dart';
-import 'package:burger_sauce/templates/__generated__/wakeup.var.gql.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 
@@ -43,20 +36,6 @@ class AppLayout extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String ballSkeletonUrl = dotenv.get('BALL_SKELETON');
-
-    final result = useQuery<GWakeUpData, GWakeUpVars>(
-      GWakeUpReq(
-        (b) => b..fetchPolicy = fetchNetworkOnly,
-      ),
-    );
-
-    if (result.loading) {
-      return Center(
-        child: CachedNetworkImage(imageUrl: ballSkeletonUrl),
-      );
-    }
-
     return Scaffold(
       extendBody: true,
       body: navigationShell,
