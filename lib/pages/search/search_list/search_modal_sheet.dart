@@ -182,6 +182,25 @@ class SearchModalSheet extends HookWidget {
               ],
             ),
           ),
+          Container(
+            height: 50,
+            margin: const EdgeInsets.only(top: 32.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                final condition = SearchCondition();
+                setCondition(
+                  name: condition.name,
+                  abilities: condition.abilities,
+                  moves: condition.moves,
+                  types: condition.types,
+                  options: condition.options,
+                );
+                Navigator.pop(context);
+              },
+              child: const Text('リセット'),
+            ),
+          )
         ],
       ),
     );

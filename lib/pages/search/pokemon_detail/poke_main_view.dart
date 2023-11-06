@@ -3,8 +3,8 @@ import 'package:burger_sauce/components/fragments/pokemon_image.dart';
 import 'package:burger_sauce/components/fragments/type_image.dart';
 import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.data.gql.dart';
-import 'package:burger_sauce/route.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class PokeMainView extends StatelessWidget {
   const PokeMainView({
@@ -36,12 +36,8 @@ class PokeMainView extends StatelessWidget {
                 pokemon.evolutionFrom.isNotEmpty
                     ? GestureDetector(
                         onTap: () {
-                          router.pushNamed(
-                            'searchPokemon',
-                            pathParameters: {
-                              'pokemonId': pokemon.evolutionFrom[0].pokemon.id
-                            },
-                          );
+                          context.push(
+                              '/search/dictionary/${pokemon.evolutionFrom[0].pokemon.id}');
                         },
                         child: PokemonImage(
                           height: 64,
@@ -95,10 +91,7 @@ class EvolutionToPokemons extends StatelessWidget {
       ...pokemon.evolutionTo
           .map((e) => GestureDetector(
                 onTap: () {
-                  router.pushNamed(
-                    'searchPokemon',
-                    pathParameters: {'pokemonId': e.pokemon.id},
-                  );
+                  context.push('/search/dictionary/${e.pokemon.id}');
                 },
                 child: PokemonImage(
                   height: 64,

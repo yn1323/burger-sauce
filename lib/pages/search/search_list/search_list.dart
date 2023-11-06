@@ -8,10 +8,10 @@ import 'package:burger_sauce/pages/search/search_list/__generated__/searchPokemo
 import 'package:burger_sauce/pages/search/search_list/__generated__/searchPokemon.req.gql.dart';
 import 'package:burger_sauce/pages/search/search_list/__generated__/searchPokemon.var.gql.dart';
 import 'package:burger_sauce/pages/search/search_list/search_modal_sheet.dart';
-import 'package:burger_sauce/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class SearchCondition {
   final String name;
@@ -55,8 +55,12 @@ class SearchList extends HookWidget {
         (b) => b
           ..vars.name = searchCondition.value.name
           ..vars.types.addAll(searchCondition.value.types)
-          ..vars.moves.addAll(searchCondition.value.moves)
-          ..vars.abilities.addAll(searchCondition.value.abilities)
+          ..vars.moves.addAll(move != null && move!.isNotEmpty
+              ? [move!, '', '', '']
+              : searchCondition.value.moves)
+          ..vars.abilities.addAll(ability != null && ability!.isNotEmpty
+              ? [ability!]
+              : searchCondition.value.abilities)
           ..vars.options = searchCondition.value.getOptions()
           ..fetchPolicy = fetchCacheFirst,
       ),
@@ -76,6 +80,7 @@ class SearchList extends HookWidget {
         abilities: abilities ?? searchCondition.value.abilities,
         options: options ?? searchCondition.value.options,
       );
+
       result.refetch();
     }
 
@@ -130,10 +135,7 @@ class SearchList extends HookWidget {
               final pokemon = pokemonResult[index];
               return InkWell(
                 onTap: () {
-                  router.goNamed(
-                    'searchPokemon',
-                    pathParameters: {'pokemonId': pokemon.id},
-                  );
+                  context.go('/search/dictionary/${pokemon.id}');
                 },
                 child: ViewListRow(
                   child: Padding(
