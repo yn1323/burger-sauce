@@ -19,7 +19,8 @@ class MyScaffold extends HookWidget {
     final selectedIndex = useState(defaultIndex);
     final pageHistory = useState<List<int>>([]);
 
-    final result = useQuery<GWakeUpData, GWakeUpVars>(
+    // APIサーバーをここで起動させておく
+    useQuery<GWakeUpData, GWakeUpVars>(
       GWakeUpReq(
         (b) => b..fetchPolicy = fetchNetworkOnly,
       ),
