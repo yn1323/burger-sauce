@@ -6,11 +6,10 @@ import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleDat
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.req.gql.dart';
 import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.var.gql.dart';
 import 'package:burger_sauce/pages/search/battle_data/battle_rank_tab.dart';
-import 'package:burger_sauce/route.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class BattleDataPokemon extends HookWidget {
   final String battleId;
@@ -68,12 +67,7 @@ class BattleDataPokemon extends HookWidget {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          // デバッグ時にURLが戻らないように
-                          kReleaseMode
-                              ? router.pushNamed('searchPokemon',
-                                  pathParameters: {'pokemonId': pokemon.id})
-                              : router.goNamed('searchPokemon',
-                                  pathParameters: {'pokemonId': pokemon.id});
+                          context.go('/search/dictionary/${pokemon.id}');
                         },
                         child: const Text('詳細情報'),
                       ),

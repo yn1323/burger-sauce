@@ -24,11 +24,8 @@ class BattleDataIndex extends HookWidget {
             itemBuilder: (context, index) {
               final pokemon = pokemons[index];
               return InkWell(
-                onTap: () => {
-                  context.goNamed(
-                    'searchBattlePokemon',
-                    pathParameters: {'battleId': pokemon.id},
-                  )
+                onTap: () {
+                  context.go('/trend/${pokemon.id}');
                 },
                 child: ViewListRow(
                   child: Padding(
