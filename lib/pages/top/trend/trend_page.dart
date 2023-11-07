@@ -4,7 +4,7 @@ import 'package:burger_sauce/helpers/query.dart';
 import 'package:burger_sauce/pages/top/trend/__generated__/schema.data.gql.dart';
 import 'package:burger_sauce/pages/top/trend/__generated__/schema.req.gql.dart';
 import 'package:burger_sauce/pages/top/trend/__generated__/schema.var.gql.dart';
-import 'package:burger_sauce/pages/top/trend/battle_data_index.dart';
+import 'package:burger_sauce/pages/top/trend/battle_data_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -71,7 +71,7 @@ class TrendPage extends HookWidget {
               )
               .toList();
 
-          return BattleDataIndex(pokemons: res.value);
+          return BattleDataList(pokemons: res.value);
         },
       ),
     );

@@ -9,8 +9,8 @@ import 'package:gap/gap.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
-class BattleDataIndex extends HookWidget {
-  BattleDataIndex({Key? key, required this.pokemons}) : super(key: key);
+class BattleDataList extends HookWidget {
+  BattleDataList({Key? key, required this.pokemons}) : super(key: key);
   final client = GetIt.I<TypedLink>();
   final List<PokemonIndex> pokemons;
 

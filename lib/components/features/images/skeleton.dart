@@ -34,13 +34,13 @@ class Skeleton extends HookWidget {
           )
         : SkeletonAnimation(
             borderRadius: BorderRadius.circular(radius ?? (height / 10)),
-            shimmerColor: Colors.grey,
+            shimmerColor: Colors.grey[300]!,
             child: Container(
               height: height,
               width: width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(radius ?? (height / 10)),
-                color: Colors.grey[200],
+                color: Colors.grey[50]!,
               ),
             ),
           );
