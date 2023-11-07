@@ -10,20 +10,14 @@ import 'package:burger_sauce/templates/app_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-final GlobalKey<NavigatorState> _rootNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'root');
-final GlobalKey<NavigatorState> _shellNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'shell');
-
 final GoRouter router = GoRouter(
-  navigatorKey: _rootNavigatorKey,
   initialLocation: "/search",
   routes: <RouteBase>[
     // index付きのStatefulShellRouteを使う
     StatefulShellRoute.indexedStack(
       // Scaffoldなど描画を固定したい部分のWidgetを返す
       builder: (context, state, navigationShell) {
-        return AppLayout(navigationShell: navigationShell);
+        return AppLayout(navigationShell: navigationShell, state: state);
       },
       branches: [
         StatefulShellBranch(routes: [

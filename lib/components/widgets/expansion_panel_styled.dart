@@ -23,6 +23,7 @@ class ExpansionPanelStyled extends HookWidget {
     final isExpanded = useState(initiallyExpanded);
 
     return ExpansionTile(
+      initiallyExpanded: initiallyExpanded,
       onExpansionChanged: (bool expanding) {
         isExpanded.value = expanding;
       },

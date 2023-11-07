@@ -20,6 +20,7 @@ class SearchModalSheet extends HookWidget {
     required this.moves,
     required this.types,
     required this.setCondition,
+    this.onReset,
   });
 
   final BuiltList<GSearchPokemonData_pokemonSearch> pokemonResult;
@@ -29,6 +30,7 @@ class SearchModalSheet extends HookWidget {
   final BuiltList<GSearchPokemonData_moves> moves;
   final BuiltList<GSearchPokemonData_types> types;
   final Function setCondition;
+  final Function? onReset;
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +91,8 @@ class SearchModalSheet extends HookWidget {
             ),
           ),
           ExpansionPanelStyled(
+            initiallyExpanded: searchCondition.value.moves
+                .any((element) => element.isNotEmpty),
             height: listHeight,
             title: const Text('わざ'),
             children: [
@@ -156,12 +160,12 @@ class SearchModalSheet extends HookWidget {
               children: [
                 const Text('検索対象'),
                 ToggleButtons(
-                  onPressed: (index) => {
+                  onPressed: (index) {
                     setCondition(options: {
                       "evolvedOnly": index == 0,
                       "condition": "ASC"
-                    }),
-                    Navigator.pop(context)
+                    });
+                    Navigator.pop(context);
                   },
                   isSelected: [
                     searchCondition.value.options["evolvedOnly"],
@@ -188,15 +192,8 @@ class SearchModalSheet extends HookWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: ElevatedButton(
               onPressed: () {
-                final condition = SearchCondition();
-                setCondition(
-                  name: condition.name,
-                  abilities: condition.abilities,
-                  moves: condition.moves,
-                  types: condition.types,
-                  options: condition.options,
-                );
                 Navigator.pop(context);
+                onReset?.call();
               },
               child: const Text('リセット'),
             ),

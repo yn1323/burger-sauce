@@ -45,22 +45,28 @@ class SearchList extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useAutomaticKeepAlive();
+    final scrollController = useScrollController();
     final searchCondition = useState(SearchCondition(
       moves: [move ?? '', '', '', ''],
       abilities: [ability ?? ''],
     ));
+
+    // 詳細ページからの再検索でクエパラがあるときに再レンダリングさせる
+    useEffect(() {
+      searchCondition.value = SearchCondition(
+        moves: [move ?? '', '', '', ''],
+        abilities: [ability ?? ''],
+      );
+      return null;
+    }, [move, ability]);
 
     final result = useQuery<GSearchPokemonData, GSearchPokemonVars>(
       GSearchPokemonReq(
         (b) => b
           ..vars.name = searchCondition.value.name
           ..vars.types.addAll(searchCondition.value.types)
-          ..vars.moves.addAll(move != null && move!.isNotEmpty
-              ? [move!, '', '', '']
-              : searchCondition.value.moves)
-          ..vars.abilities.addAll(ability != null && ability!.isNotEmpty
-              ? [ability!]
-              : searchCondition.value.abilities)
+          ..vars.moves.addAll(searchCondition.value.moves)
+          ..vars.abilities.addAll(searchCondition.value.abilities)
           ..vars.options = searchCondition.value.getOptions()
           ..fetchPolicy = fetchCacheFirst,
       ),
@@ -84,9 +90,44 @@ class SearchList extends HookWidget {
       result.refetch();
     }
 
+    void scrollToTop() {
+      scrollController.animateTo(
+        0.0,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
+    }
+
+    void onReset() {
+      final condition = SearchCondition();
+      setCondition(
+        name: condition.name,
+        abilities: condition.abilities,
+        moves: condition.moves,
+        types: condition.types,
+        options: condition.options,
+      );
+      context.go('/search');
+      scrollToTop();
+    }
+
+    bool hasAnyCondition() {
+      final condition = searchCondition.value;
+      return condition.name.isNotEmpty ||
+          condition.types.any((element) => element.isNotEmpty) ||
+          condition.moves.any((element) => element.isNotEmpty) ||
+          condition.abilities.any((element) => element.isNotEmpty);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("検索"),
+        leading: hasAnyCondition()
+            ? IconButton(
+                onPressed: onReset,
+                icon: const Icon(Icons.search_off),
+              )
+            : null,
         actions: [
           if (result.data != null && result.data!.moves.isNotEmpty)
             IconButton(
@@ -109,6 +150,7 @@ class SearchList extends HookWidget {
                       moves: moves,
                       types: types,
                       setCondition: setCondition,
+                      onReset: onReset,
                     );
                   },
                 );
@@ -130,6 +172,7 @@ class SearchList extends HookWidget {
           }
 
           return ListView.builder(
+            controller: scrollController,
             itemCount: pokemonResult.length,
             itemBuilder: (context, index) {
               final pokemon = pokemonResult[index];
