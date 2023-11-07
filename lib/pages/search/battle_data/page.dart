@@ -67,9 +67,9 @@ class BattleDataPokemon extends HookWidget {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          context.go('/search/dictionary/${pokemon.id}');
+                          context.go('/search?name=${pokemon.name}');
                         },
-                        child: const Text('詳細情報'),
+                        child: const Text('詳細検索'),
                       ),
                     ],
                   ),

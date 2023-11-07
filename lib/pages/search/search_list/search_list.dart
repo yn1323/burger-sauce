@@ -38,8 +38,10 @@ class SearchCondition {
 class SearchList extends HookWidget {
   final String? move;
   final String? ability;
+  final String? name;
 
-  const SearchList({Key? key, this.move = '', this.ability = ''})
+  const SearchList(
+      {Key? key, this.move = '', this.ability = '', this.name = ''})
       : super(key: key);
 
   @override
@@ -47,6 +49,7 @@ class SearchList extends HookWidget {
     useAutomaticKeepAlive();
     final scrollController = useScrollController();
     final searchCondition = useState(SearchCondition(
+      name: name ?? '',
       moves: [move ?? '', '', '', ''],
       abilities: [ability ?? ''],
     ));
@@ -54,11 +57,12 @@ class SearchList extends HookWidget {
     // 詳細ページからの再検索でクエパラがあるときに再レンダリングさせる
     useEffect(() {
       searchCondition.value = SearchCondition(
+        name: name ?? '',
         moves: [move ?? '', '', '', ''],
         abilities: [ability ?? ''],
       );
       return null;
-    }, [move, ability]);
+    }, [name, move, ability]);
 
     final result = useQuery<GSearchPokemonData, GSearchPokemonVars>(
       GSearchPokemonReq(
@@ -91,11 +95,13 @@ class SearchList extends HookWidget {
     }
 
     void scrollToTop() {
-      scrollController.animateTo(
-        0.0,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeOut,
-      );
+      if (scrollController.hasClients) {
+        scrollController.animateTo(
+          0.0,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+        );
+      }
     }
 
     void onReset() {

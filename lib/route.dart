@@ -33,6 +33,7 @@ final GoRouter router = GoRouter(
                 return SearchPage(
                   ability: state.uri.queryParameters['ability'],
                   move: state.uri.queryParameters['move'],
+                  name: state.uri.queryParameters['name'],
                 );
               },
               routes: [
