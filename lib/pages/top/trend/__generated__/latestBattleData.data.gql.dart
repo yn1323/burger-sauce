@@ -7,7 +7,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:burger_sauce/graphql/__generated__/serializers.gql.dart' as _i1;
 
-part 'schema.data.gql.g.dart';
+part 'latestBattleData.data.gql.g.dart';
 
 abstract class GLatestBattleDataIndexData
     implements

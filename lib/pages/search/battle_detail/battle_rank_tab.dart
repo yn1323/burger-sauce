@@ -1,7 +1,7 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:burger_sauce/components/features/images/skeleton.dart';
 import 'package:burger_sauce/components/fragments/vertical_move_type_image.dart';
-import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.data.gql.dart';
+import 'package:burger_sauce/pages/search/battle_detail/__generated__/oneBattleData.data.gql.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';

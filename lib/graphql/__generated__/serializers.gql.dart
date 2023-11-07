@@ -65,7 +65,7 @@ import 'package:burger_sauce/graphql/__generated__/schema.schema.gql.dart'
         GUpdateTypeInput,
         GUpdateTypeRelationInput,
         GUpdateUserInput;
-import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.data.gql.dart'
+import 'package:burger_sauce/pages/search/battle_detail/__generated__/oneBattleData.data.gql.dart'
     show
         GOneBattleDataData,
         GOneBattleDataData_battleData,
@@ -82,9 +82,9 @@ import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleDat
         GOneBattleDataData_battleData_battleDataTerastal,
         GOneBattleDataData_battleData_battleDataTerastal_type,
         GOneBattleDataData_battleData_pokemon;
-import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.req.gql.dart'
+import 'package:burger_sauce/pages/search/battle_detail/__generated__/oneBattleData.req.gql.dart'
     show GOneBattleDataReq;
-import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.var.gql.dart'
+import 'package:burger_sauce/pages/search/battle_detail/__generated__/oneBattleData.var.gql.dart'
     show GOneBattleDataVars;
 import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.data.gql.dart'
     show
@@ -103,7 +103,7 @@ import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemo
     show GOnePokemonDataReq;
 import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.var.gql.dart'
     show GOnePokemonDataVars;
-import 'package:burger_sauce/pages/search/search_list/__generated__/searchPokemon.data.gql.dart'
+import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.data.gql.dart'
     show
         GSearchPokemonData,
         GSearchPokemonData_abilities,
@@ -111,25 +111,19 @@ import 'package:burger_sauce/pages/search/search_list/__generated__/searchPokemo
         GSearchPokemonData_pokemonList,
         GSearchPokemonData_pokemonSearch,
         GSearchPokemonData_types;
-import 'package:burger_sauce/pages/search/search_list/__generated__/searchPokemon.req.gql.dart'
+import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.req.gql.dart'
     show GSearchPokemonReq;
-import 'package:burger_sauce/pages/search/search_list/__generated__/searchPokemon.var.gql.dart'
+import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.var.gql.dart'
     show GSearchPokemonVars;
-import 'package:burger_sauce/pages/top/trend/__generated__/schema.data.gql.dart'
+import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.data.gql.dart'
     show
         GLatestBattleDataIndexData,
         GLatestBattleDataIndexData_battleDatasLatest,
         GLatestBattleDataIndexData_battleDatasLatest_pokemon;
-import 'package:burger_sauce/pages/top/trend/__generated__/schema.req.gql.dart'
+import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.req.gql.dart'
     show GLatestBattleDataIndexReq;
-import 'package:burger_sauce/pages/top/trend/__generated__/schema.var.gql.dart'
+import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.var.gql.dart'
     show GLatestBattleDataIndexVars;
-import 'package:burger_sauce/templates/__generated__/wakeup.data.gql.dart'
-    show GWakeUpData, GWakeUpData_natures;
-import 'package:burger_sauce/templates/__generated__/wakeup.req.gql.dart'
-    show GWakeUpReq;
-import 'package:burger_sauce/templates/__generated__/wakeup.var.gql.dart'
-    show GWakeUpVars;
 import 'package:ferry_exec/ferry_exec.dart';
 import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
     show OperationSerializer;
@@ -242,9 +236,5 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GUpdateTypeInput,
   GUpdateTypeRelationInput,
   GUpdateUserInput,
-  GWakeUpData,
-  GWakeUpData_natures,
-  GWakeUpReq,
-  GWakeUpVars,
 ])
 final Serializers serializers = _serializersBuilder.build();

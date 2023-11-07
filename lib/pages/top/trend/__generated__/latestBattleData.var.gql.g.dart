@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'schema.var.gql.dart';
+part of 'latestBattleData.var.gql.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

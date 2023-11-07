@@ -5,35 +5,35 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:burger_sauce/graphql/__generated__/serializers.gql.dart' as _i6;
-import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.ast.gql.dart'
+import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.ast.gql.dart'
     as _i5;
-import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.data.gql.dart'
+import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.data.gql.dart'
     as _i2;
-import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.var.gql.dart'
+import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.var.gql.dart'
     as _i3;
 import 'package:ferry_exec/ferry_exec.dart' as _i1;
 import 'package:gql_exec/gql_exec.dart' as _i4;
 
-part 'oneBattleData.req.gql.g.dart';
+part 'searchPokemon.req.gql.g.dart';
 
-abstract class GOneBattleDataReq
+abstract class GSearchPokemonReq
     implements
-        Built<GOneBattleDataReq, GOneBattleDataReqBuilder>,
-        _i1.OperationRequest<_i2.GOneBattleDataData, _i3.GOneBattleDataVars> {
-  GOneBattleDataReq._();
+        Built<GSearchPokemonReq, GSearchPokemonReqBuilder>,
+        _i1.OperationRequest<_i2.GSearchPokemonData, _i3.GSearchPokemonVars> {
+  GSearchPokemonReq._();
 
-  factory GOneBattleDataReq([Function(GOneBattleDataReqBuilder b) updates]) =
-      _$GOneBattleDataReq;
+  factory GSearchPokemonReq([Function(GSearchPokemonReqBuilder b) updates]) =
+      _$GSearchPokemonReq;
 
-  static void _initializeBuilder(GOneBattleDataReqBuilder b) => b
+  static void _initializeBuilder(GSearchPokemonReqBuilder b) => b
     ..operation = _i4.Operation(
       document: _i5.document,
-      operationName: 'OneBattleData',
+      operationName: 'SearchPokemon',
     )
     ..executeOnListen = true;
 
   @override
-  _i3.GOneBattleDataVars get vars;
+  _i3.GSearchPokemonVars get vars;
   @override
   _i4.Operation get operation;
   @override
@@ -46,12 +46,12 @@ abstract class GOneBattleDataReq
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GOneBattleDataData? Function(
-    _i2.GOneBattleDataData?,
-    _i2.GOneBattleDataData?,
+  _i2.GSearchPokemonData? Function(
+    _i2.GSearchPokemonData?,
+    _i2.GSearchPokemonData?,
   )? get updateResult;
   @override
-  _i2.GOneBattleDataData? get optimisticResponse;
+  _i2.GSearchPokemonData? get optimisticResponse;
   @override
   String? get updateCacheHandlerKey;
   @override
@@ -61,20 +61,20 @@ abstract class GOneBattleDataReq
   @override
   bool get executeOnListen;
   @override
-  _i2.GOneBattleDataData? parseData(Map<String, dynamic> json) =>
-      _i2.GOneBattleDataData.fromJson(json);
+  _i2.GSearchPokemonData? parseData(Map<String, dynamic> json) =>
+      _i2.GSearchPokemonData.fromJson(json);
 
-  static Serializer<GOneBattleDataReq> get serializer =>
-      _$gOneBattleDataReqSerializer;
+  static Serializer<GSearchPokemonReq> get serializer =>
+      _$gSearchPokemonReqSerializer;
 
   Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GOneBattleDataReq.serializer,
+        GSearchPokemonReq.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GOneBattleDataReq? fromJson(Map<String, dynamic> json) =>
+  static GSearchPokemonReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
-        GOneBattleDataReq.serializer,
+        GSearchPokemonReq.serializer,
         json,
       );
 }

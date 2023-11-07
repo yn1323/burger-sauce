@@ -1,4 +1,4 @@
-import 'package:burger_sauce/pages/search/battle_data/page.dart';
+import 'package:burger_sauce/pages/search/battle_detail/page.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/page.dart';
 import 'package:burger_sauce/pages/top/build/build_page.dart';
 import 'package:burger_sauce/pages/top/calc/calc_page.dart';
@@ -54,7 +54,7 @@ final GoRouter router = GoRouter(
                 GoRoute(
                   path: ':battleId',
                   builder: (BuildContext context, GoRouterState state) {
-                    return BattleDataPokemon(
+                    return BattleDetail(
                         battleId: state.pathParameters['battleId']!);
                   },
                 ),

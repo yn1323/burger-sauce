@@ -5,8 +5,8 @@ import 'package:burger_sauce/components/widgets/expansion_panel_styled.dart';
 import 'package:burger_sauce/components/widgets/view_list_row.dart';
 import 'package:burger_sauce/constants/ui.dart';
 import 'package:burger_sauce/helpers/string.dart';
-import 'package:burger_sauce/pages/search/search_list/__generated__/searchPokemon.data.gql.dart';
-import 'package:burger_sauce/pages/search/search_list/search_list.dart';
+import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.data.gql.dart';
+import 'package:burger_sauce/pages/top/search/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 

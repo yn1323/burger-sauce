@@ -2,19 +2,19 @@ import 'package:burger_sauce/components/fragments/pokemon_image.dart';
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/helpers/query.dart';
 import 'package:burger_sauce/helpers/string.dart';
-import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.data.gql.dart';
-import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.req.gql.dart';
-import 'package:burger_sauce/pages/search/battle_data/__generated__/oneBattleData.var.gql.dart';
-import 'package:burger_sauce/pages/search/battle_data/battle_rank_tab.dart';
+import 'package:burger_sauce/pages/search/battle_detail/__generated__/oneBattleData.data.gql.dart';
+import 'package:burger_sauce/pages/search/battle_detail/__generated__/oneBattleData.req.gql.dart';
+import 'package:burger_sauce/pages/search/battle_detail/__generated__/oneBattleData.var.gql.dart';
+import 'package:burger_sauce/pages/search/battle_detail/battle_rank_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-class BattleDataPokemon extends HookWidget {
+class BattleDetail extends HookWidget {
   final String battleId;
 
-  const BattleDataPokemon({
+  const BattleDetail({
     Key? key,
     required this.battleId,
   }) : super(key: key);

@@ -1,9 +1,9 @@
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/constants/widgets/properties.dart';
 import 'package:burger_sauce/helpers/query.dart';
-import 'package:burger_sauce/pages/top/trend/__generated__/schema.data.gql.dart';
-import 'package:burger_sauce/pages/top/trend/__generated__/schema.req.gql.dart';
-import 'package:burger_sauce/pages/top/trend/__generated__/schema.var.gql.dart';
+import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.data.gql.dart';
+import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.req.gql.dart';
+import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.var.gql.dart';
 import 'package:burger_sauce/pages/top/trend/battle_data_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';

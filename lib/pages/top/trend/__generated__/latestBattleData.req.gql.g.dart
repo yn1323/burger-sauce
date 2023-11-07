@@ -1,26 +1,32 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'wakeup.req.gql.dart';
+part of 'latestBattleData.req.gql.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GWakeUpReq> _$gWakeUpReqSerializer = new _$GWakeUpReqSerializer();
+Serializer<GLatestBattleDataIndexReq> _$gLatestBattleDataIndexReqSerializer =
+    new _$GLatestBattleDataIndexReqSerializer();
 
-class _$GWakeUpReqSerializer implements StructuredSerializer<GWakeUpReq> {
+class _$GLatestBattleDataIndexReqSerializer
+    implements StructuredSerializer<GLatestBattleDataIndexReq> {
   @override
-  final Iterable<Type> types = const [GWakeUpReq, _$GWakeUpReq];
+  final Iterable<Type> types = const [
+    GLatestBattleDataIndexReq,
+    _$GLatestBattleDataIndexReq
+  ];
   @override
-  final String wireName = 'GWakeUpReq';
+  final String wireName = 'GLatestBattleDataIndexReq';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, GWakeUpReq object,
+  Iterable<Object?> serialize(
+      Serializers serializers, GLatestBattleDataIndexReq object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
-          specifiedType: const FullType(_i3.GWakeUpVars)),
+          specifiedType: const FullType(_i3.GLatestBattleDataIndexVars)),
       'operation',
       serializers.serialize(object.operation,
           specifiedType: const FullType(_i4.Operation)),
@@ -41,7 +47,7 @@ class _$GWakeUpReqSerializer implements StructuredSerializer<GWakeUpReq> {
       result
         ..add('optimisticResponse')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(_i2.GWakeUpData)));
+            specifiedType: const FullType(_i2.GLatestBattleDataIndexData)));
     }
     value = object.updateCacheHandlerKey;
     if (value != null) {
@@ -69,9 +75,10 @@ class _$GWakeUpReqSerializer implements StructuredSerializer<GWakeUpReq> {
   }
 
   @override
-  GWakeUpReq deserialize(Serializers serializers, Iterable<Object?> serialized,
+  GLatestBattleDataIndexReq deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GWakeUpReqBuilder();
+    final result = new GLatestBattleDataIndexReqBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -81,8 +88,9 @@ class _$GWakeUpReqSerializer implements StructuredSerializer<GWakeUpReq> {
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GWakeUpVars))!
-              as _i3.GWakeUpVars);
+                  specifiedType:
+                      const FullType(_i3.GLatestBattleDataIndexVars))!
+              as _i3.GLatestBattleDataIndexVars);
           break;
         case 'operation':
           result.operation = serializers.deserialize(value,
@@ -94,8 +102,9 @@ class _$GWakeUpReqSerializer implements StructuredSerializer<GWakeUpReq> {
           break;
         case 'optimisticResponse':
           result.optimisticResponse.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i2.GWakeUpData))!
-              as _i2.GWakeUpData);
+                  specifiedType:
+                      const FullType(_i2.GLatestBattleDataIndexData))!
+              as _i2.GLatestBattleDataIndexData);
           break;
         case 'updateCacheHandlerKey':
           result.updateCacheHandlerKey = serializers.deserialize(value,
@@ -124,18 +133,19 @@ class _$GWakeUpReqSerializer implements StructuredSerializer<GWakeUpReq> {
   }
 }
 
-class _$GWakeUpReq extends GWakeUpReq {
+class _$GLatestBattleDataIndexReq extends GLatestBattleDataIndexReq {
   @override
-  final _i3.GWakeUpVars vars;
+  final _i3.GLatestBattleDataIndexVars vars;
   @override
   final _i4.Operation operation;
   @override
   final String? requestId;
   @override
-  final _i2.GWakeUpData? Function(_i2.GWakeUpData?, _i2.GWakeUpData?)?
+  final _i2.GLatestBattleDataIndexData? Function(
+          _i2.GLatestBattleDataIndexData?, _i2.GLatestBattleDataIndexData?)?
       updateResult;
   @override
-  final _i2.GWakeUpData? optimisticResponse;
+  final _i2.GLatestBattleDataIndexData? optimisticResponse;
   @override
   final String? updateCacheHandlerKey;
   @override
@@ -145,10 +155,11 @@ class _$GWakeUpReq extends GWakeUpReq {
   @override
   final bool executeOnListen;
 
-  factory _$GWakeUpReq([void Function(GWakeUpReqBuilder)? updates]) =>
-      (new GWakeUpReqBuilder()..update(updates))._build();
+  factory _$GLatestBattleDataIndexReq(
+          [void Function(GLatestBattleDataIndexReqBuilder)? updates]) =>
+      (new GLatestBattleDataIndexReqBuilder()..update(updates))._build();
 
-  _$GWakeUpReq._(
+  _$GLatestBattleDataIndexReq._(
       {required this.vars,
       required this.operation,
       this.requestId,
@@ -159,25 +170,28 @@ class _$GWakeUpReq extends GWakeUpReq {
       this.fetchPolicy,
       required this.executeOnListen})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GWakeUpReq', 'vars');
     BuiltValueNullFieldError.checkNotNull(
-        operation, r'GWakeUpReq', 'operation');
+        vars, r'GLatestBattleDataIndexReq', 'vars');
     BuiltValueNullFieldError.checkNotNull(
-        executeOnListen, r'GWakeUpReq', 'executeOnListen');
+        operation, r'GLatestBattleDataIndexReq', 'operation');
+    BuiltValueNullFieldError.checkNotNull(
+        executeOnListen, r'GLatestBattleDataIndexReq', 'executeOnListen');
   }
 
   @override
-  GWakeUpReq rebuild(void Function(GWakeUpReqBuilder) updates) =>
+  GLatestBattleDataIndexReq rebuild(
+          void Function(GLatestBattleDataIndexReqBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GWakeUpReqBuilder toBuilder() => new GWakeUpReqBuilder()..replace(this);
+  GLatestBattleDataIndexReqBuilder toBuilder() =>
+      new GLatestBattleDataIndexReqBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     final dynamic _$dynamicOther = other;
-    return other is GWakeUpReq &&
+    return other is GLatestBattleDataIndexReq &&
         vars == other.vars &&
         operation == other.operation &&
         requestId == other.requestId &&
@@ -207,7 +221,7 @@ class _$GWakeUpReq extends GWakeUpReq {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GWakeUpReq')
+    return (newBuiltValueToStringHelper(r'GLatestBattleDataIndexReq')
           ..add('vars', vars)
           ..add('operation', operation)
           ..add('requestId', requestId)
@@ -221,13 +235,15 @@ class _$GWakeUpReq extends GWakeUpReq {
   }
 }
 
-class GWakeUpReqBuilder implements Builder<GWakeUpReq, GWakeUpReqBuilder> {
-  _$GWakeUpReq? _$v;
+class GLatestBattleDataIndexReqBuilder
+    implements
+        Builder<GLatestBattleDataIndexReq, GLatestBattleDataIndexReqBuilder> {
+  _$GLatestBattleDataIndexReq? _$v;
 
-  _i3.GWakeUpVarsBuilder? _vars;
-  _i3.GWakeUpVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GWakeUpVarsBuilder();
-  set vars(_i3.GWakeUpVarsBuilder? vars) => _$this._vars = vars;
+  _i3.GLatestBattleDataIndexVarsBuilder? _vars;
+  _i3.GLatestBattleDataIndexVarsBuilder get vars =>
+      _$this._vars ??= new _i3.GLatestBattleDataIndexVarsBuilder();
+  set vars(_i3.GLatestBattleDataIndexVarsBuilder? vars) => _$this._vars = vars;
 
   _i4.Operation? _operation;
   _i4.Operation? get operation => _$this._operation;
@@ -237,18 +253,25 @@ class GWakeUpReqBuilder implements Builder<GWakeUpReq, GWakeUpReqBuilder> {
   String? get requestId => _$this._requestId;
   set requestId(String? requestId) => _$this._requestId = requestId;
 
-  _i2.GWakeUpData? Function(_i2.GWakeUpData?, _i2.GWakeUpData?)? _updateResult;
-  _i2.GWakeUpData? Function(_i2.GWakeUpData?, _i2.GWakeUpData?)?
+  _i2.GLatestBattleDataIndexData? Function(
+          _i2.GLatestBattleDataIndexData?, _i2.GLatestBattleDataIndexData?)?
+      _updateResult;
+  _i2.GLatestBattleDataIndexData? Function(
+          _i2.GLatestBattleDataIndexData?, _i2.GLatestBattleDataIndexData?)?
       get updateResult => _$this._updateResult;
   set updateResult(
-          _i2.GWakeUpData? Function(_i2.GWakeUpData?, _i2.GWakeUpData?)?
+          _i2.GLatestBattleDataIndexData? Function(
+                  _i2.GLatestBattleDataIndexData?,
+                  _i2.GLatestBattleDataIndexData?)?
               updateResult) =>
       _$this._updateResult = updateResult;
 
-  _i2.GWakeUpDataBuilder? _optimisticResponse;
-  _i2.GWakeUpDataBuilder get optimisticResponse =>
-      _$this._optimisticResponse ??= new _i2.GWakeUpDataBuilder();
-  set optimisticResponse(_i2.GWakeUpDataBuilder? optimisticResponse) =>
+  _i2.GLatestBattleDataIndexDataBuilder? _optimisticResponse;
+  _i2.GLatestBattleDataIndexDataBuilder get optimisticResponse =>
+      _$this._optimisticResponse ??=
+          new _i2.GLatestBattleDataIndexDataBuilder();
+  set optimisticResponse(
+          _i2.GLatestBattleDataIndexDataBuilder? optimisticResponse) =>
       _$this._optimisticResponse = optimisticResponse;
 
   String? _updateCacheHandlerKey;
@@ -273,11 +296,11 @@ class GWakeUpReqBuilder implements Builder<GWakeUpReq, GWakeUpReqBuilder> {
   set executeOnListen(bool? executeOnListen) =>
       _$this._executeOnListen = executeOnListen;
 
-  GWakeUpReqBuilder() {
-    GWakeUpReq._initializeBuilder(this);
+  GLatestBattleDataIndexReqBuilder() {
+    GLatestBattleDataIndexReq._initializeBuilder(this);
   }
 
-  GWakeUpReqBuilder get _$this {
+  GLatestBattleDataIndexReqBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _vars = $v.vars.toBuilder();
@@ -295,27 +318,27 @@ class GWakeUpReqBuilder implements Builder<GWakeUpReq, GWakeUpReqBuilder> {
   }
 
   @override
-  void replace(GWakeUpReq other) {
+  void replace(GLatestBattleDataIndexReq other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GWakeUpReq;
+    _$v = other as _$GLatestBattleDataIndexReq;
   }
 
   @override
-  void update(void Function(GWakeUpReqBuilder)? updates) {
+  void update(void Function(GLatestBattleDataIndexReqBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GWakeUpReq build() => _build();
+  GLatestBattleDataIndexReq build() => _build();
 
-  _$GWakeUpReq _build() {
-    _$GWakeUpReq _$result;
+  _$GLatestBattleDataIndexReq _build() {
+    _$GLatestBattleDataIndexReq _$result;
     try {
       _$result = _$v ??
-          new _$GWakeUpReq._(
+          new _$GLatestBattleDataIndexReq._(
               vars: vars.build(),
               operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GWakeUpReq', 'operation'),
+                  operation, r'GLatestBattleDataIndexReq', 'operation'),
               requestId: requestId,
               updateResult: updateResult,
               optimisticResponse: _optimisticResponse?.build(),
@@ -323,7 +346,9 @@ class GWakeUpReqBuilder implements Builder<GWakeUpReq, GWakeUpReqBuilder> {
               updateCacheHandlerContext: updateCacheHandlerContext,
               fetchPolicy: fetchPolicy,
               executeOnListen: BuiltValueNullFieldError.checkNotNull(
-                  executeOnListen, r'GWakeUpReq', 'executeOnListen'));
+                  executeOnListen,
+                  r'GLatestBattleDataIndexReq',
+                  'executeOnListen'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -334,7 +359,7 @@ class GWakeUpReqBuilder implements Builder<GWakeUpReq, GWakeUpReqBuilder> {
         _optimisticResponse?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GWakeUpReq', _$failedField, e.toString());
+            r'GLatestBattleDataIndexReq', _$failedField, e.toString());
       }
       rethrow;
     }

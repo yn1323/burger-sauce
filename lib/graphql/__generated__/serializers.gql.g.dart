@@ -111,10 +111,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GUpdateTypeInput.serializer)
       ..add(GUpdateTypeRelationInput.serializer)
       ..add(GUpdateUserInput.serializer)
-      ..add(GWakeUpData.serializer)
-      ..add(GWakeUpData_natures.serializer)
-      ..add(GWakeUpReq.serializer)
-      ..add(GWakeUpVars.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(GLatestBattleDataIndexData_battleDatasLatest)
@@ -189,10 +185,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList,
               const [const FullType(GSearchPokemonData_pokemonList)]),
           () => new ListBuilder<GSearchPokemonData_pokemonList>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(GWakeUpData_natures)]),
-          () => new ListBuilder<GWakeUpData_natures>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
