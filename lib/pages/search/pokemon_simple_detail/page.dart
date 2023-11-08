@@ -1,0 +1,95 @@
+import 'package:burger_sauce/constants/client.dart';
+import 'package:burger_sauce/constants/route.dart';
+import 'package:burger_sauce/helpers/query.dart';
+import 'package:burger_sauce/models/status.dart';
+import 'package:burger_sauce/pages/search/pokemon_detail/real_status_table.dart';
+import 'package:burger_sauce/pages/search/pokemon_detail/status_list.dart';
+import 'package:burger_sauce/pages/search/pokemon_simple_detail/__generated__/onePokemonSimple.data.gql.dart';
+import 'package:burger_sauce/pages/search/pokemon_simple_detail/__generated__/onePokemonSimple.req.gql.dart';
+import 'package:burger_sauce/pages/search/pokemon_simple_detail/__generated__/onePokemonSimple.var.gql.dart';
+import 'package:burger_sauce/pages/search/pokemon_simple_detail/poke_main_view.dart';
+import 'package:burger_sauce/pages/search/pokemon_simple_detail/pokemon_detail_tab.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+
+class PokemonSimpleDetail extends HookWidget {
+  final String pokemonId;
+
+  const PokemonSimpleDetail({
+    Key? key,
+    required this.pokemonId,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final result =
+        useQuery<GOnePokemonSimpleDataData, GOnePokemonSimpleDataVars>(
+      GOnePokemonSimpleDataReq(
+        (b) => b
+          ..vars.id = pokemonId
+          ..fetchPolicy = fetchCacheAndNetwork,
+      ),
+    );
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(result.data?.pokemon?.name ?? ''),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () {
+              final location = getRouterState(context).fullPath!.split('/');
+              context.go('/${location[1]}');
+            },
+          ),
+        ],
+      ),
+      body: Builder(
+        builder: (context) {
+          if (result.isLoadingOrError()) {
+            return result.suspensePart();
+          }
+          if (result.data!.pokemon == null) {
+            return const Text('null');
+          }
+
+          final pokemon = result.data!.pokemon!;
+          final abilities = pokemon.abilities;
+          final moves = pokemon.moves;
+          final types = pokemon.types;
+
+          final status = Status(
+            statusH: pokemon.statusH,
+            statusA: pokemon.statusA,
+            statusB: pokemon.statusB,
+            statusC: pokemon.statusC,
+            statusD: pokemon.statusD,
+            statusS: pokemon.statusS,
+          );
+
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Column(
+                children: [
+                  PokeMainView(types: types, pokemon: pokemon),
+                  const Gap(10),
+                  StatusList(status: status),
+                  const Gap(10),
+                  RealStatusTable(
+                    status: status,
+                  ),
+                  Expanded(
+                    child: PokemonDetailTab(moves: moves, abilities: abilities),
+                  )
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}

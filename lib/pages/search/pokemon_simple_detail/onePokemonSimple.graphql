@@ -1,0 +1,32 @@
+query OnePokemonSimpleData($id: String!) {
+  pokemon(id: $id) {
+    abilities {
+      name
+      detail
+    }
+    moves {
+      power
+      name
+      detail
+      type {
+        textImageUrl
+      }
+      attackType {
+        imageUrl
+      }
+    }
+    types {
+      textImageUrl
+      name
+    }
+    statusA
+    statusB
+    statusC
+    statusD
+    statusH
+    statusS
+    imageLargeUrl
+    name
+    form
+  }
+}

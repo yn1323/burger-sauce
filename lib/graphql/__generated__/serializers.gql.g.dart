@@ -75,6 +75,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GOnePokemonDataData_pokemon_types.serializer)
       ..add(GOnePokemonDataReq.serializer)
       ..add(GOnePokemonDataVars.serializer)
+      ..add(GOnePokemonSimpleDataData.serializer)
+      ..add(GOnePokemonSimpleDataData_pokemon.serializer)
+      ..add(GOnePokemonSimpleDataData_pokemon_abilities.serializer)
+      ..add(GOnePokemonSimpleDataData_pokemon_moves.serializer)
+      ..add(GOnePokemonSimpleDataData_pokemon_moves_attackType.serializer)
+      ..add(GOnePokemonSimpleDataData_pokemon_moves_type.serializer)
+      ..add(GOnePokemonSimpleDataData_pokemon_types.serializer)
+      ..add(GOnePokemonSimpleDataReq.serializer)
+      ..add(GOnePokemonSimpleDataVars.serializer)
       ..add(GPokemonSearchOption.serializer)
       ..add(GSearchPokemonData.serializer)
       ..add(GSearchPokemonData_abilities.serializer)
@@ -165,6 +174,19 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList,
               const [const FullType(GOnePokemonDataData_pokemon_types)]),
           () => new ListBuilder<GOnePokemonDataData_pokemon_types>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GOnePokemonSimpleDataData_pokemon_abilities)
+          ]),
+          () => new ListBuilder<GOnePokemonSimpleDataData_pokemon_abilities>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GOnePokemonSimpleDataData_pokemon_moves)]),
+          () => new ListBuilder<GOnePokemonSimpleDataData_pokemon_moves>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GOnePokemonSimpleDataData_pokemon_types)]),
+          () => new ListBuilder<GOnePokemonSimpleDataData_pokemon_types>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(GSearchPokemonData_pokemonSearch)]),

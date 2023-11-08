@@ -67,7 +67,7 @@ class BattleDetail extends HookWidget {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          context.go('/search?name=${pokemon.name}');
+                          context.go('/trend/$battleId/${pokemon.id}');
                         },
                         child: const Text('詳細検索'),
                       ),

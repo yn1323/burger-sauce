@@ -1,5 +1,6 @@
 import 'package:burger_sauce/pages/search/battle_detail/page.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/page.dart';
+import 'package:burger_sauce/pages/search/pokemon_simple_detail/page.dart';
 import 'package:burger_sauce/pages/top/build/build_page.dart';
 import 'package:burger_sauce/pages/top/calc/calc_page.dart';
 import 'package:burger_sauce/pages/top/search/search_page.dart';
@@ -52,12 +53,20 @@ final GoRouter router = GoRouter(
               builder: (context, state) => const TrendPage(),
               routes: [
                 GoRoute(
-                  path: ':battleId',
-                  builder: (BuildContext context, GoRouterState state) {
-                    return BattleDetail(
-                        battleId: state.pathParameters['battleId']!);
-                  },
-                ),
+                    path: ':battleId',
+                    builder: (BuildContext context, GoRouterState state) {
+                      return BattleDetail(
+                          battleId: state.pathParameters['battleId']!);
+                    },
+                    routes: [
+                      GoRoute(
+                        path: ':pokemonId',
+                        builder: (BuildContext context, GoRouterState state) {
+                          return PokemonSimpleDetail(
+                              pokemonId: state.pathParameters['pokemonId']!);
+                        },
+                      ),
+                    ]),
               ])
         ]),
         StatefulShellBranch(routes: [

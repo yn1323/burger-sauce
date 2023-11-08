@@ -1,5 +1,6 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:burger_sauce/components/features/images/skeleton.dart';
+import 'package:burger_sauce/components/fragments/tab_list_view_style.dart';
 import 'package:burger_sauce/components/fragments/vertical_move_type_image.dart';
 import 'package:burger_sauce/pages/search/battle_detail/__generated__/oneBattleData.data.gql.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -81,7 +82,7 @@ class BattleRankTab extends HookWidget {
                   final battleAbility = battleAbilities[index];
                   return Tooltip(
                     message: battleAbility.ability.detail,
-                    child: TabTemplate(
+                    child: TabListViewStyle(
                         row: Row(
                       children: [
                         Text(battleAbility.ability.name),
@@ -100,7 +101,7 @@ class BattleRankTab extends HookWidget {
                     message: battleMove.move.power != 0
                         ? '${battleMove.move.detail}(威力 ${battleMove.move.power})'
                         : battleMove.move.detail,
-                    child: TabTemplate(
+                    child: TabListViewStyle(
                       row: Row(
                         children: [
                           VerticalMoveTypeImage(
@@ -126,7 +127,7 @@ class BattleRankTab extends HookWidget {
                   final battleItem = battleItems[index];
                   return Tooltip(
                     message: battleItem.item.detail,
-                    child: TabTemplate(
+                    child: TabListViewStyle(
                       row: Row(
                         children: [
                           CachedNetworkImage(
@@ -152,7 +153,7 @@ class BattleRankTab extends HookWidget {
                 itemCount: battleNatures.length,
                 itemBuilder: (context, index) {
                   final battleNature = battleNatures[index];
-                  return TabTemplate(
+                  return TabListViewStyle(
                     row: Row(
                       children: [
                         getStatusText(battleNature.nature.increase, true),
@@ -171,7 +172,7 @@ class BattleRankTab extends HookWidget {
                 itemCount: battleTerastals.length,
                 itemBuilder: (context, index) {
                   final battleTerastal = battleTerastals[index];
-                  return TabTemplate(
+                  return TabListViewStyle(
                     row: Row(
                       children: [
                         CachedNetworkImage(
@@ -196,30 +197,6 @@ class BattleRankTab extends HookWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class TabTemplate extends StatelessWidget {
-  const TabTemplate({
-    super.key,
-    required this.row,
-  });
-
-  final Row row;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: Colors.grey,
-            width: 0.5,
-          ),
-        ),
-      ),
-      child: ListTile(title: row),
     );
   }
 }

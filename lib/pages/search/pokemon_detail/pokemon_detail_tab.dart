@@ -1,4 +1,5 @@
 import 'package:built_collection/built_collection.dart';
+import 'package:burger_sauce/components/fragments/tab_list_view_style.dart';
 import 'package:burger_sauce/components/fragments/vertical_move_type_image.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.data.gql.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,7 @@ class PokemonDetailTab extends HookWidget {
                   onTap: () {
                     context.go('/search?ability=${ability.name}');
                   },
-                  child: TabTemplate(
+                  child: TabListViewStyle(
                       row: Row(
                     children: [
                       Container(
@@ -86,7 +87,7 @@ class PokemonDetailTab extends HookWidget {
                   onTap: () {
                     context.go('/search?move=${move.name}');
                   },
-                  child: TabTemplate(
+                  child: TabListViewStyle(
                       row: Row(
                     children: [
                       VerticalMoveTypeImage(
@@ -133,30 +134,6 @@ class PokemonDetailTab extends HookWidget {
           ]),
         ),
       ],
-    );
-  }
-}
-
-class TabTemplate extends StatelessWidget {
-  const TabTemplate({
-    super.key,
-    required this.row,
-  });
-
-  final Row row;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: Colors.grey,
-            width: 0.5,
-          ),
-        ),
-      ),
-      child: ListTile(title: row),
     );
   }
 }
