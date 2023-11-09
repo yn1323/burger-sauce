@@ -69,7 +69,7 @@ class BattleDetail extends HookWidget {
                         onPressed: () {
                           context.go('/trend/$battleId/${pokemon.id}');
                         },
-                        child: const Text('詳細検索'),
+                        child: const Text('詳細情報'),
                       ),
                     ],
                   ),

@@ -193,9 +193,8 @@ class SearchModalSheet extends HookWidget {
             child: ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
-                onReset?.call();
               },
-              child: const Text('リセット'),
+              child: const Text('閉じる'),
             ),
           )
         ],
