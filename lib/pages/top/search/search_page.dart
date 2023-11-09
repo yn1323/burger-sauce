@@ -204,7 +204,7 @@ class SearchPage extends HookWidget {
                       children: [
                         const Icon(Icons.search),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width - 100,
+                          width: MediaQuery.of(context).size.width - 120,
                           child: Center(
                             child: Text(
                                 overflow: TextOverflow.ellipsis,
@@ -215,8 +215,8 @@ class SearchPage extends HookWidget {
                         ),
                         searchCondition.value.hasCondition()
                             ? SizedBox(
-                                height: 18,
-                                width: 18,
+                                height: 30,
+                                width: 30,
                                 child: IconButton(
                                   padding: const EdgeInsets.all(0.0),
                                   iconSize: 18,
