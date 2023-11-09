@@ -164,12 +164,12 @@ class SearchPage extends HookWidget {
           return Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(8, 12, 8, 12),
+                padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
                 child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
                       foregroundColor: Colors.black87,
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 22),
+                          horizontal: 16, vertical: 10),
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(100)),
                       ),
