@@ -1,6 +1,6 @@
 import 'package:burger_sauce/constants/client.dart';
-import 'package:burger_sauce/constants/widgets/properties.dart';
 import 'package:burger_sauce/helpers/query.dart';
+import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.data.gql.dart';
 import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.req.gql.dart';
 import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.var.gql.dart';
@@ -32,6 +32,8 @@ class TrendPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useAutomaticKeepAlive();
+    final searchBarController = useTextEditingController();
+    final searchWord = useState('');
     final res = useRef<List<PokemonIndex>>([]);
 
     final result =
@@ -42,14 +44,10 @@ class TrendPage extends HookWidget {
     );
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text(
           'レートバトルデータ',
-          style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: templateOpacity,
-        elevation: 0,
       ),
       body: Builder(
         builder: (context) {
@@ -71,7 +69,42 @@ class TrendPage extends HookWidget {
               )
               .toList();
 
-          return BattleDataList(pokemons: res.value);
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SearchBar(
+                  hintText: 'ポケモン名で検索',
+                  elevation: const MaterialStatePropertyAll(1),
+                  padding: const MaterialStatePropertyAll<EdgeInsets>(
+                      EdgeInsets.symmetric(horizontal: 16.0)),
+                  controller: searchBarController,
+                  onChanged: (String word) {
+                    searchWord.value = word;
+                  },
+                  leading: const Icon(Icons.search),
+                  trailing: <Widget>[
+                    if (searchWord.value.isNotEmpty)
+                      IconButton(
+                        onPressed: () {
+                          searchWord.value = '';
+                          searchBarController.text = '';
+                        },
+                        icon: const Icon(Icons.clear),
+                      )
+                  ],
+                ),
+              ),
+              Expanded(
+                child: BattleDataList(
+                  pokemons: res.value
+                      .where(
+                          (e) => e.name.contains(hiraToKata(searchWord.value)))
+                      .toList(),
+                ),
+              ),
+            ],
+          );
         },
       ),
     );
