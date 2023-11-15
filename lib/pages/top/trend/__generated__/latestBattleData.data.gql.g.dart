@@ -11,9 +11,12 @@ Serializer<GLatestBattleDataIndexData> _$gLatestBattleDataIndexDataSerializer =
 Serializer<GLatestBattleDataIndexData_battleDatasLatest>
     _$gLatestBattleDataIndexDataBattleDatasLatestSerializer =
     new _$GLatestBattleDataIndexData_battleDatasLatestSerializer();
-Serializer<GLatestBattleDataIndexData_battleDatasLatest_pokemon>
-    _$gLatestBattleDataIndexDataBattleDatasLatestPokemonSerializer =
-    new _$GLatestBattleDataIndexData_battleDatasLatest_pokemonSerializer();
+Serializer<GLatestBattleDataIndexData_battleDatasLatest_battleDatas>
+    _$gLatestBattleDataIndexDataBattleDatasLatestBattleDatasSerializer =
+    new _$GLatestBattleDataIndexData_battleDatasLatest_battleDatasSerializer();
+Serializer<GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon>
+    _$gLatestBattleDataIndexDataBattleDatasLatestBattleDatasPokemonSerializer =
+    new _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonSerializer();
 
 class _$GLatestBattleDataIndexDataSerializer
     implements StructuredSerializer<GLatestBattleDataIndexData> {
@@ -33,13 +36,16 @@ class _$GLatestBattleDataIndexDataSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'battleDatasLatest',
-      serializers.serialize(object.battleDatasLatest,
-          specifiedType: const FullType(BuiltList, const [
-            const FullType(GLatestBattleDataIndexData_battleDatasLatest)
-          ])),
     ];
-
+    Object? value;
+    value = object.battleDatasLatest;
+    if (value != null) {
+      result
+        ..add('battleDatasLatest')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(GLatestBattleDataIndexData_battleDatasLatest)));
+    }
     return result;
   }
 
@@ -61,9 +67,9 @@ class _$GLatestBattleDataIndexDataSerializer
           break;
         case 'battleDatasLatest':
           result.battleDatasLatest.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltList, const [
-                const FullType(GLatestBattleDataIndexData_battleDatasLatest)
-              ]))! as BuiltList<Object?>);
+                  specifiedType: const FullType(
+                      GLatestBattleDataIndexData_battleDatasLatest))!
+              as GLatestBattleDataIndexData_battleDatasLatest);
           break;
       }
     }
@@ -91,14 +97,15 @@ class _$GLatestBattleDataIndexData_battleDatasLatestSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'pokemon',
-      serializers.serialize(object.pokemon,
-          specifiedType: const FullType(
-              GLatestBattleDataIndexData_battleDatasLatest_pokemon)),
-      'rank',
-      serializers.serialize(object.rank, specifiedType: const FullType(int)),
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'capturedAt',
+      serializers.serialize(object.capturedAt,
+          specifiedType: const FullType(_i2.GDateTime)),
+      'battleDatas',
+      serializers.serialize(object.battleDatas,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(
+                GLatestBattleDataIndexData_battleDatasLatest_battleDatas)
+          ])),
     ];
 
     return result;
@@ -120,11 +127,80 @@ class _$GLatestBattleDataIndexData_battleDatasLatestSerializer
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
+        case 'capturedAt':
+          result.capturedAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(_i2.GDateTime))! as _i2.GDateTime);
+          break;
+        case 'battleDatas':
+          result.battleDatas.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    GLatestBattleDataIndexData_battleDatasLatest_battleDatas)
+              ]))! as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GLatestBattleDataIndexData_battleDatasLatest_battleDatasSerializer
+    implements
+        StructuredSerializer<
+            GLatestBattleDataIndexData_battleDatasLatest_battleDatas> {
+  @override
+  final Iterable<Type> types = const [
+    GLatestBattleDataIndexData_battleDatasLatest_battleDatas,
+    _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas
+  ];
+  @override
+  final String wireName =
+      'GLatestBattleDataIndexData_battleDatasLatest_battleDatas';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GLatestBattleDataIndexData_battleDatasLatest_battleDatas object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'pokemon',
+      serializers.serialize(object.pokemon,
+          specifiedType: const FullType(
+              GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon)),
+      'rank',
+      serializers.serialize(object.rank, specifiedType: const FullType(int)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        new GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
         case 'pokemon':
           result.pokemon.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      GLatestBattleDataIndexData_battleDatasLatest_pokemon))!
-              as GLatestBattleDataIndexData_battleDatasLatest_pokemon);
+                      GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon))!
+              as GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon);
           break;
         case 'rank':
           result.rank = serializers.deserialize(value,
@@ -141,22 +217,22 @@ class _$GLatestBattleDataIndexData_battleDatasLatestSerializer
   }
 }
 
-class _$GLatestBattleDataIndexData_battleDatasLatest_pokemonSerializer
+class _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonSerializer
     implements
         StructuredSerializer<
-            GLatestBattleDataIndexData_battleDatasLatest_pokemon> {
+            GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon> {
   @override
   final Iterable<Type> types = const [
-    GLatestBattleDataIndexData_battleDatasLatest_pokemon,
-    _$GLatestBattleDataIndexData_battleDatasLatest_pokemon
+    GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon,
+    _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon
   ];
   @override
   final String wireName =
-      'GLatestBattleDataIndexData_battleDatasLatest_pokemon';
+      'GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon';
 
   @override
   Iterable<Object?> serialize(Serializers serializers,
-      GLatestBattleDataIndexData_battleDatasLatest_pokemon object,
+      GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -175,11 +251,11 @@ class _$GLatestBattleDataIndexData_battleDatasLatest_pokemonSerializer
   }
 
   @override
-  GLatestBattleDataIndexData_battleDatasLatest_pokemon deserialize(
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result =
-        new GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder();
+        new GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -214,20 +290,17 @@ class _$GLatestBattleDataIndexData extends GLatestBattleDataIndexData {
   @override
   final String G__typename;
   @override
-  final BuiltList<GLatestBattleDataIndexData_battleDatasLatest>
-      battleDatasLatest;
+  final GLatestBattleDataIndexData_battleDatasLatest? battleDatasLatest;
 
   factory _$GLatestBattleDataIndexData(
           [void Function(GLatestBattleDataIndexDataBuilder)? updates]) =>
       (new GLatestBattleDataIndexDataBuilder()..update(updates))._build();
 
   _$GLatestBattleDataIndexData._(
-      {required this.G__typename, required this.battleDatasLatest})
+      {required this.G__typename, this.battleDatasLatest})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GLatestBattleDataIndexData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        battleDatasLatest, r'GLatestBattleDataIndexData', 'battleDatasLatest');
   }
 
   @override
@@ -274,12 +347,12 @@ class GLatestBattleDataIndexDataBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  ListBuilder<GLatestBattleDataIndexData_battleDatasLatest>? _battleDatasLatest;
-  ListBuilder<GLatestBattleDataIndexData_battleDatasLatest>
-      get battleDatasLatest => _$this._battleDatasLatest ??=
-          new ListBuilder<GLatestBattleDataIndexData_battleDatasLatest>();
+  GLatestBattleDataIndexData_battleDatasLatestBuilder? _battleDatasLatest;
+  GLatestBattleDataIndexData_battleDatasLatestBuilder get battleDatasLatest =>
+      _$this._battleDatasLatest ??=
+          new GLatestBattleDataIndexData_battleDatasLatestBuilder();
   set battleDatasLatest(
-          ListBuilder<GLatestBattleDataIndexData_battleDatasLatest>?
+          GLatestBattleDataIndexData_battleDatasLatestBuilder?
               battleDatasLatest) =>
       _$this._battleDatasLatest = battleDatasLatest;
 
@@ -291,7 +364,7 @@ class GLatestBattleDataIndexDataBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _battleDatasLatest = $v.battleDatasLatest.toBuilder();
+      _battleDatasLatest = $v.battleDatasLatest?.toBuilder();
       _$v = null;
     }
     return this;
@@ -318,12 +391,12 @@ class GLatestBattleDataIndexDataBuilder
           new _$GLatestBattleDataIndexData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, r'GLatestBattleDataIndexData', 'G__typename'),
-              battleDatasLatest: battleDatasLatest.build());
+              battleDatasLatest: _battleDatasLatest?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'battleDatasLatest';
-        battleDatasLatest.build();
+        _battleDatasLatest?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GLatestBattleDataIndexData', _$failedField, e.toString());
@@ -340,11 +413,10 @@ class _$GLatestBattleDataIndexData_battleDatasLatest
   @override
   final String G__typename;
   @override
-  final GLatestBattleDataIndexData_battleDatasLatest_pokemon pokemon;
+  final _i2.GDateTime capturedAt;
   @override
-  final int rank;
-  @override
-  final String id;
+  final BuiltList<GLatestBattleDataIndexData_battleDatasLatest_battleDatas>
+      battleDatas;
 
   factory _$GLatestBattleDataIndexData_battleDatasLatest(
           [void Function(GLatestBattleDataIndexData_battleDatasLatestBuilder)?
@@ -355,18 +427,15 @@ class _$GLatestBattleDataIndexData_battleDatasLatest
 
   _$GLatestBattleDataIndexData_battleDatasLatest._(
       {required this.G__typename,
-      required this.pokemon,
-      required this.rank,
-      required this.id})
+      required this.capturedAt,
+      required this.battleDatas})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GLatestBattleDataIndexData_battleDatasLatest', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        pokemon, r'GLatestBattleDataIndexData_battleDatasLatest', 'pokemon');
-    BuiltValueNullFieldError.checkNotNull(
-        rank, r'GLatestBattleDataIndexData_battleDatasLatest', 'rank');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GLatestBattleDataIndexData_battleDatasLatest', 'id');
+    BuiltValueNullFieldError.checkNotNull(capturedAt,
+        r'GLatestBattleDataIndexData_battleDatasLatest', 'capturedAt');
+    BuiltValueNullFieldError.checkNotNull(battleDatas,
+        r'GLatestBattleDataIndexData_battleDatasLatest', 'battleDatas');
   }
 
   @override
@@ -384,18 +453,16 @@ class _$GLatestBattleDataIndexData_battleDatasLatest
     if (identical(other, this)) return true;
     return other is GLatestBattleDataIndexData_battleDatasLatest &&
         G__typename == other.G__typename &&
-        pokemon == other.pokemon &&
-        rank == other.rank &&
-        id == other.id;
+        capturedAt == other.capturedAt &&
+        battleDatas == other.battleDatas;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, pokemon.hashCode);
-    _$hash = $jc(_$hash, rank.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, capturedAt.hashCode);
+    _$hash = $jc(_$hash, battleDatas.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -405,9 +472,8 @@ class _$GLatestBattleDataIndexData_battleDatasLatest
     return (newBuiltValueToStringHelper(
             r'GLatestBattleDataIndexData_battleDatasLatest')
           ..add('G__typename', G__typename)
-          ..add('pokemon', pokemon)
-          ..add('rank', rank)
-          ..add('id', id))
+          ..add('capturedAt', capturedAt)
+          ..add('battleDatas', battleDatas))
         .toString();
   }
 }
@@ -422,22 +488,21 @@ class GLatestBattleDataIndexData_battleDatasLatestBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder? _pokemon;
-  GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder get pokemon =>
-      _$this._pokemon ??=
-          new GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder();
-  set pokemon(
-          GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder?
-              pokemon) =>
-      _$this._pokemon = pokemon;
+  _i2.GDateTimeBuilder? _capturedAt;
+  _i2.GDateTimeBuilder get capturedAt =>
+      _$this._capturedAt ??= new _i2.GDateTimeBuilder();
+  set capturedAt(_i2.GDateTimeBuilder? capturedAt) =>
+      _$this._capturedAt = capturedAt;
 
-  int? _rank;
-  int? get rank => _$this._rank;
-  set rank(int? rank) => _$this._rank = rank;
-
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
+  ListBuilder<GLatestBattleDataIndexData_battleDatasLatest_battleDatas>?
+      _battleDatas;
+  ListBuilder<GLatestBattleDataIndexData_battleDatasLatest_battleDatas>
+      get battleDatas => _$this._battleDatas ??= new ListBuilder<
+          GLatestBattleDataIndexData_battleDatasLatest_battleDatas>();
+  set battleDatas(
+          ListBuilder<GLatestBattleDataIndexData_battleDatasLatest_battleDatas>?
+              battleDatas) =>
+      _$this._battleDatas = battleDatas;
 
   GLatestBattleDataIndexData_battleDatasLatestBuilder() {
     GLatestBattleDataIndexData_battleDatasLatest._initializeBuilder(this);
@@ -447,9 +512,8 @@ class GLatestBattleDataIndexData_battleDatasLatestBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _pokemon = $v.pokemon.toBuilder();
-      _rank = $v.rank;
-      _id = $v.id;
+      _capturedAt = $v.capturedAt.toBuilder();
+      _battleDatas = $v.battleDatas.toBuilder();
       _$v = null;
     }
     return this;
@@ -480,16 +544,15 @@ class GLatestBattleDataIndexData_battleDatasLatestBuilder
                   G__typename,
                   r'GLatestBattleDataIndexData_battleDatasLatest',
                   'G__typename'),
-              pokemon: pokemon.build(),
-              rank: BuiltValueNullFieldError.checkNotNull(rank,
-                  r'GLatestBattleDataIndexData_battleDatasLatest', 'rank'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'GLatestBattleDataIndexData_battleDatasLatest', 'id'));
+              capturedAt: capturedAt.build(),
+              battleDatas: battleDatas.build());
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'pokemon';
-        pokemon.build();
+        _$failedField = 'capturedAt';
+        capturedAt.build();
+        _$failedField = 'battleDatas';
+        battleDatas.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GLatestBattleDataIndexData_battleDatasLatest',
@@ -503,8 +566,189 @@ class GLatestBattleDataIndexData_battleDatasLatestBuilder
   }
 }
 
-class _$GLatestBattleDataIndexData_battleDatasLatest_pokemon
-    extends GLatestBattleDataIndexData_battleDatasLatest_pokemon {
+class _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas
+    extends GLatestBattleDataIndexData_battleDatasLatest_battleDatas {
+  @override
+  final String G__typename;
+  @override
+  final GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon
+      pokemon;
+  @override
+  final int rank;
+  @override
+  final String id;
+
+  factory _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas(
+          [void Function(
+                  GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder)?
+              updates]) =>
+      (new GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas._(
+      {required this.G__typename,
+      required this.pokemon,
+      required this.rank,
+      required this.id})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename,
+        r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas',
+        'G__typename');
+    BuiltValueNullFieldError.checkNotNull(pokemon,
+        r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas', 'pokemon');
+    BuiltValueNullFieldError.checkNotNull(rank,
+        r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas', 'rank');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas', 'id');
+  }
+
+  @override
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas rebuild(
+          void Function(
+                  GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder toBuilder() =>
+      new GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GLatestBattleDataIndexData_battleDatasLatest_battleDatas &&
+        G__typename == other.G__typename &&
+        pokemon == other.pokemon &&
+        rank == other.rank &&
+        id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, pokemon.hashCode);
+    _$hash = $jc(_$hash, rank.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas')
+          ..add('G__typename', G__typename)
+          ..add('pokemon', pokemon)
+          ..add('rank', rank)
+          ..add('id', id))
+        .toString();
+  }
+}
+
+class GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder
+    implements
+        Builder<GLatestBattleDataIndexData_battleDatasLatest_battleDatas,
+            GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder> {
+  _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder?
+      _pokemon;
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder
+      get pokemon => _$this._pokemon ??=
+          new GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder();
+  set pokemon(
+          GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder?
+              pokemon) =>
+      _$this._pokemon = pokemon;
+
+  int? _rank;
+  int? get rank => _$this._rank;
+  set rank(int? rank) => _$this._rank = rank;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder() {
+    GLatestBattleDataIndexData_battleDatasLatest_battleDatas._initializeBuilder(
+        this);
+  }
+
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _pokemon = $v.pokemon.toBuilder();
+      _rank = $v.rank;
+      _id = $v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GLatestBattleDataIndexData_battleDatasLatest_battleDatas other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas;
+  }
+
+  @override
+  void update(
+      void Function(
+              GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas build() => _build();
+
+  _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas _build() {
+    _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas _$result;
+    try {
+      _$result = _$v ??
+          new _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename,
+                  r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas',
+                  'G__typename'),
+              pokemon: pokemon.build(),
+              rank: BuiltValueNullFieldError.checkNotNull(
+                  rank,
+                  r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas',
+                  'rank'),
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id,
+                  r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas',
+                  'id'));
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'pokemon';
+        pokemon.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon
+    extends GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon {
   @override
   final String G__typename;
   @override
@@ -514,46 +758,56 @@ class _$GLatestBattleDataIndexData_battleDatasLatest_pokemon
   @override
   final String form;
 
-  factory _$GLatestBattleDataIndexData_battleDatasLatest_pokemon(
+  factory _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon(
           [void Function(
-                  GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder)?
+                  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder)?
               updates]) =>
-      (new GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder()
+      (new GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder()
             ..update(updates))
           ._build();
 
-  _$GLatestBattleDataIndexData_battleDatasLatest_pokemon._(
+  _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon._(
       {required this.G__typename,
       required this.name,
       required this.imageUrl,
       required this.form})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(G__typename,
-        r'GLatestBattleDataIndexData_battleDatasLatest_pokemon', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        name, r'GLatestBattleDataIndexData_battleDatasLatest_pokemon', 'name');
-    BuiltValueNullFieldError.checkNotNull(imageUrl,
-        r'GLatestBattleDataIndexData_battleDatasLatest_pokemon', 'imageUrl');
+        G__typename,
+        r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon',
+        'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        form, r'GLatestBattleDataIndexData_battleDatasLatest_pokemon', 'form');
+        name,
+        r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon',
+        'name');
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl,
+        r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon',
+        'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        form,
+        r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon',
+        'form');
   }
 
   @override
-  GLatestBattleDataIndexData_battleDatasLatest_pokemon rebuild(
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon rebuild(
           void Function(
-                  GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder)
+                  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder toBuilder() =>
-      new GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder()
-        ..replace(this);
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder
+      toBuilder() =>
+          new GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder()
+            ..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GLatestBattleDataIndexData_battleDatasLatest_pokemon &&
+    return other
+            is GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon &&
         G__typename == other.G__typename &&
         name == other.name &&
         imageUrl == other.imageUrl &&
@@ -574,7 +828,7 @@ class _$GLatestBattleDataIndexData_battleDatasLatest_pokemon
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'GLatestBattleDataIndexData_battleDatasLatest_pokemon')
+            r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon')
           ..add('G__typename', G__typename)
           ..add('name', name)
           ..add('imageUrl', imageUrl)
@@ -583,11 +837,12 @@ class _$GLatestBattleDataIndexData_battleDatasLatest_pokemon
   }
 }
 
-class GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder
+class GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder
     implements
-        Builder<GLatestBattleDataIndexData_battleDatasLatest_pokemon,
-            GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder> {
-  _$GLatestBattleDataIndexData_battleDatasLatest_pokemon? _$v;
+        Builder<
+            GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon,
+            GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder> {
+  _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
@@ -605,12 +860,13 @@ class GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder
   String? get form => _$this._form;
   set form(String? form) => _$this._form = form;
 
-  GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder() {
-    GLatestBattleDataIndexData_battleDatasLatest_pokemon._initializeBuilder(
-        this);
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder() {
+    GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon
+        ._initializeBuilder(this);
   }
 
-  GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder get _$this {
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder
+      get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
@@ -623,40 +879,41 @@ class GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder
   }
 
   @override
-  void replace(GLatestBattleDataIndexData_battleDatasLatest_pokemon other) {
+  void replace(
+      GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GLatestBattleDataIndexData_battleDatasLatest_pokemon;
+    _$v = other
+        as _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon;
   }
 
   @override
   void update(
       void Function(
-              GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder)?
+              GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder)?
           updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GLatestBattleDataIndexData_battleDatasLatest_pokemon build() => _build();
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon build() =>
+      _build();
 
-  _$GLatestBattleDataIndexData_battleDatasLatest_pokemon _build() {
+  _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon _build() {
     final _$result = _$v ??
-        new _$GLatestBattleDataIndexData_battleDatasLatest_pokemon._(
+        new _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
                 G__typename,
-                r'GLatestBattleDataIndexData_battleDatasLatest_pokemon',
+                r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon',
                 'G__typename'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name,
-                r'GLatestBattleDataIndexData_battleDatasLatest_pokemon',
-                'name'),
+            name: BuiltValueNullFieldError.checkNotNull(name,
+                r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon', 'name'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
                 imageUrl,
-                r'GLatestBattleDataIndexData_battleDatasLatest_pokemon',
+                r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon',
                 'imageUrl'),
             form: BuiltValueNullFieldError.checkNotNull(
                 form,
-                r'GLatestBattleDataIndexData_battleDatasLatest_pokemon',
+                r'GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon',
                 'form'));
     replace(_$result);
     return _$result;

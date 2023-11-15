@@ -5,6 +5,8 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:burger_sauce/graphql/__generated__/schema.schema.gql.dart'
+    as _i2;
 import 'package:burger_sauce/graphql/__generated__/serializers.gql.dart' as _i1;
 
 part 'latestBattleData.data.gql.g.dart';
@@ -23,7 +25,7 @@ abstract class GLatestBattleDataIndexData
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  BuiltList<GLatestBattleDataIndexData_battleDatasLatest> get battleDatasLatest;
+  GLatestBattleDataIndexData_battleDatasLatest? get battleDatasLatest;
   static Serializer<GLatestBattleDataIndexData> get serializer =>
       _$gLatestBattleDataIndexDataSerializer;
 
@@ -51,13 +53,13 @@ abstract class GLatestBattleDataIndexData_battleDatasLatest
 
   static void _initializeBuilder(
           GLatestBattleDataIndexData_battleDatasLatestBuilder b) =>
-      b..G__typename = 'BattleData';
+      b..G__typename = 'LatestBattleDataIndex';
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  GLatestBattleDataIndexData_battleDatasLatest_pokemon get pokemon;
-  int get rank;
-  String get id;
+  _i2.GDateTime get capturedAt;
+  BuiltList<GLatestBattleDataIndexData_battleDatasLatest_battleDatas>
+      get battleDatas;
   static Serializer<GLatestBattleDataIndexData_battleDatasLatest>
       get serializer => _$gLatestBattleDataIndexDataBattleDatasLatestSerializer;
 
@@ -74,18 +76,59 @@ abstract class GLatestBattleDataIndexData_battleDatasLatest
       );
 }
 
-abstract class GLatestBattleDataIndexData_battleDatasLatest_pokemon
+abstract class GLatestBattleDataIndexData_battleDatasLatest_battleDatas
     implements
-        Built<GLatestBattleDataIndexData_battleDatasLatest_pokemon,
-            GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder> {
-  GLatestBattleDataIndexData_battleDatasLatest_pokemon._();
+        Built<GLatestBattleDataIndexData_battleDatasLatest_battleDatas,
+            GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder> {
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas._();
 
-  factory GLatestBattleDataIndexData_battleDatasLatest_pokemon(
-      [Function(GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder b)
-          updates]) = _$GLatestBattleDataIndexData_battleDatasLatest_pokemon;
+  factory GLatestBattleDataIndexData_battleDatasLatest_battleDatas(
+      [Function(
+              GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder b)
+          updates]) = _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas;
 
   static void _initializeBuilder(
-          GLatestBattleDataIndexData_battleDatasLatest_pokemonBuilder b) =>
+          GLatestBattleDataIndexData_battleDatasLatest_battleDatasBuilder b) =>
+      b..G__typename = 'BattleData';
+
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon get pokemon;
+  int get rank;
+  String get id;
+  static Serializer<GLatestBattleDataIndexData_battleDatasLatest_battleDatas>
+      get serializer =>
+          _$gLatestBattleDataIndexDataBattleDatasLatestBattleDatasSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GLatestBattleDataIndexData_battleDatasLatest_battleDatas.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GLatestBattleDataIndexData_battleDatasLatest_battleDatas? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GLatestBattleDataIndexData_battleDatasLatest_battleDatas.serializer,
+        json,
+      );
+}
+
+abstract class GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon
+    implements
+        Built<GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon,
+            GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder> {
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon._();
+
+  factory GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon(
+          [Function(
+                  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder
+                      b)
+              updates]) =
+      _$GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon;
+
+  static void _initializeBuilder(
+          GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemonBuilder
+              b) =>
       b..G__typename = 'Pokemon';
 
   @BuiltValueField(wireName: '__typename')
@@ -93,19 +136,21 @@ abstract class GLatestBattleDataIndexData_battleDatasLatest_pokemon
   String get name;
   String get imageUrl;
   String get form;
-  static Serializer<GLatestBattleDataIndexData_battleDatasLatest_pokemon>
+  static Serializer<
+          GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon>
       get serializer =>
-          _$gLatestBattleDataIndexDataBattleDatasLatestPokemonSerializer;
+          _$gLatestBattleDataIndexDataBattleDatasLatestBattleDatasPokemonSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GLatestBattleDataIndexData_battleDatasLatest_pokemon.serializer,
+        GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon
+            .serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GLatestBattleDataIndexData_battleDatasLatest_pokemon? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GLatestBattleDataIndexData_battleDatasLatest_pokemon.serializer,
-        json,
-      );
+  static GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon?
+      fromJson(Map<String, dynamic> json) => _i1.serializers.deserializeWith(
+            GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon
+                .serializer,
+            json,
+          );
 }

@@ -2444,6 +2444,34 @@ const JSONObject = _i1.ScalarTypeDefinitionNode(
   name: _i1.NameNode(value: 'JSONObject'),
   directives: [],
 );
+const LatestBattleDataIndex = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'LatestBattleDataIndex'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'capturedAt'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'DateTime'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'battleDatas'),
+      directives: [],
+      args: [],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'BattleData'),
+          isNonNull: true,
+        ),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
 const Move = _i1.ObjectTypeDefinitionNode(
   name: _i1.NameNode(value: 'Move'),
   directives: [],
@@ -5886,12 +5914,9 @@ const Query = _i1.ObjectTypeDefinitionNode(
       name: _i1.NameNode(value: 'battleDatasLatest'),
       directives: [],
       args: [],
-      type: _i1.ListTypeNode(
-        type: _i1.NamedTypeNode(
-          name: _i1.NameNode(value: 'BattleData'),
-          isNonNull: true,
-        ),
-        isNonNull: true,
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'LatestBattleDataIndex'),
+        isNonNull: false,
       ),
     ),
     _i1.FieldDefinitionNode(
@@ -8694,6 +8719,7 @@ const document = _i1.DocumentNode(definitions: [
   Item,
   JSON,
   JSONObject,
+  LatestBattleDataIndex,
   Move,
   Mutation,
   MyEnemy,

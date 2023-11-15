@@ -59,6 +59,7 @@ dependencies:
   accordion: ^2.6.0
   built_collection: ^5.1.1
   gql_exec: ^1.0.0
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

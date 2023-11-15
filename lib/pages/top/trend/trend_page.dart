@@ -1,6 +1,6 @@
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/helpers/query.dart';
-import 'package:burger_sauce/helpers/string.dart';
+import 'package:burger_sauce/helpers/time.dart';
 import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.data.gql.dart';
 import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.req.gql.dart';
 import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.var.gql.dart';
@@ -34,7 +34,7 @@ class TrendPage extends HookWidget {
     useAutomaticKeepAlive();
     final searchBarController = useTextEditingController();
     final searchWord = useState('');
-    final res = useRef<List<PokemonIndex>>([]);
+    final capturedAt = useState('');
 
     final result =
         useQuery<GLatestBattleDataIndexData, GLatestBattleDataIndexVars>(
@@ -44,34 +44,24 @@ class TrendPage extends HookWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'レートバトルデータ',
-        ),
-      ),
-      body: Builder(
-        builder: (context) {
-          if (result.isLoadingOrError()) {
-            return result.suspensePart();
-          }
-
-          final pokemons = result.data!.battleDatasLatest;
-
-          res.value = pokemons
-              .map(
-                (e) => PokemonIndex(
-                  id: e.id,
-                  form: e.pokemon.form,
-                  name: e.pokemon.name,
-                  rank: e.rank,
-                  imageUrl: e.pokemon.imageUrl,
-                ),
-              )
-              .toList();
-
-          return Column(
-            children: [
-              Padding(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 50.0,
+            flexibleSpace: FlexibleSpaceBar(title: Builder(builder: (context) {
+              if (result.isLoadingOrError()) {
+                return const Text('レートバトルデータ');
+              } else {
+                final capturedAt = result.data!.battleDatasLatest?.capturedAt;
+                final dateText = isoToStringDateTime(capturedAt!.value, ' M/d');
+                return Text('レートバトルデータ ($dateText更新)');
+              }
+            })),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SearchBar(
                   hintText: 'ポケモン名で検索',
@@ -95,17 +85,42 @@ class TrendPage extends HookWidget {
                   ],
                 ),
               ),
-              Expanded(
-                child: BattleDataList(
-                  pokemons: res.value
-                      .where(
-                          (e) => e.name.contains(hiraToKata(searchWord.value)))
-                      .toList(),
+            ),
+          ),
+          Builder(
+            builder: (context) {
+              if (result.isLoadingOrError()) {
+                return SliverFillRemaining(
+                  child: result.suspensePart(),
+                );
+              }
+
+              final pokemons = result.data!.battleDatasLatest?.battleDatas;
+
+              final pokemonIndexList = pokemons!
+                  .map(
+                    (e) => PokemonIndex(
+                      id: e.id,
+                      form: e.pokemon.form,
+                      name: e.pokemon.name,
+                      rank: e.rank,
+                      imageUrl: e.pokemon.imageUrl,
+                    ),
+                  )
+                  .toList();
+
+              return SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final pokemon = pokemonIndexList[index];
+                    return BattleDataList(pokemon: pokemon);
+                  },
+                  childCount: pokemonIndexList.length,
                 ),
-              ),
-            ],
-          );
-        },
+              );
+            },
+          )
+        ],
       ),
     );
   }

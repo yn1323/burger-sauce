@@ -132,7 +132,8 @@ import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.data
     show
         GLatestBattleDataIndexData,
         GLatestBattleDataIndexData_battleDatasLatest,
-        GLatestBattleDataIndexData_battleDatasLatest_pokemon;
+        GLatestBattleDataIndexData_battleDatasLatest_battleDatas,
+        GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon;
 import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.req.gql.dart'
     show GLatestBattleDataIndexReq;
 import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.var.gql.dart'
@@ -180,7 +181,8 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GJSONObject,
   GLatestBattleDataIndexData,
   GLatestBattleDataIndexData_battleDatasLatest,
-  GLatestBattleDataIndexData_battleDatasLatest_pokemon,
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas,
+  GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon,
   GLatestBattleDataIndexReq,
   GLatestBattleDataIndexVars,
   GOneBattleDataData,

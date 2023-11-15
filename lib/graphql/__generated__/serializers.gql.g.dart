@@ -41,7 +41,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GJSONObject.serializer)
       ..add(GLatestBattleDataIndexData.serializer)
       ..add(GLatestBattleDataIndexData_battleDatasLatest.serializer)
-      ..add(GLatestBattleDataIndexData_battleDatasLatest_pokemon.serializer)
+      ..add(GLatestBattleDataIndexData_battleDatasLatest_battleDatas.serializer)
+      ..add(GLatestBattleDataIndexData_battleDatasLatest_battleDatas_pokemon
+          .serializer)
       ..add(GLatestBattleDataIndexReq.serializer)
       ..add(GLatestBattleDataIndexVars.serializer)
       ..add(GOneBattleDataData.serializer)
@@ -122,9 +124,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GUpdateUserInput.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [
-            const FullType(GLatestBattleDataIndexData_battleDatasLatest)
+            const FullType(
+                GLatestBattleDataIndexData_battleDatasLatest_battleDatas)
           ]),
-          () => new ListBuilder<GLatestBattleDataIndexData_battleDatasLatest>())
+          () => new ListBuilder<
+              GLatestBattleDataIndexData_battleDatasLatest_battleDatas>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(GOneBattleDataData_battleData_battleDataAbility)
