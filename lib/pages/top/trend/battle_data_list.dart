@@ -2,16 +2,13 @@ import 'package:burger_sauce/components/fragments/pokemon_image.dart';
 import 'package:burger_sauce/components/widgets/view_list_row.dart';
 import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/top/trend/trend_page.dart';
-import 'package:ferry/ferry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
-import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 class BattleDataList extends HookWidget {
-  BattleDataList({Key? key, required this.pokemon}) : super(key: key);
-  final client = GetIt.I<TypedLink>();
+  const BattleDataList({Key? key, required this.pokemon}) : super(key: key);
   final PokemonIndex pokemon;
 
   @override

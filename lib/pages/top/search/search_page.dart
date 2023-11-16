@@ -150,135 +150,142 @@ class SearchPage extends HookWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("検索"),
-      ),
-      body: Builder(
-        builder: (context) {
-          if (result.isLoadingOrError()) {
-            return result.suspensePart();
-          }
+      body: CustomScrollView(
+        slivers: [
+          const SliverAppBar(
+            expandedHeight: 50.0,
+            flexibleSpace: FlexibleSpaceBar(title: Text('検索')),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.black87,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(100)),
+                  ),
+                ),
+                onPressed: () {
+                  final pokemonResult = result.data!.pokemonSearch;
+                  final pokemonList = result.data!.pokemonList;
+                  final moves = result.data!.moves;
+                  final abilities = result.data!.abilities;
+                  final types = result.data!.types;
 
-          final pokemonResult = result.data!.pokemonSearch;
-
-          return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
-                child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: Colors.black87,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 10),
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(100)),
-                      ),
-                    ),
-                    onPressed: () {
-                      final pokemonResult = result.data!.pokemonSearch;
-                      final pokemonList = result.data!.pokemonList;
-                      final moves = result.data!.moves;
-                      final abilities = result.data!.abilities;
-                      final types = result.data!.types;
-
-                      showModalBottomSheet(
-                        isScrollControlled: true,
-                        context: context,
-                        builder: (BuildContext context) {
-                          return SearchModalSheet(
-                            pokemonResult: pokemonResult,
-                            searchCondition: searchCondition,
-                            pokemonList: pokemonList,
-                            abilities: abilities,
-                            moves: moves,
-                            types: types,
-                            setCondition: setCondition,
-                            onReset: onReset,
-                          );
-                        },
+                  showModalBottomSheet(
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (BuildContext context) {
+                      return SearchModalSheet(
+                        pokemonResult: pokemonResult,
+                        searchCondition: searchCondition,
+                        pokemonList: pokemonList,
+                        abilities: abilities,
+                        moves: moves,
+                        types: types,
+                        setCondition: setCondition,
+                        onReset: onReset,
                       );
                     },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.search),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width - 120,
-                          child: Center(
-                            child: Text(
-                                overflow: TextOverflow.ellipsis,
-                                searchCondition.value.hasCondition()
-                                    ? searchCondition.value.getSearchBarText()
-                                    : '検索条件を設定する'),
-                          ),
-                        ),
-                        searchCondition.value.hasCondition()
-                            ? SizedBox(
-                                height: 30,
-                                width: 30,
-                                child: IconButton(
-                                  padding: const EdgeInsets.all(0.0),
-                                  iconSize: 18,
-                                  onPressed: () {
-                                    onReset();
-                                  },
-                                  icon: const Icon(
-                                    Icons.clear,
-                                  ),
-                                ),
-                              )
-                            : const Text('')
-                      ],
-                    )),
-              ),
-              pokemonResult.isEmpty
-                  ? const Padding(
-                      padding: EdgeInsets.only(top: 100),
-                      child: Center(child: Text("該当するポケモンが見つかりませんでした。")),
-                    )
-                  : Expanded(
-                      child: ListView.builder(
-                        controller: scrollController,
-                        itemCount: pokemonResult.length,
-                        itemBuilder: (context, index) {
-                          final pokemon = pokemonResult[index];
-                          return InkWell(
-                            onTap: () {
-                              context.go('/search/dictionary/${pokemon.id}');
-                            },
-                            child: ViewListRow(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(20, 4, 20, 4),
-                                child: Row(
-                                  children: [
-                                    PokemonImage(
-                                      imageUrl: pokemon.imageUrl,
-                                      width: 100,
-                                      height: 100,
-                                      ballSkeleton: false,
-                                      showSkeleton: false,
-                                    ),
-                                    const Gap(10),
-                                    Center(
-                                      child: Text(
-                                        nameWithForm(
-                                            name: pokemon.name,
-                                            form: pokemon.form),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
-                        },
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.search),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width - 120,
+                      child: Center(
+                        child: Text(
+                            overflow: TextOverflow.ellipsis,
+                            searchCondition.value.hasCondition()
+                                ? searchCondition.value.getSearchBarText()
+                                : '検索条件を設定する'),
                       ),
                     ),
-            ],
-          );
-        },
+                    searchCondition.value.hasCondition()
+                        ? SizedBox(
+                            height: 30,
+                            width: 30,
+                            child: IconButton(
+                              padding: const EdgeInsets.all(0.0),
+                              iconSize: 18,
+                              onPressed: () {
+                                onReset();
+                              },
+                              icon: const Icon(
+                                Icons.clear,
+                              ),
+                            ),
+                          )
+                        : const Text('')
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Builder(
+            builder: (context) {
+              if (result.isLoadingOrError()) {
+                return SliverFillRemaining(
+                  child: result.suspensePart(),
+                );
+              }
+
+              final pokemonResult = result.data!.pokemonSearch;
+
+              if (pokemonResult.isEmpty) {
+                return const SliverFillRemaining(
+                    child: Padding(
+                  padding: EdgeInsets.only(top: 100),
+                  child: Center(child: Text("該当するポケモンが見つかりませんでした。")),
+                ));
+              }
+              return SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  childCount: pokemonResult.length,
+                  (context, index) {
+                    final pokemon = pokemonResult[index];
+                    return InkWell(
+                      onTap: () {
+                        context.go('/search/dictionary/${pokemon.id}');
+                      },
+                      child: ViewListRow(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 4, 20, 4),
+                          child: Row(
+                            children: [
+                              PokemonImage(
+                                imageUrl: pokemon.imageUrl,
+                                width: 100,
+                                height: 100,
+                                ballSkeleton: false,
+                                showSkeleton: false,
+                              ),
+                              const Gap(10),
+                              Center(
+                                child: Text(
+                                  nameWithForm(
+                                    name: pokemon.name,
+                                    form: pokemon.form,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

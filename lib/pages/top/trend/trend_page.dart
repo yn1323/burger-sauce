@@ -34,7 +34,6 @@ class TrendPage extends HookWidget {
     useAutomaticKeepAlive();
     final searchBarController = useTextEditingController();
     final searchWord = useState('');
-    final capturedAt = useState('');
 
     final result =
         useQuery<GLatestBattleDataIndexData, GLatestBattleDataIndexVars>(
