@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 
 List<String> topPaths = [
-  '/damage',
+  '/calc',
   '/search',
   '/trend',
   '/build',

@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: "/damage",
+  initialLocation: "/calc",
   routes: <RouteBase>[
     // index付きのStatefulShellRouteを使う
     StatefulShellRoute.indexedStack(
@@ -23,7 +23,7 @@ final GoRouter router = GoRouter(
       branches: [
         StatefulShellBranch(routes: [
           GoRoute(
-            path: '/damage',
+            path: '/calc',
             builder: (context, state) => const CalcPage(),
           )
         ]),
