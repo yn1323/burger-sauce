@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: "/search",
+  initialLocation: "/damage",
   routes: <RouteBase>[
     // index付きのStatefulShellRouteを使う
     StatefulShellRoute.indexedStack(
