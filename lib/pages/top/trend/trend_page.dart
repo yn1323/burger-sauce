@@ -43,87 +43,83 @@ class TrendPage extends HookWidget {
     );
 
     return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              expandedHeight: 50.0,
-              flexibleSpace:
-                  FlexibleSpaceBar(title: Builder(builder: (context) {
-                if (result.isLoadingOrError()) {
-                  return const Text('レートバトルデータ');
-                } else {
-                  final capturedAt = result.data!.battleDatasLatest?.capturedAt;
-                  final dateText =
-                      isoToStringDateTime(capturedAt!.value, ' M/d');
-                  return Text('レートバトルデータ ($dateText更新)');
-                }
-              })),
-            ),
-            SliverToBoxAdapter(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 50.0,
+            flexibleSpace: FlexibleSpaceBar(title: Builder(builder: (context) {
+              if (result.isLoadingOrError()) {
+                return const Text('レートバトルデータ');
+              } else {
+                final capturedAt = result.data!.battleDatasLatest?.capturedAt;
+                final dateText = isoToStringDateTime(capturedAt!.value, ' M/d');
+                return Text('レートバトルデータ ($dateText更新)');
+              }
+            })),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SearchBar(
-                    hintText: 'ポケモン名で検索',
-                    elevation: const MaterialStatePropertyAll(1),
-                    padding: const MaterialStatePropertyAll<EdgeInsets>(
-                        EdgeInsets.symmetric(horizontal: 16.0)),
-                    controller: searchBarController,
-                    onChanged: (String word) {
-                      searchWord.value = word;
-                    },
-                    leading: const Icon(Icons.search),
-                    trailing: <Widget>[
-                      if (searchWord.value.isNotEmpty)
-                        IconButton(
-                          onPressed: () {
-                            searchWord.value = '';
-                            searchBarController.text = '';
-                          },
-                          icon: const Icon(Icons.clear),
-                        )
-                    ],
-                  ),
+                child: SearchBar(
+                  hintText: 'ポケモン名で検索',
+                  elevation: const MaterialStatePropertyAll(1),
+                  padding: const MaterialStatePropertyAll<EdgeInsets>(
+                      EdgeInsets.symmetric(horizontal: 16.0)),
+                  controller: searchBarController,
+                  onChanged: (String word) {
+                    searchWord.value = word;
+                  },
+                  leading: const Icon(Icons.search),
+                  trailing: <Widget>[
+                    if (searchWord.value.isNotEmpty)
+                      IconButton(
+                        onPressed: () {
+                          searchWord.value = '';
+                          searchBarController.text = '';
+                        },
+                        icon: const Icon(Icons.clear),
+                      )
+                  ],
                 ),
               ),
             ),
-            Builder(
-              builder: (context) {
-                if (result.isLoadingOrError()) {
-                  return SliverFillRemaining(
-                    child: result.suspensePart(),
-                  );
-                }
-
-                final pokemons = result.data!.battleDatasLatest?.battleDatas;
-
-                final pokemonIndexList = pokemons!
-                    .map(
-                      (e) => PokemonIndex(
-                        id: e.id,
-                        form: e.pokemon.form,
-                        name: e.pokemon.name,
-                        rank: e.rank,
-                        imageUrl: e.pokemon.imageUrl,
-                      ),
-                    )
-                    .toList();
-
-                return SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      final pokemon = pokemonIndexList[index];
-                      return BattleDataList(pokemon: pokemon);
-                    },
-                    childCount: pokemonIndexList.length,
-                  ),
+          ),
+          Builder(
+            builder: (context) {
+              if (result.isLoadingOrError()) {
+                return SliverFillRemaining(
+                  child: result.suspensePart(),
                 );
-              },
-            )
-          ],
-        ),
+              }
+
+              final pokemons = result.data!.battleDatasLatest?.battleDatas;
+
+              final pokemonIndexList = pokemons!
+                  .map(
+                    (e) => PokemonIndex(
+                      id: e.id,
+                      form: e.pokemon.form,
+                      name: e.pokemon.name,
+                      rank: e.rank,
+                      imageUrl: e.pokemon.imageUrl,
+                    ),
+                  )
+                  .toList();
+
+              return SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final pokemon = pokemonIndexList[index];
+                    return BattleDataList(pokemon: pokemon);
+                  },
+                  childCount: pokemonIndexList.length,
+                ),
+              );
+            },
+          )
+        ],
       ),
     );
   }
