@@ -1,4 +1,9 @@
 import 'package:burger_sauce/components/widgets/dismissible_widget.dart';
+import 'package:burger_sauce/constants/client.dart';
+import 'package:burger_sauce/helpers/query.dart';
+import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
+import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.req.gql.dart';
+import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.var.gql.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/damage_card.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/damage_card_add_button.dart';
@@ -12,6 +17,12 @@ class CalcPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final calc = ref.watch(calcProvider);
     final calcNotifier = ref.watch(calcProvider.notifier);
+
+    final result = useQuery<GDamageCalcSummaryData, GDamageCalcSummaryVars>(
+      GDamageCalcSummaryReq(
+        (b) => b..fetchPolicy = fetchCacheFirst,
+      ),
+    );
 
     return Scaffold(
       body: SafeArea(
@@ -57,40 +68,61 @@ class CalcPage extends HookConsumerWidget {
                 ),
               ];
             },
-            body: TabBarView(
-              children: [
-                ListView.separated(
-                  padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(height: 10),
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    if (index == 9) {
-                      return const DamageCardAddButton();
-                    }
-                    return const DismissibleWidget(child: DamageCard());
-                  },
-                ),
-                // ListView.builder(
-                //   itemCount: 10,
-                //   itemBuilder: (context, index) {
-                //     return Center(
-                //       child: ElevatedButton(
-                //         onPressed: () {
-                //           calcNotifier.update(calc + 1);
-                //         },
-                //         child: Text(calc.toString()),
-                //       ),
-                //     );
-                //   },
-                // ),
-                ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return const DamageCard();
-                  },
-                ),
-              ],
+            body: Builder(
+              builder: (context) {
+                if (result.isLoadingOrError()) {
+                  return result.suspensePart();
+                }
+                if (result.data!.abilities.isEmpty ||
+                    result.data!.moves.isEmpty ||
+                    result.data!.pokemons.isEmpty ||
+                    result.data!.attackTypes.isEmpty ||
+                    result.data!.battleDatasLatest == null) {
+                  return const Text('データが見つかりませんでした');
+                }
+
+                final pokemons = result.data!.pokemons;
+                final abilities = result.data!.abilities;
+                final moves = result.data!.moves;
+                final attackTypes = result.data!.attackTypes;
+                final battleData = result.data!.battleDatasLatest!;
+
+                return TabBarView(
+                  children: [
+                    ListView.separated(
+                      padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 10),
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        if (index == 9) {
+                          return const DamageCardAddButton();
+                        }
+                        return const DismissibleWidget(child: DamageCard());
+                      },
+                    ),
+                    // ListView.builder(
+                    //   itemCount: 10,
+                    //   itemBuilder: (context, index) {
+                    //     return Center(
+                    //       child: ElevatedButton(
+                    //         onPressed: () {
+                    //           calcNotifier.update(calc + 1);
+                    //         },
+                    //         child: Text(calc.toString()),
+                    //       ),
+                    //     );
+                    //   },
+                    // ),
+                    ListView.builder(
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        return const DamageCard();
+                      },
+                    ),
+                  ],
+                );
+              },
             ),
           ),
         ),
