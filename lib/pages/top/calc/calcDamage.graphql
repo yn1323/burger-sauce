@@ -1,0 +1,78 @@
+query DamageCalcSummary {
+  battleDatasLatest {
+    battleDatas {
+      pokemonId
+      battleDataAbility {
+        abilityId
+      }
+      battleDataItem {
+        itemId
+      }
+      battleDataMove {
+        moveId
+      }
+    }
+  }
+  pokemons {
+    id
+    form
+    height
+    weight
+    imageUrl
+    name
+    statusA
+    statusB
+    statusC
+    statusD
+    statusH
+    statusS
+  }
+  abilities {
+    id
+    name
+    detail
+  }
+  moves {
+    accuracy
+    attackTypeId
+    detail
+    id
+    isBullet
+    isChangeable
+    isContact
+    isCut
+    isDance
+    isDelay
+    isJaw
+    isMultipleAttack
+    isMustCritical
+    isPowder
+    isQuick
+    isPunch
+    isSound
+    isWave
+    isWind
+    name
+    power
+    typeId
+  }
+  attackTypes {
+    id
+    imageUrl
+    name
+  }
+}
+
+query DamageCalcDetail($id: String = "") {
+  pokemon(id: $id) {
+    abilities {
+      id
+    }
+    moves {
+      id
+    }
+    types {
+      id
+    }
+  }
+}

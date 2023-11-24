@@ -35,6 +35,29 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GCreateTypeInput.serializer)
       ..add(GCreateTypeRelationInput.serializer)
       ..add(GCreateUserInput.serializer)
+      ..add(GDamageCalcDetailData.serializer)
+      ..add(GDamageCalcDetailData_pokemon.serializer)
+      ..add(GDamageCalcDetailData_pokemon_abilities.serializer)
+      ..add(GDamageCalcDetailData_pokemon_moves.serializer)
+      ..add(GDamageCalcDetailData_pokemon_types.serializer)
+      ..add(GDamageCalcDetailReq.serializer)
+      ..add(GDamageCalcDetailVars.serializer)
+      ..add(GDamageCalcSummaryData.serializer)
+      ..add(GDamageCalcSummaryData_abilities.serializer)
+      ..add(GDamageCalcSummaryData_attackTypes.serializer)
+      ..add(GDamageCalcSummaryData_battleDatasLatest.serializer)
+      ..add(GDamageCalcSummaryData_battleDatasLatest_battleDatas.serializer)
+      ..add(
+          GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility
+              .serializer)
+      ..add(GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem
+          .serializer)
+      ..add(GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove
+          .serializer)
+      ..add(GDamageCalcSummaryData_moves.serializer)
+      ..add(GDamageCalcSummaryData_pokemons.serializer)
+      ..add(GDamageCalcSummaryReq.serializer)
+      ..add(GDamageCalcSummaryVars.serializer)
       ..add(GDate.serializer)
       ..add(GDateTime.serializer)
       ..add(GJSON.serializer)
@@ -122,6 +145,61 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GUpdateTypeInput.serializer)
       ..add(GUpdateTypeRelationInput.serializer)
       ..add(GUpdateUserInput.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GDamageCalcDetailData_pokemon_abilities)]),
+          () => new ListBuilder<GDamageCalcDetailData_pokemon_abilities>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GDamageCalcDetailData_pokemon_moves)]),
+          () => new ListBuilder<GDamageCalcDetailData_pokemon_moves>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GDamageCalcDetailData_pokemon_types)]),
+          () => new ListBuilder<GDamageCalcDetailData_pokemon_types>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GDamageCalcSummaryData_battleDatasLatest_battleDatas)
+          ]),
+          () => new ListBuilder<
+              GDamageCalcSummaryData_battleDatasLatest_battleDatas>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(
+                GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility)
+          ]),
+          () => new ListBuilder<
+              GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(
+                GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem)
+          ]),
+          () => new ListBuilder<
+              GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(
+                GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove)
+          ]),
+          () => new ListBuilder<
+              GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GDamageCalcSummaryData_pokemons)]),
+          () => new ListBuilder<GDamageCalcSummaryData_pokemons>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GDamageCalcSummaryData_abilities)]),
+          () => new ListBuilder<GDamageCalcSummaryData_abilities>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GDamageCalcSummaryData_moves)]),
+          () => new ListBuilder<GDamageCalcSummaryData_moves>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GDamageCalcSummaryData_attackTypes)]),
+          () => new ListBuilder<GDamageCalcSummaryData_attackTypes>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(

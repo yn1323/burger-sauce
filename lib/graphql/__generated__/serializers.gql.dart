@@ -116,6 +116,27 @@ import 'package:burger_sauce/pages/search/pokemon_simple_detail/__generated__/on
     show GOnePokemonSimpleDataReq;
 import 'package:burger_sauce/pages/search/pokemon_simple_detail/__generated__/onePokemonSimple.var.gql.dart'
     show GOnePokemonSimpleDataVars;
+import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart'
+    show
+        GDamageCalcDetailData,
+        GDamageCalcDetailData_pokemon,
+        GDamageCalcDetailData_pokemon_abilities,
+        GDamageCalcDetailData_pokemon_moves,
+        GDamageCalcDetailData_pokemon_types,
+        GDamageCalcSummaryData,
+        GDamageCalcSummaryData_abilities,
+        GDamageCalcSummaryData_attackTypes,
+        GDamageCalcSummaryData_battleDatasLatest,
+        GDamageCalcSummaryData_battleDatasLatest_battleDatas,
+        GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility,
+        GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem,
+        GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove,
+        GDamageCalcSummaryData_moves,
+        GDamageCalcSummaryData_pokemons;
+import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.req.gql.dart'
+    show GDamageCalcDetailReq, GDamageCalcSummaryReq;
+import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.var.gql.dart'
+    show GDamageCalcDetailVars, GDamageCalcSummaryVars;
 import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.data.gql.dart'
     show
         GSearchPokemonData,
@@ -175,6 +196,25 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GCreateTypeInput,
   GCreateTypeRelationInput,
   GCreateUserInput,
+  GDamageCalcDetailData,
+  GDamageCalcDetailData_pokemon,
+  GDamageCalcDetailData_pokemon_abilities,
+  GDamageCalcDetailData_pokemon_moves,
+  GDamageCalcDetailData_pokemon_types,
+  GDamageCalcDetailReq,
+  GDamageCalcDetailVars,
+  GDamageCalcSummaryData,
+  GDamageCalcSummaryData_abilities,
+  GDamageCalcSummaryData_attackTypes,
+  GDamageCalcSummaryData_battleDatasLatest,
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas,
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility,
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem,
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove,
+  GDamageCalcSummaryData_moves,
+  GDamageCalcSummaryData_pokemons,
+  GDamageCalcSummaryReq,
+  GDamageCalcSummaryVars,
   GDate,
   GDateTime,
   GJSON,

@@ -26,13 +26,13 @@ class CalcPage extends HookConsumerWidget {
                   floating: false,
                   pinned: false,
                 ),
-                const SliverPersistentHeader(
+                SliverPersistentHeader(
                   pinned: true,
                   delegate: _StickyTabBarDelegate(
                     tabBar: TabBar(
                       labelColor: Colors.blue,
-                      unselectedLabelColor: Colors.black,
-                      tabs: [
+                      unselectedLabelColor: Colors.grey[700],
+                      tabs: const [
                         Tab(
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -60,6 +60,7 @@ class CalcPage extends HookConsumerWidget {
             body: TabBarView(
               children: [
                 ListView.separated(
+                  padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                   separatorBuilder: (context, index) =>
                       const SizedBox(height: 10),
                   itemCount: 10,
@@ -67,7 +68,6 @@ class CalcPage extends HookConsumerWidget {
                     if (index == 9) {
                       return const DamageCardAddButton();
                     }
-
                     return const DismissibleWidget(child: DamageCard());
                   },
                 ),
