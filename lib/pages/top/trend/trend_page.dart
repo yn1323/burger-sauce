@@ -1,5 +1,6 @@
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/helpers/query.dart';
+import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/helpers/time.dart';
 import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.data.gql.dart';
 import 'package:burger_sauce/pages/top/trend/__generated__/latestBattleData.req.gql.dart';
@@ -106,6 +107,7 @@ class TrendPage extends HookWidget {
                       imageUrl: e.pokemon.imageUrl,
                     ),
                   )
+                  .where((e) => e.name.contains(hiraToKata(searchWord.value)))
                   .toList();
 
               return SliverList(
