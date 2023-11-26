@@ -16,6 +16,7 @@ abstract class GDamageCalcSummaryVars
           [Function(GDamageCalcSummaryVarsBuilder b) updates]) =
       _$GDamageCalcSummaryVars;
 
+  String? get calcId;
   static Serializer<GDamageCalcSummaryVars> get serializer =>
       _$gDamageCalcSummaryVarsSerializer;
 

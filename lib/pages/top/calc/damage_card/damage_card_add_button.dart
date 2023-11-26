@@ -7,14 +7,15 @@ class DamageCardAddButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final calc = ref.watch(calcProvider);
-    final calcNotifier = ref.watch(calcProvider.notifier);
+    final calcStoreNotifier = ref.watch(calcProvider.notifier);
 
     return Card(
       child: SizedBox(
         height: 100,
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            calcStoreNotifier.addAttackBase();
+          },
           child: const Icon(Icons.add),
         ),
       ),

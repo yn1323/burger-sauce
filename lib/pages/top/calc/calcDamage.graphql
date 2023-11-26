@@ -1,4 +1,4 @@
-query DamageCalcSummary {
+query DamageCalcSummary($calcId: String = "") {
   battleDatasLatest {
     battleDatas {
       pokemonId
@@ -10,6 +10,12 @@ query DamageCalcSummary {
       }
       battleDataMove {
         moveId
+      }
+      battleDataNature{
+        natureId
+      }
+      battleDataTerastal{
+        typeId
       }
     }
   }
@@ -60,6 +66,51 @@ query DamageCalcSummary {
     id
     imageUrl
     name
+  }
+  natures {
+    decrease
+    increase
+    name
+    id
+  }
+  types {
+    id
+    imageUrl
+    terastalImageUrl
+    textImageUrl
+  }
+  myDamageCalcIndex(id: $calcId) {
+    myDamageCalc {
+      client
+      abilityId
+      evA
+      evB
+      evC
+      evD
+      evH
+      evS
+      id
+      itemId
+      ivA
+      ivB
+      ivC
+      ivD
+      ivH
+      ivS
+      rankA
+      rankB
+      rankC
+      rankD
+      rankS
+      side
+      terastalId
+      pokemonId
+      order
+      natureId
+      moves {
+        id
+      }
+    }
   }
 }
 

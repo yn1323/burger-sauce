@@ -22,6 +22,7 @@ type Ability {
   battleDataAbilities: [BattleDataAbility!]!
   myPokemon: [MyPokemon!]!
   myEnemy: [MyEnemy!]!
+  myDamageCalc: [MyDamageCalc!]!
 }
 
 type AttackType {
@@ -208,6 +209,43 @@ input CreateMoveInput {
   isWind: Boolean!
   isCut: Boolean!
   battleIndex: String!
+  myDamageCalcId: String
+}
+
+input CreateMyDamageCalcIndexInput {
+  userId: String!
+  title: String!
+  memo: String!
+  favorite: Boolean!
+}
+
+input CreateMyDamageCalcInput {
+  client: String!
+  myDamageCalcIndexId: String
+  pokemonId: String!
+  itemId: String
+  abilityId: String
+  natureId: String!
+  terastalId: String
+  evH: Int!
+  evA: Int!
+  evB: Int!
+  evC: Int!
+  evD: Int!
+  evS: Int!
+  ivH: Int!
+  ivA: Int!
+  ivB: Int!
+  ivC: Int!
+  ivD: Int!
+  ivS: Int!
+  rankA: Int!
+  rankB: Int!
+  rankC: Int!
+  rankD: Int!
+  rankS: Int!
+  side: String!
+  order: Int!
 }
 
 input CreateMyEnemyInput {
@@ -219,6 +257,12 @@ input CreateMyEnemyInput {
   evC: Int!
   evD: Int!
   evS: Int!
+  ivH: Int!
+  ivA: Int!
+  ivB: Int!
+  ivC: Int!
+  ivD: Int!
+  ivS: Int!
   memo: String!
   pokemonId: String!
   itemId: String
@@ -263,6 +307,12 @@ input CreateMyPokemonInput {
   evC: Int!
   evD: Int!
   evS: Int!
+  ivH: Int!
+  ivA: Int!
+  ivB: Int!
+  ivC: Int!
+  ivD: Int!
+  ivS: Int!
   memo: String!
   pokemonId: String!
   itemId: String
@@ -376,6 +426,7 @@ type Item {
   battleDataItem: [BattleDataItem!]!
   myPokemon: [MyPokemon!]!
   myEnemy: [MyEnemy!]!
+  myDamageCalc: [MyDamageCalc!]!
 }
 
 """
@@ -424,6 +475,8 @@ type Move {
   battleDataMoves: [BattleDataMove!]!
   myPokemon: [MyPokemon!]!
   myEnemy: [MyEnemy!]!
+  MyDamageCalc: MyDamageCalc
+  myDamageCalcId: String
 }
 
 type Mutation {
@@ -466,6 +519,12 @@ type Mutation {
   createMove(input: CreateMoveInput!): Move!
   updateMove(id: String!, input: UpdateMoveInput!): Move!
   deleteMove(id: String!): Move!
+  createMyDamageCalcIndex(input: CreateMyDamageCalcIndexInput!): MyDamageCalcIndex!
+  updateMyDamageCalcIndex(id: String!, input: UpdateMyDamageCalcIndexInput!): MyDamageCalcIndex!
+  deleteMyDamageCalcIndex(id: String!): MyDamageCalcIndex!
+  createMyDamageCalc(input: CreateMyDamageCalcInput!): MyDamageCalc!
+  updateMyDamageCalc(id: String!, input: UpdateMyDamageCalcInput!): MyDamageCalc!
+  deleteMyDamageCalc(id: String!): MyDamageCalc!
   createMyEnemy(input: CreateMyEnemyInput!): MyEnemy!
   updateMyEnemy(id: String!, input: UpdateMyEnemyInput!): MyEnemy!
   deleteMyEnemy(id: String!): MyEnemy!
@@ -507,6 +566,55 @@ type Mutation {
   deleteUser(id: String!): User!
 }
 
+type MyDamageCalc {
+  id: String!
+  client: String!
+  myDamageCalcIndex: MyDamageCalcIndex
+  myDamageCalcIndexId: String
+  pokemon: Pokemon!
+  pokemonId: String!
+  item: Item
+  itemId: String
+  ability: Ability
+  abilityId: String
+  nature: Nature!
+  natureId: String!
+  terastal: Type
+  terastalId: String
+  moves: [Move!]!
+  evH: Int!
+  evA: Int!
+  evB: Int!
+  evC: Int!
+  evD: Int!
+  evS: Int!
+  ivH: Int!
+  ivA: Int!
+  ivB: Int!
+  ivC: Int!
+  ivD: Int!
+  ivS: Int!
+  rankA: Int!
+  rankB: Int!
+  rankC: Int!
+  rankD: Int!
+  rankS: Int!
+  side: String!
+  order: Int!
+}
+
+type MyDamageCalcIndex {
+  id: String!
+  user: User!
+  userId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String!
+  memo: String!
+  favorite: Boolean!
+  myDamageCalc: [MyDamageCalc!]!
+}
+
 type MyEnemy {
   id: String!
   name: String!
@@ -517,6 +625,12 @@ type MyEnemy {
   evC: Int!
   evD: Int!
   evS: Int!
+  ivH: Int!
+  ivA: Int!
+  ivB: Int!
+  ivC: Int!
+  ivD: Int!
+  ivS: Int!
   memo: String!
   tag: [MyEnemyTag!]!
   pokemon: Pokemon!
@@ -577,6 +691,12 @@ type MyPokemon {
   evC: Int!
   evD: Int!
   evS: Int!
+  ivH: Int!
+  ivA: Int!
+  ivB: Int!
+  ivC: Int!
+  ivD: Int!
+  ivS: Int!
   memo: String!
   tag: [MyPokemonTag!]!
   pokemon: Pokemon!
@@ -632,6 +752,7 @@ type Nature {
   battleDataNature: [BattleDataNature!]!
   myPokemon: [MyPokemon!]!
   myEnemy: [MyEnemy!]!
+  myDamageCalc: [MyDamageCalc!]!
 }
 
 type Pokemon {
@@ -663,6 +784,7 @@ type Pokemon {
   evolutionFrom: [Evolution!]!
   evolutionTo: [Evolution!]!
   evolutions: [Evolution!]!
+  myDamageCalc: [MyDamageCalc!]!
 }
 
 input PokemonSearchOption {
@@ -707,6 +829,10 @@ type Query {
   item(id: String!): Item
   moves: [Move!]!
   move(id: String!): Move
+  myDamageCalcIndices: [MyDamageCalcIndex!]!
+  myDamageCalcIndex(id: String!): MyDamageCalcIndex
+  myDamageCalcs: [MyDamageCalc!]!
+  myDamageCalc(id: String!): MyDamageCalc
   myEnemies: [MyEnemy!]!
   myEnemy(id: String!): MyEnemy
   myEnemyTags: [MyEnemyTag!]!
@@ -772,6 +898,7 @@ type Type {
   imageUrl: String!
   terastalImageUrl: String!
   myEnemy: [MyEnemy!]!
+  myDamageCalc: [MyDamageCalc!]!
 }
 
 type TypeRelation {
@@ -884,6 +1011,43 @@ input UpdateMoveInput {
   isWind: Boolean
   isCut: Boolean
   battleIndex: String
+  myDamageCalcId: String
+}
+
+input UpdateMyDamageCalcIndexInput {
+  userId: String
+  title: String
+  memo: String
+  favorite: Boolean
+}
+
+input UpdateMyDamageCalcInput {
+  client: String
+  myDamageCalcIndexId: String
+  pokemonId: String
+  itemId: String
+  abilityId: String
+  natureId: String
+  terastalId: String
+  evH: Int
+  evA: Int
+  evB: Int
+  evC: Int
+  evD: Int
+  evS: Int
+  ivH: Int
+  ivA: Int
+  ivB: Int
+  ivC: Int
+  ivD: Int
+  ivS: Int
+  rankA: Int
+  rankB: Int
+  rankC: Int
+  rankD: Int
+  rankS: Int
+  side: String
+  order: Int
 }
 
 input UpdateMyEnemyInput {
@@ -895,6 +1059,12 @@ input UpdateMyEnemyInput {
   evC: Int
   evD: Int
   evS: Int
+  ivH: Int
+  ivA: Int
+  ivB: Int
+  ivC: Int
+  ivD: Int
+  ivS: Int
   memo: String
   pokemonId: String
   itemId: String
@@ -939,6 +1109,12 @@ input UpdateMyPokemonInput {
   evC: Int
   evD: Int
   evS: Int
+  ivH: Int
+  ivA: Int
+  ivB: Int
+  ivC: Int
+  ivD: Int
+  ivS: Int
   memo: String
   pokemonId: String
   itemId: String
@@ -1021,5 +1197,6 @@ type User {
   myPokemonTag: [MyPokemonTag!]!
   myEnemy: [MyEnemy!]!
   myEnemyTag: [MyEnemyTag!]!
+  MyDamageCalcIndex: [MyDamageCalcIndex!]!
 }
 

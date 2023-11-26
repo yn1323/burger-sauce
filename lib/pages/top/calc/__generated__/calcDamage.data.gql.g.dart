@@ -24,6 +24,14 @@ Serializer<GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem>
 Serializer<GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove>
     _$gDamageCalcSummaryDataBattleDatasLatestBattleDatasBattleDataMoveSerializer =
     new _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMoveSerializer();
+Serializer<
+        GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature>
+    _$gDamageCalcSummaryDataBattleDatasLatestBattleDatasBattleDataNatureSerializer =
+    new _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureSerializer();
+Serializer<
+        GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal>
+    _$gDamageCalcSummaryDataBattleDatasLatestBattleDatasBattleDataTerastalSerializer =
+    new _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalSerializer();
 Serializer<GDamageCalcSummaryData_pokemons>
     _$gDamageCalcSummaryDataPokemonsSerializer =
     new _$GDamageCalcSummaryData_pokemonsSerializer();
@@ -36,6 +44,21 @@ Serializer<GDamageCalcSummaryData_moves>
 Serializer<GDamageCalcSummaryData_attackTypes>
     _$gDamageCalcSummaryDataAttackTypesSerializer =
     new _$GDamageCalcSummaryData_attackTypesSerializer();
+Serializer<GDamageCalcSummaryData_natures>
+    _$gDamageCalcSummaryDataNaturesSerializer =
+    new _$GDamageCalcSummaryData_naturesSerializer();
+Serializer<GDamageCalcSummaryData_types>
+    _$gDamageCalcSummaryDataTypesSerializer =
+    new _$GDamageCalcSummaryData_typesSerializer();
+Serializer<GDamageCalcSummaryData_myDamageCalcIndex>
+    _$gDamageCalcSummaryDataMyDamageCalcIndexSerializer =
+    new _$GDamageCalcSummaryData_myDamageCalcIndexSerializer();
+Serializer<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc>
+    _$gDamageCalcSummaryDataMyDamageCalcIndexMyDamageCalcSerializer =
+    new _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalcSerializer();
+Serializer<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves>
+    _$gDamageCalcSummaryDataMyDamageCalcIndexMyDamageCalcMovesSerializer =
+    new _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_movesSerializer();
 Serializer<GDamageCalcDetailData> _$gDamageCalcDetailDataSerializer =
     new _$GDamageCalcDetailDataSerializer();
 Serializer<GDamageCalcDetailData_pokemon>
@@ -85,6 +108,14 @@ class _$GDamageCalcSummaryDataSerializer
       serializers.serialize(object.attackTypes,
           specifiedType: const FullType(BuiltList,
               const [const FullType(GDamageCalcSummaryData_attackTypes)])),
+      'natures',
+      serializers.serialize(object.natures,
+          specifiedType: const FullType(BuiltList,
+              const [const FullType(GDamageCalcSummaryData_natures)])),
+      'types',
+      serializers.serialize(object.types,
+          specifiedType: const FullType(
+              BuiltList, const [const FullType(GDamageCalcSummaryData_types)])),
     ];
     Object? value;
     value = object.battleDatasLatest;
@@ -94,6 +125,14 @@ class _$GDamageCalcSummaryDataSerializer
         ..add(serializers.serialize(value,
             specifiedType:
                 const FullType(GDamageCalcSummaryData_battleDatasLatest)));
+    }
+    value = object.myDamageCalcIndex;
+    if (value != null) {
+      result
+        ..add('myDamageCalcIndex')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(GDamageCalcSummaryData_myDamageCalcIndex)));
     }
     return result;
   }
@@ -143,6 +182,24 @@ class _$GDamageCalcSummaryDataSerializer
               specifiedType: const FullType(BuiltList, const [
                 const FullType(GDamageCalcSummaryData_attackTypes)
               ]))! as BuiltList<Object?>);
+          break;
+        case 'natures':
+          result.natures.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(GDamageCalcSummaryData_natures)
+              ]))! as BuiltList<Object?>);
+          break;
+        case 'types':
+          result.types.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(GDamageCalcSummaryData_types)
+              ]))! as BuiltList<Object?>);
+          break;
+        case 'myDamageCalcIndex':
+          result.myDamageCalcIndex.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(GDamageCalcSummaryData_myDamageCalcIndex))!
+              as GDamageCalcSummaryData_myDamageCalcIndex);
           break;
       }
     }
@@ -251,6 +308,18 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatasSerializer
             const FullType(
                 GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove)
           ])),
+      'battleDataNature',
+      serializers.serialize(object.battleDataNature,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(
+                GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature)
+          ])),
+      'battleDataTerastal',
+      serializers.serialize(object.battleDataTerastal,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(
+                GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal)
+          ])),
     ];
 
     return result;
@@ -296,6 +365,20 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatasSerializer
               specifiedType: const FullType(BuiltList, const [
                 const FullType(
                     GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove)
+              ]))! as BuiltList<Object?>);
+          break;
+        case 'battleDataNature':
+          result.battleDataNature.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature)
+              ]))! as BuiltList<Object?>);
+          break;
+        case 'battleDataTerastal':
+          result.battleDataTerastal.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal)
               ]))! as BuiltList<Object?>);
           break;
       }
@@ -473,6 +556,124 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMoveSeria
           break;
         case 'moveId':
           result.moveId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureSerializer
+    implements
+        StructuredSerializer<
+            GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature> {
+  @override
+  final Iterable<Type> types = const [
+    GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature,
+    _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
+  ];
+  @override
+  final String wireName =
+      'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers,
+      GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
+          object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'natureId',
+      serializers.serialize(object.natureId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
+      deserialize(Serializers serializers, Iterable<Object?> serialized,
+          {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        new GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'natureId':
+          result.natureId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalSerializer
+    implements
+        StructuredSerializer<
+            GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal> {
+  @override
+  final Iterable<Type> types = const [
+    GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal,
+    _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
+  ];
+  @override
+  final String wireName =
+      'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers,
+      GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
+          object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'typeId',
+      serializers.serialize(object.typeId,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
+      deserialize(Serializers serializers, Iterable<Object?> serialized,
+          {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        new GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'typeId':
+          result.typeId = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -934,6 +1135,503 @@ class _$GDamageCalcSummaryData_attackTypesSerializer
   }
 }
 
+class _$GDamageCalcSummaryData_naturesSerializer
+    implements StructuredSerializer<GDamageCalcSummaryData_natures> {
+  @override
+  final Iterable<Type> types = const [
+    GDamageCalcSummaryData_natures,
+    _$GDamageCalcSummaryData_natures
+  ];
+  @override
+  final String wireName = 'GDamageCalcSummaryData_natures';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GDamageCalcSummaryData_natures object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'decrease',
+      serializers.serialize(object.decrease,
+          specifiedType: const FullType(String)),
+      'increase',
+      serializers.serialize(object.increase,
+          specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GDamageCalcSummaryData_natures deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GDamageCalcSummaryData_naturesBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'decrease':
+          result.decrease = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'increase':
+          result.increase = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDamageCalcSummaryData_typesSerializer
+    implements StructuredSerializer<GDamageCalcSummaryData_types> {
+  @override
+  final Iterable<Type> types = const [
+    GDamageCalcSummaryData_types,
+    _$GDamageCalcSummaryData_types
+  ];
+  @override
+  final String wireName = 'GDamageCalcSummaryData_types';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GDamageCalcSummaryData_types object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'imageUrl',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
+      'terastalImageUrl',
+      serializers.serialize(object.terastalImageUrl,
+          specifiedType: const FullType(String)),
+      'textImageUrl',
+      serializers.serialize(object.textImageUrl,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GDamageCalcSummaryData_types deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GDamageCalcSummaryData_typesBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'terastalImageUrl':
+          result.terastalImageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'textImageUrl':
+          result.textImageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDamageCalcSummaryData_myDamageCalcIndexSerializer
+    implements StructuredSerializer<GDamageCalcSummaryData_myDamageCalcIndex> {
+  @override
+  final Iterable<Type> types = const [
+    GDamageCalcSummaryData_myDamageCalcIndex,
+    _$GDamageCalcSummaryData_myDamageCalcIndex
+  ];
+  @override
+  final String wireName = 'GDamageCalcSummaryData_myDamageCalcIndex';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GDamageCalcSummaryData_myDamageCalcIndex object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'myDamageCalc',
+      serializers.serialize(object.myDamageCalc,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(
+                GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc)
+          ])),
+    ];
+
+    return result;
+  }
+
+  @override
+  GDamageCalcSummaryData_myDamageCalcIndex deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GDamageCalcSummaryData_myDamageCalcIndexBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'myDamageCalc':
+          result.myDamageCalc.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc)
+              ]))! as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalcSerializer
+    implements
+        StructuredSerializer<
+            GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc> {
+  @override
+  final Iterable<Type> types = const [
+    GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc,
+    _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc
+  ];
+  @override
+  final String wireName =
+      'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'client',
+      serializers.serialize(object.client,
+          specifiedType: const FullType(String)),
+      'evA',
+      serializers.serialize(object.evA, specifiedType: const FullType(int)),
+      'evB',
+      serializers.serialize(object.evB, specifiedType: const FullType(int)),
+      'evC',
+      serializers.serialize(object.evC, specifiedType: const FullType(int)),
+      'evD',
+      serializers.serialize(object.evD, specifiedType: const FullType(int)),
+      'evH',
+      serializers.serialize(object.evH, specifiedType: const FullType(int)),
+      'evS',
+      serializers.serialize(object.evS, specifiedType: const FullType(int)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'ivA',
+      serializers.serialize(object.ivA, specifiedType: const FullType(int)),
+      'ivB',
+      serializers.serialize(object.ivB, specifiedType: const FullType(int)),
+      'ivC',
+      serializers.serialize(object.ivC, specifiedType: const FullType(int)),
+      'ivD',
+      serializers.serialize(object.ivD, specifiedType: const FullType(int)),
+      'ivH',
+      serializers.serialize(object.ivH, specifiedType: const FullType(int)),
+      'ivS',
+      serializers.serialize(object.ivS, specifiedType: const FullType(int)),
+      'rankA',
+      serializers.serialize(object.rankA, specifiedType: const FullType(int)),
+      'rankB',
+      serializers.serialize(object.rankB, specifiedType: const FullType(int)),
+      'rankC',
+      serializers.serialize(object.rankC, specifiedType: const FullType(int)),
+      'rankD',
+      serializers.serialize(object.rankD, specifiedType: const FullType(int)),
+      'rankS',
+      serializers.serialize(object.rankS, specifiedType: const FullType(int)),
+      'side',
+      serializers.serialize(object.side, specifiedType: const FullType(String)),
+      'pokemonId',
+      serializers.serialize(object.pokemonId,
+          specifiedType: const FullType(String)),
+      'order',
+      serializers.serialize(object.order, specifiedType: const FullType(int)),
+      'natureId',
+      serializers.serialize(object.natureId,
+          specifiedType: const FullType(String)),
+      'moves',
+      serializers.serialize(object.moves,
+          specifiedType: const FullType(BuiltList, const [
+            const FullType(
+                GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves)
+          ])),
+    ];
+    Object? value;
+    value = object.abilityId;
+    if (value != null) {
+      result
+        ..add('abilityId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.itemId;
+    if (value != null) {
+      result
+        ..add('itemId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.terastalId;
+    if (value != null) {
+      result
+        ..add('terastalId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        new GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalcBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'client':
+          result.client = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'abilityId':
+          result.abilityId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'evA':
+          result.evA = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evB':
+          result.evB = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evC':
+          result.evC = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evD':
+          result.evD = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evH':
+          result.evH = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evS':
+          result.evS = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'itemId':
+          result.itemId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'ivA':
+          result.ivA = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivB':
+          result.ivB = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivC':
+          result.ivC = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivD':
+          result.ivD = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivH':
+          result.ivH = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivS':
+          result.ivS = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'rankA':
+          result.rankA = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'rankB':
+          result.rankB = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'rankC':
+          result.rankC = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'rankD':
+          result.rankD = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'rankS':
+          result.rankS = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'side':
+          result.side = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'terastalId':
+          result.terastalId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'pokemonId':
+          result.pokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'order':
+          result.order = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'natureId':
+          result.natureId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'moves':
+          result.moves.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves)
+              ]))! as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_movesSerializer
+    implements
+        StructuredSerializer<
+            GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves> {
+  @override
+  final Iterable<Type> types = const [
+    GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves,
+    _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves
+  ];
+  @override
+  final String wireName =
+      'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers,
+      GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result =
+        new GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_movesBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GDamageCalcDetailDataSerializer
     implements StructuredSerializer<GDamageCalcDetailData> {
   @override
@@ -1237,6 +1935,12 @@ class _$GDamageCalcSummaryData extends GDamageCalcSummaryData {
   final BuiltList<GDamageCalcSummaryData_moves> moves;
   @override
   final BuiltList<GDamageCalcSummaryData_attackTypes> attackTypes;
+  @override
+  final BuiltList<GDamageCalcSummaryData_natures> natures;
+  @override
+  final BuiltList<GDamageCalcSummaryData_types> types;
+  @override
+  final GDamageCalcSummaryData_myDamageCalcIndex? myDamageCalcIndex;
 
   factory _$GDamageCalcSummaryData(
           [void Function(GDamageCalcSummaryDataBuilder)? updates]) =>
@@ -1248,7 +1952,10 @@ class _$GDamageCalcSummaryData extends GDamageCalcSummaryData {
       required this.pokemons,
       required this.abilities,
       required this.moves,
-      required this.attackTypes})
+      required this.attackTypes,
+      required this.natures,
+      required this.types,
+      this.myDamageCalcIndex})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GDamageCalcSummaryData', 'G__typename');
@@ -1260,6 +1967,10 @@ class _$GDamageCalcSummaryData extends GDamageCalcSummaryData {
         moves, r'GDamageCalcSummaryData', 'moves');
     BuiltValueNullFieldError.checkNotNull(
         attackTypes, r'GDamageCalcSummaryData', 'attackTypes');
+    BuiltValueNullFieldError.checkNotNull(
+        natures, r'GDamageCalcSummaryData', 'natures');
+    BuiltValueNullFieldError.checkNotNull(
+        types, r'GDamageCalcSummaryData', 'types');
   }
 
   @override
@@ -1280,7 +1991,10 @@ class _$GDamageCalcSummaryData extends GDamageCalcSummaryData {
         pokemons == other.pokemons &&
         abilities == other.abilities &&
         moves == other.moves &&
-        attackTypes == other.attackTypes;
+        attackTypes == other.attackTypes &&
+        natures == other.natures &&
+        types == other.types &&
+        myDamageCalcIndex == other.myDamageCalcIndex;
   }
 
   @override
@@ -1292,6 +2006,9 @@ class _$GDamageCalcSummaryData extends GDamageCalcSummaryData {
     _$hash = $jc(_$hash, abilities.hashCode);
     _$hash = $jc(_$hash, moves.hashCode);
     _$hash = $jc(_$hash, attackTypes.hashCode);
+    _$hash = $jc(_$hash, natures.hashCode);
+    _$hash = $jc(_$hash, types.hashCode);
+    _$hash = $jc(_$hash, myDamageCalcIndex.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1304,7 +2021,10 @@ class _$GDamageCalcSummaryData extends GDamageCalcSummaryData {
           ..add('pokemons', pokemons)
           ..add('abilities', abilities)
           ..add('moves', moves)
-          ..add('attackTypes', attackTypes))
+          ..add('attackTypes', attackTypes)
+          ..add('natures', natures)
+          ..add('types', types)
+          ..add('myDamageCalcIndex', myDamageCalcIndex))
         .toString();
   }
 }
@@ -1351,6 +2071,26 @@ class GDamageCalcSummaryDataBuilder
           ListBuilder<GDamageCalcSummaryData_attackTypes>? attackTypes) =>
       _$this._attackTypes = attackTypes;
 
+  ListBuilder<GDamageCalcSummaryData_natures>? _natures;
+  ListBuilder<GDamageCalcSummaryData_natures> get natures =>
+      _$this._natures ??= new ListBuilder<GDamageCalcSummaryData_natures>();
+  set natures(ListBuilder<GDamageCalcSummaryData_natures>? natures) =>
+      _$this._natures = natures;
+
+  ListBuilder<GDamageCalcSummaryData_types>? _types;
+  ListBuilder<GDamageCalcSummaryData_types> get types =>
+      _$this._types ??= new ListBuilder<GDamageCalcSummaryData_types>();
+  set types(ListBuilder<GDamageCalcSummaryData_types>? types) =>
+      _$this._types = types;
+
+  GDamageCalcSummaryData_myDamageCalcIndexBuilder? _myDamageCalcIndex;
+  GDamageCalcSummaryData_myDamageCalcIndexBuilder get myDamageCalcIndex =>
+      _$this._myDamageCalcIndex ??=
+          new GDamageCalcSummaryData_myDamageCalcIndexBuilder();
+  set myDamageCalcIndex(
+          GDamageCalcSummaryData_myDamageCalcIndexBuilder? myDamageCalcIndex) =>
+      _$this._myDamageCalcIndex = myDamageCalcIndex;
+
   GDamageCalcSummaryDataBuilder() {
     GDamageCalcSummaryData._initializeBuilder(this);
   }
@@ -1364,6 +2104,9 @@ class GDamageCalcSummaryDataBuilder
       _abilities = $v.abilities.toBuilder();
       _moves = $v.moves.toBuilder();
       _attackTypes = $v.attackTypes.toBuilder();
+      _natures = $v.natures.toBuilder();
+      _types = $v.types.toBuilder();
+      _myDamageCalcIndex = $v.myDamageCalcIndex?.toBuilder();
       _$v = null;
     }
     return this;
@@ -1394,7 +2137,10 @@ class GDamageCalcSummaryDataBuilder
               pokemons: pokemons.build(),
               abilities: abilities.build(),
               moves: moves.build(),
-              attackTypes: attackTypes.build());
+              attackTypes: attackTypes.build(),
+              natures: natures.build(),
+              types: types.build(),
+              myDamageCalcIndex: _myDamageCalcIndex?.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -1408,6 +2154,12 @@ class GDamageCalcSummaryDataBuilder
         moves.build();
         _$failedField = 'attackTypes';
         attackTypes.build();
+        _$failedField = 'natures';
+        natures.build();
+        _$failedField = 'types';
+        types.build();
+        _$failedField = 'myDamageCalcIndex';
+        _myDamageCalcIndex?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GDamageCalcSummaryData', _$failedField, e.toString());
@@ -1572,6 +2324,14 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas
   final BuiltList<
           GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove>
       battleDataMove;
+  @override
+  final BuiltList<
+          GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature>
+      battleDataNature;
+  @override
+  final BuiltList<
+          GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal>
+      battleDataTerastal;
 
   factory _$GDamageCalcSummaryData_battleDatasLatest_battleDatas(
           [void Function(
@@ -1586,7 +2346,9 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas
       required this.pokemonId,
       required this.battleDataAbility,
       required this.battleDataItem,
-      required this.battleDataMove})
+      required this.battleDataMove,
+      required this.battleDataNature,
+      required this.battleDataTerastal})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
         r'GDamageCalcSummaryData_battleDatasLatest_battleDatas', 'G__typename');
@@ -1604,6 +2366,14 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas
         battleDataMove,
         r'GDamageCalcSummaryData_battleDatasLatest_battleDatas',
         'battleDataMove');
+    BuiltValueNullFieldError.checkNotNull(
+        battleDataNature,
+        r'GDamageCalcSummaryData_battleDatasLatest_battleDatas',
+        'battleDataNature');
+    BuiltValueNullFieldError.checkNotNull(
+        battleDataTerastal,
+        r'GDamageCalcSummaryData_battleDatasLatest_battleDatas',
+        'battleDataTerastal');
   }
 
   @override
@@ -1626,7 +2396,9 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas
         pokemonId == other.pokemonId &&
         battleDataAbility == other.battleDataAbility &&
         battleDataItem == other.battleDataItem &&
-        battleDataMove == other.battleDataMove;
+        battleDataMove == other.battleDataMove &&
+        battleDataNature == other.battleDataNature &&
+        battleDataTerastal == other.battleDataTerastal;
   }
 
   @override
@@ -1637,6 +2409,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas
     _$hash = $jc(_$hash, battleDataAbility.hashCode);
     _$hash = $jc(_$hash, battleDataItem.hashCode);
     _$hash = $jc(_$hash, battleDataMove.hashCode);
+    _$hash = $jc(_$hash, battleDataNature.hashCode);
+    _$hash = $jc(_$hash, battleDataTerastal.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1649,7 +2423,9 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas
           ..add('pokemonId', pokemonId)
           ..add('battleDataAbility', battleDataAbility)
           ..add('battleDataItem', battleDataItem)
-          ..add('battleDataMove', battleDataMove))
+          ..add('battleDataMove', battleDataMove)
+          ..add('battleDataNature', battleDataNature)
+          ..add('battleDataTerastal', battleDataTerastal))
         .toString();
   }
 }
@@ -1707,6 +2483,32 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatasBuilder
               battleDataMove) =>
       _$this._battleDataMove = battleDataMove;
 
+  ListBuilder<
+          GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature>?
+      _battleDataNature;
+  ListBuilder<
+          GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature>
+      get battleDataNature => _$this._battleDataNature ??= new ListBuilder<
+          GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature>();
+  set battleDataNature(
+          ListBuilder<
+                  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature>?
+              battleDataNature) =>
+      _$this._battleDataNature = battleDataNature;
+
+  ListBuilder<
+          GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal>?
+      _battleDataTerastal;
+  ListBuilder<
+          GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal>
+      get battleDataTerastal => _$this._battleDataTerastal ??= new ListBuilder<
+          GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal>();
+  set battleDataTerastal(
+          ListBuilder<
+                  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal>?
+              battleDataTerastal) =>
+      _$this._battleDataTerastal = battleDataTerastal;
+
   GDamageCalcSummaryData_battleDatasLatest_battleDatasBuilder() {
     GDamageCalcSummaryData_battleDatasLatest_battleDatas._initializeBuilder(
         this);
@@ -1720,6 +2522,8 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatasBuilder
       _battleDataAbility = $v.battleDataAbility.toBuilder();
       _battleDataItem = $v.battleDataItem.toBuilder();
       _battleDataMove = $v.battleDataMove.toBuilder();
+      _battleDataNature = $v.battleDataNature.toBuilder();
+      _battleDataTerastal = $v.battleDataTerastal.toBuilder();
       _$v = null;
     }
     return this;
@@ -1757,7 +2561,9 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatasBuilder
                   'pokemonId'),
               battleDataAbility: battleDataAbility.build(),
               battleDataItem: battleDataItem.build(),
-              battleDataMove: battleDataMove.build());
+              battleDataMove: battleDataMove.build(),
+              battleDataNature: battleDataNature.build(),
+              battleDataTerastal: battleDataTerastal.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -1767,6 +2573,10 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatasBuilder
         battleDataItem.build();
         _$failedField = 'battleDataMove';
         battleDataMove.build();
+        _$failedField = 'battleDataNature';
+        battleDataNature.build();
+        _$failedField = 'battleDataTerastal';
+        battleDataTerastal.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GDamageCalcSummaryData_battleDatasLatest_battleDatas',
@@ -2192,6 +3002,285 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMoveBuilder
                 moveId,
                 r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove',
                 'moveId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
+    extends GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature {
+  @override
+  final String G__typename;
+  @override
+  final String natureId;
+
+  factory _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature(
+          [void Function(
+                  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuilder)?
+              updates]) =>
+      (new GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature._(
+      {required this.G__typename, required this.natureId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename,
+        r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature',
+        'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        natureId,
+        r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature',
+        'natureId');
+  }
+
+  @override
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature rebuild(
+          void Function(
+                  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuilder
+      toBuilder() =>
+          new GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature &&
+        G__typename == other.G__typename &&
+        natureId == other.natureId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, natureId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature')
+          ..add('G__typename', G__typename)
+          ..add('natureId', natureId))
+        .toString();
+  }
+}
+
+class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuilder
+    implements
+        Builder<
+            GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature,
+            GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuilder> {
+  _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _natureId;
+  String? get natureId => _$this._natureId;
+  set natureId(String? natureId) => _$this._natureId = natureId;
+
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuilder() {
+    GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
+        ._initializeBuilder(this);
+  }
+
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _natureId = $v.natureId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
+          other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other
+        as _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature;
+  }
+
+  @override
+  void update(
+      void Function(
+              GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
+      build() => _build();
+
+  _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
+      _build() {
+    final _$result = _$v ??
+        new _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
+            ._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature',
+                'G__typename'),
+            natureId: BuiltValueNullFieldError.checkNotNull(
+                natureId,
+                r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature',
+                'natureId'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
+    extends GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal {
+  @override
+  final String G__typename;
+  @override
+  final String typeId;
+
+  factory _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal(
+          [void Function(
+                  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBuilder)?
+              updates]) =>
+      (new GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal._(
+      {required this.G__typename, required this.typeId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename,
+        r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal',
+        'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        typeId,
+        r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal',
+        'typeId');
+  }
+
+  @override
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal rebuild(
+          void Function(
+                  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBuilder
+      toBuilder() =>
+          new GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal &&
+        G__typename == other.G__typename &&
+        typeId == other.typeId;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, typeId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal')
+          ..add('G__typename', G__typename)
+          ..add('typeId', typeId))
+        .toString();
+  }
+}
+
+class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBuilder
+    implements
+        Builder<
+            GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal,
+            GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBuilder> {
+  _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal?
+      _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _typeId;
+  String? get typeId => _$this._typeId;
+  set typeId(String? typeId) => _$this._typeId = typeId;
+
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBuilder() {
+    GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
+        ._initializeBuilder(this);
+  }
+
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _typeId = $v.typeId;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
+          other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other
+        as _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal;
+  }
+
+  @override
+  void update(
+      void Function(
+              GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
+      build() => _build();
+
+  _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
+      _build() {
+    final _$result = _$v ??
+        new _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
+            ._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal',
+                'G__typename'),
+            typeId: BuiltValueNullFieldError.checkNotNull(
+                typeId,
+                r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal',
+                'typeId'));
     replace(_$result);
     return _$result;
   }
@@ -3152,6 +4241,1096 @@ class GDamageCalcSummaryData_attackTypesBuilder
                 imageUrl, r'GDamageCalcSummaryData_attackTypes', 'imageUrl'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'GDamageCalcSummaryData_attackTypes', 'name'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDamageCalcSummaryData_natures extends GDamageCalcSummaryData_natures {
+  @override
+  final String G__typename;
+  @override
+  final String decrease;
+  @override
+  final String increase;
+  @override
+  final String name;
+  @override
+  final String id;
+
+  factory _$GDamageCalcSummaryData_natures(
+          [void Function(GDamageCalcSummaryData_naturesBuilder)? updates]) =>
+      (new GDamageCalcSummaryData_naturesBuilder()..update(updates))._build();
+
+  _$GDamageCalcSummaryData_natures._(
+      {required this.G__typename,
+      required this.decrease,
+      required this.increase,
+      required this.name,
+      required this.id})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, r'GDamageCalcSummaryData_natures', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        decrease, r'GDamageCalcSummaryData_natures', 'decrease');
+    BuiltValueNullFieldError.checkNotNull(
+        increase, r'GDamageCalcSummaryData_natures', 'increase');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GDamageCalcSummaryData_natures', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GDamageCalcSummaryData_natures', 'id');
+  }
+
+  @override
+  GDamageCalcSummaryData_natures rebuild(
+          void Function(GDamageCalcSummaryData_naturesBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GDamageCalcSummaryData_naturesBuilder toBuilder() =>
+      new GDamageCalcSummaryData_naturesBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDamageCalcSummaryData_natures &&
+        G__typename == other.G__typename &&
+        decrease == other.decrease &&
+        increase == other.increase &&
+        name == other.name &&
+        id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, decrease.hashCode);
+    _$hash = $jc(_$hash, increase.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GDamageCalcSummaryData_natures')
+          ..add('G__typename', G__typename)
+          ..add('decrease', decrease)
+          ..add('increase', increase)
+          ..add('name', name)
+          ..add('id', id))
+        .toString();
+  }
+}
+
+class GDamageCalcSummaryData_naturesBuilder
+    implements
+        Builder<GDamageCalcSummaryData_natures,
+            GDamageCalcSummaryData_naturesBuilder> {
+  _$GDamageCalcSummaryData_natures? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _decrease;
+  String? get decrease => _$this._decrease;
+  set decrease(String? decrease) => _$this._decrease = decrease;
+
+  String? _increase;
+  String? get increase => _$this._increase;
+  set increase(String? increase) => _$this._increase = increase;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  GDamageCalcSummaryData_naturesBuilder() {
+    GDamageCalcSummaryData_natures._initializeBuilder(this);
+  }
+
+  GDamageCalcSummaryData_naturesBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _decrease = $v.decrease;
+      _increase = $v.increase;
+      _name = $v.name;
+      _id = $v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDamageCalcSummaryData_natures other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GDamageCalcSummaryData_natures;
+  }
+
+  @override
+  void update(void Function(GDamageCalcSummaryData_naturesBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDamageCalcSummaryData_natures build() => _build();
+
+  _$GDamageCalcSummaryData_natures _build() {
+    final _$result = _$v ??
+        new _$GDamageCalcSummaryData_natures._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GDamageCalcSummaryData_natures', 'G__typename'),
+            decrease: BuiltValueNullFieldError.checkNotNull(
+                decrease, r'GDamageCalcSummaryData_natures', 'decrease'),
+            increase: BuiltValueNullFieldError.checkNotNull(
+                increase, r'GDamageCalcSummaryData_natures', 'increase'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GDamageCalcSummaryData_natures', 'name'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GDamageCalcSummaryData_natures', 'id'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDamageCalcSummaryData_types extends GDamageCalcSummaryData_types {
+  @override
+  final String G__typename;
+  @override
+  final String id;
+  @override
+  final String imageUrl;
+  @override
+  final String terastalImageUrl;
+  @override
+  final String textImageUrl;
+
+  factory _$GDamageCalcSummaryData_types(
+          [void Function(GDamageCalcSummaryData_typesBuilder)? updates]) =>
+      (new GDamageCalcSummaryData_typesBuilder()..update(updates))._build();
+
+  _$GDamageCalcSummaryData_types._(
+      {required this.G__typename,
+      required this.id,
+      required this.imageUrl,
+      required this.terastalImageUrl,
+      required this.textImageUrl})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, r'GDamageCalcSummaryData_types', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GDamageCalcSummaryData_types', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl, r'GDamageCalcSummaryData_types', 'imageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        terastalImageUrl, r'GDamageCalcSummaryData_types', 'terastalImageUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        textImageUrl, r'GDamageCalcSummaryData_types', 'textImageUrl');
+  }
+
+  @override
+  GDamageCalcSummaryData_types rebuild(
+          void Function(GDamageCalcSummaryData_typesBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GDamageCalcSummaryData_typesBuilder toBuilder() =>
+      new GDamageCalcSummaryData_typesBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDamageCalcSummaryData_types &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        imageUrl == other.imageUrl &&
+        terastalImageUrl == other.terastalImageUrl &&
+        textImageUrl == other.textImageUrl;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
+    _$hash = $jc(_$hash, terastalImageUrl.hashCode);
+    _$hash = $jc(_$hash, textImageUrl.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GDamageCalcSummaryData_types')
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('imageUrl', imageUrl)
+          ..add('terastalImageUrl', terastalImageUrl)
+          ..add('textImageUrl', textImageUrl))
+        .toString();
+  }
+}
+
+class GDamageCalcSummaryData_typesBuilder
+    implements
+        Builder<GDamageCalcSummaryData_types,
+            GDamageCalcSummaryData_typesBuilder> {
+  _$GDamageCalcSummaryData_types? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
+  String? _terastalImageUrl;
+  String? get terastalImageUrl => _$this._terastalImageUrl;
+  set terastalImageUrl(String? terastalImageUrl) =>
+      _$this._terastalImageUrl = terastalImageUrl;
+
+  String? _textImageUrl;
+  String? get textImageUrl => _$this._textImageUrl;
+  set textImageUrl(String? textImageUrl) => _$this._textImageUrl = textImageUrl;
+
+  GDamageCalcSummaryData_typesBuilder() {
+    GDamageCalcSummaryData_types._initializeBuilder(this);
+  }
+
+  GDamageCalcSummaryData_typesBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _imageUrl = $v.imageUrl;
+      _terastalImageUrl = $v.terastalImageUrl;
+      _textImageUrl = $v.textImageUrl;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDamageCalcSummaryData_types other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GDamageCalcSummaryData_types;
+  }
+
+  @override
+  void update(void Function(GDamageCalcSummaryData_typesBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDamageCalcSummaryData_types build() => _build();
+
+  _$GDamageCalcSummaryData_types _build() {
+    final _$result = _$v ??
+        new _$GDamageCalcSummaryData_types._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GDamageCalcSummaryData_types', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GDamageCalcSummaryData_types', 'id'),
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, r'GDamageCalcSummaryData_types', 'imageUrl'),
+            terastalImageUrl: BuiltValueNullFieldError.checkNotNull(
+                terastalImageUrl,
+                r'GDamageCalcSummaryData_types',
+                'terastalImageUrl'),
+            textImageUrl: BuiltValueNullFieldError.checkNotNull(
+                textImageUrl, r'GDamageCalcSummaryData_types', 'textImageUrl'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDamageCalcSummaryData_myDamageCalcIndex
+    extends GDamageCalcSummaryData_myDamageCalcIndex {
+  @override
+  final String G__typename;
+  @override
+  final BuiltList<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc>
+      myDamageCalc;
+
+  factory _$GDamageCalcSummaryData_myDamageCalcIndex(
+          [void Function(GDamageCalcSummaryData_myDamageCalcIndexBuilder)?
+              updates]) =>
+      (new GDamageCalcSummaryData_myDamageCalcIndexBuilder()..update(updates))
+          ._build();
+
+  _$GDamageCalcSummaryData_myDamageCalcIndex._(
+      {required this.G__typename, required this.myDamageCalc})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(G__typename,
+        r'GDamageCalcSummaryData_myDamageCalcIndex', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(myDamageCalc,
+        r'GDamageCalcSummaryData_myDamageCalcIndex', 'myDamageCalc');
+  }
+
+  @override
+  GDamageCalcSummaryData_myDamageCalcIndex rebuild(
+          void Function(GDamageCalcSummaryData_myDamageCalcIndexBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GDamageCalcSummaryData_myDamageCalcIndexBuilder toBuilder() =>
+      new GDamageCalcSummaryData_myDamageCalcIndexBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDamageCalcSummaryData_myDamageCalcIndex &&
+        G__typename == other.G__typename &&
+        myDamageCalc == other.myDamageCalc;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, myDamageCalc.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GDamageCalcSummaryData_myDamageCalcIndex')
+          ..add('G__typename', G__typename)
+          ..add('myDamageCalc', myDamageCalc))
+        .toString();
+  }
+}
+
+class GDamageCalcSummaryData_myDamageCalcIndexBuilder
+    implements
+        Builder<GDamageCalcSummaryData_myDamageCalcIndex,
+            GDamageCalcSummaryData_myDamageCalcIndexBuilder> {
+  _$GDamageCalcSummaryData_myDamageCalcIndex? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  ListBuilder<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc>?
+      _myDamageCalc;
+  ListBuilder<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc>
+      get myDamageCalc => _$this._myDamageCalc ??= new ListBuilder<
+          GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc>();
+  set myDamageCalc(
+          ListBuilder<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc>?
+              myDamageCalc) =>
+      _$this._myDamageCalc = myDamageCalc;
+
+  GDamageCalcSummaryData_myDamageCalcIndexBuilder() {
+    GDamageCalcSummaryData_myDamageCalcIndex._initializeBuilder(this);
+  }
+
+  GDamageCalcSummaryData_myDamageCalcIndexBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _myDamageCalc = $v.myDamageCalc.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDamageCalcSummaryData_myDamageCalcIndex other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GDamageCalcSummaryData_myDamageCalcIndex;
+  }
+
+  @override
+  void update(
+      void Function(GDamageCalcSummaryData_myDamageCalcIndexBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDamageCalcSummaryData_myDamageCalcIndex build() => _build();
+
+  _$GDamageCalcSummaryData_myDamageCalcIndex _build() {
+    _$GDamageCalcSummaryData_myDamageCalcIndex _$result;
+    try {
+      _$result = _$v ??
+          new _$GDamageCalcSummaryData_myDamageCalcIndex._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                  r'GDamageCalcSummaryData_myDamageCalcIndex', 'G__typename'),
+              myDamageCalc: myDamageCalc.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'myDamageCalc';
+        myDamageCalc.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GDamageCalcSummaryData_myDamageCalcIndex',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc
+    extends GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc {
+  @override
+  final String G__typename;
+  @override
+  final String client;
+  @override
+  final String? abilityId;
+  @override
+  final int evA;
+  @override
+  final int evB;
+  @override
+  final int evC;
+  @override
+  final int evD;
+  @override
+  final int evH;
+  @override
+  final int evS;
+  @override
+  final String id;
+  @override
+  final String? itemId;
+  @override
+  final int ivA;
+  @override
+  final int ivB;
+  @override
+  final int ivC;
+  @override
+  final int ivD;
+  @override
+  final int ivH;
+  @override
+  final int ivS;
+  @override
+  final int rankA;
+  @override
+  final int rankB;
+  @override
+  final int rankC;
+  @override
+  final int rankD;
+  @override
+  final int rankS;
+  @override
+  final String side;
+  @override
+  final String? terastalId;
+  @override
+  final String pokemonId;
+  @override
+  final int order;
+  @override
+  final String natureId;
+  @override
+  final BuiltList<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves>
+      moves;
+
+  factory _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc(
+          [void Function(
+                  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalcBuilder)?
+              updates]) =>
+      (new GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalcBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc._(
+      {required this.G__typename,
+      required this.client,
+      this.abilityId,
+      required this.evA,
+      required this.evB,
+      required this.evC,
+      required this.evD,
+      required this.evH,
+      required this.evS,
+      required this.id,
+      this.itemId,
+      required this.ivA,
+      required this.ivB,
+      required this.ivC,
+      required this.ivD,
+      required this.ivH,
+      required this.ivS,
+      required this.rankA,
+      required this.rankB,
+      required this.rankC,
+      required this.rankD,
+      required this.rankS,
+      required this.side,
+      this.terastalId,
+      required this.pokemonId,
+      required this.order,
+      required this.natureId,
+      required this.moves})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename,
+        r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc',
+        'G__typename');
+    BuiltValueNullFieldError.checkNotNull(client,
+        r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'client');
+    BuiltValueNullFieldError.checkNotNull(
+        evA, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'evA');
+    BuiltValueNullFieldError.checkNotNull(
+        evB, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'evB');
+    BuiltValueNullFieldError.checkNotNull(
+        evC, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'evC');
+    BuiltValueNullFieldError.checkNotNull(
+        evD, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'evD');
+    BuiltValueNullFieldError.checkNotNull(
+        evH, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'evH');
+    BuiltValueNullFieldError.checkNotNull(
+        evS, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'evS');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        ivA, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'ivA');
+    BuiltValueNullFieldError.checkNotNull(
+        ivB, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'ivB');
+    BuiltValueNullFieldError.checkNotNull(
+        ivC, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'ivC');
+    BuiltValueNullFieldError.checkNotNull(
+        ivD, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'ivD');
+    BuiltValueNullFieldError.checkNotNull(
+        ivH, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'ivH');
+    BuiltValueNullFieldError.checkNotNull(
+        ivS, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'ivS');
+    BuiltValueNullFieldError.checkNotNull(rankA,
+        r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'rankA');
+    BuiltValueNullFieldError.checkNotNull(rankB,
+        r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'rankB');
+    BuiltValueNullFieldError.checkNotNull(rankC,
+        r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'rankC');
+    BuiltValueNullFieldError.checkNotNull(rankD,
+        r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'rankD');
+    BuiltValueNullFieldError.checkNotNull(rankS,
+        r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'rankS');
+    BuiltValueNullFieldError.checkNotNull(
+        side, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'side');
+    BuiltValueNullFieldError.checkNotNull(pokemonId,
+        r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'pokemonId');
+    BuiltValueNullFieldError.checkNotNull(order,
+        r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'order');
+    BuiltValueNullFieldError.checkNotNull(natureId,
+        r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'natureId');
+    BuiltValueNullFieldError.checkNotNull(moves,
+        r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'moves');
+  }
+
+  @override
+  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc rebuild(
+          void Function(
+                  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalcBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalcBuilder toBuilder() =>
+      new GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalcBuilder()
+        ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc &&
+        G__typename == other.G__typename &&
+        client == other.client &&
+        abilityId == other.abilityId &&
+        evA == other.evA &&
+        evB == other.evB &&
+        evC == other.evC &&
+        evD == other.evD &&
+        evH == other.evH &&
+        evS == other.evS &&
+        id == other.id &&
+        itemId == other.itemId &&
+        ivA == other.ivA &&
+        ivB == other.ivB &&
+        ivC == other.ivC &&
+        ivD == other.ivD &&
+        ivH == other.ivH &&
+        ivS == other.ivS &&
+        rankA == other.rankA &&
+        rankB == other.rankB &&
+        rankC == other.rankC &&
+        rankD == other.rankD &&
+        rankS == other.rankS &&
+        side == other.side &&
+        terastalId == other.terastalId &&
+        pokemonId == other.pokemonId &&
+        order == other.order &&
+        natureId == other.natureId &&
+        moves == other.moves;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, client.hashCode);
+    _$hash = $jc(_$hash, abilityId.hashCode);
+    _$hash = $jc(_$hash, evA.hashCode);
+    _$hash = $jc(_$hash, evB.hashCode);
+    _$hash = $jc(_$hash, evC.hashCode);
+    _$hash = $jc(_$hash, evD.hashCode);
+    _$hash = $jc(_$hash, evH.hashCode);
+    _$hash = $jc(_$hash, evS.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, itemId.hashCode);
+    _$hash = $jc(_$hash, ivA.hashCode);
+    _$hash = $jc(_$hash, ivB.hashCode);
+    _$hash = $jc(_$hash, ivC.hashCode);
+    _$hash = $jc(_$hash, ivD.hashCode);
+    _$hash = $jc(_$hash, ivH.hashCode);
+    _$hash = $jc(_$hash, ivS.hashCode);
+    _$hash = $jc(_$hash, rankA.hashCode);
+    _$hash = $jc(_$hash, rankB.hashCode);
+    _$hash = $jc(_$hash, rankC.hashCode);
+    _$hash = $jc(_$hash, rankD.hashCode);
+    _$hash = $jc(_$hash, rankS.hashCode);
+    _$hash = $jc(_$hash, side.hashCode);
+    _$hash = $jc(_$hash, terastalId.hashCode);
+    _$hash = $jc(_$hash, pokemonId.hashCode);
+    _$hash = $jc(_$hash, order.hashCode);
+    _$hash = $jc(_$hash, natureId.hashCode);
+    _$hash = $jc(_$hash, moves.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc')
+          ..add('G__typename', G__typename)
+          ..add('client', client)
+          ..add('abilityId', abilityId)
+          ..add('evA', evA)
+          ..add('evB', evB)
+          ..add('evC', evC)
+          ..add('evD', evD)
+          ..add('evH', evH)
+          ..add('evS', evS)
+          ..add('id', id)
+          ..add('itemId', itemId)
+          ..add('ivA', ivA)
+          ..add('ivB', ivB)
+          ..add('ivC', ivC)
+          ..add('ivD', ivD)
+          ..add('ivH', ivH)
+          ..add('ivS', ivS)
+          ..add('rankA', rankA)
+          ..add('rankB', rankB)
+          ..add('rankC', rankC)
+          ..add('rankD', rankD)
+          ..add('rankS', rankS)
+          ..add('side', side)
+          ..add('terastalId', terastalId)
+          ..add('pokemonId', pokemonId)
+          ..add('order', order)
+          ..add('natureId', natureId)
+          ..add('moves', moves))
+        .toString();
+  }
+}
+
+class GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalcBuilder
+    implements
+        Builder<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc,
+            GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalcBuilder> {
+  _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _client;
+  String? get client => _$this._client;
+  set client(String? client) => _$this._client = client;
+
+  String? _abilityId;
+  String? get abilityId => _$this._abilityId;
+  set abilityId(String? abilityId) => _$this._abilityId = abilityId;
+
+  int? _evA;
+  int? get evA => _$this._evA;
+  set evA(int? evA) => _$this._evA = evA;
+
+  int? _evB;
+  int? get evB => _$this._evB;
+  set evB(int? evB) => _$this._evB = evB;
+
+  int? _evC;
+  int? get evC => _$this._evC;
+  set evC(int? evC) => _$this._evC = evC;
+
+  int? _evD;
+  int? get evD => _$this._evD;
+  set evD(int? evD) => _$this._evD = evD;
+
+  int? _evH;
+  int? get evH => _$this._evH;
+  set evH(int? evH) => _$this._evH = evH;
+
+  int? _evS;
+  int? get evS => _$this._evS;
+  set evS(int? evS) => _$this._evS = evS;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _itemId;
+  String? get itemId => _$this._itemId;
+  set itemId(String? itemId) => _$this._itemId = itemId;
+
+  int? _ivA;
+  int? get ivA => _$this._ivA;
+  set ivA(int? ivA) => _$this._ivA = ivA;
+
+  int? _ivB;
+  int? get ivB => _$this._ivB;
+  set ivB(int? ivB) => _$this._ivB = ivB;
+
+  int? _ivC;
+  int? get ivC => _$this._ivC;
+  set ivC(int? ivC) => _$this._ivC = ivC;
+
+  int? _ivD;
+  int? get ivD => _$this._ivD;
+  set ivD(int? ivD) => _$this._ivD = ivD;
+
+  int? _ivH;
+  int? get ivH => _$this._ivH;
+  set ivH(int? ivH) => _$this._ivH = ivH;
+
+  int? _ivS;
+  int? get ivS => _$this._ivS;
+  set ivS(int? ivS) => _$this._ivS = ivS;
+
+  int? _rankA;
+  int? get rankA => _$this._rankA;
+  set rankA(int? rankA) => _$this._rankA = rankA;
+
+  int? _rankB;
+  int? get rankB => _$this._rankB;
+  set rankB(int? rankB) => _$this._rankB = rankB;
+
+  int? _rankC;
+  int? get rankC => _$this._rankC;
+  set rankC(int? rankC) => _$this._rankC = rankC;
+
+  int? _rankD;
+  int? get rankD => _$this._rankD;
+  set rankD(int? rankD) => _$this._rankD = rankD;
+
+  int? _rankS;
+  int? get rankS => _$this._rankS;
+  set rankS(int? rankS) => _$this._rankS = rankS;
+
+  String? _side;
+  String? get side => _$this._side;
+  set side(String? side) => _$this._side = side;
+
+  String? _terastalId;
+  String? get terastalId => _$this._terastalId;
+  set terastalId(String? terastalId) => _$this._terastalId = terastalId;
+
+  String? _pokemonId;
+  String? get pokemonId => _$this._pokemonId;
+  set pokemonId(String? pokemonId) => _$this._pokemonId = pokemonId;
+
+  int? _order;
+  int? get order => _$this._order;
+  set order(int? order) => _$this._order = order;
+
+  String? _natureId;
+  String? get natureId => _$this._natureId;
+  set natureId(String? natureId) => _$this._natureId = natureId;
+
+  ListBuilder<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves>?
+      _moves;
+  ListBuilder<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves>
+      get moves => _$this._moves ??= new ListBuilder<
+          GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves>();
+  set moves(
+          ListBuilder<
+                  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves>?
+              moves) =>
+      _$this._moves = moves;
+
+  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalcBuilder() {
+    GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc._initializeBuilder(
+        this);
+  }
+
+  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalcBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _client = $v.client;
+      _abilityId = $v.abilityId;
+      _evA = $v.evA;
+      _evB = $v.evB;
+      _evC = $v.evC;
+      _evD = $v.evD;
+      _evH = $v.evH;
+      _evS = $v.evS;
+      _id = $v.id;
+      _itemId = $v.itemId;
+      _ivA = $v.ivA;
+      _ivB = $v.ivB;
+      _ivC = $v.ivC;
+      _ivD = $v.ivD;
+      _ivH = $v.ivH;
+      _ivS = $v.ivS;
+      _rankA = $v.rankA;
+      _rankB = $v.rankB;
+      _rankC = $v.rankC;
+      _rankD = $v.rankD;
+      _rankS = $v.rankS;
+      _side = $v.side;
+      _terastalId = $v.terastalId;
+      _pokemonId = $v.pokemonId;
+      _order = $v.order;
+      _natureId = $v.natureId;
+      _moves = $v.moves.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc;
+  }
+
+  @override
+  void update(
+      void Function(
+              GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalcBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc build() => _build();
+
+  _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc _build() {
+    _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc _$result;
+    try {
+      _$result = _$v ??
+          new _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename,
+                  r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc',
+                  'G__typename'),
+              client: BuiltValueNullFieldError.checkNotNull(
+                  client, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'client'),
+              abilityId: abilityId,
+              evA: BuiltValueNullFieldError.checkNotNull(
+                  evA, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'evA'),
+              evB: BuiltValueNullFieldError.checkNotNull(
+                  evB, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'evB'),
+              evC: BuiltValueNullFieldError.checkNotNull(
+                  evC, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'evC'),
+              evD: BuiltValueNullFieldError.checkNotNull(
+                  evD, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'evD'),
+              evH: BuiltValueNullFieldError.checkNotNull(evH, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'evH'),
+              evS: BuiltValueNullFieldError.checkNotNull(evS, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'evS'),
+              id: BuiltValueNullFieldError.checkNotNull(id, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'id'),
+              itemId: itemId,
+              ivA: BuiltValueNullFieldError.checkNotNull(ivA, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'ivA'),
+              ivB: BuiltValueNullFieldError.checkNotNull(ivB, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'ivB'),
+              ivC: BuiltValueNullFieldError.checkNotNull(ivC, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'ivC'),
+              ivD: BuiltValueNullFieldError.checkNotNull(ivD, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'ivD'),
+              ivH: BuiltValueNullFieldError.checkNotNull(ivH, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'ivH'),
+              ivS: BuiltValueNullFieldError.checkNotNull(ivS, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'ivS'),
+              rankA: BuiltValueNullFieldError.checkNotNull(rankA, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'rankA'),
+              rankB: BuiltValueNullFieldError.checkNotNull(rankB, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'rankB'),
+              rankC: BuiltValueNullFieldError.checkNotNull(rankC, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'rankC'),
+              rankD: BuiltValueNullFieldError.checkNotNull(rankD, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'rankD'),
+              rankS: BuiltValueNullFieldError.checkNotNull(rankS, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'rankS'),
+              side: BuiltValueNullFieldError.checkNotNull(side, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'side'),
+              terastalId: terastalId,
+              pokemonId: BuiltValueNullFieldError.checkNotNull(pokemonId, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'pokemonId'),
+              order: BuiltValueNullFieldError.checkNotNull(order, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'order'),
+              natureId: BuiltValueNullFieldError.checkNotNull(natureId, r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc', 'natureId'),
+              moves: moves.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'moves';
+        moves.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves
+    extends GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves {
+  @override
+  final String G__typename;
+  @override
+  final String id;
+
+  factory _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves(
+          [void Function(
+                  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_movesBuilder)?
+              updates]) =>
+      (new GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_movesBuilder()
+            ..update(updates))
+          ._build();
+
+  _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves._(
+      {required this.G__typename, required this.id})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename,
+        r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves',
+        'G__typename');
+    BuiltValueNullFieldError.checkNotNull(id,
+        r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves', 'id');
+  }
+
+  @override
+  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves rebuild(
+          void Function(
+                  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_movesBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_movesBuilder
+      toBuilder() =>
+          new GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_movesBuilder()
+            ..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other
+            is GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves &&
+        G__typename == other.G__typename &&
+        id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves')
+          ..add('G__typename', G__typename)
+          ..add('id', id))
+        .toString();
+  }
+}
+
+class GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_movesBuilder
+    implements
+        Builder<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves,
+            GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_movesBuilder> {
+  _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_movesBuilder() {
+    GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves
+        ._initializeBuilder(this);
+  }
+
+  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_movesBuilder
+      get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(
+      GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v =
+        other as _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves;
+  }
+
+  @override
+  void update(
+      void Function(
+              GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_movesBuilder)?
+          updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves build() =>
+      _build();
+
+  _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves _build() {
+    final _$result = _$v ??
+        new _$GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename,
+                r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves',
+                'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id,
+                r'GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc_moves',
+                'id'));
     replace(_$result);
     return _$result;
   }

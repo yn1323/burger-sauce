@@ -25,14 +25,38 @@ class _$GDamageCalcSummaryVarsSerializer
   Iterable<Object?> serialize(
       Serializers serializers, GDamageCalcSummaryVars object,
       {FullType specifiedType = FullType.unspecified}) {
-    return <Object?>[];
+    final result = <Object?>[];
+    Object? value;
+    value = object.calcId;
+    if (value != null) {
+      result
+        ..add('calcId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
   }
 
   @override
   GDamageCalcSummaryVars deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new GDamageCalcSummaryVarsBuilder().build();
+    final result = new GDamageCalcSummaryVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'calcId':
+          result.calcId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
   }
 }
 
@@ -86,11 +110,14 @@ class _$GDamageCalcDetailVarsSerializer
 }
 
 class _$GDamageCalcSummaryVars extends GDamageCalcSummaryVars {
+  @override
+  final String? calcId;
+
   factory _$GDamageCalcSummaryVars(
           [void Function(GDamageCalcSummaryVarsBuilder)? updates]) =>
       (new GDamageCalcSummaryVarsBuilder()..update(updates))._build();
 
-  _$GDamageCalcSummaryVars._() : super._();
+  _$GDamageCalcSummaryVars._({this.calcId}) : super._();
 
   @override
   GDamageCalcSummaryVars rebuild(
@@ -104,17 +131,22 @@ class _$GDamageCalcSummaryVars extends GDamageCalcSummaryVars {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GDamageCalcSummaryVars;
+    return other is GDamageCalcSummaryVars && calcId == other.calcId;
   }
 
   @override
   int get hashCode {
-    return 984711308;
+    var _$hash = 0;
+    _$hash = $jc(_$hash, calcId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return newBuiltValueToStringHelper(r'GDamageCalcSummaryVars').toString();
+    return (newBuiltValueToStringHelper(r'GDamageCalcSummaryVars')
+          ..add('calcId', calcId))
+        .toString();
   }
 }
 
@@ -122,7 +154,20 @@ class GDamageCalcSummaryVarsBuilder
     implements Builder<GDamageCalcSummaryVars, GDamageCalcSummaryVarsBuilder> {
   _$GDamageCalcSummaryVars? _$v;
 
+  String? _calcId;
+  String? get calcId => _$this._calcId;
+  set calcId(String? calcId) => _$this._calcId = calcId;
+
   GDamageCalcSummaryVarsBuilder();
+
+  GDamageCalcSummaryVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _calcId = $v.calcId;
+      _$v = null;
+    }
+    return this;
+  }
 
   @override
   void replace(GDamageCalcSummaryVars other) {
@@ -139,7 +184,7 @@ class GDamageCalcSummaryVarsBuilder
   GDamageCalcSummaryVars build() => _build();
 
   _$GDamageCalcSummaryVars _build() {
-    final _$result = _$v ?? new _$GDamageCalcSummaryVars._();
+    final _$result = _$v ?? new _$GDamageCalcSummaryVars._(calcId: calcId);
     replace(_$result);
     return _$result;
   }

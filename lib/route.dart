@@ -23,9 +23,16 @@ final GoRouter router = GoRouter(
       branches: [
         StatefulShellBranch(routes: [
           GoRoute(
-            path: '/calc',
-            builder: (context, state) => const CalcPage(),
-          )
+              path: '/calc',
+              builder: (context, state) => const CalcPage(),
+              routes: [
+                GoRoute(
+                  path: ':calcId',
+                  builder: (BuildContext context, GoRouterState state) {
+                    return CalcPage(calcId: state.pathParameters['calcId']!);
+                  },
+                )
+              ])
         ]),
         StatefulShellBranch(routes: [
           GoRoute(

@@ -35,6 +35,11 @@ Serializer<GCreateItemInput> _$gCreateItemInputSerializer =
     new _$GCreateItemInputSerializer();
 Serializer<GCreateMoveInput> _$gCreateMoveInputSerializer =
     new _$GCreateMoveInputSerializer();
+Serializer<GCreateMyDamageCalcIndexInput>
+    _$gCreateMyDamageCalcIndexInputSerializer =
+    new _$GCreateMyDamageCalcIndexInputSerializer();
+Serializer<GCreateMyDamageCalcInput> _$gCreateMyDamageCalcInputSerializer =
+    new _$GCreateMyDamageCalcInputSerializer();
 Serializer<GCreateMyEnemyInput> _$gCreateMyEnemyInputSerializer =
     new _$GCreateMyEnemyInputSerializer();
 Serializer<GCreateMyEnemyTagInput> _$gCreateMyEnemyTagInputSerializer =
@@ -92,6 +97,11 @@ Serializer<GUpdateItemInput> _$gUpdateItemInputSerializer =
     new _$GUpdateItemInputSerializer();
 Serializer<GUpdateMoveInput> _$gUpdateMoveInputSerializer =
     new _$GUpdateMoveInputSerializer();
+Serializer<GUpdateMyDamageCalcIndexInput>
+    _$gUpdateMyDamageCalcIndexInputSerializer =
+    new _$GUpdateMyDamageCalcIndexInputSerializer();
+Serializer<GUpdateMyDamageCalcInput> _$gUpdateMyDamageCalcInputSerializer =
+    new _$GUpdateMyDamageCalcInputSerializer();
 Serializer<GUpdateMyEnemyInput> _$gUpdateMyEnemyInputSerializer =
     new _$GUpdateMyEnemyInputSerializer();
 Serializer<GUpdateMyEnemyTagInput> _$gUpdateMyEnemyTagInputSerializer =
@@ -940,6 +950,13 @@ class _$GCreateMoveInputSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.myDamageCalcId;
+    if (value != null) {
+      result
+        ..add('myDamageCalcId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -1047,6 +1064,294 @@ class _$GCreateMoveInputSerializer
           result.battleIndex = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
+        case 'myDamageCalcId':
+          result.myDamageCalcId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateMyDamageCalcIndexInputSerializer
+    implements StructuredSerializer<GCreateMyDamageCalcIndexInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateMyDamageCalcIndexInput,
+    _$GCreateMyDamageCalcIndexInput
+  ];
+  @override
+  final String wireName = 'GCreateMyDamageCalcIndexInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateMyDamageCalcIndexInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'userId',
+      serializers.serialize(object.userId,
+          specifiedType: const FullType(String)),
+      'title',
+      serializers.serialize(object.title,
+          specifiedType: const FullType(String)),
+      'memo',
+      serializers.serialize(object.memo, specifiedType: const FullType(String)),
+      'favorite',
+      serializers.serialize(object.favorite,
+          specifiedType: const FullType(bool)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GCreateMyDamageCalcIndexInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateMyDamageCalcIndexInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'userId':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'title':
+          result.title = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GCreateMyDamageCalcInputSerializer
+    implements StructuredSerializer<GCreateMyDamageCalcInput> {
+  @override
+  final Iterable<Type> types = const [
+    GCreateMyDamageCalcInput,
+    _$GCreateMyDamageCalcInput
+  ];
+  @override
+  final String wireName = 'GCreateMyDamageCalcInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GCreateMyDamageCalcInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'client',
+      serializers.serialize(object.client,
+          specifiedType: const FullType(String)),
+      'pokemonId',
+      serializers.serialize(object.pokemonId,
+          specifiedType: const FullType(String)),
+      'natureId',
+      serializers.serialize(object.natureId,
+          specifiedType: const FullType(String)),
+      'evH',
+      serializers.serialize(object.evH, specifiedType: const FullType(int)),
+      'evA',
+      serializers.serialize(object.evA, specifiedType: const FullType(int)),
+      'evB',
+      serializers.serialize(object.evB, specifiedType: const FullType(int)),
+      'evC',
+      serializers.serialize(object.evC, specifiedType: const FullType(int)),
+      'evD',
+      serializers.serialize(object.evD, specifiedType: const FullType(int)),
+      'evS',
+      serializers.serialize(object.evS, specifiedType: const FullType(int)),
+      'ivH',
+      serializers.serialize(object.ivH, specifiedType: const FullType(int)),
+      'ivA',
+      serializers.serialize(object.ivA, specifiedType: const FullType(int)),
+      'ivB',
+      serializers.serialize(object.ivB, specifiedType: const FullType(int)),
+      'ivC',
+      serializers.serialize(object.ivC, specifiedType: const FullType(int)),
+      'ivD',
+      serializers.serialize(object.ivD, specifiedType: const FullType(int)),
+      'ivS',
+      serializers.serialize(object.ivS, specifiedType: const FullType(int)),
+      'rankA',
+      serializers.serialize(object.rankA, specifiedType: const FullType(int)),
+      'rankB',
+      serializers.serialize(object.rankB, specifiedType: const FullType(int)),
+      'rankC',
+      serializers.serialize(object.rankC, specifiedType: const FullType(int)),
+      'rankD',
+      serializers.serialize(object.rankD, specifiedType: const FullType(int)),
+      'rankS',
+      serializers.serialize(object.rankS, specifiedType: const FullType(int)),
+      'side',
+      serializers.serialize(object.side, specifiedType: const FullType(String)),
+      'order',
+      serializers.serialize(object.order, specifiedType: const FullType(int)),
+    ];
+    Object? value;
+    value = object.myDamageCalcIndexId;
+    if (value != null) {
+      result
+        ..add('myDamageCalcIndexId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.itemId;
+    if (value != null) {
+      result
+        ..add('itemId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.abilityId;
+    if (value != null) {
+      result
+        ..add('abilityId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.terastalId;
+    if (value != null) {
+      result
+        ..add('terastalId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GCreateMyDamageCalcInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GCreateMyDamageCalcInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'client':
+          result.client = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'myDamageCalcIndexId':
+          result.myDamageCalcIndexId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'pokemonId':
+          result.pokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'itemId':
+          result.itemId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'abilityId':
+          result.abilityId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'natureId':
+          result.natureId = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'terastalId':
+          result.terastalId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'evH':
+          result.evH = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evA':
+          result.evA = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evB':
+          result.evB = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evC':
+          result.evC = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evD':
+          result.evD = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'evS':
+          result.evS = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivH':
+          result.ivH = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivA':
+          result.ivA = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivB':
+          result.ivB = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivC':
+          result.ivC = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivD':
+          result.ivD = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivS':
+          result.ivS = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'rankA':
+          result.rankA = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'rankB':
+          result.rankB = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'rankC':
+          result.rankC = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'rankD':
+          result.rankD = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'rankS':
+          result.rankS = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'side':
+          result.side = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'order':
+          result.order = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
       }
     }
 
@@ -1086,6 +1391,18 @@ class _$GCreateMyEnemyInputSerializer
       serializers.serialize(object.evD, specifiedType: const FullType(int)),
       'evS',
       serializers.serialize(object.evS, specifiedType: const FullType(int)),
+      'ivH',
+      serializers.serialize(object.ivH, specifiedType: const FullType(int)),
+      'ivA',
+      serializers.serialize(object.ivA, specifiedType: const FullType(int)),
+      'ivB',
+      serializers.serialize(object.ivB, specifiedType: const FullType(int)),
+      'ivC',
+      serializers.serialize(object.ivC, specifiedType: const FullType(int)),
+      'ivD',
+      serializers.serialize(object.ivD, specifiedType: const FullType(int)),
+      'ivS',
+      serializers.serialize(object.ivS, specifiedType: const FullType(int)),
       'memo',
       serializers.serialize(object.memo, specifiedType: const FullType(String)),
       'pokemonId',
@@ -1165,6 +1482,30 @@ class _$GCreateMyEnemyInputSerializer
           break;
         case 'evS':
           result.evS = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivH':
+          result.ivH = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivA':
+          result.ivA = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivB':
+          result.ivB = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivC':
+          result.ivC = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivD':
+          result.ivD = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivS':
+          result.ivS = serializers.deserialize(value,
               specifiedType: const FullType(int))! as int;
           break;
         case 'memo':
@@ -1482,6 +1823,18 @@ class _$GCreateMyPokemonInputSerializer
       serializers.serialize(object.evD, specifiedType: const FullType(int)),
       'evS',
       serializers.serialize(object.evS, specifiedType: const FullType(int)),
+      'ivH',
+      serializers.serialize(object.ivH, specifiedType: const FullType(int)),
+      'ivA',
+      serializers.serialize(object.ivA, specifiedType: const FullType(int)),
+      'ivB',
+      serializers.serialize(object.ivB, specifiedType: const FullType(int)),
+      'ivC',
+      serializers.serialize(object.ivC, specifiedType: const FullType(int)),
+      'ivD',
+      serializers.serialize(object.ivD, specifiedType: const FullType(int)),
+      'ivS',
+      serializers.serialize(object.ivS, specifiedType: const FullType(int)),
       'memo',
       serializers.serialize(object.memo, specifiedType: const FullType(String)),
       'pokemonId',
@@ -1561,6 +1914,30 @@ class _$GCreateMyPokemonInputSerializer
           break;
         case 'evS':
           result.evS = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivH':
+          result.ivH = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivA':
+          result.ivA = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivB':
+          result.ivB = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivC':
+          result.ivC = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivD':
+          result.ivD = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'ivS':
+          result.ivS = serializers.deserialize(value,
               specifiedType: const FullType(int))! as int;
           break;
         case 'memo':
@@ -3255,6 +3632,13 @@ class _$GUpdateMoveInputSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.myDamageCalcId;
+    if (value != null) {
+      result
+        ..add('myDamageCalcId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -3362,6 +3746,398 @@ class _$GUpdateMoveInputSerializer
           result.battleIndex = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'myDamageCalcId':
+          result.myDamageCalcId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateMyDamageCalcIndexInputSerializer
+    implements StructuredSerializer<GUpdateMyDamageCalcIndexInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateMyDamageCalcIndexInput,
+    _$GUpdateMyDamageCalcIndexInput
+  ];
+  @override
+  final String wireName = 'GUpdateMyDamageCalcIndexInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateMyDamageCalcIndexInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.userId;
+    if (value != null) {
+      result
+        ..add('userId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.title;
+    if (value != null) {
+      result
+        ..add('title')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.memo;
+    if (value != null) {
+      result
+        ..add('memo')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.favorite;
+    if (value != null) {
+      result
+        ..add('favorite')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateMyDamageCalcIndexInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateMyDamageCalcIndexInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'userId':
+          result.userId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'title':
+          result.title = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'memo':
+          result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'favorite':
+          result.favorite = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GUpdateMyDamageCalcInputSerializer
+    implements StructuredSerializer<GUpdateMyDamageCalcInput> {
+  @override
+  final Iterable<Type> types = const [
+    GUpdateMyDamageCalcInput,
+    _$GUpdateMyDamageCalcInput
+  ];
+  @override
+  final String wireName = 'GUpdateMyDamageCalcInput';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GUpdateMyDamageCalcInput object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.client;
+    if (value != null) {
+      result
+        ..add('client')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.myDamageCalcIndexId;
+    if (value != null) {
+      result
+        ..add('myDamageCalcIndexId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.pokemonId;
+    if (value != null) {
+      result
+        ..add('pokemonId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.itemId;
+    if (value != null) {
+      result
+        ..add('itemId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.abilityId;
+    if (value != null) {
+      result
+        ..add('abilityId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.natureId;
+    if (value != null) {
+      result
+        ..add('natureId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.terastalId;
+    if (value != null) {
+      result
+        ..add('terastalId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.evH;
+    if (value != null) {
+      result
+        ..add('evH')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evA;
+    if (value != null) {
+      result
+        ..add('evA')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evB;
+    if (value != null) {
+      result
+        ..add('evB')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evC;
+    if (value != null) {
+      result
+        ..add('evC')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evD;
+    if (value != null) {
+      result
+        ..add('evD')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.evS;
+    if (value != null) {
+      result
+        ..add('evS')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivH;
+    if (value != null) {
+      result
+        ..add('ivH')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivA;
+    if (value != null) {
+      result
+        ..add('ivA')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivB;
+    if (value != null) {
+      result
+        ..add('ivB')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivC;
+    if (value != null) {
+      result
+        ..add('ivC')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivD;
+    if (value != null) {
+      result
+        ..add('ivD')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivS;
+    if (value != null) {
+      result
+        ..add('ivS')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.rankA;
+    if (value != null) {
+      result
+        ..add('rankA')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.rankB;
+    if (value != null) {
+      result
+        ..add('rankB')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.rankC;
+    if (value != null) {
+      result
+        ..add('rankC')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.rankD;
+    if (value != null) {
+      result
+        ..add('rankD')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.rankS;
+    if (value != null) {
+      result
+        ..add('rankS')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.side;
+    if (value != null) {
+      result
+        ..add('side')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.order;
+    if (value != null) {
+      result
+        ..add('order')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    return result;
+  }
+
+  @override
+  GUpdateMyDamageCalcInput deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GUpdateMyDamageCalcInputBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'client':
+          result.client = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'myDamageCalcIndexId':
+          result.myDamageCalcIndexId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'pokemonId':
+          result.pokemonId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'itemId':
+          result.itemId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'abilityId':
+          result.abilityId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'natureId':
+          result.natureId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'terastalId':
+          result.terastalId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'evH':
+          result.evH = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evA':
+          result.evA = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evB':
+          result.evB = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evC':
+          result.evC = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evD':
+          result.evD = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'evS':
+          result.evS = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivH':
+          result.ivH = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivA':
+          result.ivA = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivB':
+          result.ivB = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivC':
+          result.ivC = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivD':
+          result.ivD = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivS':
+          result.ivS = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'rankA':
+          result.rankA = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'rankB':
+          result.rankB = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'rankC':
+          result.rankC = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'rankD':
+          result.rankD = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'rankS':
+          result.rankS = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'side':
+          result.side = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'order':
+          result.order = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
       }
     }
 
@@ -3433,6 +4209,42 @@ class _$GUpdateMyEnemyInputSerializer
     if (value != null) {
       result
         ..add('evS')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivH;
+    if (value != null) {
+      result
+        ..add('ivH')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivA;
+    if (value != null) {
+      result
+        ..add('ivA')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivB;
+    if (value != null) {
+      result
+        ..add('ivB')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivC;
+    if (value != null) {
+      result
+        ..add('ivC')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivD;
+    if (value != null) {
+      result
+        ..add('ivD')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivS;
+    if (value != null) {
+      result
+        ..add('ivS')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.memo;
@@ -3529,6 +4341,30 @@ class _$GUpdateMyEnemyInputSerializer
           break;
         case 'evS':
           result.evS = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivH':
+          result.ivH = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivA':
+          result.ivA = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivB':
+          result.ivB = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivC':
+          result.ivC = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivD':
+          result.ivD = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivS':
+          result.ivS = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
         case 'memo':
@@ -3938,6 +4774,42 @@ class _$GUpdateMyPokemonInputSerializer
         ..add('evS')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
+    value = object.ivH;
+    if (value != null) {
+      result
+        ..add('ivH')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivA;
+    if (value != null) {
+      result
+        ..add('ivA')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivB;
+    if (value != null) {
+      result
+        ..add('ivB')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivC;
+    if (value != null) {
+      result
+        ..add('ivC')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivD;
+    if (value != null) {
+      result
+        ..add('ivD')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.ivS;
+    if (value != null) {
+      result
+        ..add('ivS')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
     value = object.memo;
     if (value != null) {
       result
@@ -4032,6 +4904,30 @@ class _$GUpdateMyPokemonInputSerializer
           break;
         case 'evS':
           result.evS = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivH':
+          result.ivH = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivA':
+          result.ivA = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivB':
+          result.ivB = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivC':
+          result.ivC = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivD':
+          result.ivD = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'ivS':
+          result.ivS = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
         case 'memo':
@@ -6401,6 +7297,8 @@ class _$GCreateMoveInput extends GCreateMoveInput {
   final bool isCut;
   @override
   final String battleIndex;
+  @override
+  final String? myDamageCalcId;
 
   factory _$GCreateMoveInput(
           [void Function(GCreateMoveInputBuilder)? updates]) =>
@@ -6429,7 +7327,8 @@ class _$GCreateMoveInput extends GCreateMoveInput {
       required this.isDance,
       required this.isWind,
       required this.isCut,
-      required this.battleIndex})
+      required this.battleIndex,
+      this.myDamageCalcId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         detail, r'GCreateMoveInput', 'detail');
@@ -6504,7 +7403,8 @@ class _$GCreateMoveInput extends GCreateMoveInput {
         isDance == other.isDance &&
         isWind == other.isWind &&
         isCut == other.isCut &&
-        battleIndex == other.battleIndex;
+        battleIndex == other.battleIndex &&
+        myDamageCalcId == other.myDamageCalcId;
   }
 
   @override
@@ -6533,6 +7433,7 @@ class _$GCreateMoveInput extends GCreateMoveInput {
     _$hash = $jc(_$hash, isWind.hashCode);
     _$hash = $jc(_$hash, isCut.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, myDamageCalcId.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -6562,7 +7463,8 @@ class _$GCreateMoveInput extends GCreateMoveInput {
           ..add('isDance', isDance)
           ..add('isWind', isWind)
           ..add('isCut', isCut)
-          ..add('battleIndex', battleIndex))
+          ..add('battleIndex', battleIndex)
+          ..add('myDamageCalcId', myDamageCalcId))
         .toString();
   }
 }
@@ -6665,6 +7567,11 @@ class GCreateMoveInputBuilder
   String? get battleIndex => _$this._battleIndex;
   set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
 
+  String? _myDamageCalcId;
+  String? get myDamageCalcId => _$this._myDamageCalcId;
+  set myDamageCalcId(String? myDamageCalcId) =>
+      _$this._myDamageCalcId = myDamageCalcId;
+
   GCreateMoveInputBuilder();
 
   GCreateMoveInputBuilder get _$this {
@@ -6693,6 +7600,7 @@ class GCreateMoveInputBuilder
       _isWind = $v.isWind;
       _isCut = $v.isCut;
       _battleIndex = $v.battleIndex;
+      _myDamageCalcId = $v.myDamageCalcId;
       _$v = null;
     }
     return this;
@@ -6746,7 +7654,586 @@ class GCreateMoveInputBuilder
             isDance: BuiltValueNullFieldError.checkNotNull(isDance, r'GCreateMoveInput', 'isDance'),
             isWind: BuiltValueNullFieldError.checkNotNull(isWind, r'GCreateMoveInput', 'isWind'),
             isCut: BuiltValueNullFieldError.checkNotNull(isCut, r'GCreateMoveInput', 'isCut'),
-            battleIndex: BuiltValueNullFieldError.checkNotNull(battleIndex, r'GCreateMoveInput', 'battleIndex'));
+            battleIndex: BuiltValueNullFieldError.checkNotNull(battleIndex, r'GCreateMoveInput', 'battleIndex'),
+            myDamageCalcId: myDamageCalcId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateMyDamageCalcIndexInput extends GCreateMyDamageCalcIndexInput {
+  @override
+  final String userId;
+  @override
+  final String title;
+  @override
+  final String memo;
+  @override
+  final bool favorite;
+
+  factory _$GCreateMyDamageCalcIndexInput(
+          [void Function(GCreateMyDamageCalcIndexInputBuilder)? updates]) =>
+      (new GCreateMyDamageCalcIndexInputBuilder()..update(updates))._build();
+
+  _$GCreateMyDamageCalcIndexInput._(
+      {required this.userId,
+      required this.title,
+      required this.memo,
+      required this.favorite})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        userId, r'GCreateMyDamageCalcIndexInput', 'userId');
+    BuiltValueNullFieldError.checkNotNull(
+        title, r'GCreateMyDamageCalcIndexInput', 'title');
+    BuiltValueNullFieldError.checkNotNull(
+        memo, r'GCreateMyDamageCalcIndexInput', 'memo');
+    BuiltValueNullFieldError.checkNotNull(
+        favorite, r'GCreateMyDamageCalcIndexInput', 'favorite');
+  }
+
+  @override
+  GCreateMyDamageCalcIndexInput rebuild(
+          void Function(GCreateMyDamageCalcIndexInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateMyDamageCalcIndexInputBuilder toBuilder() =>
+      new GCreateMyDamageCalcIndexInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateMyDamageCalcIndexInput &&
+        userId == other.userId &&
+        title == other.title &&
+        memo == other.memo &&
+        favorite == other.favorite;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateMyDamageCalcIndexInput')
+          ..add('userId', userId)
+          ..add('title', title)
+          ..add('memo', memo)
+          ..add('favorite', favorite))
+        .toString();
+  }
+}
+
+class GCreateMyDamageCalcIndexInputBuilder
+    implements
+        Builder<GCreateMyDamageCalcIndexInput,
+            GCreateMyDamageCalcIndexInputBuilder> {
+  _$GCreateMyDamageCalcIndexInput? _$v;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  GCreateMyDamageCalcIndexInputBuilder();
+
+  GCreateMyDamageCalcIndexInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _userId = $v.userId;
+      _title = $v.title;
+      _memo = $v.memo;
+      _favorite = $v.favorite;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateMyDamageCalcIndexInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateMyDamageCalcIndexInput;
+  }
+
+  @override
+  void update(void Function(GCreateMyDamageCalcIndexInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateMyDamageCalcIndexInput build() => _build();
+
+  _$GCreateMyDamageCalcIndexInput _build() {
+    final _$result = _$v ??
+        new _$GCreateMyDamageCalcIndexInput._(
+            userId: BuiltValueNullFieldError.checkNotNull(
+                userId, r'GCreateMyDamageCalcIndexInput', 'userId'),
+            title: BuiltValueNullFieldError.checkNotNull(
+                title, r'GCreateMyDamageCalcIndexInput', 'title'),
+            memo: BuiltValueNullFieldError.checkNotNull(
+                memo, r'GCreateMyDamageCalcIndexInput', 'memo'),
+            favorite: BuiltValueNullFieldError.checkNotNull(
+                favorite, r'GCreateMyDamageCalcIndexInput', 'favorite'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GCreateMyDamageCalcInput extends GCreateMyDamageCalcInput {
+  @override
+  final String client;
+  @override
+  final String? myDamageCalcIndexId;
+  @override
+  final String pokemonId;
+  @override
+  final String? itemId;
+  @override
+  final String? abilityId;
+  @override
+  final String natureId;
+  @override
+  final String? terastalId;
+  @override
+  final int evH;
+  @override
+  final int evA;
+  @override
+  final int evB;
+  @override
+  final int evC;
+  @override
+  final int evD;
+  @override
+  final int evS;
+  @override
+  final int ivH;
+  @override
+  final int ivA;
+  @override
+  final int ivB;
+  @override
+  final int ivC;
+  @override
+  final int ivD;
+  @override
+  final int ivS;
+  @override
+  final int rankA;
+  @override
+  final int rankB;
+  @override
+  final int rankC;
+  @override
+  final int rankD;
+  @override
+  final int rankS;
+  @override
+  final String side;
+  @override
+  final int order;
+
+  factory _$GCreateMyDamageCalcInput(
+          [void Function(GCreateMyDamageCalcInputBuilder)? updates]) =>
+      (new GCreateMyDamageCalcInputBuilder()..update(updates))._build();
+
+  _$GCreateMyDamageCalcInput._(
+      {required this.client,
+      this.myDamageCalcIndexId,
+      required this.pokemonId,
+      this.itemId,
+      this.abilityId,
+      required this.natureId,
+      this.terastalId,
+      required this.evH,
+      required this.evA,
+      required this.evB,
+      required this.evC,
+      required this.evD,
+      required this.evS,
+      required this.ivH,
+      required this.ivA,
+      required this.ivB,
+      required this.ivC,
+      required this.ivD,
+      required this.ivS,
+      required this.rankA,
+      required this.rankB,
+      required this.rankC,
+      required this.rankD,
+      required this.rankS,
+      required this.side,
+      required this.order})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        client, r'GCreateMyDamageCalcInput', 'client');
+    BuiltValueNullFieldError.checkNotNull(
+        pokemonId, r'GCreateMyDamageCalcInput', 'pokemonId');
+    BuiltValueNullFieldError.checkNotNull(
+        natureId, r'GCreateMyDamageCalcInput', 'natureId');
+    BuiltValueNullFieldError.checkNotNull(
+        evH, r'GCreateMyDamageCalcInput', 'evH');
+    BuiltValueNullFieldError.checkNotNull(
+        evA, r'GCreateMyDamageCalcInput', 'evA');
+    BuiltValueNullFieldError.checkNotNull(
+        evB, r'GCreateMyDamageCalcInput', 'evB');
+    BuiltValueNullFieldError.checkNotNull(
+        evC, r'GCreateMyDamageCalcInput', 'evC');
+    BuiltValueNullFieldError.checkNotNull(
+        evD, r'GCreateMyDamageCalcInput', 'evD');
+    BuiltValueNullFieldError.checkNotNull(
+        evS, r'GCreateMyDamageCalcInput', 'evS');
+    BuiltValueNullFieldError.checkNotNull(
+        ivH, r'GCreateMyDamageCalcInput', 'ivH');
+    BuiltValueNullFieldError.checkNotNull(
+        ivA, r'GCreateMyDamageCalcInput', 'ivA');
+    BuiltValueNullFieldError.checkNotNull(
+        ivB, r'GCreateMyDamageCalcInput', 'ivB');
+    BuiltValueNullFieldError.checkNotNull(
+        ivC, r'GCreateMyDamageCalcInput', 'ivC');
+    BuiltValueNullFieldError.checkNotNull(
+        ivD, r'GCreateMyDamageCalcInput', 'ivD');
+    BuiltValueNullFieldError.checkNotNull(
+        ivS, r'GCreateMyDamageCalcInput', 'ivS');
+    BuiltValueNullFieldError.checkNotNull(
+        rankA, r'GCreateMyDamageCalcInput', 'rankA');
+    BuiltValueNullFieldError.checkNotNull(
+        rankB, r'GCreateMyDamageCalcInput', 'rankB');
+    BuiltValueNullFieldError.checkNotNull(
+        rankC, r'GCreateMyDamageCalcInput', 'rankC');
+    BuiltValueNullFieldError.checkNotNull(
+        rankD, r'GCreateMyDamageCalcInput', 'rankD');
+    BuiltValueNullFieldError.checkNotNull(
+        rankS, r'GCreateMyDamageCalcInput', 'rankS');
+    BuiltValueNullFieldError.checkNotNull(
+        side, r'GCreateMyDamageCalcInput', 'side');
+    BuiltValueNullFieldError.checkNotNull(
+        order, r'GCreateMyDamageCalcInput', 'order');
+  }
+
+  @override
+  GCreateMyDamageCalcInput rebuild(
+          void Function(GCreateMyDamageCalcInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GCreateMyDamageCalcInputBuilder toBuilder() =>
+      new GCreateMyDamageCalcInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GCreateMyDamageCalcInput &&
+        client == other.client &&
+        myDamageCalcIndexId == other.myDamageCalcIndexId &&
+        pokemonId == other.pokemonId &&
+        itemId == other.itemId &&
+        abilityId == other.abilityId &&
+        natureId == other.natureId &&
+        terastalId == other.terastalId &&
+        evH == other.evH &&
+        evA == other.evA &&
+        evB == other.evB &&
+        evC == other.evC &&
+        evD == other.evD &&
+        evS == other.evS &&
+        ivH == other.ivH &&
+        ivA == other.ivA &&
+        ivB == other.ivB &&
+        ivC == other.ivC &&
+        ivD == other.ivD &&
+        ivS == other.ivS &&
+        rankA == other.rankA &&
+        rankB == other.rankB &&
+        rankC == other.rankC &&
+        rankD == other.rankD &&
+        rankS == other.rankS &&
+        side == other.side &&
+        order == other.order;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, client.hashCode);
+    _$hash = $jc(_$hash, myDamageCalcIndexId.hashCode);
+    _$hash = $jc(_$hash, pokemonId.hashCode);
+    _$hash = $jc(_$hash, itemId.hashCode);
+    _$hash = $jc(_$hash, abilityId.hashCode);
+    _$hash = $jc(_$hash, natureId.hashCode);
+    _$hash = $jc(_$hash, terastalId.hashCode);
+    _$hash = $jc(_$hash, evH.hashCode);
+    _$hash = $jc(_$hash, evA.hashCode);
+    _$hash = $jc(_$hash, evB.hashCode);
+    _$hash = $jc(_$hash, evC.hashCode);
+    _$hash = $jc(_$hash, evD.hashCode);
+    _$hash = $jc(_$hash, evS.hashCode);
+    _$hash = $jc(_$hash, ivH.hashCode);
+    _$hash = $jc(_$hash, ivA.hashCode);
+    _$hash = $jc(_$hash, ivB.hashCode);
+    _$hash = $jc(_$hash, ivC.hashCode);
+    _$hash = $jc(_$hash, ivD.hashCode);
+    _$hash = $jc(_$hash, ivS.hashCode);
+    _$hash = $jc(_$hash, rankA.hashCode);
+    _$hash = $jc(_$hash, rankB.hashCode);
+    _$hash = $jc(_$hash, rankC.hashCode);
+    _$hash = $jc(_$hash, rankD.hashCode);
+    _$hash = $jc(_$hash, rankS.hashCode);
+    _$hash = $jc(_$hash, side.hashCode);
+    _$hash = $jc(_$hash, order.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GCreateMyDamageCalcInput')
+          ..add('client', client)
+          ..add('myDamageCalcIndexId', myDamageCalcIndexId)
+          ..add('pokemonId', pokemonId)
+          ..add('itemId', itemId)
+          ..add('abilityId', abilityId)
+          ..add('natureId', natureId)
+          ..add('terastalId', terastalId)
+          ..add('evH', evH)
+          ..add('evA', evA)
+          ..add('evB', evB)
+          ..add('evC', evC)
+          ..add('evD', evD)
+          ..add('evS', evS)
+          ..add('ivH', ivH)
+          ..add('ivA', ivA)
+          ..add('ivB', ivB)
+          ..add('ivC', ivC)
+          ..add('ivD', ivD)
+          ..add('ivS', ivS)
+          ..add('rankA', rankA)
+          ..add('rankB', rankB)
+          ..add('rankC', rankC)
+          ..add('rankD', rankD)
+          ..add('rankS', rankS)
+          ..add('side', side)
+          ..add('order', order))
+        .toString();
+  }
+}
+
+class GCreateMyDamageCalcInputBuilder
+    implements
+        Builder<GCreateMyDamageCalcInput, GCreateMyDamageCalcInputBuilder> {
+  _$GCreateMyDamageCalcInput? _$v;
+
+  String? _client;
+  String? get client => _$this._client;
+  set client(String? client) => _$this._client = client;
+
+  String? _myDamageCalcIndexId;
+  String? get myDamageCalcIndexId => _$this._myDamageCalcIndexId;
+  set myDamageCalcIndexId(String? myDamageCalcIndexId) =>
+      _$this._myDamageCalcIndexId = myDamageCalcIndexId;
+
+  String? _pokemonId;
+  String? get pokemonId => _$this._pokemonId;
+  set pokemonId(String? pokemonId) => _$this._pokemonId = pokemonId;
+
+  String? _itemId;
+  String? get itemId => _$this._itemId;
+  set itemId(String? itemId) => _$this._itemId = itemId;
+
+  String? _abilityId;
+  String? get abilityId => _$this._abilityId;
+  set abilityId(String? abilityId) => _$this._abilityId = abilityId;
+
+  String? _natureId;
+  String? get natureId => _$this._natureId;
+  set natureId(String? natureId) => _$this._natureId = natureId;
+
+  String? _terastalId;
+  String? get terastalId => _$this._terastalId;
+  set terastalId(String? terastalId) => _$this._terastalId = terastalId;
+
+  int? _evH;
+  int? get evH => _$this._evH;
+  set evH(int? evH) => _$this._evH = evH;
+
+  int? _evA;
+  int? get evA => _$this._evA;
+  set evA(int? evA) => _$this._evA = evA;
+
+  int? _evB;
+  int? get evB => _$this._evB;
+  set evB(int? evB) => _$this._evB = evB;
+
+  int? _evC;
+  int? get evC => _$this._evC;
+  set evC(int? evC) => _$this._evC = evC;
+
+  int? _evD;
+  int? get evD => _$this._evD;
+  set evD(int? evD) => _$this._evD = evD;
+
+  int? _evS;
+  int? get evS => _$this._evS;
+  set evS(int? evS) => _$this._evS = evS;
+
+  int? _ivH;
+  int? get ivH => _$this._ivH;
+  set ivH(int? ivH) => _$this._ivH = ivH;
+
+  int? _ivA;
+  int? get ivA => _$this._ivA;
+  set ivA(int? ivA) => _$this._ivA = ivA;
+
+  int? _ivB;
+  int? get ivB => _$this._ivB;
+  set ivB(int? ivB) => _$this._ivB = ivB;
+
+  int? _ivC;
+  int? get ivC => _$this._ivC;
+  set ivC(int? ivC) => _$this._ivC = ivC;
+
+  int? _ivD;
+  int? get ivD => _$this._ivD;
+  set ivD(int? ivD) => _$this._ivD = ivD;
+
+  int? _ivS;
+  int? get ivS => _$this._ivS;
+  set ivS(int? ivS) => _$this._ivS = ivS;
+
+  int? _rankA;
+  int? get rankA => _$this._rankA;
+  set rankA(int? rankA) => _$this._rankA = rankA;
+
+  int? _rankB;
+  int? get rankB => _$this._rankB;
+  set rankB(int? rankB) => _$this._rankB = rankB;
+
+  int? _rankC;
+  int? get rankC => _$this._rankC;
+  set rankC(int? rankC) => _$this._rankC = rankC;
+
+  int? _rankD;
+  int? get rankD => _$this._rankD;
+  set rankD(int? rankD) => _$this._rankD = rankD;
+
+  int? _rankS;
+  int? get rankS => _$this._rankS;
+  set rankS(int? rankS) => _$this._rankS = rankS;
+
+  String? _side;
+  String? get side => _$this._side;
+  set side(String? side) => _$this._side = side;
+
+  int? _order;
+  int? get order => _$this._order;
+  set order(int? order) => _$this._order = order;
+
+  GCreateMyDamageCalcInputBuilder();
+
+  GCreateMyDamageCalcInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _client = $v.client;
+      _myDamageCalcIndexId = $v.myDamageCalcIndexId;
+      _pokemonId = $v.pokemonId;
+      _itemId = $v.itemId;
+      _abilityId = $v.abilityId;
+      _natureId = $v.natureId;
+      _terastalId = $v.terastalId;
+      _evH = $v.evH;
+      _evA = $v.evA;
+      _evB = $v.evB;
+      _evC = $v.evC;
+      _evD = $v.evD;
+      _evS = $v.evS;
+      _ivH = $v.ivH;
+      _ivA = $v.ivA;
+      _ivB = $v.ivB;
+      _ivC = $v.ivC;
+      _ivD = $v.ivD;
+      _ivS = $v.ivS;
+      _rankA = $v.rankA;
+      _rankB = $v.rankB;
+      _rankC = $v.rankC;
+      _rankD = $v.rankD;
+      _rankS = $v.rankS;
+      _side = $v.side;
+      _order = $v.order;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GCreateMyDamageCalcInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GCreateMyDamageCalcInput;
+  }
+
+  @override
+  void update(void Function(GCreateMyDamageCalcInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GCreateMyDamageCalcInput build() => _build();
+
+  _$GCreateMyDamageCalcInput _build() {
+    final _$result = _$v ??
+        new _$GCreateMyDamageCalcInput._(
+            client: BuiltValueNullFieldError.checkNotNull(
+                client, r'GCreateMyDamageCalcInput', 'client'),
+            myDamageCalcIndexId: myDamageCalcIndexId,
+            pokemonId: BuiltValueNullFieldError.checkNotNull(
+                pokemonId, r'GCreateMyDamageCalcInput', 'pokemonId'),
+            itemId: itemId,
+            abilityId: abilityId,
+            natureId: BuiltValueNullFieldError.checkNotNull(
+                natureId, r'GCreateMyDamageCalcInput', 'natureId'),
+            terastalId: terastalId,
+            evH: BuiltValueNullFieldError.checkNotNull(
+                evH, r'GCreateMyDamageCalcInput', 'evH'),
+            evA: BuiltValueNullFieldError.checkNotNull(
+                evA, r'GCreateMyDamageCalcInput', 'evA'),
+            evB: BuiltValueNullFieldError.checkNotNull(
+                evB, r'GCreateMyDamageCalcInput', 'evB'),
+            evC: BuiltValueNullFieldError.checkNotNull(
+                evC, r'GCreateMyDamageCalcInput', 'evC'),
+            evD: BuiltValueNullFieldError.checkNotNull(
+                evD, r'GCreateMyDamageCalcInput', 'evD'),
+            evS: BuiltValueNullFieldError.checkNotNull(evS, r'GCreateMyDamageCalcInput', 'evS'),
+            ivH: BuiltValueNullFieldError.checkNotNull(ivH, r'GCreateMyDamageCalcInput', 'ivH'),
+            ivA: BuiltValueNullFieldError.checkNotNull(ivA, r'GCreateMyDamageCalcInput', 'ivA'),
+            ivB: BuiltValueNullFieldError.checkNotNull(ivB, r'GCreateMyDamageCalcInput', 'ivB'),
+            ivC: BuiltValueNullFieldError.checkNotNull(ivC, r'GCreateMyDamageCalcInput', 'ivC'),
+            ivD: BuiltValueNullFieldError.checkNotNull(ivD, r'GCreateMyDamageCalcInput', 'ivD'),
+            ivS: BuiltValueNullFieldError.checkNotNull(ivS, r'GCreateMyDamageCalcInput', 'ivS'),
+            rankA: BuiltValueNullFieldError.checkNotNull(rankA, r'GCreateMyDamageCalcInput', 'rankA'),
+            rankB: BuiltValueNullFieldError.checkNotNull(rankB, r'GCreateMyDamageCalcInput', 'rankB'),
+            rankC: BuiltValueNullFieldError.checkNotNull(rankC, r'GCreateMyDamageCalcInput', 'rankC'),
+            rankD: BuiltValueNullFieldError.checkNotNull(rankD, r'GCreateMyDamageCalcInput', 'rankD'),
+            rankS: BuiltValueNullFieldError.checkNotNull(rankS, r'GCreateMyDamageCalcInput', 'rankS'),
+            side: BuiltValueNullFieldError.checkNotNull(side, r'GCreateMyDamageCalcInput', 'side'),
+            order: BuiltValueNullFieldError.checkNotNull(order, r'GCreateMyDamageCalcInput', 'order'));
     replace(_$result);
     return _$result;
   }
@@ -6769,6 +8256,18 @@ class _$GCreateMyEnemyInput extends GCreateMyEnemyInput {
   final int evD;
   @override
   final int evS;
+  @override
+  final int ivH;
+  @override
+  final int ivA;
+  @override
+  final int ivB;
+  @override
+  final int ivC;
+  @override
+  final int ivD;
+  @override
+  final int ivS;
   @override
   final String memo;
   @override
@@ -6797,6 +8296,12 @@ class _$GCreateMyEnemyInput extends GCreateMyEnemyInput {
       required this.evC,
       required this.evD,
       required this.evS,
+      required this.ivH,
+      required this.ivA,
+      required this.ivB,
+      required this.ivC,
+      required this.ivD,
+      required this.ivS,
       required this.memo,
       required this.pokemonId,
       this.itemId,
@@ -6814,6 +8319,12 @@ class _$GCreateMyEnemyInput extends GCreateMyEnemyInput {
     BuiltValueNullFieldError.checkNotNull(evC, r'GCreateMyEnemyInput', 'evC');
     BuiltValueNullFieldError.checkNotNull(evD, r'GCreateMyEnemyInput', 'evD');
     BuiltValueNullFieldError.checkNotNull(evS, r'GCreateMyEnemyInput', 'evS');
+    BuiltValueNullFieldError.checkNotNull(ivH, r'GCreateMyEnemyInput', 'ivH');
+    BuiltValueNullFieldError.checkNotNull(ivA, r'GCreateMyEnemyInput', 'ivA');
+    BuiltValueNullFieldError.checkNotNull(ivB, r'GCreateMyEnemyInput', 'ivB');
+    BuiltValueNullFieldError.checkNotNull(ivC, r'GCreateMyEnemyInput', 'ivC');
+    BuiltValueNullFieldError.checkNotNull(ivD, r'GCreateMyEnemyInput', 'ivD');
+    BuiltValueNullFieldError.checkNotNull(ivS, r'GCreateMyEnemyInput', 'ivS');
     BuiltValueNullFieldError.checkNotNull(memo, r'GCreateMyEnemyInput', 'memo');
     BuiltValueNullFieldError.checkNotNull(
         pokemonId, r'GCreateMyEnemyInput', 'pokemonId');
@@ -6844,6 +8355,12 @@ class _$GCreateMyEnemyInput extends GCreateMyEnemyInput {
         evC == other.evC &&
         evD == other.evD &&
         evS == other.evS &&
+        ivH == other.ivH &&
+        ivA == other.ivA &&
+        ivB == other.ivB &&
+        ivC == other.ivC &&
+        ivD == other.ivD &&
+        ivS == other.ivS &&
         memo == other.memo &&
         pokemonId == other.pokemonId &&
         itemId == other.itemId &&
@@ -6864,6 +8381,12 @@ class _$GCreateMyEnemyInput extends GCreateMyEnemyInput {
     _$hash = $jc(_$hash, evC.hashCode);
     _$hash = $jc(_$hash, evD.hashCode);
     _$hash = $jc(_$hash, evS.hashCode);
+    _$hash = $jc(_$hash, ivH.hashCode);
+    _$hash = $jc(_$hash, ivA.hashCode);
+    _$hash = $jc(_$hash, ivB.hashCode);
+    _$hash = $jc(_$hash, ivC.hashCode);
+    _$hash = $jc(_$hash, ivD.hashCode);
+    _$hash = $jc(_$hash, ivS.hashCode);
     _$hash = $jc(_$hash, memo.hashCode);
     _$hash = $jc(_$hash, pokemonId.hashCode);
     _$hash = $jc(_$hash, itemId.hashCode);
@@ -6886,6 +8409,12 @@ class _$GCreateMyEnemyInput extends GCreateMyEnemyInput {
           ..add('evC', evC)
           ..add('evD', evD)
           ..add('evS', evS)
+          ..add('ivH', ivH)
+          ..add('ivA', ivA)
+          ..add('ivB', ivB)
+          ..add('ivC', ivC)
+          ..add('ivD', ivD)
+          ..add('ivS', ivS)
           ..add('memo', memo)
           ..add('pokemonId', pokemonId)
           ..add('itemId', itemId)
@@ -6933,6 +8462,30 @@ class GCreateMyEnemyInputBuilder
   int? get evS => _$this._evS;
   set evS(int? evS) => _$this._evS = evS;
 
+  int? _ivH;
+  int? get ivH => _$this._ivH;
+  set ivH(int? ivH) => _$this._ivH = ivH;
+
+  int? _ivA;
+  int? get ivA => _$this._ivA;
+  set ivA(int? ivA) => _$this._ivA = ivA;
+
+  int? _ivB;
+  int? get ivB => _$this._ivB;
+  set ivB(int? ivB) => _$this._ivB = ivB;
+
+  int? _ivC;
+  int? get ivC => _$this._ivC;
+  set ivC(int? ivC) => _$this._ivC = ivC;
+
+  int? _ivD;
+  int? get ivD => _$this._ivD;
+  set ivD(int? ivD) => _$this._ivD = ivD;
+
+  int? _ivS;
+  int? get ivS => _$this._ivS;
+  set ivS(int? ivS) => _$this._ivS = ivS;
+
   String? _memo;
   String? get memo => _$this._memo;
   set memo(String? memo) => _$this._memo = memo;
@@ -6974,6 +8527,12 @@ class GCreateMyEnemyInputBuilder
       _evC = $v.evC;
       _evD = $v.evD;
       _evS = $v.evS;
+      _ivH = $v.ivH;
+      _ivA = $v.ivA;
+      _ivB = $v.ivB;
+      _ivC = $v.ivC;
+      _ivD = $v.ivD;
+      _ivS = $v.ivS;
       _memo = $v.memo;
       _pokemonId = $v.pokemonId;
       _itemId = $v.itemId;
@@ -7019,10 +8578,15 @@ class GCreateMyEnemyInputBuilder
                 evD, r'GCreateMyEnemyInput', 'evD'),
             evS: BuiltValueNullFieldError.checkNotNull(
                 evS, r'GCreateMyEnemyInput', 'evS'),
-            memo: BuiltValueNullFieldError.checkNotNull(
-                memo, r'GCreateMyEnemyInput', 'memo'),
-            pokemonId:
-                BuiltValueNullFieldError.checkNotNull(pokemonId, r'GCreateMyEnemyInput', 'pokemonId'),
+            ivH: BuiltValueNullFieldError.checkNotNull(
+                ivH, r'GCreateMyEnemyInput', 'ivH'),
+            ivA: BuiltValueNullFieldError.checkNotNull(ivA, r'GCreateMyEnemyInput', 'ivA'),
+            ivB: BuiltValueNullFieldError.checkNotNull(ivB, r'GCreateMyEnemyInput', 'ivB'),
+            ivC: BuiltValueNullFieldError.checkNotNull(ivC, r'GCreateMyEnemyInput', 'ivC'),
+            ivD: BuiltValueNullFieldError.checkNotNull(ivD, r'GCreateMyEnemyInput', 'ivD'),
+            ivS: BuiltValueNullFieldError.checkNotNull(ivS, r'GCreateMyEnemyInput', 'ivS'),
+            memo: BuiltValueNullFieldError.checkNotNull(memo, r'GCreateMyEnemyInput', 'memo'),
+            pokemonId: BuiltValueNullFieldError.checkNotNull(pokemonId, r'GCreateMyEnemyInput', 'pokemonId'),
             itemId: itemId,
             abilityId: abilityId,
             natureId: BuiltValueNullFieldError.checkNotNull(natureId, r'GCreateMyEnemyInput', 'natureId'),
@@ -7559,6 +9123,18 @@ class _$GCreateMyPokemonInput extends GCreateMyPokemonInput {
   @override
   final int evS;
   @override
+  final int ivH;
+  @override
+  final int ivA;
+  @override
+  final int ivB;
+  @override
+  final int ivC;
+  @override
+  final int ivD;
+  @override
+  final int ivS;
+  @override
   final String memo;
   @override
   final String pokemonId;
@@ -7586,6 +9162,12 @@ class _$GCreateMyPokemonInput extends GCreateMyPokemonInput {
       required this.evC,
       required this.evD,
       required this.evS,
+      required this.ivH,
+      required this.ivA,
+      required this.ivB,
+      required this.ivC,
+      required this.ivD,
+      required this.ivS,
       required this.memo,
       required this.pokemonId,
       this.itemId,
@@ -7604,6 +9186,12 @@ class _$GCreateMyPokemonInput extends GCreateMyPokemonInput {
     BuiltValueNullFieldError.checkNotNull(evC, r'GCreateMyPokemonInput', 'evC');
     BuiltValueNullFieldError.checkNotNull(evD, r'GCreateMyPokemonInput', 'evD');
     BuiltValueNullFieldError.checkNotNull(evS, r'GCreateMyPokemonInput', 'evS');
+    BuiltValueNullFieldError.checkNotNull(ivH, r'GCreateMyPokemonInput', 'ivH');
+    BuiltValueNullFieldError.checkNotNull(ivA, r'GCreateMyPokemonInput', 'ivA');
+    BuiltValueNullFieldError.checkNotNull(ivB, r'GCreateMyPokemonInput', 'ivB');
+    BuiltValueNullFieldError.checkNotNull(ivC, r'GCreateMyPokemonInput', 'ivC');
+    BuiltValueNullFieldError.checkNotNull(ivD, r'GCreateMyPokemonInput', 'ivD');
+    BuiltValueNullFieldError.checkNotNull(ivS, r'GCreateMyPokemonInput', 'ivS');
     BuiltValueNullFieldError.checkNotNull(
         memo, r'GCreateMyPokemonInput', 'memo');
     BuiltValueNullFieldError.checkNotNull(
@@ -7635,6 +9223,12 @@ class _$GCreateMyPokemonInput extends GCreateMyPokemonInput {
         evC == other.evC &&
         evD == other.evD &&
         evS == other.evS &&
+        ivH == other.ivH &&
+        ivA == other.ivA &&
+        ivB == other.ivB &&
+        ivC == other.ivC &&
+        ivD == other.ivD &&
+        ivS == other.ivS &&
         memo == other.memo &&
         pokemonId == other.pokemonId &&
         itemId == other.itemId &&
@@ -7655,6 +9249,12 @@ class _$GCreateMyPokemonInput extends GCreateMyPokemonInput {
     _$hash = $jc(_$hash, evC.hashCode);
     _$hash = $jc(_$hash, evD.hashCode);
     _$hash = $jc(_$hash, evS.hashCode);
+    _$hash = $jc(_$hash, ivH.hashCode);
+    _$hash = $jc(_$hash, ivA.hashCode);
+    _$hash = $jc(_$hash, ivB.hashCode);
+    _$hash = $jc(_$hash, ivC.hashCode);
+    _$hash = $jc(_$hash, ivD.hashCode);
+    _$hash = $jc(_$hash, ivS.hashCode);
     _$hash = $jc(_$hash, memo.hashCode);
     _$hash = $jc(_$hash, pokemonId.hashCode);
     _$hash = $jc(_$hash, itemId.hashCode);
@@ -7677,6 +9277,12 @@ class _$GCreateMyPokemonInput extends GCreateMyPokemonInput {
           ..add('evC', evC)
           ..add('evD', evD)
           ..add('evS', evS)
+          ..add('ivH', ivH)
+          ..add('ivA', ivA)
+          ..add('ivB', ivB)
+          ..add('ivC', ivC)
+          ..add('ivD', ivD)
+          ..add('ivS', ivS)
           ..add('memo', memo)
           ..add('pokemonId', pokemonId)
           ..add('itemId', itemId)
@@ -7724,6 +9330,30 @@ class GCreateMyPokemonInputBuilder
   int? get evS => _$this._evS;
   set evS(int? evS) => _$this._evS = evS;
 
+  int? _ivH;
+  int? get ivH => _$this._ivH;
+  set ivH(int? ivH) => _$this._ivH = ivH;
+
+  int? _ivA;
+  int? get ivA => _$this._ivA;
+  set ivA(int? ivA) => _$this._ivA = ivA;
+
+  int? _ivB;
+  int? get ivB => _$this._ivB;
+  set ivB(int? ivB) => _$this._ivB = ivB;
+
+  int? _ivC;
+  int? get ivC => _$this._ivC;
+  set ivC(int? ivC) => _$this._ivC = ivC;
+
+  int? _ivD;
+  int? get ivD => _$this._ivD;
+  set ivD(int? ivD) => _$this._ivD = ivD;
+
+  int? _ivS;
+  int? get ivS => _$this._ivS;
+  set ivS(int? ivS) => _$this._ivS = ivS;
+
   String? _memo;
   String? get memo => _$this._memo;
   set memo(String? memo) => _$this._memo = memo;
@@ -7765,6 +9395,12 @@ class GCreateMyPokemonInputBuilder
       _evC = $v.evC;
       _evD = $v.evD;
       _evS = $v.evS;
+      _ivH = $v.ivH;
+      _ivA = $v.ivA;
+      _ivB = $v.ivB;
+      _ivC = $v.ivC;
+      _ivD = $v.ivD;
+      _ivS = $v.ivS;
       _memo = $v.memo;
       _pokemonId = $v.pokemonId;
       _itemId = $v.itemId;
@@ -7810,8 +9446,14 @@ class GCreateMyPokemonInputBuilder
                 evD, r'GCreateMyPokemonInput', 'evD'),
             evS: BuiltValueNullFieldError.checkNotNull(
                 evS, r'GCreateMyPokemonInput', 'evS'),
-            memo: BuiltValueNullFieldError.checkNotNull(
-                memo, r'GCreateMyPokemonInput', 'memo'),
+            ivH: BuiltValueNullFieldError.checkNotNull(
+                ivH, r'GCreateMyPokemonInput', 'ivH'),
+            ivA: BuiltValueNullFieldError.checkNotNull(ivA, r'GCreateMyPokemonInput', 'ivA'),
+            ivB: BuiltValueNullFieldError.checkNotNull(ivB, r'GCreateMyPokemonInput', 'ivB'),
+            ivC: BuiltValueNullFieldError.checkNotNull(ivC, r'GCreateMyPokemonInput', 'ivC'),
+            ivD: BuiltValueNullFieldError.checkNotNull(ivD, r'GCreateMyPokemonInput', 'ivD'),
+            ivS: BuiltValueNullFieldError.checkNotNull(ivS, r'GCreateMyPokemonInput', 'ivS'),
+            memo: BuiltValueNullFieldError.checkNotNull(memo, r'GCreateMyPokemonInput', 'memo'),
             pokemonId: BuiltValueNullFieldError.checkNotNull(pokemonId, r'GCreateMyPokemonInput', 'pokemonId'),
             itemId: itemId,
             abilityId: abilityId,
@@ -10856,6 +12498,8 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
   final bool? isCut;
   @override
   final String? battleIndex;
+  @override
+  final String? myDamageCalcId;
 
   factory _$GUpdateMoveInput(
           [void Function(GUpdateMoveInputBuilder)? updates]) =>
@@ -10884,7 +12528,8 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
       this.isDance,
       this.isWind,
       this.isCut,
-      this.battleIndex})
+      this.battleIndex,
+      this.myDamageCalcId})
       : super._();
 
   @override
@@ -10921,7 +12566,8 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
         isDance == other.isDance &&
         isWind == other.isWind &&
         isCut == other.isCut &&
-        battleIndex == other.battleIndex;
+        battleIndex == other.battleIndex &&
+        myDamageCalcId == other.myDamageCalcId;
   }
 
   @override
@@ -10950,6 +12596,7 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
     _$hash = $jc(_$hash, isWind.hashCode);
     _$hash = $jc(_$hash, isCut.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, myDamageCalcId.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -10979,7 +12626,8 @@ class _$GUpdateMoveInput extends GUpdateMoveInput {
           ..add('isDance', isDance)
           ..add('isWind', isWind)
           ..add('isCut', isCut)
-          ..add('battleIndex', battleIndex))
+          ..add('battleIndex', battleIndex)
+          ..add('myDamageCalcId', myDamageCalcId))
         .toString();
   }
 }
@@ -11082,6 +12730,11 @@ class GUpdateMoveInputBuilder
   String? get battleIndex => _$this._battleIndex;
   set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
 
+  String? _myDamageCalcId;
+  String? get myDamageCalcId => _$this._myDamageCalcId;
+  set myDamageCalcId(String? myDamageCalcId) =>
+      _$this._myDamageCalcId = myDamageCalcId;
+
   GUpdateMoveInputBuilder();
 
   GUpdateMoveInputBuilder get _$this {
@@ -11110,6 +12763,7 @@ class GUpdateMoveInputBuilder
       _isWind = $v.isWind;
       _isCut = $v.isCut;
       _battleIndex = $v.battleIndex;
+      _myDamageCalcId = $v.myDamageCalcId;
       _$v = null;
     }
     return this;
@@ -11154,7 +12808,514 @@ class GUpdateMoveInputBuilder
             isDance: isDance,
             isWind: isWind,
             isCut: isCut,
-            battleIndex: battleIndex);
+            battleIndex: battleIndex,
+            myDamageCalcId: myDamageCalcId);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateMyDamageCalcIndexInput extends GUpdateMyDamageCalcIndexInput {
+  @override
+  final String? userId;
+  @override
+  final String? title;
+  @override
+  final String? memo;
+  @override
+  final bool? favorite;
+
+  factory _$GUpdateMyDamageCalcIndexInput(
+          [void Function(GUpdateMyDamageCalcIndexInputBuilder)? updates]) =>
+      (new GUpdateMyDamageCalcIndexInputBuilder()..update(updates))._build();
+
+  _$GUpdateMyDamageCalcIndexInput._(
+      {this.userId, this.title, this.memo, this.favorite})
+      : super._();
+
+  @override
+  GUpdateMyDamageCalcIndexInput rebuild(
+          void Function(GUpdateMyDamageCalcIndexInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateMyDamageCalcIndexInputBuilder toBuilder() =>
+      new GUpdateMyDamageCalcIndexInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateMyDamageCalcIndexInput &&
+        userId == other.userId &&
+        title == other.title &&
+        memo == other.memo &&
+        favorite == other.favorite;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, favorite.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateMyDamageCalcIndexInput')
+          ..add('userId', userId)
+          ..add('title', title)
+          ..add('memo', memo)
+          ..add('favorite', favorite))
+        .toString();
+  }
+}
+
+class GUpdateMyDamageCalcIndexInputBuilder
+    implements
+        Builder<GUpdateMyDamageCalcIndexInput,
+            GUpdateMyDamageCalcIndexInputBuilder> {
+  _$GUpdateMyDamageCalcIndexInput? _$v;
+
+  String? _userId;
+  String? get userId => _$this._userId;
+  set userId(String? userId) => _$this._userId = userId;
+
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
+
+  String? _memo;
+  String? get memo => _$this._memo;
+  set memo(String? memo) => _$this._memo = memo;
+
+  bool? _favorite;
+  bool? get favorite => _$this._favorite;
+  set favorite(bool? favorite) => _$this._favorite = favorite;
+
+  GUpdateMyDamageCalcIndexInputBuilder();
+
+  GUpdateMyDamageCalcIndexInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _userId = $v.userId;
+      _title = $v.title;
+      _memo = $v.memo;
+      _favorite = $v.favorite;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateMyDamageCalcIndexInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateMyDamageCalcIndexInput;
+  }
+
+  @override
+  void update(void Function(GUpdateMyDamageCalcIndexInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateMyDamageCalcIndexInput build() => _build();
+
+  _$GUpdateMyDamageCalcIndexInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateMyDamageCalcIndexInput._(
+            userId: userId, title: title, memo: memo, favorite: favorite);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GUpdateMyDamageCalcInput extends GUpdateMyDamageCalcInput {
+  @override
+  final String? client;
+  @override
+  final String? myDamageCalcIndexId;
+  @override
+  final String? pokemonId;
+  @override
+  final String? itemId;
+  @override
+  final String? abilityId;
+  @override
+  final String? natureId;
+  @override
+  final String? terastalId;
+  @override
+  final int? evH;
+  @override
+  final int? evA;
+  @override
+  final int? evB;
+  @override
+  final int? evC;
+  @override
+  final int? evD;
+  @override
+  final int? evS;
+  @override
+  final int? ivH;
+  @override
+  final int? ivA;
+  @override
+  final int? ivB;
+  @override
+  final int? ivC;
+  @override
+  final int? ivD;
+  @override
+  final int? ivS;
+  @override
+  final int? rankA;
+  @override
+  final int? rankB;
+  @override
+  final int? rankC;
+  @override
+  final int? rankD;
+  @override
+  final int? rankS;
+  @override
+  final String? side;
+  @override
+  final int? order;
+
+  factory _$GUpdateMyDamageCalcInput(
+          [void Function(GUpdateMyDamageCalcInputBuilder)? updates]) =>
+      (new GUpdateMyDamageCalcInputBuilder()..update(updates))._build();
+
+  _$GUpdateMyDamageCalcInput._(
+      {this.client,
+      this.myDamageCalcIndexId,
+      this.pokemonId,
+      this.itemId,
+      this.abilityId,
+      this.natureId,
+      this.terastalId,
+      this.evH,
+      this.evA,
+      this.evB,
+      this.evC,
+      this.evD,
+      this.evS,
+      this.ivH,
+      this.ivA,
+      this.ivB,
+      this.ivC,
+      this.ivD,
+      this.ivS,
+      this.rankA,
+      this.rankB,
+      this.rankC,
+      this.rankD,
+      this.rankS,
+      this.side,
+      this.order})
+      : super._();
+
+  @override
+  GUpdateMyDamageCalcInput rebuild(
+          void Function(GUpdateMyDamageCalcInputBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GUpdateMyDamageCalcInputBuilder toBuilder() =>
+      new GUpdateMyDamageCalcInputBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GUpdateMyDamageCalcInput &&
+        client == other.client &&
+        myDamageCalcIndexId == other.myDamageCalcIndexId &&
+        pokemonId == other.pokemonId &&
+        itemId == other.itemId &&
+        abilityId == other.abilityId &&
+        natureId == other.natureId &&
+        terastalId == other.terastalId &&
+        evH == other.evH &&
+        evA == other.evA &&
+        evB == other.evB &&
+        evC == other.evC &&
+        evD == other.evD &&
+        evS == other.evS &&
+        ivH == other.ivH &&
+        ivA == other.ivA &&
+        ivB == other.ivB &&
+        ivC == other.ivC &&
+        ivD == other.ivD &&
+        ivS == other.ivS &&
+        rankA == other.rankA &&
+        rankB == other.rankB &&
+        rankC == other.rankC &&
+        rankD == other.rankD &&
+        rankS == other.rankS &&
+        side == other.side &&
+        order == other.order;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, client.hashCode);
+    _$hash = $jc(_$hash, myDamageCalcIndexId.hashCode);
+    _$hash = $jc(_$hash, pokemonId.hashCode);
+    _$hash = $jc(_$hash, itemId.hashCode);
+    _$hash = $jc(_$hash, abilityId.hashCode);
+    _$hash = $jc(_$hash, natureId.hashCode);
+    _$hash = $jc(_$hash, terastalId.hashCode);
+    _$hash = $jc(_$hash, evH.hashCode);
+    _$hash = $jc(_$hash, evA.hashCode);
+    _$hash = $jc(_$hash, evB.hashCode);
+    _$hash = $jc(_$hash, evC.hashCode);
+    _$hash = $jc(_$hash, evD.hashCode);
+    _$hash = $jc(_$hash, evS.hashCode);
+    _$hash = $jc(_$hash, ivH.hashCode);
+    _$hash = $jc(_$hash, ivA.hashCode);
+    _$hash = $jc(_$hash, ivB.hashCode);
+    _$hash = $jc(_$hash, ivC.hashCode);
+    _$hash = $jc(_$hash, ivD.hashCode);
+    _$hash = $jc(_$hash, ivS.hashCode);
+    _$hash = $jc(_$hash, rankA.hashCode);
+    _$hash = $jc(_$hash, rankB.hashCode);
+    _$hash = $jc(_$hash, rankC.hashCode);
+    _$hash = $jc(_$hash, rankD.hashCode);
+    _$hash = $jc(_$hash, rankS.hashCode);
+    _$hash = $jc(_$hash, side.hashCode);
+    _$hash = $jc(_$hash, order.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GUpdateMyDamageCalcInput')
+          ..add('client', client)
+          ..add('myDamageCalcIndexId', myDamageCalcIndexId)
+          ..add('pokemonId', pokemonId)
+          ..add('itemId', itemId)
+          ..add('abilityId', abilityId)
+          ..add('natureId', natureId)
+          ..add('terastalId', terastalId)
+          ..add('evH', evH)
+          ..add('evA', evA)
+          ..add('evB', evB)
+          ..add('evC', evC)
+          ..add('evD', evD)
+          ..add('evS', evS)
+          ..add('ivH', ivH)
+          ..add('ivA', ivA)
+          ..add('ivB', ivB)
+          ..add('ivC', ivC)
+          ..add('ivD', ivD)
+          ..add('ivS', ivS)
+          ..add('rankA', rankA)
+          ..add('rankB', rankB)
+          ..add('rankC', rankC)
+          ..add('rankD', rankD)
+          ..add('rankS', rankS)
+          ..add('side', side)
+          ..add('order', order))
+        .toString();
+  }
+}
+
+class GUpdateMyDamageCalcInputBuilder
+    implements
+        Builder<GUpdateMyDamageCalcInput, GUpdateMyDamageCalcInputBuilder> {
+  _$GUpdateMyDamageCalcInput? _$v;
+
+  String? _client;
+  String? get client => _$this._client;
+  set client(String? client) => _$this._client = client;
+
+  String? _myDamageCalcIndexId;
+  String? get myDamageCalcIndexId => _$this._myDamageCalcIndexId;
+  set myDamageCalcIndexId(String? myDamageCalcIndexId) =>
+      _$this._myDamageCalcIndexId = myDamageCalcIndexId;
+
+  String? _pokemonId;
+  String? get pokemonId => _$this._pokemonId;
+  set pokemonId(String? pokemonId) => _$this._pokemonId = pokemonId;
+
+  String? _itemId;
+  String? get itemId => _$this._itemId;
+  set itemId(String? itemId) => _$this._itemId = itemId;
+
+  String? _abilityId;
+  String? get abilityId => _$this._abilityId;
+  set abilityId(String? abilityId) => _$this._abilityId = abilityId;
+
+  String? _natureId;
+  String? get natureId => _$this._natureId;
+  set natureId(String? natureId) => _$this._natureId = natureId;
+
+  String? _terastalId;
+  String? get terastalId => _$this._terastalId;
+  set terastalId(String? terastalId) => _$this._terastalId = terastalId;
+
+  int? _evH;
+  int? get evH => _$this._evH;
+  set evH(int? evH) => _$this._evH = evH;
+
+  int? _evA;
+  int? get evA => _$this._evA;
+  set evA(int? evA) => _$this._evA = evA;
+
+  int? _evB;
+  int? get evB => _$this._evB;
+  set evB(int? evB) => _$this._evB = evB;
+
+  int? _evC;
+  int? get evC => _$this._evC;
+  set evC(int? evC) => _$this._evC = evC;
+
+  int? _evD;
+  int? get evD => _$this._evD;
+  set evD(int? evD) => _$this._evD = evD;
+
+  int? _evS;
+  int? get evS => _$this._evS;
+  set evS(int? evS) => _$this._evS = evS;
+
+  int? _ivH;
+  int? get ivH => _$this._ivH;
+  set ivH(int? ivH) => _$this._ivH = ivH;
+
+  int? _ivA;
+  int? get ivA => _$this._ivA;
+  set ivA(int? ivA) => _$this._ivA = ivA;
+
+  int? _ivB;
+  int? get ivB => _$this._ivB;
+  set ivB(int? ivB) => _$this._ivB = ivB;
+
+  int? _ivC;
+  int? get ivC => _$this._ivC;
+  set ivC(int? ivC) => _$this._ivC = ivC;
+
+  int? _ivD;
+  int? get ivD => _$this._ivD;
+  set ivD(int? ivD) => _$this._ivD = ivD;
+
+  int? _ivS;
+  int? get ivS => _$this._ivS;
+  set ivS(int? ivS) => _$this._ivS = ivS;
+
+  int? _rankA;
+  int? get rankA => _$this._rankA;
+  set rankA(int? rankA) => _$this._rankA = rankA;
+
+  int? _rankB;
+  int? get rankB => _$this._rankB;
+  set rankB(int? rankB) => _$this._rankB = rankB;
+
+  int? _rankC;
+  int? get rankC => _$this._rankC;
+  set rankC(int? rankC) => _$this._rankC = rankC;
+
+  int? _rankD;
+  int? get rankD => _$this._rankD;
+  set rankD(int? rankD) => _$this._rankD = rankD;
+
+  int? _rankS;
+  int? get rankS => _$this._rankS;
+  set rankS(int? rankS) => _$this._rankS = rankS;
+
+  String? _side;
+  String? get side => _$this._side;
+  set side(String? side) => _$this._side = side;
+
+  int? _order;
+  int? get order => _$this._order;
+  set order(int? order) => _$this._order = order;
+
+  GUpdateMyDamageCalcInputBuilder();
+
+  GUpdateMyDamageCalcInputBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _client = $v.client;
+      _myDamageCalcIndexId = $v.myDamageCalcIndexId;
+      _pokemonId = $v.pokemonId;
+      _itemId = $v.itemId;
+      _abilityId = $v.abilityId;
+      _natureId = $v.natureId;
+      _terastalId = $v.terastalId;
+      _evH = $v.evH;
+      _evA = $v.evA;
+      _evB = $v.evB;
+      _evC = $v.evC;
+      _evD = $v.evD;
+      _evS = $v.evS;
+      _ivH = $v.ivH;
+      _ivA = $v.ivA;
+      _ivB = $v.ivB;
+      _ivC = $v.ivC;
+      _ivD = $v.ivD;
+      _ivS = $v.ivS;
+      _rankA = $v.rankA;
+      _rankB = $v.rankB;
+      _rankC = $v.rankC;
+      _rankD = $v.rankD;
+      _rankS = $v.rankS;
+      _side = $v.side;
+      _order = $v.order;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GUpdateMyDamageCalcInput other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GUpdateMyDamageCalcInput;
+  }
+
+  @override
+  void update(void Function(GUpdateMyDamageCalcInputBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GUpdateMyDamageCalcInput build() => _build();
+
+  _$GUpdateMyDamageCalcInput _build() {
+    final _$result = _$v ??
+        new _$GUpdateMyDamageCalcInput._(
+            client: client,
+            myDamageCalcIndexId: myDamageCalcIndexId,
+            pokemonId: pokemonId,
+            itemId: itemId,
+            abilityId: abilityId,
+            natureId: natureId,
+            terastalId: terastalId,
+            evH: evH,
+            evA: evA,
+            evB: evB,
+            evC: evC,
+            evD: evD,
+            evS: evS,
+            ivH: ivH,
+            ivA: ivA,
+            ivB: ivB,
+            ivC: ivC,
+            ivD: ivD,
+            ivS: ivS,
+            rankA: rankA,
+            rankB: rankB,
+            rankC: rankC,
+            rankD: rankD,
+            rankS: rankS,
+            side: side,
+            order: order);
     replace(_$result);
     return _$result;
   }
@@ -11177,6 +13338,18 @@ class _$GUpdateMyEnemyInput extends GUpdateMyEnemyInput {
   final int? evD;
   @override
   final int? evS;
+  @override
+  final int? ivH;
+  @override
+  final int? ivA;
+  @override
+  final int? ivB;
+  @override
+  final int? ivC;
+  @override
+  final int? ivD;
+  @override
+  final int? ivS;
   @override
   final String? memo;
   @override
@@ -11205,6 +13378,12 @@ class _$GUpdateMyEnemyInput extends GUpdateMyEnemyInput {
       this.evC,
       this.evD,
       this.evS,
+      this.ivH,
+      this.ivA,
+      this.ivB,
+      this.ivC,
+      this.ivD,
+      this.ivS,
       this.memo,
       this.pokemonId,
       this.itemId,
@@ -11235,6 +13414,12 @@ class _$GUpdateMyEnemyInput extends GUpdateMyEnemyInput {
         evC == other.evC &&
         evD == other.evD &&
         evS == other.evS &&
+        ivH == other.ivH &&
+        ivA == other.ivA &&
+        ivB == other.ivB &&
+        ivC == other.ivC &&
+        ivD == other.ivD &&
+        ivS == other.ivS &&
         memo == other.memo &&
         pokemonId == other.pokemonId &&
         itemId == other.itemId &&
@@ -11255,6 +13440,12 @@ class _$GUpdateMyEnemyInput extends GUpdateMyEnemyInput {
     _$hash = $jc(_$hash, evC.hashCode);
     _$hash = $jc(_$hash, evD.hashCode);
     _$hash = $jc(_$hash, evS.hashCode);
+    _$hash = $jc(_$hash, ivH.hashCode);
+    _$hash = $jc(_$hash, ivA.hashCode);
+    _$hash = $jc(_$hash, ivB.hashCode);
+    _$hash = $jc(_$hash, ivC.hashCode);
+    _$hash = $jc(_$hash, ivD.hashCode);
+    _$hash = $jc(_$hash, ivS.hashCode);
     _$hash = $jc(_$hash, memo.hashCode);
     _$hash = $jc(_$hash, pokemonId.hashCode);
     _$hash = $jc(_$hash, itemId.hashCode);
@@ -11277,6 +13468,12 @@ class _$GUpdateMyEnemyInput extends GUpdateMyEnemyInput {
           ..add('evC', evC)
           ..add('evD', evD)
           ..add('evS', evS)
+          ..add('ivH', ivH)
+          ..add('ivA', ivA)
+          ..add('ivB', ivB)
+          ..add('ivC', ivC)
+          ..add('ivD', ivD)
+          ..add('ivS', ivS)
           ..add('memo', memo)
           ..add('pokemonId', pokemonId)
           ..add('itemId', itemId)
@@ -11324,6 +13521,30 @@ class GUpdateMyEnemyInputBuilder
   int? get evS => _$this._evS;
   set evS(int? evS) => _$this._evS = evS;
 
+  int? _ivH;
+  int? get ivH => _$this._ivH;
+  set ivH(int? ivH) => _$this._ivH = ivH;
+
+  int? _ivA;
+  int? get ivA => _$this._ivA;
+  set ivA(int? ivA) => _$this._ivA = ivA;
+
+  int? _ivB;
+  int? get ivB => _$this._ivB;
+  set ivB(int? ivB) => _$this._ivB = ivB;
+
+  int? _ivC;
+  int? get ivC => _$this._ivC;
+  set ivC(int? ivC) => _$this._ivC = ivC;
+
+  int? _ivD;
+  int? get ivD => _$this._ivD;
+  set ivD(int? ivD) => _$this._ivD = ivD;
+
+  int? _ivS;
+  int? get ivS => _$this._ivS;
+  set ivS(int? ivS) => _$this._ivS = ivS;
+
   String? _memo;
   String? get memo => _$this._memo;
   set memo(String? memo) => _$this._memo = memo;
@@ -11365,6 +13586,12 @@ class GUpdateMyEnemyInputBuilder
       _evC = $v.evC;
       _evD = $v.evD;
       _evS = $v.evS;
+      _ivH = $v.ivH;
+      _ivA = $v.ivA;
+      _ivB = $v.ivB;
+      _ivC = $v.ivC;
+      _ivD = $v.ivD;
+      _ivS = $v.ivS;
       _memo = $v.memo;
       _pokemonId = $v.pokemonId;
       _itemId = $v.itemId;
@@ -11402,6 +13629,12 @@ class GUpdateMyEnemyInputBuilder
             evC: evC,
             evD: evD,
             evS: evS,
+            ivH: ivH,
+            ivA: ivA,
+            ivB: ivB,
+            ivC: ivC,
+            ivD: ivD,
+            ivS: ivS,
             memo: memo,
             pokemonId: pokemonId,
             itemId: itemId,
@@ -11872,6 +14105,18 @@ class _$GUpdateMyPokemonInput extends GUpdateMyPokemonInput {
   @override
   final int? evS;
   @override
+  final int? ivH;
+  @override
+  final int? ivA;
+  @override
+  final int? ivB;
+  @override
+  final int? ivC;
+  @override
+  final int? ivD;
+  @override
+  final int? ivS;
+  @override
   final String? memo;
   @override
   final String? pokemonId;
@@ -11899,6 +14144,12 @@ class _$GUpdateMyPokemonInput extends GUpdateMyPokemonInput {
       this.evC,
       this.evD,
       this.evS,
+      this.ivH,
+      this.ivA,
+      this.ivB,
+      this.ivC,
+      this.ivD,
+      this.ivS,
       this.memo,
       this.pokemonId,
       this.itemId,
@@ -11929,6 +14180,12 @@ class _$GUpdateMyPokemonInput extends GUpdateMyPokemonInput {
         evC == other.evC &&
         evD == other.evD &&
         evS == other.evS &&
+        ivH == other.ivH &&
+        ivA == other.ivA &&
+        ivB == other.ivB &&
+        ivC == other.ivC &&
+        ivD == other.ivD &&
+        ivS == other.ivS &&
         memo == other.memo &&
         pokemonId == other.pokemonId &&
         itemId == other.itemId &&
@@ -11949,6 +14206,12 @@ class _$GUpdateMyPokemonInput extends GUpdateMyPokemonInput {
     _$hash = $jc(_$hash, evC.hashCode);
     _$hash = $jc(_$hash, evD.hashCode);
     _$hash = $jc(_$hash, evS.hashCode);
+    _$hash = $jc(_$hash, ivH.hashCode);
+    _$hash = $jc(_$hash, ivA.hashCode);
+    _$hash = $jc(_$hash, ivB.hashCode);
+    _$hash = $jc(_$hash, ivC.hashCode);
+    _$hash = $jc(_$hash, ivD.hashCode);
+    _$hash = $jc(_$hash, ivS.hashCode);
     _$hash = $jc(_$hash, memo.hashCode);
     _$hash = $jc(_$hash, pokemonId.hashCode);
     _$hash = $jc(_$hash, itemId.hashCode);
@@ -11971,6 +14234,12 @@ class _$GUpdateMyPokemonInput extends GUpdateMyPokemonInput {
           ..add('evC', evC)
           ..add('evD', evD)
           ..add('evS', evS)
+          ..add('ivH', ivH)
+          ..add('ivA', ivA)
+          ..add('ivB', ivB)
+          ..add('ivC', ivC)
+          ..add('ivD', ivD)
+          ..add('ivS', ivS)
           ..add('memo', memo)
           ..add('pokemonId', pokemonId)
           ..add('itemId', itemId)
@@ -12018,6 +14287,30 @@ class GUpdateMyPokemonInputBuilder
   int? get evS => _$this._evS;
   set evS(int? evS) => _$this._evS = evS;
 
+  int? _ivH;
+  int? get ivH => _$this._ivH;
+  set ivH(int? ivH) => _$this._ivH = ivH;
+
+  int? _ivA;
+  int? get ivA => _$this._ivA;
+  set ivA(int? ivA) => _$this._ivA = ivA;
+
+  int? _ivB;
+  int? get ivB => _$this._ivB;
+  set ivB(int? ivB) => _$this._ivB = ivB;
+
+  int? _ivC;
+  int? get ivC => _$this._ivC;
+  set ivC(int? ivC) => _$this._ivC = ivC;
+
+  int? _ivD;
+  int? get ivD => _$this._ivD;
+  set ivD(int? ivD) => _$this._ivD = ivD;
+
+  int? _ivS;
+  int? get ivS => _$this._ivS;
+  set ivS(int? ivS) => _$this._ivS = ivS;
+
   String? _memo;
   String? get memo => _$this._memo;
   set memo(String? memo) => _$this._memo = memo;
@@ -12059,6 +14352,12 @@ class GUpdateMyPokemonInputBuilder
       _evC = $v.evC;
       _evD = $v.evD;
       _evS = $v.evS;
+      _ivH = $v.ivH;
+      _ivA = $v.ivA;
+      _ivB = $v.ivB;
+      _ivC = $v.ivC;
+      _ivD = $v.ivD;
+      _ivS = $v.ivS;
       _memo = $v.memo;
       _pokemonId = $v.pokemonId;
       _itemId = $v.itemId;
@@ -12096,6 +14395,12 @@ class GUpdateMyPokemonInputBuilder
             evC: evC,
             evD: evD,
             evS: evS,
+            ivH: ivH,
+            ivA: ivA,
+            ivB: ivB,
+            ivC: ivC,
+            ivD: ivD,
+            ivS: ivS,
             memo: memo,
             pokemonId: pokemonId,
             itemId: itemId,

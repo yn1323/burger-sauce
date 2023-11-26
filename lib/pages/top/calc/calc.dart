@@ -1,13 +1,291 @@
+import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'calc.g.dart';
 
+const int maxBases = 6;
+const int maxMoves = 6;
+
+class Status {
+  Status({
+    this.rank = 0,
+    this.ev = 0,
+    this.iv = 31,
+  });
+
+  int rank;
+  int ev;
+  int iv;
+}
+
+class DamageCustomBase {
+  DamageCustomBase({
+    UniqueKey? id,
+    required this.pokemonId,
+    this.moveIds = const [],
+    this.abilityId = '',
+    this.terastalId = '',
+    this.itemId = '',
+    this.natureId = '',
+    Status? statusH,
+    Status? statusA,
+    Status? statusB,
+    Status? statusC,
+    Status? statusD,
+    Status? statusS,
+  })  : id = id ?? UniqueKey(),
+        statusH = statusH ?? Status(),
+        statusA = statusA ?? Status(),
+        statusB = statusB ?? Status(),
+        statusC = statusC ?? Status(),
+        statusD = statusD ?? Status(),
+        statusS = statusS ?? Status();
+
+  String pokemonId;
+  List<String> moveIds;
+  String abilityId;
+  String terastalId;
+  String itemId;
+  String natureId;
+
+  UniqueKey id;
+
+  Status statusH;
+  Status statusA;
+  Status statusB;
+  Status statusC;
+  Status statusD;
+  Status statusS;
+}
+
+class CalcState {
+  CalcState({
+    this.pokemons,
+    this.battleDatas,
+    this.attackTypes,
+    this.abilities,
+    this.moves,
+    this.natures,
+    this.types,
+    required this.attackBase,
+    required this.defenseBase,
+  });
+  List<GDamageCalcSummaryData_pokemons>? pokemons;
+  List<GDamageCalcSummaryData_battleDatasLatest_battleDatas>? battleDatas;
+  List<GDamageCalcSummaryData_attackTypes>? attackTypes;
+  List<GDamageCalcSummaryData_abilities>? abilities;
+  List<GDamageCalcSummaryData_moves>? moves;
+  List<GDamageCalcSummaryData_natures>? natures;
+  List<GDamageCalcSummaryData_types>? types;
+
+  List<DamageCustomBase> attackBase;
+  List<DamageCustomBase> defenseBase;
+}
+
 @riverpod
 class Calc extends _$Calc {
-  @override
-  int build() => 0;
+  List<GDamageCalcSummaryData_pokemons>? pokemons;
+  List<GDamageCalcSummaryData_battleDatasLatest_battleDatas>? battleDatas;
+  List<GDamageCalcSummaryData_attackTypes>? attackTypes;
+  List<GDamageCalcSummaryData_abilities>? abilities;
+  List<GDamageCalcSummaryData_moves>? moves;
+  List<GDamageCalcSummaryData_natures>? natures;
+  List<GDamageCalcSummaryData_types>? types;
 
-  void update(int value) {
-    state = value;
+  List<DamageCustomBase> attackBase = [];
+  List<DamageCustomBase> defenseBase = [];
+
+  @override
+  CalcState build() => CalcState(
+        attackBase: attackBase,
+        defenseBase: defenseBase,
+        pokemons: pokemons,
+        battleDatas: battleDatas,
+        attackTypes: attackTypes,
+        abilities: abilities,
+        moves: moves,
+        natures: natures,
+      );
+
+  void update({
+    List<GDamageCalcSummaryData_pokemons>? pokemons,
+    List<GDamageCalcSummaryData_battleDatasLatest_battleDatas>? battleDatas,
+    List<GDamageCalcSummaryData_attackTypes>? attackTypes,
+    List<GDamageCalcSummaryData_abilities>? abilities,
+    List<GDamageCalcSummaryData_moves>? moves,
+    List<GDamageCalcSummaryData_natures>? natures,
+    List<GDamageCalcSummaryData_types>? types,
+    List<DamageCustomBase>? attackBase,
+    List<DamageCustomBase>? defenseBase,
+  }) {
+    state = CalcState(
+      pokemons: pokemons ?? this.pokemons,
+      battleDatas: battleDatas ?? this.battleDatas,
+      attackTypes: attackTypes ?? this.attackTypes,
+      abilities: abilities ?? this.abilities,
+      moves: moves ?? this.moves,
+      natures: natures ?? this.natures,
+      types: types ?? this.types,
+      attackBase: attackBase ?? this.attackBase,
+      defenseBase: defenseBase ?? this.defenseBase,
+    );
+  }
+
+  void updateSummary(GDamageCalcSummaryData value) {
+    pokemons = value.pokemons.toList();
+    battleDatas = value.battleDatasLatest?.battleDatas.toList();
+    attackTypes = value.attackTypes.toList();
+    abilities = value.abilities.toList();
+    moves = value.moves.toList();
+    natures = value.natures.toList();
+    types = value.types.toList();
+  }
+
+  List<String> get attackTypeIdOfAttack {
+    return attackTypes!
+        .where((e) => e.name == "物理" || e.name == "特殊")
+        .map((e) => e.id)
+        .toList();
+  }
+
+  DamageCustomBase _topRankBase([List<String> avoidPokemonIds = const []]) {
+    final battleData =
+        battleDatas!.firstWhere((e) => !avoidPokemonIds.contains(e.pokemonId));
+
+    final moveDatas = moves!.where(
+        (e) => battleData.battleDataMove.map((p0) => p0.moveId).contains(e.id));
+
+    final filteredMoves = moveDatas
+        .where((e) => attackTypeIdOfAttack.contains(e.attackTypeId))
+        .map((e) => e.id)
+        .toList();
+
+    return DamageCustomBase(
+      pokemonId: battleData.pokemonId,
+      moveIds: filteredMoves.length > maxBases
+          ? filteredMoves.sublist(0, maxBases)
+          : filteredMoves,
+      abilityId: battleData.battleDataAbility[0].abilityId,
+      terastalId: battleData.battleDataTerastal[0].typeId,
+      itemId: battleData.battleDataItem[0].itemId,
+      natureId: battleData.battleDataNature[0].natureId,
+    );
+  }
+
+  void addAttackBase() {
+    update(attackBase: [
+      ...state.attackBase,
+      _topRankBase(state.attackBase.map((e) => e.pokemonId).toList())
+    ]);
+  }
+
+  GDamageCalcSummaryData_pokemons getPokemon(
+      {String? id = "", String? name = ""}) {
+    if (id != "") {
+      return pokemons!.firstWhere((e) => e.id == id);
+    }
+    return pokemons!.firstWhere((e) => e.name == name);
+  }
+
+  void addDefenseBase() {
+    defenseBase.add(_topRankBase(defenseBase.map((e) => e.pokemonId).toList()));
+  }
+
+  void updateCalcAll(
+      List<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc> calcs) {
+    // TODO：ソートは適当。後で直す
+    final sortedCalcs = calcs..sort((a, b) => a.order.compareTo(b.order));
+    final attacks = sortedCalcs.where((calc) => calc.side == "attack").toList();
+    final defenses =
+        sortedCalcs.where((calc) => calc.side == "defense").toList();
+
+    final newAttackBase = attacks.map((e) {
+      return DamageCustomBase(
+        id: null,
+        pokemonId: e.pokemonId,
+        moveIds: e.moves.map((p) => p.id).toList(),
+        abilityId: e.abilityId ?? '',
+        terastalId: e.terastalId ?? '',
+        itemId: e.itemId ?? '',
+        natureId: e.natureId,
+        statusH: Status(
+          rank: 0,
+          ev: e.evH,
+          iv: e.ivH,
+        ),
+        statusA: Status(
+          rank: e.rankA,
+          ev: e.evA,
+          iv: e.ivA,
+        ),
+        statusB: Status(
+          rank: e.rankB,
+          ev: e.evB,
+          iv: e.ivB,
+        ),
+        statusC: Status(
+          rank: e.rankC,
+          ev: e.evC,
+          iv: e.ivC,
+        ),
+        statusD: Status(
+          rank: e.rankD,
+          ev: e.evD,
+          iv: e.ivD,
+        ),
+        statusS: Status(
+          rank: e.rankS,
+          ev: e.evS,
+          iv: e.ivS,
+        ),
+      );
+    });
+
+    final newDefenseBase = defenses.map((e) {
+      return DamageCustomBase(
+        id: e.client as UniqueKey,
+        pokemonId: e.pokemonId,
+        moveIds: e.moves.map((p) => p.id).toList(),
+        abilityId: e.abilityId ?? '',
+        terastalId: e.terastalId ?? '',
+        itemId: e.itemId ?? '',
+        natureId: e.natureId,
+        statusH: Status(
+          rank: 0,
+          ev: e.evH,
+          iv: e.ivH,
+        ),
+        statusA: Status(
+          rank: e.rankA,
+          ev: e.evA,
+          iv: e.ivA,
+        ),
+        statusB: Status(
+          rank: e.rankB,
+          ev: e.evB,
+          iv: e.ivB,
+        ),
+        statusC: Status(
+          rank: e.rankC,
+          ev: e.evC,
+          iv: e.ivC,
+        ),
+        statusD: Status(
+          rank: e.rankD,
+          ev: e.evD,
+          iv: e.ivD,
+        ),
+        statusS: Status(
+          rank: e.rankS,
+          ev: e.evS,
+          iv: e.ivS,
+        ),
+      );
+    });
+    update(
+      attackBase: newAttackBase.toList(),
+      defenseBase: newDefenseBase.toList(),
+    );
   }
 }

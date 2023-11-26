@@ -375,6 +375,7 @@ abstract class GCreateMoveInput
   bool get isWind;
   bool get isCut;
   String get battleIndex;
+  String? get myDamageCalcId;
   static Serializer<GCreateMoveInput> get serializer =>
       _$gCreateMoveInputSerializer;
 
@@ -386,6 +387,85 @@ abstract class GCreateMoveInput
   static GCreateMoveInput? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GCreateMoveInput.serializer,
+        json,
+      );
+}
+
+abstract class GCreateMyDamageCalcIndexInput
+    implements
+        Built<GCreateMyDamageCalcIndexInput,
+            GCreateMyDamageCalcIndexInputBuilder> {
+  GCreateMyDamageCalcIndexInput._();
+
+  factory GCreateMyDamageCalcIndexInput(
+          [Function(GCreateMyDamageCalcIndexInputBuilder b) updates]) =
+      _$GCreateMyDamageCalcIndexInput;
+
+  String get userId;
+  String get title;
+  String get memo;
+  bool get favorite;
+  static Serializer<GCreateMyDamageCalcIndexInput> get serializer =>
+      _$gCreateMyDamageCalcIndexInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GCreateMyDamageCalcIndexInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GCreateMyDamageCalcIndexInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GCreateMyDamageCalcIndexInput.serializer,
+        json,
+      );
+}
+
+abstract class GCreateMyDamageCalcInput
+    implements
+        Built<GCreateMyDamageCalcInput, GCreateMyDamageCalcInputBuilder> {
+  GCreateMyDamageCalcInput._();
+
+  factory GCreateMyDamageCalcInput(
+          [Function(GCreateMyDamageCalcInputBuilder b) updates]) =
+      _$GCreateMyDamageCalcInput;
+
+  String get client;
+  String? get myDamageCalcIndexId;
+  String get pokemonId;
+  String? get itemId;
+  String? get abilityId;
+  String get natureId;
+  String? get terastalId;
+  int get evH;
+  int get evA;
+  int get evB;
+  int get evC;
+  int get evD;
+  int get evS;
+  int get ivH;
+  int get ivA;
+  int get ivB;
+  int get ivC;
+  int get ivD;
+  int get ivS;
+  int get rankA;
+  int get rankB;
+  int get rankC;
+  int get rankD;
+  int get rankS;
+  String get side;
+  int get order;
+  static Serializer<GCreateMyDamageCalcInput> get serializer =>
+      _$gCreateMyDamageCalcInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GCreateMyDamageCalcInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GCreateMyDamageCalcInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GCreateMyDamageCalcInput.serializer,
         json,
       );
 }
@@ -405,6 +485,12 @@ abstract class GCreateMyEnemyInput
   int get evC;
   int get evD;
   int get evS;
+  int get ivH;
+  int get ivA;
+  int get ivB;
+  int get ivC;
+  int get ivD;
+  int get ivS;
   String get memo;
   String get pokemonId;
   String? get itemId;
@@ -549,6 +635,12 @@ abstract class GCreateMyPokemonInput
   int get evC;
   int get evD;
   int get evS;
+  int get ivH;
+  int get ivA;
+  int get ivB;
+  int get ivC;
+  int get ivD;
+  int get ivS;
   String get memo;
   String get pokemonId;
   String? get itemId;
@@ -1210,6 +1302,7 @@ abstract class GUpdateMoveInput
   bool? get isWind;
   bool? get isCut;
   String? get battleIndex;
+  String? get myDamageCalcId;
   static Serializer<GUpdateMoveInput> get serializer =>
       _$gUpdateMoveInputSerializer;
 
@@ -1221,6 +1314,85 @@ abstract class GUpdateMoveInput
   static GUpdateMoveInput? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(
         GUpdateMoveInput.serializer,
+        json,
+      );
+}
+
+abstract class GUpdateMyDamageCalcIndexInput
+    implements
+        Built<GUpdateMyDamageCalcIndexInput,
+            GUpdateMyDamageCalcIndexInputBuilder> {
+  GUpdateMyDamageCalcIndexInput._();
+
+  factory GUpdateMyDamageCalcIndexInput(
+          [Function(GUpdateMyDamageCalcIndexInputBuilder b) updates]) =
+      _$GUpdateMyDamageCalcIndexInput;
+
+  String? get userId;
+  String? get title;
+  String? get memo;
+  bool? get favorite;
+  static Serializer<GUpdateMyDamageCalcIndexInput> get serializer =>
+      _$gUpdateMyDamageCalcIndexInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GUpdateMyDamageCalcIndexInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GUpdateMyDamageCalcIndexInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GUpdateMyDamageCalcIndexInput.serializer,
+        json,
+      );
+}
+
+abstract class GUpdateMyDamageCalcInput
+    implements
+        Built<GUpdateMyDamageCalcInput, GUpdateMyDamageCalcInputBuilder> {
+  GUpdateMyDamageCalcInput._();
+
+  factory GUpdateMyDamageCalcInput(
+          [Function(GUpdateMyDamageCalcInputBuilder b) updates]) =
+      _$GUpdateMyDamageCalcInput;
+
+  String? get client;
+  String? get myDamageCalcIndexId;
+  String? get pokemonId;
+  String? get itemId;
+  String? get abilityId;
+  String? get natureId;
+  String? get terastalId;
+  int? get evH;
+  int? get evA;
+  int? get evB;
+  int? get evC;
+  int? get evD;
+  int? get evS;
+  int? get ivH;
+  int? get ivA;
+  int? get ivB;
+  int? get ivC;
+  int? get ivD;
+  int? get ivS;
+  int? get rankA;
+  int? get rankB;
+  int? get rankC;
+  int? get rankD;
+  int? get rankS;
+  String? get side;
+  int? get order;
+  static Serializer<GUpdateMyDamageCalcInput> get serializer =>
+      _$gUpdateMyDamageCalcInputSerializer;
+
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+        GUpdateMyDamageCalcInput.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GUpdateMyDamageCalcInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+        GUpdateMyDamageCalcInput.serializer,
         json,
       );
 }
@@ -1240,6 +1412,12 @@ abstract class GUpdateMyEnemyInput
   int? get evC;
   int? get evD;
   int? get evS;
+  int? get ivH;
+  int? get ivA;
+  int? get ivB;
+  int? get ivC;
+  int? get ivD;
+  int? get ivS;
   String? get memo;
   String? get pokemonId;
   String? get itemId;
@@ -1384,6 +1562,12 @@ abstract class GUpdateMyPokemonInput
   int? get evC;
   int? get evD;
   int? get evS;
+  int? get ivH;
+  int? get ivA;
+  int? get ivB;
+  int? get ivC;
+  int? get ivD;
+  int? get ivS;
   String? get memo;
   String? get pokemonId;
   String? get itemId;
