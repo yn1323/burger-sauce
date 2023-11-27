@@ -47,8 +47,7 @@ class TrendPage extends HookWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 50.0,
-            flexibleSpace: FlexibleSpaceBar(title: Builder(builder: (context) {
+            title: Builder(builder: (context) {
               if (result.isLoadingOrError()) {
                 return const Text('レートバトルデータ');
               } else {
@@ -56,7 +55,7 @@ class TrendPage extends HookWidget {
                 final dateText = isoToStringDateTime(capturedAt!.value, ' M/d');
                 return Text('レートバトルデータ ($dateText更新)');
               }
-            })),
+            }),
           ),
           SliverToBoxAdapter(
             child: Padding(

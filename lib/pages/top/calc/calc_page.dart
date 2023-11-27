@@ -29,7 +29,7 @@ class CalcPage extends HookConsumerWidget {
         (b) => b
           // ..vars.calcId = '2fb26f41-7986-4977-9c14-83affd5696d6'
           ..vars.calcId = calcId
-          ..fetchPolicy = fetchCacheFirst,
+          ..fetchPolicy = fetchForceCacheFirst,
       ),
     );
 
@@ -158,7 +158,6 @@ class _StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
     bool overlapsContent,
   ) {
     return Container(
-      color: Colors.white,
       child: tabBar,
     );
   }

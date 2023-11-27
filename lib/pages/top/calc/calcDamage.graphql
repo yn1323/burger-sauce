@@ -73,8 +73,15 @@ query DamageCalcSummary($calcId: String = "") {
     name
     id
   }
+  items{
+    id
+    name
+    detail
+    imageUrl
+  }
   types {
     id
+    name
     imageUrl
     terastalImageUrl
     textImageUrl

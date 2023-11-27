@@ -28,6 +28,7 @@ abstract class GDamageCalcSummaryData
   BuiltList<GDamageCalcSummaryData_moves> get moves;
   BuiltList<GDamageCalcSummaryData_attackTypes> get attackTypes;
   BuiltList<GDamageCalcSummaryData_natures> get natures;
+  BuiltList<GDamageCalcSummaryData_items> get items;
   BuiltList<GDamageCalcSummaryData_types> get types;
   GDamageCalcSummaryData_myDamageCalcIndex? get myDamageCalcIndex;
   static Serializer<GDamageCalcSummaryData> get serializer =>
@@ -527,6 +528,40 @@ abstract class GDamageCalcSummaryData_natures
       );
 }
 
+abstract class GDamageCalcSummaryData_items
+    implements
+        Built<GDamageCalcSummaryData_items,
+            GDamageCalcSummaryData_itemsBuilder> {
+  GDamageCalcSummaryData_items._();
+
+  factory GDamageCalcSummaryData_items(
+          [Function(GDamageCalcSummaryData_itemsBuilder b) updates]) =
+      _$GDamageCalcSummaryData_items;
+
+  static void _initializeBuilder(GDamageCalcSummaryData_itemsBuilder b) =>
+      b..G__typename = 'Item';
+
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String get id;
+  String get name;
+  String get detail;
+  String get imageUrl;
+  static Serializer<GDamageCalcSummaryData_items> get serializer =>
+      _$gDamageCalcSummaryDataItemsSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GDamageCalcSummaryData_items.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GDamageCalcSummaryData_items? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GDamageCalcSummaryData_items.serializer,
+        json,
+      );
+}
+
 abstract class GDamageCalcSummaryData_types
     implements
         Built<GDamageCalcSummaryData_types,
@@ -543,6 +578,7 @@ abstract class GDamageCalcSummaryData_types
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get id;
+  String get name;
   String get imageUrl;
   String get terastalImageUrl;
   String get textImageUrl;

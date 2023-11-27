@@ -47,6 +47,9 @@ Serializer<GDamageCalcSummaryData_attackTypes>
 Serializer<GDamageCalcSummaryData_natures>
     _$gDamageCalcSummaryDataNaturesSerializer =
     new _$GDamageCalcSummaryData_naturesSerializer();
+Serializer<GDamageCalcSummaryData_items>
+    _$gDamageCalcSummaryDataItemsSerializer =
+    new _$GDamageCalcSummaryData_itemsSerializer();
 Serializer<GDamageCalcSummaryData_types>
     _$gDamageCalcSummaryDataTypesSerializer =
     new _$GDamageCalcSummaryData_typesSerializer();
@@ -112,6 +115,10 @@ class _$GDamageCalcSummaryDataSerializer
       serializers.serialize(object.natures,
           specifiedType: const FullType(BuiltList,
               const [const FullType(GDamageCalcSummaryData_natures)])),
+      'items',
+      serializers.serialize(object.items,
+          specifiedType: const FullType(
+              BuiltList, const [const FullType(GDamageCalcSummaryData_items)])),
       'types',
       serializers.serialize(object.types,
           specifiedType: const FullType(
@@ -187,6 +194,12 @@ class _$GDamageCalcSummaryDataSerializer
           result.natures.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(GDamageCalcSummaryData_natures)
+              ]))! as BuiltList<Object?>);
+          break;
+        case 'items':
+          result.items.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(GDamageCalcSummaryData_items)
               ]))! as BuiltList<Object?>);
           break;
         case 'types':
@@ -1207,6 +1220,78 @@ class _$GDamageCalcSummaryData_naturesSerializer
   }
 }
 
+class _$GDamageCalcSummaryData_itemsSerializer
+    implements StructuredSerializer<GDamageCalcSummaryData_items> {
+  @override
+  final Iterable<Type> types = const [
+    GDamageCalcSummaryData_items,
+    _$GDamageCalcSummaryData_items
+  ];
+  @override
+  final String wireName = 'GDamageCalcSummaryData_items';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GDamageCalcSummaryData_items object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'detail',
+      serializers.serialize(object.detail,
+          specifiedType: const FullType(String)),
+      'imageUrl',
+      serializers.serialize(object.imageUrl,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GDamageCalcSummaryData_items deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GDamageCalcSummaryData_itemsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'detail':
+          result.detail = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'imageUrl':
+          result.imageUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GDamageCalcSummaryData_typesSerializer
     implements StructuredSerializer<GDamageCalcSummaryData_types> {
   @override
@@ -1227,6 +1312,8 @@ class _$GDamageCalcSummaryData_typesSerializer
           specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
       'imageUrl',
       serializers.serialize(object.imageUrl,
           specifiedType: const FullType(String)),
@@ -1259,6 +1346,10 @@ class _$GDamageCalcSummaryData_typesSerializer
           break;
         case 'id':
           result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'imageUrl':
@@ -1938,6 +2029,8 @@ class _$GDamageCalcSummaryData extends GDamageCalcSummaryData {
   @override
   final BuiltList<GDamageCalcSummaryData_natures> natures;
   @override
+  final BuiltList<GDamageCalcSummaryData_items> items;
+  @override
   final BuiltList<GDamageCalcSummaryData_types> types;
   @override
   final GDamageCalcSummaryData_myDamageCalcIndex? myDamageCalcIndex;
@@ -1954,6 +2047,7 @@ class _$GDamageCalcSummaryData extends GDamageCalcSummaryData {
       required this.moves,
       required this.attackTypes,
       required this.natures,
+      required this.items,
       required this.types,
       this.myDamageCalcIndex})
       : super._() {
@@ -1969,6 +2063,8 @@ class _$GDamageCalcSummaryData extends GDamageCalcSummaryData {
         attackTypes, r'GDamageCalcSummaryData', 'attackTypes');
     BuiltValueNullFieldError.checkNotNull(
         natures, r'GDamageCalcSummaryData', 'natures');
+    BuiltValueNullFieldError.checkNotNull(
+        items, r'GDamageCalcSummaryData', 'items');
     BuiltValueNullFieldError.checkNotNull(
         types, r'GDamageCalcSummaryData', 'types');
   }
@@ -1993,6 +2089,7 @@ class _$GDamageCalcSummaryData extends GDamageCalcSummaryData {
         moves == other.moves &&
         attackTypes == other.attackTypes &&
         natures == other.natures &&
+        items == other.items &&
         types == other.types &&
         myDamageCalcIndex == other.myDamageCalcIndex;
   }
@@ -2007,6 +2104,7 @@ class _$GDamageCalcSummaryData extends GDamageCalcSummaryData {
     _$hash = $jc(_$hash, moves.hashCode);
     _$hash = $jc(_$hash, attackTypes.hashCode);
     _$hash = $jc(_$hash, natures.hashCode);
+    _$hash = $jc(_$hash, items.hashCode);
     _$hash = $jc(_$hash, types.hashCode);
     _$hash = $jc(_$hash, myDamageCalcIndex.hashCode);
     _$hash = $jf(_$hash);
@@ -2023,6 +2121,7 @@ class _$GDamageCalcSummaryData extends GDamageCalcSummaryData {
           ..add('moves', moves)
           ..add('attackTypes', attackTypes)
           ..add('natures', natures)
+          ..add('items', items)
           ..add('types', types)
           ..add('myDamageCalcIndex', myDamageCalcIndex))
         .toString();
@@ -2077,6 +2176,12 @@ class GDamageCalcSummaryDataBuilder
   set natures(ListBuilder<GDamageCalcSummaryData_natures>? natures) =>
       _$this._natures = natures;
 
+  ListBuilder<GDamageCalcSummaryData_items>? _items;
+  ListBuilder<GDamageCalcSummaryData_items> get items =>
+      _$this._items ??= new ListBuilder<GDamageCalcSummaryData_items>();
+  set items(ListBuilder<GDamageCalcSummaryData_items>? items) =>
+      _$this._items = items;
+
   ListBuilder<GDamageCalcSummaryData_types>? _types;
   ListBuilder<GDamageCalcSummaryData_types> get types =>
       _$this._types ??= new ListBuilder<GDamageCalcSummaryData_types>();
@@ -2105,6 +2210,7 @@ class GDamageCalcSummaryDataBuilder
       _moves = $v.moves.toBuilder();
       _attackTypes = $v.attackTypes.toBuilder();
       _natures = $v.natures.toBuilder();
+      _items = $v.items.toBuilder();
       _types = $v.types.toBuilder();
       _myDamageCalcIndex = $v.myDamageCalcIndex?.toBuilder();
       _$v = null;
@@ -2139,6 +2245,7 @@ class GDamageCalcSummaryDataBuilder
               moves: moves.build(),
               attackTypes: attackTypes.build(),
               natures: natures.build(),
+              items: items.build(),
               types: types.build(),
               myDamageCalcIndex: _myDamageCalcIndex?.build());
     } catch (_) {
@@ -2156,6 +2263,8 @@ class GDamageCalcSummaryDataBuilder
         attackTypes.build();
         _$failedField = 'natures';
         natures.build();
+        _$failedField = 'items';
+        items.build();
         _$failedField = 'types';
         types.build();
         _$failedField = 'myDamageCalcIndex';
@@ -4400,11 +4509,167 @@ class GDamageCalcSummaryData_naturesBuilder
   }
 }
 
+class _$GDamageCalcSummaryData_items extends GDamageCalcSummaryData_items {
+  @override
+  final String G__typename;
+  @override
+  final String id;
+  @override
+  final String name;
+  @override
+  final String detail;
+  @override
+  final String imageUrl;
+
+  factory _$GDamageCalcSummaryData_items(
+          [void Function(GDamageCalcSummaryData_itemsBuilder)? updates]) =>
+      (new GDamageCalcSummaryData_itemsBuilder()..update(updates))._build();
+
+  _$GDamageCalcSummaryData_items._(
+      {required this.G__typename,
+      required this.id,
+      required this.name,
+      required this.detail,
+      required this.imageUrl})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, r'GDamageCalcSummaryData_items', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GDamageCalcSummaryData_items', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GDamageCalcSummaryData_items', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        detail, r'GDamageCalcSummaryData_items', 'detail');
+    BuiltValueNullFieldError.checkNotNull(
+        imageUrl, r'GDamageCalcSummaryData_items', 'imageUrl');
+  }
+
+  @override
+  GDamageCalcSummaryData_items rebuild(
+          void Function(GDamageCalcSummaryData_itemsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GDamageCalcSummaryData_itemsBuilder toBuilder() =>
+      new GDamageCalcSummaryData_itemsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDamageCalcSummaryData_items &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        name == other.name &&
+        detail == other.detail &&
+        imageUrl == other.imageUrl;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, detail.hashCode);
+    _$hash = $jc(_$hash, imageUrl.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GDamageCalcSummaryData_items')
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('name', name)
+          ..add('detail', detail)
+          ..add('imageUrl', imageUrl))
+        .toString();
+  }
+}
+
+class GDamageCalcSummaryData_itemsBuilder
+    implements
+        Builder<GDamageCalcSummaryData_items,
+            GDamageCalcSummaryData_itemsBuilder> {
+  _$GDamageCalcSummaryData_items? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  String? _detail;
+  String? get detail => _$this._detail;
+  set detail(String? detail) => _$this._detail = detail;
+
+  String? _imageUrl;
+  String? get imageUrl => _$this._imageUrl;
+  set imageUrl(String? imageUrl) => _$this._imageUrl = imageUrl;
+
+  GDamageCalcSummaryData_itemsBuilder() {
+    GDamageCalcSummaryData_items._initializeBuilder(this);
+  }
+
+  GDamageCalcSummaryData_itemsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _name = $v.name;
+      _detail = $v.detail;
+      _imageUrl = $v.imageUrl;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDamageCalcSummaryData_items other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GDamageCalcSummaryData_items;
+  }
+
+  @override
+  void update(void Function(GDamageCalcSummaryData_itemsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDamageCalcSummaryData_items build() => _build();
+
+  _$GDamageCalcSummaryData_items _build() {
+    final _$result = _$v ??
+        new _$GDamageCalcSummaryData_items._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GDamageCalcSummaryData_items', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GDamageCalcSummaryData_items', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GDamageCalcSummaryData_items', 'name'),
+            detail: BuiltValueNullFieldError.checkNotNull(
+                detail, r'GDamageCalcSummaryData_items', 'detail'),
+            imageUrl: BuiltValueNullFieldError.checkNotNull(
+                imageUrl, r'GDamageCalcSummaryData_items', 'imageUrl'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
 class _$GDamageCalcSummaryData_types extends GDamageCalcSummaryData_types {
   @override
   final String G__typename;
   @override
   final String id;
+  @override
+  final String name;
   @override
   final String imageUrl;
   @override
@@ -4419,6 +4684,7 @@ class _$GDamageCalcSummaryData_types extends GDamageCalcSummaryData_types {
   _$GDamageCalcSummaryData_types._(
       {required this.G__typename,
       required this.id,
+      required this.name,
       required this.imageUrl,
       required this.terastalImageUrl,
       required this.textImageUrl})
@@ -4427,6 +4693,8 @@ class _$GDamageCalcSummaryData_types extends GDamageCalcSummaryData_types {
         G__typename, r'GDamageCalcSummaryData_types', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
         id, r'GDamageCalcSummaryData_types', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'GDamageCalcSummaryData_types', 'name');
     BuiltValueNullFieldError.checkNotNull(
         imageUrl, r'GDamageCalcSummaryData_types', 'imageUrl');
     BuiltValueNullFieldError.checkNotNull(
@@ -4450,6 +4718,7 @@ class _$GDamageCalcSummaryData_types extends GDamageCalcSummaryData_types {
     return other is GDamageCalcSummaryData_types &&
         G__typename == other.G__typename &&
         id == other.id &&
+        name == other.name &&
         imageUrl == other.imageUrl &&
         terastalImageUrl == other.terastalImageUrl &&
         textImageUrl == other.textImageUrl;
@@ -4460,6 +4729,7 @@ class _$GDamageCalcSummaryData_types extends GDamageCalcSummaryData_types {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
     _$hash = $jc(_$hash, terastalImageUrl.hashCode);
     _$hash = $jc(_$hash, textImageUrl.hashCode);
@@ -4472,6 +4742,7 @@ class _$GDamageCalcSummaryData_types extends GDamageCalcSummaryData_types {
     return (newBuiltValueToStringHelper(r'GDamageCalcSummaryData_types')
           ..add('G__typename', G__typename)
           ..add('id', id)
+          ..add('name', name)
           ..add('imageUrl', imageUrl)
           ..add('terastalImageUrl', terastalImageUrl)
           ..add('textImageUrl', textImageUrl))
@@ -4492,6 +4763,10 @@ class GDamageCalcSummaryData_typesBuilder
   String? _id;
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   String? _imageUrl;
   String? get imageUrl => _$this._imageUrl;
@@ -4515,6 +4790,7 @@ class GDamageCalcSummaryData_typesBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _id = $v.id;
+      _name = $v.name;
       _imageUrl = $v.imageUrl;
       _terastalImageUrl = $v.terastalImageUrl;
       _textImageUrl = $v.textImageUrl;
@@ -4544,6 +4820,8 @@ class GDamageCalcSummaryData_typesBuilder
                 G__typename, r'GDamageCalcSummaryData_types', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'GDamageCalcSummaryData_types', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'GDamageCalcSummaryData_types', 'name'),
             imageUrl: BuiltValueNullFieldError.checkNotNull(
                 imageUrl, r'GDamageCalcSummaryData_types', 'imageUrl'),
             terastalImageUrl: BuiltValueNullFieldError.checkNotNull(

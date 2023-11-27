@@ -152,10 +152,7 @@ class SearchPage extends HookWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          const SliverAppBar(
-            expandedHeight: 50.0,
-            flexibleSpace: FlexibleSpaceBar(title: Text('検索')),
-          ),
+          const SliverAppBar(title: Text("検索")),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),

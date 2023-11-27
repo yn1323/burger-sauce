@@ -68,6 +68,7 @@ class CalcState {
     this.moves,
     this.natures,
     this.types,
+    this.items,
     required this.attackBase,
     required this.defenseBase,
   });
@@ -78,6 +79,7 @@ class CalcState {
   List<GDamageCalcSummaryData_moves>? moves;
   List<GDamageCalcSummaryData_natures>? natures;
   List<GDamageCalcSummaryData_types>? types;
+  List<GDamageCalcSummaryData_items>? items;
 
   List<DamageCustomBase> attackBase;
   List<DamageCustomBase> defenseBase;
@@ -92,6 +94,7 @@ class Calc extends _$Calc {
   List<GDamageCalcSummaryData_moves>? moves;
   List<GDamageCalcSummaryData_natures>? natures;
   List<GDamageCalcSummaryData_types>? types;
+  List<GDamageCalcSummaryData_items>? items;
 
   List<DamageCustomBase> attackBase = [];
   List<DamageCustomBase> defenseBase = [];
@@ -116,6 +119,7 @@ class Calc extends _$Calc {
     List<GDamageCalcSummaryData_moves>? moves,
     List<GDamageCalcSummaryData_natures>? natures,
     List<GDamageCalcSummaryData_types>? types,
+    List<GDamageCalcSummaryData_items>? items,
     List<DamageCustomBase>? attackBase,
     List<DamageCustomBase>? defenseBase,
   }) {
@@ -127,6 +131,7 @@ class Calc extends _$Calc {
       moves: moves ?? this.moves,
       natures: natures ?? this.natures,
       types: types ?? this.types,
+      items: items ?? this.items,
       attackBase: attackBase ?? this.attackBase,
       defenseBase: defenseBase ?? this.defenseBase,
     );
@@ -140,6 +145,7 @@ class Calc extends _$Calc {
     moves = value.moves.toList();
     natures = value.natures.toList();
     types = value.types.toList();
+    items = value.items.toList();
   }
 
   List<String> get attackTypeIdOfAttack {
@@ -186,6 +192,51 @@ class Calc extends _$Calc {
       return pokemons!.firstWhere((e) => e.id == id);
     }
     return pokemons!.firstWhere((e) => e.name == name);
+  }
+
+  GDamageCalcSummaryData_abilities getAbility(
+      {String? id = "", String? name = ""}) {
+    if (id != "") {
+      return abilities!.firstWhere((e) => e.id == id);
+    }
+    return abilities!.firstWhere((e) => e.name == name);
+  }
+
+  GDamageCalcSummaryData_natures getNature(
+      {String? id = "", String? name = ""}) {
+    if (id != "") {
+      return natures!.firstWhere((e) => e.id == id);
+    }
+    return natures!.firstWhere((e) => e.name == name);
+  }
+
+  GDamageCalcSummaryData_moves getMove({String? id = "", String? name = ""}) {
+    if (id != "") {
+      return moves!.firstWhere((e) => e.id == id);
+    }
+    return moves!.firstWhere((e) => e.name == name);
+  }
+
+  GDamageCalcSummaryData_items getItem({String? id = "", String? name = ""}) {
+    if (id != "") {
+      return items!.firstWhere((e) => e.id == id);
+    }
+    return items!.firstWhere((e) => e.name == name);
+  }
+
+  GDamageCalcSummaryData_types getType({String? id = "", String? name = ""}) {
+    if (id != "") {
+      return types!.firstWhere((e) => e.id == id);
+    }
+    return types!.firstWhere((e) => e.name == name);
+  }
+
+  GDamageCalcSummaryData_attackTypes getAttackType(
+      {String? id = "", String? name = ""}) {
+    if (id != "") {
+      return attackTypes!.firstWhere((e) => e.id == id);
+    }
+    return attackTypes!.firstWhere((e) => e.name == name);
   }
 
   void addDefenseBase() {

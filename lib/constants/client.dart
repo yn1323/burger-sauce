@@ -38,3 +38,6 @@ const fetchCacheFirst =
 const fetchCacheAndNetwork =
     kReleaseMode ? FetchPolicy.CacheAndNetwork : FetchPolicy.NetworkOnly;
 const fetchNoCache = FetchPolicy.NoCache;
+
+// デバッグで重い場合に利用する
+const fetchForceCacheFirst = FetchPolicy.CacheFirst;

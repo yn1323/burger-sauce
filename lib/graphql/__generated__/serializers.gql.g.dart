@@ -62,6 +62,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(
           GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
               .serializer)
+      ..add(GDamageCalcSummaryData_items.serializer)
       ..add(GDamageCalcSummaryData_moves.serializer)
       ..add(GDamageCalcSummaryData_myDamageCalcIndex.serializer)
       ..add(GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc.serializer)
@@ -248,6 +249,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList,
               const [const FullType(GDamageCalcSummaryData_natures)]),
           () => new ListBuilder<GDamageCalcSummaryData_natures>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GDamageCalcSummaryData_items)]),
+          () => new ListBuilder<GDamageCalcSummaryData_items>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GDamageCalcSummaryData_types)]),
