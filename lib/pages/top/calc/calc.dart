@@ -1,3 +1,4 @@
+import 'package:burger_sauce/models/status.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -6,18 +7,6 @@ part 'calc.g.dart';
 
 const int maxBases = 6;
 const int maxMoves = 6;
-
-class Status {
-  Status({
-    this.rank = 0,
-    this.ev = 0,
-    this.iv = 31,
-  });
-
-  int rank;
-  int ev;
-  int iv;
-}
 
 class DamageCustomBase {
   DamageCustomBase({
@@ -28,19 +17,17 @@ class DamageCustomBase {
     this.terastalId = '',
     this.itemId = '',
     this.natureId = '',
-    Status? statusH,
-    Status? statusA,
-    Status? statusB,
-    Status? statusC,
-    Status? statusD,
-    Status? statusS,
+    Status? status,
   })  : id = id ?? UniqueKey(),
-        statusH = statusH ?? Status(),
-        statusA = statusA ?? Status(),
-        statusB = statusB ?? Status(),
-        statusC = statusC ?? Status(),
-        statusD = statusD ?? Status(),
-        statusS = statusS ?? Status();
+        status = status ??
+            Status(
+              statusA: 0,
+              statusB: 0,
+              statusC: 0,
+              statusD: 0,
+              statusH: 0,
+              statusS: 0,
+            );
 
   String pokemonId;
   List<String> moveIds;
@@ -51,12 +38,7 @@ class DamageCustomBase {
 
   UniqueKey id;
 
-  Status statusH;
-  Status statusA;
-  Status statusB;
-  Status statusC;
-  Status statusD;
-  Status statusS;
+  Status status;
 }
 
 class CalcState {
@@ -159,8 +141,9 @@ class Calc extends _$Calc {
     final battleData =
         battleDatas!.firstWhere((e) => !avoidPokemonIds.contains(e.pokemonId));
 
-    final moveDatas = moves!.where(
-        (e) => battleData.battleDataMove.map((p0) => p0.moveId).contains(e.id));
+    final moveDatas = battleData.battleDataMove
+        .map((p0) => moves!.firstWhere((move) => move.id == p0.moveId))
+        .toList();
 
     final filteredMoves = moveDatas
         .where((e) => attackTypeIdOfAttack.contains(e.attackTypeId))
@@ -252,6 +235,9 @@ class Calc extends _$Calc {
         sortedCalcs.where((calc) => calc.side == "defense").toList();
 
     final newAttackBase = attacks.map((e) {
+      final pokemon = getPokemon(id: e.pokemonId);
+      final nature = getNature(id: e.natureId);
+
       return DamageCustomBase(
         id: null,
         pokemonId: e.pokemonId,
@@ -260,40 +246,44 @@ class Calc extends _$Calc {
         terastalId: e.terastalId ?? '',
         itemId: e.itemId ?? '',
         natureId: e.natureId,
-        statusH: Status(
-          rank: 0,
-          ev: e.evH,
-          iv: e.ivH,
-        ),
-        statusA: Status(
-          rank: e.rankA,
-          ev: e.evA,
-          iv: e.ivA,
-        ),
-        statusB: Status(
-          rank: e.rankB,
-          ev: e.evB,
-          iv: e.ivB,
-        ),
-        statusC: Status(
-          rank: e.rankC,
-          ev: e.evC,
-          iv: e.ivC,
-        ),
-        statusD: Status(
-          rank: e.rankD,
-          ev: e.evD,
-          iv: e.ivD,
-        ),
-        statusS: Status(
-          rank: e.rankS,
-          ev: e.evS,
-          iv: e.ivS,
+        status: Status(
+          statusH: pokemon.statusH,
+          statusA: pokemon.statusA,
+          statusB: pokemon.statusB,
+          statusC: pokemon.statusC,
+          statusD: pokemon.statusD,
+          statusS: pokemon.statusS,
+          ivH: e.ivH,
+          ivA: e.ivA,
+          ivB: e.ivB,
+          ivC: e.ivC,
+          ivD: e.ivD,
+          ivS: e.ivS,
+          evH: e.evH,
+          evA: e.evA,
+          evB: e.evB,
+          evC: e.evC,
+          evD: e.evD,
+          isHIncrease: nature.increase.contains("H"),
+          isAIncrease: nature.increase.contains("A"),
+          isBIncrease: nature.increase.contains("B"),
+          isCIncrease: nature.increase.contains("C"),
+          isDIncrease: nature.increase.contains("D"),
+          isSIncrease: nature.increase.contains("S"),
+          isHDecrease: nature.decrease.contains("H"),
+          isADecrease: nature.decrease.contains("A"),
+          isBDecrease: nature.decrease.contains("B"),
+          isCDecrease: nature.decrease.contains("C"),
+          isDDecrease: nature.decrease.contains("D"),
+          isSDecrease: nature.decrease.contains("S"),
         ),
       );
     });
 
     final newDefenseBase = defenses.map((e) {
+      final pokemon = getPokemon(id: e.pokemonId);
+      final nature = getNature(id: e.natureId);
+
       return DamageCustomBase(
         id: e.client as UniqueKey,
         pokemonId: e.pokemonId,
@@ -302,35 +292,36 @@ class Calc extends _$Calc {
         terastalId: e.terastalId ?? '',
         itemId: e.itemId ?? '',
         natureId: e.natureId,
-        statusH: Status(
-          rank: 0,
-          ev: e.evH,
-          iv: e.ivH,
-        ),
-        statusA: Status(
-          rank: e.rankA,
-          ev: e.evA,
-          iv: e.ivA,
-        ),
-        statusB: Status(
-          rank: e.rankB,
-          ev: e.evB,
-          iv: e.ivB,
-        ),
-        statusC: Status(
-          rank: e.rankC,
-          ev: e.evC,
-          iv: e.ivC,
-        ),
-        statusD: Status(
-          rank: e.rankD,
-          ev: e.evD,
-          iv: e.ivD,
-        ),
-        statusS: Status(
-          rank: e.rankS,
-          ev: e.evS,
-          iv: e.ivS,
+        status: Status(
+          statusH: pokemon.statusH,
+          statusA: pokemon.statusA,
+          statusB: pokemon.statusB,
+          statusC: pokemon.statusC,
+          statusD: pokemon.statusD,
+          statusS: pokemon.statusS,
+          ivH: e.ivH,
+          ivA: e.ivA,
+          ivB: e.ivB,
+          ivC: e.ivC,
+          ivD: e.ivD,
+          ivS: e.ivS,
+          evH: e.evH,
+          evA: e.evA,
+          evB: e.evB,
+          evC: e.evC,
+          evD: e.evD,
+          isHIncrease: nature.increase.contains("H"),
+          isAIncrease: nature.increase.contains("A"),
+          isBIncrease: nature.increase.contains("B"),
+          isCIncrease: nature.increase.contains("C"),
+          isDIncrease: nature.increase.contains("D"),
+          isSIncrease: nature.increase.contains("S"),
+          isHDecrease: nature.decrease.contains("H"),
+          isADecrease: nature.decrease.contains("A"),
+          isBDecrease: nature.decrease.contains("B"),
+          isCDecrease: nature.decrease.contains("C"),
+          isDDecrease: nature.decrease.contains("D"),
+          isSDecrease: nature.decrease.contains("S"),
         ),
       );
     });

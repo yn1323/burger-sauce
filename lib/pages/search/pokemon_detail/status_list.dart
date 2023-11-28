@@ -3,11 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class StatusBox extends StatelessWidget {
-  const StatusBox({Key? key, required this.label, required this.status})
-      : super(key: key);
+  const StatusBox({
+    Key? key,
+    required this.label,
+    required this.status,
+    this.subStatus,
+    this.isIncrease,
+    this.isDecrease,
+  }) : super(key: key);
 
   final String label;
   final int status;
+  final int? subStatus;
+  final bool? isIncrease;
+  final bool? isDecrease;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +31,24 @@ class StatusBox extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(6, 4, 6, 6),
             child: Column(
               children: [
-                Text(label),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(label),
+                    if (isIncrease != null && isIncrease!)
+                      Icon(
+                        Icons.arrow_upward,
+                        color: Colors.red[300],
+                        size: 16,
+                      ),
+                    if (isDecrease != null && isDecrease!)
+                      Icon(
+                        Icons.arrow_downward,
+                        color: Colors.blue[300],
+                        size: 16,
+                      ),
+                  ],
+                ),
                 const Gap(2),
                 Container(
                   width: 100, // 仮置き
@@ -32,7 +58,11 @@ class StatusBox extends StatelessWidget {
                   ),
                 ),
                 const Gap(5),
-                Text(status.toString(), style: const TextStyle(fontSize: 16)),
+                Text(
+                    subStatus != null
+                        ? '$status($subStatus)'
+                        : status.toString(),
+                    style: const TextStyle(fontSize: 16)),
               ],
             ),
           ),

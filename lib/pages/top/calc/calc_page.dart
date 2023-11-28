@@ -29,7 +29,7 @@ class CalcPage extends HookConsumerWidget {
         (b) => b
           // ..vars.calcId = '2fb26f41-7986-4977-9c14-83affd5696d6'
           ..vars.calcId = calcId
-          ..fetchPolicy = fetchForceCacheFirst,
+          ..fetchPolicy = fetchCacheFirst,
       ),
     );
 
@@ -41,7 +41,6 @@ class CalcPage extends HookConsumerWidget {
           );
         }
       });
-
       return null;
     }, [result.data]);
 

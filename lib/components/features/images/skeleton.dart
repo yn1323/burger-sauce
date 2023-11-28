@@ -40,7 +40,6 @@ class Skeleton extends HookWidget {
               width: width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(radius ?? (height / 10)),
-                color: Colors.grey[50]!,
               ),
             ),
           );

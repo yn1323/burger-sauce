@@ -18,6 +18,9 @@ void main() async {
     await dotenv.load(fileName: ".env.production");
   }
   final client = await initClient();
+  if (GetIt.I.isRegistered<TypedLink>()) {
+    GetIt.I.unregister<TypedLink>();
+  }
   GetIt.I.registerLazySingleton<TypedLink>(() => client);
 
   runApp(const ProviderScope(child: MyApp()));

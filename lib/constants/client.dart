@@ -41,3 +41,4 @@ const fetchNoCache = FetchPolicy.NoCache;
 
 // デバッグで重い場合に利用する
 const fetchForceCacheFirst = FetchPolicy.CacheFirst;
+const fetchForceCacheAndNetwork = FetchPolicy.CacheAndNetwork;
