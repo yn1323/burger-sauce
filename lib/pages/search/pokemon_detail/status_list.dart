@@ -36,19 +36,48 @@ class StatusBox extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(label),
-                    if (isIncrease != null && isIncrease!)
-                      Icon(
-                        Icons.arrow_upward,
-                        color: Colors.red[300],
-                        size: 16,
+                    Expanded(
+                      child: Stack(
+                        children: [
+                          Center(
+                            child: Text(
+                              label,
+                              style: TextStyle(
+                                  color: isIncrease != null && isIncrease!
+                                      ? Colors.red[300]
+                                      : isDecrease != null && isDecrease!
+                                          ? Colors.blue[300]
+                                          : Colors.black,
+                                  fontWeight:
+                                      isIncrease != null && isIncrease! ||
+                                              isDecrease != null && isDecrease!
+                                          ? FontWeight.bold
+                                          : null),
+                            ),
+                          ),
+                          if (isIncrease != null && isIncrease!)
+                            Positioned(
+                              right: 5,
+                              top: 2,
+                              child: Icon(
+                                Icons.arrow_upward,
+                                color: Colors.red[300],
+                                size: 16,
+                              ),
+                            ),
+                          if (isDecrease != null && isDecrease!)
+                            Positioned(
+                              right: 5,
+                              top: 3,
+                              child: Icon(
+                                Icons.arrow_downward,
+                                color: Colors.blue[300],
+                                size: 16,
+                              ),
+                            ),
+                        ],
                       ),
-                    if (isDecrease != null && isDecrease!)
-                      Icon(
-                        Icons.arrow_downward,
-                        color: Colors.blue[300],
-                        size: 16,
-                      ),
+                    ),
                   ],
                 ),
                 const Gap(2),

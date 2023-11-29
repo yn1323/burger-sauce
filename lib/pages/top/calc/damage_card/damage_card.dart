@@ -64,7 +64,11 @@ class DamageCard extends HookConsumerWidget {
                         label: label,
                         status:
                             damageCustomBase.status.getRealStatus(label: label),
-                        subStatus: damageCustomBase.status.evH,
+                        subStatus: damageCustomBase.status.getEv(label),
+                        isIncrease:
+                            damageCustomBase.status.getIsIncreaseNature(label),
+                        isDecrease:
+                            damageCustomBase.status.getIsDecreaseNature(label),
                       ),
                     ),
                   )
