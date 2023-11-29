@@ -57,7 +57,7 @@ class StatusBox extends StatelessWidget {
                           ),
                           if (isIncrease != null && isIncrease!)
                             Positioned(
-                              right: 5,
+                              right: 0,
                               top: 2,
                               child: Icon(
                                 Icons.arrow_upward,
@@ -67,7 +67,7 @@ class StatusBox extends StatelessWidget {
                             ),
                           if (isDecrease != null && isDecrease!)
                             Positioned(
-                              right: 5,
+                              right: 0,
                               top: 3,
                               child: Icon(
                                 Icons.arrow_downward,
