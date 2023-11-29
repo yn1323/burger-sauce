@@ -10,6 +10,7 @@ class StatusBox extends StatelessWidget {
     this.subStatus,
     this.isIncrease,
     this.isDecrease,
+    this.verticalSubStatus = false,
   }) : super(key: key);
 
   final String label;
@@ -17,6 +18,7 @@ class StatusBox extends StatelessWidget {
   final int? subStatus;
   final bool? isIncrease;
   final bool? isDecrease;
+  final bool verticalSubStatus;
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +61,11 @@ class StatusBox extends StatelessWidget {
                 ),
                 const Gap(5),
                 Text(
-                    subStatus != null
+                    subStatus != null && !verticalSubStatus
                         ? '$status($subStatus)'
                         : status.toString(),
                     style: const TextStyle(fontSize: 16)),
+                if (subStatus != null && verticalSubStatus) Text('($subStatus)')
               ],
             ),
           ),

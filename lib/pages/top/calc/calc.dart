@@ -150,16 +150,38 @@ class Calc extends _$Calc {
         .map((e) => e.id)
         .toList();
 
+    final pokemon = getPokemon(id: battleData.pokemonId);
+    final nature = getNature(id: battleData.battleDataNature[0].natureId);
+
     return DamageCustomBase(
-      pokemonId: battleData.pokemonId,
-      moveIds: filteredMoves.length > maxBases
-          ? filteredMoves.sublist(0, maxBases)
-          : filteredMoves,
-      abilityId: battleData.battleDataAbility[0].abilityId,
-      terastalId: battleData.battleDataTerastal[0].typeId,
-      itemId: battleData.battleDataItem[0].itemId,
-      natureId: battleData.battleDataNature[0].natureId,
-    );
+        pokemonId: battleData.pokemonId,
+        moveIds: filteredMoves.length > maxBases
+            ? filteredMoves.sublist(0, maxBases)
+            : filteredMoves,
+        abilityId: battleData.battleDataAbility[0].abilityId,
+        terastalId: battleData.battleDataTerastal[0].typeId,
+        itemId: battleData.battleDataItem[0].itemId,
+        natureId: battleData.battleDataNature[0].natureId,
+        status: Status(
+          statusH: pokemon.statusH,
+          statusA: pokemon.statusA,
+          statusB: pokemon.statusB,
+          statusC: pokemon.statusC,
+          statusD: pokemon.statusD,
+          statusS: pokemon.statusS,
+          isHIncrease: nature.increase.contains("H"),
+          isAIncrease: nature.increase.contains("A"),
+          isBIncrease: nature.increase.contains("B"),
+          isCIncrease: nature.increase.contains("C"),
+          isDIncrease: nature.increase.contains("D"),
+          isSIncrease: nature.increase.contains("S"),
+          isHDecrease: nature.decrease.contains("H"),
+          isADecrease: nature.decrease.contains("A"),
+          isBDecrease: nature.decrease.contains("B"),
+          isCDecrease: nature.decrease.contains("C"),
+          isDDecrease: nature.decrease.contains("D"),
+          isSDecrease: nature.decrease.contains("S"),
+        ));
   }
 
   void addAttackBase() {
@@ -264,6 +286,7 @@ class Calc extends _$Calc {
           evB: e.evB,
           evC: e.evC,
           evD: e.evD,
+          evS: e.evS,
           isHIncrease: nature.increase.contains("H"),
           isAIncrease: nature.increase.contains("A"),
           isBIncrease: nature.increase.contains("B"),
@@ -310,6 +333,7 @@ class Calc extends _$Calc {
           evB: e.evB,
           evC: e.evC,
           evD: e.evD,
+          evS: e.evS,
           isHIncrease: nature.increase.contains("H"),
           isAIncrease: nature.increase.contains("A"),
           isBIncrease: nature.increase.contains("B"),

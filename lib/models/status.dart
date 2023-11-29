@@ -93,7 +93,85 @@ class Status {
     }
   }
 
-  int getRealStatus({
+  int getIv(String label) {
+    if (label == "H") {
+      return ivH;
+    } else if (label == "A") {
+      return ivA;
+    } else if (label == "B") {
+      return ivB;
+    } else if (label == "C") {
+      return ivC;
+    } else if (label == "D") {
+      return ivD;
+    } else if (label == "S") {
+      return ivS;
+    } else {
+      return 0;
+    }
+  }
+
+  int getEv(String label) {
+    if (label == "H") {
+      return evH;
+    } else if (label == "A") {
+      return evA;
+    } else if (label == "B") {
+      return evB;
+    } else if (label == "C") {
+      return evC;
+    } else if (label == "D") {
+      return evD;
+    } else if (label == "S") {
+      return evS;
+    } else {
+      return 0;
+    }
+  }
+
+  bool getIsIncreaseNature(String label) {
+    if (label == "A") {
+      return isAIncrease;
+    } else if (label == "B") {
+      return isBIncrease;
+    } else if (label == "C") {
+      return isCIncrease;
+    } else if (label == "D") {
+      return isDIncrease;
+    } else if (label == "S") {
+      return isSIncrease;
+    } else {
+      return false;
+    }
+  }
+
+  bool getIsDecreaseNature(String label) {
+    if (label == "A") {
+      return isADecrease;
+    } else if (label == "B") {
+      return isBDecrease;
+    } else if (label == "C") {
+      return isCDecrease;
+    } else if (label == "D") {
+      return isDDecrease;
+    } else if (label == "S") {
+      return isSDecrease;
+    } else {
+      return false;
+    }
+  }
+
+  int getRealStatus({required String label}) {
+    return getRealStatusBase(
+      label: label,
+      iv: getIv(label),
+      ev: getEv(label),
+      isIncreaseNature: getIsIncreaseNature(label),
+      isDecreaseNature: getIsDecreaseNature(label),
+    );
+  }
+
+  int getRealStatusBase({
     required String label,
     int iv = 0,
     int ev = 0,
@@ -119,27 +197,27 @@ class Status {
 
   Map<String, int> getStatusPattern({required String label}) {
     return {
-      'max': getRealStatus(
+      'max': getRealStatusBase(
         label: label,
         iv: 31,
         ev: 252,
         isIncreaseNature: true,
       ),
-      'semiMax': getRealStatus(
+      'semiMax': getRealStatusBase(
         label: label,
         iv: 31,
         ev: 252,
       ),
-      'neutral': getRealStatus(
+      'neutral': getRealStatusBase(
         label: label,
         iv: 31,
       ),
-      'semiMin': getRealStatus(
+      'semiMin': getRealStatusBase(
         label: label,
         iv: 31,
         isDecreaseNature: true,
       ),
-      'min': getRealStatus(
+      'min': getRealStatusBase(
         label: label,
         iv: 0,
         isDecreaseNature: true,
@@ -160,36 +238,36 @@ class Status {
 
   Map<String, int> getCalculatedStatus() {
     return {
-      'H': getRealStatus(label: 'H', iv: ivH, ev: evH),
-      'A': getRealStatus(
+      'H': getRealStatusBase(label: 'H', iv: ivH, ev: evH),
+      'A': getRealStatusBase(
         label: 'A',
         iv: ivA,
         ev: evA,
         isIncreaseNature: isAIncrease,
         isDecreaseNature: isADecrease,
       ),
-      'B': getRealStatus(
+      'B': getRealStatusBase(
         label: 'B',
         iv: ivB,
         ev: evB,
         isIncreaseNature: isBIncrease,
         isDecreaseNature: isBDecrease,
       ),
-      'C': getRealStatus(
+      'C': getRealStatusBase(
         label: 'C',
         iv: ivC,
         ev: evC,
         isIncreaseNature: isCIncrease,
         isDecreaseNature: isCDecrease,
       ),
-      'D': getRealStatus(
+      'D': getRealStatusBase(
         label: 'D',
         iv: ivD,
         ev: evD,
         isIncreaseNature: isDIncrease,
         isDecreaseNature: isDDecrease,
       ),
-      'S': getRealStatus(
+      'S': getRealStatusBase(
         label: 'S',
         iv: ivS,
         ev: evS,

@@ -60,6 +60,7 @@ class DamageCard extends HookConsumerWidget {
                     (label) => Expanded(
                       flex: 1,
                       child: StatusBox(
+                        verticalSubStatus: true,
                         label: label,
                         status:
                             damageCustomBase.status.getRealStatus(label: label),
