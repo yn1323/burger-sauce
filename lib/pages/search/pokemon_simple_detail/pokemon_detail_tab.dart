@@ -59,7 +59,7 @@ class PokemonDetailTab extends HookWidget {
                                   const TextStyle(fontWeight: FontWeight.bold)),
                           const Gap(5),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width - 60,
+                            width: MediaQuery.of(context).size.width - 70,
                             child: Text(
                               ability.detail,
                               style: const TextStyle(fontSize: 12),
@@ -106,7 +106,7 @@ class PokemonDetailTab extends HookWidget {
                           ),
                           const Gap(5),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width - 160,
+                            width: MediaQuery.of(context).size.width - 170,
                             child: Text(
                               move.detail,
                               style: const TextStyle(fontSize: 12),

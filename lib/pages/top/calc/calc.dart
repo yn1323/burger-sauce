@@ -192,15 +192,19 @@ class Calc extends _$Calc {
 
   void addBase({required String type}) {
     if (type == "attack") {
-      update(attackBase: [
+      final nextAttackBase = [
         ...state.attackBase,
-        _topRankBase(state.attackBase.map((e) => e.pokemonId).toList())
-      ]);
+        _topRankBase(state.attackBase.map((e) => e.pokemonId).toList()),
+      ];
+      update(attackBase: nextAttackBase);
+      attackBase = nextAttackBase;
     } else {
-      update(defenseBase: [
+      final nextDefenseBase = [
         ...state.defenseBase,
-        _topRankBase(state.defenseBase.map((e) => e.pokemonId).toList())
-      ]);
+        _topRankBase(state.defenseBase.map((e) => e.pokemonId).toList()),
+      ];
+      update(defenseBase: nextDefenseBase);
+      defenseBase = nextDefenseBase;
     }
   }
 
@@ -382,5 +386,7 @@ class Calc extends _$Calc {
       attackBase: newAttackBase.toList(),
       defenseBase: newDefenseBase.toList(),
     );
+    attackBase = newAttackBase.toList();
+    defenseBase = newDefenseBase.toList();
   }
 }

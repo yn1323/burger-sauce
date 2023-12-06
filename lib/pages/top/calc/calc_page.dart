@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+const tabTypes = ['attack', 'defense'];
+
 class CalcPage extends HookConsumerWidget {
   final String calcId;
 
@@ -52,123 +54,102 @@ class CalcPage extends HookConsumerWidget {
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) {
               return [
-                const SliverAppBar(
-                  title: Text('まとめてダメ計'),
-                  floating: false,
-                  pinned: false,
-                ),
-                SliverPersistentHeader(
+                SliverAppBar(
+                  title: const Text('まとめてダメ計'),
                   pinned: true,
-                  delegate: _StickyTabBarDelegate(
-                    tabBar: TabBar(
-                      labelColor: Colors.blue,
-                      unselectedLabelColor: Colors.grey[700],
-                      tabs: const [
-                        Tab(
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(Icons.sports_martial_arts),
-                              Text('Attack'),
-                            ],
-                          ),
+                  floating: true,
+                  bottom: PreferredSize(
+                    preferredSize: Size.fromHeight(kToolbarHeight +
+                        (calcStore.defenseBase.isNotEmpty ? 40 : 0)),
+                    child: Column(
+                      children: [
+                        const TabBar(
+                          tabs: [
+                            Tab(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(Icons.sports_martial_arts),
+                                  Text('Attack'),
+                                ],
+                              ),
+                            ),
+                            Tab(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(Icons.health_and_safety),
+                                  Text('Defense'),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                        Tab(
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(Icons.health_and_safety),
-                              Text('Defense'),
-                            ],
+                        if (calcStore.defenseBase.isNotEmpty)
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            child: const Text('防御側の設定'),
                           ),
-                        ),
                       ],
                     ),
                   ),
                 ),
               ];
             },
-            body: Builder(builder: (context) {
-              if (result.isLoadingOrError()) {
-                return result.suspensePart();
-              }
-              if (result.data!.abilities.isEmpty ||
-                  result.data!.moves.isEmpty ||
-                  result.data!.pokemons.isEmpty ||
-                  result.data!.attackTypes.isEmpty ||
-                  result.data!.battleDatasLatest == null ||
-                  result.data!.natures.isEmpty ||
-                  result.data!.types.isEmpty) {
-                return const Text('データが見つかりませんでした');
-              }
+            body: Builder(
+              builder: (context) {
+                if (result.isLoadingOrError()) {
+                  return result.suspensePart();
+                }
+                if (result.data!.abilities.isEmpty ||
+                    result.data!.moves.isEmpty ||
+                    result.data!.pokemons.isEmpty ||
+                    result.data!.attackTypes.isEmpty ||
+                    result.data!.battleDatasLatest == null ||
+                    result.data!.natures.isEmpty ||
+                    result.data!.types.isEmpty) {
+                  return const Text('データが見つかりませんでした');
+                }
 
-              calcStoreNotifier.updateSummary(result.data!);
+                calcStoreNotifier.updateSummary(result.data!);
 
-              return TabBarView(
-                children: [
-                  ListView.separated(
-                    padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 10),
-                    itemCount: calcStore.attackBase.length +
-                        (calcStore.attackBase.length < maxBases ? 1 : 0),
-                    itemBuilder: (context, index) {
-                      if (index >= calcStore.attackBase.length) {
-                        return const DamageCardAddButton();
-                      }
-                      return DismissibleWidget(
-                        child: DamageCard(
-                          damageCustomBase: calcStore.attackBase[index],
-                        ),
-                        onDismissed: (_) {
-                          calcStoreNotifier.removeBase(
-                            type: 'attack',
-                            index: index,
-                          );
-                        },
-                      );
-                    },
-                  ),
-                  ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return const Text('moge');
-                    },
-                  ),
-                ],
-              );
-            }),
+                return TabBarView(
+                  children: tabTypes.map((type) {
+                    final targetBase = type == 'attack'
+                        ? calcStore.attackBase
+                        : calcStore.defenseBase;
+
+                    return ListView.separated(
+                      padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 10),
+                      itemCount: targetBase.length +
+                          (targetBase.length < maxBases ? 1 : 0),
+                      itemBuilder: (context, index) {
+                        if (index >= targetBase.length) {
+                          return DamageCardAddButton(type: type);
+                        }
+
+                        return DismissibleWidget(
+                          child: DamageCard(
+                            damageCustomBase: targetBase[index],
+                          ),
+                          onDismissed: (_) {
+                            calcStoreNotifier.removeBase(
+                              type: type,
+                              index: index,
+                            );
+                          },
+                        );
+                      },
+                    );
+                  }).toList(),
+                );
+              },
+            ),
           ),
         ),
       ),
     );
-  }
-}
-
-class _StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
-  const _StickyTabBarDelegate({required this.tabBar});
-
-  final TabBar tabBar;
-
-  @override
-  double get minExtent => tabBar.preferredSize.height;
-
-  @override
-  double get maxExtent => tabBar.preferredSize.height;
-
-  @override
-  Widget build(
-    BuildContext context,
-    double shrinkOffset,
-    bool overlapsContent,
-  ) {
-    return Container(
-      child: tabBar,
-    );
-  }
-
-  @override
-  bool shouldRebuild(_StickyTabBarDelegate oldDelegate) {
-    return tabBar != oldDelegate.tabBar;
   }
 }

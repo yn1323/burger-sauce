@@ -6,7 +6,7 @@ part of 'calc.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$calcHash() => r'b2a21631fecc262cb66a4bfb425fea60d5742400';
+String _$calcHash() => r'18a9eab14ba4668900261e38d211bf8e2c869062';
 
 /// See also [Calc].
 @ProviderFor(Calc)
