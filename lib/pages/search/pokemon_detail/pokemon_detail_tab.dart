@@ -1,6 +1,6 @@
 import 'package:built_collection/built_collection.dart';
+import 'package:burger_sauce/components/fragments/move_type_image.dart';
 import 'package:burger_sauce/components/fragments/tab_list_view_style.dart';
-import 'package:burger_sauce/components/fragments/vertical_move_type_image.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/__generated__/onePokemon.data.gql.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -90,7 +90,7 @@ class PokemonDetailTab extends HookWidget {
                   child: TabListViewStyle(
                       row: Row(
                     children: [
-                      VerticalMoveTypeImage(
+                      MoveTypeImage(
                         attackTypeImageUrl: move.attackType?.imageUrl,
                         typeImageUrl: move.type?.textImageUrl,
                       ),

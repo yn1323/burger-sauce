@@ -120,6 +120,12 @@ class CalcPage extends HookConsumerWidget {
                         child: DamageCard(
                           damageCustomBase: calcStore.attackBase[index],
                         ),
+                        onDismissed: (_) {
+                          calcStoreNotifier.removeBase(
+                            type: 'attack',
+                            index: index,
+                          );
+                        },
                       );
                     },
                   ),

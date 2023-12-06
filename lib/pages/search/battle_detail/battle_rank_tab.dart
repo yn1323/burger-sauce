@@ -1,7 +1,7 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:burger_sauce/components/features/images/skeleton.dart';
+import 'package:burger_sauce/components/fragments/move_type_image.dart';
 import 'package:burger_sauce/components/fragments/tab_list_view_style.dart';
-import 'package:burger_sauce/components/fragments/vertical_move_type_image.dart';
 import 'package:burger_sauce/pages/search/battle_detail/__generated__/oneBattleData.data.gql.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -104,7 +104,7 @@ class BattleRankTab extends HookWidget {
                     child: TabListViewStyle(
                       row: Row(
                         children: [
-                          VerticalMoveTypeImage(
+                          MoveTypeImage(
                             typeImageUrl: battleMove.move.type?.textImageUrl,
                             attackTypeImageUrl:
                                 battleMove.move.attackType?.imageUrl,

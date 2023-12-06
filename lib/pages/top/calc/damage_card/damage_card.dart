@@ -1,8 +1,10 @@
+import 'package:burger_sauce/components/fragments/move_type_image.dart';
 import 'package:burger_sauce/components/fragments/pokemon_custom_image.dart';
 import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/status_list.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 List<String> statusLabels = ["H", "A", "B", "C", "D", "S"];
@@ -28,16 +30,8 @@ class DamageCard extends HookConsumerWidget {
       child: Container(
         padding: const EdgeInsets.all(16.0),
         width: MediaQuery.of(context).size.width,
-        height: 300,
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(nameWithForm(name: pokemon.name, form: pokemon.form)),
-                Text(ability.name),
-              ],
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -47,12 +41,35 @@ class DamageCard extends HookConsumerWidget {
                   terastalImage: terastal.terastalImageUrl,
                   size: 120,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: moves.map((e) => Text(e.name)).toList(),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 32.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            nameWithForm(
+                                name: pokemon.name, form: pokemon.form),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                        const Gap(12),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            ability.name,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
+            const Gap(4),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: statusLabels
@@ -73,7 +90,25 @@ class DamageCard extends HookConsumerWidget {
                     ),
                   )
                   .toList(),
-            )
+            ),
+            const Gap(4),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: moves.map((e) {
+                final moveType = calcNotifier.getMoveType(id: e.id);
+                return Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Row(children: [
+                    MoveTypeImage(
+                      attackTypeImageUrl: moveType.attackType.imageUrl,
+                      typeImageUrl: moveType.type.textImageUrl,
+                    ),
+                    const Gap(16),
+                    Text(e.name, style: const TextStyle(fontSize: 18))
+                  ]),
+                );
+              }).toList(),
+            ),
           ],
         ),
       ),

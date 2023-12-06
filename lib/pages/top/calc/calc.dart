@@ -67,6 +67,12 @@ class CalcState {
   List<DamageCustomBase> defenseBase;
 }
 
+class MoveType {
+  MoveType({required this.type, required this.attackType});
+  GDamageCalcSummaryData_types type;
+  GDamageCalcSummaryData_attackTypes attackType;
+}
+
 @riverpod
 class Calc extends _$Calc {
   List<GDamageCalcSummaryData_pokemons>? pokemons;
@@ -184,11 +190,30 @@ class Calc extends _$Calc {
         ));
   }
 
-  void addAttackBase() {
-    update(attackBase: [
-      ...state.attackBase,
-      _topRankBase(state.attackBase.map((e) => e.pokemonId).toList())
-    ]);
+  void addBase({required String type}) {
+    if (type == "attack") {
+      update(attackBase: [
+        ...state.attackBase,
+        _topRankBase(state.attackBase.map((e) => e.pokemonId).toList())
+      ]);
+    } else {
+      update(defenseBase: [
+        ...state.defenseBase,
+        _topRankBase(state.defenseBase.map((e) => e.pokemonId).toList())
+      ]);
+    }
+  }
+
+  void removeBase({required String type, required int index}) {
+    if (type == "attack") {
+      final newAttackBase = state.attackBase;
+      newAttackBase.removeAt(index);
+      update(attackBase: newAttackBase);
+    } else {
+      final newDefenseBase = state.defenseBase;
+      newDefenseBase.removeAt(index);
+      update(defenseBase: newDefenseBase);
+    }
   }
 
   GDamageCalcSummaryData_pokemons getPokemon(
@@ -244,13 +269,17 @@ class Calc extends _$Calc {
     return attackTypes!.firstWhere((e) => e.name == name);
   }
 
-  void addDefenseBase() {
-    defenseBase.add(_topRankBase(defenseBase.map((e) => e.pokemonId).toList()));
+  MoveType getMoveType({required String id}) {
+    final move = moves!.firstWhere((e) => e.id == id);
+    final type = types!.firstWhere((e) => e.id == move.typeId!);
+    final attackType =
+        attackTypes!.firstWhere((e) => e.id == move.attackTypeId!);
+
+    return MoveType(type: type, attackType: attackType);
   }
 
   void updateCalcAll(
       List<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc> calcs) {
-    // TODO：ソートは適当。後で直す
     final sortedCalcs = calcs..sort((a, b) => a.order.compareTo(b.order));
     final attacks = sortedCalcs.where((calc) => calc.side == "attack").toList();
     final defenses =

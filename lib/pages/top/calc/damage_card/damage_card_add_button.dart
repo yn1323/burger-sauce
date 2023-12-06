@@ -14,7 +14,7 @@ class DamageCardAddButton extends HookConsumerWidget {
         height: 100,
         child: InkWell(
           onTap: () {
-            calcStoreNotifier.addAttackBase();
+            calcStoreNotifier.addBase(type: 'attack');
           },
           child: const Icon(Icons.add),
         ),

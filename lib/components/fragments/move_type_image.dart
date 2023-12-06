@@ -3,15 +3,17 @@ import 'package:burger_sauce/components/fragments/type_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class VerticalMoveTypeImage extends StatelessWidget {
-  const VerticalMoveTypeImage({
+class MoveTypeImage extends StatelessWidget {
+  const MoveTypeImage({
     super.key,
     required this.attackTypeImageUrl,
     required this.typeImageUrl,
+    this.isHorizontal = false,
   });
 
   final String? attackTypeImageUrl;
   final String? typeImageUrl;
+  final bool isHorizontal;
 
   final double width = 80;
   final double height = 18;
@@ -30,7 +32,30 @@ class VerticalMoveTypeImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    if (!isHorizontal) {
+      return Column(children: [
+        TypeImage(typeImageUrl1: typeImageUrl),
+        Container(
+          width: width,
+          height: height,
+          decoration: BoxDecoration(
+            color: getAttackTypeBackground(),
+            borderRadius: BorderRadius.circular(2),
+          ),
+          child: CachedNetworkImage(
+            imageUrl: attackTypeImageUrl ?? '',
+            width: width,
+            height: height,
+            // ignore: prefer_const_constructors
+            placeholder: (context, url) => Skeleton(
+              width: width,
+              height: height,
+            ),
+          ),
+        ),
+      ]);
+    }
+    return Row(children: [
       TypeImage(typeImageUrl1: typeImageUrl),
       Container(
         width: width,
@@ -43,6 +68,7 @@ class VerticalMoveTypeImage extends StatelessWidget {
           imageUrl: attackTypeImageUrl ?? '',
           width: width,
           height: height,
+          // ignore: prefer_const_constructors
           placeholder: (context, url) => Skeleton(
             width: width,
             height: height,
