@@ -50,12 +50,12 @@ class Status {
   final int ivC;
   final int ivD;
   final int ivS;
-  final int evH;
-  final int evA;
-  final int evB;
-  final int evC;
-  final int evD;
-  final int evS;
+  int evH;
+  int evA;
+  int evB;
+  int evC;
+  int evD;
+  int evS;
   final bool isHIncrease;
   final bool isAIncrease;
   final bool isBIncrease;

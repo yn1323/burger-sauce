@@ -16,11 +16,11 @@
         "wakeup"
     ],
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true,
-        "source.fixAll": true,
-        "quickfix.insertSemicolon": true,
-        "source.addMissingImports": true,
-      },
+        "source.organizeImports": "explicit",
+        "source.fixAll": "explicit",
+        "quickfix.insertSemicolon": "explicit",
+        "source.addMissingImports": "explicit"
+    },
     "dart.previewFlutterUiGuides": true,
     "dart.previewFlutterUiGuidesCustomTracking": true,
     "dart.closingLabels": false,

@@ -11,6 +11,16 @@
             "type": "node-terminal"
         },
         {
+            "name": "Launch Storybook",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "-tstorybook/main.dart",
+                "-dchrome",
+            ]
+        },
+        {
             "name": "burger_sauce(Browser Debug)",
             "request": "launch",
             "type": "dart",

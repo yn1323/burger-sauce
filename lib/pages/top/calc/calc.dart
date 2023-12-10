@@ -282,6 +282,68 @@ class Calc extends _$Calc {
     return MoveType(type: type, attackType: attackType);
   }
 
+  void updateEv(
+      {required String type, required int ev, required UniqueKey id}) {
+    final tabType =
+        state.attackBase.any((e) => e.id == id) ? "attack" : "defense";
+
+    if (tabType == "attack") {
+      final newAttackBase = state.attackBase;
+      final index = newAttackBase.indexWhere((e) => e.id == id);
+      final target = newAttackBase[index];
+      switch (type) {
+        case "H":
+          target.status.evH = ev;
+          break;
+        case "A":
+          target.status.evA = ev;
+          break;
+        case "B":
+          target.status.evB = ev;
+          break;
+        case "C":
+          target.status.evC = ev;
+          break;
+        case "D":
+          target.status.evD = ev;
+          break;
+        case "S":
+          target.status.evS = ev;
+          break;
+      }
+      newAttackBase[index] = target;
+      update(attackBase: newAttackBase);
+    } else {
+      final newDefenseBase = state.defenseBase;
+      final index = newDefenseBase.indexWhere((e) => e.id == id);
+      final target = newDefenseBase[index];
+      switch (type) {
+        case "H":
+          target.status.evH = ev;
+          break;
+        case "A":
+          target.status.evA = ev;
+          break;
+        case "B":
+          target.status.evB = ev;
+          break;
+        case "C":
+          target.status.evC = ev;
+          break;
+        case "D":
+          target.status.evD = ev;
+          break;
+        case "S":
+          target.status.evS = ev;
+          break;
+      }
+      newDefenseBase[index] = target;
+      update(defenseBase: newDefenseBase);
+    }
+
+    if (type == "H") {}
+  }
+
   void updateCalcAll(
       List<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc> calcs) {
     final sortedCalcs = calcs..sort((a, b) => a.order.compareTo(b.order));
@@ -341,7 +403,7 @@ class Calc extends _$Calc {
       final nature = getNature(id: e.natureId);
 
       return DamageCustomBase(
-        id: e.client as UniqueKey,
+        id: null,
         pokemonId: e.pokemonId,
         moveIds: e.moves.map((p) => p.id).toList(),
         abilityId: e.abilityId ?? '',

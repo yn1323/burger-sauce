@@ -3,6 +3,7 @@ import 'package:burger_sauce/components/fragments/pokemon_custom_image.dart';
 import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/status_list.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/ev_config.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -70,26 +71,51 @@ class DamageCard extends HookConsumerWidget {
               ],
             ),
             const Gap(4),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: statusLabels
-                  .map(
-                    (label) => Expanded(
-                      flex: 1,
-                      child: StatusBox(
-                        verticalSubStatus: true,
-                        label: label,
-                        status:
-                            damageCustomBase.status.getRealStatus(label: label),
-                        subStatus: damageCustomBase.status.getEv(label),
-                        isIncrease:
-                            damageCustomBase.status.getIsIncreaseNature(label),
-                        isDecrease:
-                            damageCustomBase.status.getIsDecreaseNature(label),
+            InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                  isScrollControlled: true,
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Container(
+                      height: MediaQuery.of(context).size.height * 0.8,
+                      padding: const EdgeInsets.all(16.0),
+                      child: EvConfig(
+                        status: damageCustomBase.status,
+                        ev: statusLabels
+                            .map(
+                                (label) => damageCustomBase.status.getEv(label))
+                            .toList(),
+                        onChange: ({required type, required value}) {
+                          calcNotifier.updateEv(
+                              type: type, ev: value, id: damageCustomBase.id);
+                        },
                       ),
-                    ),
-                  )
-                  .toList(),
+                    );
+                  },
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: statusLabels
+                    .map(
+                      (label) => Expanded(
+                        flex: 1,
+                        child: StatusBox(
+                          verticalSubStatus: true,
+                          label: label,
+                          status: damageCustomBase.status
+                              .getRealStatus(label: label),
+                          subStatus: damageCustomBase.status.getEv(label),
+                          isIncrease: damageCustomBase.status
+                              .getIsIncreaseNature(label),
+                          isDecrease: damageCustomBase.status
+                              .getIsDecreaseNature(label),
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
             ),
             const Gap(4),
             Column(
