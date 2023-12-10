@@ -56,18 +56,18 @@ class Status {
   int evC;
   int evD;
   int evS;
-  final bool isHIncrease;
-  final bool isAIncrease;
-  final bool isBIncrease;
-  final bool isCIncrease;
-  final bool isDIncrease;
-  final bool isSIncrease;
-  final bool isHDecrease;
-  final bool isADecrease;
-  final bool isBDecrease;
-  final bool isCDecrease;
-  final bool isDDecrease;
-  final bool isSDecrease;
+  bool isHIncrease;
+  bool isAIncrease;
+  bool isBIncrease;
+  bool isCIncrease;
+  bool isDIncrease;
+  bool isSIncrease;
+  bool isHDecrease;
+  bool isADecrease;
+  bool isBDecrease;
+  bool isCDecrease;
+  bool isDDecrease;
+  bool isSDecrease;
   final int statusRankH;
   final int statusRankA;
   final int statusRankB;
@@ -158,6 +158,38 @@ class Status {
       return isSDecrease;
     } else {
       return false;
+    }
+  }
+
+  String getIncreaseNature() {
+    if (isAIncrease) {
+      return "A";
+    } else if (isBIncrease) {
+      return "B";
+    } else if (isCIncrease) {
+      return "C";
+    } else if (isDIncrease) {
+      return "D";
+    } else if (isSIncrease) {
+      return "S";
+    } else {
+      return "-";
+    }
+  }
+
+  String getDecreaseNature() {
+    if (isADecrease) {
+      return "A";
+    } else if (isBDecrease) {
+      return "B";
+    } else if (isCDecrease) {
+      return "C";
+    } else if (isDDecrease) {
+      return "D";
+    } else if (isSDecrease) {
+      return "S";
+    } else {
+      return "-";
     }
   }
 
@@ -275,5 +307,18 @@ class Status {
         isDecreaseNature: isSDecrease,
       ),
     };
+  }
+
+  void updateNature({String increase = '', String decrease = ''}) {
+    isAIncrease = increase == "A";
+    isBIncrease = increase == "B";
+    isCIncrease = increase == "C";
+    isDIncrease = increase == "D";
+    isSIncrease = increase == "S";
+    isADecrease = decrease == "A";
+    isBDecrease = decrease == "B";
+    isCDecrease = decrease == "C";
+    isDDecrease = decrease == "D";
+    isSDecrease = decrease == "S";
   }
 }

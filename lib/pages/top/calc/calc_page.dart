@@ -1,4 +1,4 @@
-import 'package:burger_sauce/components/widgets/dismissible_widget.dart';
+import 'package:burger_sauce/components/base/dismissible_widget.dart';
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/helpers/query.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';

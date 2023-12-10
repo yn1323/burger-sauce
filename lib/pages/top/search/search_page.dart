@@ -1,5 +1,5 @@
+import 'package:burger_sauce/components/base/view_list_row.dart';
 import 'package:burger_sauce/components/fragments/pokemon_image.dart';
-import 'package:burger_sauce/components/widgets/view_list_row.dart';
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/graphql/__generated__/schema.schema.gql.dart';
 import 'package:burger_sauce/helpers/query.dart';

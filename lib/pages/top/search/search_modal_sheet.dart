@@ -1,8 +1,8 @@
 import 'package:built_collection/built_collection.dart';
-import 'package:burger_sauce/components/widgets/auto_complete_text_field.dart';
-import 'package:burger_sauce/components/widgets/br.dart';
-import 'package:burger_sauce/components/widgets/expansion_panel_styled.dart';
-import 'package:burger_sauce/components/widgets/view_list_row.dart';
+import 'package:burger_sauce/components/base/auto_complete_text_field.dart';
+import 'package:burger_sauce/components/base/br.dart';
+import 'package:burger_sauce/components/base/expansion_panel_styled.dart';
+import 'package:burger_sauce/components/base/view_list_row.dart';
 import 'package:burger_sauce/constants/ui.dart';
 import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/top/search/__generated__/searchPokemon.data.gql.dart';

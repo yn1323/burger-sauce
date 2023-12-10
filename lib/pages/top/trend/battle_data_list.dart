@@ -1,5 +1,5 @@
+import 'package:burger_sauce/components/base/view_list_row.dart';
 import 'package:burger_sauce/components/fragments/pokemon_image.dart';
-import 'package:burger_sauce/components/widgets/view_list_row.dart';
 import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/top/trend/trend_page.dart';
 import 'package:flutter/material.dart';

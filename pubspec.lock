@@ -1019,7 +1019,7 @@ packages:
     source: hosted
     version: "1.0.0"
   storybook_flutter:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: storybook_flutter
       sha256: bd8e3d215aad611df6668721a28912eab8a65c33f9b7d092365922f90f5fd5df

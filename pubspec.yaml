@@ -61,6 +61,7 @@ dependencies:
   gql_exec: ^1.0.0
   intl: ^0.18.1
   hooks_riverpod: ^2.4.6
+  storybook_flutter: ^0.14.0
 
 dev_dependencies:
   flutter_test:
@@ -75,7 +76,6 @@ dev_dependencies:
   riverpod_generator: ^2.3.3
   build_runner: ^2.4.6
   ferry_generator: ^0.8.1
-  storybook_flutter: ^0.14.0
 
 
 

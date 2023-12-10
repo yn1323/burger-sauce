@@ -9,15 +9,10 @@ int min = 0;
 
 List<String> statusLabels = ["H", "A", "B", "C", "D", "S"];
 
-class EvConfig extends HookConsumerWidget {
-  const EvConfig(
-      {Key? key,
-      required this.onChange,
-      required this.ev,
-      required this.status})
+class EvSliders extends HookConsumerWidget {
+  const EvSliders({Key? key, required this.onChange, required this.status})
       : super(key: key);
 
-  final List<int> ev;
   final Status status;
   final void Function({
     required String type,
@@ -58,6 +53,10 @@ class EvConfig extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    useEffect(() {
+      return null;
+    }, [status]);
+
     final cnt = useState(0);
     void reload() {
       cnt.value = cnt.value + 1;
@@ -71,8 +70,8 @@ class EvConfig extends HookConsumerWidget {
               color: getEvSum() > 510 ? Colors.red : null,
             )),
         const Gap(12),
-        ...statusLabels.map((e) {
-          final index = statusLabels.indexOf(e);
+        ...statusLabels.map((label) {
+          final index = statusLabels.indexOf(label);
 
           return Padding(
             padding: const EdgeInsets.only(top: 8.0),
@@ -80,13 +79,23 @@ class EvConfig extends HookConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Center(
-                    child: Text(
-                        '$e : ${getCalculatedStatus()[index]} (${getEv()[index]})')),
+                  child: Text(
+                    '$label : ${getCalculatedStatus()[index]} (${getEv()[index]})',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: status.getIncreaseNature() == label
+                          ? Colors.red
+                          : status.getDecreaseNature() == label
+                              ? Colors.blue
+                              : null,
+                    ),
+                  ),
+                ),
                 EvSlider(
-                  initialValue: ev[index].toDouble(),
+                  value: getEv()[index].toDouble(),
                   onChanged: (value) {
                     onChange(
-                      type: e,
+                      type: label,
                       value: value,
                     );
                     reload();
@@ -105,42 +114,35 @@ class EvSlider extends HookConsumerWidget {
   const EvSlider({
     Key? key,
     required this.onChanged,
-    this.initialValue = 0.0,
+    this.value = 0.0,
   }) : super(key: key);
 
   final Function(int nextVal) onChanged;
-  final double initialValue;
+  final double value;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentSliderValue = useState(initialValue);
-
     void setVal(double nextVal) {
-      currentSliderValue.value = nextVal;
       onChanged(nextVal.toInt());
     }
 
     return Row(
       children: [
         ElevatedButton(
-            onPressed: currentSliderValue.value == min.toDouble()
-                ? null
-                : () => setVal(currentSliderValue.value - 4),
+            onPressed: value == min.toDouble() ? null : () => setVal(value - 4),
             child: const Text("-4")),
         Expanded(
           child: Slider(
-            value: currentSliderValue.value,
+            value: value,
             min: min.toDouble(),
             max: max.toDouble(),
             divisions: 63,
-            label: currentSliderValue.value.round().toString(),
+            label: value.round().toString(),
             onChanged: setVal,
           ),
         ),
         ElevatedButton(
-            onPressed: currentSliderValue.value == max.toDouble()
-                ? null
-                : () => setVal(currentSliderValue.value + 4),
+            onPressed: value == max.toDouble() ? null : () => setVal(value + 4),
             child: const Text("+4")),
       ],
     );

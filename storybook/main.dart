@@ -1,4 +1,4 @@
-import 'package:burger_sauce/pages/top/calc/damage_card/ev_config.dart';
+import 'package:burger_sauce/components/fragments/evSliders/story.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,15 +9,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Storybook(
-        initialStory: 'Page/EvConfig',
+        initialStory: 'components/fragments/natureSelector',
         stories: [
-          Story(
-            name: 'Page/EvConfig',
-            builder: (context) => EvConfig(
-              ev: const [0, 0, 0, 0, 252, 0],
-              onChange: ({required type, required value}) {},
-            ),
-          ),
+          evSlidersStory,
         ],
       );
 }

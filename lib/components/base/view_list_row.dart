@@ -1,4 +1,4 @@
-import 'package:burger_sauce/components/widgets/br.dart';
+import 'package:burger_sauce/components/base/br.dart';
 import 'package:burger_sauce/constants/ui.dart';
 import 'package:flutter/material.dart';
 

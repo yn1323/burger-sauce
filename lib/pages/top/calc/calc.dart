@@ -287,61 +287,58 @@ class Calc extends _$Calc {
     final tabType =
         state.attackBase.any((e) => e.id == id) ? "attack" : "defense";
 
-    if (tabType == "attack") {
-      final newAttackBase = state.attackBase;
-      final index = newAttackBase.indexWhere((e) => e.id == id);
-      final target = newAttackBase[index];
-      switch (type) {
-        case "H":
-          target.status.evH = ev;
-          break;
-        case "A":
-          target.status.evA = ev;
-          break;
-        case "B":
-          target.status.evB = ev;
-          break;
-        case "C":
-          target.status.evC = ev;
-          break;
-        case "D":
-          target.status.evD = ev;
-          break;
-        case "S":
-          target.status.evS = ev;
-          break;
-      }
-      newAttackBase[index] = target;
-      update(attackBase: newAttackBase);
-    } else {
-      final newDefenseBase = state.defenseBase;
-      final index = newDefenseBase.indexWhere((e) => e.id == id);
-      final target = newDefenseBase[index];
-      switch (type) {
-        case "H":
-          target.status.evH = ev;
-          break;
-        case "A":
-          target.status.evA = ev;
-          break;
-        case "B":
-          target.status.evB = ev;
-          break;
-        case "C":
-          target.status.evC = ev;
-          break;
-        case "D":
-          target.status.evD = ev;
-          break;
-        case "S":
-          target.status.evS = ev;
-          break;
-      }
-      newDefenseBase[index] = target;
-      update(defenseBase: newDefenseBase);
+    final targetBase =
+        tabType == "attack" ? state.attackBase : state.defenseBase;
+    final index = targetBase.indexWhere((e) => e.id == id);
+    final target = targetBase[index];
+
+    switch (type) {
+      case "H":
+        target.status.evH = ev;
+        break;
+      case "A":
+        target.status.evA = ev;
+        break;
+      case "B":
+        target.status.evB = ev;
+        break;
+      case "C":
+        target.status.evC = ev;
+        break;
+      case "D":
+        target.status.evD = ev;
+        break;
+      case "S":
+        target.status.evS = ev;
+        break;
     }
 
-    if (type == "H") {}
+    if (tabType == "attack") {
+      update(attackBase: targetBase);
+    } else {
+      update(defenseBase: targetBase);
+    }
+  }
+
+  void updateNature(
+      {required UniqueKey id,
+      required String increase,
+      required String decrease}) {
+    final tabType =
+        state.attackBase.any((e) => e.id == id) ? "attack" : "defense";
+
+    final targetBase =
+        tabType == "attack" ? state.attackBase : state.defenseBase;
+    final index = targetBase.indexWhere((e) => e.id == id);
+    final target = targetBase[index];
+
+    target.status.updateNature(increase: increase, decrease: decrease);
+
+    if (tabType == "attack") {
+      update(attackBase: targetBase);
+    } else {
+      update(defenseBase: targetBase);
+    }
   }
 
   void updateCalcAll(
