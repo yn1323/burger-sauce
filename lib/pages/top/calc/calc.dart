@@ -53,7 +53,7 @@ class CalcState {
     this.items,
     required this.attackBase,
     required this.defenseBase,
-    required this.details,
+    required this.pokemonInfo,
   });
   List<GDamageCalcSummaryData_pokemons>? pokemons;
   List<GDamageCalcSummaryData_battleDatasLatest_battleDatas>? battleDatas;
@@ -66,13 +66,19 @@ class CalcState {
 
   List<DamageCustomBase> attackBase;
   List<DamageCustomBase> defenseBase;
-  Map<String, GDamageCalcDetailData> details;
+  Map<String, PokemonInfo> pokemonInfo;
 }
 
 class MoveType {
   MoveType({required this.type, required this.attackType});
   GDamageCalcSummaryData_types type;
   GDamageCalcSummaryData_attackTypes attackType;
+}
+
+class PokemonInfo {
+  PokemonInfo({required this.abilities, required this.moves});
+  List<GDamageCalcSummaryData_abilities> abilities;
+  List<GDamageCalcSummaryData_moves> moves;
 }
 
 @riverpod
@@ -86,7 +92,7 @@ class Calc extends _$Calc {
   List<GDamageCalcSummaryData_types>? types;
   List<GDamageCalcSummaryData_items>? items;
 
-  Map<String, GDamageCalcDetailData> details = {};
+  Map<String, PokemonInfo> pokemonInfo = {};
   List<DamageCustomBase> attackBase = [];
   List<DamageCustomBase> defenseBase = [];
 
@@ -98,7 +104,7 @@ class Calc extends _$Calc {
         abilities: abilities,
         moves: moves,
         natures: natures,
-        details: details,
+        pokemonInfo: pokemonInfo,
         attackBase: attackBase,
         defenseBase: defenseBase,
       );
@@ -114,7 +120,7 @@ class Calc extends _$Calc {
       List<GDamageCalcSummaryData_items>? items,
       List<DamageCustomBase>? attackBase,
       List<DamageCustomBase>? defenseBase,
-      Map<String, GDamageCalcDetailData>? details}) {
+      Map<String, PokemonInfo>? pokemonInfo}) {
     state = CalcState(
       pokemons: pokemons ?? this.pokemons,
       battleDatas: battleDatas ?? this.battleDatas,
@@ -126,7 +132,7 @@ class Calc extends _$Calc {
       items: items ?? this.items,
       attackBase: attackBase ?? this.attackBase,
       defenseBase: defenseBase ?? this.defenseBase,
-      details: details ?? this.details,
+      pokemonInfo: pokemonInfo ?? this.pokemonInfo,
     );
   }
 
@@ -155,7 +161,31 @@ class Calc extends _$Calc {
   }
 
   void addDetail(GDamageCalcDetailData value) {
-    details[value.pokemon!.id] = value;
+    final targetPokemonInfo = value;
+
+    final battleData = getBattleData(pokemonId: targetPokemonInfo.pokemon!.id);
+
+    final battleDataMoveIds = battleData != null
+        ? battleData.battleDataMove.map((e) => e.moveId).toList()
+        : [] as List<String>;
+
+    final abilityIds =
+        targetPokemonInfo.pokemon!.abilities.map((e) => e.id).toList();
+    final moveIds = <String>{
+      ...battleDataMoveIds,
+      ...targetPokemonInfo.pokemon!.moves.map((e) => e.id)
+    }.toList();
+
+    final abilityList =
+        abilities!.where((e) => abilityIds.contains(e.id)).toList();
+    final moveList = moves!.where((e) => moveIds.contains(e.id)).toList();
+
+    final nextPokemonInfo = pokemonInfo;
+
+    nextPokemonInfo[targetPokemonInfo.pokemon!.id] =
+        PokemonInfo(abilities: abilityList, moves: moveList);
+
+    update(pokemonInfo: nextPokemonInfo);
   }
 
   List<String> get attackTypeIdOfAttack {
@@ -343,6 +373,14 @@ class Calc extends _$Calc {
         attackTypes!.firstWhere((e) => e.id == move.attackTypeId!);
 
     return MoveType(type: type, attackType: attackType);
+  }
+
+  GDamageCalcSummaryData_battleDatasLatest_battleDatas? getBattleData(
+      {required String pokemonId}) {
+    if (!battleDatas!.any((e) => e.pokemonId == pokemonId)) {
+      return null;
+    }
+    return battleDatas!.firstWhere((e) => e.pokemonId == pokemonId);
   }
 
   void updateEv(

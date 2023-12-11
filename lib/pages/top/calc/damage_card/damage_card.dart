@@ -33,6 +33,9 @@ class DamageCard extends HookConsumerWidget {
     final item = calcNotifier.getItem(id: damageCustomBase.itemId);
     final moves = damageCustomBase.moveIds
         .map((moveId) => calcNotifier.getMove(id: moveId));
+    final pokemonInfo = calcStore.pokemonInfo[pokemon.id];
+
+    print(calcStore.pokemonInfo.length);
 
     void changePokemon(String nextPokemonId) {
       if (nextPokemonId == damageCustomBase.pokemonId) return;
@@ -43,7 +46,7 @@ class DamageCard extends HookConsumerWidget {
       calcNotifier.replaceBase(before: damageCustomBase, after: nextBase);
     }
 
-    if (calcStore.details[pokemon.id] == null) {
+    if (calcStore.pokemonInfo[pokemon.id] == null) {
       useQuerySync<GDamageCalcDetailData, GDamageCalcDetailVars>(
         GDamageCalcDetailReq(
           (b) => b
@@ -86,26 +89,48 @@ class DamageCard extends HookConsumerWidget {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(left: 32.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            nameWithForm(
-                                name: pokemon.name, form: pokemon.form),
-                            style: const TextStyle(fontSize: 20),
+                    child: InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext context) {
+                            print(pokemonInfo!.abilities);
+                            return ListView(
+                              children: pokemonInfo.abilities
+                                  .map(
+                                    (e) => ListTile(
+                                      title: Text(e.name),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  )
+                                  .toList(),
+                            );
+                          },
+                        );
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              nameWithForm(
+                                  name: pokemon.name, form: pokemon.form),
+                              style: const TextStyle(fontSize: 20),
+                            ),
                           ),
-                        ),
-                        const Gap(12),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            ability.name,
-                            style: const TextStyle(fontSize: 16),
+                          const Gap(12),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              ability.name,
+                              style: const TextStyle(fontSize: 16),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
