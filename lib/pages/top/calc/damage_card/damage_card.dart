@@ -3,8 +3,10 @@ import 'package:burger_sauce/components/fragments/pokemon_custom_image.dart';
 import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/status_list.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/pokemon_select_bottom_sheet.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/status_edit_bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -19,6 +21,7 @@ class DamageCard extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final calcNotifier = ref.watch(calcProvider.notifier);
+    final calcStore = ref.watch(calcProvider);
 
     final pokemon = calcNotifier.getPokemon(id: damageCustomBase.pokemonId);
     final ability = calcNotifier.getAbility(id: damageCustomBase.abilityId);
@@ -26,6 +29,17 @@ class DamageCard extends HookConsumerWidget {
     final item = calcNotifier.getItem(id: damageCustomBase.itemId);
     final moves = damageCustomBase.moveIds
         .map((moveId) => calcNotifier.getMove(id: moveId));
+
+    final searchWord = useState('');
+
+    void changePokemon(String nextPokemonId) {
+      if (nextPokemonId == damageCustomBase.pokemonId) return;
+
+      final nextBase =
+          calcNotifier.getDamageCustomBase(pokemonId: nextPokemonId);
+
+      calcNotifier.replaceBase(before: damageCustomBase, after: nextBase);
+    }
 
     return Card(
       child: Container(
@@ -36,11 +50,25 @@ class DamageCard extends HookConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                PokemonCustomImage(
-                  pokemonImage: pokemon.imageUrl,
-                  itemImage: item.imageUrl,
-                  terastalImage: terastal.terastalImageUrl,
-                  size: 120,
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (BuildContext context) {
+                        return PokemonSelectBottomSheet(
+                          onChange: (String id) => changePokemon(id),
+                          pokemons: calcStore.pokemons!,
+                        );
+                      },
+                    );
+                  },
+                  child: PokemonCustomImage(
+                    pokemonImage: pokemon.imageUrl,
+                    itemImage: item.imageUrl,
+                    terastalImage: terastal.terastalImageUrl,
+                    size: 120,
+                  ),
                 ),
                 Expanded(
                   child: Padding(

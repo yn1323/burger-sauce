@@ -126,7 +126,6 @@ class Calc extends _$Calc {
   }
 
   void updateSummary(GDamageCalcSummaryData value) {
-    pokemons = value.pokemons.toList();
     battleDatas = value.battleDatasLatest?.battleDatas.toList();
     attackTypes = value.attackTypes.toList();
     abilities = value.abilities.toList();
@@ -134,6 +133,20 @@ class Calc extends _$Calc {
     natures = value.natures.toList();
     types = value.types.toList();
     items = value.items.toList();
+
+    final battleDataPokemonIds = battleDatas!.map((e) => e.pokemonId);
+
+    final pokemonsList = value.pokemons.toList();
+
+    final notFoundInBattlePokemons = pokemonsList
+        .where((pokemon) => !battleDataPokemonIds.contains(pokemon.id));
+
+    final foundPokemons = battleDataPokemonIds
+        .map((battlePokemonId) =>
+            pokemonsList.firstWhere((pokemon) => pokemon.id == battlePokemonId))
+        .toList();
+
+    pokemons = [...foundPokemons, ...notFoundInBattlePokemons];
   }
 
   List<String> get attackTypeIdOfAttack {
@@ -143,10 +156,30 @@ class Calc extends _$Calc {
         .toList();
   }
 
-  DamageCustomBase _topRankBase([List<String> avoidPokemonIds = const []]) {
-    final battleData =
-        battleDatas!.firstWhere((e) => !avoidPokemonIds.contains(e.pokemonId));
+  DamageCustomBase makeEmptyDamageCustomBase(String pokemonId) {
+    final pokemon = getPokemon(id: pokemonId);
 
+    return DamageCustomBase(
+      id: UniqueKey(),
+      pokemonId: pokemonId,
+      moveIds: [],
+      abilityId: '',
+      terastalId: '',
+      itemId: '',
+      natureId: '',
+      status: Status(
+        statusH: pokemon.statusH,
+        statusA: pokemon.statusA,
+        statusB: pokemon.statusB,
+        statusC: pokemon.statusC,
+        statusD: pokemon.statusD,
+        statusS: pokemon.statusS,
+      ),
+    );
+  }
+
+  DamageCustomBase makeDamageCustomBase(
+      GDamageCalcSummaryData_battleDatasLatest_battleDatas battleData) {
     final moveDatas = battleData.battleDataMove
         .map((p0) => moves!.firstWhere((move) => move.id == p0.moveId))
         .toList();
@@ -160,6 +193,7 @@ class Calc extends _$Calc {
     final nature = getNature(id: battleData.battleDataNature[0].natureId);
 
     return DamageCustomBase(
+        id: UniqueKey(),
         pokemonId: battleData.pokemonId,
         moveIds: filteredMoves.length > maxBases
             ? filteredMoves.sublist(0, maxBases)
@@ -190,18 +224,38 @@ class Calc extends _$Calc {
         ));
   }
 
+  DamageCustomBase getDamageCustomBase({required String pokemonId}) {
+    final hasBattleData = battleDatas!.any((e) => e.pokemonId == pokemonId);
+
+    if (!hasBattleData) {
+      return makeEmptyDamageCustomBase(pokemonId);
+    }
+
+    final battleData = battleDatas!.firstWhere((e) => e.pokemonId == pokemonId);
+    return makeDamageCustomBase(battleData);
+  }
+
+  DamageCustomBase getNonDuplicateCustomBase(
+      [List<String> avoidPokemonIds = const []]) {
+    final battleData =
+        battleDatas!.firstWhere((e) => !avoidPokemonIds.contains(e.pokemonId));
+    return makeDamageCustomBase(battleData);
+  }
+
   void addBase({required String type}) {
     if (type == "attack") {
       final nextAttackBase = [
         ...state.attackBase,
-        _topRankBase(state.attackBase.map((e) => e.pokemonId).toList()),
+        getNonDuplicateCustomBase(
+            state.attackBase.map((e) => e.pokemonId).toList()),
       ];
       update(attackBase: nextAttackBase);
       attackBase = nextAttackBase;
     } else {
       final nextDefenseBase = [
         ...state.defenseBase,
-        _topRankBase(state.defenseBase.map((e) => e.pokemonId).toList()),
+        getNonDuplicateCustomBase(
+            state.defenseBase.map((e) => e.pokemonId).toList()),
       ];
       update(defenseBase: nextDefenseBase);
       defenseBase = nextDefenseBase;
@@ -353,7 +407,7 @@ class Calc extends _$Calc {
       final nature = getNature(id: e.natureId);
 
       return DamageCustomBase(
-        id: null,
+        id: UniqueKey(),
         pokemonId: e.pokemonId,
         moveIds: e.moves.map((p) => p.id).toList(),
         abilityId: e.abilityId ?? '',
@@ -400,7 +454,7 @@ class Calc extends _$Calc {
       final nature = getNature(id: e.natureId);
 
       return DamageCustomBase(
-        id: null,
+        id: UniqueKey(),
         pokemonId: e.pokemonId,
         moveIds: e.moves.map((p) => p.id).toList(),
         abilityId: e.abilityId ?? '',
@@ -447,5 +501,22 @@ class Calc extends _$Calc {
     );
     attackBase = newAttackBase.toList();
     defenseBase = newDefenseBase.toList();
+  }
+
+  replaceBase(
+      {required DamageCustomBase before, required DamageCustomBase after}) {
+    final tabType =
+        state.attackBase.any((e) => e.id == before.id) ? "attack" : "defense";
+
+    final targetBase =
+        tabType == "attack" ? state.attackBase : state.defenseBase;
+    final index = targetBase.indexWhere((e) => e.id == before.id);
+    targetBase[index] = after;
+
+    if (tabType == "attack") {
+      update(attackBase: targetBase);
+    } else {
+      update(defenseBase: targetBase);
+    }
   }
 }

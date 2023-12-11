@@ -1,3 +1,4 @@
+import 'package:burger_sauce/components/base/common_search_bar.dart';
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/helpers/query.dart';
 import 'package:burger_sauce/helpers/string.dart';
@@ -33,7 +34,6 @@ class TrendPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useAutomaticKeepAlive();
-    final searchBarController = useTextEditingController();
     final searchWord = useState('');
 
     final result =
@@ -62,26 +62,14 @@ class TrendPage extends HookWidget {
               padding: const EdgeInsets.all(8.0),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: SearchBar(
+                child: CommonSearchBar(
                   hintText: 'ポケモン名で検索',
-                  elevation: const MaterialStatePropertyAll(1),
-                  padding: const MaterialStatePropertyAll<EdgeInsets>(
-                      EdgeInsets.symmetric(horizontal: 16.0)),
-                  controller: searchBarController,
-                  onChanged: (String word) {
+                  onChange: (String word) {
                     searchWord.value = word;
                   },
-                  leading: const Icon(Icons.search),
-                  trailing: <Widget>[
-                    if (searchWord.value.isNotEmpty)
-                      IconButton(
-                        onPressed: () {
-                          searchWord.value = '';
-                          searchBarController.text = '';
-                        },
-                        icon: const Icon(Icons.clear),
-                      )
-                  ],
+                  onDelete: () {
+                    searchWord.value = '';
+                  },
                 ),
               ),
             ),
