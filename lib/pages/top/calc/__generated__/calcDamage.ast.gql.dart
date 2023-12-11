@@ -801,19 +801,11 @@ const DamageCalcDetail = _i1.OperationDefinitionNode(
       directives: [],
       selectionSet: _i1.SelectionSetNode(selections: [
         _i1.FieldNode(
-          name: _i1.NameNode(value: 'abilities'),
+          name: _i1.NameNode(value: 'id'),
           alias: null,
           arguments: [],
           directives: [],
-          selectionSet: _i1.SelectionSetNode(selections: [
-            _i1.FieldNode(
-              name: _i1.NameNode(value: 'id'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            )
-          ]),
+          selectionSet: null,
         ),
         _i1.FieldNode(
           name: _i1.NameNode(value: 'moves'),
@@ -832,6 +824,21 @@ const DamageCalcDetail = _i1.OperationDefinitionNode(
         ),
         _i1.FieldNode(
           name: _i1.NameNode(value: 'types'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: _i1.SelectionSetNode(selections: [
+            _i1.FieldNode(
+              name: _i1.NameNode(value: 'id'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            )
+          ]),
+        ),
+        _i1.FieldNode(
+          name: _i1.NameNode(value: 'abilities'),
           alias: null,
           arguments: [],
           directives: [],

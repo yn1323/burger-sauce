@@ -67,15 +67,15 @@ Serializer<GDamageCalcDetailData> _$gDamageCalcDetailDataSerializer =
 Serializer<GDamageCalcDetailData_pokemon>
     _$gDamageCalcDetailDataPokemonSerializer =
     new _$GDamageCalcDetailData_pokemonSerializer();
-Serializer<GDamageCalcDetailData_pokemon_abilities>
-    _$gDamageCalcDetailDataPokemonAbilitiesSerializer =
-    new _$GDamageCalcDetailData_pokemon_abilitiesSerializer();
 Serializer<GDamageCalcDetailData_pokemon_moves>
     _$gDamageCalcDetailDataPokemonMovesSerializer =
     new _$GDamageCalcDetailData_pokemon_movesSerializer();
 Serializer<GDamageCalcDetailData_pokemon_types>
     _$gDamageCalcDetailDataPokemonTypesSerializer =
     new _$GDamageCalcDetailData_pokemon_typesSerializer();
+Serializer<GDamageCalcDetailData_pokemon_abilities>
+    _$gDamageCalcDetailDataPokemonAbilitiesSerializer =
+    new _$GDamageCalcDetailData_pokemon_abilitiesSerializer();
 
 class _$GDamageCalcSummaryDataSerializer
     implements StructuredSerializer<GDamageCalcSummaryData> {
@@ -1799,10 +1799,8 @@ class _$GDamageCalcDetailData_pokemonSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'abilities',
-      serializers.serialize(object.abilities,
-          specifiedType: const FullType(BuiltList,
-              const [const FullType(GDamageCalcDetailData_pokemon_abilities)])),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
       'moves',
       serializers.serialize(object.moves,
           specifiedType: const FullType(BuiltList,
@@ -1811,6 +1809,10 @@ class _$GDamageCalcDetailData_pokemonSerializer
       serializers.serialize(object.types,
           specifiedType: const FullType(BuiltList,
               const [const FullType(GDamageCalcDetailData_pokemon_types)])),
+      'abilities',
+      serializers.serialize(object.abilities,
+          specifiedType: const FullType(BuiltList,
+              const [const FullType(GDamageCalcDetailData_pokemon_abilities)])),
     ];
 
     return result;
@@ -1832,11 +1834,9 @@ class _$GDamageCalcDetailData_pokemonSerializer
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'abilities':
-          result.abilities.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltList, const [
-                const FullType(GDamageCalcDetailData_pokemon_abilities)
-              ]))! as BuiltList<Object?>);
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
         case 'moves':
           result.moves.replace(serializers.deserialize(value,
@@ -1850,57 +1850,11 @@ class _$GDamageCalcDetailData_pokemonSerializer
                 const FullType(GDamageCalcDetailData_pokemon_types)
               ]))! as BuiltList<Object?>);
           break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
-class _$GDamageCalcDetailData_pokemon_abilitiesSerializer
-    implements StructuredSerializer<GDamageCalcDetailData_pokemon_abilities> {
-  @override
-  final Iterable<Type> types = const [
-    GDamageCalcDetailData_pokemon_abilities,
-    _$GDamageCalcDetailData_pokemon_abilities
-  ];
-  @override
-  final String wireName = 'GDamageCalcDetailData_pokemon_abilities';
-
-  @override
-  Iterable<Object?> serialize(
-      Serializers serializers, GDamageCalcDetailData_pokemon_abilities object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      '__typename',
-      serializers.serialize(object.G__typename,
-          specifiedType: const FullType(String)),
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
-    ];
-
-    return result;
-  }
-
-  @override
-  GDamageCalcDetailData_pokemon_abilities deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = new GDamageCalcDetailData_pokemon_abilitiesBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current! as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-      switch (key) {
-        case '__typename':
-          result.G__typename = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
+        case 'abilities':
+          result.abilities.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(GDamageCalcDetailData_pokemon_abilities)
+              ]))! as BuiltList<Object?>);
           break;
       }
     }
@@ -1991,6 +1945,58 @@ class _$GDamageCalcDetailData_pokemon_typesSerializer
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GDamageCalcDetailData_pokemon_typesBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDamageCalcDetailData_pokemon_abilitiesSerializer
+    implements StructuredSerializer<GDamageCalcDetailData_pokemon_abilities> {
+  @override
+  final Iterable<Type> types = const [
+    GDamageCalcDetailData_pokemon_abilities,
+    _$GDamageCalcDetailData_pokemon_abilities
+  ];
+  @override
+  final String wireName = 'GDamageCalcDetailData_pokemon_abilities';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GDamageCalcDetailData_pokemon_abilities object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GDamageCalcDetailData_pokemon_abilities deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GDamageCalcDetailData_pokemon_abilitiesBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -5735,11 +5741,13 @@ class _$GDamageCalcDetailData_pokemon extends GDamageCalcDetailData_pokemon {
   @override
   final String G__typename;
   @override
-  final BuiltList<GDamageCalcDetailData_pokemon_abilities> abilities;
+  final String id;
   @override
   final BuiltList<GDamageCalcDetailData_pokemon_moves> moves;
   @override
   final BuiltList<GDamageCalcDetailData_pokemon_types> types;
+  @override
+  final BuiltList<GDamageCalcDetailData_pokemon_abilities> abilities;
 
   factory _$GDamageCalcDetailData_pokemon(
           [void Function(GDamageCalcDetailData_pokemonBuilder)? updates]) =>
@@ -5747,18 +5755,21 @@ class _$GDamageCalcDetailData_pokemon extends GDamageCalcDetailData_pokemon {
 
   _$GDamageCalcDetailData_pokemon._(
       {required this.G__typename,
-      required this.abilities,
+      required this.id,
       required this.moves,
-      required this.types})
+      required this.types,
+      required this.abilities})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GDamageCalcDetailData_pokemon', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
-        abilities, r'GDamageCalcDetailData_pokemon', 'abilities');
+        id, r'GDamageCalcDetailData_pokemon', 'id');
     BuiltValueNullFieldError.checkNotNull(
         moves, r'GDamageCalcDetailData_pokemon', 'moves');
     BuiltValueNullFieldError.checkNotNull(
         types, r'GDamageCalcDetailData_pokemon', 'types');
+    BuiltValueNullFieldError.checkNotNull(
+        abilities, r'GDamageCalcDetailData_pokemon', 'abilities');
   }
 
   @override
@@ -5775,18 +5786,20 @@ class _$GDamageCalcDetailData_pokemon extends GDamageCalcDetailData_pokemon {
     if (identical(other, this)) return true;
     return other is GDamageCalcDetailData_pokemon &&
         G__typename == other.G__typename &&
-        abilities == other.abilities &&
+        id == other.id &&
         moves == other.moves &&
-        types == other.types;
+        types == other.types &&
+        abilities == other.abilities;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, abilities.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, moves.hashCode);
     _$hash = $jc(_$hash, types.hashCode);
+    _$hash = $jc(_$hash, abilities.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -5795,9 +5808,10 @@ class _$GDamageCalcDetailData_pokemon extends GDamageCalcDetailData_pokemon {
   String toString() {
     return (newBuiltValueToStringHelper(r'GDamageCalcDetailData_pokemon')
           ..add('G__typename', G__typename)
-          ..add('abilities', abilities)
+          ..add('id', id)
           ..add('moves', moves)
-          ..add('types', types))
+          ..add('types', types)
+          ..add('abilities', abilities))
         .toString();
   }
 }
@@ -5812,13 +5826,9 @@ class GDamageCalcDetailData_pokemonBuilder
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  ListBuilder<GDamageCalcDetailData_pokemon_abilities>? _abilities;
-  ListBuilder<GDamageCalcDetailData_pokemon_abilities> get abilities =>
-      _$this._abilities ??=
-          new ListBuilder<GDamageCalcDetailData_pokemon_abilities>();
-  set abilities(
-          ListBuilder<GDamageCalcDetailData_pokemon_abilities>? abilities) =>
-      _$this._abilities = abilities;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
   ListBuilder<GDamageCalcDetailData_pokemon_moves>? _moves;
   ListBuilder<GDamageCalcDetailData_pokemon_moves> get moves =>
@@ -5832,6 +5842,14 @@ class GDamageCalcDetailData_pokemonBuilder
   set types(ListBuilder<GDamageCalcDetailData_pokemon_types>? types) =>
       _$this._types = types;
 
+  ListBuilder<GDamageCalcDetailData_pokemon_abilities>? _abilities;
+  ListBuilder<GDamageCalcDetailData_pokemon_abilities> get abilities =>
+      _$this._abilities ??=
+          new ListBuilder<GDamageCalcDetailData_pokemon_abilities>();
+  set abilities(
+          ListBuilder<GDamageCalcDetailData_pokemon_abilities>? abilities) =>
+      _$this._abilities = abilities;
+
   GDamageCalcDetailData_pokemonBuilder() {
     GDamageCalcDetailData_pokemon._initializeBuilder(this);
   }
@@ -5840,9 +5858,10 @@ class GDamageCalcDetailData_pokemonBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _abilities = $v.abilities.toBuilder();
+      _id = $v.id;
       _moves = $v.moves.toBuilder();
       _types = $v.types.toBuilder();
+      _abilities = $v.abilities.toBuilder();
       _$v = null;
     }
     return this;
@@ -5869,138 +5888,26 @@ class GDamageCalcDetailData_pokemonBuilder
           new _$GDamageCalcDetailData_pokemon._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, r'GDamageCalcDetailData_pokemon', 'G__typename'),
-              abilities: abilities.build(),
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, r'GDamageCalcDetailData_pokemon', 'id'),
               moves: moves.build(),
-              types: types.build());
+              types: types.build(),
+              abilities: abilities.build());
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'abilities';
-        abilities.build();
         _$failedField = 'moves';
         moves.build();
         _$failedField = 'types';
         types.build();
+        _$failedField = 'abilities';
+        abilities.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GDamageCalcDetailData_pokemon', _$failedField, e.toString());
       }
       rethrow;
     }
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GDamageCalcDetailData_pokemon_abilities
-    extends GDamageCalcDetailData_pokemon_abilities {
-  @override
-  final String G__typename;
-  @override
-  final String id;
-
-  factory _$GDamageCalcDetailData_pokemon_abilities(
-          [void Function(GDamageCalcDetailData_pokemon_abilitiesBuilder)?
-              updates]) =>
-      (new GDamageCalcDetailData_pokemon_abilitiesBuilder()..update(updates))
-          ._build();
-
-  _$GDamageCalcDetailData_pokemon_abilities._(
-      {required this.G__typename, required this.id})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        G__typename, r'GDamageCalcDetailData_pokemon_abilities', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'GDamageCalcDetailData_pokemon_abilities', 'id');
-  }
-
-  @override
-  GDamageCalcDetailData_pokemon_abilities rebuild(
-          void Function(GDamageCalcDetailData_pokemon_abilitiesBuilder)
-              updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  GDamageCalcDetailData_pokemon_abilitiesBuilder toBuilder() =>
-      new GDamageCalcDetailData_pokemon_abilitiesBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GDamageCalcDetailData_pokemon_abilities &&
-        G__typename == other.G__typename &&
-        id == other.id;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, G__typename.hashCode);
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(
-            r'GDamageCalcDetailData_pokemon_abilities')
-          ..add('G__typename', G__typename)
-          ..add('id', id))
-        .toString();
-  }
-}
-
-class GDamageCalcDetailData_pokemon_abilitiesBuilder
-    implements
-        Builder<GDamageCalcDetailData_pokemon_abilities,
-            GDamageCalcDetailData_pokemon_abilitiesBuilder> {
-  _$GDamageCalcDetailData_pokemon_abilities? _$v;
-
-  String? _G__typename;
-  String? get G__typename => _$this._G__typename;
-  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
-
-  GDamageCalcDetailData_pokemon_abilitiesBuilder() {
-    GDamageCalcDetailData_pokemon_abilities._initializeBuilder(this);
-  }
-
-  GDamageCalcDetailData_pokemon_abilitiesBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _G__typename = $v.G__typename;
-      _id = $v.id;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GDamageCalcDetailData_pokemon_abilities other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GDamageCalcDetailData_pokemon_abilities;
-  }
-
-  @override
-  void update(
-      void Function(GDamageCalcDetailData_pokemon_abilitiesBuilder)? updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  GDamageCalcDetailData_pokemon_abilities build() => _build();
-
-  _$GDamageCalcDetailData_pokemon_abilities _build() {
-    final _$result = _$v ??
-        new _$GDamageCalcDetailData_pokemon_abilities._(
-            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
-                r'GDamageCalcDetailData_pokemon_abilities', 'G__typename'),
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'GDamageCalcDetailData_pokemon_abilities', 'id'));
     replace(_$result);
     return _$result;
   }
@@ -6225,6 +6132,120 @@ class GDamageCalcDetailData_pokemon_typesBuilder
                 r'GDamageCalcDetailData_pokemon_types', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'GDamageCalcDetailData_pokemon_types', 'id'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDamageCalcDetailData_pokemon_abilities
+    extends GDamageCalcDetailData_pokemon_abilities {
+  @override
+  final String G__typename;
+  @override
+  final String id;
+
+  factory _$GDamageCalcDetailData_pokemon_abilities(
+          [void Function(GDamageCalcDetailData_pokemon_abilitiesBuilder)?
+              updates]) =>
+      (new GDamageCalcDetailData_pokemon_abilitiesBuilder()..update(updates))
+          ._build();
+
+  _$GDamageCalcDetailData_pokemon_abilities._(
+      {required this.G__typename, required this.id})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, r'GDamageCalcDetailData_pokemon_abilities', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        id, r'GDamageCalcDetailData_pokemon_abilities', 'id');
+  }
+
+  @override
+  GDamageCalcDetailData_pokemon_abilities rebuild(
+          void Function(GDamageCalcDetailData_pokemon_abilitiesBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GDamageCalcDetailData_pokemon_abilitiesBuilder toBuilder() =>
+      new GDamageCalcDetailData_pokemon_abilitiesBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDamageCalcDetailData_pokemon_abilities &&
+        G__typename == other.G__typename &&
+        id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            r'GDamageCalcDetailData_pokemon_abilities')
+          ..add('G__typename', G__typename)
+          ..add('id', id))
+        .toString();
+  }
+}
+
+class GDamageCalcDetailData_pokemon_abilitiesBuilder
+    implements
+        Builder<GDamageCalcDetailData_pokemon_abilities,
+            GDamageCalcDetailData_pokemon_abilitiesBuilder> {
+  _$GDamageCalcDetailData_pokemon_abilities? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  GDamageCalcDetailData_pokemon_abilitiesBuilder() {
+    GDamageCalcDetailData_pokemon_abilities._initializeBuilder(this);
+  }
+
+  GDamageCalcDetailData_pokemon_abilitiesBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDamageCalcDetailData_pokemon_abilities other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GDamageCalcDetailData_pokemon_abilities;
+  }
+
+  @override
+  void update(
+      void Function(GDamageCalcDetailData_pokemon_abilitiesBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GDamageCalcDetailData_pokemon_abilities build() => _build();
+
+  _$GDamageCalcDetailData_pokemon_abilities _build() {
+    final _$result = _$v ??
+        new _$GDamageCalcDetailData_pokemon_abilities._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GDamageCalcDetailData_pokemon_abilities', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GDamageCalcDetailData_pokemon_abilities', 'id'));
     replace(_$result);
     return _$result;
   }

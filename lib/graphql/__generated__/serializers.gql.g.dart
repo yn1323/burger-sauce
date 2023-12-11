@@ -164,16 +164,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GUpdateUserInput.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList,
-              const [const FullType(GDamageCalcDetailData_pokemon_abilities)]),
-          () => new ListBuilder<GDamageCalcDetailData_pokemon_abilities>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
               const [const FullType(GDamageCalcDetailData_pokemon_moves)]),
           () => new ListBuilder<GDamageCalcDetailData_pokemon_moves>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(GDamageCalcDetailData_pokemon_types)]),
           () => new ListBuilder<GDamageCalcDetailData_pokemon_types>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GDamageCalcDetailData_pokemon_abilities)]),
+          () => new ListBuilder<GDamageCalcDetailData_pokemon_abilities>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(GDamageCalcSummaryData_battleDatasLatest_battleDatas)

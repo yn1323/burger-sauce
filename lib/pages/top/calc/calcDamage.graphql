@@ -123,13 +123,14 @@ query DamageCalcSummary($calcId: String = "") {
 
 query DamageCalcDetail($id: String = "") {
   pokemon(id: $id) {
-    abilities {
-      id
-    }
+    id
     moves {
       id
     }
     types {
+      id
+    }
+    abilities {
       id
     }
   }

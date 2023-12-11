@@ -1,12 +1,16 @@
 import 'package:burger_sauce/components/fragments/move_type_image.dart';
 import 'package:burger_sauce/components/fragments/pokemon_custom_image.dart';
+import 'package:burger_sauce/constants/client.dart';
+import 'package:burger_sauce/helpers/query.dart';
 import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/status_list.dart';
+import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
+import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.req.gql.dart';
+import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.var.gql.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/pokemon_select_bottom_sheet.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/status_edit_bottom_sheet.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -30,8 +34,6 @@ class DamageCard extends HookConsumerWidget {
     final moves = damageCustomBase.moveIds
         .map((moveId) => calcNotifier.getMove(id: moveId));
 
-    final searchWord = useState('');
-
     void changePokemon(String nextPokemonId) {
       if (nextPokemonId == damageCustomBase.pokemonId) return;
 
@@ -39,6 +41,17 @@ class DamageCard extends HookConsumerWidget {
           calcNotifier.getDamageCustomBase(pokemonId: nextPokemonId);
 
       calcNotifier.replaceBase(before: damageCustomBase, after: nextBase);
+    }
+
+    if (calcStore.details[pokemon.id] == null) {
+      useQuerySync<GDamageCalcDetailData, GDamageCalcDetailVars>(
+        GDamageCalcDetailReq(
+          (b) => b
+            ..vars.id = damageCustomBase.pokemonId
+            ..fetchPolicy = fetchCacheFirst,
+        ),
+        (response) => calcNotifier.addDetail(response.data!),
+      );
     }
 
     return Card(

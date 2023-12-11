@@ -773,9 +773,10 @@ abstract class GDamageCalcDetailData_pokemon
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  BuiltList<GDamageCalcDetailData_pokemon_abilities> get abilities;
+  String get id;
   BuiltList<GDamageCalcDetailData_pokemon_moves> get moves;
   BuiltList<GDamageCalcDetailData_pokemon_types> get types;
+  BuiltList<GDamageCalcDetailData_pokemon_abilities> get abilities;
   static Serializer<GDamageCalcDetailData_pokemon> get serializer =>
       _$gDamageCalcDetailDataPokemonSerializer;
 
@@ -787,39 +788,6 @@ abstract class GDamageCalcDetailData_pokemon
   static GDamageCalcDetailData_pokemon? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GDamageCalcDetailData_pokemon.serializer,
-        json,
-      );
-}
-
-abstract class GDamageCalcDetailData_pokemon_abilities
-    implements
-        Built<GDamageCalcDetailData_pokemon_abilities,
-            GDamageCalcDetailData_pokemon_abilitiesBuilder> {
-  GDamageCalcDetailData_pokemon_abilities._();
-
-  factory GDamageCalcDetailData_pokemon_abilities(
-      [Function(GDamageCalcDetailData_pokemon_abilitiesBuilder b)
-          updates]) = _$GDamageCalcDetailData_pokemon_abilities;
-
-  static void _initializeBuilder(
-          GDamageCalcDetailData_pokemon_abilitiesBuilder b) =>
-      b..G__typename = 'Ability';
-
-  @BuiltValueField(wireName: '__typename')
-  String get G__typename;
-  String get id;
-  static Serializer<GDamageCalcDetailData_pokemon_abilities> get serializer =>
-      _$gDamageCalcDetailDataPokemonAbilitiesSerializer;
-
-  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GDamageCalcDetailData_pokemon_abilities.serializer,
-        this,
-      ) as Map<String, dynamic>);
-
-  static GDamageCalcDetailData_pokemon_abilities? fromJson(
-          Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(
-        GDamageCalcDetailData_pokemon_abilities.serializer,
         json,
       );
 }
@@ -886,6 +854,39 @@ abstract class GDamageCalcDetailData_pokemon_types
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GDamageCalcDetailData_pokemon_types.serializer,
+        json,
+      );
+}
+
+abstract class GDamageCalcDetailData_pokemon_abilities
+    implements
+        Built<GDamageCalcDetailData_pokemon_abilities,
+            GDamageCalcDetailData_pokemon_abilitiesBuilder> {
+  GDamageCalcDetailData_pokemon_abilities._();
+
+  factory GDamageCalcDetailData_pokemon_abilities(
+      [Function(GDamageCalcDetailData_pokemon_abilitiesBuilder b)
+          updates]) = _$GDamageCalcDetailData_pokemon_abilities;
+
+  static void _initializeBuilder(
+          GDamageCalcDetailData_pokemon_abilitiesBuilder b) =>
+      b..G__typename = 'Ability';
+
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String get id;
+  static Serializer<GDamageCalcDetailData_pokemon_abilities> get serializer =>
+      _$gDamageCalcDetailDataPokemonAbilitiesSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GDamageCalcDetailData_pokemon_abilities.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GDamageCalcDetailData_pokemon_abilities? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GDamageCalcDetailData_pokemon_abilities.serializer,
         json,
       );
 }

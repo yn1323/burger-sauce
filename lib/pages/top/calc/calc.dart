@@ -53,6 +53,7 @@ class CalcState {
     this.items,
     required this.attackBase,
     required this.defenseBase,
+    required this.details,
   });
   List<GDamageCalcSummaryData_pokemons>? pokemons;
   List<GDamageCalcSummaryData_battleDatasLatest_battleDatas>? battleDatas;
@@ -65,6 +66,7 @@ class CalcState {
 
   List<DamageCustomBase> attackBase;
   List<DamageCustomBase> defenseBase;
+  Map<String, GDamageCalcDetailData> details;
 }
 
 class MoveType {
@@ -84,33 +86,35 @@ class Calc extends _$Calc {
   List<GDamageCalcSummaryData_types>? types;
   List<GDamageCalcSummaryData_items>? items;
 
+  Map<String, GDamageCalcDetailData> details = {};
   List<DamageCustomBase> attackBase = [];
   List<DamageCustomBase> defenseBase = [];
 
   @override
   CalcState build() => CalcState(
-        attackBase: attackBase,
-        defenseBase: defenseBase,
         pokemons: pokemons,
         battleDatas: battleDatas,
         attackTypes: attackTypes,
         abilities: abilities,
         moves: moves,
         natures: natures,
+        details: details,
+        attackBase: attackBase,
+        defenseBase: defenseBase,
       );
 
-  void update({
-    List<GDamageCalcSummaryData_pokemons>? pokemons,
-    List<GDamageCalcSummaryData_battleDatasLatest_battleDatas>? battleDatas,
-    List<GDamageCalcSummaryData_attackTypes>? attackTypes,
-    List<GDamageCalcSummaryData_abilities>? abilities,
-    List<GDamageCalcSummaryData_moves>? moves,
-    List<GDamageCalcSummaryData_natures>? natures,
-    List<GDamageCalcSummaryData_types>? types,
-    List<GDamageCalcSummaryData_items>? items,
-    List<DamageCustomBase>? attackBase,
-    List<DamageCustomBase>? defenseBase,
-  }) {
+  void update(
+      {List<GDamageCalcSummaryData_pokemons>? pokemons,
+      List<GDamageCalcSummaryData_battleDatasLatest_battleDatas>? battleDatas,
+      List<GDamageCalcSummaryData_attackTypes>? attackTypes,
+      List<GDamageCalcSummaryData_abilities>? abilities,
+      List<GDamageCalcSummaryData_moves>? moves,
+      List<GDamageCalcSummaryData_natures>? natures,
+      List<GDamageCalcSummaryData_types>? types,
+      List<GDamageCalcSummaryData_items>? items,
+      List<DamageCustomBase>? attackBase,
+      List<DamageCustomBase>? defenseBase,
+      Map<String, GDamageCalcDetailData>? details}) {
     state = CalcState(
       pokemons: pokemons ?? this.pokemons,
       battleDatas: battleDatas ?? this.battleDatas,
@@ -122,6 +126,7 @@ class Calc extends _$Calc {
       items: items ?? this.items,
       attackBase: attackBase ?? this.attackBase,
       defenseBase: defenseBase ?? this.defenseBase,
+      details: details ?? this.details,
     );
   }
 
@@ -147,6 +152,10 @@ class Calc extends _$Calc {
         .toList();
 
     pokemons = [...foundPokemons, ...notFoundInBattlePokemons];
+  }
+
+  void addDetail(GDamageCalcDetailData value) {
+    details[value.pokemon!.id] = value;
   }
 
   List<String> get attackTypeIdOfAttack {

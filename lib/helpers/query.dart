@@ -67,3 +67,9 @@ QueryResult<T> useQuery<T, V>(
     refetch: refetch,
   );
 }
+
+void useQuerySync<T, V>(OperationRequest<T, V> operationRequest,
+    Function(OperationResponse<T, V>) callback) {
+  final client = GetIt.I<TypedLink>();
+  client.request(operationRequest).listen(callback);
+}
