@@ -8,6 +8,7 @@ import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.da
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.req.gql.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.var.gql.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/ability_select_bottom_sheet.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/pokemon_select_bottom_sheet.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/status_edit_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -35,13 +36,20 @@ class DamageCard extends HookConsumerWidget {
         .map((moveId) => calcNotifier.getMove(id: moveId));
     final pokemonInfo = calcStore.pokemonInfo[pokemon.id];
 
-    print(calcStore.pokemonInfo.length);
-
     void changePokemon(String nextPokemonId) {
       if (nextPokemonId == damageCustomBase.pokemonId) return;
 
       final nextBase =
           calcNotifier.getDamageCustomBase(pokemonId: nextPokemonId);
+
+      calcNotifier.replaceBase(before: damageCustomBase, after: nextBase);
+    }
+
+    void changeAbility(String nextAbilityId) {
+      if (nextAbilityId == damageCustomBase.abilityId) return;
+
+      final nextBase = calcNotifier.getDamageCustomBase(pokemonId: pokemon.id)
+        ..abilityId = nextAbilityId;
 
       calcNotifier.replaceBase(before: damageCustomBase, after: nextBase);
     }
@@ -94,18 +102,10 @@ class DamageCard extends HookConsumerWidget {
                         showModalBottomSheet(
                           context: context,
                           builder: (BuildContext context) {
-                            print(pokemonInfo!.abilities);
-                            return ListView(
-                              children: pokemonInfo.abilities
-                                  .map(
-                                    (e) => ListTile(
-                                      title: Text(e.name),
-                                      onTap: () {
-                                        Navigator.pop(context);
-                                      },
-                                    ),
-                                  )
-                                  .toList(),
+                            return AbilitySelectBottomSheet(
+                              abilities: pokemonInfo!.abilities,
+                              onChange: (String abilityId) =>
+                                  changeAbility(abilityId),
                             );
                           },
                         );

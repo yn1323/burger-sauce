@@ -156,72 +156,56 @@ class SearchPage extends HookWidget {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
-              child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.black87,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(100)),
-                  ),
-                ),
-                onPressed: () {
-                  final pokemonResult = result.data!.pokemonSearch;
-                  final pokemonList = result.data!.pokemonList;
-                  final moves = result.data!.moves;
-                  final abilities = result.data!.abilities;
-                  final types = result.data!.types;
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton.icon(
+                      onPressed: () {
+                        final pokemonResult = result.data!.pokemonSearch;
+                        final pokemonList = result.data!.pokemonList;
+                        final moves = result.data!.moves;
+                        final abilities = result.data!.abilities;
+                        final types = result.data!.types;
 
-                  showModalBottomSheet(
-                    isScrollControlled: true,
-                    context: context,
-                    builder: (BuildContext context) {
-                      return SearchModalSheet(
-                        pokemonResult: pokemonResult,
-                        searchCondition: searchCondition,
-                        pokemonList: pokemonList,
-                        abilities: abilities,
-                        moves: moves,
-                        types: types,
-                        setCondition: setCondition,
-                        onReset: onReset,
-                      );
-                    },
-                  );
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.search),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width - 120,
-                      child: Center(
-                        child: Text(
-                            overflow: TextOverflow.ellipsis,
-                            searchCondition.value.hasCondition()
-                                ? searchCondition.value.getSearchBarText()
-                                : '検索条件を設定する'),
-                      ),
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return SearchModalSheet(
+                              pokemonResult: pokemonResult,
+                              searchCondition: searchCondition,
+                              pokemonList: pokemonList,
+                              abilities: abilities,
+                              moves: moves,
+                              types: types,
+                              setCondition: setCondition,
+                              onReset: onReset,
+                            );
+                          },
+                        );
+                      },
+                      icon: const Icon(Icons.filter_alt),
+                      label: Text(searchCondition.value.hasCondition()
+                          ? searchCondition.value.getSearchBarText()
+                          : '検索条件を設定する'),
                     ),
-                    searchCondition.value.hasCondition()
-                        ? SizedBox(
-                            height: 30,
-                            width: 30,
-                            child: IconButton(
-                              padding: const EdgeInsets.all(0.0),
-                              iconSize: 18,
-                              onPressed: () {
-                                onReset();
-                              },
-                              icon: const Icon(
-                                Icons.clear,
-                              ),
-                            ),
-                          )
-                        : const Text('')
-                  ],
-                ),
+                  ),
+                  if (searchCondition.value.hasCondition())
+                    SizedBox(
+                      height: 30,
+                      width: 30,
+                      child: IconButton(
+                        padding: const EdgeInsets.all(0.0),
+                        iconSize: 18,
+                        onPressed: () {
+                          onReset();
+                        },
+                        icon: const Icon(
+                          Icons.clear,
+                        ),
+                      ),
+                    )
+                ],
               ),
             ),
           ),

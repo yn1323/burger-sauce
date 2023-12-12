@@ -1,3 +1,4 @@
+import 'package:burger_sauce/components/base/bottom_modal_sheet_template.dart';
 import 'package:burger_sauce/components/base/common_search_bar.dart';
 import 'package:burger_sauce/components/fragments/pokemon_image.dart';
 import 'package:burger_sauce/helpers/string.dart';
@@ -19,37 +20,43 @@ class PokemonSelectBottomSheet extends HookWidget {
   Widget build(BuildContext context) {
     final searchWord = useState('');
 
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: [
-          CommonSearchBar(
-            hintText: '検索',
-            onChange: (String word) => searchWord.value = word,
-            onDelete: () => searchWord.value = '',
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height - 100,
-            child: GridView.count(
-              crossAxisCount: 6,
-              children: pokemons
-                  .where((e) => e.name.contains(hiraToKata(searchWord.value)))
-                  .map(
-                    (pokemon) => InkWell(
-                      onTap: () => onChange(pokemon.id),
-                      child: PokemonImage(
-                        height: 30,
-                        width: 30,
-                        ballSkeleton: false,
-                        imageUrl: pokemon.imageUrl,
-                        showSkeleton: false,
-                      ),
-                    ),
-                  )
-                  .toList(),
+    return BottomModalSheetTemplate(
+      isScrollable: true,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            CommonSearchBar(
+              hintText: '検索',
+              onChange: (String word) => searchWord.value = word,
+              onDelete: () => searchWord.value = '',
             ),
-          )
-        ],
+            SizedBox(
+              height: MediaQuery.of(context).size.height - 300,
+              child: GridView.count(
+                crossAxisCount: 6,
+                children: pokemons
+                    .where((e) => e.name.contains(hiraToKata(searchWord.value)))
+                    .map(
+                      (pokemon) => InkWell(
+                        onTap: () {
+                          onChange(pokemon.id);
+                          Navigator.pop(context);
+                        },
+                        child: PokemonImage(
+                          height: 30,
+                          width: 30,
+                          ballSkeleton: false,
+                          imageUrl: pokemon.imageUrl,
+                          showSkeleton: false,
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

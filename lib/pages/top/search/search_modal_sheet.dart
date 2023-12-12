@@ -1,5 +1,6 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:burger_sauce/components/base/auto_complete_text_field.dart';
+import 'package:burger_sauce/components/base/bottom_modal_sheet_template.dart';
 import 'package:burger_sauce/components/base/br.dart';
 import 'package:burger_sauce/components/base/expansion_panel_styled.dart';
 import 'package:burger_sauce/components/base/view_list_row.dart';
@@ -34,170 +35,150 @@ class SearchModalSheet extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height - 100,
-      child: ListView(
-        children: [
-          Container(
-              padding: const EdgeInsets.all(16.0),
-              width: MediaQuery.of(context).size.width,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                        icon: const Icon(Icons.arrow_back),
-                        onPressed: () => Navigator.pop(context)),
-                    const Text('検索条件', style: TextStyle(fontSize: 18.0)),
-                    const Text('')
-                  ])),
-          ViewListRow(
-            padding: const EdgeInsets.all(8.0),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width - 80,
-              child: AutoCompleteTextField(
-                initialValue: searchCondition.value.name,
-                labelText: 'ポケモン名',
-                onSelected: (String name) {
-                  setCondition(name: name);
-                },
-                baseOptions: pokemonList
-                    .map(
-                      (pokemon) => AutoCompleteOption(
-                        label: nameWithForm(
-                            name: pokemon.name, form: pokemon.form),
-                        imageUrl: pokemon.imageUrl,
-                      ),
-                    )
-                    .toList(),
-              ),
-            ),
-          ),
-          ViewListRow(
-            padding: const EdgeInsets.all(8.0),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width - 80,
-              child: AutoCompleteTextField(
-                initialValue: searchCondition.value.abilities[0],
-                labelText: 'とくせい',
-                onSelected: (String name) {
-                  setCondition(abilities: [name]);
-                },
-                baseOptions: abilities
-                    .map(
-                      (ability) => AutoCompleteOption(label: ability.name),
-                    )
-                    .toList(),
-              ),
-            ),
-          ),
-          ExpansionPanelStyled(
-            initiallyExpanded: searchCondition.value.moves
-                .any((element) => element.isNotEmpty),
-            height: listHeight,
-            title: const Text('わざ'),
-            children: [
-              for (int i = 0; i < searchCondition.value.moves.length; i++)
-                Container(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width - 80,
-                    child: AutoCompleteTextField(
-                      initialValue: searchCondition.value.moves[i],
-                      labelText: 'わざ${i + 1}',
-                      onSelected: (String move) {
-                        final List<String> newCondition =
-                            List.from(searchCondition.value.moves);
-                        newCondition[i] = move;
-                        setCondition(moves: newCondition);
-                      },
-                      baseOptions: moves
-                          .map(
-                            (e) => AutoCompleteOption(label: e.name),
-                          )
-                          .toList(),
-                    ),
-                  ),
-                )
-            ],
-          ),
-          const Br(),
-          ExpansionPanelStyled(
-            height: listHeight,
-            title: const Text('タイプ'),
-            children: [
-              for (int i = 0; i < searchCondition.value.types.length; i++)
-                Container(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width - 80,
-                    child: AutoCompleteTextField(
-                      labelText: 'タイプ${i + 1}',
-                      onSelected: (String type) {
-                        final List<String> newCondition =
-                            List.from(searchCondition.value.types);
-                        newCondition[i] = type;
-                        setCondition(types: newCondition);
-                      },
-                      baseOptions: types
-                          .map(
-                            (e) => AutoCompleteOption(
-                              label: e.name,
-                              imageUrl: e.textImageUrl,
-                            ),
-                          )
-                          .toList(),
-                    ),
-                  ),
-                )
-            ],
-          ),
-          const Br(),
-          ViewListRow(
-            padding:
-                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text('検索対象'),
-                ToggleButtons(
-                  onPressed: (index) {
-                    setCondition(options: {
-                      "evolvedOnly": index == 0,
-                      "condition": "ASC"
-                    });
-                    Navigator.pop(context);
+    return BottomModalSheetTemplate(
+      title: '検索条件',
+      isScrollable: true,
+      child: Expanded(
+        child: ListView(
+          children: [
+            ViewListRow(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width - 80,
+                child: AutoCompleteTextField(
+                  initialValue: searchCondition.value.name,
+                  labelText: 'ポケモン名',
+                  onSelected: (String name) {
+                    setCondition(name: name);
                   },
-                  isSelected: [
-                    searchCondition.value.options["evolvedOnly"],
-                    !searchCondition.value.options["evolvedOnly"]
-                  ],
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  constraints: const BoxConstraints(
-                    minHeight: 40.0,
-                    minWidth: 80.0,
-                  ),
-                  children: ["進化後のみ", "進化前も含める"].map((e) {
-                    return Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text(e),
-                    );
-                  }).toList(),
-                )
+                  baseOptions: pokemonList
+                      .map(
+                        (pokemon) => AutoCompleteOption(
+                          label: nameWithForm(
+                              name: pokemon.name, form: pokemon.form),
+                          imageUrl: pokemon.imageUrl,
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
+            ),
+            ViewListRow(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width - 80,
+                child: AutoCompleteTextField(
+                  initialValue: searchCondition.value.abilities[0],
+                  labelText: 'とくせい',
+                  onSelected: (String name) {
+                    setCondition(abilities: [name]);
+                  },
+                  baseOptions: abilities
+                      .map(
+                        (ability) => AutoCompleteOption(label: ability.name),
+                      )
+                      .toList(),
+                ),
+              ),
+            ),
+            ExpansionPanelStyled(
+              initiallyExpanded: searchCondition.value.moves
+                  .any((element) => element.isNotEmpty),
+              height: listHeight,
+              title: const Text('わざ'),
+              children: [
+                for (int i = 0; i < searchCondition.value.moves.length; i++)
+                  Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width - 80,
+                      child: AutoCompleteTextField(
+                        initialValue: searchCondition.value.moves[i],
+                        labelText: 'わざ${i + 1}',
+                        onSelected: (String move) {
+                          final List<String> newCondition =
+                              List.from(searchCondition.value.moves);
+                          newCondition[i] = move;
+                          setCondition(moves: newCondition);
+                        },
+                        baseOptions: moves
+                            .map(
+                              (e) => AutoCompleteOption(label: e.name),
+                            )
+                            .toList(),
+                      ),
+                    ),
+                  )
               ],
             ),
-          ),
-          Container(
-            height: 50,
-            margin: const EdgeInsets.only(top: 32.0),
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('閉じる'),
+            const Br(),
+            ExpansionPanelStyled(
+              height: listHeight,
+              title: const Text('タイプ'),
+              children: [
+                for (int i = 0; i < searchCondition.value.types.length; i++)
+                  Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width - 80,
+                      child: AutoCompleteTextField(
+                        labelText: 'タイプ${i + 1}',
+                        onSelected: (String type) {
+                          final List<String> newCondition =
+                              List.from(searchCondition.value.types);
+                          newCondition[i] = type;
+                          setCondition(types: newCondition);
+                        },
+                        baseOptions: types
+                            .map(
+                              (e) => AutoCompleteOption(
+                                label: e.name,
+                                imageUrl: e.textImageUrl,
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    ),
+                  )
+              ],
             ),
-          )
-        ],
+            const Br(),
+            ViewListRow(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('検索対象'),
+                  ToggleButtons(
+                    onPressed: (index) {
+                      setCondition(options: {
+                        "evolvedOnly": index == 0,
+                        "condition": "ASC"
+                      });
+                      Navigator.pop(context);
+                    },
+                    isSelected: [
+                      searchCondition.value.options["evolvedOnly"],
+                      !searchCondition.value.options["evolvedOnly"]
+                    ],
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    constraints: const BoxConstraints(
+                      minHeight: 40.0,
+                      minWidth: 80.0,
+                    ),
+                    children: ["進化後のみ", "進化前も含める"].map((e) {
+                      return Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(e),
+                      );
+                    }).toList(),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
