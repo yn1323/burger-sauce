@@ -577,6 +577,7 @@ abstract class GCreateMyPartyTagInput
   String get name;
   bool get favorite;
   String get memo;
+  String get teamId;
   String get userId;
   static Serializer<GCreateMyPartyTagInput> get serializer =>
       _$gCreateMyPartyTagInputSerializer;
@@ -1504,6 +1505,7 @@ abstract class GUpdateMyPartyTagInput
   String? get name;
   bool? get favorite;
   String? get memo;
+  String? get teamId;
   String? get userId;
   static Serializer<GUpdateMyPartyTagInput> get serializer =>
       _$gUpdateMyPartyTagInputSerializer;

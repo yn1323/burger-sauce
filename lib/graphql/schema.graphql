@@ -290,6 +290,7 @@ input CreateMyPartyTagInput {
   name: String!
   favorite: Boolean!
   memo: String!
+  teamId: String!
   userId: String!
 }
 
@@ -676,6 +677,7 @@ type MyPartyTag {
   name: String!
   favorite: Boolean!
   memo: String!
+  teamId: String!
   myParty: [MyParty!]!
   user: User!
   userId: String!
@@ -796,13 +798,6 @@ input PokemonSearchOption {
 type Query {
   """Fetches the Redwood root schema."""
   redwood: Redwood
-  filterMyPokemons(userId: String!): [MyPokemon!]!
-  filterMyParties(userId: String!): [MyParty!]!
-  filterMyPokemonTags(userId: String!): [MyPokemonTag!]!
-  filterMyPartyTags(userId: String!): [MyPartyTag!]!
-  battleDatasLatest: LatestBattleDataIndex
-  pokemonList(options: PokemonSearchOption): [Pokemon!]!
-  pokemonSearch(name: String, types: [String!], moves: [String!], abilities: [String!], options: PokemonSearchOption): [Pokemon!]!
   abilities: [Ability!]!
   ability(id: String!): Ability
   attackTypes: [AttackType!]!
@@ -859,6 +854,9 @@ type Query {
   type(id: String!): Type
   users: [User!]!
   user(id: String!): User
+  battleDatasLatest: LatestBattleDataIndex
+  pokemonList(options: PokemonSearchOption): [Pokemon!]!
+  pokemonSearch(name: String, types: [String!], moves: [String!], abilities: [String!], options: PokemonSearchOption): [Pokemon!]!
 }
 
 """
@@ -1092,6 +1090,7 @@ input UpdateMyPartyTagInput {
   name: String
   favorite: Boolean
   memo: String
+  teamId: String
   userId: String
 }
 

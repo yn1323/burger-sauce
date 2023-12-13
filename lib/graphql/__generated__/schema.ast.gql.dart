@@ -1971,6 +1971,15 @@ const CreateMyPartyTagInput = _i1.InputObjectTypeDefinitionNode(
       defaultValue: null,
     ),
     _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'teamId'),
+      directives: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+      defaultValue: null,
+    ),
+    _i1.InputValueDefinitionNode(
       name: _i1.NameNode(value: 'userId'),
       directives: [],
       type: _i1.NamedTypeNode(
@@ -5971,6 +5980,15 @@ const MyPartyTag = _i1.ObjectTypeDefinitionNode(
       ),
     ),
     _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'teamId'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
       name: _i1.NameNode(value: 'myParty'),
       directives: [],
       args: [],
@@ -6935,192 +6953,6 @@ const Query = _i1.ObjectTypeDefinitionNode(
       ),
     ),
     _i1.FieldDefinitionNode(
-      name: _i1.NameNode(value: 'filterMyPokemons'),
-      directives: [],
-      args: [
-        _i1.InputValueDefinitionNode(
-          name: _i1.NameNode(value: 'userId'),
-          directives: [],
-          type: _i1.NamedTypeNode(
-            name: _i1.NameNode(value: 'String'),
-            isNonNull: true,
-          ),
-          defaultValue: null,
-        )
-      ],
-      type: _i1.ListTypeNode(
-        type: _i1.NamedTypeNode(
-          name: _i1.NameNode(value: 'MyPokemon'),
-          isNonNull: true,
-        ),
-        isNonNull: true,
-      ),
-    ),
-    _i1.FieldDefinitionNode(
-      name: _i1.NameNode(value: 'filterMyParties'),
-      directives: [],
-      args: [
-        _i1.InputValueDefinitionNode(
-          name: _i1.NameNode(value: 'userId'),
-          directives: [],
-          type: _i1.NamedTypeNode(
-            name: _i1.NameNode(value: 'String'),
-            isNonNull: true,
-          ),
-          defaultValue: null,
-        )
-      ],
-      type: _i1.ListTypeNode(
-        type: _i1.NamedTypeNode(
-          name: _i1.NameNode(value: 'MyParty'),
-          isNonNull: true,
-        ),
-        isNonNull: true,
-      ),
-    ),
-    _i1.FieldDefinitionNode(
-      name: _i1.NameNode(value: 'filterMyPokemonTags'),
-      directives: [],
-      args: [
-        _i1.InputValueDefinitionNode(
-          name: _i1.NameNode(value: 'userId'),
-          directives: [],
-          type: _i1.NamedTypeNode(
-            name: _i1.NameNode(value: 'String'),
-            isNonNull: true,
-          ),
-          defaultValue: null,
-        )
-      ],
-      type: _i1.ListTypeNode(
-        type: _i1.NamedTypeNode(
-          name: _i1.NameNode(value: 'MyPokemonTag'),
-          isNonNull: true,
-        ),
-        isNonNull: true,
-      ),
-    ),
-    _i1.FieldDefinitionNode(
-      name: _i1.NameNode(value: 'filterMyPartyTags'),
-      directives: [],
-      args: [
-        _i1.InputValueDefinitionNode(
-          name: _i1.NameNode(value: 'userId'),
-          directives: [],
-          type: _i1.NamedTypeNode(
-            name: _i1.NameNode(value: 'String'),
-            isNonNull: true,
-          ),
-          defaultValue: null,
-        )
-      ],
-      type: _i1.ListTypeNode(
-        type: _i1.NamedTypeNode(
-          name: _i1.NameNode(value: 'MyPartyTag'),
-          isNonNull: true,
-        ),
-        isNonNull: true,
-      ),
-    ),
-    _i1.FieldDefinitionNode(
-      name: _i1.NameNode(value: 'battleDatasLatest'),
-      directives: [],
-      args: [],
-      type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'LatestBattleDataIndex'),
-        isNonNull: false,
-      ),
-    ),
-    _i1.FieldDefinitionNode(
-      name: _i1.NameNode(value: 'pokemonList'),
-      directives: [],
-      args: [
-        _i1.InputValueDefinitionNode(
-          name: _i1.NameNode(value: 'options'),
-          directives: [],
-          type: _i1.NamedTypeNode(
-            name: _i1.NameNode(value: 'PokemonSearchOption'),
-            isNonNull: false,
-          ),
-          defaultValue: null,
-        )
-      ],
-      type: _i1.ListTypeNode(
-        type: _i1.NamedTypeNode(
-          name: _i1.NameNode(value: 'Pokemon'),
-          isNonNull: true,
-        ),
-        isNonNull: true,
-      ),
-    ),
-    _i1.FieldDefinitionNode(
-      name: _i1.NameNode(value: 'pokemonSearch'),
-      directives: [],
-      args: [
-        _i1.InputValueDefinitionNode(
-          name: _i1.NameNode(value: 'name'),
-          directives: [],
-          type: _i1.NamedTypeNode(
-            name: _i1.NameNode(value: 'String'),
-            isNonNull: false,
-          ),
-          defaultValue: null,
-        ),
-        _i1.InputValueDefinitionNode(
-          name: _i1.NameNode(value: 'types'),
-          directives: [],
-          type: _i1.ListTypeNode(
-            type: _i1.NamedTypeNode(
-              name: _i1.NameNode(value: 'String'),
-              isNonNull: true,
-            ),
-            isNonNull: false,
-          ),
-          defaultValue: null,
-        ),
-        _i1.InputValueDefinitionNode(
-          name: _i1.NameNode(value: 'moves'),
-          directives: [],
-          type: _i1.ListTypeNode(
-            type: _i1.NamedTypeNode(
-              name: _i1.NameNode(value: 'String'),
-              isNonNull: true,
-            ),
-            isNonNull: false,
-          ),
-          defaultValue: null,
-        ),
-        _i1.InputValueDefinitionNode(
-          name: _i1.NameNode(value: 'abilities'),
-          directives: [],
-          type: _i1.ListTypeNode(
-            type: _i1.NamedTypeNode(
-              name: _i1.NameNode(value: 'String'),
-              isNonNull: true,
-            ),
-            isNonNull: false,
-          ),
-          defaultValue: null,
-        ),
-        _i1.InputValueDefinitionNode(
-          name: _i1.NameNode(value: 'options'),
-          directives: [],
-          type: _i1.NamedTypeNode(
-            name: _i1.NameNode(value: 'PokemonSearchOption'),
-            isNonNull: false,
-          ),
-          defaultValue: null,
-        ),
-      ],
-      type: _i1.ListTypeNode(
-        type: _i1.NamedTypeNode(
-          name: _i1.NameNode(value: 'Pokemon'),
-          isNonNull: true,
-        ),
-        isNonNull: true,
-      ),
-    ),
-    _i1.FieldDefinitionNode(
       name: _i1.NameNode(value: 'abilities'),
       directives: [],
       args: [],
@@ -7986,6 +7818,104 @@ const Query = _i1.ObjectTypeDefinitionNode(
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'User'),
         isNonNull: false,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'battleDatasLatest'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'LatestBattleDataIndex'),
+        isNonNull: false,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'pokemonList'),
+      directives: [],
+      args: [
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'options'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'PokemonSearchOption'),
+            isNonNull: false,
+          ),
+          defaultValue: null,
+        )
+      ],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'Pokemon'),
+          isNonNull: true,
+        ),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'pokemonSearch'),
+      directives: [],
+      args: [
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'name'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'String'),
+            isNonNull: false,
+          ),
+          defaultValue: null,
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'types'),
+          directives: [],
+          type: _i1.ListTypeNode(
+            type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'),
+              isNonNull: true,
+            ),
+            isNonNull: false,
+          ),
+          defaultValue: null,
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'moves'),
+          directives: [],
+          type: _i1.ListTypeNode(
+            type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'),
+              isNonNull: true,
+            ),
+            isNonNull: false,
+          ),
+          defaultValue: null,
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'abilities'),
+          directives: [],
+          type: _i1.ListTypeNode(
+            type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'),
+              isNonNull: true,
+            ),
+            isNonNull: false,
+          ),
+          defaultValue: null,
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'options'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'PokemonSearchOption'),
+            isNonNull: false,
+          ),
+          defaultValue: null,
+        ),
+      ],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'Pokemon'),
+          isNonNull: true,
+        ),
+        isNonNull: true,
       ),
     ),
   ],
@@ -9494,6 +9424,15 @@ const UpdateMyPartyTagInput = _i1.InputObjectTypeDefinitionNode(
     ),
     _i1.InputValueDefinitionNode(
       name: _i1.NameNode(value: 'memo'),
+      directives: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: false,
+      ),
+      defaultValue: null,
+    ),
+    _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'teamId'),
       directives: [],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'String'),
