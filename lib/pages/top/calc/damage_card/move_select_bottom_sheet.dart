@@ -39,25 +39,36 @@ class MoveSelectBottomSheet extends HookWidget {
                   .map(
                 (e) {
                   final moveType = getMoveType(e.id);
-                  return ListTile(
-                    title: Row(
-                      children: [
-                        Text(e.name, style: const TextStyle(fontSize: 18.0)),
-                        const Gap(20),
-                        MoveTypeImage(
-                          attackTypeImageUrl: moveType.attackType.imageUrl,
-                          typeImageUrl: moveType.type.textImageUrl,
-                          isHorizontal: true,
-                          gap: 12,
-                        ),
-                      ],
+                  return CheckboxListTile(
+                    value: true,
+                    title: SizedBox(
+                      child: Row(
+                        children: [
+                          MoveTypeImage(
+                            attackTypeImageUrl: moveType.attackType.imageUrl,
+                            typeImageUrl: moveType.type.textImageUrl,
+                          ),
+                          const Gap(10),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(e.name,
+                                  style: const TextStyle(fontSize: 18.0)),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width - 150,
+                                child: Text(
+                                  e.detail,
+                                  style: const TextStyle(fontSize: 12.0),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                    subtitle:
-                        Text(e.detail, style: const TextStyle(fontSize: 12.0)),
-                    onTap: () {
-                      // onChange(e.id);
-                      // Navigator.pop(context);
-                    },
+                    controlAffinity: ListTileControlAffinity.leading,
+                    contentPadding: const EdgeInsets.all(0),
+                    onChanged: (hoge) {},
                   );
                 },
               ).toList(),
