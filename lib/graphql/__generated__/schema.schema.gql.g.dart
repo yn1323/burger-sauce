@@ -1695,6 +1695,9 @@ class _$GCreateMyPartyTagInputSerializer
           specifiedType: const FullType(bool)),
       'memo',
       serializers.serialize(object.memo, specifiedType: const FullType(String)),
+      'teamId',
+      serializers.serialize(object.teamId,
+          specifiedType: const FullType(String)),
       'userId',
       serializers.serialize(object.userId,
           specifiedType: const FullType(String)),
@@ -1725,6 +1728,10 @@ class _$GCreateMyPartyTagInputSerializer
           break;
         case 'memo':
           result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'teamId':
+          result.teamId = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'userId':
@@ -4603,6 +4610,13 @@ class _$GUpdateMyPartyTagInputSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.teamId;
+    if (value != null) {
+      result
+        ..add('teamId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.userId;
     if (value != null) {
       result
@@ -4635,6 +4649,10 @@ class _$GUpdateMyPartyTagInputSerializer
           break;
         case 'memo':
           result.memo = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'teamId':
+          result.teamId = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'userId':
@@ -8873,6 +8891,8 @@ class _$GCreateMyPartyTagInput extends GCreateMyPartyTagInput {
   @override
   final String memo;
   @override
+  final String teamId;
+  @override
   final String userId;
 
   factory _$GCreateMyPartyTagInput(
@@ -8883,6 +8903,7 @@ class _$GCreateMyPartyTagInput extends GCreateMyPartyTagInput {
       {required this.name,
       required this.favorite,
       required this.memo,
+      required this.teamId,
       required this.userId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -8891,6 +8912,8 @@ class _$GCreateMyPartyTagInput extends GCreateMyPartyTagInput {
         favorite, r'GCreateMyPartyTagInput', 'favorite');
     BuiltValueNullFieldError.checkNotNull(
         memo, r'GCreateMyPartyTagInput', 'memo');
+    BuiltValueNullFieldError.checkNotNull(
+        teamId, r'GCreateMyPartyTagInput', 'teamId');
     BuiltValueNullFieldError.checkNotNull(
         userId, r'GCreateMyPartyTagInput', 'userId');
   }
@@ -8911,6 +8934,7 @@ class _$GCreateMyPartyTagInput extends GCreateMyPartyTagInput {
         name == other.name &&
         favorite == other.favorite &&
         memo == other.memo &&
+        teamId == other.teamId &&
         userId == other.userId;
   }
 
@@ -8920,6 +8944,7 @@ class _$GCreateMyPartyTagInput extends GCreateMyPartyTagInput {
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, favorite.hashCode);
     _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, teamId.hashCode);
     _$hash = $jc(_$hash, userId.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -8931,6 +8956,7 @@ class _$GCreateMyPartyTagInput extends GCreateMyPartyTagInput {
           ..add('name', name)
           ..add('favorite', favorite)
           ..add('memo', memo)
+          ..add('teamId', teamId)
           ..add('userId', userId))
         .toString();
   }
@@ -8952,6 +8978,10 @@ class GCreateMyPartyTagInputBuilder
   String? get memo => _$this._memo;
   set memo(String? memo) => _$this._memo = memo;
 
+  String? _teamId;
+  String? get teamId => _$this._teamId;
+  set teamId(String? teamId) => _$this._teamId = teamId;
+
   String? _userId;
   String? get userId => _$this._userId;
   set userId(String? userId) => _$this._userId = userId;
@@ -8964,6 +8994,7 @@ class GCreateMyPartyTagInputBuilder
       _name = $v.name;
       _favorite = $v.favorite;
       _memo = $v.memo;
+      _teamId = $v.teamId;
       _userId = $v.userId;
       _$v = null;
     }
@@ -8993,6 +9024,8 @@ class GCreateMyPartyTagInputBuilder
                 favorite, r'GCreateMyPartyTagInput', 'favorite'),
             memo: BuiltValueNullFieldError.checkNotNull(
                 memo, r'GCreateMyPartyTagInput', 'memo'),
+            teamId: BuiltValueNullFieldError.checkNotNull(
+                teamId, r'GCreateMyPartyTagInput', 'teamId'),
             userId: BuiltValueNullFieldError.checkNotNull(
                 userId, r'GCreateMyPartyTagInput', 'userId'));
     replace(_$result);
@@ -13885,13 +13918,16 @@ class _$GUpdateMyPartyTagInput extends GUpdateMyPartyTagInput {
   @override
   final String? memo;
   @override
+  final String? teamId;
+  @override
   final String? userId;
 
   factory _$GUpdateMyPartyTagInput(
           [void Function(GUpdateMyPartyTagInputBuilder)? updates]) =>
       (new GUpdateMyPartyTagInputBuilder()..update(updates))._build();
 
-  _$GUpdateMyPartyTagInput._({this.name, this.favorite, this.memo, this.userId})
+  _$GUpdateMyPartyTagInput._(
+      {this.name, this.favorite, this.memo, this.teamId, this.userId})
       : super._();
 
   @override
@@ -13910,6 +13946,7 @@ class _$GUpdateMyPartyTagInput extends GUpdateMyPartyTagInput {
         name == other.name &&
         favorite == other.favorite &&
         memo == other.memo &&
+        teamId == other.teamId &&
         userId == other.userId;
   }
 
@@ -13919,6 +13956,7 @@ class _$GUpdateMyPartyTagInput extends GUpdateMyPartyTagInput {
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, favorite.hashCode);
     _$hash = $jc(_$hash, memo.hashCode);
+    _$hash = $jc(_$hash, teamId.hashCode);
     _$hash = $jc(_$hash, userId.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -13930,6 +13968,7 @@ class _$GUpdateMyPartyTagInput extends GUpdateMyPartyTagInput {
           ..add('name', name)
           ..add('favorite', favorite)
           ..add('memo', memo)
+          ..add('teamId', teamId)
           ..add('userId', userId))
         .toString();
   }
@@ -13951,6 +13990,10 @@ class GUpdateMyPartyTagInputBuilder
   String? get memo => _$this._memo;
   set memo(String? memo) => _$this._memo = memo;
 
+  String? _teamId;
+  String? get teamId => _$this._teamId;
+  set teamId(String? teamId) => _$this._teamId = teamId;
+
   String? _userId;
   String? get userId => _$this._userId;
   set userId(String? userId) => _$this._userId = userId;
@@ -13963,6 +14006,7 @@ class GUpdateMyPartyTagInputBuilder
       _name = $v.name;
       _favorite = $v.favorite;
       _memo = $v.memo;
+      _teamId = $v.teamId;
       _userId = $v.userId;
       _$v = null;
     }
@@ -13986,7 +14030,11 @@ class GUpdateMyPartyTagInputBuilder
   _$GUpdateMyPartyTagInput _build() {
     final _$result = _$v ??
         new _$GUpdateMyPartyTagInput._(
-            name: name, favorite: favorite, memo: memo, userId: userId);
+            name: name,
+            favorite: favorite,
+            memo: memo,
+            teamId: teamId,
+            userId: userId);
     replace(_$result);
     return _$result;
   }

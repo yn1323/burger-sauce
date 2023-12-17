@@ -6,10 +6,12 @@ class Nature {
   const Nature({
     required this.increase,
     required this.decrease,
+    this.release = false,
   });
 
   final String increase;
   final String decrease;
+  final bool release;
 }
 
 const List<Nature> natures = [
@@ -63,7 +65,11 @@ class NatureToggle extends HookWidget {
                 onPressed: label == decrease
                     ? null
                     : () {
-                        onChange(Nature(increase: label, decrease: decrease));
+                        onChange(Nature(
+                          increase: label,
+                          decrease: decrease,
+                          release: label == increase,
+                        ));
                       },
                 style: label == increase
                     ? ElevatedButton.styleFrom(
@@ -89,7 +95,11 @@ class NatureToggle extends HookWidget {
                 onPressed: label == increase
                     ? null
                     : () {
-                        onChange(Nature(increase: increase, decrease: label));
+                        onChange(Nature(
+                          increase: increase,
+                          decrease: label,
+                          release: label == decrease,
+                        ));
                       },
                 style: label == decrease
                     ? ElevatedButton.styleFrom(

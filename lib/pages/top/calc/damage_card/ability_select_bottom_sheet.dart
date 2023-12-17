@@ -23,6 +23,8 @@ class AbilitySelectBottomSheet extends HookWidget {
               .map(
                 (e) => ListTile(
                   title: Text(e.name, style: const TextStyle(fontSize: 18.0)),
+                  subtitle:
+                      Text(e.detail, style: const TextStyle(fontSize: 12.0)),
                   onTap: () {
                     onChange(e.id);
                     Navigator.pop(context);

@@ -40,6 +40,7 @@ class StatusEditBottomSheet extends HookWidget {
                 status.value.updateNature(
                   decrease: nature.decrease,
                   increase: nature.increase,
+                  release: nature.release,
                 );
                 cnt.value++;
               },

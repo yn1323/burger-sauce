@@ -309,16 +309,55 @@ class Status {
     };
   }
 
-  void updateNature({String increase = '', String decrease = ''}) {
-    isAIncrease = increase == "A";
-    isBIncrease = increase == "B";
-    isCIncrease = increase == "C";
-    isDIncrease = increase == "D";
-    isSIncrease = increase == "S";
-    isADecrease = decrease == "A";
-    isBDecrease = decrease == "B";
-    isCDecrease = decrease == "C";
-    isDDecrease = decrease == "D";
-    isSDecrease = decrease == "S";
+  void updateNature(
+      {String increase = '', String decrease = '', bool release = false}) {
+    if (release) {
+      isAIncrease = false;
+      isBIncrease = false;
+      isCIncrease = false;
+      isDIncrease = false;
+      isSIncrease = false;
+      isADecrease = false;
+      isBDecrease = false;
+      isCDecrease = false;
+      isDDecrease = false;
+      isSDecrease = false;
+    } else {
+      isAIncrease = increase == "A";
+      isBIncrease = increase == "B";
+      isCIncrease = increase == "C";
+      isDIncrease = increase == "D";
+      isSIncrease = increase == "S";
+      isADecrease = decrease == "A";
+      isBDecrease = decrease == "B";
+      isCDecrease = decrease == "C";
+      isDDecrease = decrease == "D";
+      isSDecrease = decrease == "S";
+
+      // 上昇・下降片方のみ選択されている場合は、適当にもう一方も選択する
+      if (!isAIncrease &&
+          !isBIncrease &&
+          !isCIncrease &&
+          !isDIncrease &&
+          !isSIncrease) {
+        if (!isADecrease) {
+          isAIncrease = true;
+        } else {
+          isBIncrease = true;
+        }
+      }
+
+      if (!isADecrease &&
+          !isBDecrease &&
+          !isCDecrease &&
+          !isDDecrease &&
+          !isSDecrease) {
+        if (!isAIncrease) {
+          isADecrease = true;
+        } else {
+          isBDecrease = true;
+        }
+      }
+    }
   }
 }
