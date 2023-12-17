@@ -9,6 +9,7 @@ import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.req.gql.dar
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.var.gql.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/ability_select_bottom_sheet.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/move_select_bottom_sheet.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/pokemon_select_bottom_sheet.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/status_edit_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -63,6 +64,10 @@ class DamageCard extends HookConsumerWidget {
         ),
         (response) => calcNotifier.addDetail(response.data!),
       );
+    }
+
+    MoveType getMoveType(String moveId) {
+      return calcNotifier.getMoveType(id: moveId);
     }
 
     return Card(
@@ -183,22 +188,35 @@ class DamageCard extends HookConsumerWidget {
               ),
             ),
             const Gap(4),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: moves.map((e) {
-                final moveType = calcNotifier.getMoveType(id: e.id);
-                return Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Row(children: [
-                    MoveTypeImage(
-                      attackTypeImageUrl: moveType.attackType.imageUrl,
-                      typeImageUrl: moveType.type.textImageUrl,
-                    ),
-                    const Gap(16),
-                    Text(e.name, style: const TextStyle(fontSize: 18))
-                  ]),
+            InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                  isScrollControlled: true,
+                  context: context,
+                  builder: (BuildContext context) {
+                    return MoveSelectBottomSheet(
+                        moves: pokemonInfo!.moves,
+                        getMoveType: (String id) => getMoveType(id));
+                  },
                 );
-              }).toList(),
+              },
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: moves.map((e) {
+                  final moveType = getMoveType(e.id);
+                  return Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Row(children: [
+                      MoveTypeImage(
+                        attackTypeImageUrl: moveType.attackType.imageUrl,
+                        typeImageUrl: moveType.type.textImageUrl,
+                      ),
+                      const Gap(16),
+                      Text(e.name, style: const TextStyle(fontSize: 18))
+                    ]),
+                  );
+                }).toList(),
+              ),
             ),
           ],
         ),

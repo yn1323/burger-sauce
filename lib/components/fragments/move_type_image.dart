@@ -2,18 +2,20 @@ import 'package:burger_sauce/components/features/images/skeleton.dart';
 import 'package:burger_sauce/components/fragments/type_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class MoveTypeImage extends StatelessWidget {
-  const MoveTypeImage({
-    super.key,
-    required this.attackTypeImageUrl,
-    required this.typeImageUrl,
-    this.isHorizontal = false,
-  });
+  const MoveTypeImage(
+      {super.key,
+      required this.attackTypeImageUrl,
+      required this.typeImageUrl,
+      this.isHorizontal = false,
+      this.gap = 0});
 
   final String? attackTypeImageUrl;
   final String? typeImageUrl;
   final bool isHorizontal;
+  final double gap;
 
   final double width = 80;
   final double height = 18;
@@ -35,6 +37,7 @@ class MoveTypeImage extends StatelessWidget {
     if (!isHorizontal) {
       return Column(children: [
         TypeImage(typeImageUrl1: typeImageUrl),
+        Gap(gap),
         Container(
           width: width,
           height: height,
@@ -57,6 +60,7 @@ class MoveTypeImage extends StatelessWidget {
     }
     return Row(children: [
       TypeImage(typeImageUrl1: typeImageUrl),
+      Gap(gap),
       Container(
         width: width,
         height: height,
