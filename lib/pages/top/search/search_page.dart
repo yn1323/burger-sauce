@@ -104,7 +104,7 @@ class SearchPage extends HookWidget {
           ..vars.moves.addAll(searchCondition.value.moves)
           ..vars.abilities.addAll(searchCondition.value.abilities)
           ..vars.options = searchCondition.value.getOptions()
-          ..fetchPolicy = fetchCacheFirst,
+          ..fetchPolicy = fetchCacheAndNetwork,
       ),
     );
 

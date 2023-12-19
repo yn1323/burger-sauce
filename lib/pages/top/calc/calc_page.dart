@@ -23,6 +23,7 @@ class CalcPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    useAutomaticKeepAlive();
     final calcStore = ref.watch(calcProvider);
     final calcStoreNotifier = ref.watch(calcProvider.notifier);
 

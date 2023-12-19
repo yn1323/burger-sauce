@@ -15,7 +15,8 @@ class QueryResult<T> {
   final List<GraphQLError>? errors;
   final Function refetch;
 
-  bool isLoadingOrError() => loading || hasErrors;
+  bool isLoadingOrError() => data == null || hasErrors;
+
   Center suspensePart() {
     if (loading || data == null) {
       return loadingWidget();

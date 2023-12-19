@@ -169,16 +169,25 @@ class Calc extends _$Calc {
         ? battleData.battleDataMove.map((e) => e.moveId).toList()
         : [] as List<String>;
 
-    final abilityIds =
-        targetPokemonInfo.pokemon!.abilities.map((e) => e.id).toList();
-    final moveIds = <String>{
-      ...battleDataMoveIds,
-      ...targetPokemonInfo.pokemon!.moves.map((e) => e.id)
-    }.toList();
+    final battleDataAbilityIds = battleData != null
+        ? battleData.battleDataAbility.map((e) => e.abilityId).toList()
+        : [] as List<String>;
 
-    final abilityList =
-        abilities!.where((e) => abilityIds.contains(e.id)).toList();
-    final moveList = moves!.where((e) => moveIds.contains(e.id)).toList();
+    final moveIds = targetPokemonInfo.pokemon!.moves.map((e) => e.id).toList();
+
+    final abilityList = battleDataAbilityIds
+        .map((id) => abilities!.firstWhere((f) => id == f.id))
+        .toList();
+
+    final battleMoves = battleDataMoveIds
+        .map((id) => moves!.firstWhere((f) => id == f.id))
+        .toList();
+    final nonBattleMoves = moves!
+        .where(
+            (e) => moveIds.contains(e.id) && !battleDataMoveIds.contains(e.id))
+        .toList();
+
+    final moveList = [...battleMoves, ...nonBattleMoves].toList();
 
     final nextPokemonInfo = pokemonInfo;
 

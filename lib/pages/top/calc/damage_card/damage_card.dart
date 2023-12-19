@@ -187,8 +187,9 @@ class DamageCard extends HookConsumerWidget {
                   isScrollControlled: true,
                   context: context,
                   builder: (BuildContext context) {
+                    print(pokemonInfo!.moves.map((e) => e.id));
                     return MoveSelectBottomSheet(
-                        moves: pokemonInfo!.moves,
+                        moves: pokemonInfo.moves,
                         getMoveType: (String id) => getMoveType(id));
                   },
                 );
