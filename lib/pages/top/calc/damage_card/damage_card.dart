@@ -46,15 +46,6 @@ class DamageCard extends HookConsumerWidget {
       calcNotifier.replaceBase(before: damageCustomBase, after: nextBase);
     }
 
-    void changeAbility(String nextAbilityId) {
-      if (nextAbilityId == damageCustomBase.abilityId) return;
-
-      final nextBase = calcNotifier.getDamageCustomBase(pokemonId: pokemon.id)
-        ..abilityId = nextAbilityId;
-
-      calcNotifier.replaceBase(before: damageCustomBase, after: nextBase);
-    }
-
     if (calcStore.pokemonInfo[pokemon.id] == null) {
       useQuerySync<GDamageCalcDetailData, GDamageCalcDetailVars>(
         GDamageCalcDetailReq(
@@ -108,10 +99,12 @@ class DamageCard extends HookConsumerWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return AbilitySelectBottomSheet(
-                              abilities: pokemonInfo!.abilities,
-                              onChange: (String abilityId) =>
-                                  changeAbility(abilityId),
-                            );
+                                abilities: pokemonInfo!.abilities,
+                                onChange: (String abilityId) =>
+                                    calcNotifier.updateAbility(
+                                      id: damageCustomBase.id,
+                                      nextAbilityId: abilityId,
+                                    ));
                           },
                         );
                       },

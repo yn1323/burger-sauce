@@ -442,6 +442,24 @@ class Calc extends _$Calc {
     }
   }
 
+  void updateAbility({required UniqueKey id, required String nextAbilityId}) {
+    final tabType =
+        state.attackBase.any((e) => e.id == id) ? "attack" : "defense";
+
+    final targetBase =
+        tabType == "attack" ? state.attackBase : state.defenseBase;
+    final index = targetBase.indexWhere((e) => e.id == id);
+    final target = targetBase[index];
+
+    target.abilityId = nextAbilityId;
+
+    if (tabType == "attack") {
+      update(attackBase: targetBase);
+    } else {
+      update(defenseBase: targetBase);
+    }
+  }
+
   void updateCalcAll(
       List<GDamageCalcSummaryData_myDamageCalcIndex_myDamageCalc> calcs) {
     final sortedCalcs = calcs..sort((a, b) => a.order.compareTo(b.order));
