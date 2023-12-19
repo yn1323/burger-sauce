@@ -7,22 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 
-class MoveSelectBottomSheet extends HookWidget {
-  const MoveSelectBottomSheet({
+class TerastalSelectBottomSheet extends HookWidget {
+  const TerastalSelectBottomSheet({
     Key? key,
     required this.moves,
     required this.battleData,
     required this.getMoveType,
-    required this.onChange,
-    this.selectedIds = const [],
   }) : super(key: key);
 
   final List<GDamageCalcSummaryData_moves> moves;
   final GDamageCalcSummaryData_battleDatasLatest_battleDatas? battleData;
   final MoveType Function(String) getMoveType;
-  final List<String> selectedIds;
-  final void Function({required String moveId, required bool isSelected})
-      onChange;
 
   double getRate(String moveId) {
     if (battleData == null) return 0;
@@ -38,7 +33,6 @@ class MoveSelectBottomSheet extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final searchWord = useState('');
-    final initialSelected = useState(selectedIds);
 
     return BottomModalSheetTemplate(
       isScrollable: true,
@@ -60,7 +54,7 @@ class MoveSelectBottomSheet extends HookWidget {
                   final moveType = getMoveType(e.id);
                   final rate = getRate(e.id);
                   return CheckboxListTile(
-                    value: initialSelected.value.contains(e.id),
+                    value: true,
                     title: SizedBox(
                       child: Row(
                         children: [
@@ -104,24 +98,7 @@ class MoveSelectBottomSheet extends HookWidget {
                     ),
                     controlAffinity: ListTileControlAffinity.leading,
                     contentPadding: const EdgeInsets.all(0),
-                    onChanged: !selectedIds.contains(e.id) &&
-                            selectedIds.length >= maxMoves
-                        ? null
-                        : (isSelected) {
-                            if (selectedIds.length > maxMoves) return;
-
-                            if (isSelected == true) {
-                              initialSelected.value = [
-                                ...initialSelected.value,
-                                e.id
-                              ];
-                            } else {
-                              initialSelected.value = initialSelected.value
-                                  .where((prevId) => prevId != e.id)
-                                  .toList();
-                            }
-                            onChange(moveId: e.id, isSelected: isSelected!);
-                          },
+                    onChanged: (hoge) {},
                   );
                 },
               ).toList(),

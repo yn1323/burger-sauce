@@ -1,5 +1,5 @@
 import 'package:burger_sauce/components/fragments/move_type_image.dart';
-import 'package:burger_sauce/components/fragments/pokemon_custom_image.dart';
+import 'package:burger_sauce/components/fragments/pokemon_image.dart';
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/helpers/query.dart';
 import 'package:burger_sauce/helpers/string.dart';
@@ -85,11 +85,10 @@ class DamageCard extends HookConsumerWidget {
                       },
                     );
                   },
-                  child: PokemonCustomImage(
-                    pokemonImage: pokemon.imageUrl,
-                    itemImage: item.imageUrl,
-                    terastalImage: terastal.terastalImageUrl,
-                    size: 120,
+                  child: PokemonImage(
+                    imageUrl: pokemon.imageUrl,
+                    height: 120,
+                    width: 120,
                   ),
                 ),
                 Expanded(
@@ -135,6 +134,12 @@ class DamageCard extends HookConsumerWidget {
                     ),
                   ),
                 ),
+                // const Expanded(
+                //     child: Column(
+                //   children: [
+                //     ElevatedButton(onPressed: onPressed, child: child)
+                //   ],
+                // ))
               ],
             ),
             const Gap(4),
@@ -191,31 +196,87 @@ class DamageCard extends HookConsumerWidget {
                   context: context,
                   builder: (BuildContext context) {
                     return MoveSelectBottomSheet(
-                        moves: pokemonInfo!.moves,
-                        battleData: battleData,
-                        getMoveType: (String id) => getMoveType(id));
+                      moves: pokemonInfo!.moves,
+                      battleData: battleData,
+                      getMoveType: (String id) => getMoveType(id),
+                      selectedIds: damageCustomBase.moveIds,
+                      onChange: (
+                          {required String moveId, required bool isSelected}) {
+                        if (isSelected) {
+                          calcNotifier.addMove(
+                            id: damageCustomBase.id,
+                            addMoveId: moveId,
+                          );
+                        } else {
+                          calcNotifier.removeMove(
+                            id: damageCustomBase.id,
+                            removeMoveId: moveId,
+                          );
+                        }
+                      },
+                    );
                   },
                 );
               },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: moves.map((e) {
-                  final moveType = getMoveType(e.id);
-                  return Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Row(children: [
-                      MoveTypeImage(
-                        attackTypeImageUrl: moveType.attackType.imageUrl,
-                        typeImageUrl: moveType.type.textImageUrl,
-                      ),
-                      const Gap(16),
-                      Text(e.name, style: const TextStyle(fontSize: 18)),
-                      const Gap(8),
-                      Text('(威力：${e.power > 0 ? e.power : '- '})',
-                          style: const TextStyle(fontSize: 12))
-                    ]),
-                  );
-                }).toList(),
+                children: [
+                  if (moves.isEmpty)
+                    SizedBox(
+                      width: double.infinity,
+                      height: 40,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            showModalBottomSheet(
+                              isScrollControlled: true,
+                              context: context,
+                              builder: (BuildContext context) {
+                                return MoveSelectBottomSheet(
+                                  moves: pokemonInfo!.moves,
+                                  battleData: battleData,
+                                  getMoveType: (String id) => getMoveType(id),
+                                  selectedIds: damageCustomBase.moveIds,
+                                  onChange: (
+                                      {required String moveId,
+                                      required bool isSelected}) {
+                                    if (isSelected) {
+                                      calcNotifier.addMove(
+                                        id: damageCustomBase.id,
+                                        addMoveId: moveId,
+                                      );
+                                    } else {
+                                      calcNotifier.removeMove(
+                                        id: damageCustomBase.id,
+                                        removeMoveId: moveId,
+                                      );
+                                    }
+                                  },
+                                );
+                              },
+                            );
+                          },
+                          child: const Text('わざを追加')),
+                    ),
+                  ...moves.map(
+                    (e) {
+                      final moveType = getMoveType(e.id);
+                      return Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Row(children: [
+                          MoveTypeImage(
+                            attackTypeImageUrl: moveType.attackType.imageUrl,
+                            typeImageUrl: moveType.type.textImageUrl,
+                          ),
+                          const Gap(16),
+                          Text(e.name, style: const TextStyle(fontSize: 18)),
+                          const Gap(8),
+                          Text('(威力：${e.power > 0 ? e.power : '- '})',
+                              style: const TextStyle(fontSize: 12))
+                        ]),
+                      );
+                    },
+                  ).toList()
+                ],
               ),
             ),
           ],

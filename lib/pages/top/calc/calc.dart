@@ -81,6 +81,14 @@ class PokemonInfo {
   List<GDamageCalcSummaryData_moves> moves;
 }
 
+class UpdateTarget {
+  UpdateTarget(
+      {required this.targetBase, required this.target, required this.tabType});
+  List<DamageCustomBase> targetBase;
+  DamageCustomBase target;
+  String tabType;
+}
+
 @riverpod
 class Calc extends _$Calc {
   List<GDamageCalcSummaryData_pokemons>? pokemons;
@@ -392,8 +400,7 @@ class Calc extends _$Calc {
     return battleDatas!.firstWhere((e) => e.pokemonId == pokemonId);
   }
 
-  void updateEv(
-      {required String type, required int ev, required UniqueKey id}) {
+  UpdateTarget getUpdateTarget(UniqueKey id) {
     final tabType =
         state.attackBase.any((e) => e.id == id) ? "attack" : "defense";
 
@@ -402,31 +409,42 @@ class Calc extends _$Calc {
     final index = targetBase.indexWhere((e) => e.id == id);
     final target = targetBase[index];
 
+    return UpdateTarget(
+      targetBase: targetBase,
+      target: target,
+      tabType: tabType,
+    );
+  }
+
+  void updateEv(
+      {required String type, required int ev, required UniqueKey id}) {
+    final updateTarget = getUpdateTarget(id);
+
     switch (type) {
       case "H":
-        target.status.evH = ev;
+        updateTarget.target.status.evH = ev;
         break;
       case "A":
-        target.status.evA = ev;
+        updateTarget.target.status.evA = ev;
         break;
       case "B":
-        target.status.evB = ev;
+        updateTarget.target.status.evB = ev;
         break;
       case "C":
-        target.status.evC = ev;
+        updateTarget.target.status.evC = ev;
         break;
       case "D":
-        target.status.evD = ev;
+        updateTarget.target.status.evD = ev;
         break;
       case "S":
-        target.status.evS = ev;
+        updateTarget.target.status.evS = ev;
         break;
     }
 
-    if (tabType == "attack") {
-      update(attackBase: targetBase);
+    if (updateTarget.tabType == "attack") {
+      update(attackBase: updateTarget.targetBase);
     } else {
-      update(defenseBase: targetBase);
+      update(defenseBase: updateTarget.targetBase);
     }
   }
 
@@ -434,38 +452,53 @@ class Calc extends _$Calc {
       {required UniqueKey id,
       required String increase,
       required String decrease}) {
-    final tabType =
-        state.attackBase.any((e) => e.id == id) ? "attack" : "defense";
+    final updateTarget = getUpdateTarget(id);
 
-    final targetBase =
-        tabType == "attack" ? state.attackBase : state.defenseBase;
-    final index = targetBase.indexWhere((e) => e.id == id);
-    final target = targetBase[index];
+    updateTarget.target.status
+        .updateNature(increase: increase, decrease: decrease);
 
-    target.status.updateNature(increase: increase, decrease: decrease);
-
-    if (tabType == "attack") {
-      update(attackBase: targetBase);
+    if (updateTarget.tabType == "attack") {
+      update(attackBase: updateTarget.targetBase);
     } else {
-      update(defenseBase: targetBase);
+      update(defenseBase: updateTarget.targetBase);
     }
   }
 
   void updateAbility({required UniqueKey id, required String nextAbilityId}) {
-    final tabType =
-        state.attackBase.any((e) => e.id == id) ? "attack" : "defense";
+    final updateTarget = getUpdateTarget(id);
 
-    final targetBase =
-        tabType == "attack" ? state.attackBase : state.defenseBase;
-    final index = targetBase.indexWhere((e) => e.id == id);
-    final target = targetBase[index];
+    updateTarget.target.abilityId = nextAbilityId;
 
-    target.abilityId = nextAbilityId;
-
-    if (tabType == "attack") {
-      update(attackBase: targetBase);
+    if (updateTarget.tabType == "attack") {
+      update(attackBase: updateTarget.targetBase);
     } else {
-      update(defenseBase: targetBase);
+      update(defenseBase: updateTarget.targetBase);
+    }
+  }
+
+  void addMove({required UniqueKey id, required String addMoveId}) {
+    final updateTarget = getUpdateTarget(id);
+
+    if (updateTarget.target.moveIds.length > maxMoves) return;
+
+    updateTarget.target.moveIds.add(addMoveId);
+
+    if (updateTarget.tabType == "attack") {
+      update(attackBase: updateTarget.targetBase);
+    } else {
+      update(defenseBase: updateTarget.targetBase);
+    }
+  }
+
+  void removeMove({required UniqueKey id, required String removeMoveId}) {
+    final updateTarget = getUpdateTarget(id);
+
+    updateTarget.target.moveIds.remove(removeMoveId);
+
+    if (updateTarget.tabType == "attack") {
+      update(attackBase: updateTarget.targetBase);
+    } else {
+      update(defenseBase: updateTarget.targetBase);
     }
   }
 
