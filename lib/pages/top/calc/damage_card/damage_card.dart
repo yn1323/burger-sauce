@@ -209,7 +209,10 @@ class DamageCard extends HookConsumerWidget {
                         typeImageUrl: moveType.type.textImageUrl,
                       ),
                       const Gap(16),
-                      Text(e.name, style: const TextStyle(fontSize: 18))
+                      Text(e.name, style: const TextStyle(fontSize: 18)),
+                      const Gap(8),
+                      Text('(威力：${e.power > 0 ? e.power : '- '})',
+                          style: const TextStyle(fontSize: 12))
                     ]),
                   );
                 }).toList(),
