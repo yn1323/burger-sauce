@@ -55,7 +55,14 @@ const DamageCalcSummary = _i1.OperationDefinitionNode(
                   arguments: [],
                   directives: [],
                   selectionSet: null,
-                )
+                ),
+                _i1.FieldNode(
+                  name: _i1.NameNode(value: 'rate'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
               ]),
             ),
             _i1.FieldNode(
@@ -70,7 +77,14 @@ const DamageCalcSummary = _i1.OperationDefinitionNode(
                   arguments: [],
                   directives: [],
                   selectionSet: null,
-                )
+                ),
+                _i1.FieldNode(
+                  name: _i1.NameNode(value: 'rate'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
               ]),
             ),
             _i1.FieldNode(
@@ -85,7 +99,14 @@ const DamageCalcSummary = _i1.OperationDefinitionNode(
                   arguments: [],
                   directives: [],
                   selectionSet: null,
-                )
+                ),
+                _i1.FieldNode(
+                  name: _i1.NameNode(value: 'rate'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
               ]),
             ),
             _i1.FieldNode(
@@ -100,7 +121,14 @@ const DamageCalcSummary = _i1.OperationDefinitionNode(
                   arguments: [],
                   directives: [],
                   selectionSet: null,
-                )
+                ),
+                _i1.FieldNode(
+                  name: _i1.NameNode(value: 'rate'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
               ]),
             ),
             _i1.FieldNode(
@@ -115,7 +143,14 @@ const DamageCalcSummary = _i1.OperationDefinitionNode(
                   arguments: [],
                   directives: [],
                   selectionSet: null,
-                )
+                ),
+                _i1.FieldNode(
+                  name: _i1.NameNode(value: 'rate'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
               ]),
             ),
           ]),

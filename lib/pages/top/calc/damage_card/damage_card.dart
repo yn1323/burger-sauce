@@ -36,6 +36,8 @@ class DamageCard extends HookConsumerWidget {
     final moves = damageCustomBase.moveIds
         .map((moveId) => calcNotifier.getMove(id: moveId));
     final pokemonInfo = calcStore.pokemonInfo[pokemon.id];
+    final battleData =
+        calcNotifier.getBattleData(pokemonId: damageCustomBase.pokemonId);
 
     void changePokemon(String nextPokemonId) {
       if (nextPokemonId == damageCustomBase.pokemonId) return;
@@ -99,6 +101,7 @@ class DamageCard extends HookConsumerWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return AbilitySelectBottomSheet(
+                                battleData: battleData,
                                 abilities: pokemonInfo!.abilities,
                                 onChange: (String abilityId) =>
                                     calcNotifier.updateAbility(
@@ -187,9 +190,9 @@ class DamageCard extends HookConsumerWidget {
                   isScrollControlled: true,
                   context: context,
                   builder: (BuildContext context) {
-                    print(pokemonInfo!.moves.map((e) => e.id));
                     return MoveSelectBottomSheet(
-                        moves: pokemonInfo.moves,
+                        moves: pokemonInfo!.moves,
+                        battleData: battleData,
                         getMoveType: (String id) => getMoveType(id));
                   },
                 );

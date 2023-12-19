@@ -149,6 +149,7 @@ abstract class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAb
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get abilityId;
+  double get rate;
   static Serializer<
           GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility>
       get serializer =>
@@ -190,6 +191,7 @@ abstract class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataIt
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get itemId;
+  double get rate;
   static Serializer<
           GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem>
       get serializer =>
@@ -231,6 +233,7 @@ abstract class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMo
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get moveId;
+  double get rate;
   static Serializer<
           GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove>
       get serializer =>
@@ -272,6 +275,7 @@ abstract class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNa
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get natureId;
+  double get rate;
   static Serializer<
           GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature>
       get serializer =>
@@ -313,6 +317,7 @@ abstract class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTe
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get typeId;
+  double get rate;
   static Serializer<
           GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal>
       get serializer =>

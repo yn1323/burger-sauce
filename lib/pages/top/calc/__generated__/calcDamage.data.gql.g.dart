@@ -427,6 +427,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbilitySe
       'abilityId',
       serializers.serialize(object.abilityId,
           specifiedType: const FullType(String)),
+      'rate',
+      serializers.serialize(object.rate, specifiedType: const FullType(double)),
     ];
 
     return result;
@@ -452,6 +454,10 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbilitySe
         case 'abilityId':
           result.abilityId = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
           break;
       }
     }
@@ -486,6 +492,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItemSeria
       'itemId',
       serializers.serialize(object.itemId,
           specifiedType: const FullType(String)),
+      'rate',
+      serializers.serialize(object.rate, specifiedType: const FullType(double)),
     ];
 
     return result;
@@ -511,6 +519,10 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItemSeria
         case 'itemId':
           result.itemId = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
           break;
       }
     }
@@ -545,6 +557,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMoveSeria
       'moveId',
       serializers.serialize(object.moveId,
           specifiedType: const FullType(String)),
+      'rate',
+      serializers.serialize(object.rate, specifiedType: const FullType(double)),
     ];
 
     return result;
@@ -570,6 +584,10 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMoveSeria
         case 'moveId':
           result.moveId = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
           break;
       }
     }
@@ -604,6 +622,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureSer
       'natureId',
       serializers.serialize(object.natureId,
           specifiedType: const FullType(String)),
+      'rate',
+      serializers.serialize(object.rate, specifiedType: const FullType(double)),
     ];
 
     return result;
@@ -629,6 +649,10 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureSer
         case 'natureId':
           result.natureId = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
           break;
       }
     }
@@ -663,6 +687,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalS
       'typeId',
       serializers.serialize(object.typeId,
           specifiedType: const FullType(String)),
+      'rate',
+      serializers.serialize(object.rate, specifiedType: const FullType(double)),
     ];
 
     return result;
@@ -688,6 +714,10 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalS
         case 'typeId':
           result.typeId = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
+          break;
+        case 'rate':
+          result.rate = serializers.deserialize(value,
+              specifiedType: const FullType(double))! as double;
           break;
       }
     }
@@ -2711,6 +2741,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility
   final String G__typename;
   @override
   final String abilityId;
+  @override
+  final double rate;
 
   factory _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility(
           [void Function(
@@ -2721,7 +2753,7 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility
           ._build();
 
   _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility._(
-      {required this.G__typename, required this.abilityId})
+      {required this.G__typename, required this.abilityId, required this.rate})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename,
@@ -2731,6 +2763,10 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility
         abilityId,
         r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility',
         'abilityId');
+    BuiltValueNullFieldError.checkNotNull(
+        rate,
+        r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility',
+        'rate');
   }
 
   @override
@@ -2752,7 +2788,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility
     return other
             is GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility &&
         G__typename == other.G__typename &&
-        abilityId == other.abilityId;
+        abilityId == other.abilityId &&
+        rate == other.rate;
   }
 
   @override
@@ -2760,6 +2797,7 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, abilityId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -2769,7 +2807,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility
     return (newBuiltValueToStringHelper(
             r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility')
           ..add('G__typename', G__typename)
-          ..add('abilityId', abilityId))
+          ..add('abilityId', abilityId)
+          ..add('rate', rate))
         .toString();
   }
 }
@@ -2789,6 +2828,10 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbilityBuil
   String? get abilityId => _$this._abilityId;
   set abilityId(String? abilityId) => _$this._abilityId = abilityId;
 
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
   GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbilityBuilder() {
     GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility
         ._initializeBuilder(this);
@@ -2800,6 +2843,7 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbilityBuil
     if ($v != null) {
       _G__typename = $v.G__typename;
       _abilityId = $v.abilityId;
+      _rate = $v.rate;
       _$v = null;
     }
     return this;
@@ -2838,7 +2882,11 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbilityBuil
             abilityId: BuiltValueNullFieldError.checkNotNull(
                 abilityId,
                 r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility',
-                'abilityId'));
+                'abilityId'),
+            rate: BuiltValueNullFieldError.checkNotNull(
+                rate,
+                r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataAbility',
+                'rate'));
     replace(_$result);
     return _$result;
   }
@@ -2850,6 +2898,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem
   final String G__typename;
   @override
   final String itemId;
+  @override
+  final double rate;
 
   factory _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem(
           [void Function(
@@ -2860,7 +2910,7 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem
           ._build();
 
   _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem._(
-      {required this.G__typename, required this.itemId})
+      {required this.G__typename, required this.itemId, required this.rate})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename,
@@ -2870,6 +2920,10 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem
         itemId,
         r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem',
         'itemId');
+    BuiltValueNullFieldError.checkNotNull(
+        rate,
+        r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem',
+        'rate');
   }
 
   @override
@@ -2891,7 +2945,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem
     return other
             is GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem &&
         G__typename == other.G__typename &&
-        itemId == other.itemId;
+        itemId == other.itemId &&
+        rate == other.rate;
   }
 
   @override
@@ -2899,6 +2954,7 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, itemId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -2908,7 +2964,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem
     return (newBuiltValueToStringHelper(
             r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem')
           ..add('G__typename', G__typename)
-          ..add('itemId', itemId))
+          ..add('itemId', itemId)
+          ..add('rate', rate))
         .toString();
   }
 }
@@ -2928,6 +2985,10 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItemBuilder
   String? get itemId => _$this._itemId;
   set itemId(String? itemId) => _$this._itemId = itemId;
 
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
   GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItemBuilder() {
     GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem
         ._initializeBuilder(this);
@@ -2939,6 +3000,7 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItemBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _itemId = $v.itemId;
+      _rate = $v.rate;
       _$v = null;
     }
     return this;
@@ -2977,7 +3039,11 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItemBuilder
             itemId: BuiltValueNullFieldError.checkNotNull(
                 itemId,
                 r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem',
-                'itemId'));
+                'itemId'),
+            rate: BuiltValueNullFieldError.checkNotNull(
+                rate,
+                r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem',
+                'rate'));
     replace(_$result);
     return _$result;
   }
@@ -2989,6 +3055,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove
   final String G__typename;
   @override
   final String moveId;
+  @override
+  final double rate;
 
   factory _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove(
           [void Function(
@@ -2999,7 +3067,7 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove
           ._build();
 
   _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove._(
-      {required this.G__typename, required this.moveId})
+      {required this.G__typename, required this.moveId, required this.rate})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename,
@@ -3009,6 +3077,10 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove
         moveId,
         r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove',
         'moveId');
+    BuiltValueNullFieldError.checkNotNull(
+        rate,
+        r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove',
+        'rate');
   }
 
   @override
@@ -3030,7 +3102,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove
     return other
             is GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove &&
         G__typename == other.G__typename &&
-        moveId == other.moveId;
+        moveId == other.moveId &&
+        rate == other.rate;
   }
 
   @override
@@ -3038,6 +3111,7 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, moveId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -3047,7 +3121,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove
     return (newBuiltValueToStringHelper(
             r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove')
           ..add('G__typename', G__typename)
-          ..add('moveId', moveId))
+          ..add('moveId', moveId)
+          ..add('rate', rate))
         .toString();
   }
 }
@@ -3067,6 +3142,10 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMoveBuilder
   String? get moveId => _$this._moveId;
   set moveId(String? moveId) => _$this._moveId = moveId;
 
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
   GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMoveBuilder() {
     GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove
         ._initializeBuilder(this);
@@ -3078,6 +3157,7 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMoveBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _moveId = $v.moveId;
+      _rate = $v.rate;
       _$v = null;
     }
     return this;
@@ -3116,7 +3196,11 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMoveBuilder
             moveId: BuiltValueNullFieldError.checkNotNull(
                 moveId,
                 r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove',
-                'moveId'));
+                'moveId'),
+            rate: BuiltValueNullFieldError.checkNotNull(
+                rate,
+                r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataMove',
+                'rate'));
     replace(_$result);
     return _$result;
   }
@@ -3128,6 +3212,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
   final String G__typename;
   @override
   final String natureId;
+  @override
+  final double rate;
 
   factory _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature(
           [void Function(
@@ -3138,7 +3224,7 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
           ._build();
 
   _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature._(
-      {required this.G__typename, required this.natureId})
+      {required this.G__typename, required this.natureId, required this.rate})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename,
@@ -3148,6 +3234,10 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
         natureId,
         r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature',
         'natureId');
+    BuiltValueNullFieldError.checkNotNull(
+        rate,
+        r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature',
+        'rate');
   }
 
   @override
@@ -3169,7 +3259,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
     return other
             is GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature &&
         G__typename == other.G__typename &&
-        natureId == other.natureId;
+        natureId == other.natureId &&
+        rate == other.rate;
   }
 
   @override
@@ -3177,6 +3268,7 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, natureId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -3186,7 +3278,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
     return (newBuiltValueToStringHelper(
             r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature')
           ..add('G__typename', G__typename)
-          ..add('natureId', natureId))
+          ..add('natureId', natureId)
+          ..add('rate', rate))
         .toString();
   }
 }
@@ -3206,6 +3299,10 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuild
   String? get natureId => _$this._natureId;
   set natureId(String? natureId) => _$this._natureId = natureId;
 
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
   GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuilder() {
     GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature
         ._initializeBuilder(this);
@@ -3217,6 +3314,7 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuild
     if ($v != null) {
       _G__typename = $v.G__typename;
       _natureId = $v.natureId;
+      _rate = $v.rate;
       _$v = null;
     }
     return this;
@@ -3255,7 +3353,11 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNatureBuild
             natureId: BuiltValueNullFieldError.checkNotNull(
                 natureId,
                 r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature',
-                'natureId'));
+                'natureId'),
+            rate: BuiltValueNullFieldError.checkNotNull(
+                rate,
+                r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataNature',
+                'rate'));
     replace(_$result);
     return _$result;
   }
@@ -3267,6 +3369,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
   final String G__typename;
   @override
   final String typeId;
+  @override
+  final double rate;
 
   factory _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal(
           [void Function(
@@ -3277,7 +3381,7 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
           ._build();
 
   _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal._(
-      {required this.G__typename, required this.typeId})
+      {required this.G__typename, required this.typeId, required this.rate})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename,
@@ -3287,6 +3391,10 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
         typeId,
         r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal',
         'typeId');
+    BuiltValueNullFieldError.checkNotNull(
+        rate,
+        r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal',
+        'rate');
   }
 
   @override
@@ -3308,7 +3416,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
     return other
             is GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal &&
         G__typename == other.G__typename &&
-        typeId == other.typeId;
+        typeId == other.typeId &&
+        rate == other.rate;
   }
 
   @override
@@ -3316,6 +3425,7 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, typeId.hashCode);
+    _$hash = $jc(_$hash, rate.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -3325,7 +3435,8 @@ class _$GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
     return (newBuiltValueToStringHelper(
             r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal')
           ..add('G__typename', G__typename)
-          ..add('typeId', typeId))
+          ..add('typeId', typeId)
+          ..add('rate', rate))
         .toString();
   }
 }
@@ -3346,6 +3457,10 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBui
   String? get typeId => _$this._typeId;
   set typeId(String? typeId) => _$this._typeId = typeId;
 
+  double? _rate;
+  double? get rate => _$this._rate;
+  set rate(double? rate) => _$this._rate = rate;
+
   GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBuilder() {
     GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal
         ._initializeBuilder(this);
@@ -3357,6 +3472,7 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBui
     if ($v != null) {
       _G__typename = $v.G__typename;
       _typeId = $v.typeId;
+      _rate = $v.rate;
       _$v = null;
     }
     return this;
@@ -3395,7 +3511,11 @@ class GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastalBui
             typeId: BuiltValueNullFieldError.checkNotNull(
                 typeId,
                 r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal',
-                'typeId'));
+                'typeId'),
+            rate: BuiltValueNullFieldError.checkNotNull(
+                rate,
+                r'GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataTerastal',
+                'rate'));
     replace(_$result);
     return _$result;
   }

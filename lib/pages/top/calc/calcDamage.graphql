@@ -4,18 +4,23 @@ query DamageCalcSummary($calcId: String = "") {
       pokemonId
       battleDataAbility {
         abilityId
+        rate
       }
       battleDataItem {
         itemId
+        rate
       }
       battleDataMove {
         moveId
+        rate
       }
       battleDataNature{
         natureId
+        rate
       }
       battleDataTerastal{
         typeId
+        rate
       }
     }
   }

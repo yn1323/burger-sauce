@@ -11,11 +11,24 @@ class MoveSelectBottomSheet extends HookWidget {
   const MoveSelectBottomSheet({
     Key? key,
     required this.moves,
+    required this.battleData,
     required this.getMoveType,
   }) : super(key: key);
 
   final List<GDamageCalcSummaryData_moves> moves;
+  final GDamageCalcSummaryData_battleDatasLatest_battleDatas? battleData;
   final MoveType Function(String) getMoveType;
+
+  double getRate(String moveId) {
+    if (battleData == null) return 0;
+
+    if (battleData!.battleDataMove.where((e) => e.moveId == moveId).isEmpty) {
+      return 0;
+    }
+    return battleData!.battleDataMove
+        .firstWhere((e) => e.moveId == moveId)
+        .rate;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +52,7 @@ class MoveSelectBottomSheet extends HookWidget {
                   .map(
                 (e) {
                   final moveType = getMoveType(e.id);
+                  final rate = getRate(e.id);
                   return CheckboxListTile(
                     value: true,
                     title: SizedBox(
@@ -52,8 +66,24 @@ class MoveSelectBottomSheet extends HookWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(e.name,
-                                  style: const TextStyle(fontSize: 18.0)),
+                              Row(
+                                children: [
+                                  Text(e.name,
+                                      style: const TextStyle(fontSize: 18.0)),
+                                  const Gap(10),
+                                  if (e.power > 0)
+                                    Text(
+                                      '(威力：${e.power})',
+                                      style: const TextStyle(fontSize: 14.0),
+                                    ),
+                                  const Gap(10),
+                                  if (rate > 0)
+                                    Text(
+                                      '[使用率：$rate%]',
+                                      style: const TextStyle(fontSize: 14.0),
+                                    ),
+                                ],
+                              ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width - 150,
                                 child: Text(
