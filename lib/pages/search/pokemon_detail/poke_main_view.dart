@@ -58,7 +58,11 @@ class PokeMainView extends StatelessWidget {
           ),
           Expanded(
             flex: 1,
-            child: PokemonImage(imageUrl: pokemon.imageLargeUrl),
+            child: PokemonImage(
+              imageUrl: pokemon.imageLargeUrl,
+              height: 128,
+              width: 128,
+            ),
           ),
           Expanded(
             flex: 1,

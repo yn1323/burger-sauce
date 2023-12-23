@@ -60,7 +60,11 @@ class BattleDetail extends HookWidget {
             child: Center(
               child: Column(
                 children: [
-                  PokemonImage(imageUrl: pokemon.imageLargeUrl),
+                  PokemonImage(
+                    imageUrl: pokemon.imageLargeUrl,
+                    width: 128,
+                    height: 128,
+                  ),
                   const Gap(10),
                   ButtonBar(
                     alignment: MainAxisAlignment.center,

@@ -1,17 +1,19 @@
+import 'package:burger_sauce/components/base/image_widget.dart';
 import 'package:burger_sauce/components/fragments/move_type_image.dart';
 import 'package:burger_sauce/components/fragments/pokemon_image.dart';
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/helpers/query.dart';
-import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/status_list.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.req.gql.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.var.gql.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/ability_select_bottom_sheet.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/item_select_bottom_sheet.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/move_select_bottom_sheet.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/pokemon_select_bottom_sheet.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/status_edit_bottom_sheet.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/terastal_select_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -87,8 +89,8 @@ class DamageCard extends HookConsumerWidget {
                   },
                   child: PokemonImage(
                     imageUrl: pokemon.imageUrl,
-                    height: 120,
-                    width: 120,
+                    height: 64,
+                    width: 100,
                   ),
                 ),
                 Expanded(
@@ -116,15 +118,6 @@ class DamageCard extends HookConsumerWidget {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              nameWithForm(
-                                  name: pokemon.name, form: pokemon.form),
-                              style: const TextStyle(fontSize: 20),
-                            ),
-                          ),
-                          const Gap(12),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
                               ability.name,
                               style: const TextStyle(fontSize: 16),
                             ),
@@ -134,12 +127,65 @@ class DamageCard extends HookConsumerWidget {
                     ),
                   ),
                 ),
-                // const Expanded(
-                //     child: Column(
-                //   children: [
-                //     ElevatedButton(onPressed: onPressed, child: child)
-                //   ],
-                // ))
+                Expanded(
+                    child: Column(
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            builder: (BuildContext context) {
+                              return TerastalSelectBottomSheet(
+                                  battleData: battleData,
+                                  types: calcStore.types!,
+                                  onChange: (typeId) =>
+                                      calcNotifier.updateTerastal(
+                                        id: damageCustomBase.id,
+                                        nextTerastalId: typeId,
+                                      ));
+                            },
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                        child: ImageWidget(
+                          imageUrl: terastal.terastalImageUrl,
+                          width: 64,
+                          height: 32,
+                        )),
+                    ElevatedButton(
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (BuildContext context) {
+                            return ItemSelectBottomSheet(
+                                battleData: battleData,
+                                items: calcStore.items!,
+                                onChange: (itemId) => calcNotifier.updateItem(
+                                      id: damageCustomBase.id,
+                                      nextItemId: itemId,
+                                    ));
+                          },
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: ImageWidget(
+                        imageUrl: item.imageUrl,
+                        width: 64,
+                        height: 32,
+                      ),
+                    )
+                  ],
+                ))
               ],
             ),
             const Gap(4),

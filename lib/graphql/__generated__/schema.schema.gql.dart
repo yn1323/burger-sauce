@@ -326,6 +326,7 @@ abstract class GCreateItemInput
   String get name;
   String get detail;
   String get battleIndex;
+  String get type;
   String get base64Image;
   String get imageUrl;
   String get imageSmallUrl;
@@ -1254,6 +1255,7 @@ abstract class GUpdateItemInput
   String? get name;
   String? get detail;
   String? get battleIndex;
+  String? get type;
   String? get base64Image;
   String? get imageUrl;
   String? get imageSmallUrl;

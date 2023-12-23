@@ -5,52 +5,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 
-class TerastalSelectBottomSheet extends HookWidget {
-  const TerastalSelectBottomSheet({
+class ItemSelectBottomSheet extends HookWidget {
+  const ItemSelectBottomSheet({
     Key? key,
-    required this.types,
+    required this.items,
     required this.battleData,
     required this.onChange,
   }) : super(key: key);
 
-  final List<GDamageCalcSummaryData_types> types;
+  final List<GDamageCalcSummaryData_items> items;
   final GDamageCalcSummaryData_battleDatasLatest_battleDatas? battleData;
   final void Function(String typeId) onChange;
 
-  double getRate(String typeId) {
+  double getRate(String itemId) {
     if (battleData == null) return 0;
 
-    if (battleData!.battleDataTerastal
-        .where((e) => e.typeId == typeId)
-        .isEmpty) {
+    if (battleData!.battleDataItem.where((e) => e.itemId == itemId).isEmpty) {
       return 0;
     }
-    return battleData!.battleDataTerastal
-        .firstWhere((e) => e.typeId == typeId)
+    return battleData!.battleDataItem
+        .firstWhere((e) => e.itemId == itemId)
         .rate;
-  }
-
-  List<GDamageCalcSummaryData_types> orderedTypes() {
-    if (battleData == null) return types;
-    final topRatedTypes = battleData!.battleDataTerastal
-        .map((e) => types.firstWhere((type) => type.id == e.typeId))
-        .toList();
-
-    final topRatedTypeIds = topRatedTypes.map((e) => e.id).toList();
-
-    final nonRatedTypes = types.where((e) => !topRatedTypeIds.contains(e.id));
-
-    return [...topRatedTypes, ...nonRatedTypes];
   }
 
   @override
   Widget build(BuildContext context) {
     return BottomModalSheetTemplate(
       isScrollable: true,
-      title: 'テラスタイプ',
+      title: 'アイテム',
       child: Expanded(
         child: ListView(
-          children: orderedTypes().map(
+          children: items.map(
             (e) {
               final rate = getRate(e.id);
               return ListTile(
@@ -58,7 +43,7 @@ class TerastalSelectBottomSheet extends HookWidget {
                   height: 32,
                   child: Row(
                     children: [
-                      ImageWidget(imageUrl: e.terastalImageUrl, width: 32),
+                      ImageWidget(imageUrl: e.imageUrl, width: 32),
                       const Gap(10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

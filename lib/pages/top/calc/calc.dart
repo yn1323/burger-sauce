@@ -89,6 +89,13 @@ class UpdateTarget {
   String tabType;
 }
 
+class UsedItem {
+  UsedItem({required this.itemId, required this.total});
+
+  int total;
+  String itemId;
+}
+
 @riverpod
 class Calc extends _$Calc {
   List<GDamageCalcSummaryData_pokemons>? pokemons;
@@ -99,6 +106,7 @@ class Calc extends _$Calc {
   List<GDamageCalcSummaryData_natures>? natures;
   List<GDamageCalcSummaryData_types>? types;
   List<GDamageCalcSummaryData_items>? items;
+  List<UsedItem> usedItems = [];
 
   Map<String, PokemonInfo> pokemonInfo = {};
   List<DamageCustomBase> attackBase = [];
@@ -151,6 +159,28 @@ class Calc extends _$Calc {
     moves = value.moves.toList();
     natures = value.natures.toList();
     types = value.types.toList();
+
+    final allUsedItems = battleDatas!.fold<
+            List<
+                GDamageCalcSummaryData_battleDatasLatest_battleDatas_battleDataItem>>(
+        [], (value, e) {
+      return [...value, ...e.battleDataItem.toList()];
+    });
+
+    final usedItemsTotal = allUsedItems.fold<List<UsedItem>>([], (acc, e) {
+      if (acc.any((ac) => ac.itemId == e.itemId)) {
+        return acc
+            .map((ac) => ac.itemId == e.itemId
+                ? UsedItem(itemId: ac.itemId, total: ac.total + 1)
+                : ac)
+            .toList();
+      }
+      return [...acc, UsedItem(itemId: e.itemId, total: 1)];
+    }).toList();
+
+    usedItemsTotal.sort((a, b) => b.total - a.total);
+    usedItems = usedItemsTotal;
+
     items = value.items.toList();
 
     final battleDataPokemonIds = battleDatas!.map((e) => e.pokemonId);
@@ -468,6 +498,30 @@ class Calc extends _$Calc {
     final updateTarget = getUpdateTarget(id);
 
     updateTarget.target.abilityId = nextAbilityId;
+
+    if (updateTarget.tabType == "attack") {
+      update(attackBase: updateTarget.targetBase);
+    } else {
+      update(defenseBase: updateTarget.targetBase);
+    }
+  }
+
+  void updateTerastal({required UniqueKey id, required String nextTerastalId}) {
+    final updateTarget = getUpdateTarget(id);
+
+    updateTarget.target.terastalId = nextTerastalId;
+
+    if (updateTarget.tabType == "attack") {
+      update(attackBase: updateTarget.targetBase);
+    } else {
+      update(defenseBase: updateTarget.targetBase);
+    }
+  }
+
+  void updateItem({required UniqueKey id, required String nextItemId}) {
+    final updateTarget = getUpdateTarget(id);
+
+    updateTarget.target.itemId = nextItemId;
 
     if (updateTarget.tabType == "attack") {
       update(attackBase: updateTarget.targetBase);

@@ -243,7 +243,7 @@ class SearchPage extends HookWidget {
                               PokemonImage(
                                 imageUrl: pokemon.imageUrl,
                                 width: 100,
-                                height: 100,
+                                height: 50,
                                 ballSkeleton: false,
                                 showSkeleton: false,
                               ),

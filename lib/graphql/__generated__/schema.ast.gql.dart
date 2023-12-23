@@ -1119,6 +1119,15 @@ const CreateItemInput = _i1.InputObjectTypeDefinitionNode(
       defaultValue: null,
     ),
     _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'type'),
+      directives: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+      defaultValue: null,
+    ),
+    _i1.InputValueDefinitionNode(
       name: _i1.NameNode(value: 'base64Image'),
       directives: [],
       type: _i1.NamedTypeNode(
@@ -2775,6 +2784,15 @@ const Item = _i1.ObjectTypeDefinitionNode(
     ),
     _i1.FieldDefinitionNode(
       name: _i1.NameNode(value: 'battleIndex'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'type'),
       directives: [],
       args: [],
       type: _i1.NamedTypeNode(
@@ -8572,6 +8590,15 @@ const UpdateItemInput = _i1.InputObjectTypeDefinitionNode(
     ),
     _i1.InputValueDefinitionNode(
       name: _i1.NameNode(value: 'battleIndex'),
+      directives: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: false,
+      ),
+      defaultValue: null,
+    ),
+    _i1.InputValueDefinitionNode(
+      name: _i1.NameNode(value: 'type'),
       directives: [],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'String'),
