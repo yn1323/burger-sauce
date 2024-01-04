@@ -179,6 +179,7 @@ input CreateItemInput {
   name: String!
   detail: String!
   battleIndex: String!
+  order: Int!
   type: String!
   base64Image: String!
   imageUrl: String!
@@ -421,6 +422,7 @@ type Item {
   name: String!
   detail: String!
   battleIndex: String!
+  order: Int!
   type: String!
   base64Image: String!
   imageUrl: String!
@@ -981,6 +983,7 @@ input UpdateItemInput {
   name: String
   detail: String
   battleIndex: String
+  order: Int
   type: String
   base64Image: String
   imageUrl: String

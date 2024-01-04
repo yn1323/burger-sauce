@@ -80,6 +80,8 @@ query DamageCalcSummary($calcId: String = "") {
   }
   items{
     id
+    order
+    type
     name
     detail
     imageUrl

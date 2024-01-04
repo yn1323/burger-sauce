@@ -803,6 +803,8 @@ class _$GCreateItemInputSerializer
       'battleIndex',
       serializers.serialize(object.battleIndex,
           specifiedType: const FullType(String)),
+      'order',
+      serializers.serialize(object.order, specifiedType: const FullType(int)),
       'type',
       serializers.serialize(object.type, specifiedType: const FullType(String)),
       'base64Image',
@@ -845,6 +847,10 @@ class _$GCreateItemInputSerializer
         case 'battleIndex':
           result.battleIndex = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
+          break;
+        case 'order':
+          result.order = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
@@ -3397,6 +3403,12 @@ class _$GUpdateItemInputSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.order;
+    if (value != null) {
+      result
+        ..add('order')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
     value = object.type;
     if (value != null) {
       result
@@ -3458,6 +3470,10 @@ class _$GUpdateItemInputSerializer
         case 'battleIndex':
           result.battleIndex = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
+          break;
+        case 'order':
+          result.order = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
@@ -7113,6 +7129,8 @@ class _$GCreateItemInput extends GCreateItemInput {
   @override
   final String battleIndex;
   @override
+  final int order;
+  @override
   final String type;
   @override
   final String base64Image;
@@ -7131,6 +7149,7 @@ class _$GCreateItemInput extends GCreateItemInput {
       {required this.name,
       required this.detail,
       required this.battleIndex,
+      required this.order,
       required this.type,
       required this.base64Image,
       required this.imageUrl,
@@ -7142,6 +7161,7 @@ class _$GCreateItemInput extends GCreateItemInput {
         detail, r'GCreateItemInput', 'detail');
     BuiltValueNullFieldError.checkNotNull(
         battleIndex, r'GCreateItemInput', 'battleIndex');
+    BuiltValueNullFieldError.checkNotNull(order, r'GCreateItemInput', 'order');
     BuiltValueNullFieldError.checkNotNull(type, r'GCreateItemInput', 'type');
     BuiltValueNullFieldError.checkNotNull(
         base64Image, r'GCreateItemInput', 'base64Image');
@@ -7168,6 +7188,7 @@ class _$GCreateItemInput extends GCreateItemInput {
         name == other.name &&
         detail == other.detail &&
         battleIndex == other.battleIndex &&
+        order == other.order &&
         type == other.type &&
         base64Image == other.base64Image &&
         imageUrl == other.imageUrl &&
@@ -7181,6 +7202,7 @@ class _$GCreateItemInput extends GCreateItemInput {
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, detail.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, order.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jc(_$hash, base64Image.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
@@ -7196,6 +7218,7 @@ class _$GCreateItemInput extends GCreateItemInput {
           ..add('name', name)
           ..add('detail', detail)
           ..add('battleIndex', battleIndex)
+          ..add('order', order)
           ..add('type', type)
           ..add('base64Image', base64Image)
           ..add('imageUrl', imageUrl)
@@ -7220,6 +7243,10 @@ class GCreateItemInputBuilder
   String? _battleIndex;
   String? get battleIndex => _$this._battleIndex;
   set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  int? _order;
+  int? get order => _$this._order;
+  set order(int? order) => _$this._order = order;
 
   String? _type;
   String? get type => _$this._type;
@@ -7251,6 +7278,7 @@ class GCreateItemInputBuilder
       _name = $v.name;
       _detail = $v.detail;
       _battleIndex = $v.battleIndex;
+      _order = $v.order;
       _type = $v.type;
       _base64Image = $v.base64Image;
       _imageUrl = $v.imageUrl;
@@ -7284,6 +7312,8 @@ class GCreateItemInputBuilder
                 detail, r'GCreateItemInput', 'detail'),
             battleIndex: BuiltValueNullFieldError.checkNotNull(
                 battleIndex, r'GCreateItemInput', 'battleIndex'),
+            order: BuiltValueNullFieldError.checkNotNull(
+                order, r'GCreateItemInput', 'order'),
             type: BuiltValueNullFieldError.checkNotNull(
                 type, r'GCreateItemInput', 'type'),
             base64Image: BuiltValueNullFieldError.checkNotNull(
@@ -12364,6 +12394,8 @@ class _$GUpdateItemInput extends GUpdateItemInput {
   @override
   final String? battleIndex;
   @override
+  final int? order;
+  @override
   final String? type;
   @override
   final String? base64Image;
@@ -12382,6 +12414,7 @@ class _$GUpdateItemInput extends GUpdateItemInput {
       {this.name,
       this.detail,
       this.battleIndex,
+      this.order,
       this.type,
       this.base64Image,
       this.imageUrl,
@@ -12404,6 +12437,7 @@ class _$GUpdateItemInput extends GUpdateItemInput {
         name == other.name &&
         detail == other.detail &&
         battleIndex == other.battleIndex &&
+        order == other.order &&
         type == other.type &&
         base64Image == other.base64Image &&
         imageUrl == other.imageUrl &&
@@ -12417,6 +12451,7 @@ class _$GUpdateItemInput extends GUpdateItemInput {
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, detail.hashCode);
     _$hash = $jc(_$hash, battleIndex.hashCode);
+    _$hash = $jc(_$hash, order.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jc(_$hash, base64Image.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
@@ -12432,6 +12467,7 @@ class _$GUpdateItemInput extends GUpdateItemInput {
           ..add('name', name)
           ..add('detail', detail)
           ..add('battleIndex', battleIndex)
+          ..add('order', order)
           ..add('type', type)
           ..add('base64Image', base64Image)
           ..add('imageUrl', imageUrl)
@@ -12456,6 +12492,10 @@ class GUpdateItemInputBuilder
   String? _battleIndex;
   String? get battleIndex => _$this._battleIndex;
   set battleIndex(String? battleIndex) => _$this._battleIndex = battleIndex;
+
+  int? _order;
+  int? get order => _$this._order;
+  set order(int? order) => _$this._order = order;
 
   String? _type;
   String? get type => _$this._type;
@@ -12487,6 +12527,7 @@ class GUpdateItemInputBuilder
       _name = $v.name;
       _detail = $v.detail;
       _battleIndex = $v.battleIndex;
+      _order = $v.order;
       _type = $v.type;
       _base64Image = $v.base64Image;
       _imageUrl = $v.imageUrl;
@@ -12517,6 +12558,7 @@ class GUpdateItemInputBuilder
             name: name,
             detail: detail,
             battleIndex: battleIndex,
+            order: order,
             type: type,
             base64Image: base64Image,
             imageUrl: imageUrl,

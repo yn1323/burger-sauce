@@ -182,6 +182,7 @@ class Calc extends _$Calc {
     usedItems = usedItemsTotal;
 
     items = value.items.toList();
+    items!.sort((a, b) => a.order - b.order);
 
     final battleDataPokemonIds = battleDatas!.map((e) => e.pokemonId);
 

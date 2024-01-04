@@ -28,6 +28,19 @@ class ItemSelectBottomSheet extends HookWidget {
         .rate;
   }
 
+  List<GDamageCalcSummaryData_items> orderedItems() {
+    if (battleData == null) return items;
+    final topRatedTypes = battleData!.battleDataTerastal
+        .map((e) => items.firstWhere((type) => type.id == e.typeId))
+        .toList();
+
+    final topRatedTypeIds = topRatedTypes.map((e) => e.id).toList();
+
+    final nonRatedTypes = items.where((e) => !topRatedTypeIds.contains(e.id));
+
+    return [...topRatedTypes, ...nonRatedTypes];
+  }
+
   @override
   Widget build(BuildContext context) {
     return BottomModalSheetTemplate(
@@ -35,7 +48,7 @@ class ItemSelectBottomSheet extends HookWidget {
       title: 'アイテム',
       child: Expanded(
         child: ListView(
-          children: items.map(
+          children: orderedItems().map(
             (e) {
               final rate = getRate(e.id);
               return ListTile(

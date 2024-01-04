@@ -1270,6 +1270,10 @@ class _$GDamageCalcSummaryData_itemsSerializer
           specifiedType: const FullType(String)),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'order',
+      serializers.serialize(object.order, specifiedType: const FullType(int)),
+      'type',
+      serializers.serialize(object.type, specifiedType: const FullType(String)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'detail',
@@ -1301,6 +1305,14 @@ class _$GDamageCalcSummaryData_itemsSerializer
           break;
         case 'id':
           result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'order':
+          result.order = serializers.deserialize(value,
+              specifiedType: const FullType(int))! as int;
+          break;
+        case 'type':
+          result.type = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
         case 'name':
@@ -4641,6 +4653,10 @@ class _$GDamageCalcSummaryData_items extends GDamageCalcSummaryData_items {
   @override
   final String id;
   @override
+  final int order;
+  @override
+  final String type;
+  @override
   final String name;
   @override
   final String detail;
@@ -4654,6 +4670,8 @@ class _$GDamageCalcSummaryData_items extends GDamageCalcSummaryData_items {
   _$GDamageCalcSummaryData_items._(
       {required this.G__typename,
       required this.id,
+      required this.order,
+      required this.type,
       required this.name,
       required this.detail,
       required this.imageUrl})
@@ -4662,6 +4680,10 @@ class _$GDamageCalcSummaryData_items extends GDamageCalcSummaryData_items {
         G__typename, r'GDamageCalcSummaryData_items', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(
         id, r'GDamageCalcSummaryData_items', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        order, r'GDamageCalcSummaryData_items', 'order');
+    BuiltValueNullFieldError.checkNotNull(
+        type, r'GDamageCalcSummaryData_items', 'type');
     BuiltValueNullFieldError.checkNotNull(
         name, r'GDamageCalcSummaryData_items', 'name');
     BuiltValueNullFieldError.checkNotNull(
@@ -4685,6 +4707,8 @@ class _$GDamageCalcSummaryData_items extends GDamageCalcSummaryData_items {
     return other is GDamageCalcSummaryData_items &&
         G__typename == other.G__typename &&
         id == other.id &&
+        order == other.order &&
+        type == other.type &&
         name == other.name &&
         detail == other.detail &&
         imageUrl == other.imageUrl;
@@ -4695,6 +4719,8 @@ class _$GDamageCalcSummaryData_items extends GDamageCalcSummaryData_items {
     var _$hash = 0;
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, order.hashCode);
+    _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, detail.hashCode);
     _$hash = $jc(_$hash, imageUrl.hashCode);
@@ -4707,6 +4733,8 @@ class _$GDamageCalcSummaryData_items extends GDamageCalcSummaryData_items {
     return (newBuiltValueToStringHelper(r'GDamageCalcSummaryData_items')
           ..add('G__typename', G__typename)
           ..add('id', id)
+          ..add('order', order)
+          ..add('type', type)
           ..add('name', name)
           ..add('detail', detail)
           ..add('imageUrl', imageUrl))
@@ -4727,6 +4755,14 @@ class GDamageCalcSummaryData_itemsBuilder
   String? _id;
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
+
+  int? _order;
+  int? get order => _$this._order;
+  set order(int? order) => _$this._order = order;
+
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
   String? _name;
   String? get name => _$this._name;
@@ -4749,6 +4785,8 @@ class GDamageCalcSummaryData_itemsBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _id = $v.id;
+      _order = $v.order;
+      _type = $v.type;
       _name = $v.name;
       _detail = $v.detail;
       _imageUrl = $v.imageUrl;
@@ -4778,6 +4816,10 @@ class GDamageCalcSummaryData_itemsBuilder
                 G__typename, r'GDamageCalcSummaryData_items', 'G__typename'),
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'GDamageCalcSummaryData_items', 'id'),
+            order: BuiltValueNullFieldError.checkNotNull(
+                order, r'GDamageCalcSummaryData_items', 'order'),
+            type: BuiltValueNullFieldError.checkNotNull(
+                type, r'GDamageCalcSummaryData_items', 'type'),
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'GDamageCalcSummaryData_items', 'name'),
             detail: BuiltValueNullFieldError.checkNotNull(

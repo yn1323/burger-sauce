@@ -549,6 +549,8 @@ abstract class GDamageCalcSummaryData_items
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get id;
+  int get order;
+  String get type;
   String get name;
   String get detail;
   String get imageUrl;
