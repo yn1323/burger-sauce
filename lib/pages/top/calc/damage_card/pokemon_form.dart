@@ -71,66 +71,83 @@ class PokemonForm extends HookConsumerWidget {
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      isScrollControlled: true,
-                      context: context,
-                      builder: (BuildContext context) {
-                        return PokemonSelectBottomSheet(
-                          onChange: (String id) => changePokemon(id),
-                          pokemons: calcStore.pokemons!,
-                        );
-                      },
-                    );
-                  },
-                  child: PokemonImage(
-                    imageUrl: pokemon.imageUrl,
-                    height: 64,
-                    width: 100,
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 32.0),
-                    child: InkWell(
-                      onTap: () {
+            IntrinsicHeight(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    height: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
                         showModalBottomSheet(
+                          isScrollControlled: true,
                           context: context,
                           builder: (BuildContext context) {
-                            return AbilitySelectBottomSheet(
-                                battleData: battleData,
-                                abilities: pokemonInfo!.abilities,
-                                onChange: (String abilityId) =>
-                                    calcNotifier.updateAbility(
-                                      id: damageCustomBase.id,
-                                      nextAbilityId: abilityId,
-                                    ));
+                            return PokemonSelectBottomSheet(
+                              onChange: (String id) => changePokemon(id),
+                              pokemons: calcStore.pokemons!,
+                            );
                           },
                         );
                       },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              ability.name,
-                              style: const TextStyle(fontSize: 16),
-                            ),
-                          ),
-                        ],
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.all(15),
+                        foregroundColor:
+                            Theme.of(context).colorScheme.onPrimary,
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                      child: PokemonImage(
+                        imageUrl: pokemon.imageUrl,
+                        height: 64,
+                        width: 100,
                       ),
                     ),
                   ),
-                ),
-                Expanded(
-                    child: Column(
-                  children: [
-                    ElevatedButton(
+                  Expanded(
+                    child: SizedBox(
+                      height: double.infinity,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AbilitySelectBottomSheet(
+                                    battleData: battleData,
+                                    abilities: pokemonInfo!.abilities,
+                                    onChange: (String abilityId) =>
+                                        calcNotifier.updateAbility(
+                                          id: damageCustomBase.id,
+                                          nextAbilityId: abilityId,
+                                        ));
+                              },
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.all(15),
+                            foregroundColor:
+                                Theme.of(context).colorScheme.onPrimary,
+                            backgroundColor:
+                                Theme.of(context).colorScheme.primary,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                          child: Text(
+                            ability.name,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      ElevatedButton(
                         onPressed: () {
                           showModalBottomSheet(
                             context: context,
@@ -148,6 +165,11 @@ class PokemonForm extends HookConsumerWidget {
                           );
                         },
                         style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.all(15),
+                          foregroundColor:
+                              Theme.of(context).colorScheme.onPrimary,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           ),
@@ -156,39 +178,47 @@ class PokemonForm extends HookConsumerWidget {
                           imageUrl: terastal.terastalImageUrl,
                           width: 64,
                           height: 32,
-                        )),
-                    ElevatedButton(
-                      onPressed: () {
-                        showModalBottomSheet(
-                          context: context,
-                          isScrollControlled: true,
-                          builder: (BuildContext context) {
-                            return ItemSelectBottomSheet(
-                                battleData: battleData,
-                                items: calcStore.items!,
-                                onChange: (itemId) => calcNotifier.updateItem(
-                                      id: damageCustomBase.id,
-                                      nextItemId: itemId,
-                                    ));
-                          },
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      child: ImageWidget(
-                        imageUrl: item.imageUrl,
-                        width: 64,
-                        height: 32,
-                      ),
-                    )
-                  ],
-                ))
-              ],
+                      const Gap(5),
+                      ElevatedButton(
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            builder: (BuildContext context) {
+                              return ItemSelectBottomSheet(
+                                  battleData: battleData,
+                                  items: calcStore.items!,
+                                  onChange: (itemId) => calcNotifier.updateItem(
+                                        id: damageCustomBase.id,
+                                        nextItemId: itemId,
+                                      ));
+                            },
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.all(15),
+                          foregroundColor:
+                              Theme.of(context).colorScheme.onPrimary,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                        child: ImageWidget(
+                          imageUrl: item.imageUrl,
+                          width: 64,
+                          height: 32,
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
-            const Gap(4),
+            const Gap(8),
             InkWell(
               onTap: () {
                 showModalBottomSheet(
@@ -234,7 +264,7 @@ class PokemonForm extends HookConsumerWidget {
                     .toList(),
               ),
             ),
-            const Gap(4),
+            const Gap(8),
             InkWell(
               onTap: () {
                 showModalBottomSheet(
