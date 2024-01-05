@@ -40,6 +40,15 @@ class MoveSelectBottomSheet extends HookWidget {
     final searchWord = useState('');
     final initialSelected = useState(selectedIds);
 
+    final orderedMoves = useMemoized(() {
+      final selected =
+          moves.where((e) => initialSelected.value.contains(e.id)).toList();
+      final nonSelected =
+          moves.where((e) => !initialSelected.value.contains(e.id)).toList();
+
+      return [...selected, ...nonSelected];
+    }, []);
+
     return BottomModalSheetTemplate(
       isScrollable: true,
       title: 'わざ',
@@ -53,7 +62,7 @@ class MoveSelectBottomSheet extends HookWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height - 300,
             child: ListView(
-              children: moves
+              children: orderedMoves
                   .where((move) => move.name.contains(searchWord.value))
                   .map(
                 (e) {
