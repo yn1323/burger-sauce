@@ -1,8 +1,59 @@
 import 'package:burger_sauce/components/base/bottom_modal_sheet_template.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
+import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+
+class AbilitySelect extends StatelessWidget {
+  const AbilitySelect({
+    super.key,
+    required this.battleData,
+    required this.pokemonInfo,
+    required this.calcNotifier,
+    required this.damageCustomBase,
+    required this.ability,
+  });
+
+  final GDamageCalcSummaryData_battleDatasLatest_battleDatas? battleData;
+  final PokemonInfo? pokemonInfo;
+  final Calc calcNotifier;
+  final DamageCustomBase damageCustomBase;
+  final GDamageCalcSummaryData_abilities ability;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        showModalBottomSheet(
+          context: context,
+          builder: (BuildContext context) {
+            return AbilitySelectBottomSheet(
+              battleData: battleData,
+              abilities: pokemonInfo!.abilities,
+              onChange: (String abilityId) => calcNotifier.updateAbility(
+                id: damageCustomBase.id,
+                nextAbilityId: abilityId,
+              ),
+            );
+          },
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(15),
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5),
+        ),
+      ),
+      child: Text(
+        ability.name,
+        style: const TextStyle(fontSize: 16),
+      ),
+    );
+  }
+}
 
 class AbilitySelectBottomSheet extends HookWidget {
   const AbilitySelectBottomSheet({

@@ -1,9 +1,61 @@
 import 'package:burger_sauce/components/base/bottom_modal_sheet_template.dart';
 import 'package:burger_sauce/components/base/image_widget.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
+import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+
+class ItemSelect extends StatelessWidget {
+  const ItemSelect({
+    super.key,
+    required this.battleData,
+    required this.calcStore,
+    required this.calcNotifier,
+    required this.damageCustomBase,
+    required this.item,
+  });
+
+  final GDamageCalcSummaryData_battleDatasLatest_battleDatas? battleData;
+  final CalcState calcStore;
+  final Calc calcNotifier;
+  final DamageCustomBase damageCustomBase;
+  final GDamageCalcSummaryData_items item;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          builder: (BuildContext context) {
+            return ItemSelectBottomSheet(
+                battleData: battleData,
+                items: calcStore.items!,
+                onChange: (itemId) => calcNotifier.updateItem(
+                      id: damageCustomBase.id,
+                      nextItemId: itemId,
+                    ));
+          },
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(vertical: 15.0),
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5),
+        ),
+      ),
+      child: ImageWidget(
+        imageUrl: item.imageUrl,
+        width: 64,
+        height: 32,
+      ),
+    );
+  }
+}
 
 class ItemSelectBottomSheet extends HookWidget {
   const ItemSelectBottomSheet({

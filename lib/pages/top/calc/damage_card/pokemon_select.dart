@@ -3,9 +3,54 @@ import 'package:burger_sauce/components/base/common_search_bar.dart';
 import 'package:burger_sauce/components/fragments/pokemon_image.dart';
 import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
+import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+
+class PokemonSelect extends StatelessWidget {
+  const PokemonSelect({
+    super.key,
+    required this.calcStore,
+    required this.pokemon,
+    required this.onChange,
+  });
+
+  final CalcState calcStore;
+  final GDamageCalcSummaryData_pokemons pokemon;
+  final void Function(String id) onChange;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        showModalBottomSheet(
+          isScrollControlled: true,
+          context: context,
+          builder: (BuildContext context) {
+            return PokemonSelectBottomSheet(
+              onChange: (String id) => onChange(id),
+              pokemons: calcStore.pokemons!,
+            );
+          },
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(15),
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5),
+        ),
+      ),
+      child: PokemonImage(
+        imageUrl: pokemon.imageUrl,
+        height: 64,
+        width: 64,
+      ),
+    );
+  }
+}
 
 class PokemonSelectBottomSheet extends HookWidget {
   const PokemonSelectBottomSheet({

@@ -1,6 +1,4 @@
-import 'package:burger_sauce/components/base/image_widget.dart';
 import 'package:burger_sauce/components/fragments/move_type_image.dart';
-import 'package:burger_sauce/components/fragments/pokemon_image.dart';
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/helpers/query.dart';
 import 'package:burger_sauce/pages/search/pokemon_detail/status_list.dart';
@@ -8,17 +6,21 @@ import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.da
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.req.gql.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.var.gql.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
-import 'package:burger_sauce/pages/top/calc/damage_card/ability_select_bottom_sheet.dart';
-import 'package:burger_sauce/pages/top/calc/damage_card/item_select_bottom_sheet.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/ability_select.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/item_select.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/move_select_bottom_sheet.dart';
-import 'package:burger_sauce/pages/top/calc/damage_card/pokemon_select_bottom_sheet.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/pokemon_select.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/status_edit_bottom_sheet.dart';
-import 'package:burger_sauce/pages/top/calc/damage_card/terastal_select_bottom_sheet.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/terastal_select.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 List<String> statusLabels = ["H", "A", "B", "C", "D", "S"];
+
+const space = 8.0;
+
+const gap = Gap(space);
 
 class PokemonForm extends HookConsumerWidget {
   const PokemonForm({Key? key, required this.damageCustomBase})
@@ -77,141 +79,43 @@ class PokemonForm extends HookConsumerWidget {
                 children: [
                   SizedBox(
                     height: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        showModalBottomSheet(
-                          isScrollControlled: true,
-                          context: context,
-                          builder: (BuildContext context) {
-                            return PokemonSelectBottomSheet(
-                              onChange: (String id) => changePokemon(id),
-                              pokemons: calcStore.pokemons!,
-                            );
-                          },
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.all(15),
-                        foregroundColor:
-                            Theme.of(context).colorScheme.onPrimary,
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                      child: PokemonImage(
-                        imageUrl: pokemon.imageUrl,
-                        height: 64,
-                        width: 100,
-                      ),
+                    child: PokemonSelect(
+                      calcStore: calcStore,
+                      pokemon: pokemon,
+                      onChange: (String id) => changePokemon(id),
                     ),
                   ),
                   Expanded(
                     child: SizedBox(
                       height: double.infinity,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            showModalBottomSheet(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AbilitySelectBottomSheet(
-                                    battleData: battleData,
-                                    abilities: pokemonInfo!.abilities,
-                                    onChange: (String abilityId) =>
-                                        calcNotifier.updateAbility(
-                                          id: damageCustomBase.id,
-                                          nextAbilityId: abilityId,
-                                        ));
-                              },
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.all(15),
-                            foregroundColor:
-                                Theme.of(context).colorScheme.onPrimary,
-                            backgroundColor:
-                                Theme.of(context).colorScheme.primary,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                          ),
-                          child: Text(
-                            ability.name,
-                            style: const TextStyle(fontSize: 16),
-                          ),
+                        padding: const EdgeInsets.symmetric(horizontal: space),
+                        child: AbilitySelect(
+                          battleData: battleData,
+                          pokemonInfo: pokemonInfo,
+                          calcNotifier: calcNotifier,
+                          damageCustomBase: damageCustomBase,
+                          ability: ability,
                         ),
                       ),
                     ),
                   ),
                   Column(
                     children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          showModalBottomSheet(
-                            context: context,
-                            isScrollControlled: true,
-                            builder: (BuildContext context) {
-                              return TerastalSelectBottomSheet(
-                                  battleData: battleData,
-                                  types: calcStore.types!,
-                                  onChange: (typeId) =>
-                                      calcNotifier.updateTerastal(
-                                        id: damageCustomBase.id,
-                                        nextTerastalId: typeId,
-                                      ));
-                            },
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.all(15),
-                          foregroundColor:
-                              Theme.of(context).colorScheme.onPrimary,
-                          backgroundColor:
-                              Theme.of(context).colorScheme.primary,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                        child: ImageWidget(
-                          imageUrl: terastal.terastalImageUrl,
-                          width: 64,
-                          height: 32,
-                        ),
+                      TerastalSelect(
+                        battleData: battleData,
+                        calcStore: calcStore,
+                        calcNotifier: calcNotifier,
+                        damageCustomBase: damageCustomBase,
+                        terastal: terastal,
                       ),
-                      const Gap(5),
-                      ElevatedButton(
-                        onPressed: () {
-                          showModalBottomSheet(
-                            context: context,
-                            isScrollControlled: true,
-                            builder: (BuildContext context) {
-                              return ItemSelectBottomSheet(
-                                  battleData: battleData,
-                                  items: calcStore.items!,
-                                  onChange: (itemId) => calcNotifier.updateItem(
-                                        id: damageCustomBase.id,
-                                        nextItemId: itemId,
-                                      ));
-                            },
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.all(15),
-                          foregroundColor:
-                              Theme.of(context).colorScheme.onPrimary,
-                          backgroundColor:
-                              Theme.of(context).colorScheme.primary,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                        child: ImageWidget(
-                          imageUrl: item.imageUrl,
-                          width: 64,
-                          height: 32,
-                        ),
+                      gap,
+                      ItemSelect(
+                        battleData: battleData,
+                        calcStore: calcStore,
+                        calcNotifier: calcNotifier,
+                        damageCustomBase: damageCustomBase,
+                        item: item,
                       )
                     ],
                   )
