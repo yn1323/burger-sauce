@@ -1,4 +1,5 @@
 import 'package:burger_sauce/components/base/bottom_modal_sheet_template.dart';
+import 'package:burger_sauce/components/styles/button.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:flutter/material.dart';
@@ -39,14 +40,7 @@ class AbilitySelect extends StatelessWidget {
           },
         );
       },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(15),
-        foregroundColor: Theme.of(context).colorScheme.onPrimary,
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5),
-        ),
-      ),
+      style: getCardButtonFormStyle(context),
       child: Text(
         ability.name,
         style: const TextStyle(fontSize: 16),

@@ -1,6 +1,7 @@
 import 'package:burger_sauce/components/base/bottom_modal_sheet_template.dart';
 import 'package:burger_sauce/components/base/common_search_bar.dart';
 import 'package:burger_sauce/components/fragments/pokemon_image.dart';
+import 'package:burger_sauce/components/styles/button.dart';
 import 'package:burger_sauce/helpers/string.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
@@ -35,14 +36,7 @@ class PokemonSelect extends StatelessWidget {
           },
         );
       },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(15),
-        foregroundColor: Theme.of(context).colorScheme.onPrimary,
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5),
-        ),
-      ),
+      style: getCardButtonFormStyle(context),
       child: PokemonImage(
         imageUrl: pokemon.imageUrl,
         height: 64,
