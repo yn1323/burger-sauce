@@ -43,11 +43,11 @@ class StatusBox extends StatelessWidget {
                             child: Text(
                               label,
                               style: TextStyle(
-                                  color: isIncrease != null && isIncrease!
-                                      ? Colors.red[300]
-                                      : isDecrease != null && isDecrease!
-                                          ? Colors.blue[300]
-                                          : Colors.black,
+                                  color: !isIncrease! && !isDecrease!
+                                      ? null
+                                      : isIncrease != null && isIncrease!
+                                          ? Colors.red[300]
+                                          : Colors.blue[300],
                                   fontWeight:
                                       isIncrease != null && isIncrease! ||
                                               isDecrease != null && isDecrease!

@@ -40,7 +40,7 @@ class PokemonSelect extends StatelessWidget {
       child: PokemonImage(
         imageUrl: pokemon.imageUrl,
         height: 64,
-        width: 64,
+        width: 80,
       ),
     );
   }

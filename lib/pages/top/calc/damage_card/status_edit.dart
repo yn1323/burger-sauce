@@ -1,10 +1,73 @@
 import 'package:burger_sauce/components/base/bottom_modal_sheet_template.dart';
 import 'package:burger_sauce/components/fragments/evSliders/ev_sliders.dart';
 import 'package:burger_sauce/components/fragments/natureToggle/nature_toggle.dart';
+import 'package:burger_sauce/components/styles/button.dart';
 import 'package:burger_sauce/models/status.dart';
+import 'package:burger_sauce/pages/search/pokemon_detail/status_list.dart';
+import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+
+class StatusEdit extends StatelessWidget {
+  const StatusEdit({
+    super.key,
+    required this.damageCustomBase,
+    required this.calcNotifier,
+  });
+
+  final DamageCustomBase damageCustomBase;
+  final Calc calcNotifier;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: getCardButtonFormStyle(context),
+      onPressed: () {
+        showModalBottomSheet(
+          isScrollControlled: true,
+          context: context,
+          builder: (BuildContext context) {
+            return StatusEditBottomSheet(
+              initialStatus: damageCustomBase.status,
+              onChangeNature: (nature) {
+                calcNotifier.updateNature(
+                  id: damageCustomBase.id,
+                  increase: nature.increase,
+                  decrease: nature.decrease,
+                );
+              },
+              onChangeEv: ({required type, required value}) {
+                calcNotifier.updateEv(
+                    type: type, ev: value, id: damageCustomBase.id);
+              },
+            );
+          },
+        );
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: statusLabels
+            .map(
+              (label) => Expanded(
+                flex: 1,
+                child: StatusBox(
+                  verticalSubStatus: true,
+                  label: label,
+                  status: damageCustomBase.status.getRealStatus(label: label),
+                  subStatus: damageCustomBase.status.getEv(label),
+                  isIncrease:
+                      damageCustomBase.status.getIsIncreaseNature(label),
+                  isDecrease:
+                      damageCustomBase.status.getIsDecreaseNature(label),
+                ),
+              ),
+            )
+            .toList(),
+      ),
+    );
+  }
+}
 
 class StatusEditBottomSheet extends HookWidget {
   const StatusEditBottomSheet({

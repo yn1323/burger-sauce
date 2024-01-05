@@ -1,16 +1,14 @@
-import 'package:burger_sauce/components/fragments/move_type_image.dart';
 import 'package:burger_sauce/constants/client.dart';
 import 'package:burger_sauce/helpers/query.dart';
-import 'package:burger_sauce/pages/search/pokemon_detail/status_list.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.req.gql.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.var.gql.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/ability_select.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/item_select.dart';
-import 'package:burger_sauce/pages/top/calc/damage_card/move_select_bottom_sheet.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/move_select.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/pokemon_select.dart';
-import 'package:burger_sauce/pages/top/calc/damage_card/status_edit_bottom_sheet.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/status_edit.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/terastal_select.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -123,141 +121,18 @@ class PokemonForm extends HookConsumerWidget {
               ),
             ),
             const Gap(8),
-            InkWell(
-              onTap: () {
-                showModalBottomSheet(
-                  isScrollControlled: true,
-                  context: context,
-                  builder: (BuildContext context) {
-                    return StatusEditBottomSheet(
-                      initialStatus: damageCustomBase.status,
-                      onChangeNature: (nature) {
-                        calcNotifier.updateNature(
-                          id: damageCustomBase.id,
-                          increase: nature.increase,
-                          decrease: nature.decrease,
-                        );
-                      },
-                      onChangeEv: ({required type, required value}) {
-                        calcNotifier.updateEv(
-                            type: type, ev: value, id: damageCustomBase.id);
-                      },
-                    );
-                  },
-                );
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: statusLabels
-                    .map(
-                      (label) => Expanded(
-                        flex: 1,
-                        child: StatusBox(
-                          verticalSubStatus: true,
-                          label: label,
-                          status: damageCustomBase.status
-                              .getRealStatus(label: label),
-                          subStatus: damageCustomBase.status.getEv(label),
-                          isIncrease: damageCustomBase.status
-                              .getIsIncreaseNature(label),
-                          isDecrease: damageCustomBase.status
-                              .getIsDecreaseNature(label),
-                        ),
-                      ),
-                    )
-                    .toList(),
-              ),
+            StatusEdit(
+              damageCustomBase: damageCustomBase,
+              calcNotifier: calcNotifier,
             ),
             const Gap(8),
-            InkWell(
-              onTap: () {
-                showModalBottomSheet(
-                  isScrollControlled: true,
-                  context: context,
-                  builder: (BuildContext context) {
-                    return MoveSelectBottomSheet(
-                      moves: pokemonInfo!.moves,
-                      battleData: battleData,
-                      getMoveType: (String id) => getMoveType(id),
-                      selectedIds: damageCustomBase.moveIds,
-                      onChange: (
-                          {required String moveId, required bool isSelected}) {
-                        if (isSelected) {
-                          calcNotifier.addMove(
-                            id: damageCustomBase.id,
-                            addMoveId: moveId,
-                          );
-                        } else {
-                          calcNotifier.removeMove(
-                            id: damageCustomBase.id,
-                            removeMoveId: moveId,
-                          );
-                        }
-                      },
-                    );
-                  },
-                );
-              },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (moves.isEmpty)
-                    SizedBox(
-                      width: double.infinity,
-                      height: 40,
-                      child: ElevatedButton(
-                          onPressed: () {
-                            showModalBottomSheet(
-                              isScrollControlled: true,
-                              context: context,
-                              builder: (BuildContext context) {
-                                return MoveSelectBottomSheet(
-                                  moves: pokemonInfo!.moves,
-                                  battleData: battleData,
-                                  getMoveType: (String id) => getMoveType(id),
-                                  selectedIds: damageCustomBase.moveIds,
-                                  onChange: (
-                                      {required String moveId,
-                                      required bool isSelected}) {
-                                    if (isSelected) {
-                                      calcNotifier.addMove(
-                                        id: damageCustomBase.id,
-                                        addMoveId: moveId,
-                                      );
-                                    } else {
-                                      calcNotifier.removeMove(
-                                        id: damageCustomBase.id,
-                                        removeMoveId: moveId,
-                                      );
-                                    }
-                                  },
-                                );
-                              },
-                            );
-                          },
-                          child: const Text('わざを追加')),
-                    ),
-                  ...moves.map(
-                    (e) {
-                      final moveType = getMoveType(e.id);
-                      return Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Row(children: [
-                          MoveTypeImage(
-                            attackTypeImageUrl: moveType.attackType.imageUrl,
-                            typeImageUrl: moveType.type.textImageUrl,
-                          ),
-                          const Gap(16),
-                          Text(e.name, style: const TextStyle(fontSize: 18)),
-                          const Gap(8),
-                          Text('(威力：${e.power > 0 ? e.power : '- '})',
-                              style: const TextStyle(fontSize: 12))
-                        ]),
-                      );
-                    },
-                  ).toList()
-                ],
-              ),
+            MoveSelect(
+              pokemonInfo: pokemonInfo,
+              battleData: battleData,
+              damageCustomBase: damageCustomBase,
+              calcNotifier: calcNotifier,
+              moves: moves,
+              getMoveType: (String id) => getMoveType(id),
             ),
           ],
         ),

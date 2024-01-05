@@ -1,11 +1,125 @@
 import 'package:burger_sauce/components/base/bottom_modal_sheet_template.dart';
 import 'package:burger_sauce/components/base/common_search_bar.dart';
 import 'package:burger_sauce/components/fragments/move_type_image.dart';
+import 'package:burger_sauce/components/styles/button.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+
+class MoveSelect extends StatelessWidget {
+  const MoveSelect({
+    super.key,
+    required this.pokemonInfo,
+    required this.battleData,
+    required this.damageCustomBase,
+    required this.calcNotifier,
+    required this.moves,
+    required this.getMoveType,
+  });
+
+  final PokemonInfo? pokemonInfo;
+  final GDamageCalcSummaryData_battleDatasLatest_battleDatas? battleData;
+  final DamageCustomBase damageCustomBase;
+  final Calc calcNotifier;
+  final Iterable<GDamageCalcSummaryData_moves> moves;
+  final MoveType Function(String moveId) getMoveType;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: getCardButtonFormStyle(context),
+      onPressed: () {
+        showModalBottomSheet(
+          isScrollControlled: true,
+          context: context,
+          builder: (BuildContext context) {
+            return MoveSelectBottomSheet(
+              moves: pokemonInfo!.moves,
+              battleData: battleData,
+              getMoveType: (String id) => getMoveType(id),
+              selectedIds: damageCustomBase.moveIds,
+              onChange: ({required String moveId, required bool isSelected}) {
+                if (isSelected) {
+                  calcNotifier.addMove(
+                    id: damageCustomBase.id,
+                    addMoveId: moveId,
+                  );
+                } else {
+                  calcNotifier.removeMove(
+                    id: damageCustomBase.id,
+                    removeMoveId: moveId,
+                  );
+                }
+              },
+            );
+          },
+        );
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (moves.isEmpty)
+            SizedBox(
+              width: double.infinity,
+              height: 40,
+              child: ElevatedButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (BuildContext context) {
+                        return MoveSelectBottomSheet(
+                          moves: pokemonInfo!.moves,
+                          battleData: battleData,
+                          getMoveType: (String id) => getMoveType(id),
+                          selectedIds: damageCustomBase.moveIds,
+                          onChange: (
+                              {required String moveId,
+                              required bool isSelected}) {
+                            if (isSelected) {
+                              calcNotifier.addMove(
+                                id: damageCustomBase.id,
+                                addMoveId: moveId,
+                              );
+                            } else {
+                              calcNotifier.removeMove(
+                                id: damageCustomBase.id,
+                                removeMoveId: moveId,
+                              );
+                            }
+                          },
+                        );
+                      },
+                    );
+                  },
+                  child: const Text('わざを追加')),
+            ),
+          ...moves.map(
+            (e) {
+              final moveType = getMoveType(e.id);
+              return Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Row(children: [
+                  MoveTypeImage(
+                    attackTypeImageUrl: moveType.attackType.imageUrl,
+                    typeImageUrl: moveType.type.textImageUrl,
+                  ),
+                  const Gap(16),
+                  Text(e.name, style: const TextStyle(fontSize: 18)),
+                  const Gap(8),
+                  Text('(威力：${e.power > 0 ? e.power : '- '})',
+                      style: const TextStyle(fontSize: 12))
+                ]),
+              );
+            },
+          ).toList()
+        ],
+      ),
+    );
+  }
+}
 
 class MoveSelectBottomSheet extends HookWidget {
   const MoveSelectBottomSheet({
