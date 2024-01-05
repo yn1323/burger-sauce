@@ -5,8 +5,8 @@ import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.da
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.req.gql.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.var.gql.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
-import 'package:burger_sauce/pages/top/calc/damage_card/damage_card.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/damage_card_add_button.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/pokemon_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -132,7 +132,7 @@ class CalcPage extends HookConsumerWidget {
                         }
 
                         return DismissibleWidget(
-                          child: DamageCard(
+                          child: PokemonForm(
                             damageCustomBase: targetBase[index],
                           ),
                           onDismissed: (_) {

@@ -20,8 +20,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 List<String> statusLabels = ["H", "A", "B", "C", "D", "S"];
 
-class DamageCard extends HookConsumerWidget {
-  const DamageCard({Key? key, required this.damageCustomBase})
+class PokemonForm extends HookConsumerWidget {
+  const PokemonForm({Key? key, required this.damageCustomBase})
       : super(key: key);
 
   final DamageCustomBase damageCustomBase;
