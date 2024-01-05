@@ -30,8 +30,8 @@ class ItemSelectBottomSheet extends HookWidget {
 
   List<GDamageCalcSummaryData_items> orderedItems() {
     if (battleData == null) return items;
-    final topRatedTypes = battleData!.battleDataTerastal
-        .map((e) => items.firstWhere((type) => type.id == e.typeId))
+    final topRatedTypes = battleData!.battleDataItem
+        .map((e) => items.firstWhere((item) => item.id == e.itemId))
         .toList();
 
     final topRatedTypeIds = topRatedTypes.map((e) => e.id).toList();
