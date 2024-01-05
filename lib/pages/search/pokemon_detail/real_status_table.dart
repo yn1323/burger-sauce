@@ -63,6 +63,17 @@ class RealStatusTable extends HookWidget {
 
     return ExpansionTile(
       title: const Text('実数値'),
+      // デフォルトのボーダーを上書き
+      shape: const Border(
+        top: BorderSide(
+          color: Colors.transparent,
+          width: 1,
+        ),
+        bottom: BorderSide(
+          color: Colors.transparent,
+          width: 1,
+        ),
+      ),
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.all(8.0),
