@@ -24,7 +24,7 @@ class AbilitySelect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return FilledButton.tonal(
       onPressed: () {
         showModalBottomSheet(
           context: context,

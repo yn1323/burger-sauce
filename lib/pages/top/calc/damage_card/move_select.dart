@@ -28,7 +28,7 @@ class MoveSelect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return FilledButton.tonal(
       style: getCardButtonFormStyle(context),
       onPressed: () {
         showModalBottomSheet(
