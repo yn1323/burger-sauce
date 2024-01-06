@@ -20,6 +20,18 @@ class StatusBox extends StatelessWidget {
   final bool? isDecrease;
   final bool verticalSubStatus;
 
+  Color? textColor() {
+    if (isIncrease == null || isDecrease == null) return null;
+
+    if (isIncrease != null && isIncrease!) {
+      return Colors.red[300]!;
+    } else if (isDecrease != null && isDecrease!) {
+      return Colors.blue[300]!;
+    } else {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,11 +55,7 @@ class StatusBox extends StatelessWidget {
                             child: Text(
                               label,
                               style: TextStyle(
-                                  color: !isIncrease! && !isDecrease!
-                                      ? null
-                                      : isIncrease != null && isIncrease!
-                                          ? Colors.red[300]
-                                          : Colors.blue[300],
+                                  color: textColor(),
                                   fontWeight:
                                       isIncrease != null && isIncrease! ||
                                               isDecrease != null && isDecrease!

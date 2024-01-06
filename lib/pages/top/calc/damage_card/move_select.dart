@@ -2,6 +2,7 @@ import 'package:burger_sauce/components/base/bottom_modal_sheet_template.dart';
 import 'package:burger_sauce/components/base/common_search_bar.dart';
 import 'package:burger_sauce/components/fragments/move_type_image.dart';
 import 'package:burger_sauce/components/styles/button.dart';
+import 'package:burger_sauce/components/styles/tile.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:flutter/material.dart';
@@ -28,95 +29,103 @@ class MoveSelect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FilledButton.tonal(
-      style: getCardButtonFormStyle(context),
-      onPressed: () {
-        showModalBottomSheet(
-          isScrollControlled: true,
-          context: context,
-          builder: (BuildContext context) {
-            return MoveSelectBottomSheet(
-              moves: pokemonInfo!.moves,
-              battleData: battleData,
-              getMoveType: (String id) => getMoveType(id),
-              selectedIds: damageCustomBase.moveIds,
-              onChange: ({required String moveId, required bool isSelected}) {
-                if (isSelected) {
-                  calcNotifier.addMove(
-                    id: damageCustomBase.id,
-                    addMoveId: moveId,
-                  );
-                } else {
-                  calcNotifier.removeMove(
-                    id: damageCustomBase.id,
-                    removeMoveId: moveId,
-                  );
-                }
+    return ExpansionTile(
+      title: const Text('わざ'),
+      initiallyExpanded: true,
+      shape: expansionTileShape,
+      children: [
+        FilledButton.tonal(
+          style: getCardButtonFormStyle(context),
+          onPressed: () {
+            showModalBottomSheet(
+              isScrollControlled: true,
+              context: context,
+              builder: (BuildContext context) {
+                return MoveSelectBottomSheet(
+                  moves: pokemonInfo!.moves,
+                  battleData: battleData,
+                  getMoveType: (String id) => getMoveType(id),
+                  selectedIds: damageCustomBase.moveIds,
+                  onChange: (
+                      {required String moveId, required bool isSelected}) {
+                    if (isSelected) {
+                      calcNotifier.addMove(
+                        id: damageCustomBase.id,
+                        addMoveId: moveId,
+                      );
+                    } else {
+                      calcNotifier.removeMove(
+                        id: damageCustomBase.id,
+                        removeMoveId: moveId,
+                      );
+                    }
+                  },
+                );
               },
             );
           },
-        );
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (moves.isEmpty)
-            SizedBox(
-              width: double.infinity,
-              height: 40,
-              child: ElevatedButton(
-                  onPressed: () {
-                    showModalBottomSheet(
-                      isScrollControlled: true,
-                      context: context,
-                      builder: (BuildContext context) {
-                        return MoveSelectBottomSheet(
-                          moves: pokemonInfo!.moves,
-                          battleData: battleData,
-                          getMoveType: (String id) => getMoveType(id),
-                          selectedIds: damageCustomBase.moveIds,
-                          onChange: (
-                              {required String moveId,
-                              required bool isSelected}) {
-                            if (isSelected) {
-                              calcNotifier.addMove(
-                                id: damageCustomBase.id,
-                                addMoveId: moveId,
-                              );
-                            } else {
-                              calcNotifier.removeMove(
-                                id: damageCustomBase.id,
-                                removeMoveId: moveId,
-                              );
-                            }
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (moves.isEmpty)
+                SizedBox(
+                  width: double.infinity,
+                  height: 40,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return MoveSelectBottomSheet(
+                              moves: pokemonInfo!.moves,
+                              battleData: battleData,
+                              getMoveType: (String id) => getMoveType(id),
+                              selectedIds: damageCustomBase.moveIds,
+                              onChange: (
+                                  {required String moveId,
+                                  required bool isSelected}) {
+                                if (isSelected) {
+                                  calcNotifier.addMove(
+                                    id: damageCustomBase.id,
+                                    addMoveId: moveId,
+                                  );
+                                } else {
+                                  calcNotifier.removeMove(
+                                    id: damageCustomBase.id,
+                                    removeMoveId: moveId,
+                                  );
+                                }
+                              },
+                            );
                           },
                         );
                       },
-                    );
-                  },
-                  child: const Text('わざを追加')),
-            ),
-          ...moves.map(
-            (e) {
-              final moveType = getMoveType(e.id);
-              return Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Row(children: [
-                  MoveTypeImage(
-                    attackTypeImageUrl: moveType.attackType.imageUrl,
-                    typeImageUrl: moveType.type.textImageUrl,
-                  ),
-                  const Gap(16),
-                  Text(e.name, style: const TextStyle(fontSize: 18)),
-                  const Gap(8),
-                  Text('(威力：${e.power > 0 ? e.power : '- '})',
-                      style: const TextStyle(fontSize: 12))
-                ]),
-              );
-            },
-          ).toList()
-        ],
-      ),
+                      child: const Text('わざを追加')),
+                ),
+              ...moves.map(
+                (e) {
+                  final moveType = getMoveType(e.id);
+                  return Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Row(children: [
+                      MoveTypeImage(
+                        attackTypeImageUrl: moveType.attackType.imageUrl,
+                        typeImageUrl: moveType.type.textImageUrl,
+                      ),
+                      const Gap(16),
+                      Text(e.name, style: const TextStyle(fontSize: 18)),
+                      const Gap(8),
+                      Text('(威力：${e.power > 0 ? e.power : '- '})',
+                          style: const TextStyle(fontSize: 12))
+                    ]),
+                  );
+                },
+              ).toList()
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

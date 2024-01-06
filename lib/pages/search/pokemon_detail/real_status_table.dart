@@ -1,3 +1,4 @@
+import 'package:burger_sauce/components/styles/tile.dart';
 import 'package:burger_sauce/models/status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -63,18 +64,8 @@ class RealStatusTable extends HookWidget {
 
     return ExpansionTile(
       title: const Text('実数値'),
-      // デフォルトのボーダーを上書き
-      shape: const Border(
-        top: BorderSide(
-          color: Colors.transparent,
-          width: 1,
-        ),
-        bottom: BorderSide(
-          color: Colors.transparent,
-          width: 1,
-        ),
-      ),
-      children: <Widget>[
+      shape: expansionTileShape,
+      children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
