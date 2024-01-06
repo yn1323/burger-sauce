@@ -4,6 +4,7 @@ import 'package:burger_sauce/helpers/query.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.req.gql.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.var.gql.dart';
+import 'package:burger_sauce/pages/top/calc/app_bar/selected_pokemon_list.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/damage_card_add_button.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/pokemon_form.dart';
@@ -12,6 +13,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const tabTypes = ['attack', 'defense'];
+const attackIcon = Icons.sports_martial_arts;
+const defenseIcon = Icons.health_and_safety;
 
 class CalcPage extends HookConsumerWidget {
   final String calcId;
@@ -24,8 +27,14 @@ class CalcPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     useAutomaticKeepAlive();
+    final tabController = useTabController(initialLength: tabTypes.length);
     final calcStore = ref.watch(calcProvider);
     final calcStoreNotifier = ref.watch(calcProvider.notifier);
+    final tabType = useState("attack");
+
+    final oppositeTargetBase = tabType.value == 'attack'
+        ? calcStore.defenseBase
+        : calcStore.attackBase;
 
     final result = useQuery<GDamageCalcSummaryData, GDamageCalcSummaryVars>(
       GDamageCalcSummaryReq(
@@ -47,6 +56,19 @@ class CalcPage extends HookConsumerWidget {
       return null;
     }, [result.data]);
 
+    // Tab外でtabTypeを利用するため
+    tabController.addListener(() {
+      if (tabController.indexIsChanging) {
+        tabType.value = tabTypes[tabController.index];
+      }
+    });
+
+    tabController.animation?.addListener(() {
+      if (tabController.indexIsChanging) {
+        tabType.value = tabTypes[tabController.index];
+      }
+    });
+
     return Scaffold(
       body: SafeArea(
         child: DefaultTabController(
@@ -61,16 +83,17 @@ class CalcPage extends HookConsumerWidget {
                   floating: true,
                   bottom: PreferredSize(
                     preferredSize: Size.fromHeight(kToolbarHeight +
-                        (calcStore.defenseBase.isNotEmpty ? 40 : 0)),
+                        (oppositeTargetBase.isNotEmpty ? 40 + 8 * 2 : 0)),
                     child: Column(
                       children: [
-                        const TabBar(
-                          tabs: [
+                        TabBar(
+                          controller: tabController,
+                          tabs: const [
                             Tab(
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Icon(Icons.sports_martial_arts),
+                                  Icon(attackIcon),
                                   Text('Attack'),
                                 ],
                               ),
@@ -79,17 +102,21 @@ class CalcPage extends HookConsumerWidget {
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Icon(Icons.health_and_safety),
+                                  Icon(defenseIcon),
                                   Text('Defense'),
                                 ],
                               ),
                             ),
                           ],
                         ),
-                        if (calcStore.defenseBase.isNotEmpty)
-                          Container(
-                            padding: const EdgeInsets.all(10),
-                            child: const Text('防御側の設定'),
+                        if (oppositeTargetBase.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SelectedPokemonList(
+                                base: oppositeTargetBase,
+                                type: tabType.value == 'attack'
+                                    ? 'defense'
+                                    : 'attack'),
                           ),
                       ],
                     ),
@@ -115,13 +142,15 @@ class CalcPage extends HookConsumerWidget {
                 calcStoreNotifier.updateSummary(result.data!);
 
                 return TabBarView(
+                  controller: tabController,
                   children: tabTypes.map((type) {
                     final targetBase = type == 'attack'
                         ? calcStore.attackBase
                         : calcStore.defenseBase;
 
                     return ListView.separated(
-                      padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
+                      padding: EdgeInsets.fromLTRB(
+                          5, oppositeTargetBase.isNotEmpty ? 0 : 10, 5, 10),
                       separatorBuilder: (context, index) =>
                           const SizedBox(height: 10),
                       itemCount: targetBase.length +
