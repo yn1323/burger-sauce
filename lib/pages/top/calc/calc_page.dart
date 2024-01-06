@@ -162,6 +162,7 @@ class CalcPage extends HookConsumerWidget {
                         return DismissibleWidget(
                           child: PokemonForm(
                             damageCustomBase: targetBase[index],
+                            type: type,
                           ),
                           onDismissed: (_) {
                             calcStoreNotifier.removeBase(

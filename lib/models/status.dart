@@ -68,12 +68,12 @@ class Status {
   bool isCDecrease;
   bool isDDecrease;
   bool isSDecrease;
-  final int statusRankH;
-  final int statusRankA;
-  final int statusRankB;
-  final int statusRankC;
-  final int statusRankD;
-  final int statusRankS;
+  int statusRankH;
+  int statusRankA;
+  int statusRankB;
+  int statusRankC;
+  int statusRankD;
+  int statusRankS;
 
   int getStatus(String label) {
     if (label == "H") {

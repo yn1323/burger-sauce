@@ -5,6 +5,7 @@ import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.req.gql.dar
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.var.gql.dart';
 import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/ability_select.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/attack_rank_condition_select.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/item_select.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/move_select.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/pokemon_select.dart';
@@ -21,10 +22,12 @@ const space = 8.0;
 const gap = Gap(space);
 
 class PokemonForm extends HookConsumerWidget {
-  const PokemonForm({Key? key, required this.damageCustomBase})
+  const PokemonForm(
+      {Key? key, required this.damageCustomBase, required this.type})
       : super(key: key);
 
   final DamageCustomBase damageCustomBase;
+  final String type;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -65,7 +68,11 @@ class PokemonForm extends HookConsumerWidget {
       return calcNotifier.getMoveType(id: moveId);
     }
 
+    // Widgetのstateを保持するためにkeyを設定
+    final key = PageStorageKey(damageCustomBase.id);
+
     return Card(
+      key: key,
       elevation: 0,
       shape: RoundedRectangleBorder(
         side: BorderSide(
@@ -141,6 +148,12 @@ class PokemonForm extends HookConsumerWidget {
               moves: moves,
               getMoveType: (String id) => getMoveType(id),
             ),
+            const Gap(8),
+            if (type == "attack")
+              AttackRankConditionSelect(
+                damageCustomBase: damageCustomBase,
+                calcNotifier: calcNotifier,
+              )
           ],
         ),
       ),

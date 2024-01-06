@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 
-class MoveSelect extends StatelessWidget {
+class MoveSelect extends HookWidget {
   const MoveSelect({
     super.key,
     required this.pokemonInfo,

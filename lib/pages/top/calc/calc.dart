@@ -1,3 +1,4 @@
+import 'package:burger_sauce/models/battle_condition.dart';
 import 'package:burger_sauce/models/status.dart';
 import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.data.gql.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class DamageCustomBase {
     this.itemId = '',
     this.natureId = '',
     Status? status,
+    BattleCondition? battleCondition,
   })  : id = id ?? UniqueKey(),
         status = status ??
             Status(
@@ -27,7 +29,8 @@ class DamageCustomBase {
               statusD: 0,
               statusH: 0,
               statusS: 0,
-            );
+            ),
+        battleCondition = battleCondition ?? BattleCondition();
 
   String pokemonId;
   List<String> moveIds;
@@ -39,6 +42,7 @@ class DamageCustomBase {
   UniqueKey id;
 
   Status status;
+  BattleCondition battleCondition;
 }
 
 class CalcState {
@@ -665,7 +669,7 @@ class Calc extends _$Calc {
     defenseBase = newDefenseBase.toList();
   }
 
-  replaceBase(
+  void replaceBase(
       {required DamageCustomBase before, required DamageCustomBase after}) {
     final tabType =
         state.attackBase.any((e) => e.id == before.id) ? "attack" : "defense";
@@ -679,6 +683,65 @@ class Calc extends _$Calc {
       update(attackBase: targetBase);
     } else {
       update(defenseBase: targetBase);
+    }
+  }
+
+  void updateRank(
+      {required UniqueKey id, required String status, required int nextRank}) {
+    final updateTarget = getUpdateTarget(id);
+
+    if (status == "A") {
+      updateTarget.target.status.statusRankA = nextRank;
+    } else if (status == "B") {
+      updateTarget.target.status.statusRankB = nextRank;
+    } else if (status == "C") {
+      updateTarget.target.status.statusRankC = nextRank;
+    } else if (status == "D") {
+      updateTarget.target.status.statusRankD = nextRank;
+    } else if (status == "S") {
+      updateTarget.target.status.statusRankS = nextRank;
+    }
+    if (updateTarget.tabType == "attack") {
+      update(attackBase: updateTarget.targetBase);
+    } else {
+      update(defenseBase: updateTarget.targetBase);
+    }
+  }
+
+  void updateCondition(
+      {required UniqueKey id,
+      required String battleCondition,
+      required dynamic next}) {
+    final updateTarget = getUpdateTarget(id);
+
+    if (battleCondition == 'isBurn') {
+      updateTarget.target.battleCondition.isBurn = next;
+    } else if (battleCondition == 'isCharge') {
+      updateTarget.target.battleCondition.isCharge = next;
+    } else if (battleCondition == 'isCritical') {
+      updateTarget.target.battleCondition.isCritical = next;
+    } else if (battleCondition == 'weather') {
+      updateTarget.target.battleCondition.weather = next;
+    } else if (battleCondition == 'field') {
+      updateTarget.target.battleCondition.field = next;
+    } else if (battleCondition == 'hasReflect') {
+      updateTarget.target.battleCondition.hasReflect = next;
+    } else if (battleCondition == 'hasLightScreen') {
+      updateTarget.target.battleCondition.hasLightScreen = next;
+    } else if (battleCondition == 'extraDamageStealthRock') {
+      updateTarget.target.battleCondition.extraDamageStealthRock = next;
+    } else if (battleCondition == 'extraDamageDisguise') {
+      updateTarget.target.battleCondition.extraDamageDisguise = next;
+    } else if (battleCondition == 'extraDamageRockyHelmet') {
+      updateTarget.target.battleCondition.extraDamageRockyHelmet = next;
+    } else if (battleCondition == 'extraDamageLifeOrb') {
+      updateTarget.target.battleCondition.extraDamageLifeOrb = next;
+    }
+
+    if (updateTarget.tabType == "attack") {
+      update(attackBase: updateTarget.targetBase);
+    } else {
+      update(defenseBase: updateTarget.targetBase);
     }
   }
 }
