@@ -149,8 +149,7 @@ class CalcPage extends HookConsumerWidget {
                         : calcStore.defenseBase;
 
                     return ListView.separated(
-                      padding: EdgeInsets.fromLTRB(
-                          5, oppositeTargetBase.isNotEmpty ? 0 : 10, 5, 10),
+                      padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
                       separatorBuilder: (context, index) =>
                           const SizedBox(height: 10),
                       itemCount: targetBase.length +
