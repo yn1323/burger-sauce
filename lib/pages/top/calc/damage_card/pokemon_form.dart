@@ -6,6 +6,7 @@ import 'package:burger_sauce/pages/top/calc/__generated__/calcDamage.var.gql.dar
 import 'package:burger_sauce/pages/top/calc/calc.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/ability_select.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/attack_rank_condition_select.dart';
+import 'package:burger_sauce/pages/top/calc/damage_card/defense_rank_condition_select.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/item_select.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/move_select.dart';
 import 'package:burger_sauce/pages/top/calc/damage_card/pokemon_select.dart';
@@ -147,6 +148,11 @@ class PokemonForm extends HookConsumerWidget {
             const Gap(8),
             if (type == "attack")
               AttackRankConditionSelect(
+                damageCustomBase: damageCustomBase,
+                calcNotifier: calcNotifier,
+              ),
+            if (type == "defense")
+              DefenseRankConditionSelect(
                 damageCustomBase: damageCustomBase,
                 calcNotifier: calcNotifier,
               )

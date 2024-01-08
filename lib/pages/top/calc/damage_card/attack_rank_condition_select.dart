@@ -71,9 +71,13 @@ class AttackRankConditionSelect extends HookWidget {
       title: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         const Text('ランク補正・状態'),
         Wrap(children: [
-          if (rankLabels().isNotEmpty || conditionLabels().isNotEmpty)
+          const Text(
+            '選択中  ',
+            style: TextStyle(fontSize: 11),
+          ),
+          if (rankLabels().isEmpty && conditionLabels().isEmpty)
             const Text(
-              '選択中  ',
+              'なし',
               style: TextStyle(fontSize: 11),
             ),
           ...rankLabels(),
@@ -96,32 +100,35 @@ class AttackRankConditionSelect extends HookWidget {
             rank: damageCustomBase.status.statusRankC,
             onChange: (int nextRank) => calcNotifier.updateRank(
                 id: damageCustomBase.id, status: 'C', nextRank: nextRank)),
-        Wrap(children: [
-          ConditionSelect(
-            checked: damageCustomBase.battleCondition.isBurn,
-            label: 'やけど',
-            onChange: (bool checked) => calcNotifier.updateCondition(
-                id: damageCustomBase.id,
-                battleCondition: "isBurn",
-                next: checked),
-          ),
-          ConditionSelect(
-            checked: damageCustomBase.battleCondition.isCharge,
-            label: 'じゅうでん',
-            onChange: (bool checked) => calcNotifier.updateCondition(
-                id: damageCustomBase.id,
-                battleCondition: "isCharge",
-                next: checked),
-          ),
-          ConditionSelect(
-            checked: damageCustomBase.battleCondition.isCritical,
-            label: '急所',
-            onChange: (bool checked) => calcNotifier.updateCondition(
-                id: damageCustomBase.id,
-                battleCondition: "isCritical",
-                next: checked),
-          ),
-        ]),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Wrap(children: [
+            ConditionSelect(
+              checked: damageCustomBase.battleCondition.isBurn,
+              label: 'やけど',
+              onChange: (bool checked) => calcNotifier.updateCondition(
+                  id: damageCustomBase.id,
+                  battleCondition: "isBurn",
+                  next: checked),
+            ),
+            ConditionSelect(
+              checked: damageCustomBase.battleCondition.isCharge,
+              label: 'じゅうでん',
+              onChange: (bool checked) => calcNotifier.updateCondition(
+                  id: damageCustomBase.id,
+                  battleCondition: "isCharge",
+                  next: checked),
+            ),
+            ConditionSelect(
+              checked: damageCustomBase.battleCondition.isCritical,
+              label: '急所',
+              onChange: (bool checked) => calcNotifier.updateCondition(
+                  id: damageCustomBase.id,
+                  battleCondition: "isCritical",
+                  next: checked),
+            ),
+          ]),
+        ),
       ],
     );
   }
