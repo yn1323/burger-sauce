@@ -29,7 +29,10 @@ class MoveSelect extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final key = PageStorageKey('${damageCustomBase.id}-move');
+
     return ExpansionTile(
+      key: key,
       title: const Text('わざ'),
       initiallyExpanded: true,
       shape: expansionTileShape,

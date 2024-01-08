@@ -68,11 +68,7 @@ class PokemonForm extends HookConsumerWidget {
       return calcNotifier.getMoveType(id: moveId);
     }
 
-    // Widgetのstateを保持するためにkeyを設定
-    final key = PageStorageKey(damageCustomBase.id);
-
     return Card(
-      key: key,
       elevation: 0,
       shape: RoundedRectangleBorder(
         side: BorderSide(

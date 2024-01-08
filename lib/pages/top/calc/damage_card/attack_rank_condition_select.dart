@@ -61,8 +61,10 @@ class AttackRankConditionSelect extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isExpanded = useState(false);
+    final key = PageStorageKey('${damageCustomBase.id}-attackRank');
 
     return ExpansionTile(
+      key: key,
       initiallyExpanded: isExpanded.value,
       onExpansionChanged: (expanded) => isExpanded.value = expanded,
       shape: expansionTileShape,
