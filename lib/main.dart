@@ -1,6 +1,8 @@
 import 'package:burger_sauce/constants/client.dart';
+import 'package:burger_sauce/constants/firebase/options.dart';
 import 'package:burger_sauce/route.dart';
 import 'package:ferry/ferry.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -17,6 +19,9 @@ void main() async {
   } else {
     await dotenv.load(fileName: ".env.production");
   }
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   final client = await initClient();
   if (GetIt.I.isRegistered<TypedLink>()) {
     GetIt.I.unregister<TypedLink>();

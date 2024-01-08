@@ -27,7 +27,8 @@
             "flutterMode": "debug",
             "args": [
                 "--dart-define",
-                "env=mobileDebug"
+                "env=mobileDebug",
+                "--web-port=3333"
             ]
         },
         {
